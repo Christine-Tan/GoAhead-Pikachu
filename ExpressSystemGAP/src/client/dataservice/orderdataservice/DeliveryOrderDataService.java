@@ -1,5 +1,10 @@
 package client.dataservice.orderdataservice;
 
-public interface DeliveryOrderDataService {
+import client.po.DeliveryOrderPO;
+import client.po.ResultMessage;
 
+public interface DeliveryOrderDataService {
+	public ResultMessage add(DeliveryOrderPO po);
+
+	public DeliveryOrderPO find(String order_id);
 }
