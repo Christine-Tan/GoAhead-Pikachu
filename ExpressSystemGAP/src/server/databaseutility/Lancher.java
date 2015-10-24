@@ -1,6 +1,10 @@
 package server.databaseutility;
 
-import static server.databaseutility.Config.*;
+import static server.databaseutility.Config.database;
+import static server.databaseutility.Config.driver;
+import static server.databaseutility.Config.password;
+import static server.databaseutility.Config.url;
+import static server.databaseutility.Config.user;
 import static server.databaseutility.Excutor.cone;
 
 import java.sql.DriverManager;

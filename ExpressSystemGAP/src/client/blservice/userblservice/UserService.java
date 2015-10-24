@@ -1,6 +1,6 @@
 package client.blservice.userblservice;
 
-import client.po.UserPO;
+import po.UserPO;
 
 public interface UserService {
 	public UserPO[] getAll();
