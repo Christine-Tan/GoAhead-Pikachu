@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.ExpressOrderPO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.inventorydataservice.InventoryDataService;
 
 public class InventoryDataService_stub implements InventoryDataService{

@@ -9,19 +9,29 @@ public class BillOrderPO implements Serializable {
 	// 收款单id
 	private String id;
 
-	public final Map<String, Integer> getBills() {
+	public BillOrderPO() {
+
+	}
+
+	public BillOrderPO(Map<String, Integer> bills, String id) {
+		super();
+		this.bills = bills;
+		this.id = id;
+	}
+
+	public Map<String, Integer> getBills() {
 		return bills;
 	}
 
-	public final void setBills(Map<String, Integer> bills) {
+	public void setBills(Map<String, Integer> bills) {
 		this.bills = bills;
 	}
 
-	public final String getId() {
+	public String getId() {
 		return id;
 	}
 
-	public final void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

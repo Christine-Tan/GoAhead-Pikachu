@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.DriverPO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.transdataservice.DriverDataService;
 
 public class DriverDataService_stub implements DriverDataService{

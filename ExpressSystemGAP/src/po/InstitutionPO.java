@@ -3,15 +3,15 @@ package po;
 import java.io.Serializable;
 
 public class InstitutionPO implements Serializable {
-	//机构编号
+	// 机构编号
 	private String insId;
-	//机构类型
+	// 机构类型
 	private String insType;
-	//机构名称
+	// 机构名称
 	private String insName;
-	//机构所在城市
+	// 机构所在城市
 	private String insCity;
-	//机构人员数目
+	// 机构人员数目
 	private int insMember;
 
 	public InstitutionPO(String id, String type, String name, String city,

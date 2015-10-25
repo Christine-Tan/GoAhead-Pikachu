@@ -1,7 +1,9 @@
 package po;
 
 import java.io.Serializable;
-import static po.Gender.*;
+
+import util.Gender;
+import static util.Gender.*;
 
 public class DriverPO implements Serializable {
 	// 司机编号、所在机构编号、姓名、生日、身份证号、电话、行驶证期限
@@ -9,6 +11,24 @@ public class DriverPO implements Serializable {
 			driving_license_due;
 	// 性别
 	private Gender gender;
+
+	public DriverPO() {
+
+	}
+
+	public DriverPO(String id, String ins_id, String name, String birth,
+			String identity_number, String phone, String driving_license_due,
+			Gender gender) {
+		super();
+		this.id = id;
+		this.ins_id = ins_id;
+		this.name = name;
+		this.birth = birth;
+		this.identity_number = identity_number;
+		this.phone = phone;
+		this.driving_license_due = driving_license_due;
+		this.gender = gender;
+	}
 
 	public String getId() {
 		return id;

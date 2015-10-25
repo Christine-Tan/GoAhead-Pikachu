@@ -11,6 +11,18 @@ public class DeliveryOrderPO implements Serializable {
 	// 派件单编号
 	private String id;
 
+	public DeliveryOrderPO() {
+
+	}
+
+	public DeliveryOrderPO(Map<String, ExpressOrderPO> deliveryInfo,
+			String time, String id) {
+		super();
+		this.deliveryInfo = deliveryInfo;
+		this.time = time;
+		this.id = id;
+	}
+
 	public String getId() {
 		return id;
 	}

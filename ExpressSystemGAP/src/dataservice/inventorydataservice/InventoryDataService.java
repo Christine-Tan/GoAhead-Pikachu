@@ -1,7 +1,8 @@
 package dataservice.inventorydataservice;
 
 import po.ExpressOrderPO;
-import po.ResultMessage;
+import util.ResultMessage;
+
 
 public interface InventoryDataService {
 	public ResultMessage add(ExpressOrderPO expressorder);

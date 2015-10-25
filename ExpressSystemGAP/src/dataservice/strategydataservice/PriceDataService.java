@@ -1,7 +1,8 @@
 package dataservice.strategydataservice;
 
 import po.PricePO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 
 public interface PriceDataService {
 	public PricePO find(String city_id);

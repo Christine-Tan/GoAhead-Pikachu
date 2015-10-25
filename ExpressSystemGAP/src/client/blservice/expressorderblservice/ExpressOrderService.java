@@ -2,8 +2,11 @@ package client.blservice.expressorderblservice;
 
 import java.util.List;
 
-import po.ReceiveInfo;
-import po.ResultMessage;
+
+
+
+import util.ReceiveInfo;
+import util.ResultMessage;
 import client.vo.ExpressOrderVO;
 import client.vo.StateVO;
 
@@ -19,7 +22,7 @@ public interface ExpressOrderService {
 
 	public List<ExpressOrderVO> getCurrentOrders(String ins_id);
 
-	public ResultMessage setArrivedOrders(List<ExpressOrderVO> orders,
+	public util.ResultMessage setArrivedOrders(List<ExpressOrderVO> orders,
 			String ins_id);
 
 	public ResultMessage setOffOders(List<ExpressOrderVO> orders, String ins_id);

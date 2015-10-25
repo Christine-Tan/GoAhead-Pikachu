@@ -1,7 +1,8 @@
 package dataservice.strategydataservice;
 
 import po.DistancePO;
-import po.ResultMessage;
+import util.ResultMessage;
+
 
 public interface DistanceDataService {
 	public DistancePO find(String city_id);

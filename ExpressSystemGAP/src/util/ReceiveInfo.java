@@ -1,4 +1,4 @@
-package po;
+package util;
 
 public class ReceiveInfo {
 	private String receiver_name, receive_time;

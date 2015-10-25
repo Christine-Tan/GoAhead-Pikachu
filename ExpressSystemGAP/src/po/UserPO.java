@@ -3,14 +3,18 @@ package po;
 import java.io.Serializable;
 
 public class UserPO implements Serializable {
-	//用户编号
+	// 用户编号
 	private long userId;
-	//用户类型
+	// 用户类型
 	private String type;
-	//用户名
+	// 用户名
 	private String userName;
-	//用户等级
+	// 用户等级
 	private int rank;
+
+	public UserPO() {
+
+	}
 
 	public UserPO(long id, String type, String name) {
 		userId = id;

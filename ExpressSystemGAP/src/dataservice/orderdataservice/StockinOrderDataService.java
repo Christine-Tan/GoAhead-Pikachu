@@ -1,7 +1,8 @@
 package dataservice.orderdataservice;
 
 import po.StockinOrderPO;
-import po.ResultMessage;
+import util.ResultMessage;
+
 
 public interface StockinOrderDataService {
 	public ResultMessage add(StockinOrderPO po);

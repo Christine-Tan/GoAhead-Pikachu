@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.DeliveryOrderPO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.orderdataservice.DeliveryOrderDataService;
 
 public class DeliveryOrderDataService_stub implements DeliveryOrderDataService{

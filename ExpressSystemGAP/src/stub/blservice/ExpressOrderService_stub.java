@@ -2,8 +2,9 @@ package stub.blservice;
 
 import java.util.List;
 
-import po.ReceiveInfo;
-import po.ResultMessage;
+
+import util.ReceiveInfo;
+import util.ResultMessage;
 import client.blservice.expressorderblservice.ExpressOrderService;
 import client.vo.ExpressOrderVO;
 import client.vo.StateVO;

@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.LoadOrderPO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.orderdataservice.LoadOrderDataService;
 
 public class LoadOrderDataService_stub implements LoadOrderDataService{

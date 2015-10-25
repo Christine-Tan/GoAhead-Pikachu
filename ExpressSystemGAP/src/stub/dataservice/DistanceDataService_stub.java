@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.DistancePO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.strategydataservice.DistanceDataService;
 
 public class DistanceDataService_stub implements DistanceDataService{

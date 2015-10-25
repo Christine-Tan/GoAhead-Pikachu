@@ -3,10 +3,14 @@ package po;
 import java.io.Serializable;
 
 public class SalaryPO implements Serializable {
-	//薪水类型
+	// 薪水类型
 	String type;
-	//薪水值
+	// 薪水值
 	double salary;
+
+	public SalaryPO() {
+
+	}
 
 	public SalaryPO(String type, double salary) {
 		this.type = type;

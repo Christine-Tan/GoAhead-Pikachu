@@ -10,6 +10,17 @@ public class CarPO implements Serializable {
 	// 服役时间
 	private int serve_time;
 
+	public CarPO(String car_id, String car_num, int serve_time) {
+		super();
+		this.car_id = car_id;
+		this.car_num = car_num;
+		this.serve_time = serve_time;
+	}
+
+	public CarPO() {
+
+	}
+
 	public String getCar_id() {
 		return car_id;
 	}

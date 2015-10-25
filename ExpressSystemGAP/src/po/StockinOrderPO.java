@@ -6,7 +6,12 @@ import java.util.List;
 public class StockinOrderPO implements Serializable {
 	private List<String> expressorder_ids;
 	private String inDate, destination, sector, location;
-	//到达日期，目的地，分区，位置
+
+	// 到达日期，目的地，分区，位置
+
+	public StockinOrderPO() {
+		// TODO 自动生成的构造函数存根
+	}
 
 	public StockinOrderPO(List<String> expressorder_ids, String inDate,
 			String destination, String sector, String location) {
@@ -19,7 +24,7 @@ public class StockinOrderPO implements Serializable {
 	}
 
 	public void deleteExpressorder_id(String expressorder_id) {
-		int a= this.expressorder_ids.indexOf(expressorder_id);
+		int a = this.expressorder_ids.indexOf(expressorder_id);
 		this.expressorder_ids.remove(a);
 	}
 

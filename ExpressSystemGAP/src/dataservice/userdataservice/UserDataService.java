@@ -1,6 +1,7 @@
 package dataservice.userdataservice;
 
-import po.ResultMessage;
+import util.ResultMessage;
+
 import po.UserPO;
 
 public interface UserDataService {

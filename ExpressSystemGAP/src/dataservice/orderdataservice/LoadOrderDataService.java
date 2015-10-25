@@ -1,7 +1,8 @@
 package dataservice.orderdataservice;
 
 import po.LoadOrderPO;
-import po.ResultMessage;
+import util.ResultMessage;
+
 
 public interface LoadOrderDataService {
 	public ResultMessage add(LoadOrderPO po);

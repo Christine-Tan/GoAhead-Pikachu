@@ -2,8 +2,9 @@ package stub.dataservice;
 
 import java.util.List;
 
+
 import po.ExpressOrderPO;
-import po.ResultMessage;
+import util.ResultMessage;
 import dataservice.expressorderdataservice.ExpressOrderDataService;
 
 public class ExpressOrderDataService_stub implements ExpressOrderDataService{

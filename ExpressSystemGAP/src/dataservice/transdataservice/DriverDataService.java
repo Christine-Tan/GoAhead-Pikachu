@@ -1,7 +1,8 @@
 package dataservice.transdataservice;
 
 import po.DriverPO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 
 public interface DriverDataService {
 	public ResultMessage add(DriverPO po);

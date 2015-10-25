@@ -1,7 +1,8 @@
 package dataservice.managedataservice;
 
 import po.InstitutionPO;
-import po.ResultMessage;
+import util.ResultMessage;
+
 
 public interface InstitutionDataService {
 	public ResultMessage add(InstitutionPO po);

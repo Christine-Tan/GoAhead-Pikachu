@@ -1,6 +1,7 @@
 package stub.dataservice;
 
-import po.ResultMessage;
+import util.ResultMessage;
+
 import po.SalaryPO;
 import dataservice.strategydataservice.SalaryDataService;
 

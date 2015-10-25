@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.PricePO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.strategydataservice.PriceDataService;
 
 public class PriceDataService_stub implements PriceDataService{

@@ -2,7 +2,8 @@ package stub.blservice;
 
 import java.util.List;
 
-import po.ResultMessage;
+
+import util.ResultMessage;
 import client.blservice.orderblservice.StockoutOrderService;
 import client.vo.ExpressOrderVO;
 import client.vo.StockoutOrderVO;

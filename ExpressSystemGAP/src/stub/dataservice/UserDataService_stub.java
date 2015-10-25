@@ -1,6 +1,6 @@
 package stub.dataservice;
 
-import po.ResultMessage;
+import util.ResultMessage;
 import po.UserPO;
 import dataservice.userdataservice.UserDataService;
 

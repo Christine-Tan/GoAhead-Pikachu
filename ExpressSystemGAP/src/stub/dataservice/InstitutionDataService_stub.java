@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.InstitutionPO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.managedataservice.InstitutionDataService;
 
 public class InstitutionDataService_stub implements InstitutionDataService{

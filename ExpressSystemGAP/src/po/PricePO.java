@@ -9,6 +9,10 @@ public class PricePO implements Serializable {
 	double base;
 	//城市编号
 	String cityId;
+	
+	public PricePO(){
+		
+	}
 
 	public PricePO(String id, String  rate, double base) {
 		this.rate = rate;

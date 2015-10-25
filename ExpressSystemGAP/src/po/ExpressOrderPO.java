@@ -2,6 +2,9 @@ package po;
 
 import java.io.Serializable;
 
+import util.CargoInfo;
+import util.ExpressType;
+
 public class ExpressOrderPO implements Serializable {
 	// 寄件人姓名、地址、单位、电话
 	private String sender_name, sender_address, sender_depart,
@@ -22,6 +25,41 @@ public class ExpressOrderPO implements Serializable {
 	// 寄件单所属于的营业厅装车单、营业厅到达单、中专中心装车单、中转中心到达单、派件单编号
 	private String clerkLoadOrder_id, clerkArrivedOrder_id, centerLoadOrder_id,
 			centerArrived_id, DeliveryOrder_id;
+
+	public ExpressOrderPO() {
+
+	}
+
+	public ExpressOrderPO(String sender_name, String sender_address,
+			String sender_depart, String sender_cellphone,
+			String receiver_name, String receiver_address,
+			String receiver_depart, String receiver_cellphone,
+			ExpressType expressType, CargoInfo cargoInfo, boolean received,
+			String order_id, String currentins_id, String targetins_id,
+			String clerkLoadOrder_id, String clerkArrivedOrder_id,
+			String centerLoadOrder_id, String centerArrived_id,
+			String deliveryOrder_id) {
+		super();
+		this.sender_name = sender_name;
+		this.sender_address = sender_address;
+		this.sender_depart = sender_depart;
+		this.sender_cellphone = sender_cellphone;
+		this.receiver_name = receiver_name;
+		this.receiver_address = receiver_address;
+		this.receiver_depart = receiver_depart;
+		this.receiver_cellphone = receiver_cellphone;
+		this.expressType = expressType;
+		this.cargoInfo = cargoInfo;
+		this.received = received;
+		this.order_id = order_id;
+		this.currentins_id = currentins_id;
+		this.targetins_id = targetins_id;
+		this.clerkLoadOrder_id = clerkLoadOrder_id;
+		this.clerkArrivedOrder_id = clerkArrivedOrder_id;
+		this.centerLoadOrder_id = centerLoadOrder_id;
+		this.centerArrived_id = centerArrived_id;
+		DeliveryOrder_id = deliveryOrder_id;
+	}
 
 	public boolean isReceived() {
 		return received;

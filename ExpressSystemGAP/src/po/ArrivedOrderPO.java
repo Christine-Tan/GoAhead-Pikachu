@@ -6,6 +6,7 @@ import java.util.List;
 public class ArrivedOrderPO implements Serializable {
 	private List<ExpressOrderPO> orders;
 	private String time;
+	private String id;
 
 	public final List<ExpressOrderPO> getOrders() {
 		return orders;
@@ -22,4 +23,14 @@ public class ArrivedOrderPO implements Serializable {
 	public final void setTime(String time) {
 		this.time = time;
 	}
+
+	public final String getId() {
+		return id;
+	}
+
+	public final void setId(String id) {
+		this.id = id;
+	}
+	
+	
 }

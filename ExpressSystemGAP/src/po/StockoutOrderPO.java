@@ -5,8 +5,13 @@ import java.util.List;
 
 public class StockoutOrderPO implements Serializable {
 	private List<String> expressorder_ids;
-	private String outDate, destination, transportation,identifier;
-	//出库日期，目的地，货运方式，中转单编号或装车单编号
+	private String outDate, destination, transportation, identifier;
+
+	// 出库日期，目的地，货运方式，中转单编号或装车单编号
+
+	public StockoutOrderPO() {
+
+	}
 
 	public StockoutOrderPO(List<String> expressorder_ids, String outDate,
 			String destination, String transportation, String identifier) {
@@ -19,7 +24,7 @@ public class StockoutOrderPO implements Serializable {
 	}
 
 	public void deleteExpressorder_id(String expressorder_id) {
-		int a= this.expressorder_ids.indexOf(expressorder_id);
+		int a = this.expressorder_ids.indexOf(expressorder_id);
 		this.expressorder_ids.remove(a);
 	}
 

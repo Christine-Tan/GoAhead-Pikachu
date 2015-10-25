@@ -1,7 +1,8 @@
 package stub.dataservice;
 
 import po.CarPO;
-import po.ResultMessage;
+
+import util.ResultMessage;
 import dataservice.transdataservice.CarDataService;
 
 public class CarDataService_stub implements CarDataService{

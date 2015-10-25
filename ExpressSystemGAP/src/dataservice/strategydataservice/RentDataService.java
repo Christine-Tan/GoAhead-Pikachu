@@ -1,6 +1,7 @@
 package dataservice.strategydataservice;
 
-import po.ResultMessage;
+import util.ResultMessage;
+
 
 public interface RentDataService {
      public ResultMessage modify(double rent);

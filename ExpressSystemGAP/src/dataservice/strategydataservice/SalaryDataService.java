@@ -1,6 +1,6 @@
 package dataservice.strategydataservice;
 
-import po.ResultMessage;
+import util.ResultMessage;
 import po.SalaryPO;
 
 public interface SalaryDataService {

@@ -1,7 +1,7 @@
 package dataservice.transdataservice;
 
 import po.CarPO;
-import po.ResultMessage;
+import util.ResultMessage;
 
 public interface CarDataService {
 
