@@ -1,5 +1,2 @@
-/client
-/dataservice
-/po
-/server
-/stub
+/client/
+/dataservice/
