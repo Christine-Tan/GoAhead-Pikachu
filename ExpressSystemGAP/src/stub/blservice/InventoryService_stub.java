@@ -81,4 +81,11 @@ public class InventoryService_stub implements InventoryService{
 		return null;
 	}
 
+	@Override
+	public void stockOut(String destination, String transportation,
+			String expressorder_id) {
+		// TODO 自动生成的方法存根
+		
+	}
+
 }

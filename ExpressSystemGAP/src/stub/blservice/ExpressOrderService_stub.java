@@ -2,10 +2,10 @@ package stub.blservice;
 
 import java.util.List;
 
+import po.ReceiveInfo;
 import po.ResultMessage;
 import client.blservice.expressorderblservice.ExpressOrderService;
 import client.vo.ExpressOrderVO;
-import client.vo.ReceiveInfoVO;
 import client.vo.StateVO;
 
 public class ExpressOrderService_stub implements ExpressOrderService{
@@ -54,7 +54,7 @@ public class ExpressOrderService_stub implements ExpressOrderService{
 	}
 
 	@Override
-	public ResultMessage receiveOrder(String order_id, ReceiveInfoVO receiveInfo) {
+	public ResultMessage receiveOrder(String order_id, ReceiveInfo receiveInfo) {
 		// TODO 自动生成的方法存根
 		return null;
 	}

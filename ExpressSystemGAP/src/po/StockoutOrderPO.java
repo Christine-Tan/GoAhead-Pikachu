@@ -2,8 +2,9 @@ package po;
 
 import java.io.Serializable;
 
-public class StockoutOrderPO implements Serializable{
-	private String expressorder_id,outDate,destination,transportation,identifier;
+public class StockoutOrderPO implements Serializable {
+	private String expressorder_id, outDate, destination, transportation,
+			identifier;
 
 	public StockoutOrderPO(String expressorder_id, String outDate,
 			String destination, String transportation, String identifier) {
@@ -54,6 +55,5 @@ public class StockoutOrderPO implements Serializable{
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
-	
-	
+
 }

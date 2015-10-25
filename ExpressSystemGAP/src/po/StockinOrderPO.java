@@ -2,12 +2,9 @@ package po;
 
 import java.io.Serializable;
 
-public class StockinOrderPO implements Serializable{
-	private String expressorder_id,inDate,destination,sector,location;
+public class StockinOrderPO implements Serializable {
+	private String expressorder_id, inDate, destination, sector, location;
 
-	
-	
-	
 	public StockinOrderPO(String expressorder_id, String inDate,
 			String destination, String sector, String location) {
 		super();
@@ -57,8 +54,5 @@ public class StockinOrderPO implements Serializable{
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	
-	
-	
 
 }

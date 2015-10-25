@@ -3,13 +3,13 @@ package po;
 import java.io.Serializable;
 
 public class InstitutionPO implements Serializable {
-	int insId;
-	String insType;
-	String insName;
-	String insCity;
-	int insMember;
+	private String insId;
+	private String insType;
+	private String insName;
+	private String insCity;
+	private int insMember;
 
-	public InstitutionPO(int id, String type, String name, String city,
+	public InstitutionPO(String id, String type, String name, String city,
 			int member) {
 		insId = id;
 		insType = type;
@@ -18,17 +18,21 @@ public class InstitutionPO implements Serializable {
 		insMember = member;
 	}
 
+	public InstitutionPO() {
+
+	}
+
 	/**
 	 * @return insId
 	 */
-	public int getInsId() {
+	public String getInsId() {
 		return insId;
 	}
 
 	/**
 	 * @param insId Ҫ���õ� insId
 	 */
-	public void setInsId(int insId) {
+	public void setInsId(String insId) {
 		this.insId = insId;
 	}
 

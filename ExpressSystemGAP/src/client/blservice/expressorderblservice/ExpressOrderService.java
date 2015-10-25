@@ -2,9 +2,9 @@ package client.blservice.expressorderblservice;
 
 import java.util.List;
 
+import po.ReceiveInfo;
 import po.ResultMessage;
 import client.vo.ExpressOrderVO;
-import client.vo.ReceiveInfoVO;
 import client.vo.StateVO;
 
 public interface ExpressOrderService {
@@ -28,5 +28,5 @@ public interface ExpressOrderService {
 
 	public ResultMessage save(ExpressOrderVO order);
 
-	public ResultMessage receiveOrder(String order_id, ReceiveInfoVO receiveInfo);
+	public ResultMessage receiveOrder(String order_id, ReceiveInfo receiveInfo);
 }

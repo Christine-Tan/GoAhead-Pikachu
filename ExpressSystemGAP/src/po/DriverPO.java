@@ -4,8 +4,10 @@ import java.io.Serializable;
 import static po.Gender.*;
 
 public class DriverPO implements Serializable {
+	// 司机编号、所在机构编号、姓名、生日、身份证号、电话、行驶证期限
 	private String id, ins_id, name, birth, identity_number, phone,
 			driving_license_due;
+	// 性别
 	private Gender gender;
 
 	public String getId() {
