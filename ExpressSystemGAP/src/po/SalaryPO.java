@@ -3,32 +3,37 @@ package po;
 import java.io.Serializable;
 
 public class SalaryPO implements Serializable {
-     String type;
+	String type;
 	double salary;
-	public SalaryPO (String type, double salary){
-        	   this. type=type;
-        	   this.salary=salary;
-          }
-    /**
+
+	public SalaryPO(String type, double salary) {
+		this.type = type;
+		this.salary = salary;
+	}
+
+	/**
 	 * @return type
 	 */
 	public String getType() {
 		return type;
 	}
+
 	/**
-	 * @param type ÒªÉèÖÃµÄ type
+	 * @param type Òªï¿½ï¿½ï¿½Ãµï¿½ type
 	 */
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	/**
 	 * @return salary
 	 */
 	public double getSalary() {
 		return salary;
 	}
+
 	/**
-	 * @param salary ÒªÉèÖÃµÄ salary
+	 * @param salary Òªï¿½ï¿½ï¿½Ãµï¿½ salary
 	 */
 	public void setSalary(double salary) {
 		this.salary = salary;

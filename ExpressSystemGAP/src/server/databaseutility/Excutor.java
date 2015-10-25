@@ -37,12 +37,13 @@ public class Excutor {
 		}
 		return null;
 	}
+
 	/**
 	 * 执行语句
 	 * @param sql 具体的sql语句
 	 * @return 查询的结果集
 	 */
-	public void excute(String sql){
+	public void excute(String sql) {
 		if (cone == null)
 			throw new NullPointerException("数据库未连接");
 		try {

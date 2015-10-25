@@ -1,5 +1,16 @@
 package client.blservice.orderblservice;
 
-public interface DeliveryOrderService {
+import java.util.List;
 
+import po.ResultMessage;
+import client.vo.DeliveryOrderVO;
+import client.vo.ExpressOrderVO;
+
+public interface DeliveryOrderService {
+	public DeliveryOrderVO create(List<ExpressOrderVO> orders,
+			DeliveryOrderVO orderinfo);
+
+	public ResultMessage save(DeliveryOrderVO order);
+
+	public DeliveryOrderVO find(String id);
 }

@@ -1,5 +1,7 @@
 package client.blservice.loginblservice;
 
-public interface LoginService {
+import client.vo.LogVO;
 
+public interface LoginService {
+	public LogVO login(String username, String password);
 }

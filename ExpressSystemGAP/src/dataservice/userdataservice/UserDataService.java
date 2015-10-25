@@ -3,7 +3,6 @@ package dataservice.userdataservice;
 import po.ResultMessage;
 import po.UserPO;
 
-
 public interface UserDataService {
 	public ResultMessage add(UserPO po);
 

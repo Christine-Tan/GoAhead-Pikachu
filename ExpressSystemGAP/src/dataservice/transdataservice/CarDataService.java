@@ -1,4 +1,4 @@
-package dataservice.managedataservice;
+package dataservice.transdataservice;
 
 import po.CarPO;
 import po.ResultMessage;
@@ -12,6 +12,5 @@ public interface CarDataService {
 	public ResultMessage modify(CarPO po);
 
 	public ResultMessage delete(String car_id);
-
 
 }

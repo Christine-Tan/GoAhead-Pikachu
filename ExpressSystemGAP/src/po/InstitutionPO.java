@@ -3,19 +3,20 @@ package po;
 import java.io.Serializable;
 
 public class InstitutionPO implements Serializable {
-    int insId;
-    String insType;
-    String insName;
-    String insCity;
-    int insMember;
-    
-    public InstitutionPO(int id,String type, String name,String city,int member){
-    	   insId=id;
-    	   insType=type;
-    	   insName=name;
-    	   insCity=city;
-    	   insMember=member;
-    }
+	int insId;
+	String insType;
+	String insName;
+	String insCity;
+	int insMember;
+
+	public InstitutionPO(int id, String type, String name, String city,
+			int member) {
+		insId = id;
+		insType = type;
+		insName = name;
+		insCity = city;
+		insMember = member;
+	}
 
 	/**
 	 * @return insId
@@ -25,7 +26,7 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insId ÒªÉèÖÃµÄ insId
+	 * @param insId Òªï¿½ï¿½ï¿½Ãµï¿½ insId
 	 */
 	public void setInsId(int insId) {
 		this.insId = insId;
@@ -39,7 +40,7 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insType ÒªÉèÖÃµÄ insType
+	 * @param insType Òªï¿½ï¿½ï¿½Ãµï¿½ insType
 	 */
 	public void setInsType(String insType) {
 		this.insType = insType;
@@ -53,7 +54,7 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insName ÒªÉèÖÃµÄ insName
+	 * @param insName Òªï¿½ï¿½ï¿½Ãµï¿½ insName
 	 */
 	public void setInsName(String insName) {
 		this.insName = insName;
@@ -67,7 +68,7 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insCity ÒªÉèÖÃµÄ insCity
+	 * @param insCity Òªï¿½ï¿½ï¿½Ãµï¿½ insCity
 	 */
 	public void setInsCity(String insCity) {
 		this.insCity = insCity;
@@ -81,7 +82,7 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insMember ÒªÉèÖÃµÄ insMember
+	 * @param insMember Òªï¿½ï¿½ï¿½Ãµï¿½ insMember
 	 */
 	public void setInsMember(int insMember) {
 		this.insMember = insMember;

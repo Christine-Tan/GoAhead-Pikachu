@@ -3,75 +3,75 @@ package po;
 import java.io.Serializable;
 
 public class UserPO implements Serializable {
-           private long userId;
-           private String type;
-           private String userName;
-           private int rank;
-           
-           public UserPO (long id,String type,String name){
-        	   userId=id;
-        	   this.type=type;
-        	   rank=0;//rankÒª¸ù¾ÝidËã³öÀ´£»
-           }
-            
-           public void setName(String name){
-        	   userName=name;
-           }
+	private long userId;
+	private String type;
+	private String userName;
+	private int rank;
 
-		/**
-		 * @return userId
-		 */
-		public long getUserId() {
-			return userId;
-		}
+	public UserPO(long id, String type, String name) {
+		userId = id;
+		this.type = type;
+		rank = 0;// rankÒªï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	}
 
-		/**
-		 * @param userId ÒªÉèÖÃµÄ userId
-		 */
-		public void setUserId(long userId) {
-			this.userId = userId;
-		}
+	public void setName(String name) {
+		userName = name;
+	}
 
-		/**
-		 * @return type
-		 */
-		public String getType() {
-			return type;
-		}
+	/**
+	 * @return userId
+	 */
+	public long getUserId() {
+		return userId;
+	}
 
-		/**
-		 * @param type ÒªÉèÖÃµÄ type
-		 */
-		public void setType(String type) {
-			this.type = type;
-		}
+	/**
+	 * @param userId Òªï¿½ï¿½ï¿½Ãµï¿½ userId
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 
-		/**
-		 * @return userName
-		 */
-		public String getUserName() {
-			return userName;
-		}
+	/**
+	 * @return type
+	 */
+	public String getType() {
+		return type;
+	}
 
-		/**
-		 * @param userName ÒªÉèÖÃµÄ userName
-		 */
-		public void setUserName(String userName) {
-			this.userName = userName;
-		}
+	/**
+	 * @param type Òªï¿½ï¿½ï¿½Ãµï¿½ type
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
 
-		/**
-		 * @return rank
-		 */
-		public int getRank() {
-			return rank;
-		}
+	/**
+	 * @return userName
+	 */
+	public String getUserName() {
+		return userName;
+	}
 
-		/**
-		 * @param rank ÒªÉèÖÃµÄ rank
-		 */
-		public void setRank(int rank) {
-			this.rank = rank;
-		}
-          
+	/**
+	 * @param userName Òªï¿½ï¿½ï¿½Ãµï¿½ userName
+	 */
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	/**
+	 * @return rank
+	 */
+	public int getRank() {
+		return rank;
+	}
+
+	/**
+	 * @param rank Òªï¿½ï¿½ï¿½Ãµï¿½ rank
+	 */
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
 }

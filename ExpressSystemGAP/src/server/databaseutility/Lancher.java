@@ -16,7 +16,7 @@ import java.sql.SQLException;
  * 启动数据库服务的类
  */
 public class Lancher {
-	//启动数据库，返回数据库引用
+	// 启动数据库，返回数据库引用
 	public static Excutor lanch() {
 		Config.config();
 		try {
@@ -31,8 +31,8 @@ public class Lancher {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		Excutor ex=Excutor.getInstance();
-		ex.excute("USE "+database+";");
+		Excutor ex = Excutor.getInstance();
+		ex.excute("USE " + database + ";");
 		return ex;
 	}
 }
