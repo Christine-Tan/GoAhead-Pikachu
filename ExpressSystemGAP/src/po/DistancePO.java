@@ -3,9 +3,13 @@ package po;
 import java.io.Serializable;
 
 public class DistancePO implements Serializable {
+	//起始城市
 	String startCity;
+	//到达城市
 	String endCity;
+	//起始城市经纬度，到达城市经纬度
 	double lngStart, latStart, lngEnd, latEnd;
+	//城市距离
 	double distance;
 
 	public DistancePO(String sc, String ec, double x1, double y1, double x2,

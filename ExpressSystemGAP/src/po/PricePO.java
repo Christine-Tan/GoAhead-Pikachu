@@ -3,11 +3,14 @@ package po;
 import java.io.Serializable;
 
 public class PricePO implements Serializable {
-	double rate;
+	//经济：标准：特快的比例式
+	String rate;
+	//比例基准
 	double base;
+	//城市编号
 	String cityId;
 
-	public PricePO(String id, double rate, double base) {
+	public PricePO(String id, String  rate, double base) {
 		this.rate = rate;
 		this.base = base;
 		cityId = id;
@@ -16,14 +19,14 @@ public class PricePO implements Serializable {
 	/**
 	 * @return rate
 	 */
-	public double getRate() {
+	public String getRate() {
 		return rate;
 	}
 
 	/**
 	 * @param rate Ҫ���õ� rate
 	 */
-	public void setRate(double rate) {
+	public void setRate(String rate) {
 		this.rate = rate;
 	}
 
