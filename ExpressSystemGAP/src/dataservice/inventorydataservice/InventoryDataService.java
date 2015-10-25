@@ -12,8 +12,17 @@ public interface InventoryDataService {
 	
 	public ExpressOrderPO find(String expressorder_id);
 	
+	/**
+	 * 设置警戒值
+	 * @param alarmValue
+	 * @return
+	 */
 	public ResultMessage setAlarm(int alarmValue);
 	
+	/**
+	 * 获得警戒值
+	 * @return
+	 */
 	public int getAlarm();
 
 }
