@@ -8,6 +8,11 @@ import client.vo.ReceiveInfoVO;
 import client.vo.StateVO;
 
 public interface ExpressOrderService {
+	/**
+	 * 获得订单货运状态
+	 * @param order_id
+	 * @return
+	 */
 	public StateVO getState(String order_id);
 
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id);
