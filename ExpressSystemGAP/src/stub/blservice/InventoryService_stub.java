@@ -81,11 +81,4 @@ public class InventoryService_stub implements InventoryService{
 		return null;
 	}
 
-	@Override
-	public void stockOut(String destination, String transportation,
-			String expressorder_id) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
