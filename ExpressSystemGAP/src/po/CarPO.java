@@ -10,10 +10,13 @@ public class CarPO implements Serializable {
 	// 服役时间
 	private int serve_time;
 
-	public CarPO(String car_id, String car_num, int serve_time) {
+	private String ins_id;
+
+	public CarPO(String car_id, String car_num, String ins_id, int serve_time) {
 		super();
 		this.car_id = car_id;
 		this.car_num = car_num;
+		this.setIns_id(ins_id);
 		this.serve_time = serve_time;
 	}
 
@@ -43,6 +46,14 @@ public class CarPO implements Serializable {
 
 	public void setServe_time(int serve_time) {
 		this.serve_time = serve_time;
+	}
+
+	public String getIns_id() {
+		return ins_id;
+	}
+
+	public void setIns_id(String ins_id) {
+		this.ins_id = ins_id;
 	}
 
 }

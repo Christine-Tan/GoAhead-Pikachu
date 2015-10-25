@@ -1,9 +1,13 @@
 package dataservice.transdataservice;
 
+import java.util.List;
+
 import po.CarPO;
 import util.ResultMessage;
 
 public interface CarDataService {
+
+	public List<CarPO> getAll();
 
 	public ResultMessage add(CarPO po);
 

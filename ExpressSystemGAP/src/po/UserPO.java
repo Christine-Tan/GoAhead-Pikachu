@@ -2,24 +2,51 @@ package po;
 
 import java.io.Serializable;
 
+import util.UserType;
+
 public class UserPO implements Serializable {
 	// 用户编号
-	private long userId;
+	private String userId;
 	// 用户类型
-	private String type;
+	private UserType type;
 	// 用户名
 	private String userName;
+	// 密码
+	private String password;
 	// 用户等级
 	private int rank;
+	// 指向所属机构id
+	private String ins_id;
 
 	public UserPO() {
 
 	}
 
-	public UserPO(long id, String type, String name) {
-		userId = id;
+	public UserPO(String userId, UserType type, String userName, int rank,
+			String ins_id, String password) {
+		super();
+		this.userId = userId;
 		this.type = type;
-		rank = 0;// rankҪ����id�������
+		this.userName = userName;
+		this.rank = rank;
+		this.ins_id = ins_id;
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getIns_id() {
+		return ins_id;
+	}
+
+	public void setIns_id(String ins_id) {
+		this.ins_id = ins_id;
 	}
 
 	public void setName(String name) {
@@ -29,28 +56,28 @@ public class UserPO implements Serializable {
 	/**
 	 * @return userId
 	 */
-	public long getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
 	/**
 	 * @param userId Ҫ���õ� userId
 	 */
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
 	/**
 	 * @return type
 	 */
-	public String getType() {
+	public UserType getType() {
 		return type;
 	}
 
 	/**
 	 * @param type Ҫ���õ� type
 	 */
-	public void setType(String type) {
+	public void setType(UserType type) {
 		this.type = type;
 	}
 

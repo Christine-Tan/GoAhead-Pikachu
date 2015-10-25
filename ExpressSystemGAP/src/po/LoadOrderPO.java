@@ -9,6 +9,23 @@ public class LoadOrderPO implements Serializable {
 			trans_id;
 	private List<String> orders_id;
 
+	public LoadOrderPO(String date, String number, String departureins_id,
+			String targetins_id, String loaded_id, String trans_id,
+			List<String> orders_id) {
+		super();
+		this.date = date;
+		this.number = number;
+		this.departureins_id = departureins_id;
+		this.targetins_id = targetins_id;
+		this.loaded_id = loaded_id;
+		this.trans_id = trans_id;
+		this.orders_id = orders_id;
+	}
+
+	public LoadOrderPO() {
+		// TODO 自动生成的构造函数存根
+	}
+
 	public String getDate() {
 		return date;
 	}

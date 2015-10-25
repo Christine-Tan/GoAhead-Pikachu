@@ -8,6 +8,17 @@ public class ArrivedOrderPO implements Serializable {
 	private String time;
 	private String id;
 
+	public ArrivedOrderPO(List<ExpressOrderPO> orders, String time, String id) {
+		super();
+		this.orders = orders;
+		this.time = time;
+		this.id = id;
+	}
+
+	public ArrivedOrderPO() {
+		// TODO 自动生成的构造函数存根
+	}
+
 	public final List<ExpressOrderPO> getOrders() {
 		return orders;
 	}
@@ -31,6 +42,5 @@ public class ArrivedOrderPO implements Serializable {
 	public final void setId(String id) {
 		this.id = id;
 	}
-	
-	
+
 }

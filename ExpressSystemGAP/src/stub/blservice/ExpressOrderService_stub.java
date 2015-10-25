@@ -2,19 +2,25 @@ package stub.blservice;
 
 import java.util.List;
 
-
+import stub.dataservice.ExpressOrderDataService_stub;
 import util.ReceiveInfo;
 import util.ResultMessage;
 import client.blservice.expressorderblservice.ExpressOrderService;
 import client.vo.ExpressOrderVO;
 import client.vo.StateVO;
 
-public class ExpressOrderService_stub implements ExpressOrderService{
+public class ExpressOrderService_stub implements ExpressOrderService {
+
+	private ExpressOrderDataService_stub datastub;
+
+	public ExpressOrderService_stub() {
+		datastub = new ExpressOrderDataService_stub();
+	}
 
 	@Override
 	public StateVO getState(String order_id) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new StateVO();
 	}
 
 	@Override

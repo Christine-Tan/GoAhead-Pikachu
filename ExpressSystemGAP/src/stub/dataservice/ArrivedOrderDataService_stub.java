@@ -1,35 +1,36 @@
 package stub.dataservice;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import po.ArrivedOrderPO;
-import po.ExpressOrderPO;
-import stub.Data_stub;
 import util.ResultMessage;
 import dataservice.orderdataservice.ArrivedOrderDataService;
 
 public class ArrivedOrderDataService_stub implements ArrivedOrderDataService {
 
+	private List<ArrivedOrderPO> list;
+
+	public ArrivedOrderDataService_stub() {
+		list = new ArrayList<ArrivedOrderPO>();
+	}
+
 	@Override
 	public ResultMessage add(ArrivedOrderPO po) {
 		// TODO 自动生成的方法存根
-		if (po.getId().equals("1970010100001"))
-			return ResultMessage.EXITED;
+		for (ArrivedOrderPO order : list)
+			if (po.getId().equals(order.getId()))
+				return ResultMessage.EXITED;
+		list.add(po);
 		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public ArrivedOrderPO find(String order_id) {
 		// TODO 自动生成的方法存根
-		if (!order_id.equals("1970010100001"))
-			return null;
-		ArrivedOrderPO po = new ArrivedOrderPO();
-		po.setId("1970010100001");
-		po.setTime("19700101");
-		ArrayList<ExpressOrderPO> list = new ArrayList<>();
-		list.add(Data_stub.ORDER[0]);
-		po.setOrders(list);
-		return po;
+		for (ArrivedOrderPO order : list)
+			if (order_id.equals(order.getId()))
+				return order;
+		return null;
 	}
-
 }
