@@ -1,26 +1,30 @@
 package po;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class StockinOrderPO implements Serializable {
-	private String expressorder_id, inDate, destination, sector, location;
+	private List<String> expressorder_ids;
+	private String inDate, destination, sector, location;
+	//到达日期，目的地，分区，位置
 
-	public StockinOrderPO(String expressorder_id, String inDate,
+	public StockinOrderPO(List<String> expressorder_ids, String inDate,
 			String destination, String sector, String location) {
 		super();
-		this.expressorder_id = expressorder_id;
+		this.expressorder_ids = expressorder_ids;
 		this.inDate = inDate;
 		this.destination = destination;
 		this.sector = sector;
 		this.location = location;
 	}
 
-	public String getExpressorder_id() {
-		return expressorder_id;
+	public void deleteExpressorder_id(String expressorder_id) {
+		int a= this.expressorder_ids.indexOf(expressorder_id);
+		this.expressorder_ids.remove(a);
 	}
 
-	public void setExpressorder_id(String expressorder_id) {
-		this.expressorder_id = expressorder_id;
+	public void addExpressorder_id(String expressorder_id) {
+		this.expressorder_ids.add(expressorder_id);
 	}
 
 	public String getInDate() {

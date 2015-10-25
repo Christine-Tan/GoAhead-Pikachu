@@ -1,27 +1,30 @@
 package po;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class StockoutOrderPO implements Serializable {
-	private String expressorder_id, outDate, destination, transportation,
-			identifier;
+	private List<String> expressorder_ids;
+	private String outDate, destination, transportation,identifier;
+	//出库日期，目的地，货运方式，中转单编号或装车单编号
 
-	public StockoutOrderPO(String expressorder_id, String outDate,
+	public StockoutOrderPO(List<String> expressorder_ids, String outDate,
 			String destination, String transportation, String identifier) {
 		super();
-		this.expressorder_id = expressorder_id;
+		this.expressorder_ids = expressorder_ids;
 		this.outDate = outDate;
 		this.destination = destination;
 		this.transportation = transportation;
 		this.identifier = identifier;
 	}
 
-	public String getExpressorder_id() {
-		return expressorder_id;
+	public void deleteExpressorder_id(String expressorder_id) {
+		int a= this.expressorder_ids.indexOf(expressorder_id);
+		this.expressorder_ids.remove(a);
 	}
 
-	public void setExpressorder_id(String expressorder_id) {
-		this.expressorder_id = expressorder_id;
+	public void addExpressorder_id(String expressorder_id) {
+		this.expressorder_ids.add(expressorder_id);
 	}
 
 	public String getOutDate() {
