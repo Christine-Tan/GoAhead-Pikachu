@@ -22,6 +22,14 @@ public class StockoutOrderPO implements Serializable {
 		this.transportation = transportation;
 		this.identifier = identifier;
 	}
+	
+	public List<String> getExpressorder_ids() {
+		return expressorder_ids;
+	}
+
+	public void setExpressorder_ids(List<String> expressorder_ids) {
+		this.expressorder_ids = expressorder_ids;
+	}
 
 	public void deleteExpressorder_id(String expressorder_id) {
 		int a = this.expressorder_ids.indexOf(expressorder_id);

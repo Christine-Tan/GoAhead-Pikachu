@@ -5,9 +5,9 @@ import java.util.List;
 
 public class StockinOrderPO implements Serializable {
 	private List<String> expressorder_ids;
-	private String inDate, destination, sector, location;
+	private String inDate, destination, sector, location,identifier;
 
-	// 到达日期，目的地，分区，位置
+	// 到达日期，目的地，分区，位置,入库单编号
 
 	public StockinOrderPO() {
 		// TODO 自动生成的构造函数存根
@@ -31,6 +31,8 @@ public class StockinOrderPO implements Serializable {
 	public void addExpressorder_id(String expressorder_id) {
 		this.expressorder_ids.add(expressorder_id);
 	}
+	
+	
 
 	public String getInDate() {
 		return inDate;
@@ -63,5 +65,25 @@ public class StockinOrderPO implements Serializable {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
+	public List<String> getExpressorder_ids() {
+		return expressorder_ids;
+	}
+
+	public void setExpressorder_ids(List<String> expressorder_ids) {
+		this.expressorder_ids = expressorder_ids;
+	}
+
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
+
+	
+	
+	
 
 }
