@@ -19,11 +19,11 @@ public class SalaryDataService_driver {
 		if (salaryData.add(salary1).equals(ResultMessage.EXITED)) {
 			System.out.println("add failed,car exited");
 		}
-		SalaryPO get = salaryData.find("Salesman");
+		SalaryPO get = salaryData.find(UserType.BUSSINESSCLERK);
 		if (get != null)
 			System.out.println("find:type=" + get.getType() + ",salary="
 					+ get.getSalary());
-		get = salaryData.find("GeneralManager");
+		get = salaryData.find(UserType.ADMINISTRATOR);
 		if (get == null)
 			System.out.println("find failed,not found");
 		salary1.setType(UserType.CENTERCLERK);

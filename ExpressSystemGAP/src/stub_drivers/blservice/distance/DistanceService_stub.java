@@ -46,4 +46,10 @@ public class DistanceService_stub implements DistanceService{
 		return new DistancePO();
 	}
 
+	@Override
+	public ResultMessage add(DistanceVO vo) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
 }

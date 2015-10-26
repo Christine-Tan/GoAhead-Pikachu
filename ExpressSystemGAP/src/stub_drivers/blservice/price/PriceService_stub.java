@@ -47,4 +47,10 @@ public class PriceService_stub implements PriceService{
 	private PricePO getPO(PriceVO vo) {
 		return new PricePO();
 	}
+
+	@Override
+	public ResultMessage add(PriceVO vo) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 }
