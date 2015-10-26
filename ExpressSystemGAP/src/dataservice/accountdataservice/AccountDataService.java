@@ -2,6 +2,10 @@ package dataservice.accountdataservice;
 
 import java.awt.List;
 
+import po.AccountPO;
+import po.Cost_profitPO;
+import po.TradePO;
+
 public interface AccountDataService {
 
 	public boolean add(AccountPO accountPO);
