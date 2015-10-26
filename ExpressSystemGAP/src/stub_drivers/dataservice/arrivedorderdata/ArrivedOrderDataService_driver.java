@@ -13,9 +13,15 @@ public class ArrivedOrderDataService_driver {
 		if (stub.add(po).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed!");
 		}
+		if (stub.add(po).equals(ResultMessage.EXITED)) {
+			System.out.println("add failed,order exited");
+		}
 		ArrivedOrderPO get = stub.find("00100011970010100001");
 		if (get != null)
 			System.out.println("find:id=" + get.getId() + ",date="
 					+ get.getTime());
+		get = stub.find("001100119700101000001");
+		if (get == null)
+			System.out.println("not found");
 	}
 }
