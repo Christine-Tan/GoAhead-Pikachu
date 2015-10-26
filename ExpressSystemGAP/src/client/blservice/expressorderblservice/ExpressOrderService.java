@@ -2,9 +2,6 @@ package client.blservice.expressorderblservice;
 
 import java.util.List;
 
-
-
-
 import util.ReceiveInfo;
 import util.ResultMessage;
 import client.vo.ExpressOrderVO;
@@ -16,7 +13,11 @@ public interface ExpressOrderService {
 	 * @param order_id
 	 * @return
 	 */
-	public StateVO getState(String order_id);
+	public StateVO find(String order_id);
+
+	public ExpressOrderVO getOrder(String order_id);
+
+	public ResultMessage modify(ExpressOrderVO vo);
 
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id);
 

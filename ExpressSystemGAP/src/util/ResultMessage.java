@@ -20,11 +20,12 @@ public class ResultMessage implements Serializable {
 		return message;
 	}
 
-	public static ResultMessage EXITED, SUCCEED, NOTFOUND;
+	public static ResultMessage EXITED, SUCCEED, NOTFOUND, RECEIVED;
 	static {
 		EXITED = new ResultMessage("exited");
 		SUCCEED = new ResultMessage("succeed");
 		NOTFOUND = new ResultMessage("not found");
+		RECEIVED = new ResultMessage("received");
 
 	}
 }
