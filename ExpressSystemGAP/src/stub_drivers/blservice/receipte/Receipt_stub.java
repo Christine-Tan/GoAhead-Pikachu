@@ -13,11 +13,8 @@ public class Receipt_stub implements ReceiptService {
 		return new PaymentListVO();
 	}
 
-	@Override
-	public ResultMessage submitPaymentList() {
-		// TODO Auto-generated method stub
-		return ResultMessage.SUCCEED;
-	}
+
+
 
 	@Override
 	public ResultMessage paymetnExcel(PaymentListVO paymentListVO) {
@@ -31,8 +28,16 @@ public class Receipt_stub implements ReceiptService {
 		return new BillOrderVO();
 	}
 
+
+
 	@Override
-	public ResultMessage submitBillOrder() {
+	public ResultMessage submitPaymentList(PaymentListVO paymentListVO) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCEED;
+	}
+
+	@Override
+	public ResultMessage submitBillOrder(BillOrderVO billOrderVO) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCEED;
 	}
