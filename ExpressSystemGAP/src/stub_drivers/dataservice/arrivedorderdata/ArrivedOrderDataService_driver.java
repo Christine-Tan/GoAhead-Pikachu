@@ -1,27 +1,33 @@
 package stub_drivers.dataservice.arrivedorderdata;
 
+import dataservice.orderdataservice.ArrivedOrderDataService;
+
 import po.ArrivedOrderPO;
-import po.ExpressOrderPO;
-import util.ExpressType;
 import util.ResultMessage;
 
 public class ArrivedOrderDataService_driver {
-	public static void main(String[] args) {
-		ArrivedOrderDataService_stub stub = new ArrivedOrderDataService_stub();
+	public void drive(ArrivedOrderDataService arrivedOrder) {
 		ArrivedOrderPO po = new ArrivedOrderPO(null, "19700101",
 				"00100011970010100001");
-		if (stub.add(po).equals(ResultMessage.SUCCEED)) {
+		if (arrivedOrder.add(po).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed!");
 		}
-		if (stub.add(po).equals(ResultMessage.EXITED)) {
+		if (arrivedOrder.add(po).equals(ResultMessage.EXITED)) {
 			System.out.println("add failed,order exited");
 		}
-		ArrivedOrderPO get = stub.find("00100011970010100001");
+		ArrivedOrderPO get = arrivedOrder.find("00100011970010100001");
 		if (get != null)
 			System.out.println("find:id=" + get.getId() + ",date="
 					+ get.getTime());
-		get = stub.find("001100119700101000001");
+		get = arrivedOrder.find("001100119700101000001");
 		if (get == null)
 			System.out.println("not found");
+	}
+
+	public static void main(String[] args) {
+		ArrivedOrderDataService_driver driver = new ArrivedOrderDataService_driver();
+		ArrivedOrderDataService arrivedOrder = new ArrivedOrderDataService_stub();
+		driver.drive(arrivedOrder);
+
 	}
 }
