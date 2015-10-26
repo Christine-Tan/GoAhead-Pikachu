@@ -12,7 +12,7 @@ public interface InventoryDataService {
 	
 	public ResultMessage modify(GoodsPO expressorder);
 	
-	public ExpressOrderPO find(String expressorder_id);
+	public GoodsPO find(String expressorder_id);
 	
 	/**
 	 * 设置警戒值
