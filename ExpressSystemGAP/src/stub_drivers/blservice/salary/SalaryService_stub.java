@@ -8,6 +8,7 @@ import po.UserPO;
 import stub_drivers.dataservice.salarydata.SalaryDataService_stub;
 import stub_drivers.dataservice.userdata.UserDataService_stub;
 import util.ResultMessage;
+import util.UserType;
 import client.blservice.strategyblservice.SalaryService;
 import client.vo.SalaryVO;
 import client.vo.UserVO;
@@ -19,7 +20,7 @@ public class SalaryService_stub implements SalaryService{
 		datastub = new SalaryDataService_stub();
 	}
 	@Override
-	public SalaryVO getSalary(String type) {
+	public SalaryVO getSalary(UserType type) {
 		// TODO 自动生成的方法存根
 		return getVO(datastub.find(type));
 	}
