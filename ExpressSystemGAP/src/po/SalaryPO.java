@@ -2,9 +2,11 @@ package po;
 
 import java.io.Serializable;
 
+import util.UserType;
+
 public class SalaryPO implements Serializable {
-	// 薪水类型
-	String type;
+	// 薪水类型 
+	UserType type;
 	// 薪水值
 	double salary;
 
@@ -12,7 +14,7 @@ public class SalaryPO implements Serializable {
 
 	}
 
-	public SalaryPO(String type, double salary) {
+	public SalaryPO(UserType type, double salary) {
 		this.type = type;
 		this.salary = salary;
 	}
@@ -20,14 +22,14 @@ public class SalaryPO implements Serializable {
 	/**
 	 * @return type
 	 */
-	public String getType() {
+	public UserType getType() {
 		return type;
 	}
 
 	/**
 	 * @param type Ҫ���õ� type
 	 */
-	public void setType(String type) {
+	public void setType(UserType type) {
 		this.type = type;
 	}
 

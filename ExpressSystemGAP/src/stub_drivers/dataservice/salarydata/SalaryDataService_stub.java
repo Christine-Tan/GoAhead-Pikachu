@@ -5,6 +5,7 @@ import java.util.List;
 
 import util.ResultMessage;
 import po.InstitutionPO;
+import po.PricePO;
 import po.SalaryPO;
 import dataservice.strategydataservice.SalaryDataService;
 
@@ -14,6 +15,18 @@ public class SalaryDataService_stub implements SalaryDataService {
 	public  SalaryDataService_stub() {
 		list = new ArrayList<SalaryPO>();
 	}
+	
+	
+	@Override
+	public ResultMessage add(SalaryPO po) {
+		// TODO 自动生成的方法存根
+		for (SalaryPO salary : list)
+			if (po.getType().equals(salary.getType()))
+				return ResultMessage.EXITED;
+		list.add(po);
+		return ResultMessage.SUCCEED;
+	}
+	
 	@Override
 	public SalaryPO find(String salaryType) {
 		// TODO 自动生成的方法存根
@@ -39,5 +52,6 @@ public class SalaryDataService_stub implements SalaryDataService {
 		// TODO 自动生成的方法存根
 		return list;
 	}
+
 
 }

@@ -1,24 +1,24 @@
 package po;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InstitutionPO implements Serializable {
 	
 	// 机构编号
 	private String insId;
-	// 机构类型
-	private String insType;
 	// 机构名称
 	private String insName;
 	// 机构所在城市
 	private String insCity;
 	// 机构人员数目
 	private int insMember;
-
-	public InstitutionPO(String id, String type, String name, String city,
+	
+	public InstitutionPO(String id,  String name, String city,
 			int member) {
 		insId = id;
-		insType = type;
+
 		insName = name;
 		insCity = city;
 		insMember = member;
@@ -40,20 +40,6 @@ public class InstitutionPO implements Serializable {
 	 */
 	public void setInsId(String insId) {
 		this.insId = insId;
-	}
-
-	/**
-	 * @return insType
-	 */
-	public String getInsType() {
-		return insType;
-	}
-
-	/**
-	 * @param insType Ҫ���õ� insType
-	 */
-	public void setInsType(String insType) {
-		this.insType = insType;
 	}
 
 	/**
@@ -96,6 +82,12 @@ public class InstitutionPO implements Serializable {
 	 */
 	public void setInsMember(int insMember) {
 		this.insMember = insMember;
+	}
+
+	public List<InstitutionPO> getAll() {
+		// TODO 自动生成的方法存根
+		List<InstitutionPO> insList=new ArrayList<InstitutionPO>(); 
+		return insList;
 	}
 
 }
