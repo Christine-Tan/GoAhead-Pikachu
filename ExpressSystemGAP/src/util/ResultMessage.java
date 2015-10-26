@@ -9,6 +9,17 @@ public class ResultMessage implements Serializable {
 		this.message = message;
 	}
 
+	public boolean equals(Object ob) {
+		if (!(ob instanceof ResultMessage))
+			return false;
+		return ((ResultMessage) ob).getMessage().equals(message);
+
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
 	public static ResultMessage EXITED, SUCCEED, NOTFOUND;
 	static {
 		EXITED = new ResultMessage("exited");
