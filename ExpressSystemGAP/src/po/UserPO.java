@@ -1,7 +1,6 @@
 package po;
 
 import java.io.Serializable;
-
 import util.UserType;
 
 public class UserPO implements Serializable {
@@ -53,60 +52,36 @@ public class UserPO implements Serializable {
 		userName = name;
 	}
 
-	/**
-	 * @return userId
-	 */
 	public String getUserId() {
 		return userId;
 	}
 
-	/**
-	 * @param userId Ҫ���õ� userId
-	 */
 	public void setUserId(String userId) {
+
 		this.userId = userId;
 	}
 
-	/**
-	 * @return type
-	 */
 	public UserType getType() {
 		return type;
 	}
 
-	/**
-	 * @param type Ҫ���õ� type
-	 */
 	public void setType(UserType type) {
 		this.type = type;
 	}
 
-	/**
-	 * @return userName
-	 */
 	public String getUserName() {
 		return userName;
 	}
 
-	/**
-	 * @param userName Ҫ���õ� userName
-	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
-	/**
-	 * @return rank
-	 */
 	public int getRank() {
 		return rank;
 	}
 
-	/**
-	 * @param rank Ҫ���õ� rank
-	 */
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
-
 }
