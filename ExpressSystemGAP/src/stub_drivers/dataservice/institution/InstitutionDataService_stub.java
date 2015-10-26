@@ -1,6 +1,8 @@
 package stub_drivers.dataservice.institution;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import po.InstitutionPO;
 import util.ResultMessage;
 import dataservice.managedataservice.InstitutionDataService;
@@ -54,5 +56,11 @@ public class InstitutionDataService_stub implements InstitutionDataService{
 			}
 		}
 		return ResultMessage.NOTFOUND;
+	}
+
+	@Override
+	public List<InstitutionPO> getAll() {
+		// TODO 自动生成的方法存根
+		return list;
 	}
 }
