@@ -14,19 +14,19 @@ public class StockinOrderService_stub implements StockinOrderService{
 	public StockinOrderVO create(List<ExpressOrderVO> orders,
 			StockinOrderVO orderinfo) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new StockinOrderVO();
 	}
 
 	@Override
 	public ResultMessage save(StockinOrderVO order) {
 		// TODO 自动生成的方法存根
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public StockinOrderVO find(String id) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new StockinOrderVO();
 	}
 
 }

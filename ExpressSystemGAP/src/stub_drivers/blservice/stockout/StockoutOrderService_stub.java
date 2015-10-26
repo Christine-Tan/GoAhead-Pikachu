@@ -14,19 +14,19 @@ public class StockoutOrderService_stub implements StockoutOrderService{
 	public StockoutOrderVO create(List<ExpressOrderVO> orders,
 			StockoutOrderVO orderinfo) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new StockoutOrderVO();
 	}
 
 	@Override
 	public ResultMessage save(StockoutOrderVO order) {
 		// TODO 自动生成的方法存根
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public StockoutOrderVO find(String id) {
 		// TODO 自动生成的方法存根
-		return null;
+		return new StockoutOrderVO();
 	}
 
 }

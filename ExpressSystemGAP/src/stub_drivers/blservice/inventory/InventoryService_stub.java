@@ -1,11 +1,15 @@
 package stub_drivers.blservice.inventory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 
 
+
+
 import po.ExpressOrderPO;
+import stub_drivers.dataservice.inventory.InventoryDataService_stub;
 import util.ResultMessage;
 import client.blservice.inventoryblservice.InventoryService;
 import client.vo.ExpressOrderVO;
@@ -16,60 +20,63 @@ import client.vo.StockinOrderVO;
 import client.vo.StockoutOrderVO;
 
 public class InventoryService_stub implements InventoryService{
+	InventoryDataService_stub datastub;
 
 	@Override
 	public StockObVO observeStock(String begin, String end) {
 		// TODO Auto-generated method stub
-		return null;
+		return new StockObVO();
 	}
 
 	@Override
 	public StockCheckVO countStock() {
 		// TODO Auto-generated method stub
-		return null;
+		return new StockCheckVO();
 	}
 
 	@Override
-	public ResultMessage setAlarm(int alarmValue) {
+	public ResultMessage setAlarm(double alarmValue) {
 		// TODO Auto-generated method stub
-		return null;
+		datastub.setAlarm(alarmValue);
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public ResultMessage distributeSector(String beginColumn, String endColumn,
 			String toSector) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
-	public ResultMessage initialadd(GoodsVO expressorder, String location) {
+	public ResultMessage initialadd(GoodsVO expressorder) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public ResultMessage initialdelete(String expressorder_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public ResultMessage initialmodify(GoodsVO expressorder) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public List<ExpressOrderVO> getArrivingOrders(String institution_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<ExpressOrderVO>();
 	}
 
 	@Override
 	public String stockIn(ExpressOrderVO expressorder) {
 		// TODO Auto-generated method stub
-		return null;
+		return expressorder.getOrder_id();
 	}
 
 	@Override
@@ -82,20 +89,20 @@ public class InventoryService_stub implements InventoryService{
 	@Override
 	public StockinOrderVO createStockinOrder(List<String> expressorders_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return new StockinOrderVO();
 	}
 
 	@Override
 	public StockoutOrderVO createStockoutOrder(
 			List<ExpressOrderVO> expressorders) {
 		// TODO Auto-generated method stub
-		return null;
+		return new StockoutOrderVO();
 	}
 
 	@Override
 	public ExpressOrderVO getSingleExpressOrder(String expressorder_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ExpressOrderVO();
 	}
 
 	
