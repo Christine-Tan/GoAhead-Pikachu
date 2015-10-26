@@ -32,6 +32,19 @@ public class InventoryDataService_driver {
 		get1 = inventoryData.find("0000000003");
 		if (get == null)
 			System.out.println("find failed,not found");
+		if(inventoryData.delete("0000000002").equals(ResultMessage.SUCCEED))
+			System.out.println("delete succeed");
+		if(inventoryData.delete("0000000002").equals(ResultMessage.NOTFOUND))
+			System.out.println("delete failed,not found");
+		goods1.setExpressorder_id("0000000003");
+		if(inventoryData.modify(goods1).equals(ResultMessage.SUCCEED))
+			System.out.println("modify succeed");
+		if(inventoryData.modify(goods2).equals(ResultMessage.NOTFOUND))
+			System.out.println("modify failed, not found");
+		
+		if(inventoryData.setAlarm(80).equals(ResultMessage.SUCCEED))
+			System.out.println("setAlarm succeed");
+		System.out.println(inventoryData.getAlarm());
 	}
 	public static void main(String[] args){
 		InventoryDataService inventoryData = new InventoryDataService_stub();
