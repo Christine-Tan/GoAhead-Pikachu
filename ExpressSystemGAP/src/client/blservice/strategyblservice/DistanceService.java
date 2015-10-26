@@ -11,4 +11,6 @@ public interface DistanceService {
 	public ResultMessage modifyDistance(DistanceVO vo);
 
 	public DistanceVO getDistance(String startCity,String endCity);
+	
+	public ResultMessage add(DistanceVO vo);
 }
