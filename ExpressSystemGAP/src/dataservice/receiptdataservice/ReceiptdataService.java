@@ -1,6 +1,11 @@
-package dataservice.receoptdataservice;
+package dataservice.receiptdataservice;
 
-import java.awt.List;
+import java.util.List;
+import java.util.Date;
+
+import po.BillPO;
+import po.PaymentListPO;
+import po.ReceiptPO;
 
 public interface ReceiptdataService {
 

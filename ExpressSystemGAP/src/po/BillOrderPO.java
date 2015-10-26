@@ -1,11 +1,12 @@
 package po;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class BillOrderPO implements Serializable {
 	// 快递员id和所收运费
-	private Map<String, Integer> bills;
+	private ArrayList<BillPO> bills;
 	// 收款单id
 	private String id;
 
@@ -13,17 +14,17 @@ public class BillOrderPO implements Serializable {
 
 	}
 
-	public BillOrderPO(Map<String, Integer> bills, String id) {
+	public BillOrderPO(ArrayList<BillPO> bills, String id) {
 		super();
 		this.bills = bills;
 		this.id = id;
 	}
 
-	public Map<String, Integer> getBills() {
+	public ArrayList<BillPO> getBills() {
 		return bills;
 	}
 
-	public void setBills(Map<String, Integer> bills) {
+	public void setBills(ArrayList<BillPO> bills) {
 		this.bills = bills;
 	}
 
