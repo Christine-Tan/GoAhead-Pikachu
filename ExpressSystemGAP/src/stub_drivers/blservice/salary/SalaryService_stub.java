@@ -4,14 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import po.SalaryPO;
-import po.UserPO;
 import stub_drivers.dataservice.salarydata.SalaryDataService_stub;
-import stub_drivers.dataservice.userdata.UserDataService_stub;
 import util.ResultMessage;
 import util.UserType;
 import client.blservice.strategyblservice.SalaryService;
 import client.vo.SalaryVO;
-import client.vo.UserVO;
 
 public class SalaryService_stub implements SalaryService{
 	 SalaryDataService_stub datastub;
@@ -46,5 +43,11 @@ public class SalaryService_stub implements SalaryService{
 
 	private SalaryPO getPO(SalaryVO vo) {
 		return new SalaryPO();
+	}
+
+	@Override
+	public ResultMessage addSalary(SalaryVO vo) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import util.ResultMessage;
+import util.UserType;
 import po.InstitutionPO;
 import po.PricePO;
 import po.SalaryPO;
@@ -28,10 +29,10 @@ public class SalaryDataService_stub implements SalaryDataService {
 	}
 	
 	@Override
-	public SalaryPO find(String salaryType) {
+	public SalaryPO find(UserType type) {
 		// TODO 自动生成的方法存根
 		for (SalaryPO salary : list)
-			if (salaryType.equals(salary.getType()))
+			if (type.equals(salary.getType()))
 				return salary;
 		return null;
 	}
