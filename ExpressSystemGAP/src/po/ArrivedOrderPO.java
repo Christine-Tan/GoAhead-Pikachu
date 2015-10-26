@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ArrivedOrderPO implements Serializable {
+	// 到达单订单
 	private List<ExpressOrderPO> orders;
+	// 生成时间
 	private String time;
+	// 到达单编号
 	private String id;
 
 	public ArrivedOrderPO(List<ExpressOrderPO> orders, String time, String id) {

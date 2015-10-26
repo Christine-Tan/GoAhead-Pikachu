@@ -52,10 +52,18 @@ public class DriverService_stub implements DriverService {
 	}
 
 	private DriverVO getVO(DriverPO po) {
-		return new DriverVO();
+		if(po==null)
+			return null;
+		return new DriverVO(po.getId(), po.getIns_id(), po.getName(),
+				po.getBirth(), po.getIdentity_number(), po.getPhone(),
+				po.getDriving_license_due(), po.getGender());
 	}
 
 	private DriverPO getPO(DriverVO vo) {
-		return new DriverPO();
+		if(vo==null)
+			return null;
+		return new DriverPO(vo.getId(), vo.getIns_id(), vo.getName(),
+				vo.getBirth(), vo.getIdentity_number(), vo.getPhone(),
+				vo.getDriving_license_due(), vo.getGender());
 	}
 }

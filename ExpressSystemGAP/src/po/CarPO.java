@@ -9,7 +9,7 @@ public class CarPO implements Serializable {
 	private String car_num;
 	// 服役时间
 	private int serve_time;
-
+	// 所在单位
 	private String ins_id;
 
 	public CarPO(String car_id, String car_num, String ins_id, int serve_time) {

@@ -37,11 +37,15 @@ public class ArrivedOrderService_stub implements ArrivedOrderService {
 	}
 
 	private ArrivedOrderVO getVO(ArrivedOrderPO po) {
-		return new ArrivedOrderVO();
+		if (po == null)
+			return null;
+		return new ArrivedOrderVO(po.getOrders(), po.getTime(), po.getId());
 	}
 
 	private ArrivedOrderPO toPO(ArrivedOrderVO vo) {
-		return new ArrivedOrderPO();
+		if (vo == null)
+			return null;
+		return new ArrivedOrderPO(vo.getOrders(), vo.getTime(), vo.getId());
 	}
 
 }

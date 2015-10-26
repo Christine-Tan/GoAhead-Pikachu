@@ -51,10 +51,16 @@ public class CarService_stub implements CarService {
 	}
 
 	private CarVO getVO(CarPO po) {
-		return new CarVO();
+		if (po == null)
+			return null;
+		return new CarVO(po.getCar_id(), po.getCar_num(), po.getIns_id(),
+				po.getServe_time());
 	}
 
 	private CarPO getPO(CarVO vo) {
-		return new CarPO();
+		if (vo == null)
+			return null;
+		return new CarPO(vo.getCar_id(), vo.getCar_num(), vo.getIns_id(),
+				vo.getServe_time());
 	}
 }

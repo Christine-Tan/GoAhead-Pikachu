@@ -18,8 +18,9 @@ public class LoadOrderService_stub implements LoadOrderService {
 	}
 
 	@Override
-	public LoadOrderVO create(List<ExpressOrderVO> orders, LoadOrderVO orderinfo) {
+	public LoadOrderVO create(List<String> orders, LoadOrderVO orderinfo) {
 		// TODO 自动生成的方法存根
+		orderinfo.setOrders_id(orders);
 		return orderinfo;
 	}
 
@@ -36,11 +37,19 @@ public class LoadOrderService_stub implements LoadOrderService {
 	}
 
 	private LoadOrderPO getPO(LoadOrderVO vo) {
-		return new LoadOrderPO();
+		if (vo == null)
+			return null;
+		return new LoadOrderPO(vo.getDate(), vo.getNumber(),
+				vo.getDepartureins_id(), vo.getTargetins_id(),
+				vo.getLoaded_id(), vo.getTargetins_id(), vo.getOrders_id());
 	}
 
 	private LoadOrderVO getVO(LoadOrderPO po) {
-		return new LoadOrderVO();
+		if (po == null)
+			return null;
+		return new LoadOrderVO(po.getDate(), po.getNumber(),
+				po.getDepartureins_id(), po.getTargetins_id(),
+				po.getLoaded_id(), po.getTargetins_id(), po.getOrders_id());
 	}
 
 }

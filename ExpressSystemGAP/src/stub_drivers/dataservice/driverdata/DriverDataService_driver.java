@@ -13,6 +13,9 @@ public class DriverDataService_driver {
 		DriverPO driver2 = new DriverPO("0010001001", "0010001", "txy",
 				"19700101", "500000000000000000", "119", "20200101",
 				Gender.FEMALE);
+		if (driverData.add(driver1).equals(ResultMessage.EXITED)) {
+			System.out.println("add succeed");
+		}
 		System.out.println("add succeed");
 
 		if (driverData.add(driver2).equals(ResultMessage.SUCCEED)) {
