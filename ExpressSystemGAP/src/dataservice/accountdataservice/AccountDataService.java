@@ -1,6 +1,7 @@
 package dataservice.accountdataservice;
 
 import java.awt.List;
+import java.util.ArrayList;
 
 import po.AccountPO;
 import po.Cost_profitPO;
@@ -12,7 +13,7 @@ public interface AccountDataService {
 	public boolean delete(AccountPO accountPO);
 	public boolean modify(AccountPO accountPO);
 	public boolean trade(TradePO tradePO);
-	public List<Cost_profitPO> getCost_Profit();
-	public List<AccountPO> getAccountList();
+	public ArrayList<Cost_profitPO> getCost_Profit();
+	public ArrayList<AccountPO> getAccountList();
 	
 }

@@ -1,8 +1,12 @@
 package dataservice.initialdata;
 
+import java.util.List;
+
+import po.InitialPO;
+
 public interface InitialDataService {
 
 	public boolean addInitial(InitialPO initialPO);
-	public List<initialPO> getHistory();
+	public List<InitialPO> getHistory();
 	
 }
