@@ -7,6 +7,7 @@ import java.util.List;
 
 
 public class InventoryPO {
+	private double alarmValue = 70;
 	static int planeMax=100;
 	static int trainMax=100;
 	static int carMax=100;
@@ -132,6 +133,13 @@ public class InventoryPO {
 		this.flexSused = (double)flexibleSector.size()/flexMax;
 	}
 	
+	public double getAlarmValue() {
+		return alarmValue;
+	}
+
+	public void setAlarmValue(double alarmValue) {
+		this.alarmValue = alarmValue;
+	}
 	
 
 }

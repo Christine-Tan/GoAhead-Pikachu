@@ -4,12 +4,15 @@ import java.util.List;
 
 
 
+
 import po.ExpressOrderPO;
 import util.ResultMessage;
+import client.vo.ExpressOrderVO;
 import client.vo.StockCheckVO;
 import client.vo.StockObVO;
 import client.vo.StockinOrderVO;
 import client.vo.StockoutOrderVO;
+import client.vo.GoodsVO;
 
 public interface InventoryService {
 	/**
@@ -48,11 +51,18 @@ public interface InventoryService {
 	 * @param location
 	 * @return
 	 */
-	public ResultMessage initialadd (ExpressOrderPO expressorder,String location);
+	public ResultMessage initialadd (GoodsVO expressorder,String location);
 	
 	public ResultMessage initialdelete(String expressorder_id);
 	
-	public ResultMessage initialmodify (ExpressOrderPO expressorder,String location);
+	public ResultMessage initialmodify (GoodsVO expressorder);
+	
+	/**
+	 * 获得到达的快递
+	 * @param institution_id
+	 * @return
+	 */
+	public List<ExpressOrderVO> getArrivingOrders(String institution_id);
 	
 	/**
 	 * 快递入库
@@ -60,7 +70,7 @@ public interface InventoryService {
 	 * @return
 	 */
 	
-	public String stockIn(ExpressOrderPO expressorder);
+	public String stockIn(ExpressOrderVO expressorder);
 	
 	/**
 	 * 快递出库，填写快递编号设置目的地，货运方式
@@ -75,20 +85,20 @@ public interface InventoryService {
 	 * @param expressorders
 	 * @return
 	 */
-	public StockinOrderVO createStockinOrder(List<ExpressOrderPO> expressorders);
+	public StockinOrderVO createStockinOrder(List<String> expressorders_id);
 	
 	/**
 	 * 生成出库单
 	 * @param expressorders
 	 * @return
 	 */
-	public StockoutOrderVO createStockoutOrder(List<ExpressOrderPO> expressorders);
+	public StockoutOrderVO createStockoutOrder(List<ExpressOrderVO> expressorders);
 	
 	/**
 	 * 查找单个快递
 	 * @param expressorder_id
 	 * @return
 	 */
-	public ExpressOrderPO getSingleExpressOrder(String expressorder_id);
+	public ExpressOrderVO getSingleExpressOrder(String expressorder_id);
 	
 }

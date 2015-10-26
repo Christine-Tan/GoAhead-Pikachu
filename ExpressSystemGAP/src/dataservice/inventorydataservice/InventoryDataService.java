@@ -1,15 +1,16 @@
 package dataservice.inventorydataservice;
 
 import po.ExpressOrderPO;
+import po.GoodsPO;
 import util.ResultMessage;
 
 
 public interface InventoryDataService {
-	public ResultMessage add(ExpressOrderPO expressorder);
+	public ResultMessage add(GoodsPO expressorder);
 	
 	public ResultMessage delete(String expressorder_id);
 	
-	public ResultMessage modify(ExpressOrderPO expressorder,String location);
+	public ResultMessage modify(GoodsPO expressorder);
 	
 	public ExpressOrderPO find(String expressorder_id);
 	
@@ -18,12 +19,12 @@ public interface InventoryDataService {
 	 * @param alarmValue
 	 * @return
 	 */
-	public ResultMessage setAlarm(int alarmValue);
+	public ResultMessage setAlarm(double alarmValue);
 	
 	/**
 	 * 获得警戒值
 	 * @return
 	 */
-	public int getAlarm();
+	public double getAlarm();
 
 }
