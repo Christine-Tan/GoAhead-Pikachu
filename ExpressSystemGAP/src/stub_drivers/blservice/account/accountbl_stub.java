@@ -9,13 +9,14 @@ public class accountbl_stub implements AccountService {
 	@Override
 	public AccountListVO getAccountManageList() {
 		// TODO Auto-generated method stub
-		return null;
+		return new AccountListVO();
+	
 	}
 
 	@Override
 	public ResultMessage setAccountManageList(AccountListVO accountListVO) {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 }
