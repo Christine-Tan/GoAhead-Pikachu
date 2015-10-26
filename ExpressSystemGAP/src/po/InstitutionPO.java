@@ -3,6 +3,7 @@ package po;
 import java.io.Serializable;
 
 public class InstitutionPO implements Serializable {
+	
 	// 机构编号
 	private String insId;
 	// 机构类型

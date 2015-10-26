@@ -1,5 +1,10 @@
 package client.blservice.approveblservice;
 
-public interface ApproveService {
+import po.SuperOrderPO;
+import util.ResultMessage;
 
+public interface ApproveService {
+            public SuperOrderPO getSuperOrder(String type);
+            
+            public ResultMessage approve(SuperOrderPO po);
 }

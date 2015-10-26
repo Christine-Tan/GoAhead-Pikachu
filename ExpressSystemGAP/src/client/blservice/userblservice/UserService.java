@@ -1,15 +1,19 @@
 package client.blservice.userblservice;
 
+import java.util.List;
+
+import client.vo.UserVO;
 import po.UserPO;
+import util.ResultMessage;
 
 public interface UserService {
-	public UserPO[] getAll();
+	public List<UserVO> getAll();
 
-	public UserPO getSingle(String id);
+	public UserVO getSingle(String id);
 
-	public void delete(String id);
+	public ResultMessage delete(String id);
 
-	public void modify(UserPO po);
+	public ResultMessage modify(UserVO vo);
 
-	public void add(UserPO po);
+	public ResultMessage add(UserVO vo);
 }

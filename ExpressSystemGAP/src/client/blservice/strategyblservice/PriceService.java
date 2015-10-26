@@ -1,9 +1,14 @@
 package client.blservice.strategyblservice;
 
+import java.util.List;
+
+import util.ResultMessage;
 import client.vo.PriceVO;
 
 public interface PriceService {
-	public void modifyPrice(PriceVO vo);
+	public List<PriceVO> getAll();
 
-	public PriceVO getPrice();
+	public ResultMessage modifyPrice(PriceVO vo);
+
+	public PriceVO getPrice(String city_id);
 }

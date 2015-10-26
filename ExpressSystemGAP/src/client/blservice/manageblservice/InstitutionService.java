@@ -1,15 +1,18 @@
 package client.blservice.manageblservice;
 
+import java.util.List;
+
+import util.ResultMessage;
 import client.vo.InstitutionVO;
 
 public interface InstitutionService {
-	public InstitutionVO[] getAll();
+	public List<InstitutionVO> getAll();
 
 	public InstitutionVO getSingle(String id);
 
-	public void modify(InstitutionVO vo);
+	public ResultMessage modify(InstitutionVO vo);
 
-	public void delete(String id);
+	public ResultMessage delete(String id);
 
-	public void add(InstitutionVO vo);
+	public ResultMessage add(InstitutionVO vo);
 }

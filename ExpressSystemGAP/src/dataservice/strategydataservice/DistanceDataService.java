@@ -5,7 +5,7 @@ import util.ResultMessage;
 
 
 public interface DistanceDataService {
-	public DistancePO find(String city_id);
+	public DistancePO find(String startCity,String endCity);
 
 	public ResultMessage add(DistancePO po);
 

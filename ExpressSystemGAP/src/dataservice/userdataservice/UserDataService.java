@@ -1,10 +1,14 @@
 package dataservice.userdataservice;
 
-import util.ResultMessage;
+import java.util.List;
 
+import util.ResultMessage;
+import po.CarPO;
 import po.UserPO;
 
 public interface UserDataService {
+	public List<UserPO> getAll();
+	
 	public ResultMessage add(UserPO po);
 
 	public UserPO find(String user_id);

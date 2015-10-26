@@ -1,28 +1,53 @@
 package stub_drivers.dataservice.distancedata;
 
-import po.DistancePO;
+import java.util.ArrayList;
+import java.util.List;
 
+import po.ArrivedOrderPO;
+import po.DistancePO;
 import util.ResultMessage;
 import dataservice.strategydataservice.DistanceDataService;
 
 public class DistanceDataService_stub implements DistanceDataService{
+	private ArrayList<DistancePO>  list;
 
+	public DistanceDataService_stub() {
+		list = new ArrayList<DistancePO>();
+	}
+	
 	@Override
-	public DistancePO find(String city_id) {
+	public DistancePO find(String startCity,String endCity) {
 		// TODO 自动生成的方法存根
+		for (DistancePO distance : list)
+			if (startCity.equals(distance.getStartCity())&&endCity.equals(distance.getEndCity()))
+				return distance;
 		return null;
 	}
 
 	@Override
 	public ResultMessage add(DistancePO po) {
 		// TODO 自动生成的方法存根
-		return null;
+		for (DistancePO distance : list)
+			if (po.getStartCity().equals(distance.getStartCity())&&po.getEndCity().equals(distance.getEndCity()))
+				return ResultMessage.EXITED;
+		list.add(po);
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public ResultMessage modify(DistancePO po) {
 		// TODO 自动生成的方法存根
-		return null;
+		for (int i = 0; i < list.size(); i++) {
+			if (po.getStartCity().equals(list.get(i).getStartCity())&&po.getEndCity().equals(list.get(i).getEndCity()))
+				list.remove(i);
+				list.add(po);
+				return ResultMessage.SUCCEED;
+			}
+		return ResultMessage.NOTFOUND;
 	}
 
+	public List<DistancePO> getAll() {
+		// TODO 自动生成的方法存根
+		return list;
+	}
 }
