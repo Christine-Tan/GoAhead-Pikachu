@@ -14,7 +14,7 @@ public class StockoutOrderService_stub implements StockoutOrderService{
 	public StockoutOrderVO create(List<ExpressOrderVO> orders,
 			StockoutOrderVO orderinfo) {
 		// TODO 自动生成的方法存根
-		return new StockoutOrderVO();
+		return new StockoutOrderVO(null, "20151026", "上海", "car", "00100011970010100002");
 	}
 
 	@Override
@@ -26,7 +26,7 @@ public class StockoutOrderService_stub implements StockoutOrderService{
 	@Override
 	public StockoutOrderVO find(String id) {
 		// TODO 自动生成的方法存根
-		return new StockoutOrderVO();
+		return new StockoutOrderVO(null, "20151026", "上海", "car", "00100011970010100002");
 	}
 
 }

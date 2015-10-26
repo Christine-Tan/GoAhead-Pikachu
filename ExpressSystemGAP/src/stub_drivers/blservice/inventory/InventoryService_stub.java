@@ -89,14 +89,14 @@ public class InventoryService_stub implements InventoryService{
 	@Override
 	public StockinOrderVO createStockinOrder(List<String> expressorders_id) {
 		// TODO Auto-generated method stub
-		return new StockinOrderVO();
+		return new StockinOrderVO(null, "20151026", "上海", "car", "00100011970010100002");
 	}
 
 	@Override
 	public StockoutOrderVO createStockoutOrder(
 			List<ExpressOrderVO> expressorders) {
 		// TODO Auto-generated method stub
-		return new StockoutOrderVO();
+		return new StockoutOrderVO(null, "20151026", "上海", "car", "00100011970010100002");
 	}
 
 	@Override
