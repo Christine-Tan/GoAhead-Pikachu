@@ -1,12 +1,28 @@
 package po;
 
 public class TradePO {
-	String accountName;
-	int tradeNum = 0;
+	private String accountName;
+	private int tradeNum = 0;
 	
 	public TradePO(String accountName,int tradeNum){
-		this.accountName = accountName;
+		this.setAccountName(accountName);
+		this.setTradeNum(tradeNum);
+	}
+
+	public int getTradeNum() {
+		return tradeNum;
+	}
+
+	public void setTradeNum(int tradeNum) {
 		this.tradeNum = tradeNum;
+	}
+
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 	
 }
