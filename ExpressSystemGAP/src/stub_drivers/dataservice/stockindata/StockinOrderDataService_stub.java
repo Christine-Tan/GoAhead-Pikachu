@@ -21,10 +21,10 @@ public class StockinOrderDataService_stub implements StockinOrderDataService{
 	}
 
 	@Override
-	public StockinOrderPO find(String order_id) {
+	public StockinOrderPO find(String identifier) {
 		// TODO 自动生成的方法存根
 		for(StockinOrderPO order:list){
-			if(order.getExpressorder_ids().contains(order_id))
+			if(order.getIdentifier().equals(identifier))
 				return order;
 		}
 		return null;

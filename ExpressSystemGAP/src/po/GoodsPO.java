@@ -10,6 +10,16 @@ public class GoodsPO implements Serializable{
 	private String sector;
 	private String date;
 	
+	
+	
+	public GoodsPO(String expressorder_id, String location, String sector,
+			String date) {
+		super();
+		this.expressorder_id = expressorder_id;
+		this.location = location;
+		this.sector = sector;
+		this.date = date;
+	}
 	public String getExpressorder_id() {
 		return expressorder_id;
 	}
