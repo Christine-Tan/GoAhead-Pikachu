@@ -36,6 +36,8 @@ public interface InventoryService {
 	 */
 	public ResultMessage setAlarm (double alarmValue);
 	
+	public double getAlarm();
+	
 	/**
 	 * 调整库存分区，选择分配区域及分配给的分区
 	 * @param beginColumn
@@ -100,5 +102,7 @@ public interface InventoryService {
 	 * @return
 	 */
 	public ExpressOrderVO getSingleExpressOrder(String expressorder_id);
+	
+	public String Alarm();
 	
 }

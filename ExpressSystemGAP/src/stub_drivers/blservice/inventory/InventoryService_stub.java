@@ -8,6 +8,7 @@ import java.util.List;
 
 
 
+
 import po.ExpressOrderPO;
 import stub_drivers.dataservice.inventory.InventoryDataService_stub;
 import util.ResultMessage;
@@ -103,6 +104,18 @@ public class InventoryService_stub implements InventoryService{
 	public ExpressOrderVO getSingleExpressOrder(String expressorder_id) {
 		// TODO Auto-generated method stub
 		return new ExpressOrderVO();
+	}
+
+	@Override
+	public String Alarm() {
+		// TODO Auto-generated method stub
+		return "Alarmed";
+	}
+
+	@Override
+	public double getAlarm() {
+		// TODO Auto-generated method stub
+		return 80;
 	}
 
 	
