@@ -52,7 +52,8 @@ public class ExpressOrderDataService_stub implements ExpressOrderDataService {
 		// TODO 自动生成的方法存根
 		ArrayList<ExpressOrderPO> re = new ArrayList<>();
 		for (ExpressOrderPO order : list)
-			if (order.getTargetins_id().equals(ins_id))
+			if (order.getTargetins_id() != null
+					&& order.getTargetins_id().equals(ins_id))
 				re.add(order);
 		return re;
 	}
@@ -62,7 +63,8 @@ public class ExpressOrderDataService_stub implements ExpressOrderDataService {
 		// TODO 自动生成的方法存根
 		ArrayList<ExpressOrderPO> re = new ArrayList<>();
 		for (ExpressOrderPO order : list)
-			if (order.getCurrentins_id().equals(ins_id))
+			if (order.getCurrentins_id() != null
+					&& order.getCurrentins_id().equals(ins_id))
 				re.add(order);
 		return re;
 	}
@@ -72,7 +74,8 @@ public class ExpressOrderDataService_stub implements ExpressOrderDataService {
 		// TODO 自动生成的方法存根
 		ArrayList<ExpressOrderPO> re = new ArrayList<>();
 		for (ExpressOrderPO order : list)
-			if (order.getClerkLoadOrder_id().equals(loadorder_id))
+			if (order.getClerkLoadOrder_id() != null
+					&& order.getClerkLoadOrder_id().equals(loadorder_id))
 				re.add(order);
 		return re;
 	}
@@ -82,7 +85,8 @@ public class ExpressOrderDataService_stub implements ExpressOrderDataService {
 		// TODO 自动生成的方法存根
 		ArrayList<ExpressOrderPO> re = new ArrayList<>();
 		for (ExpressOrderPO order : list)
-			if (order.getDeliveryOrder_id().equals(deliveryorder_id))
+			if (order.getDeliveryOrder_id() != null
+					&& order.getDeliveryOrder_id().equals(deliveryorder_id))
 				re.add(order);
 		return re;
 	}

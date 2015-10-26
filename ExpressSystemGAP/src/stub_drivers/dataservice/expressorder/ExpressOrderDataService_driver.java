@@ -1,5 +1,8 @@
 package stub_drivers.dataservice.expressorder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dataservice.expressorderdataservice.ExpressOrderDataService;
 import po.ExpressOrderPO;
 import util.ExpressType;
@@ -15,6 +18,7 @@ public class ExpressOrderDataService_driver {
 				"software", "119", "plw", "nju", "software", "120",
 				ExpressType.EXPRESS, null, false, "0000000002", null,
 				"0010001", null, null, null, null, null);
+		// test add
 		if (expressOrder.add(order1).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed");
 		}
@@ -24,6 +28,7 @@ public class ExpressOrderDataService_driver {
 		if (expressOrder.add(order1).equals(ResultMessage.EXITED)) {
 			System.out.println("add failed,order exited");
 		}
+		// test find
 		ExpressOrderPO get = expressOrder.find("0000000001");
 		if (get != null)
 			System.out.println("find:id=" + get.getOrder_id() + ",sender_name="
@@ -32,9 +37,31 @@ public class ExpressOrderDataService_driver {
 		get = expressOrder.find("0000000003");
 		if (get == null)
 			System.out.println("find failed,not found");
+		// test modify
 		order1.setReceived(true);
 		if (expressOrder.modify(order1).equals(ResultMessage.SUCCEED))
 			System.out.println("modify succeed");
+		// test findArrivingOrders
+		List<ExpressOrderPO> listGet = expressOrder
+				.findArrivingOrders("0010001");
+		if (!listGet.isEmpty()) {
+			System.out.println("find succeed:");
+			for (ExpressOrderPO po : listGet) {
+				System.out.println("id=" + po.getOrder_id() + ",sender_name="
+						+ po.getSender_name() + ",receiver_name="
+						+ po.getReceiver_name());
+			}
+		}
+		// test findCurrentOrders
+		listGet = expressOrder.findCurrentOrders("0011001");
+		if (!listGet.isEmpty()) {
+			System.out.println("find succeed:");
+			for (ExpressOrderPO po : listGet) {
+				System.out.println("id=" + po.getOrder_id() + ",sender_name="
+						+ po.getSender_name() + ",receiver_name="
+						+ po.getReceiver_name());
+			}
+		}
 	}
 
 	public static void main(String[] args) {
