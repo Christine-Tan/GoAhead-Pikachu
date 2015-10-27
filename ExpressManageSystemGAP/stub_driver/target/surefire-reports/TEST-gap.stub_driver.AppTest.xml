@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="1" failures="0" name="gap.stub_driver.AppTest" time="0.012" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\JAVA\bin"/>
+    <property name="java.vm.version" value="25.25-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\JAVA\eclipsed\ExpressManageSystemGAP"/>
+    <property name="java.runtime.version" value="1.8.0_25-b18"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\JAVA\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="H:\Users\YANGYA~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 8.1"/>
+    <property name="classworlds.conf" value="D:\JAVA\eclipsed\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf5122074089610901104.tmp"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\JAVA\bin;H:\windows\Sun\Java\bin;H:\windows\system32;H:\windows;H:/Program Files (x86)/Java/jre1.8.0_40/bin/client;H:/Program Files (x86)/Java/jre1.8.0_40/bin;H:/Program Files (x86)/Java/jre1.8.0_40/lib/i386;H:\PROGRAM FILES (X86)\NVIDIA CORPORATION\PHYSX\COMMON;H:\PROGRAM FILES (X86)\INTEL\ICLS CLIENT\;H:\PROGRAM FILES\INTEL\ICLS CLIENT\;H:\PROGRAMDATA\ORACLE\JAVA\JAVAPATH;H:\windows\SYSTEM32;H:\windows;H:\windows\SYSTEM32\WBEM;H:\windows\SYSTEM32\WINDOWSPOWERSHELL\V1.0\;H:\PROGRAM FILES\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\DAL;H:\PROGRAM FILES (X86)\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\DAL;H:\PROGRAM FILES\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\IPT;H:\PROGRAM FILES (X86)\INTEL\INTEL(R) MANAGEMENT ENGINE COMPONENTS\IPT;H:\PROGRAM FILES\TORTOISESVN\BIN;H:\Program Files (x86)\Java\jdk1.8.0_40\BIN;H:\Program Files (x86)\Java\jdk1.8.0_40\JRE\BIN；;D:\VISUAL SVN\BIN；D:\DATABASE\MYSQL-5.6.25-WINX64\BIN;:\VISUAL SVN\BIN;D:\MINIGW\BIN;H:\PROGRAM FILES\MICROSOFT SQL SERVER\110\TOOLS\BINN\;H:\PROGRAM FILES\MICROSOFT SQL SERVER\120\TOOLS\BINN\;;D:\MATLAB\RUNTIME\WIN64;D:\MATLAB\BIN;D:\MATLAB\POLYSPACE\BIN;H:\Program Files\Lenovo\Bluetooth Software\;H:\Program Files\Lenovo\Bluetooth Software\syswow64;H:\Program Files (x86)\Java\jdk1.8.0_40\bin;D:\DataBase\mysql-5.6.25-winx64\bin;D:\apache-maven-3.3.3\bin;;D:\JAVA\eclipse;;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.3"/>
+    <property name="user.home" value="H:\Users\YangYanfei"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="YangYanfei"/>
+    <property name="java.class.path" value="/D:/JAVA/eclipse/configuration/org.eclipse.osgi/bundles/757/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="D:\JAVA"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_25"/>
+    <property name="java.ext.dirs" value="D:\JAVA\lib\ext;H:\windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\JAVA\lib\resources.jar;D:\JAVA\lib\rt.jar;D:\JAVA\lib\sunrsasign.jar;D:\JAVA\lib\jsse.jar;D:\JAVA\lib\jce.jar;D:\JAVA\lib\charsets.jar;D:\JAVA\lib\jfr.jar;D:\JAVA\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\JAVA\eclipsed\ExpressManageSystemGAP\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="maven.bootclasspath" value="/D:/JAVA/eclipse/configuration/org.eclipse.osgi/bundles/757/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase classname="gap.stub_driver.AppTest" name="testApp" time="0.001"/>
+</testsuite>

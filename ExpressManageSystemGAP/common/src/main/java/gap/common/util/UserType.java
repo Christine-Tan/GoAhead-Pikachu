@@ -1,0 +1,5 @@
+package gap.common.util;
+
+public enum UserType {
+	DELIVERY, BUSSINESSCLERK, CENTERCLERK, INVENTORY, MANAGER, ADMINISTRATOR
+}
