@@ -1,11 +1,14 @@
 package gap.stub_driver.dataservice.arrivedorderdata;
 
+import java.rmi.RemoteException;
+
 import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.util.ResultMessage;
 
 public class ArrivedOrderDataService_driver {
-	public void drive(ArrivedOrderDataService arrivedOrder) {
+	public void drive(ArrivedOrderDataService arrivedOrder)
+			throws RemoteException {
 		ArrivedOrderPO po = new ArrivedOrderPO(null, "19700101",
 				"00100011970010100001");
 		if (arrivedOrder.add(po).equals(ResultMessage.SUCCEED)) {
@@ -26,7 +29,12 @@ public class ArrivedOrderDataService_driver {
 	public static void main(String[] args) {
 		ArrivedOrderDataService_driver driver = new ArrivedOrderDataService_driver();
 		ArrivedOrderDataService arrivedOrder = new ArrivedOrderDataService_stub();
-		driver.drive(arrivedOrder);
+		try {
+			driver.drive(arrivedOrder);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 
 	}
 }

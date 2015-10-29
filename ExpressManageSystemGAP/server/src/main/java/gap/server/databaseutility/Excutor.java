@@ -43,8 +43,12 @@ public class Excutor {
 	public void excute(String sql) throws SQLException {
 		if (cone == null)
 			throw new NullPointerException("数据库未连接");
-			Statement statement = cone.createStatement();
-			statement.execute(sql);
-		
+		Statement statement = cone.createStatement();
+		statement.execute(sql);
+
+	}
+
+	public void close() throws SQLException {
+		cone.close();
 	}
 }

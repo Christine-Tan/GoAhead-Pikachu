@@ -1,5 +1,7 @@
 package gap.stub_driver.blservice.salary;
 
+import java.rmi.RemoteException;
+
 import gap.client.blservice.strategyblservice.SalaryService;
 import gap.client.vo.SalaryVO;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
@@ -32,10 +34,15 @@ public class SalaryService_driver {
 		if (salary.modifySalary(salary1).equals(ResultMessage.SUCCEED))
 			System.out.println("modify succeed");
 	}
-	
+
 	public static void main(String[] args) {
 		SalaryDataService salaryData = new SalaryDataService_stub();
 		SalaryDataService_driver driver = new SalaryDataService_driver();
-		driver.driver(salaryData);
+		try {
+			driver.driver(salaryData);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,5 +1,7 @@
 package gap.stub_driver.blservice.login;
 
+import java.rmi.RemoteException;
+
 import gap.client.blservice.loginblservice.LoginService;
 import gap.client.vo.LogVO;
 
@@ -15,7 +17,7 @@ public class LoginService_driver {
 					+ result.getUserType());
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws RemoteException {
 		LoginService log = new LoginService_stub();
 		LoginService_driver driver = new LoginService_driver();
 		driver.driver(log);

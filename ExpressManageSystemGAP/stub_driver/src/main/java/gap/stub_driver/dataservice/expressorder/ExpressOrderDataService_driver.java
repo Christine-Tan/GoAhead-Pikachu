@@ -5,10 +5,12 @@ import gap.common.po.ExpressOrderPO;
 import gap.common.util.ExpressType;
 import gap.common.util.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 public class ExpressOrderDataService_driver {
-	public void driver(ExpressOrderDataService expressOrder) {
+	public void driver(ExpressOrderDataService expressOrder)
+			throws RemoteException {
 		ExpressOrderPO order1 = new ExpressOrderPO("yyf", "nju", "software",
 				"15520065137", "txy", "nju", "software", "110",
 				ExpressType.STANDARD, null, false, "0000000001", "0011001",
@@ -66,7 +68,12 @@ public class ExpressOrderDataService_driver {
 	public static void main(String[] args) {
 		ExpressOrderDataService expressOrder = new ExpressOrderDataService_stub();
 		ExpressOrderDataService_driver driver = new ExpressOrderDataService_driver();
-		driver.driver(expressOrder);
+		try {
+			driver.driver(expressOrder);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 
 	}
 }

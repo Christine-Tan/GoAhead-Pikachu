@@ -1,6 +1,8 @@
 package gap.server.data.userdata;
 
+import java.rmi.RemoteException;
 import java.rmi.server.RemoteObject;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,10 +14,15 @@ import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 import gap.server.initial.NetModule;
 
-public class UserDataServiceImpl extends RemoteObject implements
+public class UserDataServiceImpl extends UnicastRemoteObject implements
 		UserDataService {
 
-	public List<UserPO> getAll() {
+	public UserDataServiceImpl() throws RemoteException {
+		super();
+		// TODO 自动生成的构造函数存根
+	}
+
+	public List<UserPO> getAll() throws RemoteException{
 		// TODO 自动生成的方法存根
 		try {
 			List<UserPO> users = new ArrayList<UserPO>();
@@ -39,7 +46,7 @@ public class UserDataServiceImpl extends RemoteObject implements
 		return null;
 	}
 
-	public ResultMessage add(UserPO po) {
+	public ResultMessage add(UserPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
 		String user_id = "'" + po.getUserId() + "'", username = "'"
 				+ po.getUserName() + "'", password = "'" + po.getPassword()
@@ -79,7 +86,7 @@ public class UserDataServiceImpl extends RemoteObject implements
 		return ResultMessage.SUCCEED;
 	}
 
-	public UserPO find(String user_id) {
+	public UserPO find(String user_id) throws RemoteException{
 		// TODO 自动生成的方法存根
 		try {
 			ResultSet re = NetModule.excutor
@@ -99,7 +106,7 @@ public class UserDataServiceImpl extends RemoteObject implements
 		return null;
 	}
 
-	public ResultMessage modify(UserPO po) {
+	public ResultMessage modify(UserPO po) throws RemoteException{
 		// TODO 自动生成的方法存根
 		String user_id = "'" + po.getUserId() + "'", username = "'"
 				+ po.getUserName() + "'", password = "'" + po.getPassword()
@@ -131,7 +138,7 @@ public class UserDataServiceImpl extends RemoteObject implements
 		return ResultMessage.SUCCEED;
 	}
 
-	public ResultMessage delete(String user_id) {
+	public ResultMessage delete(String user_id) throws RemoteException{
 		// TODO 自动生成的方法存根
 		try {
 			NetModule.excutor.excute("DELETE FROM user WHERE id=" + user_id

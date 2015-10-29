@@ -1,13 +1,15 @@
 package gap.stub_driver.dataservice.salarydata;
 
 
+import java.rmi.RemoteException;
+
 import gap.common.dataservice.strategydataservice.SalaryDataService;
 import gap.common.po.SalaryPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
 public class SalaryDataService_driver {
-	public void driver(SalaryDataService salaryData) {
+	public void driver(SalaryDataService salaryData) throws RemoteException {
 		SalaryPO salary1 = new SalaryPO(UserType.BUSSINESSCLERK, 3000);
 		SalaryPO salary2 = new SalaryPO(UserType.INVENTORY, 2000);
 		if (salaryData.add(salary1).equals(ResultMessage.SUCCEED)) {
@@ -34,6 +36,11 @@ public class SalaryDataService_driver {
 	public static void main(String[] args) {
 		SalaryDataService salaryData = new SalaryDataService_stub();
 		SalaryDataService_driver driver = new SalaryDataService_driver();
-		driver.driver(salaryData);
+		try {
+			driver.driver(salaryData);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 }
