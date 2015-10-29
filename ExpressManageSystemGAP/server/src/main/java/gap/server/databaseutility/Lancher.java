@@ -27,7 +27,12 @@ public class Lancher {
 			e.printStackTrace();
 		}
 		Excutor ex = Excutor.getInstance();
-		ex.excute("USE " + database + ";");
+		try {
+			ex.excute("USE " + database + ";");
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return ex;
 	}
 }
