@@ -18,8 +18,8 @@ public class TestDatabase {
 		  // TODO 自动生成的 catch 块
 		  e.printStackTrace();
 		  }
-//		 excutor.excute("SELECT * FROM employee into outfile 'D://test.csv'"
-//		 + "fields terminated by ','"
-//		 );
+		 excutor.excute("SELECT * FROM employee into outfile 'D://test.csv'"
+		 + "fields terminated by ','"
+		 );
 	}
 }
