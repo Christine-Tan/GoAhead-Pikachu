@@ -17,7 +17,7 @@ public class Config {
 	 */
 	public static void config() {
 		driver = "com.mysql.jdbc.Driver";
-		url = "jdbc:mysql://127.0.0.1:3306/bank";
+		url = "jdbc:mysql://114.212.43.201:3306/bank";
 		user = "root";
 		password = "";
 		database = "transport";
