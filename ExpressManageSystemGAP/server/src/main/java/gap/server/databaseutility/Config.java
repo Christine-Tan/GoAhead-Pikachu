@@ -20,6 +20,6 @@ public class Config {
 		url = "jdbc:mysql://127.0.0.1:3306/bank";
 		user = "root";
 		password = "";
-		database = "transport";
+		database = "expressmanagesystem";
 	}
 }

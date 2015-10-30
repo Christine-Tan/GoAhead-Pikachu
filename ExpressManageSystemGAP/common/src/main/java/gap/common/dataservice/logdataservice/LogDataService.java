@@ -2,10 +2,14 @@ package gap.common.dataservice.logdataservice;
 
 import gap.common.po.LogPO;
 
-public interface LogDataService {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
 
-	public LogPO getLogList();
+public interface LogDataService extends Remote {
 
-	public Boolean addLog(LogPO logPO);
+	public List<LogPO> getLogList() throws RemoteException;
+
+	public Boolean addLog(LogPO logPO) throws RemoteException;
 
 }

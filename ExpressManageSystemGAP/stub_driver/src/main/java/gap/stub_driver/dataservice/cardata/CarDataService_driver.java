@@ -1,11 +1,13 @@
 package gap.stub_driver.dataservice.cardata;
 
+import java.rmi.RemoteException;
+
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.po.CarPO;
 import gap.common.util.ResultMessage;
 
 public class CarDataService_driver {
-	public void driver(CarDataService carData) {
+	public void driver(CarDataService carData) throws RemoteException {
 		CarPO car1 = new CarPO("0011001001", "88888", "0011001", 10);
 		CarPO car2 = new CarPO("0010001001", "44444", "0010001", 5);
 		if (carData.add(car1).equals(ResultMessage.SUCCEED)) {
@@ -36,7 +38,12 @@ public class CarDataService_driver {
 	public static void main(String[] args) {
 		CarDataService carData = new CarDataService_stub();
 		CarDataService_driver driver = new CarDataService_driver();
-		driver.driver(carData);
+		try {
+			driver.driver(carData);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 
 	}
 }

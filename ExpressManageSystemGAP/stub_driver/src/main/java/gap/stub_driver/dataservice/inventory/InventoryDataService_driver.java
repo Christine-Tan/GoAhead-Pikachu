@@ -1,5 +1,7 @@
 package gap.stub_driver.dataservice.inventory;
 
+import java.rmi.RemoteException;
+
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
@@ -7,7 +9,8 @@ import gap.common.util.ResultMessage;
 
 
 public class InventoryDataService_driver {
-	private void driver(InventoryDataService inventoryData) {
+	private void driver(InventoryDataService inventoryData)
+			throws RemoteException {
 		GoodsPO goods1 = new GoodsPO("0000000001", "A区甲排1位", "car", "20151026");
 		GoodsPO goods2 = new GoodsPO("0000000002", "A区甲排2位", "car", "20151026");
 		
@@ -47,7 +50,12 @@ public class InventoryDataService_driver {
 	public static void main(String[] args){
 		InventoryDataService inventoryData = new InventoryDataService_stub();
 		InventoryDataService_driver driver = new InventoryDataService_driver();
-		driver.driver(inventoryData);
+		try {
+			driver.driver(inventoryData);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 
 	

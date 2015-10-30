@@ -1,14 +1,18 @@
 package gap.stub_driver.dataservice.userdata;
 
+import java.rmi.RemoteException;
+
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
 public class UserDataService_driver {
-	public void driver(UserDataService userData) {
-		UserPO user1 = new UserPO("100000001", UserType.DELIVERY, "Feifei", 1,"0011001","abc123");
-		UserPO user2 = new UserPO("000000001",UserType.ADMINISTRATOR,"Shiny",5,"","admin");
+	public void driver(UserDataService userData) throws RemoteException {
+		UserPO user1 = new UserPO("100000001", UserType.DELIVERY, "Feifei", 1,
+				"0011001", "abc123");
+		UserPO user2 = new UserPO("000000001", UserType.ADMINISTRATOR, "Shiny",
+				5, "", "admin");
 		if (userData.add(user1).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed");
 		}
@@ -33,8 +37,8 @@ public class UserDataService_driver {
 		if (userData.delete("100000002").equals(ResultMessage.NOTFOUND))
 			System.out.println("delete failed,not found");
 	}
-	
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws RemoteException {
 		UserDataService userData = new UserDataService_stub();
 		UserDataService_driver driver = new UserDataService_driver();
 		driver.driver(userData);

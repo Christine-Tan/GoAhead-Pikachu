@@ -24,34 +24,31 @@ public class Excutor {
 	 * 执行查询语句
 	 * @param sql 具体查询的sql语句
 	 * @return 查询的结果集
+	 * @throws SQLException 
 	 */
-	public ResultSet excuteQuery(String sql) {
+	public ResultSet excuteQuery(String sql) throws SQLException {
 		if (cone == null)
 			throw new NullPointerException("数据库未连接");
-		try {
-			Statement statement = cone.createStatement();
-			return statement.executeQuery(sql);
-		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-		return null;
+		Statement statement = cone.createStatement();
+		return statement.executeQuery(sql);
+
 	}
 
 	/**
 	 * 执行语句
 	 * @param sql 具体的sql语句
 	 * @return 查询的结果集
+	 * @throws SQLException 
 	 */
-	public void excute(String sql) {
+	public void excute(String sql) throws SQLException {
 		if (cone == null)
 			throw new NullPointerException("数据库未连接");
-		try {
-			Statement statement = cone.createStatement();
-			statement.execute(sql);
-		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
+		Statement statement = cone.createStatement();
+		statement.execute(sql);
+
+	}
+
+	public void close() throws SQLException {
+		cone.close();
 	}
 }

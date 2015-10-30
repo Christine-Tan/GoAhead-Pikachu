@@ -1,12 +1,14 @@
 package gap.stub_driver.dataservice.driverdata;
 
+import java.rmi.RemoteException;
+
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.po.DriverPO;
 import gap.common.util.Gender;
 import gap.common.util.ResultMessage;
 
 public class DriverDataService_driver {
-	public void drive(DriverDataService driverData) {
+	public void drive(DriverDataService driverData) throws RemoteException {
 		DriverPO driver1 = new DriverPO("0011001001", "0011001", "yyf",
 				"19960301", "500113199603013932", "15520065137", "20200101",
 				Gender.MALE);
@@ -44,7 +46,12 @@ public class DriverDataService_driver {
 	public static void main(String[] args) {
 		DriverDataService driverData = new DriverDataService_stub();
 		DriverDataService_driver driver = new DriverDataService_driver();
-		driver.drive(driverData);
+		try {
+			driver.drive(driverData);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 
 	}
 }

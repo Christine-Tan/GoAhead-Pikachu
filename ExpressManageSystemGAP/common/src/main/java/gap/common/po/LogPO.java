@@ -1,8 +1,9 @@
 package gap.common.po;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 
-public class LogPO {
+public class LogPO implements Serializable {
 
 	private UserPO userPO;
 	private Date date;

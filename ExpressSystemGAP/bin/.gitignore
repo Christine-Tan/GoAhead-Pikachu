@@ -1,5 +1,6 @@
-/client/
-/stub_drivers/
-/po/
-/util/
+/client
+/dataservice
+/po
 /server
+/stub_drivers
+/util

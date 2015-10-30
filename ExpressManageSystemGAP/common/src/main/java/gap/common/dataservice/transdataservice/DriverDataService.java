@@ -3,16 +3,18 @@ package gap.common.dataservice.transdataservice;
 import gap.common.po.DriverPO;
 import gap.common.util.ResultMessage;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.List;
 
-public interface DriverDataService {
-	public List<DriverPO> getAll();
+public interface DriverDataService extends Remote {
+	public List<DriverPO> getAll() throws RemoteException;
 
-	public ResultMessage add(DriverPO po);
+	public ResultMessage add(DriverPO po) throws RemoteException;
 
-	public DriverPO find(String ins_id);
+	public DriverPO find(String ins_id) throws RemoteException;
 
-	public ResultMessage modify(DriverPO po);
+	public ResultMessage modify(DriverPO po) throws RemoteException;
 
-	public ResultMessage delete(String ins_id);
+	public ResultMessage delete(String ins_id) throws RemoteException;
 }

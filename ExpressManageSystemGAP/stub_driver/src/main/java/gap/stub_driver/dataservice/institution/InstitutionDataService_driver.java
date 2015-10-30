@@ -1,11 +1,14 @@
 package gap.stub_driver.dataservice.institution;
 
+import java.rmi.RemoteException;
+
 import gap.common.dataservice.managedataservice.InstitutionDataService;
 import gap.common.po.InstitutionPO;
 import gap.common.util.ResultMessage;
 
 public class InstitutionDataService_driver {
-	public void driver(InstitutionDataService institutionData) {
+	public void driver(InstitutionDataService institutionData)
+			throws RemoteException {
 		InstitutionPO ins1 = new InstitutionPO("0011000", "WestNo1", "Beijing", 50);
 		InstitutionPO ins2 = new InstitutionPO("0011001", "EastNo2", "Beijing",50);
 		if (institutionData.add(ins1).equals(ResultMessage.SUCCEED)) {
@@ -36,6 +39,11 @@ public class InstitutionDataService_driver {
 	public static void main(String[] args) {
 		InstitutionDataService institutionData = new InstitutionDataService_stub();
 		InstitutionDataService_driver driver = new InstitutionDataService_driver();
-		driver.driver(institutionData);
+		try {
+			driver.driver(institutionData);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 }
