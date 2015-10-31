@@ -2,8 +2,10 @@ package gap.server.initial;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.logdataservice.LogDataService;
+import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.server.data.logdata.LogDataServiceImpl;
+import gap.server.data.transdata.CarDataServiceImpl;
 import gap.server.data.userdata.UserDataServiceImpl;
 import gap.server.databaseutility.Lancher;
 
@@ -23,14 +25,18 @@ public class NetInitial {
 		initial();
 		UserDataService userdataservice;
 		LogDataService logdataservice;
+		CarDataService cardataservice;
 		try {
 			userdataservice = new UserDataServiceImpl();
 			logdataservice = new LogDataServiceImpl();
+			cardataservice = new CarDataServiceImpl();
 			LocateRegistry.createRegistry(Config.RMI_port);
 			Naming.bind(Config.url + ServiceName.USER_DATA_SERVICE,
 					userdataservice);
 			Naming.bind(Config.url + ServiceName.LOG_DATA_SERVICE,
 					logdataservice);
+			Naming.bind(Config.url + ServiceName.CAR_DATA_SERVICE,
+					cardataservice);
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

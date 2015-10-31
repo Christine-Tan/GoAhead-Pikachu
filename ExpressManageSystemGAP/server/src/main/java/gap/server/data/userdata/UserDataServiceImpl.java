@@ -22,7 +22,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的构造函数存根
 	}
 
-	public List<UserPO> getAll() throws RemoteException{
+	public List<UserPO> getAll() throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			List<UserPO> users = new ArrayList<UserPO>();
@@ -46,7 +46,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	public ResultMessage add(UserPO po) throws RemoteException{
+	public ResultMessage add(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		String user_id = "'" + po.getUserId() + "'", username = "'"
 				+ po.getUserName() + "'", password = "'" + po.getPassword()
@@ -86,7 +86,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		return ResultMessage.SUCCEED;
 	}
 
-	public UserPO find(String user_id) throws RemoteException{
+	public UserPO find(String user_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			ResultSet re = NetModule.excutor
@@ -106,7 +106,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	public ResultMessage modify(UserPO po) throws RemoteException{
+	public ResultMessage modify(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		String user_id = "'" + po.getUserId() + "'", username = "'"
 				+ po.getUserName() + "'", password = "'" + po.getPassword()
@@ -138,7 +138,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		return ResultMessage.SUCCEED;
 	}
 
-	public ResultMessage delete(String user_id) throws RemoteException{
+	public ResultMessage delete(String user_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			NetModule.excutor.excute("DELETE FROM user WHERE id=" + user_id
