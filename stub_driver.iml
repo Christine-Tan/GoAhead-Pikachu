@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <conelement value="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/ExpressManageSystemGAP/stub_driver/src/main/java" expected_position="0" />
+      <src_folder value="file://$MODULE_DIR$/ExpressManageSystemGAP/stub_driver/src/test/java" expected_position="1" />
+    </src_description>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/ExpressManageSystemGAP/stub_driver/target/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/ExpressManageSystemGAP/stub_driver">
+      <sourceFolder url="file://$MODULE_DIR$/ExpressManageSystemGAP/stub_driver/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ExpressManageSystemGAP/stub_driver/src/test/java" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" level="application" />
+    <orderEntry type="module" module-name="client" />
+    <orderEntry type="module" module-name="common" />
+    <orderEntry type="module" module-name="server" />
+    <orderEntry type="jdk" jdkName="JavaSE-1.7" jdkType="JavaSDK" />
+  </component>
+</module>
