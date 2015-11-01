@@ -68,7 +68,7 @@ public class InventoryDataService_stub implements InventoryDataService{
 	@Override
 	public double getAlarm() {
 		// TODO Auto-generated method stub
-		return this.getAlarm();
+		return this.alarmValue;
 	}
 
 }

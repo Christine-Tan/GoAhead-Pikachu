@@ -3,9 +3,13 @@ package gap.common.po;
 import java.io.Serializable;
 
 public class GoodsPO implements Serializable {
+	//快递编号(10位0~9数字)
 	private String expressorder_id;
+	//仓库中存放位置
 	private String location;
+	//所属分区
 	private String sector;
+	//入库日期
 	private String date;
 
 	public GoodsPO(String expressorder_id, String location, String sector,

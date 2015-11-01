@@ -4,16 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryPO {
+	//警戒值，百分比
 	private double alarmValue = 70;
+	//各分区可存放快递件数，整数
 	static int planeMax = 100;
 	static int trainMax = 100;
 	static int carMax = 100;
 	final static int flexMax = 100;
+	//各分区快递列表
 	private ArrayList<GoodsPO> planeSector;
 	private ArrayList<GoodsPO> trainSector;
 	private ArrayList<GoodsPO> carSector;
 	private static ArrayList<String> flexibleSector;
-	// 分区占用比
+	// 各分区占用比，百分比
 	double planeSused, trainSused, carSused, flexSused;
 
 	public InventoryPO(ArrayList<GoodsPO> planeSector,

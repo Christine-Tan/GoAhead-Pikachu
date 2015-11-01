@@ -6,7 +6,7 @@ public class StockoutOrderVO {
 	private List<String> expressorder_ids;
 	private String outDate, destination, transportation, identifier;
 
-	// 出库日期，目的地，货运方式，中转单编号或装车单编号
+	// 出库日期，目的地，货运方式，中转单编号或装车单编号(20位0~9数字)
 
 
 	public StockoutOrderVO(List<String> expressorder_ids, String outDate,
