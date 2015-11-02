@@ -6,7 +6,7 @@ public class StockinOrderVO {
 	private List<String> expressorder_ids;
 	private String inDate, destination, sector, location,identifier;
 
-	// 到达日期，目的地，分区，位置,入库单编号
+	// 到达日期，目的地，分区，位置,入库单编号(20位0~9数字)
 
 
 	public StockinOrderVO(List<String> expressorder_ids, String inDate,

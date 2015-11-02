@@ -1,9 +1,13 @@
 package gap.client.vo;
 
 public class GoodsVO {
+	//快递编号10位0~9数字
 	private String expressorder_id;
+	//仓库中存放位置
 	private String location;
+	//所属分区
 	private String sector;
+	//入库日期
 	private String date;
 	
 	

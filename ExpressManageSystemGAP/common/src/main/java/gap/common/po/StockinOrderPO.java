@@ -7,7 +7,7 @@ public class StockinOrderPO implements Serializable {
 	private List<String> expressorder_ids;
 	private String inDate, destination, sector, location, identifier;
 
-	// 到达日期，目的地，分区，位置,入库单编号
+	// 到达日期，目的地，分区，位置,入库单编号(20位0~9数字)
 
 	public StockinOrderPO() {
 		// TODO 自动生成的构造函数存根
