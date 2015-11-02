@@ -28,4 +28,8 @@ public class ResultMessage implements Serializable {
 		RECEIVED = new ResultMessage("received");
 
 	}
+
+	public String toString() {
+		return message;
+	}
 }
