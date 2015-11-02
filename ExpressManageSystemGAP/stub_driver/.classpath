@@ -20,6 +20,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/git_repository/GoAhead-Pikachu/ExpressManageSystemGAP/stub_driver/src/main/java/gap/stub_driver/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="src/main/java/gap/stub_driver/junit-4.12.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
