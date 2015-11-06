@@ -7,7 +7,7 @@
       <src_folder value="file://$MODULE_DIR$/ExpressManageSystemGAP/common/src/test/java" expected_position="1" />
     </src_description>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <output url="file://$MODULE_DIR$/ExpressManageSystemGAP/common/target/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/ExpressManageSystemGAP/common">
@@ -15,7 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$/ExpressManageSystemGAP/common/src/test/java" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="jdk" jdkName="JavaSE-1.7" jdkType="JavaSDK" />
-    <orderEntry type="library" name="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" level="application" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" exported="" name="junit" level="project" />
   </component>
 </module>

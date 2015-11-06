@@ -15,10 +15,10 @@
       <sourceFolder url="file://$MODULE_DIR$/ExpressManageSystemGAP/stub_driver/src/test/java" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER" level="application" />
     <orderEntry type="module" module-name="client" />
     <orderEntry type="module" module-name="common" />
     <orderEntry type="module" module-name="server" />
-    <orderEntry type="jdk" jdkName="JavaSE-1.7" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="library" exported="" name="junit" level="project" />
   </component>
 </module>

@@ -6,15 +6,16 @@
       <src_folder value="file://$MODULE_DIR$/ExpressSystemGAP/src" expected_position="0" />
     </src_description>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
     <output url="file://$MODULE_DIR$/ExpressSystemGAP/bin" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/ExpressSystemGAP">
       <sourceFolder url="file://$MODULE_DIR$/ExpressSystemGAP/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ExpressSystemGAP/bin/client/blservice/expressorderblservice" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="jdk" jdkName="JavaSE-1.7" jdkType="JavaSDK" />
-    <orderEntry type="module-library">
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="module-library" exported="">
       <library name="mysql-connector-java-5.1.36-bin.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/ExpressSystemGAP/src/server/mysql-connector-java-5.1.36-bin.jar!/" />
@@ -23,5 +24,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="junit" level="project" />
   </component>
 </module>
