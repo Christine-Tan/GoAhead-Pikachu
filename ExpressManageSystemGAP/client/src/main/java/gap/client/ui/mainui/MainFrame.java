@@ -1,6 +1,7 @@
 package gap.client.ui.mainui;
 
 import gap.client.ui.courierui.ExpressorderInputPanel;
+import gap.client.ui.courierui.ExpressorderReceivePanel;
 import gap.client.ui.util.Defaut;
 import gap.client.ui.util.SwingConsole;
 
@@ -13,47 +14,62 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class MainFrame extends JFrame {
-	private JPanel titlePanel, navPanel, mainPanel, messagePanel;
+	public JPanel titlePanel, navPanel, mainPanel, messagePanel;
+	private GridBagLayout grid;
+	private GridBagConstraints gcons;
+	private JPanel pa;
 
 	public MainFrame() {
 		MainFrameListener listener = new MainFrameListener();
 		addMouseListener(listener);
 		addMouseMotionListener(listener);
+		grid = new GridBagLayout();
+		gcons = new GridBagConstraints();
+		pa = (JPanel) getContentPane();
 		courierInitial();
 	}
 
 	void courierInitial() {
+
 		titlePanel = new TitlePanel(this);
+
 		navPanel = new NavPanel(this);
-		mainPanel = new ExpressorderInputPanel();
+		JPanel panel1 = new ExpressorderInputPanel(), panel2 = new ExpressorderReceivePanel();
 		Nav nav1 = new Nav("订单信息输入", null);
 		Nav nav2 = new Nav("收件信息输入", null);
-		((NavPanel) navPanel).addNav(nav1, mainPanel);
-		((NavPanel) navPanel).addNav(nav2, mainPanel);
+		mainPanel = panel1;
+		nav1.selected = true;
+		((NavPanel) navPanel).addNav(nav1, panel1);
+		((NavPanel) navPanel).addNav(nav2, panel2);
 
 		messagePanel = new MessagePanel(this);
-		GridBagLayout grid = new GridBagLayout();
-		GridBagConstraints gcons = new GridBagConstraints();
+
 		gcons.ipadx = Defaut.NAV_WIDTH;
 		gcons.ipady = Defaut.TITLE_HEIGHT;
 		gcons.fill = GridBagConstraints.BOTH;
-		JPanel pa = (JPanel) getContentPane();
 		pa.setLayout(grid);
+
 		SwingConsole
 				.addComponent(grid, gcons, pa, titlePanel, 0, 0, 2, 1, 1, 0);
 		SwingConsole.addComponent(grid, gcons, pa, navPanel, 0, 1, 1, 2, 0, 1);
 		SwingConsole.addComponent(grid, gcons, pa, mainPanel, 1, 1, 1, 1, 1, 1);
 		SwingConsole.addComponent(grid, gcons, pa, messagePanel, 1, 2, 1, 1, 1,
 				0);
+
 		setUndecorated(true);
-		// setCursor(UICursor.CURSOR1);
 		SwingConsole.run(this, 1000, 650);
 	}
 
-	public void setMainPanel(JPanel mainPanel) {
-		this.mainPanel = mainPanel;
+	public void setMainPanel(final JPanel mainPanel) {
+		remove(MainFrame.this.mainPanel);
+		MainFrame.this.mainPanel = mainPanel;
+		SwingConsole.addComponent(grid, gcons, pa, mainPanel, 1, 1, 1, 1, 1, 1);
+		repaint();
+		validate();
+
 	}
 
 	public static void main(String[] args) {
