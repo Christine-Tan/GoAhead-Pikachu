@@ -5,7 +5,10 @@ import gap.client.ui.courierui.ExpressorderReceivePanel;
 import gap.client.ui.util.Defaut;
 import gap.client.ui.util.SwingConsole;
 
+import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Rectangle;
@@ -13,6 +16,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,6 +31,7 @@ public class MainFrame extends JFrame {
 	private GridBagLayout grid;
 	private GridBagConstraints gcons;
 	private JPanel pa;
+	MainFrameListener listener;
 
 	public MainFrame() {
 		
@@ -66,9 +71,19 @@ public class MainFrame extends JFrame {
 
 		setUndecorated(true);
 		SwingConsole.run(this, 1000, 650);
-		MainFrameListener listener = new MainFrameListener(this);
+		listener = new MainFrameListener(this);
 		addMouseListener(listener);
 		addMouseMotionListener(listener);
+	}
+	
+	@Override
+	public void paintComponents(Graphics g) {
+		// TODO Auto-generated method stub
+		Graphics2D graphics2d = (Graphics2D)g;
+		g.setColor(Color.black);
+		graphics2d.fill(listener.east);
+		graphics2d.fill(listener.north);
+		
 	}
 
 	public void setMainPanel(final JPanel mainPanel) {
@@ -103,9 +118,9 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 	Rectangle west = new Rectangle();
 	Rectangle northWest = new Rectangle();
 	Rectangle north = new Rectangle();
-	Map<Rectangle, Cursor> cursorMap = new HashMap<>(8);
+//	Map<Rectangle, Cursor> cursorMap = new HashMap<>(8);
 	ArrayList<Rectangle> rectangles = new ArrayList<>(8);
-	
+	ArrayList<Cursor> cursors = new ArrayList<>(8);
 	
 	public MainFrameListener(JFrame frame) {
 		// TODO Auto-generated constructor stub
@@ -120,16 +135,25 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 		rectangles.add(northWest);
 		rectangles.add(north);
 
+		cursors.add(new Cursor(Cursor.NE_RESIZE_CURSOR) );
+		cursors.add(new Cursor(Cursor.E_RESIZE_CURSOR) );
+		cursors.add(new Cursor(Cursor.SE_RESIZE_CURSOR) );
+		cursors.add(new Cursor(Cursor.S_RESIZE_CURSOR) );
+		cursors.add(new Cursor(Cursor.SW_RESIZE_CURSOR) );
+		cursors.add(new Cursor(Cursor.W_RESIZE_CURSOR) );
+		cursors.add(new Cursor(Cursor.NW_RESIZE_CURSOR) );
+		cursors.add(new Cursor(Cursor.N_RESIZE_CURSOR) );
 		
-		cursorMap.put(northEast,new Cursor(Cursor.NE_RESIZE_CURSOR) );
-		cursorMap.put(east,		new Cursor(Cursor.E_RESIZE_CURSOR) );
-		cursorMap.put(southEast,new Cursor(Cursor.NW_RESIZE_CURSOR) );
-		cursorMap.put(south,	new Cursor(Cursor.S_RESIZE_CURSOR) );
-		cursorMap.put(southWest,new Cursor(Cursor.SW_RESIZE_CURSOR) );
-		cursorMap.put(west,		new Cursor(Cursor.W_RESIZE_CURSOR) );
-		cursorMap.put(northWest,new Cursor(Cursor.NW_RESIZE_CURSOR) );
-		cursorMap.put(north,	new Cursor(Cursor.N_RESIZE_CURSOR) );
 		
+//		cursorMap.put(northEast,new Cursor(Cursor.NE_RESIZE_CURSOR) );
+//		cursorMap.put(east,		new Cursor(Cursor.E_RESIZE_CURSOR) );
+//		cursorMap.put(southEast,new Cursor(Cursor.NW_RESIZE_CURSOR) );
+//		cursorMap.put(south,	new Cursor(Cursor.S_RESIZE_CURSOR) );
+//		cursorMap.put(southWest,new Cursor(Cursor.SW_RESIZE_CURSOR) );
+//		cursorMap.put(west,		new Cursor(Cursor.W_RESIZE_CURSOR) );
+//		cursorMap.put(northWest,new Cursor(Cursor.NW_RESIZE_CURSOR) );
+//		cursorMap.put(north,	new Cursor(Cursor.N_RESIZE_CURSOR) );
+
 
 		
 		
@@ -153,13 +177,90 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO 自动生成的方法存根
-
-		for(Rectangle rect:cursorMap.keySet()){
-			if(rect.contains(e.getPoint())){
-				frame.setCursor(cursorMap.get(rect));
+		refrashLoaction();
+	
+		int cursorType = frame.getCursor().getType();
+		
+		int nowX = e.getXOnScreen();
+		int nowY = e.getYOnScreen();
+		
+		System.out.println(cursorType);
+		
+		switch(cursorType){
+		
+			case Cursor.NE_RESIZE_CURSOR:
+			{
+				int newWidth = frameWidth+(nowX-ox);
+				int newHeight = frameHeight+(oy-nowY);
+				int newX = frameX + (nowX-ox);
+				int newY = frameY + (nowY-oy);
+				frame.setBounds(frameX, newY, newWidth, newHeight);
+				break;
 			}
-		}
+			case Cursor.NW_RESIZE_CURSOR:
+			{
+				int newWidth = frameWidth+(ox-nowX);
+				int newHeight = frameHeight+(oy-nowY);
+				int newX = frameX + (nowX-ox);
+				int newY = frameY + (nowY-oy);
+				frame.setBounds(newX, newY, newWidth, newHeight);
+				break;
+			}
+			case Cursor.SE_RESIZE_CURSOR:
+			{
+				int newWidth = frameWidth+(nowX-ox);
+				int newHeight = frameHeight+(nowY-oy);
 
+				
+				frame.setBounds(frameX, frameY, newWidth, newHeight);
+				break;
+			}
+			case Cursor.SW_RESIZE_CURSOR:
+			{
+				int newWidth = frameWidth+(ox-nowX);
+				int newHeight = frameHeight+(-oy+nowY);
+				int newX = frameX + (nowX-ox);
+				int newY = frameY + (nowY-oy);
+				frame.setBounds(newX, frameY, newWidth, newHeight);
+				break;
+			}
+			case Cursor.N_RESIZE_CURSOR:
+			{
+	
+				int newHeight = frameHeight+(oy-nowY);
+			
+				int newY = frameY + (nowY-oy);
+				frame.setBounds(frameX, newY, frameWidth, newHeight);
+				break;
+			}
+			case Cursor.S_RESIZE_CURSOR:
+			{
+				
+				int newHeight = frameHeight+(-oy+nowY);	
+				frame.setBounds(frameX, frameY, frameWidth, newHeight);
+				break;
+			}
+			case Cursor.W_RESIZE_CURSOR:
+			{
+				int newWidth = frameWidth+(ox-nowX);
+
+				int newX = frameX + (nowX-ox);
+
+				frame.setBounds(newX, frameY, newWidth, frameHeight);
+				break;
+			}
+			case Cursor.E_RESIZE_CURSOR:
+			{
+				int newWidth = frameWidth+(nowX-ox);
+			
+				frame.setBounds(frameX, frameY, newWidth, frameHeight);
+				break;
+			}
+		
+		
+		}
+		
+		
 		
 	}
 
@@ -167,13 +268,15 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 	public void mouseMoved(MouseEvent e) {
 		// TODO 自动生成的方法存根
 		refrashLoaction();
-	
-		for(Rectangle rect:cursorMap.keySet()){
-			if(rect.contains(e.getPoint())){
-				frame.setCursor(cursorMap.get(rect));
-			}
+		
+		for(int i=0;i<rectangles.size();i++){
+			if(rectangles.get(i).contains(e.getPoint())){
+				frame.setCursor(cursors.get(i));
+				return;
+			}			
 		}
-	
+		
+		frame.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 		
 	
 	}
@@ -193,16 +296,9 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 		frameHeight = height;
 		frameX = frame.getX();
 		frameY = frame.getY();
-		ox = e.getX();
-		oy = e.getY();
-		if (oy < Defaut.TITLE_HEIGHT)
-			titleselected = true;
-		if ((width - ox) <= 10 && (height - oy) <= 10)
-			se_resizeselected = true;
-		if ((width - ox) <= 10 && (10 <= oy && oy <= height - 10))
-			e_resizeselected = true;
-		if ((height - oy) <= 10 && 10 <= ox && ox <= width - 10)
-			s_resizeselected = true;
+		ox = e.getXOnScreen();
+		oy = e.getYOnScreen();
+		
 	}
 
 	@Override
