@@ -8,7 +8,7 @@ public class TestDatabase {
 	public static void main(String[] args) throws IOException {
 
 		try {
-			Excutor excutor = Lancher.lanch();
+			Excutor excutor = DataBaseLancher.lanch();
 			excutor.excute("USE bank;");
 			String sql = "SELECT open_date FROM account";
 			ResultSet re = excutor.excuteQuery(sql);

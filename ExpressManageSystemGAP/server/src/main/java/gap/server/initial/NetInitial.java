@@ -12,7 +12,7 @@ import gap.server.data.order.ArrivedOrderDataServiceImpl;
 import gap.server.data.transdata.CarDataServiceImpl;
 import gap.server.data.transdata.DriverDataServiceImpl;
 import gap.server.data.userdata.UserDataServiceImpl;
-import gap.server.databaseutility.Lancher;
+import gap.server.databaseutility.DataBaseLancher;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -23,7 +23,7 @@ import java.rmi.registry.LocateRegistry;
 public class NetInitial {
 
 	public static void initial() {
-		NetModule.excutor = Lancher.lanch();
+		NetModule.excutor = DataBaseLancher.lanch();
 	}
 
 	public static void main(String[] args) {
