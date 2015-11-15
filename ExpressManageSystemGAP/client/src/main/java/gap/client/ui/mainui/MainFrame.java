@@ -83,8 +83,9 @@ public class MainFrame extends JFrame {
 // 监听类
 class MainFrameListener implements MouseListener, MouseMotionListener {
 	JFrame frame;
-	int ox, oy, frameWidth, frameHeight;
-	boolean titleselected, resizeselected;
+	int ox, oy, frameWidth, frameHeight, frameX, frameY;
+	boolean titleselected, se_resizeselected, e_resizeselected,
+			s_resizeselected;
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -93,8 +94,12 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 		int x = e.getX(), y = e.getY(), dx = x - ox, dy = y - oy;
 		if (titleselected)
 			frame.setLocation(frame.getX() + dx, frame.getY() + dy);
-		if (resizeselected)
+		if (se_resizeselected)
 			frame.setSize(frameWidth + dx, frameHeight + dy);
+		if (e_resizeselected)
+			frame.setSize(frameWidth + dx, frameHeight);
+		if (s_resizeselected)
+			frame.setSize(frameWidth, frameHeight + dy);
 
 	}
 
@@ -106,6 +111,10 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 				.getHeight();
 		if ((width - x) <= 10 && (height - y) <= 10)
 			frame.setCursor(new Cursor(Cursor.SE_RESIZE_CURSOR));
+		else if ((width - x) <= 10 && (10 <= y && y <= height - 10))
+			frame.setCursor(new Cursor(Cursor.E_RESIZE_CURSOR));
+		else if ((height - y) <= 10 && 10 <= x && x <= width - 10)
+			frame.setCursor(new Cursor(Cursor.S_RESIZE_CURSOR));
 		else
 			frame.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 
@@ -124,19 +133,27 @@ class MainFrameListener implements MouseListener, MouseMotionListener {
 		int width = frame.getWidth(), height = frame.getHeight();
 		frameWidth = width;
 		frameHeight = height;
+		frameX = frame.getX();
+		frameY = frame.getY();
 		ox = e.getX();
 		oy = e.getY();
-		if (oy < 40)
+		if (oy < Defaut.TITLE_HEIGHT)
 			titleselected = true;
 		if ((width - ox) <= 10 && (height - oy) <= 10)
-			resizeselected = true;
+			se_resizeselected = true;
+		if ((width - ox) <= 10 && (10 <= oy && oy <= height - 10))
+			e_resizeselected = true;
+		if ((height - oy) <= 10 && 10 <= ox && ox <= width - 10)
+			s_resizeselected = true;
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO 自动生成的方法存根
 		titleselected = false;
-		resizeselected = false;
+		se_resizeselected = false;
+		e_resizeselected = false;
+		s_resizeselected = false;
 	}
 
 	@Override
