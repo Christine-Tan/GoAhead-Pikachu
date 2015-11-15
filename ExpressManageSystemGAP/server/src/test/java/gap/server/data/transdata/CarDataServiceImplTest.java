@@ -1,18 +1,14 @@
 package gap.server.data.transdata;
 
-import static org.junit.Assert.*;
+import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.transdataservice.CarDataService;
+import gap.common.netconfig.RMIConfig;
+import gap.common.po.CarPO;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.transdataservice.CarDataService;
-import gap.common.po.CarPO;
-import gap.server.initial.Config;
-import gap.server.initial.NetInitial;
-import gap.server.initial.NetModule;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +22,7 @@ public class CarDataServiceImplTest {
 	@Test
 	public void test() {
 		try {
-			CarDataService cardata = (CarDataService) Naming.lookup(Config.url+ServiceName.CAR_DATA_SERVICE);
+			CarDataService cardata = (CarDataService) Naming.lookup(RMIConfig.url+ServiceName.CAR_DATA_SERVICE);
 			CarPO po = new CarPO("0010001001", "88888", "0010001", 5);
 			CarPO po1 = new CarPO("0010001002", "44444", "0010001", 3);
 			CarPO po2 = new CarPO("0010001003", "12345", "0010001", 3);

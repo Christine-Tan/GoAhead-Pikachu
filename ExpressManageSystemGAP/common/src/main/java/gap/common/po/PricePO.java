@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class PricePO implements Serializable {
 	// 经济：标准：特快的比例式
+	double eco, standar, express;
+
 	String rate;
 	// 比例基准
 	double base;
@@ -15,23 +17,9 @@ public class PricePO implements Serializable {
 	}
 
 	public PricePO(String id, String rate, double base) {
-		this.rate = rate;
 		this.base = base;
-		cityId = id;
-	}
-
-	/**
-	 * @return rate
-	 */
-	public String getRate() {
-		return rate;
-	}
-
-	/**
-	 * @param rate Ҫ���õ� rate
-	 */
-	public void setRate(String rate) {
 		this.rate = rate;
+		cityId = id;
 	}
 
 	/**
@@ -60,6 +48,14 @@ public class PricePO implements Serializable {
 	 */
 	public void setCityId(String cityId) {
 		this.cityId = cityId;
+	}
+
+	public String getRate() {
+		return rate;
+	}
+
+	public void setRate(String rate) {
+		this.rate = rate;
 	}
 
 }

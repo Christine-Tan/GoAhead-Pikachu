@@ -1,6 +1,6 @@
 package gap.mockobject;
 
-import gap.client.util.PriceCal;
+import gap.client.bl.expressorder.PriceCal;
 import gap.client.vo.ExpressOrderVO;
 
 public class MockPriceCal extends PriceCal {

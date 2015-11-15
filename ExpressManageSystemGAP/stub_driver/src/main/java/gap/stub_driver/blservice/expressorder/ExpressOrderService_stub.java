@@ -107,12 +107,14 @@ public class ExpressOrderService_stub implements ExpressOrderService {
 	private ExpressOrderVO getVO(ExpressOrderPO po) {
 		if (po == null)
 			return null;
-		return new ExpressOrderVO(po.getSender_name(), po.getSender_address(),
-				po.getSender_depart(), po.getSender_cellphone(),
-				po.getReceiver_name(), po.getReceiver_address(),
-				po.getReceiver_depart(), po.getReceiver_cellphone(),
-				po.getExpressType(), po.getCargoInfo(), po.isReceived(),
-				po.getOrder_id(), po.getCurrentins_id(), po.getTargetins_id());
+		return new ExpressOrderVO(po.getSenderInfo().getName(), po
+				.getSenderInfo().getAddress(), po.getSenderInfo().getDepart(),
+				po.getSenderInfo().getCellphone(), po.getReceiverInfo()
+						.getName(), po.getReceiverInfo().getAddress(), po
+						.getReceiverInfo().getDepart(), po.getReceiverInfo()
+						.getCellphone(), po.getExpressType(),
+				po.getCargoInfo(), po.isReceived(), po.getOrder_id(),
+				po.getCurrentins_id(), po.getTargetins_id());
 	}
 
 	private ExpressOrderPO getPO(ExpressOrderVO vo) {

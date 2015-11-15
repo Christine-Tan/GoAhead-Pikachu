@@ -1,16 +1,15 @@
 package gap.server.data.userdata;
 
+import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.userdataservice.UserDataService;
+import gap.common.netconfig.RMIConfig;
+import gap.common.po.UserPO;
+import gap.common.util.UserType;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.userdataservice.UserDataService;
-import gap.common.po.UserPO;
-import gap.common.util.UserType;
-import gap.server.initial.Config;
-import gap.server.initial.NetInitial;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class UserDataServiceImplTest {
 	@Test
 	public void test() throws RemoteException, MalformedURLException,
 			NotBoundException {
-		UserDataService userdata = (UserDataService) Naming.lookup(Config.url
+		UserDataService userdata = (UserDataService) Naming.lookup(RMIConfig.url
 				+ ServiceName.USER_DATA_SERVICE);
 		UserPO po1 = new UserPO("000000001", UserType.ADMINISTRATOR, "yyf", 0,
 				"0010001", "123456");
@@ -37,7 +36,8 @@ public class UserDataServiceImplTest {
 		System.out.println(userdata.add(po3).getMessage());
 		for (UserPO get : userdata.getAll())
 			System.out.println(get.getUserName() + "," + get.getType());
-		po3.setName("plw");
+//		po3.setName("plw");
+		po3.setType(UserType.CENTERCLERK);
 		userdata.modify(po3);
 		for (UserPO get : userdata.getAll())
 			System.out.println(get.getUserName() + "," + get.getType());

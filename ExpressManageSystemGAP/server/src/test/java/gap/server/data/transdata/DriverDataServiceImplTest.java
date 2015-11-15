@@ -1,16 +1,15 @@
 package gap.server.data.transdata;
 
+import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.transdataservice.DriverDataService;
+import gap.common.netconfig.RMIConfig;
+import gap.common.po.DriverPO;
+import gap.common.util.Gender;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.transdataservice.DriverDataService;
-import gap.common.po.DriverPO;
-import gap.common.util.Gender;
-import gap.server.initial.Config;
-import gap.server.initial.NetInitial;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class DriverDataServiceImplTest {
 	@Test
 	public void test() {
 		try {
-			DriverDataService driverData =(DriverDataService) Naming.lookup(Config.url+ServiceName.DRIVER_DATA_SERVICE);
+			DriverDataService driverData =(DriverDataService) Naming.lookup(RMIConfig.url+ServiceName.DRIVER_DATA_SERVICE);
 			DriverPO po = new DriverPO("0010001001", "0010001", "yyf",
 					"1996-03-01", "500113199603013932", "15520065137",
 					"2020-01-01", Gender.MALE);

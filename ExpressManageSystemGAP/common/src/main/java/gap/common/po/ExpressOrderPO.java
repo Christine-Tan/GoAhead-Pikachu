@@ -2,16 +2,15 @@ package gap.common.po;
 
 import gap.common.util.CargoInfo;
 import gap.common.util.ExpressType;
+import gap.common.util.PeopleInfo;
 
 import java.io.Serializable;
 
 public class ExpressOrderPO implements Serializable {
 	// 寄件人姓名、地址、单位、电话
-	private String sender_name, sender_address, sender_depart,
-			sender_cellphone;
+	private PeopleInfo senderInfo;
 	// 收件人姓名、地址、单位、电话
-	private String receiver_name, receiver_address, receiver_depart,
-			receiver_cellphone;
+	private PeopleInfo receiverInfo;
 	// 快递类型
 	private ExpressType expressType;
 	// 货物信息
@@ -40,14 +39,10 @@ public class ExpressOrderPO implements Serializable {
 			String centerLoadOrder_id, String centerArrived_id,
 			String deliveryOrder_id) {
 		super();
-		this.sender_name = sender_name;
-		this.sender_address = sender_address;
-		this.sender_depart = sender_depart;
-		this.sender_cellphone = sender_cellphone;
-		this.receiver_name = receiver_name;
-		this.receiver_address = receiver_address;
-		this.receiver_depart = receiver_depart;
-		this.receiver_cellphone = receiver_cellphone;
+		senderInfo = new PeopleInfo(sender_name, sender_address, sender_depart,
+				sender_cellphone);
+		receiverInfo = new PeopleInfo(receiver_name, receiver_address,
+				receiver_depart, receiver_cellphone);
 		this.expressType = expressType;
 		this.cargoInfo = cargoInfo;
 		this.received = received;
@@ -147,68 +142,20 @@ public class ExpressOrderPO implements Serializable {
 		DeliveryOrder_id = deliveryOrder_id;
 	}
 
-	public String getSender_name() {
-		return sender_name;
+	public PeopleInfo getSenderInfo() {
+		return senderInfo;
 	}
 
-	public void setSender_name(String sender_name) {
-		this.sender_name = sender_name;
+	public void setSenderInfo(PeopleInfo senderInfo) {
+		this.senderInfo = senderInfo;
 	}
 
-	public String getSender_address() {
-		return sender_address;
+	public PeopleInfo getReceiverInfo() {
+		return receiverInfo;
 	}
 
-	public void setSender_address(String sender_address) {
-		this.sender_address = sender_address;
-	}
-
-	public String getSender_depart() {
-		return sender_depart;
-	}
-
-	public void setSender_depart(String sender_depart) {
-		this.sender_depart = sender_depart;
-	}
-
-	public String getSender_cellphone() {
-		return sender_cellphone;
-	}
-
-	public void setSender_cellphone(String sender_cellphone) {
-		this.sender_cellphone = sender_cellphone;
-	}
-
-	public String getReceiver_name() {
-		return receiver_name;
-	}
-
-	public void setReceiver_name(String receiver_name) {
-		this.receiver_name = receiver_name;
-	}
-
-	public String getReceiver_address() {
-		return receiver_address;
-	}
-
-	public void setReceiver_address(String receiver_address) {
-		this.receiver_address = receiver_address;
-	}
-
-	public String getReceiver_depart() {
-		return receiver_depart;
-	}
-
-	public void setReceiver_depart(String receiver_depart) {
-		this.receiver_depart = receiver_depart;
-	}
-
-	public String getReceiver_cellphone() {
-		return receiver_cellphone;
-	}
-
-	public void setReceiver_cellphone(String receiver_cellphone) {
-		this.receiver_cellphone = receiver_cellphone;
+	public void setReceiverInfo(PeopleInfo receiverInfo) {
+		this.receiverInfo = receiverInfo;
 	}
 
 	public String getOrder_id() {

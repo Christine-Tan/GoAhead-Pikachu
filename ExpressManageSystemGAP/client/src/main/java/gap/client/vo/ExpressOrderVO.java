@@ -12,6 +12,8 @@ public class ExpressOrderVO {
 			receiver_cellphone;
 	// 快递类型
 	private ExpressType expressType;
+	// 快递价格
+	private double price;
 	// 货物信息
 	private CargoInfo cargoInfo;
 	// 是否接收
@@ -165,6 +167,14 @@ public class ExpressOrderVO {
 
 	public void setOrder_id(String order_id) {
 		this.order_id = order_id;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 }

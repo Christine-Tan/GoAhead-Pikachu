@@ -2,10 +2,13 @@ package gap.server.initial;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.logdataservice.LogDataService;
+import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
+import gap.common.netconfig.RMIConfig;
 import gap.server.data.logdata.LogDataServiceImpl;
+import gap.server.data.order.ArrivedOrderDataServiceImpl;
 import gap.server.data.transdata.CarDataServiceImpl;
 import gap.server.data.transdata.DriverDataServiceImpl;
 import gap.server.data.userdata.UserDataServiceImpl;
@@ -29,20 +32,24 @@ public class NetInitial {
 		LogDataService logdataservice;
 		CarDataService cardataservice;
 		DriverDataService driverdataservice;
+		ArrivedOrderDataService arrivedOrderdataservice;
 		try {
 			userdataservice = new UserDataServiceImpl();
 			logdataservice = new LogDataServiceImpl();
 			cardataservice = new CarDataServiceImpl();
 			driverdataservice = new DriverDataServiceImpl();
-			LocateRegistry.createRegistry(Config.RMI_port);
-			Naming.bind(Config.url + ServiceName.USER_DATA_SERVICE,
+			arrivedOrderdataservice = new ArrivedOrderDataServiceImpl();
+			LocateRegistry.createRegistry(RMIConfig.RMI_port);
+			Naming.bind(RMIConfig.url + ServiceName.USER_DATA_SERVICE,
 					userdataservice);
-			Naming.bind(Config.url + ServiceName.LOG_DATA_SERVICE,
+			Naming.bind(RMIConfig.url + ServiceName.LOG_DATA_SERVICE,
 					logdataservice);
-			Naming.bind(Config.url + ServiceName.CAR_DATA_SERVICE,
+			Naming.bind(RMIConfig.url + ServiceName.CAR_DATA_SERVICE,
 					cardataservice);
-			Naming.bind(Config.url + ServiceName.DRIVER_DATA_SERVICE,
+			Naming.bind(RMIConfig.url + ServiceName.DRIVER_DATA_SERVICE,
 					driverdataservice);
+			Naming.bind(RMIConfig.url + ServiceName.ARRIVEDORDER_DATA_SERVICE,
+					arrivedOrderdataservice);
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
