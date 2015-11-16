@@ -1,8 +1,5 @@
 package gap.client.vo;
 
-
-
-
 public class CityVO {
 	String cityName;
 	
@@ -10,4 +7,7 @@ public class CityVO {
 		this.cityName=cityName;
 	}
 	
+	public String getCity(){
+		return cityName;
+	}
 }
