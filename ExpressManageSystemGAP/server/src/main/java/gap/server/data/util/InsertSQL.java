@@ -30,7 +30,7 @@ public class InsertSQL {
 	}
 
 	public String createSQL() {
-		String sql = "INSERT INTO " + tableName + "(";
+		String sql = "INSERT INTO " + tableName + " (";
 		for (int i = 0; i < fields.size(); i++) {
 			sql += fields.get(i);
 			if (i != fields.size() - 1)
