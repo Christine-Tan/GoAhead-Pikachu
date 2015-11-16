@@ -1,9 +1,11 @@
 package gap.common.po;
 
+import java.util.ArrayList;
+
 import gap.common.util.SectorType;
 
 public class SectorFlexPO {
-	public SectorType type;
+	final public SectorType type = SectorType.Flex;
 	// 警戒值，百分比
 	private double alarmVal;
 
@@ -22,16 +24,26 @@ public class SectorFlexPO {
 	// 一架中位置个数
 	private int units;
 	
+	//分配给航运区的架数
+	private int pshelves;
+	
+	//分配给铁运区的架数
+	private int tshelves;
+	//分配给汽运区的架数
+	private int cshelves;
+	
 	//各架分配情况
 	private SectorType[][] usedState;
+	
+	//分配给航运区的区域中存放的快递
+	private ArrayList<GoodsPO> toPlane;
+	//分配给铁运区的区域中存放的快递
+	private ArrayList<GoodsPO> toTrain;
+	//分配给汽运区的区域中存放的快递
+	private ArrayList<GoodsPO> toCar;
+	
+	
 
-	public SectorType getType() {
-		return type;
-	}
-
-	public void setType(SectorType type) {
-		this.type = type;
-	}
 
 	public double getAlarmVal() {
 		return alarmVal;
@@ -88,6 +100,56 @@ public class SectorFlexPO {
 	public void setUsedState(SectorType[][] usedState) {
 		this.usedState = usedState;
 	}
+
+	public int getPshelves() {
+		return pshelves;
+	}
+
+	public void setPshelves(int pshelves) {
+		this.pshelves = pshelves;
+	}
+
+	public int getTshelves() {
+		return tshelves;
+	}
+
+	public void setTshelves(int tshelves) {
+		this.tshelves = tshelves;
+	}
+
+	public int getCshelves() {
+		return cshelves;
+	}
+
+	public void setCshelves(int cshelves) {
+		this.cshelves = cshelves;
+	}
+
+	public ArrayList<GoodsPO> getToPlane() {
+		return toPlane;
+	}
+
+	public void setToPlane(ArrayList<GoodsPO> toPlane) {
+		this.toPlane = toPlane;
+	}
+
+	public ArrayList<GoodsPO> getToTrain() {
+		return toTrain;
+	}
+
+	public void setToTrain(ArrayList<GoodsPO> toTrain) {
+		this.toTrain = toTrain;
+	}
+
+	public ArrayList<GoodsPO> getToCar() {
+		return toCar;
+	}
+
+	public void setToCar(ArrayList<GoodsPO> toCar) {
+		this.toCar = toCar;
+	}
+	
+	
 	
 	
 }

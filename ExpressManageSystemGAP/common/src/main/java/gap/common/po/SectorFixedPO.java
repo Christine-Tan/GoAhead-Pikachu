@@ -26,9 +26,30 @@ public class SectorFixedPO {
 
 	// 一架中位置个数
 	private int units;
+	
+	//机动区分配给的大小
+	private int addedsize;
 
 	// 快递list
 	private ArrayList<GoodsPO> goodsList;
+	
+	
+
+	public SectorFixedPO(SectorType type, double alarmVal, int maxCapacity,
+			double used, int rows, int shelves, int units, int addedsize,
+			ArrayList<GoodsPO> goodsList) {
+		super();
+		this.type = type;
+		this.alarmVal = alarmVal;
+		this.maxCapacity = maxCapacity;
+		this.used = used;
+		this.rows = rows;
+		this.shelves = shelves;
+		this.units = units;
+		this.addedsize = addedsize;
+		this.goodsList = goodsList;
+	}
+	
 
 	public ResultMessage add(GoodsPO goods) {
 		for (GoodsPO g : this.goodsList) {
@@ -146,4 +167,22 @@ public class SectorFixedPO {
 	public void setUnits(int units) {
 		this.units = units;
 	}
+
+	public SectorType getType() {
+		return type;
+	}
+
+	public void setType(SectorType type) {
+		this.type = type;
+	}
+
+	public int getAddedsize() {
+		return addedsize;
+	}
+
+	public void setAddedsize(int addedsize) {
+		this.addedsize = addedsize;
+	}
+	
+	
 }

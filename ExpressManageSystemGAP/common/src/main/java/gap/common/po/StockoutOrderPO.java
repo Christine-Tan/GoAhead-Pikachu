@@ -9,9 +9,6 @@ public class StockoutOrderPO implements Serializable {
 
 	// 出库日期，目的地，货运方式，中转单编号或装车单编号(20位0~9数字)
 
-	public StockoutOrderPO() {
-
-	}
 
 	public StockoutOrderPO(List<String> expressorder_ids, String outDate,
 			String destination, String transportation, String identifier) {
