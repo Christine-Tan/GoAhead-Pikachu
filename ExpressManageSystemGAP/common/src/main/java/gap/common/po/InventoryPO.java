@@ -18,6 +18,7 @@ public class InventoryPO {
 	private static ArrayList<String> flexibleSector;
 	// 各分区占用比，百分比
 	double planeSused, trainSused, carSused, flexSused;
+	
 
 	public InventoryPO(ArrayList<GoodsPO> planeSector,
 			ArrayList<GoodsPO> trainSector, ArrayList<GoodsPO> carSector,

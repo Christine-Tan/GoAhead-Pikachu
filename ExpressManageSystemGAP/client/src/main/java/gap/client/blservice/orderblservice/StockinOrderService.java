@@ -1,6 +1,7 @@
 package gap.client.blservice.orderblservice;
 
 import gap.client.vo.ExpressOrderVO;
+import gap.client.vo.GoodsVO;
 import gap.client.vo.StockinOrderVO;
 import gap.common.util.ResultMessage;
 
@@ -13,4 +14,6 @@ public interface StockinOrderService {
 	public ResultMessage save(StockinOrderVO order);
 
 	public StockinOrderVO find(String id);
+	
+	public String getLocation(GoodsVO vo);
 }
