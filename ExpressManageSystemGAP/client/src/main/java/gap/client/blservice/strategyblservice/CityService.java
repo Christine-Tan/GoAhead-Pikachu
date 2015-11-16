@@ -12,4 +12,6 @@ public interface CityService {
 	public CityVO getCity(String CityId);
 	
 	public ResultMessage add(CityVO vo);
+	
+	public double getDistance(CityVO vo1,CityVO vo2);
 }

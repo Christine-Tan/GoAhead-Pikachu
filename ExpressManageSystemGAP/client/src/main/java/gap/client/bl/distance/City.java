@@ -33,8 +33,13 @@ public class City implements CityService{
 	@Override
 	public ResultMessage add(CityVO vo) {
 		// TODO Auto-generated method stub
-		
 		return null;
+	}
+
+	@Override
+	public double getDistance(CityVO vo1,CityVO vo2) {
+		// TODO Auto-generated method stub
+		return distanceCal.getDistance(vo1, vo2);
 	}
         
 }
