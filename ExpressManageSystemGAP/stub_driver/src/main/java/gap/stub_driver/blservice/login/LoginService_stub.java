@@ -6,6 +6,7 @@ import gap.client.blservice.loginblservice.LoginService;
 import gap.client.vo.LogVO;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.UserPO;
+import gap.common.util.Gender;
 import gap.common.util.UserType;
 import gap.stub_driver.dataservice.userdata.UserDataService_stub;
 
@@ -15,7 +16,7 @@ public class LoginService_stub implements LoginService {
 	public LoginService_stub() throws RemoteException {
 		user = new UserDataService_stub();
 		UserPO po = new UserPO("001", UserType.BUSSINESSCLERK, "yyf", 0,
-				"0010001", "000000");
+				"0010001", "000000", "杨雁飞", Gender.MALE);
 		user.add(po);
 	}
 

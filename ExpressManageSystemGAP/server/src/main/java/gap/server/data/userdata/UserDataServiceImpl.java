@@ -68,7 +68,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		int rank = po.getRank();
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT *FROM user WHERE id='" + user_id + "';");
+					.excuteQuery("SELECT *FROM user WHERE id='" + user_id
+							+ "';");
 			if (re.next()) {
 				System.out.println(re.getString("username"));
 				return ResultMessage.EXITED;
@@ -76,7 +77,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		try {
 			insertSQL.clear();
@@ -93,7 +94,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
 	}
@@ -102,7 +103,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT *FROM user WHERE id= '" + user_id + "';");
+					.excuteQuery("SELECT *FROM user WHERE id= '" + user_id
+							+ "';");
 			re.next();
 			String id = re.getString(id_f), username = re.getString(username_f), password = re
 					.getString(password_f), ins_id = re
@@ -129,14 +131,15 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		int rank = po.getRank();
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT *FROM user WHERE id='" + user_id + "';");
+					.excuteQuery("SELECT *FROM user WHERE id='" + user_id
+							+ "';");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
 			}
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		try {
 			updateSQL.clear();
@@ -179,8 +182,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM user WHERE username ='" + username
-							+ "';");
+					.excuteQuery("SELECT * FROM user WHERE username ='"
+							+ username + "';");
 			re.next();
 			String id = re.getString(id_f), password = re.getString(password_f), ins_id = re
 					.getString(institution_f), name = re.getString(name_f);

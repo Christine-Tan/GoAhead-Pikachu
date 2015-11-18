@@ -4,15 +4,16 @@ import java.rmi.RemoteException;
 
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.UserPO;
+import gap.common.util.Gender;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
 public class UserDataService_driver {
 	public void driver(UserDataService userData) throws RemoteException {
 		UserPO user1 = new UserPO("100000001", UserType.DELIVERY, "Feifei", 1,
-				"0011001", "abc123");
+				"0011001", "abc123", "杨雁飞", Gender.MALE);
 		UserPO user2 = new UserPO("000000001", UserType.ADMINISTRATOR, "Shiny",
-				5, "", "admin");
+				5, "", "admin", "的哇", Gender.FEMALE);
 		if (userData.add(user1).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed");
 		}

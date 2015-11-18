@@ -65,7 +65,7 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		try {
 			insertSQL.clear();
@@ -78,7 +78,7 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
 	}
@@ -118,7 +118,7 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		try {
 			String sql = "UPDATE car set car_num=" + car_num
@@ -128,7 +128,7 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
 	}
@@ -141,7 +141,7 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
 	}

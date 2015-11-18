@@ -66,7 +66,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		try {
 			String sql = "INSERT INTO driver (id,name,institution,gender,birth,phone,identity_num,driving_license_due) VALUES ("
@@ -89,7 +89,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
 	}
@@ -134,7 +134,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		try {
 			String sql = "UPDATE driver set name=" + name + ",institution="
@@ -146,7 +146,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
 	}
@@ -158,7 +158,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
 	}

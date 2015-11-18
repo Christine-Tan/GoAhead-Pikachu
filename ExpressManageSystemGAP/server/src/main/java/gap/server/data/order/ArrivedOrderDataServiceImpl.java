@@ -44,7 +44,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return new ResultMessage("failed");
+			return ResultMessage.FAILED;
 		}
 		return null;
 	}
