@@ -19,6 +19,8 @@ public class Excutor {
 			excutor = new Excutor();
 		return excutor;
 	}
+	
+	private Excutor(){}
 
 	/**
 	 * 执行查询语句
