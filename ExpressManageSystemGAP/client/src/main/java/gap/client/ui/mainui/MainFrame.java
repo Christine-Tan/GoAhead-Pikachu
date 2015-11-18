@@ -79,6 +79,7 @@ public class MainFrame extends JFrame {
 	@Override
 	public void paintComponents(Graphics g) {
 		// TODO Auto-generated method stub
+		super.paintComponents(g);
 		Graphics2D graphics2d = (Graphics2D)g;
 		g.setColor(Color.black);
 		graphics2d.fill(listener.east);

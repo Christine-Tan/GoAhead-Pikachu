@@ -9,8 +9,10 @@ import gap.server.initial.NetModule;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 		ArrivedOrderDataService {
@@ -49,6 +51,17 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 
 	public ArrivedOrderPO find(String order_id) throws RemoteException {
 		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT * FROM arrivedorder WHERE order_id=order_id";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			String expressorderString;
+			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
+			while (re.next()) {
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 

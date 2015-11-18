@@ -19,5 +19,4 @@ public class MockPriceCal extends PriceCal {
 			return 0;
 		}
 	}
-
 }

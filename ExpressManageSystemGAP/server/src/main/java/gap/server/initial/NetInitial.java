@@ -20,6 +20,8 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import static gap.server.initial.NetModule.*;
+
 public class NetInitial {
 
 	public static void initial() {
@@ -28,11 +30,7 @@ public class NetInitial {
 
 	public static void main(String[] args) {
 		initial();
-		UserDataService userdataservice;
-		LogDataService logdataservice;
-		CarDataService cardataservice;
-		DriverDataService driverdataservice;
-		ArrivedOrderDataService arrivedOrderdataservice;
+
 		try {
 			userdataservice = new UserDataServiceImpl();
 			logdataservice = new LogDataServiceImpl();

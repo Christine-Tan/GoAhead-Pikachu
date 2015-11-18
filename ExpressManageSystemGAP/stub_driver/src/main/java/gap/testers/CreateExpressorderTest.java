@@ -25,6 +25,5 @@ public class CreateExpressorderTest {
 		ExpressOrderVO order2 = expressOrder.createOrder(vo2);
 		assertEquals(order1.getPrice(), 10, 0.01);
 		assertEquals(order2.getPrice(), 20, 0.01);
-
 	}
 }
