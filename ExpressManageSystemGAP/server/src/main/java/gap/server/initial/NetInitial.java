@@ -24,19 +24,19 @@ import static gap.server.initial.NetModule.*;
 
 public class NetInitial {
 
-	public static void initial() {
+	public static void initial() throws RemoteException {
 		NetModule.excutor = DataBaseLancher.lanch();
+
+		userdataservice = new UserDataServiceImpl();
+		logdataservice = new LogDataServiceImpl();
+		cardataservice = new CarDataServiceImpl();
+		driverdataservice = new DriverDataServiceImpl();
+		arrivedOrderdataservice = new ArrivedOrderDataServiceImpl();
 	}
 
 	public static void main(String[] args) {
-		initial();
-
 		try {
-			userdataservice = new UserDataServiceImpl();
-			logdataservice = new LogDataServiceImpl();
-			cardataservice = new CarDataServiceImpl();
-			driverdataservice = new DriverDataServiceImpl();
-			arrivedOrderdataservice = new ArrivedOrderDataServiceImpl();
+			initial();
 			LocateRegistry.createRegistry(RMIConfig.RMI_port);
 			Naming.bind(RMIConfig.url + ServiceName.USER_DATA_SERVICE,
 					userdataservice);
@@ -48,6 +48,7 @@ public class NetInitial {
 					driverdataservice);
 			Naming.bind(RMIConfig.url + ServiceName.ARRIVEDORDER_DATA_SERVICE,
 					arrivedOrderdataservice);
+			
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

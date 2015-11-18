@@ -36,7 +36,7 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 					+ tableName + ";");
 			UserDataService userdata = new UserDataServiceImpl();
 			while (re.next()) {
-				UserPO user = userdata.find(re.getString(user_idf));
+				UserPO user = userdata.findById(re.getString(user_idf));
 				Date date = re.getDate(timef);
 				String operate = re.getString(operatef);
 				logs.add(new LogPO(user, date, operate));
@@ -54,12 +54,6 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 
 		try {
-			// String id = "'" + logPO.getUserPO().getUserId() + "'";
-			// String operate = "'" + logPO.getOperate() + "'";
-			// String date = "'" + logPO.getDate() + "'";
-			// String sql = "INSERT INTO log (user_id,time,operate) VALUES (" +
-			// id
-			// + "," + date + "," + operate + ");";
 			insertSQL.clear();
 			insertSQL.add(user_idf, logPO.getUserPO().getUserId());
 			insertSQL.add(operatef, logPO.getOperate());

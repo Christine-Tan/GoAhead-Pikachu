@@ -1,8 +1,9 @@
-package gap.client.vo;
+package gap.client.util;
 
+import gap.client.vo.CarVO;
 import gap.common.po.CarPO;
 
-public class CarVO {
+public class Car {
 	// 车辆编号
 	private String car_id;
 	// 车牌号
@@ -12,18 +13,35 @@ public class CarVO {
 	// 所在单位
 	private String ins_id;
 
-	public CarVO(String car_id, String car_num, String ins_id, int serve_time) {
+	public Car(String car_id, String car_num, int serve_time, String ins_id) {
 		super();
 		this.car_id = car_id;
 		this.car_num = car_num;
-		this.setIns_id(ins_id);
 		this.serve_time = serve_time;
+		this.ins_id = ins_id;
 	}
 
-	public CarVO() {
-
+	public Car(CarPO po) {
+		this.car_id = po.getCar_id();
+		this.car_num = po.getCar_num();
+		this.ins_id = po.getIns_id();
+		this.serve_time = po.getServe_time();
 	}
 
+	public Car(CarVO vo) {
+		this.car_id = vo.getCar_id();
+		this.car_num = vo.getCar_num();
+		this.ins_id = vo.getIns_id();
+		this.serve_time = vo.getServe_time();
+	}
+
+	public CarPO toCarPO() {
+		return new CarPO(car_id, car_num, ins_id, serve_time);
+	}
+
+	public CarVO toCarVO() {
+		return new CarVO(car_id, car_num, ins_id, serve_time);
+	}
 
 	public String getCar_id() {
 		return car_id;
@@ -56,4 +74,6 @@ public class CarVO {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
+	
+	
 }

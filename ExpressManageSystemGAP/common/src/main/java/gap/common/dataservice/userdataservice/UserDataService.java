@@ -12,7 +12,9 @@ public interface UserDataService extends Remote {
 
 	public ResultMessage add(UserPO po) throws RemoteException;
 
-	public UserPO find(String user_id) throws RemoteException;
+	public UserPO findById(String user_id) throws RemoteException;
+
+	public UserPO findByUsername(String username) throws RemoteException;
 
 	public ResultMessage modify(UserPO po) throws RemoteException;
 

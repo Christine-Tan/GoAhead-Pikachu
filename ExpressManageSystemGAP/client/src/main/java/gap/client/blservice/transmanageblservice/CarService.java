@@ -1,5 +1,6 @@
 package gap.client.blservice.transmanageblservice;
 
+import gap.client.util.Car;
 import gap.client.vo.CarVO;
 import gap.common.util.ResultMessage;
 
@@ -10,9 +11,9 @@ public interface CarService {
 
 	public CarVO getSingle(String id);
 
-	public ResultMessage modify(CarVO vo);
+	public ResultMessage modify(Car vo);
 
 	public ResultMessage delete(String id);
 
-	public ResultMessage add(CarVO vo);
+	public ResultMessage add(Car vo);
 }

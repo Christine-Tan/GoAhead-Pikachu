@@ -5,6 +5,7 @@ import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.LogPO;
 import gap.common.po.UserPO;
+import gap.common.util.Gender;
 import gap.common.util.UserType;
 
 import java.net.MalformedURLException;
@@ -29,7 +30,7 @@ public class LogDataServiceImplTest {
 			LogDataService logdata = (LogDataService) Naming
 					.lookup(RMIConfig.url + ServiceName.LOG_DATA_SERVICE);
 			UserPO user = new UserPO("000000001", UserType.ADMINISTRATOR,
-					"yyf", 0, "0010001", "123456");
+					"yyf", 0, "0010001", "123456", "杨雁飞", Gender.MALE);
 			LogPO log1 = new LogPO(user, new Date(System.currentTimeMillis()),
 					"test1"), log2 = new LogPO(user, new Date(
 					System.currentTimeMillis()), "test2");

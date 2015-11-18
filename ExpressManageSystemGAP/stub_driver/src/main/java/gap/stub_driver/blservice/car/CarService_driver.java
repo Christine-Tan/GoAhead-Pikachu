@@ -1,13 +1,14 @@
 package gap.stub_driver.blservice.car;
 
 import gap.client.blservice.transmanageblservice.CarService;
+import gap.client.util.Car;
 import gap.client.vo.CarVO;
 import gap.common.util.ResultMessage;
 
 public class CarService_driver {
 	public void driver(CarService car) {
-		CarVO car1 = new CarVO("0011001001", "88888", "0011001", 10);
-		CarVO car2 = new CarVO("0010001001", "44444", "0010001", 5);
+		Car car1 = new Car("0011001001", "88888", 10, "0011001");
+		Car car2 = new Car("0010001001", "44444", 5, "0010001");
 		if (car.add(car1).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed");
 		}

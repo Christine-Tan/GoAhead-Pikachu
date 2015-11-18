@@ -22,11 +22,11 @@ public class UserDataService_driver {
 		if (userData.add(user1).equals(ResultMessage.EXITED)) {
 			System.out.println("add failed,car exited");
 		}
-		UserPO get = userData.find("100000001");
+		UserPO get = userData.findById("100000001");
 		if (get != null)
 			System.out.println("find:name=" + get.getUserName() + ",password="
 					+ get.getPassword());
-		get = userData.find("100000002");
+		get = userData.findById("100000002");
 		if (get == null)
 			System.out.println("find failed,not found");
 		user1.setUserId("100000002");

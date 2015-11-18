@@ -9,13 +9,13 @@ import gap.stub_driver.dataservice.userdata.UserDataService_stub;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserService_stub implements UserService{
+public class UserService_stub implements UserService {
 	UserDataService_stub datastub;
 
 	public UserService_stub() {
 		datastub = new UserDataService_stub();
 	}
-	
+
 	@Override
 	public List<UserVO> getAll() {
 		// TODO 自动生成的方法存根
@@ -28,7 +28,7 @@ public class UserService_stub implements UserService{
 	@Override
 	public UserVO getSingle(String id) {
 		// TODO 自动生成的方法存根
-		return getVO(datastub.find(id));
+		return getVO(datastub.findById(id));
 	}
 
 	@Override

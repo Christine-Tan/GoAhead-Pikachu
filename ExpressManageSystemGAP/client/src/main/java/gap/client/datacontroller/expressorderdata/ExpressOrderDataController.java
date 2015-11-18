@@ -10,8 +10,13 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public class ExpressOrderDataController{
+	private final UserType[] users={UserType.DELIVERY,UserType.MANAGER};
 	ExpressOrderDataService expressOrderData;
 	PriceDataService priceDataService;
+	
+	public ExpressOrderDataController(){
+		
+	}
 	
 	public ResultMessage add(ExpressOrderPO po) throws RemoteException {
 		// TODO 自动生成的方法存根

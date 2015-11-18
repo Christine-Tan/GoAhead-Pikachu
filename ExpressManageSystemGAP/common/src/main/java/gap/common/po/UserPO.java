@@ -1,5 +1,6 @@
 package gap.common.po;
 
+import gap.common.util.Gender;
 import gap.common.util.UserType;
 
 import java.io.Serializable;
@@ -17,13 +18,17 @@ public class UserPO implements Serializable {
 	private int rank;
 	// 指向所属机构id
 	private String ins_id;
+	// 用户性别
+	private Gender gender;
+	// 用户姓名
+	private String name;
 
 	public UserPO() {
 
 	}
 
 	public UserPO(String userId, UserType type, String userName, int rank,
-			String ins_id, String password) {
+			String ins_id, String password, String name, Gender gender) {
 		super();
 		this.userId = userId;
 		this.type = type;
@@ -31,6 +36,8 @@ public class UserPO implements Serializable {
 		this.rank = rank;
 		this.ins_id = ins_id;
 		this.password = password;
+		this.name = name;
+		this.gender = gender;
 	}
 
 	public String getPassword() {
@@ -85,4 +92,17 @@ public class UserPO implements Serializable {
 	public void setRank(int rank) {
 		this.rank = rank;
 	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public String getName() {
+		return name;
+	}
+
 }
