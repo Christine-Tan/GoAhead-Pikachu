@@ -29,20 +29,15 @@ public class ExpressOrderPO implements Serializable {
 
 	}
 
-	public ExpressOrderPO(String sender_name, String sender_address,
-			String sender_depart, String sender_cellphone,
-			String receiver_name, String receiver_address,
-			String receiver_depart, String receiver_cellphone,
+	public ExpressOrderPO(PeopleInfo senderInfo, PeopleInfo receiverInfo,
 			ExpressType expressType, CargoInfo cargoInfo, boolean received,
 			String order_id, String currentins_id, String targetins_id,
 			String clerkLoadOrder_id, String clerkArrivedOrder_id,
 			String centerLoadOrder_id, String centerArrived_id,
 			String deliveryOrder_id) {
 		super();
-		senderInfo = new PeopleInfo(sender_name, sender_address, sender_depart,
-				sender_cellphone);
-		receiverInfo = new PeopleInfo(receiver_name, receiver_address,
-				receiver_depart, receiver_cellphone);
+		this.senderInfo = senderInfo;
+		this.receiverInfo = receiverInfo;
 		this.expressType = expressType;
 		this.cargoInfo = cargoInfo;
 		this.received = received;

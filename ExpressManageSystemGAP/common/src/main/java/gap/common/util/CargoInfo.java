@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 public class CargoInfo implements Serializable {
 	// 原件数量、重量、体积
-	private int cargoNum, weight, volume;
+	private int cargoNum;
+	// 原件重量、体积
+	private double weight, volume;
 	// 内件名称
 	private String name;
 
@@ -12,7 +14,7 @@ public class CargoInfo implements Serializable {
 
 	}
 
-	public CargoInfo(int cargoNum, int weight, int volume, String name) {
+	public CargoInfo(int cargoNum, double weight, double volume, String name) {
 		this.cargoNum = cargoNum;
 		this.weight = weight;
 		this.volume = volume;
@@ -27,19 +29,19 @@ public class CargoInfo implements Serializable {
 		this.cargoNum = cargoNum;
 	}
 
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 
-	public int getVolume() {
+	public double getVolume() {
 		return volume;
 	}
 
-	public void setVolume(int volume) {
+	public void setVolume(double volume) {
 		this.volume = volume;
 	}
 

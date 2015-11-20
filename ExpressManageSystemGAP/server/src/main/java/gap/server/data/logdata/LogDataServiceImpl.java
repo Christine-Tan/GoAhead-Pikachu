@@ -57,7 +57,6 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 			insertSQL.clear();
 			insertSQL.add(user_idf, logPO.getUserPO().getUserId());
 			insertSQL.add(operatef, logPO.getOperate());
-			insertSQL.add(timef, logPO.getDate());
 			String sql = insertSQL.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (SQLException e) {

@@ -1,6 +1,7 @@
 package gap.server.data.userdata;
 
 import gap.common.dataservice.ServiceName;
+
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.UserPO;
@@ -11,6 +12,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.sql.Date;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +43,11 @@ public class UserDataServiceImplTest {
 		for (UserPO get : userdata.getAll())
 			System.out.println(get.getName() + "," + get.getType());
 		userdata.modify(po1);
-		for (UserPO get : userdata.getAll())
+		userdata.setPaid("0000000002");
+		Date da = new Date(2015-1900, 4, 1);
+		System.out.println("unpaiduser," + da.toString());
+
+		for (UserPO get : userdata.findUnpaidUser(da))
 			System.out.println(get.getName() + "," + get.getType());
 		UserPO user = userdata.findByUsername("yyf");
 		System.out.println("password:" + user.getPassword());

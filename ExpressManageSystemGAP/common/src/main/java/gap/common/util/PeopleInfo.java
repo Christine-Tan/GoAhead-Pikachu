@@ -1,9 +1,10 @@
 package gap.common.util;
 
 public class PeopleInfo {
-	private String name, address, depart, cellphone;
+	private String name, depart, cellphone;
+	private Address address;
 
-	public PeopleInfo(String name, String address, String depart,
+	public PeopleInfo(String name, Address address, String depart,
 			String cellphone) {
 		super();
 		this.name = name;
@@ -20,11 +21,11 @@ public class PeopleInfo {
 		this.name = name;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 

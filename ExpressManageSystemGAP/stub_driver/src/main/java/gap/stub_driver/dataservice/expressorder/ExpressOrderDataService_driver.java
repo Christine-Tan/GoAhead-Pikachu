@@ -11,14 +11,8 @@ import java.util.List;
 public class ExpressOrderDataService_driver {
 	public void driver(ExpressOrderDataService expressOrder)
 			throws RemoteException {
-		ExpressOrderPO order1 = new ExpressOrderPO("yyf", "nju", "software",
-				"15520065137", "txy", "nju", "software", "110",
-				ExpressType.STANDARD, null, false, "0000000001", "0011001",
-				null, null, null, null, null, null);
-		ExpressOrderPO order2 = new ExpressOrderPO("shenbin", "nju",
-				"software", "119", "plw", "nju", "software", "120",
-				ExpressType.EXPRESS, null, false, "0000000002", null,
-				"0010001", null, null, null, null, null);
+		ExpressOrderPO order1 = new ExpressOrderPO();
+		ExpressOrderPO order2 = new ExpressOrderPO();
 		// test add
 		if (expressOrder.add(order1).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed");

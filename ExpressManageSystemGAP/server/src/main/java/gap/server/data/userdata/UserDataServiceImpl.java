@@ -11,6 +11,7 @@ import gap.server.initial.NetModule;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 	private String id_f = "id", username_f = "username",
 			password_f = "password", institution_f = "institution",
 			rank_f = "rank", userType_f = "userType", name_f = "name",
-			gender_f = "gender";
+			gender_f = "gender", lastpaid_f = "lastpaid";
 	private InsertSQL insertSQL;
 	private UpdateSQL updateSQL;
 
@@ -198,6 +199,53 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public List<UserPO> findUnpaidUser(Date date) throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			List<UserPO> users = new ArrayList<UserPO>();
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM user WHERE " + lastpaid_f
+							+ "<'" + date.toString() + "';");
+			while (re.next()) {
+				String id = re.getString(id_f), username = re
+						.getString(username_f), password = re
+						.getString(password_f), ins_id = re
+						.getString(institution_f), name = re.getString(name_f);
+				int rank = re.getInt(rank_f);
+				Gender gender = Gender.valueOf(re.getString(gender_f));
+				UserType type = UserType.getUserType(re.getString(userType_f));
+				UserPO po = new UserPO(id, type, username, rank, ins_id,
+						password, name, gender);
+				users.add(po);
+			}
+			return users;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage setPaid(String user_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			updateSQL.clear();
+			updateSQL.add(lastpaid_f, new Date(System.currentTimeMillis()));
+			updateSQL.setKey(id_f, user_id);
+			NetModule.excutor.excute(updateSQL.createSQL());
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
 }

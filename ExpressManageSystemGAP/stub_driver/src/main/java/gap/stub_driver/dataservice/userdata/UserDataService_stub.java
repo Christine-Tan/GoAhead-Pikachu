@@ -5,6 +5,7 @@ import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +71,18 @@ public class UserDataService_stub implements UserDataService {
 		for (UserPO user : list)
 			if (username.equals(user.getUserName()))
 				return user;
+		return null;
+	}
+
+	@Override
+	public List<UserPO> findUnpaidUser(Date date) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ResultMessage setPaid(String user_id) throws RemoteException {
+		// TODO 自动生成的方法存根
 		return null;
 	}
 
