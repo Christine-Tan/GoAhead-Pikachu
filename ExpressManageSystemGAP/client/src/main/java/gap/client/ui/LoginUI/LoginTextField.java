@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -11,7 +11,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
-import UITools.ColorAndFonts;
+import gap.client.ui.UITools.ColorAndFonts;
+
+
 
 public class LoginTextField extends JTextField implements TextInterface{
 

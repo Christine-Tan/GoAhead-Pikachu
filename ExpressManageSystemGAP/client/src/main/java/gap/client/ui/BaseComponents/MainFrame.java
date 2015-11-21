@@ -1,4 +1,4 @@
-package BaseComponents;
+package gap.client.ui.BaseComponents;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -7,11 +7,13 @@ import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import BaseListener.MoveListener;
-import BaseListener.ResizeListener;
-import UITools.ColorAndFonts;
-import UITools.Defaut;
-import UITools.SwingConsole;
+
+import gap.client.ui.BaseListener.MoveListener;
+import gap.client.ui.BaseListener.ResizeListener;
+import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.SwingConsole;
+
+
 
 
 

@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.FocusEvent;

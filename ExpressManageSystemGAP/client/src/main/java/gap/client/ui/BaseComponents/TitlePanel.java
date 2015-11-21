@@ -1,4 +1,4 @@
-package BaseComponents;
+package gap.client.ui.BaseComponents;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,10 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import BaseComponents.TitleButton.Type;
-import BaseListener.ResizeListener;
-import UITools.ColorAndFonts;
-import UITools.SwingConsole;
+import gap.client.ui.BaseComponents.TitleButton.Type;
+import gap.client.ui.UITools.SwingConsole;
+
+
 
 public class TitlePanel extends JPanel{
 
@@ -50,20 +50,6 @@ public class TitlePanel extends JPanel{
 		SwingConsole.addComponent(gridBagLayout, gridBagConstraints, this, 
 				exitButton, 2, 1, 1, 1, 0.01, 2.5);
 		
-		
-		
-	}
-	
-
-
-	
-	public class ResizeListener implements ChangeListener{
-
-		@Override
-		public void stateChanged(ChangeEvent e) {
-			// TODO Auto-generated method stub
-			exitButton.setLocation(mainFrame.getWidth()-30, 12);
-		}
 		
 		
 	}

@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -12,9 +12,11 @@ import java.awt.geom.Area;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import UITools.AreaMaker;
-import UITools.ColorAndFonts;
-import UITools.RenderSetter;
+import gap.client.ui.UITools.AreaMaker;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+
+
 
 public class LoginButton extends JLabel{
 
@@ -44,7 +46,7 @@ public class LoginButton extends JLabel{
 	}
 	
 	public void paintComponent(Graphics g){
-		//开特效
+		//�?特效
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 		
 		g2d.setColor(currentColor);

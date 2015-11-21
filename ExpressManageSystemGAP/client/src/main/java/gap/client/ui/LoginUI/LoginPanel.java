@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,10 +16,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import BaseComponents.WhiteExitButton;
+import gap.client.ui.BaseComponents.WhiteExitButton;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
 
-import UITools.ColorAndFonts;
-import UITools.RenderSetter;
+
+
 
 public class LoginPanel extends JPanel{
 	
@@ -67,7 +69,7 @@ public class LoginPanel extends JPanel{
 		g2d.fillRect(0, 0, this.getWidth(), 60);
 		g2d.setColor(Color.white);
 		g2d.setFont(ColorAndFonts.Chinese);
-		g2d.drawString("GAP 快递物流系统", 20, 40);
+		g2d.drawString("GAP 快�?�物流系�?", 20, 40);
 				
 	}
 	

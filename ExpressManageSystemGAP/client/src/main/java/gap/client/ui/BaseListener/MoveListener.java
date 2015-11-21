@@ -1,4 +1,4 @@
-package BaseListener;
+package gap.client.ui.BaseListener;
 
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;

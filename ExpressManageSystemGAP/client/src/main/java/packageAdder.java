@@ -40,7 +40,7 @@ public class packageAdder {
 			strings.add("No"+s);
 		}
 		
-		search(new File("src"));
+		search(new File("src/main/java/gap/client/ui"));
 		
 	}
 	
@@ -51,18 +51,18 @@ public class packageAdder {
 			return;
 		}
 			
-			for(File oneFile:files){
+		for(File oneFile:files){
 				
-				if(oneFile.getName().contains(".java")){
-					add(oneFile);
-				}
-				
+			if(oneFile.getName().contains(".java")){
+				add(oneFile);
 			}
+				
+		}
 			
  
-			for(File oneFile:files){
-				search(oneFile);		
-			}
+		for(File oneFile:files){
+			search(oneFile);		
+		}
 			
 			
 	
@@ -96,11 +96,20 @@ public class packageAdder {
 		
 		
 		FileWriter fileWriter;
-		String[] strings = f.getParent().split("\\\\");
+		String[] strings = f.getPath().split("\\\\");
+		System.out.println(f.getPath());
 		//String addedString = "package "+strings[1]+"."+strings[2]+"."+strings[3]+";\n";
 		StringBuilder builder = new StringBuilder("package ");
-		builder.append(strings[0]);
-		for(int i=1;i<strings.length;i++){
+		//builder.append(strings[0]);
+		int index=0;
+		
+		while(!strings[index].equals("gap")){
+			index++;
+		}
+		
+		builder.append(strings[index]);
+		
+		for(int i=index+1;i<strings.length-1;i++){
 			builder.append('.');
 			builder.append(strings[i]);
 		}

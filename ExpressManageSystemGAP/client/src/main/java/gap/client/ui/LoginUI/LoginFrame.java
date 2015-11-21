@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Graphics;
@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import BaseListener.MoveListener;
+import gap.client.ui.BaseListener.MoveListener;
 
 import javax.swing.JTextField;
 import javax.swing.UIManager;

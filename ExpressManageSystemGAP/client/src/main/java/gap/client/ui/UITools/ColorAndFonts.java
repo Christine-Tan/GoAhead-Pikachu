@@ -1,4 +1,4 @@
-package UITools;
+package gap.client.ui.UITools;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;

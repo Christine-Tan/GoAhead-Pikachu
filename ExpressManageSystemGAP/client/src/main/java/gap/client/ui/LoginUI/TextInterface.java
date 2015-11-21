@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 
 public interface TextInterface {
 

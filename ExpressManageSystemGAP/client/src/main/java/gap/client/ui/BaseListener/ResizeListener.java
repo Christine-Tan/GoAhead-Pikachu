@@ -1,4 +1,4 @@
-package BaseListener;
+package gap.client.ui.BaseListener;
 
 import java.awt.Cursor;
 import java.awt.Rectangle;
@@ -82,7 +82,7 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		refrashLoaction();
 	
 		int cursorType = frame.getCursor().getType();
@@ -172,7 +172,7 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		refrashLoaction();
 		
 		for(int i=0;i<rectangles.size();i++){
@@ -189,13 +189,13 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 	
 		int width = frame.getWidth(), height = frame.getHeight();
 		frameWidth = width;
@@ -209,7 +209,7 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 		titleselected = false;
 		se_resizeselected = false;
 		e_resizeselected = false;
@@ -218,13 +218,13 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO 自动生成的方法存根
+		// TODO 自动生成的方法存�?
 
 	}
 }

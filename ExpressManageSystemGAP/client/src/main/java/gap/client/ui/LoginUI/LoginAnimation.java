@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,8 +13,9 @@ import java.util.Iterator;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import UITools.ColorAndFonts;
-import UITools.RenderSetter;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+
 
 /**
  * @author 申彬
@@ -44,8 +45,8 @@ public class LoginAnimation extends JLabel{
 		}
 		
 		/*
-		  * 下面我要做的是，依次取出相邻两条线，每次随机推进1至2个点，将上下两条线取出的点存入MoveShape中，
-		  * 若一条线结束，则剩下一条线全部点进入同一个MoveShape
+		  * 下面我要做的是，依次取出相邻两条线，每次随机推进1�?2个点，将上下两条线取出的点存入MoveShape中，
+		  * 若一条线结束，则剩下�?条线全部点进入同�?个MoveShape
 		  */		
 		for(int i=0;i<lines.size()-1;i++)
 		{
@@ -56,7 +57,7 @@ public class LoginAnimation extends JLabel{
 			//先做两个1,2随机分布，但总和与线上点数相同的list
 			ArrayList<Integer> upDivision = new ArrayList<>();
 			ArrayList<Integer> downDivision = new ArrayList<>();
-			//list的尾设为最后一个点的index			
+			//list的尾设为�?后一个点的index			
 			upDivision.add(upLength-1);
 			downDivision.add(downLength-1);
 			
@@ -151,7 +152,7 @@ public class LoginAnimation extends JLabel{
 	}
 	
 	/**
-	 * 这个方法传入两列点和两列点的分割法，形状添加点的顺序是左上->右上->右下->左下
+	 * 这个方法传入两列点和两列点的分割法，形状添加点的顺序是左�?->右上->右下->左下
 	 * @param upPoints
 	 * @param downPoints
 	 * @param upDivision
@@ -179,7 +180,7 @@ public class LoginAnimation extends JLabel{
 			
 		}
 		
-		//处理最后没被添加的点，全部添加至一个形状中
+		//处理�?后没被添加的点，全部添加至一个形状中
 		MoveShape shape = new MoveShape();
 		for(int j=upDivision.get(lessSize-1);j<upPoints.size();j++)
 		{
@@ -231,7 +232,7 @@ public class LoginAnimation extends JLabel{
 	}
 	
 	/**
-	 * 移动的形状。是由一组移动点确定出来的多边形，保存颜色和一组点。颜色以随机速度在深蓝和浅蓝之间往复运动，形状跟随点变动
+	 * 移动的形状�?�是由一组移动点确定出来的多边形，保存颜色和�?组点。颜色以随机速度在深蓝和浅蓝之间�?复运动，形状跟随点变�?
 	 * @author 申彬
 	 */
 	class MoveShape{
@@ -324,7 +325,7 @@ public class LoginAnimation extends JLabel{
 	}
 	
 	/**
-	 * 移动点，一个点以随机速度在一条随机直线上做往复运动
+	 * 移动点，�?个点以随机�?�度在一条随机直线上做往复运�?
 	 * @author 申彬
 	 */
 	class MovePoint{

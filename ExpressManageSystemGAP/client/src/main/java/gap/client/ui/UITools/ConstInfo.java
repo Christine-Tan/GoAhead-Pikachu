@@ -1,6 +1,6 @@
-package UITools;
+package gap.client.ui.UITools;
 
-import BaseComponents.UserBox.Sex;
+import gap.client.ui.BaseComponents.UserBox.Sex;
 
 public class ConstInfo {
 	private static String name;

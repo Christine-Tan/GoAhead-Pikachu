@@ -1,4 +1,4 @@
-package LoginUI;
+package gap.client.ui.LoginUI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -7,7 +7,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
 
-import UITools.ColorAndFonts;
+import gap.client.ui.UITools.ColorAndFonts;
+
+
 
 public class LoginPassword extends JPasswordField implements TextInterface{
 
@@ -45,7 +47,7 @@ public class LoginPassword extends JPasswordField implements TextInterface{
 		// TODO Auto-generated method stub
 		hadFoucsed = focused;
 		if(focused){
-			setEchoChar('●');
+			setEchoChar('�?');
 		}else{
 			setEchoChar('\0');
 			setForeground(Color.gray);

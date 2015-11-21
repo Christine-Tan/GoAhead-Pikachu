@@ -1,4 +1,4 @@
-package BaseComponents;
+package gap.client.ui.BaseComponents;
 
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,9 +8,11 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import UITools.ColorAndFonts;
-import UITools.ConstInfo;
-import UITools.RenderSetter;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.ConstInfo;
+import gap.client.ui.UITools.RenderSetter;
+
+
 
 public class UserBox extends JLabel{
 

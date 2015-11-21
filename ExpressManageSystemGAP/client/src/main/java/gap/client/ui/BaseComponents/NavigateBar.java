@@ -1,4 +1,4 @@
-package BaseComponents;
+package gap.client.ui.BaseComponents;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import BaseComponents.UserBox.Sex;
-import UITools.ColorAndFonts;
-import UITools.RenderSetter;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+
+
 
 public class NavigateBar extends JPanel{
 

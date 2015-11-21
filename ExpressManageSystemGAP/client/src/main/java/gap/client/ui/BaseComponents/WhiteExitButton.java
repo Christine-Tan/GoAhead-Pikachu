@@ -1,4 +1,4 @@
-package BaseComponents;
+package gap.client.ui.BaseComponents;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,7 +9,9 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import UITools.RenderSetter;
+import gap.client.ui.UITools.RenderSetter;
+
+
 
 public class WhiteExitButton extends JLabel{
 

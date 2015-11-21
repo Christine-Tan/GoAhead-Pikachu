@@ -1,4 +1,4 @@
-package UITools;
+package gap.client.ui.UITools;
 
 import java.awt.Component;
 import java.awt.Dimension;
