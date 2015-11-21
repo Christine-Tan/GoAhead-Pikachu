@@ -47,7 +47,7 @@ public class LoginPassword extends JPasswordField implements TextInterface{
 		// TODO Auto-generated method stub
 		hadFoucsed = focused;
 		if(focused){
-			setEchoChar('�?');
+			setEchoChar('●');
 		}else{
 			setEchoChar('\0');
 			setForeground(Color.gray);
