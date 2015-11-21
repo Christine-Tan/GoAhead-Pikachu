@@ -1,4 +1,4 @@
-package gap.client.ui.util;
+package UITools;
 
 public class Defaut {
 	public static final int WIDTH = 1000, HEIGHT = 650, NAV_WIDTH = 220,

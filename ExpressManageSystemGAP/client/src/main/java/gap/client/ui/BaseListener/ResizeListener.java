@@ -1,4 +1,4 @@
-package gap.client.ui.mainui;
+package BaseListener;
 
 import java.awt.Cursor;
 import java.awt.Rectangle;
@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-class ResizeListener implements MouseListener, MouseMotionListener {
+
+public class ResizeListener implements MouseListener, MouseMotionListener {
 	JFrame frame;
 	int ox, oy, frameWidth, frameHeight, frameX, frameY;
 	boolean titleselected, se_resizeselected, e_resizeselected,
@@ -89,7 +90,7 @@ class ResizeListener implements MouseListener, MouseMotionListener {
 		int nowX = e.getXOnScreen();
 		int nowY = e.getYOnScreen();
 		
-		System.out.println(cursorType);
+		
 		
 		switch(cursorType){
 		
