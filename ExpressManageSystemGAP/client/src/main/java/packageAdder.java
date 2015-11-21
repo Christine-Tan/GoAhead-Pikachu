@@ -47,9 +47,9 @@ public class packageAdder {
 	void search(File f){
 		
 		File[] files = f.listFiles(); 
-		
-		if( strings.contains(f.getName()) ){
-			
+		if(files==null){
+			return;
+		}
 			
 			for(File oneFile:files){
 				
@@ -59,16 +59,13 @@ public class packageAdder {
 				
 			}
 			
-			return;
-		}
-		else{
  
 			for(File oneFile:files){
 				search(oneFile);		
 			}
 			
 			
-		}
+	
 		
 	}
 	
@@ -85,6 +82,9 @@ public class packageAdder {
 			String s = new String(test, 0, 20);
 				
 			fileReader = new FileReader(f);
+			
+			while (fileReader.read()!='\n') {}
+			
 			fileReader.read(buffer);
 			fileReader.close();
 			
