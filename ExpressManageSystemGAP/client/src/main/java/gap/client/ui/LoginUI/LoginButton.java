@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Area;
@@ -40,9 +42,11 @@ public class LoginButton extends JLabel{
 		setFont(font);
 		setText(text);
 
+		requestFocusInWindow();
 		area = AreaMaker.getRoundRect(getWidth(), getHeight(), 8);
 		mylistener = new Mylistener();
 		addMouseListener(mylistener);
+		addKeyListener(mylistener);
 	}
 	
 	public void paintComponent(Graphics g){
@@ -56,11 +60,11 @@ public class LoginButton extends JLabel{
 	}
 	
 	
-	class Mylistener implements MouseListener{
+	class Mylistener implements MouseListener,KeyListener{
 
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+			requestFocusInWindow();
 		}
 
 		public void mouseEntered(MouseEvent e) {
@@ -85,6 +89,32 @@ public class LoginButton extends JLabel{
 			// TODO Auto-generated method stub
 			currentColor = ColorAndFonts.blue;
 			repaint();
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+	
+			if(e.getKeyCode()==KeyEvent.VK_ENTER)
+			{
+				System.out.println("aaa");
+				mouseEntered(null);
+				mouseClicked(null);		
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			if(e.getKeyCode()==KeyEvent.VK_ENTER)
+			{
+				System.out.println("bbbb");
+				mouseExited(null);		
+			}
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 		
