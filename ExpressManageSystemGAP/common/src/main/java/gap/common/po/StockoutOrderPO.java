@@ -5,19 +5,19 @@ import java.util.List;
 
 public class StockoutOrderPO implements Serializable {
 	private List<String> expressorder_ids;
-	private String outDate, destination, transportation, identifier;
+	private String outDate, destination, transportation, id;
 
 	// 出库日期，目的地，货运方式，中转单编号或装车单编号(20位0~9数字)
 
 
 	public StockoutOrderPO(List<String> expressorder_ids, String outDate,
-			String destination, String transportation, String identifier) {
+			String destination, String transportation, String id) {
 		super();
 		this.expressorder_ids = expressorder_ids;
 		this.outDate = outDate;
 		this.destination = destination;
 		this.transportation = transportation;
-		this.identifier = identifier;
+		this.id = id;
 	}
 
 	public List<String> getExpressorder_ids() {
@@ -62,11 +62,11 @@ public class StockoutOrderPO implements Serializable {
 	}
 
 	public String getIdentifier() {
-		return identifier;
+		return id;
 	}
 
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+	public void setIdentifier(String order_id) {
+		this.id = order_id;
 	}
 
 }

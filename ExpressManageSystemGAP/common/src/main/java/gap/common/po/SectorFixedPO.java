@@ -184,5 +184,9 @@ public class SectorFixedPO {
 		this.addedsize = addedsize;
 	}
 	
+	public int getNum(){
+		return this.goodsList.size();
+	}
+	
 	
 }

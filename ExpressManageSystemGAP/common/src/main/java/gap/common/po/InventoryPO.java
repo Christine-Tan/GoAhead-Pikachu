@@ -4,8 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryPO {
+	
 	//警戒值，百分比
-	private double alarmValue = 70;
+	private double alarmValue;
+	//属于的中转中心的编号
+	private String ins_id;
+	private SectorFixedPO carSector;
+	private SectorFixedPO planeSector;
+	private SectorFixedPO trainSector;
+	private SectorFlexPO flexSector;
+	
+	
+	
+	public double getAlarmValue() {
+		return alarmValue;
+	}
+	
+	public void setAlarmValue(double alarmValue) {
+		this.alarmValue = alarmValue;
+		this.carSector.setAlarmVal(alarmValue);
+		this.planeSector.setAlarmVal(alarmValue);
+		this.trainSector.setAlarmVal(alarmValue);
+		this.planeSector.setAlarmVal(alarmValue);
+	}
+	
+	public String getIns_id() {
+		return ins_id;
+	}
+	
+	public void setIns_id(String ins_id) {
+		this.ins_id = ins_id;
+	}
+	
+	
+	
+	
+	
+	
+/*	private double alarmValue = 70;
 	//各分区可存放快递件数，整数
 	static int planeMax = 100;
 	static int trainMax = 100;
@@ -139,5 +175,7 @@ public class InventoryPO {
 	public void setAlarmValue(double alarmValue) {
 		this.alarmValue = alarmValue;
 	}
+	
+	*/
 
 }

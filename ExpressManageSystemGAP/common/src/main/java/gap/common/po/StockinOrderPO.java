@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StockinOrderPO implements Serializable {
 	private List<String> expressorder_ids;
-	private String inDate, destination, sector, location, identifier;
+	private String inDate, destination, sector, location, id;
 
 	// 到达日期，目的地，分区，位置,入库单编号(20位0~9数字)
 
@@ -72,12 +72,12 @@ public class StockinOrderPO implements Serializable {
 		this.expressorder_ids = expressorder_ids;
 	}
 
-	public String getIdentifier() {
-		return identifier;
+	public String getId() {
+		return id;
 	}
 
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+	public void setId(String identifier) {
+		this.id = identifier;
 	}
 
 }

@@ -43,7 +43,7 @@ public class SectorFlexPO {
 	private ArrayList<GoodsPO> toCar;
 	
 	
-
+	
 
 	public double getAlarmVal() {
 		return alarmVal;
@@ -147,6 +147,23 @@ public class SectorFlexPO {
 
 	public void setToCar(ArrayList<GoodsPO> toCar) {
 		this.toCar = toCar;
+	}
+	
+	//获得快递数量
+	public int getCarNum(){
+		return this.toCar.size();
+	}
+	
+	public int getPlaneNum(){
+		return this.toPlane.size();
+	}
+	
+	public int getTrainNum(){
+		return this.toTrain.size();
+	}
+	
+	public int getNum(){
+		return getCarNum()+getPlaneNum()+getTrainNum();
 	}
 	
 	
