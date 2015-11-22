@@ -1,6 +1,7 @@
 package gap.client.datacontroller.controllerfactory;
 
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
+import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.logindata.LoginDataController;
 import gap.client.datacontroller.transdata.TransDataController;
 import gap.client.util.LocalInfo;
@@ -20,6 +21,10 @@ public class ControllerFactory {
 	}
 
 	public static TransDataController getTransDataController() {
+		return null;
+	}
+	
+	public static InventoryDataController getInventoryDataController(){
 		return null;
 	}
 

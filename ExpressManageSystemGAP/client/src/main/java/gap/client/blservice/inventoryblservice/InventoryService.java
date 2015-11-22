@@ -17,7 +17,7 @@ public interface InventoryService {
 	 * @param end
 	 * @return
 	 */
-	public StockObVO observeStock(String begin,String end);
+	public StockObVO observeStock(String beginDate,String endDate);
 	
 	/**
 	 * 库存盘点

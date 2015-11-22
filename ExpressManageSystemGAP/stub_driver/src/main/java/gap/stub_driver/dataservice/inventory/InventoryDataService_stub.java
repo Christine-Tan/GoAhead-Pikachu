@@ -4,6 +4,7 @@ import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,33 @@ public class InventoryDataService_stub implements InventoryDataService{
 	public double getAlarm() {
 		// TODO Auto-generated method stub
 		return this.alarmValue;
+	}
+
+	@Override
+	public ResultMessage add(List<GoodsPO> expressorders)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage delete(List<String> expressorders_id)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage modify(List<GoodsPO> expressorders)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<GoodsPO> getAll() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

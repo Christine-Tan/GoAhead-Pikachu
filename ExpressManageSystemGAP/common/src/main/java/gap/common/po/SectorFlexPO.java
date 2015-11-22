@@ -29,6 +29,7 @@ public class SectorFlexPO {
 	
 	//分配给铁运区的架数
 	private int tshelves;
+	
 	//分配给汽运区的架数
 	private int cshelves;
 	
