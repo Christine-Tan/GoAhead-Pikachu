@@ -7,9 +7,9 @@ import gap.server.databaseutility.Excutor;
 
 /**
  * 
- * 一个SQL生成器，可以直接执行，用法示例如下:<p/>
+ * 一个SQL生成器，有执行方法，用法示例如下:<p/>
  * 
- *	SQLBuilder_Shen sqlBuilder = new SQLBuilder_Shen();	<br/>
+ *	SQLBuilder sqlBuilder = new SQLBuilder();	<br/>
  *	sqlBuilder.Select("Name","Balance","Income").From("account").Where("Balance > 10000");<br/>
  *	sqlBuilder.excuteQuery();
  *		
@@ -83,7 +83,7 @@ public class SQLBuilder {
 	
 	/**
 	 * 
-	 * 若传入列名，记得调用 EQUALS，或者 AND，或者OR，EQUALS相当于 = 
+	 * 若传入列名，记得调用 EQUALS，或者 AND，或者OR，EQUALS相当于 = <br/>
 	 * 直接传入表达式也行
 	 * @param col_Or_express
 	 * @return
