@@ -5,7 +5,7 @@ import gap.client.blservice.strategyblservice.DistanceService;
 import gap.client.vo.DistanceVO;
 import gap.common.po.CityPO;
 import gap.common.util.ResultMessage;
-import gap.stub_driver.dataservice.distancedata.DistanceDataService_stub;
+import gap.stub_driver.dataservice.citydata.DistanceDataService_stub;
 
 import java.util.ArrayList;
 import java.util.List;

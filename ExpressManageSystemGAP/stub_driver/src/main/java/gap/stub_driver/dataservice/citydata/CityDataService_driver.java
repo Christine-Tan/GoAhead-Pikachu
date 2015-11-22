@@ -1,4 +1,4 @@
-package gap.stub_driver.dataservice.distancedata;
+package gap.stub_driver.dataservice.citydata;
 
 import java.rmi.RemoteException;
 
@@ -6,10 +6,9 @@ import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.po.CityPO;
 import gap.common.util.ResultMessage;
 
-public class DistanceDataService_driver {
+public class CityDataService_driver {
 	public void driver(CityDataService distanceData) throws RemoteException {
-		CityPO po = new CityPO("Nanjing", "Shanghai", 115.0, 89.0,
-				112.3, 85.9);
+		CityPO po = new CityPO("Nanjing");
 		if (distanceData.add(po).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed");
 		}
@@ -19,23 +18,19 @@ public class DistanceDataService_driver {
 		if (distanceData.add(po).equals(ResultMessage.EXITED)) {
 			System.out.println("add failed,distance exited");
 		}
-		CityPO get = distanceData.find("Nanjing", "Shanghai");
+		CityPO get = distanceData.find("Nanjing");
 		if (get != null)
-			System.out.println("find: from " + get.getStartCity() + " to "
-					+ get.getEndCity() + " Distance=" + get.getDistance());
-		get = distanceData.find("Nanjing", "Beijing");
+			System.out.println("find: from " + get.getCity() + " Longitutde: "
+					+ get.getLongitude() + " Latitude=" + get.getLatitude());
+		get = distanceData.find("Beijing");
 		if (get == null)
 			System.out.println("find failed,not found");
-		po.setStartCity("Beijing");
-		if (distanceData.modify(po).equals(ResultMessage.SUCCEED))
-			System.out.println("modify succeed");
 	}
-
 	public static void main(String[] args) {
-		CityDataService distanceData = new DistanceDataService_stub();
-		DistanceDataService_driver driver = new DistanceDataService_driver();
+		CityDataService cityData = new CityDataService_stub();
+		CityDataService_driver driver = new CityDataService_driver();
 		try {
-			driver.driver(distanceData);
+			driver.driver(cityData);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

@@ -4,6 +4,7 @@ import gap.common.dataservice.managedataservice.InstitutionDataService;
 import gap.common.po.InstitutionPO;
 import gap.common.util.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,15 +23,6 @@ public class InstitutionDataService_stub implements InstitutionDataService{
 				return ResultMessage.EXITED;
 		list.add(po);
 		return ResultMessage.SUCCEED;
-	}
-
-	@Override
-	public InstitutionPO find(String ins_id) {
-		// TODO 自动生成的方法存根
-		for (InstitutionPO institution : list)
-			if (ins_id.equals(institution.getInsId()))
-				return institution;
-		return null;
 	}
 
 	@Override
@@ -62,5 +54,20 @@ public class InstitutionDataService_stub implements InstitutionDataService{
 	public List<InstitutionPO> getAll() {
 		// TODO 自动生成的方法存根
 		return list;
+	}
+
+	@Override
+	public List<InstitutionPO> findByCity(String city) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InstitutionPO findById(String ins_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		for (InstitutionPO institution : list)
+			if (ins_id.equals(institution.getInsId()))
+				return institution;
+		return null;
 	}
 }

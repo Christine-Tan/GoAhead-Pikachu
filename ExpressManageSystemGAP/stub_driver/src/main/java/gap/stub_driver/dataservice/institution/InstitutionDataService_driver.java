@@ -20,11 +20,11 @@ public class InstitutionDataService_driver {
 		if (institutionData.add(ins1).equals(ResultMessage.EXITED)) {
 			System.out.println("add failed,institution exited");
 		}
-		InstitutionPO get = institutionData.find("0011000");
+		InstitutionPO get = institutionData.findById("0011000");
 		if (get != null)
 			System.out.println("find:id=" + get.getInsId() + ",name="
 					+ get.getInsName() +"city=" + get.getInsCity()+",member="+get.getInsMember());
-		get = institutionData.find("0011002");
+		get = institutionData.findById("0011002");
 		if (get == null)
 			System.out.println("find failed,not found");
 		ins1.setInsId("0011003");
