@@ -5,6 +5,7 @@ import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class ExpressOrderPO implements Serializable {
 	// 寄件人姓名、地址、单位、电话
@@ -21,12 +22,23 @@ public class ExpressOrderPO implements Serializable {
 	private String order_id;
 	// 快递所在机构编号和即将发往的机构编号
 	private String currentins_id, targetins_id;
-	// 寄件单所属于的营业厅装车单、营业厅到达单、中专中心装车单、中转中心到达单、派件单编号
-	private String clerkLoadOrder_id, clerkArrivedOrder_id, centerLoadOrder_id,
-			centerArrived_id, DeliveryOrder_id;
+
+	private double price;
 
 	public ExpressOrderPO() {
 
+	}
+
+	public ExpressOrderPO(PeopleInfo senderInfo, PeopleInfo receiverInfo,
+			ExpressType expressType, CargoInfo cargoInfo, String order_id,
+			double price) {
+		super();
+		this.senderInfo = senderInfo;
+		this.receiverInfo = receiverInfo;
+		this.expressType = expressType;
+		this.cargoInfo = cargoInfo;
+		this.order_id = order_id;
+		this.price = price;
 	}
 
 	public ExpressOrderPO(PeopleInfo senderInfo, PeopleInfo receiverInfo,
@@ -44,11 +56,6 @@ public class ExpressOrderPO implements Serializable {
 		this.order_id = order_id;
 		this.currentins_id = currentins_id;
 		this.targetins_id = targetins_id;
-		this.clerkLoadOrder_id = clerkLoadOrder_id;
-		this.clerkArrivedOrder_id = clerkArrivedOrder_id;
-		this.centerLoadOrder_id = centerLoadOrder_id;
-		this.centerArrived_id = centerArrived_id;
-		DeliveryOrder_id = deliveryOrder_id;
 	}
 
 	public boolean isReceived() {
@@ -97,46 +104,6 @@ public class ExpressOrderPO implements Serializable {
 		this.targetins_id = targetins_id;
 	}
 
-	public String getClerkLoadOrder_id() {
-		return clerkLoadOrder_id;
-	}
-
-	public void setClerkLoadOrder_id(String clerkLoadOrder_id) {
-		this.clerkLoadOrder_id = clerkLoadOrder_id;
-	}
-
-	public String getClerkArrivedOrder_id() {
-		return clerkArrivedOrder_id;
-	}
-
-	public void setClerkArrivedOrder_id(String clerkArrivedOrder_id) {
-		this.clerkArrivedOrder_id = clerkArrivedOrder_id;
-	}
-
-	public String getCenterLoadOrder_id() {
-		return centerLoadOrder_id;
-	}
-
-	public void setCenterLoadOrder_id(String centerLoadOrder_id) {
-		this.centerLoadOrder_id = centerLoadOrder_id;
-	}
-
-	public String getCenterArrived_id() {
-		return centerArrived_id;
-	}
-
-	public void setCenterArrived_id(String centerArrived_id) {
-		this.centerArrived_id = centerArrived_id;
-	}
-
-	public String getDeliveryOrder_id() {
-		return DeliveryOrder_id;
-	}
-
-	public void setDeliveryOrder_id(String deliveryOrder_id) {
-		DeliveryOrder_id = deliveryOrder_id;
-	}
-
 	public PeopleInfo getSenderInfo() {
 		return senderInfo;
 	}
@@ -159,6 +126,14 @@ public class ExpressOrderPO implements Serializable {
 
 	public void setOrder_id(String order_id) {
 		this.order_id = order_id;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 }

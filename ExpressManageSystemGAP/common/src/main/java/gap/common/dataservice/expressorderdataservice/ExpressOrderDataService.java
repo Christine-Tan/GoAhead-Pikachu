@@ -13,7 +13,8 @@ public interface ExpressOrderDataService extends Remote {
 	 * @param po
 	 * @return
 	 */
-	public ResultMessage add(ExpressOrderPO po) throws RemoteException;
+	public ResultMessage add(ExpressOrderPO po, String courier_id)
+			throws RemoteException;
 
 	/**
 	 * 根据订单号查询订单

@@ -1,5 +1,6 @@
 package gap.client.datacontroller.expressorderdata;
 
+import gap.client.util.LocalInfo;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.strategydataservice.PriceDataService;
 import gap.common.po.ExpressOrderPO;
@@ -20,7 +21,7 @@ public class ExpressOrderDataController {
 
 	public ResultMessage add(ExpressOrderPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
-		return expressOrderData.add(po);
+		return expressOrderData.add(po, LocalInfo.localuser.getUser_id());
 	}
 
 	public ExpressOrderPO find(String order_id) throws RemoteException {
