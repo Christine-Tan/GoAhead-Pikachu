@@ -11,8 +11,9 @@ import gap.server.databaseutility.Excutor;
  * 
  *	SQLBuilder sqlBuilder = new SQLBuilder();	<br/>
  *	sqlBuilder.Select("Name","Balance","Income").From("account").Where("Balance > 10000");<br/>
- *	sqlBuilder.excuteQuery();
- *		
+ *	sqlBuilder.excuteQuery();<p/>
+ *
+ *	excute和excuteQuery执行完了之后会自动清空builder
  * @author 申彬
  *
  */
@@ -42,6 +43,7 @@ public class SQLBuilder {
 			System.out.println("兄弟你别乱执行呀");
 			e.printStackTrace();
 		}
+		clear();
 		return result;
 	}
 	
@@ -54,6 +56,7 @@ public class SQLBuilder {
 			System.out.println("兄弟你别乱执行呀");
 			e.printStackTrace();
 		}
+		clear();
 		return resultSet;		
 	}
 	
