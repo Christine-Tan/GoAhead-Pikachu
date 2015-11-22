@@ -14,7 +14,7 @@ import gap.common.util.ResultMessage;
 public class Inventory implements InventoryService{
 
 	@Override
-	public StockObVO observeStock(String begin, String end) {
+	public StockObVO observeStock(String begindate, String enddate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -70,14 +70,14 @@ public class Inventory implements InventoryService{
 	}
 
 	@Override
-	public String stockIn(ExpressOrderVO expressorder) {
+	public String stockIn(ExpressOrderVO expressorder, String ins_center_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void stockOut(String destination, String transportation,
-			String expressorder_id) {
+			String expressorder_id, String ins_center_id) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -106,5 +106,7 @@ public class Inventory implements InventoryService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

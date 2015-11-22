@@ -40,4 +40,10 @@ public class StockinOrder implements StockinOrderService{
 		return vo.getLocation();
 	}
 
+	@Override
+	public int getOrdersNum() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

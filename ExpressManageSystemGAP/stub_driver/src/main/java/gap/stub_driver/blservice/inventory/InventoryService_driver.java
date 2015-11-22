@@ -23,8 +23,8 @@ public class InventoryService_driver {
 				ExpressType.EXPRESS, null, false, "0000000002", null, "0010001");
 		
 		
-		System.out.println(inventory.stockIn(order1));
-		System.out.println(inventory.stockIn(order2));
+		System.out.println(inventory.stockIn(order1, null));
+		System.out.println(inventory.stockIn(order2, null));
 		if(inventory.setAlarm(80).equals(ResultMessage.SUCCEED))
 			System.out.println("setAlarm succeed");
 		System.out.println(inventory.getAlarm());
@@ -56,8 +56,8 @@ public class InventoryService_driver {
 		
 		
 		ArrayList<ExpressOrderVO> orderlist = new ArrayList<ExpressOrderVO>();
-		inventory.stockOut("上海", "car", order1.getOrder_id());
-		inventory.stockOut("上海", "car", order2.getOrder_id());
+		inventory.stockOut("上海", "car", order1.getOrder_id(), null);
+		inventory.stockOut("上海", "car", order2.getOrder_id(), null);
 		StockoutOrderVO stockoutOrder = inventory.createStockoutOrder(orderlist);
 		
 		System.out.println(inventory.Alarm());

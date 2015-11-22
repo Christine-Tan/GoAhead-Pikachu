@@ -68,19 +68,6 @@ public class InventoryService_stub implements InventoryService{
 	}
 
 	@Override
-	public String stockIn(ExpressOrderVO expressorder) {
-		// TODO Auto-generated method stub
-		return expressorder.getOrder_id();
-	}
-
-	@Override
-	public void stockOut(String destination, String transportation,
-			String expressorder_id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public StockinOrderVO createStockinOrder(List<String> expressorders_id) {
 		// TODO Auto-generated method stub
 		return new StockinOrderVO(null, "20151026", "上海", "car", "00100011970010100002");
@@ -109,6 +96,19 @@ public class InventoryService_stub implements InventoryService{
 	public double getAlarm() {
 		// TODO Auto-generated method stub
 		return 80;
+	}
+
+	@Override
+	public String stockIn(ExpressOrderVO expressorder, String ins_center_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void stockOut(String destination, String transportation,
+			String expressorder_id, String ins_center_id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

@@ -65,10 +65,11 @@ public interface InventoryService {
 	/**
 	 * 快递入库
 	 * @param expressorder
+	 * @param ins_center_id
 	 * @return
 	 */
 	
-	public String stockIn(ExpressOrderVO expressorder);
+	public String stockIn(ExpressOrderVO expressorder,String ins_center_id);
 	
 	/**
 	 * 快递出库，填写快递编号设置目的地，货运方式
@@ -76,7 +77,7 @@ public interface InventoryService {
 	 * @param transportation
 	 * @param expressorder_id
 	 */
-	public void stockOut(String destination,String transportation,String expressorder_id);
+	public void stockOut(String destination,String transportation,String expressorder_id,String ins_center_id);
 	
 	/**
 	 * 生成入库单

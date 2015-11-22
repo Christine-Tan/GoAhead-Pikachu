@@ -13,4 +13,10 @@ public interface StockoutOrderService {
 	public ResultMessage save(StockoutOrderVO order);
 
 	public StockoutOrderVO find(String id);
+	
+	/**
+	 * 获得一张入库单上快递的数量
+	 * @return
+	 */
+	public int getOrdersNum();
 }

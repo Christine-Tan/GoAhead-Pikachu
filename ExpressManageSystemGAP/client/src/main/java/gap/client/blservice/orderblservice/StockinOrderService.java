@@ -16,4 +16,10 @@ public interface StockinOrderService {
 	public StockinOrderVO find(String id);
 	
 	public String getLocation(GoodsVO vo);
+	
+	/**
+	 * 获得一张入库单上快递的数量
+	 * @return
+	 */
+	public int getOrdersNum();
 }
