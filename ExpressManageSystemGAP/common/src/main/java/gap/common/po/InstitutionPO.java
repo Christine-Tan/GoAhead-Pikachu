@@ -4,23 +4,28 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import gap.common.util.Address;
+import gap.common.util.InstitutionType;
+
 public class InstitutionPO implements Serializable {
 
 	// 机构编号
 	private String insId;
 	// 机构名称
 	private String insName;
-	// 机构所在城市
+	// 机构所在地址
 	private String insCity;
 	// 机构人员数目
 	private int insMember;
-
+	// 机构类型
+	private InstitutionType insType;
+    
 	public InstitutionPO(String id, String name, String city, int member) {
 		insId = id;
-
 		insName = name;
 		insCity = city;
 		insMember = member;
+		insType = this.getInsType();
 	}
 
 	public InstitutionPO() {
@@ -35,7 +40,8 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insId Ҫ���õ� insId
+	 * @param insId
+	 *            Ҫ���õ� insId
 	 */
 	public void setInsId(String insId) {
 		this.insId = insId;
@@ -49,24 +55,19 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insName Ҫ���õ� insName
+	 * @param insName
+	 *            Ҫ���õ� insName
 	 */
 	public void setInsName(String insName) {
 		this.insName = insName;
 	}
 
-	/**
-	 * @return insCity
-	 */
 	public String getInsCity() {
 		return insCity;
 	}
 
-	/**
-	 * @param insCity Ҫ���õ� insCity
-	 */
 	public void setInsCity(String insCity) {
-		this.insCity = insCity;
+		this.insCity= insCity;
 	}
 
 	/**
@@ -77,10 +78,15 @@ public class InstitutionPO implements Serializable {
 	}
 
 	/**
-	 * @param insMember Ҫ���õ� insMember
+	 * @param insMember
+	 *            Ҫ���õ� insMember
 	 */
 	public void setInsMember(int insMember) {
 		this.insMember = insMember;
+	}
+
+	public InstitutionType getInsType() {
+		return InstitutionType.getInsType(insId);
 	}
 
 	public List<InstitutionPO> getAll() {

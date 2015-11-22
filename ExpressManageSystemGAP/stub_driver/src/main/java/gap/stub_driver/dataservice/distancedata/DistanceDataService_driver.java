@@ -2,13 +2,13 @@ package gap.stub_driver.dataservice.distancedata;
 
 import java.rmi.RemoteException;
 
-import gap.common.dataservice.strategydataservice.DistanceDataService;
-import gap.common.po.DistancePO;
+import gap.common.dataservice.strategydataservice.CityDataService;
+import gap.common.po.CityPO;
 import gap.common.util.ResultMessage;
 
 public class DistanceDataService_driver {
-	public void driver(DistanceDataService distanceData) throws RemoteException {
-		DistancePO po = new DistancePO("Nanjing", "Shanghai", 115.0, 89.0,
+	public void driver(CityDataService distanceData) throws RemoteException {
+		CityPO po = new CityPO("Nanjing", "Shanghai", 115.0, 89.0,
 				112.3, 85.9);
 		if (distanceData.add(po).equals(ResultMessage.SUCCEED)) {
 			System.out.println("add succeed");
@@ -19,7 +19,7 @@ public class DistanceDataService_driver {
 		if (distanceData.add(po).equals(ResultMessage.EXITED)) {
 			System.out.println("add failed,distance exited");
 		}
-		DistancePO get = distanceData.find("Nanjing", "Shanghai");
+		CityPO get = distanceData.find("Nanjing", "Shanghai");
 		if (get != null)
 			System.out.println("find: from " + get.getStartCity() + " to "
 					+ get.getEndCity() + " Distance=" + get.getDistance());
@@ -32,7 +32,7 @@ public class DistanceDataService_driver {
 	}
 
 	public static void main(String[] args) {
-		DistanceDataService distanceData = new DistanceDataService_stub();
+		CityDataService distanceData = new DistanceDataService_stub();
 		DistanceDataService_driver driver = new DistanceDataService_driver();
 		try {
 			driver.driver(distanceData);

@@ -3,7 +3,7 @@ package gap.stub_driver.blservice.distance;
 
 import gap.client.blservice.strategyblservice.DistanceService;
 import gap.client.vo.DistanceVO;
-import gap.common.po.DistancePO;
+import gap.common.po.CityPO;
 import gap.common.util.ResultMessage;
 import gap.stub_driver.dataservice.distancedata.DistanceDataService_stub;
 
@@ -27,7 +27,7 @@ public class DistanceService_stub implements DistanceService{
 	public List<DistanceVO> getAll() {
 		// TODO 自动生成的方法存根
 		List<DistanceVO> list = new ArrayList<DistanceVO>();
-		for (DistancePO user : datastub.getAll())
+		for (CityPO user : datastub.getAll())
 			list.add(getVO(user));
 		return list;
 	}
@@ -38,12 +38,12 @@ public class DistanceService_stub implements DistanceService{
 		return getVO(datastub.find(startCity,endCity));
 	}
 	
-	private DistanceVO getVO(DistancePO po) {
+	private DistanceVO getVO(CityPO po) {
 		return new DistanceVO();
 	}
 
-	private DistancePO getPO(DistanceVO vo) {
-		return new DistancePO();
+	private CityPO getPO(DistanceVO vo) {
+		return new CityPO();
 	}
 
 	@Override
