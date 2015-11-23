@@ -1,61 +1,69 @@
 package gap.common.po;
 
 import java.io.Serializable;
-
+/**
+ * 
+ * @author seven
+ *
+ */
 public class PricePO implements Serializable {
 	// 经济：标准：特快的比例式
-	double eco, standar, express;
-
-	String rate;
+	private int economic, standard, express;
 	// 比例基准
-	double base;
+	private double base;
 	// 城市编号
-	String cityId;
+	private String city;
 
 	public PricePO() {
 
 	}
 
-	public PricePO(String id, String rate, double base) {
+	public PricePO(String city, int express, int standard, int economic, double base) {
 		this.base = base;
-		this.rate = rate;
-		cityId = id;
+		this.economic = economic;
+		this.standard = standard;
+		this.express = express;
+		this.city = city;
 	}
 
-	/**
-	 * @return base
-	 */
+	public int getEconomic() {
+		return economic;
+	}
+
+	public void setEconomic(int economic) {
+		this.economic = economic;
+	}
+
+	public int getStandard() {
+		return standard;
+	}
+
+	public void setStandard(int standard) {
+		this.standard = standard;
+	}
+
+	public int getExpress() {
+		return express;
+	}
+
+	public void setExpress(int express) {
+		this.express = express;
+	}
+
 	public double getBase() {
 		return base;
 	}
 
-	/**
-	 * @param base Ҫ���õ� base
-	 */
 	public void setBase(double base) {
 		this.base = base;
 	}
 
-	/**
-	 * @return cityId
-	 */
-	public String getCityId() {
-		return cityId;
+	public String getCity() {
+		return city;
 	}
 
-	/**
-	 * @param cityId Ҫ���õ� cityId
-	 */
-	public void setCityId(String cityId) {
-		this.cityId = cityId;
-	}
-
-	public String getRate() {
-		return rate;
-	}
-
-	public void setRate(String rate) {
-		this.rate = rate;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 }
