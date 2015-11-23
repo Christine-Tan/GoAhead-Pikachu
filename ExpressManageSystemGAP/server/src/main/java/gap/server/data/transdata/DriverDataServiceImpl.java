@@ -21,12 +21,13 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的构造函数存根
 	}
 
-	public List<DriverPO> getAll() throws RemoteException {
+	public List<DriverPO> getAll(String localins_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			List<DriverPO> drivers = new ArrayList<DriverPO>();
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM driver");
+					.excuteQuery("SELECT * FROM driver WHERE institution="
+							+ localins_id + ";");
 			while (re.next()) {
 				String name = re.getString("name"), ins_id = re
 						.getString("institution"), birth = re

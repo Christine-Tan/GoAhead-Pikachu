@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CarDataService extends Remote {
 
-	public List<CarPO> getAll() throws RemoteException;
+	public List<CarPO> getAll(String ins_id) throws RemoteException;
 
 	public ResultMessage add(CarPO po) throws RemoteException;
 

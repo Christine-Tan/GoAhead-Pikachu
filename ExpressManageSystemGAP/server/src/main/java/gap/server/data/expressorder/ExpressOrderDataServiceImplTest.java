@@ -1,13 +1,10 @@
 package gap.server.data.expressorder;
 
-import java.rmi.RemoteException;
-
-import gap.common.po.ExpressOrderPO;
-import gap.common.util.Address;
-import gap.common.util.CargoInfo;
-import gap.common.util.ExpressType;
-import gap.common.util.PeopleInfo;
+import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
+import gap.common.po.ExpressOrderModifyPO;
 import gap.server.initial.NetInitial;
+
+import java.rmi.RemoteException;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -52,31 +49,40 @@ public class ExpressOrderDataServiceImplTest {
 
 	@Test
 	public void testAdd() {
-//		ExpressOrderDataServiceImpl expre = new ExpressOrderDataServiceImpl();
-//		Address add = new Address("江苏省", "南京市", "栖霞区"), add1 = new Address(
-//				"北京市", "北京市", "朝阳区");
-//		PeopleInfo peo = new PeopleInfo("yyf", add, "nju", "15520065137");
-//		PeopleInfo peo1 = new PeopleInfo("txy", add1, "nju", "119");
-//		CargoInfo caro = new CargoInfo(3, 2.5, 3.5, "零食");
-//		ExpressOrderPO order = new ExpressOrderPO(peo, peo1,
-//				ExpressType.STANDARD, caro, "0000000001", 10.5);
-//		order.setCurrentins_id("0010001");
-//		try {
-//			expre.add(order, "000000001");
-//		} catch (RemoteException e) {
-//			// TODO 自动生成的 catch 块
-//			e.printStackTrace();
-//		}
+		// ExpressOrderDataServiceImpl expre = new
+		// ExpressOrderDataServiceImpl();
+		// Address add = new Address("江苏省", "南京市", "栖霞区"), add1 = new Address(
+		// "北京市", "北京市", "朝阳区");
+		// PeopleInfo peo = new PeopleInfo("yyf", add, "nju", "15520065137");
+		// PeopleInfo peo1 = new PeopleInfo("txy", add1, "nju", "119");
+		// CargoInfo caro = new CargoInfo(3, 2.5, 3.5, "零食");
+		// ExpressOrderPO order = new ExpressOrderPO(peo, peo1,
+		// ExpressType.STANDARD, caro, "0000000001", 10.5);
+		// order.setCurrentins_id("0010001");
+		// try {
+		// expre.add(order, "000000001");
+		// } catch (RemoteException e) {
+		// // TODO 自动生成的 catch 块
+		// e.printStackTrace();
+		// }
 	}
 
 	@Test
 	public void testFind() {
 		try {
-			ExpressOrderDataServiceImpl expre = new ExpressOrderDataServiceImpl();
-			ExpressOrderPO po = expre.find("0000000001");
-			System.out.println("Found order!!");
-			System.out.println("sender_Name:" + po.getSenderInfo().getName()
-					+ ",receicerName:" + po.getReceiverInfo().getName());
+			ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+					.getInstance();
+			// ExpressOrderPO po = expre.find("0000000001");
+			// System.out.println("Found order!!");
+			// System.out.println("sender_Name:" + po.getSenderInfo().getName()
+			// + ",receicerName:" + po.getReceiverInfo().getName());
+			// expre.addState("0000000001", "到达xxx营业厅");
+			// expre.addState("0000000001", "到达xxx中转中心");
+			// for (String str : expre.getState("0000000001"))
+			// System.out.println(str);
+			ExpressOrderModifyPO modify = new ExpressOrderModifyPO(
+					"0000000001", "0010001", null, false, false, false);
+			expre.modify(modify);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
