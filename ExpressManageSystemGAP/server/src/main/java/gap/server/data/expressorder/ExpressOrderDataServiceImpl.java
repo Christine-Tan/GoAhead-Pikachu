@@ -21,11 +21,12 @@ import java.util.List;
 public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	// 插入语句生成器
 	private InsertSQL senderInsert, receiverInsert, orderInsert, cargoInsert,
-			addressInsert;
+			addressInsert, stateInsert;
 	// 表名
 	private String senderTable = "sender_info",
 			receiverTable = "receiver_info", cargoTable = "cargo_info",
-			addressTable = "address", tableName = "expressorder";
+			addressTable = "address", stateTable = "expressorderstate",
+			tableName = "expressorder";
 	// expressorder表字段名
 	private String order_id_f = "order_id", current_ins_id_f = "currentIns_id",
 			sender_info_f = "sender_info", receiver_info_f = "receiver_info",
@@ -41,6 +42,9 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	// address表字段名
 	private String add_id_f = "id", add_province_f = "province",
 			add_district_f = "district", add_city_f = "city";
+	// state 表字段名
+	private String state_id_f = "order_id", state_time_f = "state_time",
+			state_state_f = "state";
 
 	public ExpressOrderDataServiceImpl() {
 		senderInsert = new InsertSQL(senderTable);
@@ -48,6 +52,7 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 		cargoInsert = new InsertSQL(cargoTable);
 		orderInsert = new InsertSQL(tableName);
 		addressInsert = new InsertSQL(addressTable);
+		stateInsert = new InsertSQL(stateTable);
 	}
 
 	/**
@@ -77,9 +82,12 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 				return ResultMessage.EXITED;
 			}
 
-			int sender_id = saveSenderinfo(sender);
-			int receiver_id = saveReceiverinfo(receiver);
-			int cargo_id = saveCargoInfo(cargo);
+			int sender_id, receiver_id, cargo_id;
+
+			if (((sender_id = saveSenderinfo(sender)) == -1)
+					|| ((receiver_id = saveReceiverinfo(receiver)) == -1)
+					|| ((cargo_id = saveCargoInfo(cargo)) == -1))
+				return ResultMessage.FAILED;
 
 			orderInsert.clear();
 			orderInsert.add(sender_info_f, sender_id);
@@ -194,6 +202,41 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	public List<ExpressOrderPO> findArrivedOrders(String arrivedorder_id)
 			throws RemoteException {
 		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	@Override
+	public ResultMessage addState(String order_id, String state) {
+		try {
+			stateInsert.clear();
+			stateInsert.add(state_id_f, order_id);
+			stateInsert.add(state_state_f, state);
+			String sql = stateInsert.createSQL();
+			NetModule.excutor.excute(sql);
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
+	}
+
+	@Override
+	public List<String> getState(String order_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT * FROM " + stateTable + " WHERE order_id="
+					+ order_id + " ORDER BY " + state_time_f + ";";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			List<String> states = new ArrayList<String>();
+			while (re.next()) {
+				states.add(re.getString(state_state_f));
+			}
+			return states;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -408,4 +451,5 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 		}
 		return -1;
 	}
+
 }

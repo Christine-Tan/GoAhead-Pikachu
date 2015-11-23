@@ -1,6 +1,8 @@
 package gap.common.util;
 
-public class PeopleInfo {
+import java.io.Serializable;
+
+public class PeopleInfo implements Serializable{
 	private String name, depart, cellphone;
 	private Address address;
 

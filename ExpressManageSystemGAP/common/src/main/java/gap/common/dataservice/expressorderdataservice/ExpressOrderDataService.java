@@ -69,4 +69,22 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public List<ExpressOrderPO> findArrivedOrders(String arrivedorder_id)
 			throws RemoteException;
+
+	/**
+	 * 为对应订单号的订单添加状态信息
+	 * @param order_id
+	 * @param state
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage addState(String order_id, String state)
+			throws RemoteException;
+
+	/**
+	 * 根据订单号返回状态信息
+	 * @param order_id
+	 * @return
+	 * @throws RemoteException
+	 */
+	public List<String> getState(String order_id) throws RemoteException;
 }
