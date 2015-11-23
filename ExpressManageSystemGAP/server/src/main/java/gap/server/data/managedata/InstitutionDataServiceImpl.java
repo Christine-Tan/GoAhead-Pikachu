@@ -109,11 +109,12 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		}
 		try {
 			updateSQL.clear();
-			updateSQL.add(id_f, ins_id);
+//			updateSQL.add(id_f, ins_id);
 			updateSQL.add(insname_f, name);
 			updateSQL.add(memberNum_f, memberNum);
 			updateSQL.add(address_f, city);
 			updateSQL.add(instype_f, instype);
+			updateSQL.setKey(id_f, ins_id);
 			String sql = updateSQL.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (SQLException e) {

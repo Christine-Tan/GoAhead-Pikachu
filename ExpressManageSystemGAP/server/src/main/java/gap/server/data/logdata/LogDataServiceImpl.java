@@ -33,11 +33,11 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			List<LogPO> logs = new ArrayList<LogPO>();
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM "
-					+ tableName + ";");
+					+ tableName + " ORDER BY " + timef + " DESC ;");
 			UserDataService userdata = new UserDataServiceImpl();
 			while (re.next()) {
 				UserPO user = userdata.findById(re.getString(user_idf));
-				Date date = re.getDate(timef);
+				String date = re.getString(timef);
 				String operate = re.getString(operatef);
 				logs.add(new LogPO(user, date, operate));
 			}

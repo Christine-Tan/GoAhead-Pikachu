@@ -19,20 +19,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
+	// 插入语句生成器
 	private InsertSQL senderInsert, receiverInsert, orderInsert, cargoInsert,
 			addressInsert;
+	// 表名
 	private String senderTable = "sender_info",
 			receiverTable = "receiver_info", cargoTable = "cargo_info",
 			addressTable = "address", tableName = "expressorder";
+	// expressorder表字段名
 	private String order_id_f = "order_id", current_ins_id_f = "currentIns_id",
 			sender_info_f = "sender_info", receiver_info_f = "receiver_info",
 			order_type_f = "order_type", cargo_info_f = "cargo_info",
 			price_f = "price", delivery_id_f = "delivery_id",
 			create_time_f = "create_time";
+	// sender_info 和 receiver_info 表字段名
 	private String info_name_f = "name", info_phone_f = "phone",
 			info_depart_f = "department", info_address_f = "address";
+	// cargo_info 表字段名
 	private String cargo_name_f = "cargoName", cargo_num_f = "numbers",
 			cargo_weight_f = "weight", cargo_volume = "volume";
+	// address表字段名
 	private String add_id_f = "id", add_province_f = "province",
 			add_district_f = "district", add_city_f = "city";
 
@@ -61,6 +67,7 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 			ExpressType type = po.getExpressType();
 			double price = po.getPrice();
 
+			// 判断对应订单号是否已经存在
 			String sele = "SELECT * FROM expressorder WHERE order_id="
 					+ order_id + ";";
 			ResultSet re = NetModule.excutor.excuteQuery(sele);
@@ -117,6 +124,12 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	@Override
 	public ResultMessage modify(ExpressOrderPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
+		PeopleInfo sender = po.getSenderInfo(), receiver = po.getReceiverInfo();
+		CargoInfo cargo = po.getCargoInfo();
+		String order_id = po.getOrder_id(), current_ins_id = po
+				.getCurrentins_id(), targetins_id = po.getTargetins_id();
+		ExpressType type = po.getExpressType();
+		double price = po.getPrice();
 		return null;
 	}
 

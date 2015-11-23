@@ -6,10 +6,11 @@ import java.sql.Date;
 public class LogPO implements Serializable {
 
 	private UserPO userPO;
-	private Date date;
+	// private Date date;
+	String date;
 	private String operate;
 
-	public LogPO(UserPO userPO, Date date, String operate) {
+	public LogPO(UserPO userPO, String date, String operate) {
 		this.setUserPO(userPO);
 		this.setDate(date);
 		this.setOperate(operate);
@@ -31,11 +32,11 @@ public class LogPO implements Serializable {
 		this.operate = operate;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

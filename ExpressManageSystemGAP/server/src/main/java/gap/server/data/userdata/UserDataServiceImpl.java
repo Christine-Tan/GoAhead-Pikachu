@@ -19,12 +19,15 @@ import java.util.List;
 /**
  * @author seven
  */
-public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService {
+public class UserDataServiceImpl extends UnicastRemoteObject implements
+		UserDataService {
 	// 表名
 	private String tableName = "user";
 	// 字段
-	private String id_f = "id", username_f = "username", password_f = "password", institution_f = "institution",
-			rank_f = "rank", userType_f = "userType", name_f = "name", gender_f = "gender", lastpaid_f = "lastpaid";
+	private String id_f = "id", username_f = "username",
+			password_f = "password", institution_f = "institution",
+			rank_f = "rank", userType_f = "userType", name_f = "name",
+			gender_f = "gender", lastpaid_f = "lastpaid";
 	private InsertSQL insertSQL;
 	private UpdateSQL updateSQL;
 
@@ -40,14 +43,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			List<UserPO> users = new ArrayList<UserPO>();
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM user");
 			while (re.next()) {
-				String id = re.getString(id_f), username = re.getString(username_f),
-						password = re.getString(password_f), ins_id = re.getString(institution_f),
-						name = re.getString(name_f);
-				int rank = re.getInt(rank_f);
-				Gender gender = Gender.valueOf(re.getString(gender_f));
-				UserType type = UserType.getUserType(re.getString(userType_f));
-				UserPO po = new UserPO(id, type, username, rank, ins_id, password, name, gender);
-				users.add(po);
+				users.add(getByResultSet(re));
 			}
 			return users;
 		} catch (SQLException e) {
@@ -59,12 +55,15 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 
 	public ResultMessage add(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
-		String user_id = po.getUserId(), username = po.getUserName(), password = po.getPassword(),
-				ins_id = po.getIns_id(), name = po.getName(), gender = po.getGender().toString();
+		String user_id = po.getUserId(), username = po.getUserName(), password = po
+				.getPassword(), ins_id = po.getIns_id(), name = po.getName(), gender = po
+				.getGender().toString();
 		UserType usertype = po.getType();
 		int rank = po.getRank();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT *FROM user WHERE id='" + user_id + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT *FROM user WHERE id='" + user_id
+							+ "';");
 			if (re.next()) {
 				System.out.println(re.getString("username"));
 				return ResultMessage.EXITED;
@@ -97,15 +96,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public UserPO findById(String user_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT *FROM user WHERE id= '" + user_id + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT *FROM user WHERE id= '" + user_id
+							+ "';");
 			re.next();
-			String id = re.getString(id_f), username = re.getString(username_f), password = re.getString(password_f),
-					ins_id = re.getString(institution_f), name = re.getString(name_f);
-			int rank = re.getInt(rank_f);
-			Gender gender = Gender.valueOf(re.getString(gender_f));
-			UserType type = UserType.getUserType(re.getString(userType_f));
-			UserPO po = new UserPO(id, type, username, rank, ins_id, password, name, gender);
-			return po;
+			return getByResultSet(re);
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -115,12 +110,15 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 
 	public ResultMessage modify(UserPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
-		String user_id = po.getUserId(), username = po.getUserName(), password = po.getPassword(),
-				ins_id = po.getIns_id(), name = po.getName(), gender = po.getGender().toString();
+		String user_id = po.getUserId(), username = po.getUserName(), password = po
+				.getPassword(), ins_id = po.getIns_id(), name = po.getName(), gender = po
+				.getGender().toString();
 		UserType usertype = po.getType();
 		int rank = po.getRank();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT *FROM user WHERE id='" + user_id + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT *FROM user WHERE id='" + user_id
+							+ "';");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
 			}
@@ -155,11 +153,13 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public ResultMessage delete(String user_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM user WHERE id=" + user_id + ";");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM user WHERE id=" + user_id + ";");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
 			} else
-				NetModule.excutor.excute("DELETE FROM user WHERE id='" + user_id + "';");
+				NetModule.excutor.excute("DELETE FROM user WHERE id='"
+						+ user_id + "';");
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -172,15 +172,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public UserPO findByUsername(String username) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM user WHERE username ='" + username + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM user WHERE username ='"
+							+ username + "';");
 			re.next();
-			String id = re.getString(id_f), password = re.getString(password_f), ins_id = re.getString(institution_f),
-					name = re.getString(name_f);
-			int rank = re.getInt(rank_f);
-			Gender gender = Gender.valueOf(re.getString(gender_f));
-			UserType type = UserType.getUserType(re.getString(userType_f));
-			UserPO po = new UserPO(id, type, username, rank, ins_id, password, name, gender);
-			return po;
+			return getByResultSet(re);
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -194,16 +190,10 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		try {
 			List<UserPO> users = new ArrayList<UserPO>();
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM user WHERE " + lastpaid_f + "<'" + date.toString() + "';");
+					.excuteQuery("SELECT * FROM user WHERE " + lastpaid_f
+							+ "<'" + date.toString() + "';");
 			while (re.next()) {
-				String id = re.getString(id_f), username = re.getString(username_f),
-						password = re.getString(password_f), ins_id = re.getString(institution_f),
-						name = re.getString(name_f);
-				int rank = re.getInt(rank_f);
-				Gender gender = Gender.valueOf(re.getString(gender_f));
-				UserType type = UserType.getUserType(re.getString(userType_f));
-				UserPO po = new UserPO(id, type, username, rank, ins_id, password, name, gender);
-				users.add(po);
+				users.add(getByResultSet(re));
 			}
 			return users;
 		} catch (SQLException e) {
@@ -230,6 +220,28 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
+	}
+
+	// 通过结果集获得单一userPO对象
+	private UserPO getByResultSet(ResultSet re) {
+		try {
+			String id, password, ins_id, name, username;
+			id = re.getString(id_f);
+			password = re.getString(password_f);
+			ins_id = re.getString(institution_f);
+			name = re.getString(name_f);
+			username = re.getString(username_f);
+			int rank = re.getInt(rank_f);
+			Gender gender = Gender.valueOf(re.getString(gender_f));
+			UserType type = UserType.getUserType(re.getString(userType_f));
+			UserPO po = new UserPO(id, type, username, rank, ins_id, password,
+					name, gender);
+			return po;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
