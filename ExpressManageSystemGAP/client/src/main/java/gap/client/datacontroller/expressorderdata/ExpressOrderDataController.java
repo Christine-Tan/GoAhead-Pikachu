@@ -3,6 +3,7 @@ package gap.client.datacontroller.expressorderdata;
 import gap.client.util.LocalInfo;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.strategydataservice.PriceDataService;
+import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
@@ -29,7 +30,7 @@ public class ExpressOrderDataController {
 		return expressOrderData.find(order_id);
 	}
 
-	public ResultMessage modify(ExpressOrderPO po) throws RemoteException {
+	public ResultMessage modify(ExpressOrderModifyPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return expressOrderData.modify(po);
 	}

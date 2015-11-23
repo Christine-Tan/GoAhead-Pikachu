@@ -25,7 +25,11 @@ public class UpdateSQL {
 	public void add(String field, Object value) {
 		fields.add(field);
 		String va;
-		if (!(value instanceof Integer)||!(value instanceof Double))
+		if (value == null) {
+			values.add("null");
+			return;
+		}
+		if ((value instanceof String) || (value instanceof Enum))
 			va = "'" + value.toString() + "'";
 		else
 			va = value.toString();

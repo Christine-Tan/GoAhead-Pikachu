@@ -1,6 +1,7 @@
 package gap.server.data.expressorder;
 
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
+import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.Address;
 import gap.common.util.CargoInfo;
@@ -9,6 +10,7 @@ import gap.common.util.PeopleInfo;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SelectSQL;
+import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
 import java.rmi.RemoteException;
@@ -22,6 +24,8 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	// 插入语句生成器
 	private InsertSQL senderInsert, receiverInsert, orderInsert, cargoInsert,
 			addressInsert, stateInsert;
+
+	private UpdateSQL update;
 	// 表名
 	private String senderTable = "sender_info",
 			receiverTable = "receiver_info", cargoTable = "cargo_info",
@@ -29,6 +33,8 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 			tableName = "expressorder";
 	// expressorder表字段名
 	private String order_id_f = "order_id", current_ins_id_f = "currentIns_id",
+			target_ins_id_f = "targetIns_id", received_f = "received",
+			passed_f = "passed", isTransed_f = "isTransed",
 			sender_info_f = "sender_info", receiver_info_f = "receiver_info",
 			order_type_f = "order_type", cargo_info_f = "cargo_info",
 			price_f = "price", delivery_id_f = "delivery_id",
@@ -46,13 +52,22 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	private String state_id_f = "order_id", state_time_f = "state_time",
 			state_state_f = "state";
 
-	public ExpressOrderDataServiceImpl() {
+	private static ExpressOrderDataService instance;
+
+	public static ExpressOrderDataService getInstance() {
+		if (instance == null)
+			instance = new ExpressOrderDataServiceImpl();
+		return instance;
+	}
+
+	private ExpressOrderDataServiceImpl() {
 		senderInsert = new InsertSQL(senderTable);
 		receiverInsert = new InsertSQL(receiverTable);
 		cargoInsert = new InsertSQL(cargoTable);
 		orderInsert = new InsertSQL(tableName);
 		addressInsert = new InsertSQL(addressTable);
 		stateInsert = new InsertSQL(stateTable);
+		update = new UpdateSQL(tableName);
 	}
 
 	/**
@@ -130,15 +145,36 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	}
 
 	@Override
-	public ResultMessage modify(ExpressOrderPO po) throws RemoteException {
+	public ResultMessage modify(ExpressOrderModifyPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
-		PeopleInfo sender = po.getSenderInfo(), receiver = po.getReceiverInfo();
-		CargoInfo cargo = po.getCargoInfo();
-		String order_id = po.getOrder_id(), current_ins_id = po
-				.getCurrentins_id(), targetins_id = po.getTargetins_id();
-		ExpressType type = po.getExpressType();
-		double price = po.getPrice();
-		return null;
+		try {
+			String order_id = po.getOrder_id();
+			String current_ins_id = po.getCurrentIns_id(), target_ins_id = po
+					.getTargetIns_id();
+			boolean received = po.isReceived(), passed = po.isPassed(), isTransed = po
+					.isTransed();
+
+			String sele = "SELECT * FROM " + tableName + " WHERE " + order_id_f
+					+ " = " + order_id + ";";
+			ResultSet re = NetModule.excutor.excuteQuery(sele);
+			if (!re.next()) {
+				return ResultMessage.NOTFOUND;
+			}
+			update.clear();
+			update.add(current_ins_id_f, current_ins_id);
+			update.add(target_ins_id_f, target_ins_id);
+			update.add(received_f, received);
+			update.add(passed_f, passed);
+			update.add(isTransed_f, isTransed);
+			update.setKey(order_id_f, order_id);
+			String sql = update.createSQL();
+			NetModule.excutor.excute(sql);
+			return ResultMessage.SUCCEED;
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
 	/**
@@ -206,7 +242,8 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	}
 
 	@Override
-	public ResultMessage addState(String order_id, String state) {
+	public ResultMessage addState(String order_id, String state)
+			throws RemoteException {
 		try {
 			stateInsert.clear();
 			stateInsert.add(state_id_f, order_id);
@@ -234,6 +271,19 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 			}
 			return states;
 		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage setArrived(String order_id, String ins_id,
+			String stateMessage) {
+		// TODO 自动生成的方法存根
+		try {
+			addState(order_id, stateMessage);
+		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}

@@ -28,11 +28,13 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 		updateSQL = new UpdateSQL(tableName);
 	}
 
-	public List<CarPO> getAll() throws RemoteException {
+	public List<CarPO> getAll(String localins_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			List<CarPO> cars = new ArrayList<CarPO>();
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM car");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM car WHERE " + institution_id_f
+							+ " = " + localins_id + ";");
 			while (re.next()) {
 				String id = re.getString(car_id_f), car_num = re
 						.getString(car_num_f), ins_id = re

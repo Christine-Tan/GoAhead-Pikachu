@@ -22,7 +22,8 @@ public class CarDataServiceImplTest {
 	@Test
 	public void test() {
 		try {
-			CarDataService cardata = (CarDataService) Naming.lookup(RMIConfig.url+ServiceName.CAR_DATA_SERVICE);
+			CarDataService cardata = (CarDataService) Naming
+					.lookup(RMIConfig.url + ServiceName.CAR_DATA_SERVICE);
 			CarPO po = new CarPO("0010001001", "88888", "0010001", 5);
 			CarPO po1 = new CarPO("0010001002", "44444", "0010001", 3);
 			CarPO po2 = new CarPO("0010001003", "12345", "0010001", 3);
@@ -30,14 +31,14 @@ public class CarDataServiceImplTest {
 			cardata.add(po1);
 			cardata.add(po2);
 
-			for (CarPO car : cardata.getAll()) {
+			for (CarPO car : cardata.getAll("00100001")) {
 				System.out.println("car_id=" + car.getCar_id() + ",car_num="
 						+ car.getCar_num());
 			}
 
 			po2.setCar_num("12345");
 			System.out.println(cardata.modify(po2).getMessage());
-			for (CarPO car : cardata.getAll()) {
+			for (CarPO car : cardata.getAll("0010001")) {
 				System.out.println("car_id=" + car.getCar_id() + ",car_num="
 						+ car.getCar_num());
 			}
