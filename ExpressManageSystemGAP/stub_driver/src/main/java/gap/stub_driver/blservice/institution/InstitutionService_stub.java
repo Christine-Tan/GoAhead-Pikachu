@@ -6,6 +6,7 @@ import gap.common.po.InstitutionPO;
 import gap.common.util.ResultMessage;
 import gap.stub_driver.dataservice.institution.InstitutionDataService_stub;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,13 @@ public class InstitutionService_stub implements InstitutionService{
 	@Override
 	public InstitutionVO getSingle(String id) {
 		// TODO 自动生成的方法存根
-		return getVO(datastub.find(id));
+		try {
+			return getVO(datastub.findById(id));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override

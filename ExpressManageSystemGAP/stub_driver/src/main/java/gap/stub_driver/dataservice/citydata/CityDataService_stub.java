@@ -39,5 +39,6 @@ public class CityDataService_stub implements CityDataService{
 		// TODO 自动生成的方法存根
 		return list;
 	}
-
+    
+	
 }
