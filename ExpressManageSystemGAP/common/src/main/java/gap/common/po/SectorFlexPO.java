@@ -43,6 +43,9 @@ public class SectorFlexPO {
 	//分配给汽运区的区域中存放的快递
 	private ArrayList<GoodsPO> toCar;
 	
+	//分区编号
+	private String id;
+	
 	
 	
 
@@ -165,6 +168,18 @@ public class SectorFlexPO {
 	
 	public int getNum(){
 		return getCarNum()+getPlaneNum()+getTrainNum();
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public SectorType getType() {
+		return type;
 	}
 	
 	

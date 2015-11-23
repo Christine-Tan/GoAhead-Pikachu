@@ -60,14 +60,14 @@ public class InventoryDataService_stub implements InventoryDataService{
 
 
 	@Override
-	public ResultMessage setAlarm(double alarmValue) {
+	public ResultMessage setAlarm(double alarmValue,String ins_id) {
 		// TODO Auto-generated method stub
 		this.alarmValue = alarmValue;
 		return ResultMessage.SUCCEED;
 	}
 
 	@Override
-	public double getAlarm() {
+	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
 		return this.alarmValue;
 	}
