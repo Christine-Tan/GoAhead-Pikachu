@@ -13,6 +13,12 @@ import gap.server.databaseutility.Excutor;
  *	sqlBuilder.Select("Name","Balance","Income").From("account").Where("Balance > 10000");<br/>
  *	sqlBuilder.excuteQuery();<p/>
  *
+ *	这个SQL生成器大部分时候允许两种输入方法，当想输入一串列或表达式时，可以通过方法一个一个调用输入，如<br/>
+ *	Set("Name").Assign("账户1").Comma("balance").Assign(12321.5)<p/>
+ *	也可以直接输入一个字符串
+ *	如<br/>
+ *	(Balance = 100,name = '账户1')<p/>
+ *
  *	excute和excuteQuery执行完了之后会自动清空builder
  * @author 申彬
  *
@@ -23,17 +29,30 @@ public class SQLBuilder {
 		SQLBuilder sqlBuilder = new SQLBuilder();		
 		sqlBuilder.Select("T.account","T.balance").From("account").AS("T")
 			.Where("Balance").EQUALS(150).AND("Income").EQUALS(200);
-		
-		//sqlBuilder.excuteQuery();
 		System.out.println(sqlBuilder.getSQL());
 		
 		sqlBuilder.clear();
 		sqlBuilder.InsertInto("account", "(balance,name,income)").Values("(15,100,'test')");
 		System.out.println(sqlBuilder.getSQL());
+		
 		sqlBuilder.clear();
-		sqlBuilder.InsertInto("account").Values(15,100,"test");
+		sqlBuilder.InsertInto("account","balance","income","Name").Values(15,100,"test");
 		System.out.println(sqlBuilder.getSQL());
 		
+		sqlBuilder.clear();
+		sqlBuilder.Update("account").Set("Name").Assign("账户1").Comma("balance").Assign(12321.5)
+				.Where("Income").EQUALS(12345);
+		System.out.println(sqlBuilder.getSQL());
+		
+		sqlBuilder.clear();
+		sqlBuilder.Update("account").Set("Name = '账户1'").Comma("balance = 12233")
+				.Where("Income = 12345");
+		System.out.println(sqlBuilder.toString());
+		
+		
+		sqlBuilder.clear();
+		sqlBuilder.DeleteFrom("account").Where("Name").EQUALS("账户1");
+		System.out.println(sqlBuilder.getSQL());
 	
 	}
 
@@ -42,6 +61,11 @@ public class SQLBuilder {
 	public SQLBuilder(){
 		excutor = Excutor.getInstance();
 		builder = new StringBuilder();
+	}
+	
+	public boolean equals() {
+		System.out.println("想输入等号，请不要调用equals，请调用EQUALS");	
+		return false;
 	}
 	
 	public boolean excute(){
@@ -95,6 +119,61 @@ public class SQLBuilder {
 		makeList(values, false);
 		return this;
 			
+	}
+	
+	/**
+	 * 
+	 * 删除方法，假如后边不调用where，则删除表中所有行
+	 * @param table
+	 * @return
+	 */
+	public SQLBuilder DeleteFrom(String table){
+		builder.append("Delete From ");
+		builder.append(table);
+		builder.append(" ");
+		return this;
+	}
+	
+	public SQLBuilder Update(String table){
+		builder.append("Update ");
+		builder.append(table);
+		builder.append(" ");
+		return this;
+	}
+	
+	public SQLBuilder Set(String col_or_express){
+		builder.append("Set ");
+		builder.append(col_or_express);
+		return this;
+	}
+	
+	
+	public SQLBuilder Assign(int num){
+		EQUALS(num);
+		return this;
+	}
+	public SQLBuilder Assign(double num){
+		EQUALS(num);
+		return this;
+	}
+	public SQLBuilder Assign(String value){
+		EQUALS(value);
+		return this;
+	}
+	
+	/**
+	 * 用于在update中加","的语句，传入参数是列名
+	 * @param column
+	 * @return
+	 */
+	public SQLBuilder Comma(String col_or_express){
+		
+		//为了让生成的SQL语句好看一点，逗号语句删除原字符串末尾的空格
+		deleteSpace();
+		builder.append(",");
+		builder.append(col_or_express);
+		
+		return this;
 	}
 	
 	private void makeList(Object[] objects,boolean isColumnName){
@@ -168,6 +247,21 @@ public class SQLBuilder {
 		
 	}
 	
+	private void addSpace(){
+		int lastIndex = builder.length()-1;
+		if(builder.charAt(lastIndex)!=' '){
+			builder.append(" ");
+		}
+		
+	}
+	
+	private void deleteSpace(){
+		int lastIndex = builder.length()-1;
+		if(builder.charAt(lastIndex)==' '){
+			builder.deleteCharAt(lastIndex);
+		}
+	}
+	
 	
 	/**
 	 * 
@@ -177,9 +271,10 @@ public class SQLBuilder {
 	 * @return
 	 */
 	public SQLBuilder Where(String col_Or_express){
+		addSpace();
 		builder.append("Where ");
 		builder.append(col_Or_express);
-		builder.append(" ");
+	
 		return this;
 	}
 	
@@ -203,12 +298,14 @@ public class SQLBuilder {
 	}
 	
 	public SQLBuilder AND(String string){
+		addSpace();
 		builder.append("AND ");
-		builder.append(string+" ");
+		builder.append(string);
 		return this;
 	}
 	
 	public SQLBuilder OR(String string){
+		addSpace();
 		builder.append("OR ");
 		builder.append(string);
 		return this;
@@ -223,13 +320,16 @@ public class SQLBuilder {
 	
 	private void judgeKeyWord(String judgeWord){
 		builder.append(judgeWord);
-		builder.append(" ");
 	}
 	
 	public void clear(){
 		if(builder!=null){
 			builder.delete(0, builder.length());
 		}
+	}
+	
+	public String toString(){
+		return builder.toString();
 	}
 	
 }
