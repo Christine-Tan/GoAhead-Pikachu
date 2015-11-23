@@ -81,6 +81,16 @@ public class InventoryDataController{
 		return null;
 	}
 
+	public List<GoodsPO> getAll(String ins_id)  {
+		// TODO Auto-generated method stub
+		try{
+			return inventory.getAll(ins_id);
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<GoodsPO> getAll()  {
 		// TODO Auto-generated method stub
 		try{

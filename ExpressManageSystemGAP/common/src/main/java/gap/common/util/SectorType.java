@@ -1,7 +1,7 @@
 package gap.common.util;
 
 public enum SectorType {
-	Plane,Train,Car,Flex
+	PLANE,TRAIN,CAR,FLEX
 	
 	//航运，铁运，汽运，机动
 }
