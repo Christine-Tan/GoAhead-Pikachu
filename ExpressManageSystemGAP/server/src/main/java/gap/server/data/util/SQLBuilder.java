@@ -118,7 +118,7 @@ public class SQLBuilder {
 		}
 		makeList(values, false);
 		return this;
-			
+		
 	}
 	
 	/**

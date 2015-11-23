@@ -2,18 +2,18 @@ package gap.common.po;
 
 public class TradePO {
 	private String accountName;
-	private int tradeNum = 0;
+	private double tradeNum = 0;
 
-	public TradePO(String accountName, int tradeNum) {
+	public TradePO(String accountName, double tradeNum) {
 		this.setAccountName(accountName);
 		this.setTradeNum(tradeNum);
 	}
 
-	public int getTradeNum() {
+	public double getTradeNum() {
 		return tradeNum;
 	}
 
-	public void setTradeNum(int tradeNum) {
+	public void setTradeNum(double tradeNum) {
 		this.tradeNum = tradeNum;
 	}
 
