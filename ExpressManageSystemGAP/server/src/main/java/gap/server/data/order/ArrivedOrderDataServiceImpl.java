@@ -13,6 +13,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -155,10 +156,12 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			String sql = "SELECT * FROM " + tableName + " WHERE " + passed_f
 					+ " = false";
-			ResultSet re=NetModule.excutor.excuteQuery(sql);
-			while(re.next()){
-				
+			List<ArrivedOrderPO> orders = new ArrayList<ArrivedOrderPO>();
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			while (re.next()) {
+				orders.add(getByResultSet(re));
 			}
+			return orders;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

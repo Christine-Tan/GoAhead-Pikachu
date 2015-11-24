@@ -8,6 +8,7 @@ import gap.common.util.CargoInfo;
 import gap.common.util.CurrentOrderType;
 import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
+import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SelectSQL;
@@ -24,14 +25,14 @@ import java.util.List;
 public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	// 插入语句生成器
 	private InsertSQL senderInsert, receiverInsert, orderInsert, cargoInsert,
-			addressInsert, stateInsert;
+			addressInsert, stateInsert, receivedInsert;
 
 	private UpdateSQL update;
 	// 表名
 	private String senderTable = "sender_info",
-			receiverTable = "receiver_info", cargoTable = "cargo_info",
-			addressTable = "address", stateTable = "expressorderstate",
-			tableName = "expressorder";
+			receivedTable = "received_info", receiverTable = "receiver_info",
+			cargoTable = "cargo_info", addressTable = "address",
+			stateTable = "expressorderstate", tableName = "expressorder";
 	// expressorder表字段名
 	private String order_id_f = "order_id", current_ins_id_f = "currentIns_id",
 			target_ins_id_f = "targetIns_id", received_f = "received",
@@ -40,6 +41,10 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 			order_type_f = "order_type", cargo_info_f = "cargo_info",
 			price_f = "price", delivery_id_f = "delivery_id",
 			create_time_f = "create_time";
+
+	private String rece_time_f = "time", rece_order_id_f = "order_id",
+			rece_delivery_id_f = "delivery_id",
+			rece_receiver_name_f = "receiver_name", rece_comment_f = "comment";
 	// sender_info 和 receiver_info 表字段名
 	private String info_name_f = "name", info_phone_f = "phone",
 			info_depart_f = "department", info_address_f = "address";
@@ -68,6 +73,7 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 		orderInsert = new InsertSQL(tableName);
 		addressInsert = new InsertSQL(addressTable);
 		stateInsert = new InsertSQL(stateTable);
+		receivedInsert = new InsertSQL(receivedTable);
 		update = new UpdateSQL(tableName);
 	}
 
@@ -134,7 +140,7 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT * FROM expressorder WHERE order_id="
-					+ order_id + ";";
+					+ order_id + " AND " + passed_f + " = true;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			return getByResultSet(re);
@@ -188,7 +194,7 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
 			String sql = "SELECT * FROM expressorder WHERE targetIns_id="
-					+ ins_id + ";";
+					+ ins_id + " AND " + passed_f + " = true;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
 				orders.add(getByResultSet(re));
@@ -202,16 +208,16 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	}
 
 	@Override
-	public List<ExpressOrderPO> findCurrentOrders(String ins_id, CurrentOrderType type)
-			throws RemoteException {
+	public List<ExpressOrderPO> findCurrentOrders(String ins_id,
+			CurrentOrderType type) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
 			String sql = "SELECT * FROM expressorder WHERE currentIns_id="
-					+ ins_id;
-			if (type==CurrentOrderType.ALL)
+					+ ins_id + " AND " + passed_f + " = true;";
+			if (type == CurrentOrderType.ALL)
 				sql += " ;";
-			else if (type==CurrentOrderType.LOAD)
+			else if (type == CurrentOrderType.LOAD)
 				sql += " AND " + isTransed_f + " = false;";
 			else
 				sql += " AND " + isTransed_f + " = true;";
@@ -263,6 +269,43 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
+
+	}
+
+	@Override
+	public List<ExpressOrderPO> getUnpassedOrder() throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT * FROM " + tableName + " WHERE " + passed_f
+					+ " = false;";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
+			while (re.next())
+				orders.add(getByResultSet(re));
+			return orders;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage setPassed(String order_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			update.clear();
+			update.add(passed_f, true);
+			update.setKey(order_id_f, order_id);
+			NetModule.excutor.excute(update.createSQL());
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
@@ -291,16 +334,76 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	public ResultMessage setArrived(String order_id, String ins_id,
 			String stateMessage) throws RemoteException {
 		// TODO 自动生成的方法存根
+		addState(order_id, stateMessage);
+		ExpressOrderModifyPO modify = new ExpressOrderModifyPO(order_id,
+				ins_id, null, false, true, true);
+		return modify(modify);
+	}
+
+	@Override
+	public ResultMessage setLoad(String order_id, String ins_id,
+			String stateMessage) throws RemoteException {
+		if (addState(order_id, stateMessage) == ResultMessage.FAILED)
+			return ResultMessage.FAILED;
+		ExpressOrderModifyPO modify = new ExpressOrderModifyPO(order_id, null,
+				ins_id, false, true, true);
+		return modify(modify);
+
+	}
+
+	@Override
+	public ResultMessage setDelivery(String order_id, String delivery_id,
+			String stateMessage) throws RemoteException {
+		// TODO 自动生成的方法存根
+		return addState(order_id, stateMessage);
+	}
+
+	@Override
+	public ResultMessage setRecieved(String order_id, ReceiveInfo info)
+			throws RemoteException {
+		// TODO 自动生成的方法存根
+		String stateMessage = "快递已签收,收件人:" + info.getReceiver_name();
+		if (addState(order_id, stateMessage) == ResultMessage.FAILED)
+			return ResultMessage.FAILED;
+		ExpressOrderModifyPO modify = new ExpressOrderModifyPO(order_id, null,
+				null, true, true, true);
+		modify(modify);
+
+		receivedInsert.clear();
+		receivedInsert.add(rece_delivery_id_f, info.getDelivery_id());
+		receivedInsert.add(rece_order_id_f, order_id);
+		receivedInsert.add(rece_receiver_name_f, info.getReceiver_name());
+		receivedInsert.add(rece_time_f, info.getReceive_time());
+		receivedInsert.add(rece_comment_f, info.getComment());
 		try {
-			addState(order_id, stateMessage);
-			ExpressOrderModifyPO modify = new ExpressOrderModifyPO(order_id,
-					ins_id, null, false, true, true);
-			modify(modify);
-		} catch (RemoteException e) {
+			NetModule.excutor.excute(receivedInsert.createSQL());
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		return null;
+		return ResultMessage.FAILED;
+	}
+
+	@Override
+	public double getDeliveryMoney(String date, String delivery_id)
+			throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT " + price_f + " FROM " + tableName + " WHERE "
+					+ delivery_id_f + " = " + delivery_id + " AND "
+					+ create_time_f + " = '" + date + "';";
+			double sum = 0;
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			while (re.next()) {
+				sum += re.getDouble(price_f);
+			}
+			return sum;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 	/**

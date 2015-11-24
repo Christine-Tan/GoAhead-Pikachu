@@ -3,6 +3,7 @@ package gap.common.dataservice.expressorderdataservice;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
+import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
 import java.rmi.Remote;
@@ -17,6 +18,20 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public ResultMessage add(ExpressOrderPO po, String courier_id)
 			throws RemoteException;
+
+	/**
+	 * 获得未审批通过的订单
+	 * @return
+	 */
+	public List<ExpressOrderPO> getUnpassedOrder() throws RemoteException;
+
+	/**设置订单审批通过状态
+	 * 
+	 * @param order_id
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage setPassed(String order_id) throws RemoteException;
 
 	/**
 	 * 根据订单号查询订单
@@ -98,4 +113,46 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public ResultMessage setArrived(String order_id, String ins_id,
 			String stateMessage) throws RemoteException;
+
+	/**
+	 * 设置装车单信息
+	 * @param order_id
+	 * @param ins_id
+	 * @param stateMessage
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage setLoad(String order_id, String ins_id,
+			String stateMessage) throws RemoteException;
+
+	/**
+	 * 设置派送信息
+	 * @param order_id
+	 * @param delivery_id
+	 * @param stateMessage
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage setDelivery(String order_id, String delivery_id,
+			String stateMessage) throws RemoteException;
+
+	/**
+	 * 设置收件信息
+	 * @param order_id
+	 * @param info
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage setRecieved(String order_id, ReceiveInfo info)
+			throws RemoteException;
+
+	/**
+	 * 获得某个快递员某天所收运费
+	 * @param date
+	 * @param delivery_id
+	 * @return
+	 * @throws RemoteException
+	 */
+	public double getDeliveryMoney(String date, String delivery_id)
+			throws RemoteException;
 }

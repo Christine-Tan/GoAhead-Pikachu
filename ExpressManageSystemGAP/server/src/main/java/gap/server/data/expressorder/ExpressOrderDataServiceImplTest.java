@@ -2,6 +2,7 @@ package gap.server.data.expressorder;
 
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.po.ExpressOrderModifyPO;
+import gap.common.util.ReceiveInfo;
 import gap.server.initial.NetInitial;
 
 import java.rmi.RemoteException;
@@ -68,26 +69,53 @@ public class ExpressOrderDataServiceImplTest {
 	}
 
 	@Test
-	public void testFind() {
+	public void testSetReceived() {
+		// ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+		// .getInstance();
+		// ReceiveInfo info = new ReceiveInfo("小红", "2015-03-01", "000000005",
+		// "测试");
+		// try {
+		// expre.setRecieved("0000000001", info);
+		// } catch (RemoteException e) {
+		// // TODO 自动生成的 catch 块
+		// e.printStackTrace();
+		// }
+	}
+
+	@Test
+	public void testGetDeliveryMoney() {
+		ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+				.getInstance();
 		try {
-			ExpressOrderDataService expre = ExpressOrderDataServiceImpl
-					.getInstance();
-			// ExpressOrderPO po = expre.find("0000000001");
-			// System.out.println("Found order!!");
-			// System.out.println("sender_Name:" + po.getSenderInfo().getName()
-			// + ",receicerName:" + po.getReceiverInfo().getName());
-			// expre.addState("0000000001", "到达xxx营业厅");
-			// expre.addState("0000000001", "到达xxx中转中心");
-			// for (String str : expre.getState("0000000001"))
-			// System.out.println(str);
-			// ExpressOrderModifyPO modify = new ExpressOrderModifyPO(
-			// "0000000001", "0010001", null, false, false, false);
-			// expre.modify(modify);
-			expre.setArrived("0000000001", "0010002", "xx营业厅收件");
+			double money = expre.getDeliveryMoney("2015-11-22", "000000005");
+			System.out.println(money);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void testFind() {
+		// try {
+		// ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+		// .getInstance();
+		// ExpressOrderPO po = expre.find("0000000001");
+		// System.out.println("Found order!!");
+		// System.out.println("sender_Name:" + po.getSenderInfo().getName()
+		// + ",receicerName:" + po.getReceiverInfo().getName());
+		// expre.addState("0000000001", "到达xxx营业厅");
+		// expre.addState("0000000001", "到达xxx中转中心");
+		// for (String str : expre.getState("0000000001"))
+		// System.out.println(str);
+		// ExpressOrderModifyPO modify = new ExpressOrderModifyPO(
+		// "0000000001", "0010001", null, false, false, false);
+		// expre.modify(modify);
+		// expre.setArrived("0000000001", "0010002", "xx营业厅收件");
+		// } catch (RemoteException e) {
+		// // TODO 自动生成的 catch 块
+		// e.printStackTrace();
+		// }
 	}
 
 }

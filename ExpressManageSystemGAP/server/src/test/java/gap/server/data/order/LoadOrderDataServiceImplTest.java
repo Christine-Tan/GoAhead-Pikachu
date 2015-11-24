@@ -21,12 +21,13 @@ public class LoadOrderDataServiceImplTest {
 	public void test() {
 		try {
 			LoadOrderDataServiceImpl loadorder = new LoadOrderDataServiceImpl();
-			List<String> orders = new ArrayList<>();
-			orders.add("0000000001");
-			LoadOrderPO po = new LoadOrderPO("00100011996030100001",
-					"2015-06-03", "0010001001", "0010001", "0010002",
-					"0010001001", "000000001", orders);
-			loadorder.add(po);
+			// List<String> orders = new ArrayList<>();
+			// orders.add("0000000001");
+			// LoadOrderPO po = new LoadOrderPO("00100011996030100001",
+			// "2015-06-03", "0010001001", "0010001", "0010002",
+			// "0010001001", "000000001", orders);
+			// loadorder.add(po);
+			loadorder.setPassed("00100011996030100001", "南京栖霞营业厅发出");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

@@ -36,12 +36,13 @@ public class ArrivedOrderDataServiceImplTest {
 			// ArrivedOrderPO po = new ArrivedOrderPO(orders, "2015-03-01",
 			// "00100011996030100001", "0010001", "001002", "测试");
 			// arrivedOrderDataService.add(po);
-			// arrivedOrderDataService.setPassed("00100011996030100001", "");
-			ArrivedOrderPO po = arrivedOrderDataService
-					.find("00100011996030100001");
-			System.out.println(po.getId() + "," + po.getDes_ins_id() + ","
-					+ po.getFrom_ins_id() + "," + po.getComment() + ","
-					+ po.getTime());
+			arrivedOrderDataService.setPassed("00100011996030100001",
+					"南京中转中心已收件");
+			// ArrivedOrderPO po = arrivedOrderDataService
+			// .find("00100011996030100001");
+			// System.out.println(po.getId() + "," + po.getDes_ins_id() + ","
+			// + po.getFrom_ins_id() + "," + po.getComment() + ","
+			// + po.getTime());
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

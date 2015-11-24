@@ -1,10 +1,11 @@
 package gap.common.dataservice.orderdataservice;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-
 import gap.common.po.LoadOrderPO;
 import gap.common.util.ResultMessage;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
 
 public interface LoadOrderDataService extends Remote {
 	public ResultMessage add(LoadOrderPO po) throws RemoteException;
@@ -13,4 +14,6 @@ public interface LoadOrderDataService extends Remote {
 
 	public ResultMessage setPassed(String order_id, String state_info)
 			throws RemoteException;
+
+	public List<LoadOrderPO> getUnpassedOrders() throws RemoteException;
 }
