@@ -75,7 +75,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		// TODO Auto-generated method stub
 		ResultSet re;
 		try {
-			re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE id='" + ins_id + "';");
+			re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
 			re.next();
 			String id = re.getString(id_f), name = re.getString(insname_f), city = re.getString(address_f);
 			;
@@ -98,7 +98,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		String city = po.getInsCity();
 		InstitutionType instype = po.getInsType();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE id='" + ins_id + "';");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
 			}
@@ -109,7 +109,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		}
 		try {
 			updateSQL.clear();
-//			updateSQL.add(id_f, ins_id);
+			// updateSQL.add(id_f, ins_id);
 			updateSQL.add(insname_f, name);
 			updateSQL.add(memberNum_f, memberNum);
 			updateSQL.add(address_f, city);
@@ -131,34 +131,33 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 	public ResultMessage delete(String ins_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE id='" + ins_id + "';");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
 			} else
-				NetModule.excutor.excute("DELETE FROM institution WHERE id='" + ins_id + "';");
+				NetModule.excutor.excute("DELETE FROM institution WHERE ins_id='" + ins_id + "';");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResultMessage.FAILED;
 		}
-
 		return ResultMessage.SUCCEED;
 	}
-    
+
 	@Override
 	public List<InstitutionPO> getAll() throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			List<InstitutionPO> institutions=new ArrayList<InstitutionPO>();
+			List<InstitutionPO> institutions = new ArrayList<InstitutionPO>();
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution;");
-		    while(re.next()){
+			while (re.next()) {
 				String id = re.getString(id_f), name = re.getString(insname_f), city = re.getString(address_f);
 				;
 				int num = re.getInt(memberNum_f);
 				InstitutionPO po = new InstitutionPO(id, name, city, num);
-                institutions.add(po);
-		    }
-		    return institutions;
+				institutions.add(po);
+			}
+			return institutions;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -170,16 +169,16 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 	public List<InstitutionPO> findByCity(String city) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			List<InstitutionPO> institutions=new ArrayList<InstitutionPO>();
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE city='"+city+"';");
-		    while(re.next()){
+			List<InstitutionPO> institutions = new ArrayList<InstitutionPO>();
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE address='" + city + "';");
+			while (re.next()) {
 				String id = re.getString(id_f), name = re.getString(insname_f);
 				;
 				int num = re.getInt(memberNum_f);
 				InstitutionPO po = new InstitutionPO(id, name, city, num);
-                institutions.add(po);
-		    }
-		    return institutions;
+				institutions.add(po);
+			}
+			return institutions;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

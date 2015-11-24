@@ -2,6 +2,7 @@ package gap.common.dataservice.strategydataservice;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 import gap.common.po.SalaryPO;
 import gap.common.util.ResultMessage;
@@ -13,4 +14,6 @@ public interface SalaryDataService extends Remote {
 	public ResultMessage add(SalaryPO po) throws RemoteException;
 
 	public ResultMessage modify(SalaryPO po) throws RemoteException;
+	
+	public List<SalaryPO> getAll() throws RemoteException; 
 }

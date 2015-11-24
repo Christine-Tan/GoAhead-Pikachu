@@ -69,10 +69,10 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 			if (re.next())
 				return ResultMessage.FAILED;
 			// 不存在该价格信息，可以新增
-			int express = Integer.valueOf(re.getString(express_f)),
-					standard = Integer.valueOf(re.getString(standard_f)),
-					economic = Integer.valueOf(re.getString(economic_f));
-			double base = Double.valueOf(re.getString(base_f));
+			int express = po.getExpress(),
+					standard = po.getStandard(),
+					economic = po.getEconomic();
+			double base = po.getBase();
 			try {
 				priceInsert.clear();
 				priceInsert.add(cityid_f, city_id);

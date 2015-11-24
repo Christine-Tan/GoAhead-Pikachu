@@ -25,7 +25,7 @@ public class InstitutionPO implements Serializable {
 		insName = name;
 		insCity = city;
 		insMember = member;
-		insType = this.getInsType();
+		this.setInsType(insId);
 	}
 
 	public InstitutionPO() {
@@ -85,14 +85,13 @@ public class InstitutionPO implements Serializable {
 		this.insMember = insMember;
 	}
 
+	public void setInsType(String insId){
+		insType=InstitutionType.getInsType(insId);
+	}
 	public InstitutionType getInsType() {
-		return InstitutionType.getInsType(insId);
+		return insType;
 	}
 
-	public List<InstitutionPO> getAll() {
-		// TODO 自动生成的方法存根
-		List<InstitutionPO> insList = new ArrayList<InstitutionPO>();
-		return insList;
-	}
+
 
 }

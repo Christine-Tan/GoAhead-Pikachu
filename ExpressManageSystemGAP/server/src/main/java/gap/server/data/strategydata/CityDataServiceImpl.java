@@ -51,21 +51,20 @@ public class CityDataServiceImpl extends UnicastRemoteObject implements CityData
 	@Override
 	public ResultMessage add(CityPO po) throws RemoteException {
 		// TODO Auto-generated method stub
+		double latitude = po.getLatitude();
+		double longitude = po.getLongitude();
+		String city = po.getCity(), province = po.getProvince();
 		try {
-			String city = po.getCity(), province = po.getProvince();
 			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
 			if (rs.next()) {
 				return ResultMessage.EXITED;
 			}
-			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT province_id FROM province WHERE name='" + province + "';");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT id FROM province WHERE name='" + province + "';");
 			re.next();
-			int province_id = Integer.valueOf(re.getString("province_id"));
-			double latitude = po.getLatitude();
-			double longitude = po.getLongitude();
+			int province_id = re.getInt("id");
 			insertSQL.clear();
 			insertSQL.add(city_f, city);
-			insertSQL.add(province_f, province);
+			insertSQL.add(province_f, province_id);
 			insertSQL.add(lati_f, latitude);
 			insertSQL.add(long_f, longitude);
 			String sql = insertSQL.createSQL();
@@ -84,12 +83,11 @@ public class CityDataServiceImpl extends UnicastRemoteObject implements CityData
 		List<CityPO> cities = new ArrayList<CityPO>();
 		try {
 			ResultSet re = NetModule.excutor.excuteQuery(
-					"SELECT city.name city_f,province.name province_f,city.latitude lati_f,city.longitude long_f FROM city,province WHERE province.id=city.province_id;");
-			re.next();
+					"SELECT city.name cityname,province.name provincename,city.latitude lati,city.longitude longi FROM city,province WHERE province.id=city.province_id;");
 			while (re.next()) {
-				String city = re.getString(city_f), province = re.getString(province_f);
-				double latitude = Double.valueOf(re.getString(lati_f)),
-						longitude = Double.valueOf(re.getString(long_f));
+				String city = re.getString("cityname"), province = re.getString("provincename");
+				double latitude = Double.valueOf(re.getString("lati")),
+						longitude = Double.valueOf(re.getString("longi"));
 				CityPO po = new CityPO(city, province, latitude, longitude);
 				cities.add(po);
 			}

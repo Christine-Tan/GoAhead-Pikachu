@@ -5,8 +5,7 @@ import java.util.List;
 
 /**
  * 
- * @author YangYanfei
- * 生成插入SQL语句的类
+ * @author YangYanfei 生成插入SQL语句的类
  */
 public class InsertSQL {
 	List<String> fields;
@@ -22,7 +21,9 @@ public class InsertSQL {
 	public void add(String field, Object value) {
 		fields.add(field);
 		String va;
-		if ((value instanceof String) || (value instanceof Enum))
+		if (value == null)
+			va = "null";
+		else if ((value instanceof String) || (value instanceof Enum))
 			va = "'" + value.toString() + "'";
 		else
 			va = value.toString();
