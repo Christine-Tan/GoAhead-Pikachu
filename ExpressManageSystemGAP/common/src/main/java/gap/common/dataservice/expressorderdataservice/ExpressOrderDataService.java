@@ -2,6 +2,7 @@ package gap.common.dataservice.expressorderdataservice;
 
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ResultMessage;
 
 import java.rmi.Remote;
@@ -44,8 +45,8 @@ public interface ExpressOrderDataService extends Remote {
 	 * @param ins_id
 	 * @return
 	 */
-	public List<ExpressOrderPO> findCurrentOrders(String ins_id)
-			throws RemoteException;
+	public List<ExpressOrderPO> findCurrentOrders(String ins_id,
+			CurrentOrderType type) throws RemoteException;
 
 	/**
 	 * 查找对应id的装车单的订单

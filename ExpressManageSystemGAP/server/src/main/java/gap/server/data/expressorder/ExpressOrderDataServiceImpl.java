@@ -5,6 +5,7 @@ import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.Address;
 import gap.common.util.CargoInfo;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
 import gap.common.util.ResultMessage;
@@ -201,13 +202,19 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	}
 
 	@Override
-	public List<ExpressOrderPO> findCurrentOrders(String ins_id)
+	public List<ExpressOrderPO> findCurrentOrders(String ins_id, CurrentOrderType type)
 			throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
 			String sql = "SELECT * FROM expressorder WHERE currentIns_id="
-					+ ins_id + ";";
+					+ ins_id;
+			if (type==CurrentOrderType.ALL)
+				sql += " ;";
+			else if (type==CurrentOrderType.LOAD)
+				sql += " AND " + isTransed_f + " = false;";
+			else
+				sql += " AND " + isTransed_f + " = true;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
 				orders.add(getByResultSet(re));
