@@ -65,7 +65,7 @@ public class AccountDataServiceImpl implements AccountDataService{
 		double tradeMoney = tradePO.getTradeNum();
 		String name = tradePO.getAccountName();
 		builder.Select("*").From(tableName).Where(Name_Col).EQUALS(name);
-		System.out.println(builder.toString());
+
 		
 		ResultSet resultSet = builder.excuteQuery();
 		if(resultSet==null)
@@ -91,7 +91,6 @@ public class AccountDataServiceImpl implements AccountDataService{
 			income = resultSet.getDouble(this.Income_Col);
 			pay = resultSet.getDouble(this.Pay_Col);
 			
-			System.out.println(balance+" "+income+" "+pay);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -109,7 +108,7 @@ public class AccountDataServiceImpl implements AccountDataService{
 		builder.Update(tableName).Set(Balance_Col).Assign(balance)
 			.Comma(Income_Col).Assign(income).Comma(Pay_Col)
 			.Assign(pay).Where(Name_Col).EQUALS(name);
-		System.out.println(builder.toString());
+		
 		return builder.excute();
 		
 	}
@@ -117,13 +116,40 @@ public class AccountDataServiceImpl implements AccountDataService{
 	@Override
 	public ArrayList<Cost_profitPO> getCost_Profit() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		builder.Select(Name_Col,Income_Col,Pay_Col).From(tableName);
+		ResultSet resultSet = builder.excuteQuery();
+		ArrayList<Cost_profitPO> Cost_profitList = new ArrayList<>();
+		
+		Class<Cost_profitPO> c = (Class<Cost_profitPO>) new Cost_profitPO("", 0, 0).getClass();
+		
+//		try {
+//
+//			
+//		} catch (SQLException e) {
+//			// TODO: handle exception
+//		}
+//		
+		
 	}
 
 	@Override
 	public ArrayList<AccountPO> getAccountList() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		builder.Select(Name_Col,Balance_Col).From(tableName);
+		ResultSet resultSet = builder.excuteQuery();
+		ArrayList<AccountPO> accountList = new ArrayList<>();
+		try {
+			while(resultSet.next()){
+				String name = resultSet.getString(Name_Col);
+				double balance = resultSet.getDouble(Balance_Col);
+				accountList.add(new AccountPO(name, balance));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return accountList;		
 	}
 
 }
