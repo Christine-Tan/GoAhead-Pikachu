@@ -16,36 +16,30 @@ import gap.server.initial.NetModule;
 
 public class CityDataServiceImpl extends UnicastRemoteObject implements CityDataService {
 	// 表名
-	private String tablename1 = "city", tablename2 = "citylocation", tablename3 = "province";
+	private String tablename = "city";
 	// 字段
-	private String id_f = "id", city_f = "city_id", lati_f = "latitude", long_f = "longitude",
-			province_f = "province_id", proname_f = "name";
+	private String id_f = "id", city_f = "name", lati_f = "latitude", long_f = "longitude", province_f = "province_id";
 
-	private InsertSQL insertSQL1, insertSQL2, insertSQL3;
+	private InsertSQL insertSQL;
 
 	public CityDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
-		insertSQL1 = new InsertSQL(tablename1);
-		insertSQL2 = new InsertSQL(tablename2);
-		insertSQL3 = new InsertSQL(tablename3);
+		insertSQL = new InsertSQL(tablename);
 	}
 
 	@Override
 	public CityPO find(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name=" + name + ";");
+			ResultSet re = NetModule.excutor.excuteQuery(
+					"SELECT province.name provincename,city.name cityname, city.latitude,city.longitude FROM city,province WHERE city.name='"
+							+ name + "'AND province.id=city.province_id" + ";");
 			re.next();
-			ResultSet city = NetModule.excutor
-					.excuteQuery("SELECT * FROM citylocation WHERE cityid=" + re.getString(id_f) + ";");
-			city.next();
-			ResultSet province = NetModule.excutor
-					.excuteQuery("SELECT * FROM province WHERE id=" + city.getString(province_f) + ";");
-			province.next();
-			String proname = province.getString(proname_f);
-			double lati = city.getDouble(lati_f), longi = city.getDouble(long_f);
-			CityPO po = new CityPO(name, proname, lati, longi);
+			String city = re.getString("cityname"), province = re.getString("provincename");
+			double latitude = Double.valueOf(re.getString("latitude")),
+					longitude = Double.valueOf(re.getString("longitude"));
+			CityPO po = new CityPO(city, province, latitude, longitude);
 			return po;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -57,49 +51,46 @@ public class CityDataServiceImpl extends UnicastRemoteObject implements CityData
 	@Override
 	public ResultMessage add(CityPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String cityname = po.getCity(), province = po.getProvince();
-		double lati = po.getLatitude(), longi = po.getLongitude();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT *FROM city WHERE name=" + cityname + "';");
-			if (re.next()) {
-				System.out.println(re.getString("name"));
+			String city = po.getCity(), province = po.getProvince();
+			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
+			if (rs.next()) {
 				return ResultMessage.EXITED;
 			}
-		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-			return ResultMessage.FAILED;
-		}
-//how to add the citylocation with id pointing to taable city
-		try {
-			insertSQL1.add(city_f, cityname);
-			insertSQL2.add(province_f, province);
-			String sql = insertSQL1.createSQL();
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT province_id FROM province WHERE name='" + province + "';");
+			re.next();
+			int province_id = Integer.valueOf(re.getString("province_id"));
+			double latitude = po.getLatitude();
+			double longitude = po.getLongitude();
+			insertSQL.clear();
+			insertSQL.add(city_f, city);
+			insertSQL.add(province_f, province);
+			insertSQL.add(lati_f, latitude);
+			insertSQL.add(long_f, longitude);
+			String sql = insertSQL.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.FAILED;
 		}
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
 	public List<CityPO> getAll() throws RemoteException {
 		// TODO Auto-generated method stub
+		List<CityPO> cities = new ArrayList<CityPO>();
 		try {
-			List<CityPO> cities = new ArrayList<CityPO>();
-			ResultSet city = NetModule.excutor.excuteQuery("SELECT *FROM city");
-			while (city.next()) {
-				String id = city.getString(id_f), cityname = city.getString("name");
-				ResultSet cityloca = NetModule.excutor
-						.excuteQuery("SELECT * FROM citylocation WHERE cityid=" + id + ";");
-				cityloca.next();
-				double lati = cityloca.getDouble(lati_f), longi = cityloca.getDouble(long_f);
-				ResultSet province = NetModule.excutor
-						.excuteQuery("SELECT * FROM province WHERE id=" + cityloca.getString(province_f) + ";");
-				province.next();
-				String proname = province.getString(proname_f);
-				CityPO po = new CityPO(cityname, proname, lati, longi);
+			ResultSet re = NetModule.excutor.excuteQuery(
+					"SELECT city.name city_f,province.name province_f,city.latitude lati_f,city.longitude long_f FROM city,province WHERE province.id=city.province_id;");
+			re.next();
+			while (re.next()) {
+				String city = re.getString(city_f), province = re.getString(province_f);
+				double latitude = Double.valueOf(re.getString(lati_f)),
+						longitude = Double.valueOf(re.getString(long_f));
+				CityPO po = new CityPO(city, province, latitude, longitude);
 				cities.add(po);
 			}
 			return cities;

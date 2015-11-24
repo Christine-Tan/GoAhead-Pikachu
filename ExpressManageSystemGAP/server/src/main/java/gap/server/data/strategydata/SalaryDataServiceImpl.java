@@ -14,7 +14,9 @@ import gap.common.util.UserType;
  * @author seven
  */
 public class SalaryDataServiceImpl extends UnicastRemoteObject implements SalaryDataService{
-
+   //表名
+	String tablename="salary";
+	//字段
 	public SalaryDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
