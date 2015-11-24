@@ -20,7 +20,7 @@ public class AccountDataServiceImpl implements AccountDataService{
 
 	public final String tableName = "account"; 
 	public final String Name_Col= "Name";	
-	public final String Balance_Col = "Baleance";
+	public final String Balance_Col = "Balance";
 	public final String Income_Col="Income";
 	public final String Pay_Col="Pay";
 	private SQLBuilder builder = new SQLBuilder();
@@ -65,10 +65,21 @@ public class AccountDataServiceImpl implements AccountDataService{
 		double tradeMoney = tradePO.getTradeNum();
 		String name = tradePO.getAccountName();
 		builder.Select("*").From(tableName).Where(Name_Col).EQUALS(name);
+		System.out.println(builder.toString());
+		
 		ResultSet resultSet = builder.excuteQuery();
 		if(resultSet==null)
 		{
 			return false;
+		}
+		
+		try {
+			if(!resultSet.next()){
+				return false;
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		double balance=0;
@@ -79,6 +90,9 @@ public class AccountDataServiceImpl implements AccountDataService{
 			balance = resultSet.getDouble(this.Balance_Col);
 			income = resultSet.getDouble(this.Income_Col);
 			pay = resultSet.getDouble(this.Pay_Col);
+			
+			System.out.println(balance+" "+income+" "+pay);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

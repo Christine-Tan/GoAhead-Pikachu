@@ -188,7 +188,7 @@ public class SQLBuilder {
 				hasBra = s.contains("(");
 			}
 			
-			if(!hasBra){
+			if(!hasBra&& !isColumnName){
 				leftBra();
 			}
 			
@@ -206,7 +206,7 @@ public class SQLBuilder {
 				}
 			}
 			
-			if(!hasBra){
+			if(!hasBra && !isColumnName){
 				rightBra();
 			}
 			builder.append(" ");
