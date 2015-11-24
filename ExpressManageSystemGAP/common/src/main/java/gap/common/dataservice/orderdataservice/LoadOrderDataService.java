@@ -10,4 +10,7 @@ public interface LoadOrderDataService extends Remote {
 	public ResultMessage add(LoadOrderPO po) throws RemoteException;
 
 	public LoadOrderPO find(String order_id) throws RemoteException;
+
+	public ResultMessage setPassed(String order_id, String state_info)
+			throws RemoteException;
 }

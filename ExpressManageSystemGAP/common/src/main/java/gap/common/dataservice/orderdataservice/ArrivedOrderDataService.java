@@ -10,4 +10,8 @@ public interface ArrivedOrderDataService extends Remote {
 	public ResultMessage add(ArrivedOrderPO po) throws RemoteException;
 
 	public ArrivedOrderPO find(String order_id) throws RemoteException;
+
+	public ResultMessage setPassed(String order_id, String state_info)
+			throws RemoteException;
+
 }

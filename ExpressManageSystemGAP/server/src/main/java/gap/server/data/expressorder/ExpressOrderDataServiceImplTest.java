@@ -80,9 +80,10 @@ public class ExpressOrderDataServiceImplTest {
 			// expre.addState("0000000001", "到达xxx中转中心");
 			// for (String str : expre.getState("0000000001"))
 			// System.out.println(str);
-			ExpressOrderModifyPO modify = new ExpressOrderModifyPO(
-					"0000000001", "0010001", null, false, false, false);
-			expre.modify(modify);
+			// ExpressOrderModifyPO modify = new ExpressOrderModifyPO(
+			// "0000000001", "0010001", null, false, false, false);
+			// expre.modify(modify);
+			expre.setArrived("0000000001", "0010002", "xx营业厅收件");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

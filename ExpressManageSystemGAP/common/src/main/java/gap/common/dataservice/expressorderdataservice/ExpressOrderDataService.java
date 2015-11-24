@@ -96,5 +96,5 @@ public interface ExpressOrderDataService extends Remote {
 	 * @return
 	 */
 	public ResultMessage setArrived(String order_id, String ins_id,
-			String stateMessage);
+			String stateMessage) throws RemoteException;
 }

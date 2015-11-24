@@ -277,12 +277,18 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 		return null;
 	}
 
+	/**
+	 * 制定到达单时设置到达信息
+	 */
 	@Override
 	public ResultMessage setArrived(String order_id, String ins_id,
-			String stateMessage) {
+			String stateMessage) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			addState(order_id, stateMessage);
+			ExpressOrderModifyPO modify = new ExpressOrderModifyPO(order_id,
+					ins_id, null, false, true, true);
+			modify(modify);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
