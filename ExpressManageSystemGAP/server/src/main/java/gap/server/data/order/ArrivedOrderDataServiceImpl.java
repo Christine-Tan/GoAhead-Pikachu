@@ -13,6 +13,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -66,6 +68,55 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 
 	public ArrivedOrderPO find(String order_id) throws RemoteException {
 		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT * FROM " + tableName + " WHERE " + order_id_f
+					+ " = " + order_id + " AND " + passed_f + " = true;";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			re.next();
+			return getByResultSet(re);
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	// 通过结果集返回到达单PO
+	private ArrivedOrderPO getByResultSet(ResultSet re) {
+		try {
+			String order_id = re.getString(order_id_f), des_ins_id = re
+					.getString(des_insid_f), from_ins_id = re
+					.getString(from_ins_id_f), comment = re
+					.getString(comment_f), time = re.getString(time_f);
+			Map<String, String> orders = getByOrder_id(order_id);
+			if (orders == null)
+				return null;
+			ArrivedOrderPO po = new ArrivedOrderPO(orders, time, order_id,
+					from_ins_id, des_ins_id, comment);
+			return po;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Map<String, String> getByOrder_id(String order_id) {
+		try {
+			String sql = "SELECT * from " + itemTable + " WHERE "
+					+ item_order_id_f + " = " + order_id + ";";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			Map<String, String> result = new HashMap<String, String>();
+			while (re.next()) {
+				String order = re.getString(item_id_expressorder_f);
+				String state = re.getString(item_arrivedstate_f);
+				result.put(order, state);
+			}
+			return result;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -96,6 +147,23 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
+	}
+
+	@Override
+	public List<ArrivedOrderPO> getUnpassedOrders() throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT * FROM " + tableName + " WHERE " + passed_f
+					+ " = false";
+			ResultSet re=NetModule.excutor.excuteQuery(sql);
+			while(re.next()){
+				
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
