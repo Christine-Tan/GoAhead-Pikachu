@@ -5,11 +5,13 @@ import java.util.Date;
 public class RentPO {
 
 	private int money;
-	private Date lastPayedDate;
-
-	public RentPO(int money, Date lastPayedDate) {
+	private Date lastPaidDate;
+    private String institution;
+   
+	public RentPO(int money, Date lastPaidDate,String institution) {
 		this.setMoney(money);
-		this.setLastPayedDate(lastPayedDate);
+		this.setLastPaidDate(lastPaidDate);
+		this.setInstitution(institution);
 	}
 
 	public int getMoney() {
@@ -20,12 +22,20 @@ public class RentPO {
 		this.money = money;
 	}
 
-	public Date getLastPayedDate() {
-		return lastPayedDate;
-	}
+		public Date getLastPaidDate() {
+			return lastPaidDate;
+		}
 
-	public void setLastPayedDate(Date lastPayedDate) {
-		this.lastPayedDate = lastPayedDate;
-	}
+		public void setLastPaidDate(Date lastPaidDate) {
+			this.lastPaidDate = lastPaidDate;
+		}
+
+		public String getInstitution() {
+			return institution;
+		}
+
+		public void setInstitution(String institution) {
+			this.institution = institution;
+		}
 
 }

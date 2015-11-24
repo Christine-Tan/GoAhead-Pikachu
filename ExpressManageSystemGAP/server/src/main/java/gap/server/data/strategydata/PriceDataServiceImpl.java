@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import gap.common.dataservice.strategydataservice.PriceDataService;
-import gap.common.po.InstitutionPO;
 import gap.common.po.PricePO;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
@@ -40,7 +39,7 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 	public PricePO find(String city) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name=" + city + ";");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
 			re.next();
 			ResultSet rs = NetModule.excutor
 					.excuteQuery("SELECT * FROM price WHERE city_id=" + Integer.valueOf(re.getString(id_f)) + ";");
@@ -63,7 +62,7 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		// TODO Auto-generated method stub
 		String city = po.getCity();
 		try {
-			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name=" + city + ";");
+			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
 			rs.next();
 			int city_id = Integer.valueOf(rs.getString(id_f));
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id + ";");
@@ -100,7 +99,7 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		// TODO Auto-generated method stub
 		String city = po.getCity();
 		try {
-			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name=" + city + ";");
+			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
 			rs.next();
 			int city_id = Integer.valueOf(rs.getString(id_f));
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id + ";");
@@ -123,12 +122,12 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.FAILED;
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
-		return null;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override
@@ -136,7 +135,7 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		// TODO Auto-generated method stub
 		List<PricePO> prices = new ArrayList<PricePO>();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price;");
 			while (re.next()) {
 				ResultSet rs = NetModule.excutor
 						.excuteQuery("SELECT * FROM city WHERE id=" + Integer.valueOf(re.getString(cityid_f)) + ";");

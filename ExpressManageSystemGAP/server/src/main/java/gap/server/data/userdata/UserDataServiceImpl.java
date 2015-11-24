@@ -41,7 +41,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			List<UserPO> users = new ArrayList<UserPO>();
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM user");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM user;");
 			while (re.next()) {
 				users.add(getByResultSet(re));
 			}
