@@ -9,10 +9,10 @@ public class PaymentPO {
 	private String userName;
 	private String accountName;
 	private String note;
-	private PaymetnType type;
+	private PaymentType type;
 
 	public PaymentPO(Date payDate, int money, String userID, String userName,
-			String accountName, String note, PaymetnType type) {
+			String accountName, String note, PaymentType type) {
 
 		this.setPayDate(payDate);
 		this.setMonry(money);
@@ -72,11 +72,11 @@ public class PaymentPO {
 		this.note = note;
 	}
 
-	public PaymetnType getType() {
+	public PaymentType getType() {
 		return type;
 	}
 
-	public void setType(PaymetnType type) {
+	public void setType(PaymentType type) {
 		this.type = type;
 	}
 

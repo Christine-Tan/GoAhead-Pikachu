@@ -7,12 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.jar.Attributes.Name;
 
+import javax.print.attribute.standard.RequestingUserName;
+
 import com.mysql.jdbc.BalanceStrategy;
 
 import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.po.AccountPO;
 import gap.common.po.Cost_profitPO;
 import gap.common.po.TradePO;
+import gap.server.data.util.ListMaker;
+import gap.server.data.util.ListMakerTest;
 import gap.server.data.util.SQLBuilder;
 import gap.server.databaseutility.Excutor;
 
@@ -116,40 +120,51 @@ public class AccountDataServiceImpl implements AccountDataService{
 	@Override
 	public ArrayList<Cost_profitPO> getCost_Profit() throws RemoteException {
 		// TODO Auto-generated method stub
-		builder.Select(Name_Col,Income_Col,Pay_Col).From(tableName);
-		ResultSet resultSet = builder.excuteQuery();
-		ArrayList<Cost_profitPO> Cost_profitList = new ArrayList<>();
+		ListMaker<Cost_profitPO> listMaker = new ListMaker<Cost_profitPO>() {
+			@Override
+			public Cost_profitPO getPO(ResultSet resultSet) {
+	
+				String name;
+				double income = 0;
+				double payment = 0;
+				try{
+					name = resultSet.getString(Name_Col);
+					income = resultSet.getDouble(Income_Col);
+					payment = resultSet.getDouble(Pay_Col);
+					return new Cost_profitPO(name, income, payment);
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+				return null;
+			}
+		};
 		
-		Class<Cost_profitPO> c = (Class<Cost_profitPO>) new Cost_profitPO("", 0, 0).getClass();
-		
-//		try {
-//
-//			
-//		} catch (SQLException e) {
-//			// TODO: handle exception
-//		}
-//		
-		
+		return listMaker.getList(tableName);
 	}
 
 	@Override
 	public ArrayList<AccountPO> getAccountList() throws RemoteException {
 		// TODO Auto-generated method stub
-		builder.Select(Name_Col,Balance_Col).From(tableName);
-		ResultSet resultSet = builder.excuteQuery();
-		ArrayList<AccountPO> accountList = new ArrayList<>();
-		try {
-			while(resultSet.next()){
-				String name = resultSet.getString(Name_Col);
-				double balance = resultSet.getDouble(Balance_Col);
-				accountList.add(new AccountPO(name, balance));
+		ListMaker<AccountPO> listMaker = new ListMaker<AccountPO>() {
+
+			@Override
+			public AccountPO getPO(ResultSet resultSet) {
+				// TODO Auto-generated method stub
+				String name;
+				double balance;
+				try{
+					name = resultSet.getString(Name_Col);
+					balance = resultSet.getDouble(Balance_Col);
+					return new AccountPO(name, balance);
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+				return null;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			
+		};
 		
-		return accountList;		
+		return listMaker.getList(tableName);	
 	}
 
 }

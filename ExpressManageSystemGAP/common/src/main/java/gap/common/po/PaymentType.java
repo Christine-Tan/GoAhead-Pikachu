@@ -1,5 +1,5 @@
 package gap.common.po;
 
-public enum PaymetnType {
+public enum PaymentType {
 	RENT, TRANS_FARE, SALARY, REWARD
 }

@@ -15,6 +15,8 @@ import gap.server.initial.NetInitial;
 
 public class ListMakerTest {
 	ListMaker<AccountPO> accountMaker;
+
+	private ListMakerTest(){};
 	@Before
 	public void setUp() throws Exception {
 		NetInitial.initial();

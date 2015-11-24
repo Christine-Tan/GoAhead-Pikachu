@@ -3,10 +3,10 @@ package gap.common.po;
 public class Cost_profitPO {
 
 	private String accountName;
-	private int income;
-	private int payment;
+	private double income;
+	private double payment;
 
-	public Cost_profitPO(String accountName, int income, int payment) {
+	public Cost_profitPO(String accountName, double income, double payment) {
 		this.setAccountName(accountName);
 		this.setIncome(income);
 		this.setPayment(payment);
@@ -20,19 +20,19 @@ public class Cost_profitPO {
 		this.accountName = accountName;
 	}
 
-	public int getIncome() {
+	public double getIncome() {
 		return income;
 	}
 
-	public void setIncome(int income) {
+	public void setIncome(double income) {
 		this.income = income;
 	}
 
-	public int getPayment() {
+	public double getPayment() {
 		return payment;
 	}
 
-	public void setPayment(int payment) {
+	public void setPayment(double payment) {
 		this.payment = payment;
 	}
 
