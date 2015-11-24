@@ -1,5 +1,6 @@
 package gap.client.datacontroller.transdata;
 
+import gap.client.util.LocalInfo;
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.po.CarPO;
@@ -35,7 +36,7 @@ public class TransDataController {
 
 	public List<CarPO> getAllCar() {
 		try {
-			return carData.getAll();
+			return carData.getAll(LocalInfo.ins_id);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -45,7 +46,7 @@ public class TransDataController {
 
 	public List<DriverPO> getAllDriver() {
 		try {
-			return driverData.getAll();
+			return driverData.getAll(LocalInfo.ins_id);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

@@ -31,7 +31,7 @@ public class InventoryService_stub implements InventoryService{
 	@Override
 	public ResultMessage setAlarm(double alarmValue) {
 		// TODO Auto-generated method stub
-		datastub.setAlarm(alarmValue);
+		datastub.setAlarm(alarmValue, null);
 		return ResultMessage.SUCCEED;
 	}
 

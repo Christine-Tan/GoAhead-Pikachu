@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface DriverDataService extends Remote {
-	public List<DriverPO> getAll() throws RemoteException;
+	public List<DriverPO> getAll(String local_ins) throws RemoteException;
 
 	public ResultMessage add(DriverPO po) throws RemoteException;
 

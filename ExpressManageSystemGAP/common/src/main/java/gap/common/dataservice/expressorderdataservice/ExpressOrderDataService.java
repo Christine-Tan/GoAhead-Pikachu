@@ -1,5 +1,6 @@
 package gap.common.dataservice.expressorderdataservice;
 
+import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.ResultMessage;
 
@@ -28,7 +29,7 @@ public interface ExpressOrderDataService extends Remote {
 	 * @param po
 	 * @return
 	 */
-	public ResultMessage modify(ExpressOrderPO po) throws RemoteException;
+	public ResultMessage modify(ExpressOrderModifyPO po) throws RemoteException;
 
 	/**
 	 * 查找即将达到对应id的机构的订单
@@ -87,4 +88,13 @@ public interface ExpressOrderDataService extends Remote {
 	 * @throws RemoteException
 	 */
 	public List<String> getState(String order_id) throws RemoteException;
+
+	/**
+	 * 设置到达单信息
+	 * @param order_id
+	 * @param stateMessage
+	 * @return
+	 */
+	public ResultMessage setArrived(String order_id, String ins_id,
+			String stateMessage) throws RemoteException;
 }

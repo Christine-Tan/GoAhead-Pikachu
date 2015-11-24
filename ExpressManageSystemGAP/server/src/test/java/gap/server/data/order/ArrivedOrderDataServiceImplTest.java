@@ -11,7 +11,9 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,15 +30,13 @@ public class ArrivedOrderDataServiceImplTest {
 			ArrivedOrderDataService arrivedOrderDataService = (ArrivedOrderDataService) Naming
 					.lookup(RMIConfig.url
 							+ ServiceName.ARRIVEDORDER_DATA_SERVICE);
-			ExpressOrderPO po1 = new ExpressOrderPO(), po2 = new ExpressOrderPO();
-			po1.setOrder_id("0000000001");
-			po2.setOrder_id("0000000002");
-			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
-			orders.add(po1);
-			orders.add(po2);
-			ArrivedOrderPO arrivedPo = new ArrivedOrderPO(orders, "19960301",
-					"00100011996030100001");
-			arrivedOrderDataService.add(arrivedPo);
+			// Map<String, String> orders = new HashMap<>();
+			// orders.put("0000000001", "完好");
+			// orders.put("0000000002", "损坏");
+			// ArrivedOrderPO po = new ArrivedOrderPO(orders, "2015-03-01",
+			// "00100011996030100001", "0010001", "001002", "测试");
+			// arrivedOrderDataService.add(po);
+			arrivedOrderDataService.setPassed("00100011996030100001", "");
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

@@ -101,20 +101,20 @@ public class InventoryDataController{
 		return null;
 	}
 
-	public ResultMessage setAlarm(double alarmValue)  {
+	public ResultMessage setAlarm(double alarmValue,String ins_id)  {
 		// TODO Auto-generated method stub
 		try{
-			return inventory.setAlarm(alarmValue);
+			return inventory.setAlarm(alarmValue,ins_id);
 		}catch(RemoteException e){
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
 	}
 
-	public double getAlarm()  {
+	public double getAlarm(String ins_id)  {
 		// TODO Auto-generated method stub
 		try{
-			return inventory.getAlarm();
+			return inventory.getAlarm(ins_id);
 		}catch(RemoteException e){
 			e.printStackTrace();
 		}

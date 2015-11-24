@@ -16,6 +16,22 @@ public class InventoryPO {
 	
 	
 	
+	public InventoryPO(double alarmValue, String ins_id,
+			SectorFixedPO carSector, SectorFixedPO planeSector,
+			SectorFixedPO trainSector, SectorFlexPO flexSector) {
+		super();
+		this.alarmValue = alarmValue;
+		this.ins_id = ins_id;
+		this.carSector = carSector;
+		this.planeSector = planeSector;
+		this.trainSector = trainSector;
+		this.flexSector = flexSector;
+		this.carSector.setId(ins_id+"1");
+		this.planeSector.setId(ins_id+"3");
+		this.trainSector.setId(ins_id+"2");
+		this.flexSector.setId(ins_id+"0");
+	}
+
 	public double getAlarmValue() {
 		return alarmValue;
 	}
@@ -35,6 +51,8 @@ public class InventoryPO {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
+	
+	
 	
 	
 	

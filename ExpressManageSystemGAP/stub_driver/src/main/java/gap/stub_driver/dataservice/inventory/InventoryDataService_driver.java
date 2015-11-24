@@ -11,8 +11,8 @@ import gap.common.util.ResultMessage;
 public class InventoryDataService_driver {
 	private void driver(InventoryDataService inventoryData)
 			throws RemoteException {
-		GoodsPO goods1 = new GoodsPO("0000000001", "A区甲排1位", "car", "20151026");
-		GoodsPO goods2 = new GoodsPO("0000000002", "A区甲排2位", "car", "20151026");
+		GoodsPO goods1 = new GoodsPO("0000000001", "A区甲排1位", null, "car", "20151026", null);
+		GoodsPO goods2 = new GoodsPO("0000000002", "A区甲排2位", null, "car", "20151026", null);
 		
 		if(inventoryData.add(goods1).equals(ResultMessage.SUCCEED)){
 			System.out.println("add succeed");
@@ -43,9 +43,9 @@ public class InventoryDataService_driver {
 		if(inventoryData.modify(goods2).equals(ResultMessage.NOTFOUND))
 			System.out.println("modify failed, not found");
 		
-		if(inventoryData.setAlarm(80).equals(ResultMessage.SUCCEED))
+		if(inventoryData.setAlarm(80, null).equals(ResultMessage.SUCCEED))
 			System.out.println("setAlarm succeed");
-		System.out.println(inventoryData.getAlarm());
+		System.out.println(inventoryData.getAlarm(null));
 	}
 	public static void main(String[] args){
 		InventoryDataService inventoryData = new InventoryDataService_stub();

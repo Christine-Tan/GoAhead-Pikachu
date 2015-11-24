@@ -1,6 +1,7 @@
 package gap.server.data.util;
 
 import static org.junit.Assert.*;
+import gap.common.util.Gender;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +20,7 @@ public class InsertSQLTest {
 		insertSQL.add("gender", "male");
 		insertSQL.add("age", 20);
 		insertSQL.add("favorite", "...");
+		insertSQL.add("gender", Gender.FEMALE);
 		System.out.println(insertSQL.createSQL());
 	}
 

@@ -31,12 +31,12 @@ public interface InventoryDataService extends Remote {
 	 * @param alarmValue
 	 * @return
 	 */
-	public ResultMessage setAlarm(double alarmValue) throws RemoteException;
+	public ResultMessage setAlarm(double alarmValue,String ins_id) throws RemoteException;
 
 	/**
 	 * 获得警戒值
 	 * @return
 	 */
-	public double getAlarm() throws RemoteException;
+	public double getAlarm(String ins_id) throws RemoteException;
 
 }

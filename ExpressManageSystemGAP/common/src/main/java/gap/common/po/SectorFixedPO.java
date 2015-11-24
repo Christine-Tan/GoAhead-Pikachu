@@ -33,11 +33,15 @@ public class SectorFixedPO {
 	// 快递list
 	private ArrayList<GoodsPO> goodsList;
 	
+	//分区编号
+	private String id;
+
+	
 	
 
 	public SectorFixedPO(SectorType type, double alarmVal, int maxCapacity,
 			double used, int rows, int shelves, int units, int addedsize,
-			ArrayList<GoodsPO> goodsList) {
+			ArrayList<GoodsPO> goodsList, String id) {
 		super();
 		this.type = type;
 		this.alarmVal = alarmVal;
@@ -48,8 +52,8 @@ public class SectorFixedPO {
 		this.units = units;
 		this.addedsize = addedsize;
 		this.goodsList = goodsList;
+		this.id = id;
 	}
-	
 
 	public ResultMessage add(GoodsPO goods) {
 		for (GoodsPO g : this.goodsList) {
@@ -187,6 +191,15 @@ public class SectorFixedPO {
 	public int getNum(){
 		return this.goodsList.size();
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	
 	
 }
