@@ -25,7 +25,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 	private String sectorItemTable = "sector_item";
 	//字段
 	private String id_f = "id",location_f = "location",sectorid_f = "sector_id",
-			expressorder_id_f = "expressorder_id",time_f = "time",belong_sec_f="belong_sec";
+			expressorder_id_f = "expressorder_id",time_f = "time",belong_sec_f="belong_sec",destination_f= "destination";
 	
 	private InsertSQL sectorInsert,sectorItemInsert;
 	private UpdateSQL sectorUpdate,sectorItemUpdate;
@@ -78,11 +78,11 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 							sector_id = re.getString(sectorid_f),
 							expressorder_id = re.getString(expressorder_id_f),
 							time = re.getString(time_f),
-							blong_sector = re.getString(belong_sec_f);
+							blong_sector = re.getString(belong_sec_f),
+							destination = re.getString(destination_f);
 					SectorType type = getSectorType(sector_id.charAt(sector_id.length()-1));
 					
-					GoodsPO po = new GoodsPO(expressorder_id, location, type, time, sector_id, blong_sector);
-					/*这里也有问题，belong_sec的存放格式要不要变成SectorType?????????*/
+					GoodsPO po = new GoodsPO(expressorder_id, location, type, time, sector_id, blong_sector,destination);
 					goodsPOs.add(po);
 				}
 				
@@ -117,7 +117,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		// TODO Auto-generated method stub
 		String expressorder_id = po.getExpressorder_id(),
 				location = po.getLocation(),belong_sector = po.getBelong_sector_id(),
-				date = po.getDate(),sector_id = po.getSector_id();
+				date = po.getDate(),sector_id = po.getSector_id(),destination = po.getDestination();
 		
 		try {
 			ResultSet re = NetModule.excutor.
@@ -139,6 +139,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 			sectorItemInsert.add(expressorder_id_f, expressorder_id);
 			sectorItemInsert.add(time_f, date);
 			sectorItemInsert.add(belong_sec_f,belong_sector);
+			sectorItemInsert.add(destination_f,destination);
 			String sql = sectorItemInsert.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (SQLException e) {
@@ -164,7 +165,6 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 	public ResultMessage delete(String expressorder_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			/*delete 后面要不要*号????????*/
 			ResultSet re = NetModule.excutor.
 					excuteQuery("DELETE FROM sector_item WHERE expressorder_id='"+expressorder_id+"';");
 			
@@ -192,7 +192,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		// TODO Auto-generated method stubString expressorder_id = po.getExpressorder_id(),
 		String expressorder_id = po.getExpressorder_id(),
 				location = po.getLocation(),belong_sector = po.getBelong_sector_id(),
-				date = po.getDate(),sector_id = po.getSector_id();
+				date = po.getDate(),sector_id = po.getSector_id(),destination = po.getDestination();
 		
 		try {
 			ResultSet re = NetModule.excutor
@@ -214,6 +214,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 			sectorItemUpdate.add(sectorid_f, sector_id);
 			sectorItemUpdate.add(time_f, date);
 			sectorItemUpdate.add(belong_sec_f,belong_sector);
+			sectorItemUpdate.add(destination_f,destination);
 			sectorItemUpdate.setKey(expressorder_id_f, expressorder_id);
 			String sql = sectorItemUpdate.createSQL();
 			NetModule.excutor.excute(sql);
@@ -250,11 +251,11 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 			String location = re.getString(location_f),
 					sector_id = re.getString(sectorid_f),
 					time = re.getString(time_f),
-					/*这里有疑问，time存放的格式是data,可不可以用String将其读出来???????*/
-					blong_sector = re.getString(belong_sec_f);
+					blong_sector = re.getString(belong_sec_f),
+					destination = re.getString(destination_f);
 			SectorType type = getSectorType(sector_id.charAt(sector_id.length()-1));
 			
-			GoodsPO po = new GoodsPO(expressorder_id, location, type, time, sector_id, blong_sector);
+			GoodsPO po = new GoodsPO(expressorder_id, location, type, time, sector_id, blong_sector,destination);
 			return po;
 			
 		} catch (SQLException e) {

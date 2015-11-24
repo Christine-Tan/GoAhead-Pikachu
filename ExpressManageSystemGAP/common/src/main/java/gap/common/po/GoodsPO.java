@@ -23,11 +23,16 @@ public class GoodsPO implements Serializable {
 	//若在机动区分配到的分区的id
 	private String belong_sector_id;
 	
-
+	//最终目的地
+	private String destination;
 	
+	public GoodsPO(){
+		
+	}
 
 	public GoodsPO(String expressorder_id, String location, SectorType sector,
-			String date, String sector_id, String belong_sector_id) {
+			String date, String sector_id, String belong_sector_id,
+			String destination) {
 		super();
 		this.expressorder_id = expressorder_id;
 		this.location = location;
@@ -35,6 +40,7 @@ public class GoodsPO implements Serializable {
 		this.date = date;
 		this.sector_id = sector_id;
 		this.belong_sector_id = belong_sector_id;
+		this.destination = destination;
 	}
 
 	public String getExpressorder_id() {
@@ -93,6 +99,14 @@ public class GoodsPO implements Serializable {
 
 	public void setBelong_sector_id(String belong_sector_id) {
 		this.belong_sector_id = belong_sector_id;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
 	}
 
 }

@@ -4,80 +4,56 @@ import java.io.Serializable;
 import java.util.List;
 
 public class StockinOrderPO implements Serializable {
-	private List<String> expressorder_ids;
-	private String inDate, destination, sector, location, id;
-
-	// 到达日期，目的地，分区，位置,入库单编号(20位0~9数字)
+	//快递编号
+	private List<GoodsPO> goods;
+	private String inDate, id,ins_id;
+	/**
+	 * 目的地是最终目的地，先不管是什么，不存入数据库。。。
+	 */
+	// 到达日期,入库单编号(20位0~9数字),所属中转中心编号
 
 	public StockinOrderPO() {
 		// TODO 自动生成的构造函数存根
 	}
-
-	public StockinOrderPO(List<String> expressorder_ids, String inDate,
-			String destination, String sector, String location) {
+	
+	
+	public StockinOrderPO(List<GoodsPO> goods, String inDate, String id,
+			String ins_id) {
 		super();
-		this.expressorder_ids = expressorder_ids;
+		this.goods = goods;
 		this.inDate = inDate;
-		this.destination = destination;
-		this.sector = sector;
-		this.location = location;
+		this.id = id;
+		this.ins_id = ins_id;
 	}
 
-	public void deleteExpressorder_id(String expressorder_id) {
-		int a = this.expressorder_ids.indexOf(expressorder_id);
-		this.expressorder_ids.remove(a);
-	}
 
-	public void addExpressorder_id(String expressorder_id) {
-		this.expressorder_ids.add(expressorder_id);
+	public List<GoodsPO> getGoods() {
+		return goods;
 	}
-
+	public void setGoods(List<GoodsPO> goods) {
+		this.goods = goods;
+	}
 	public String getInDate() {
 		return inDate;
 	}
-
-	public void setInDate(String date) {
-		this.inDate = date;
+	public void setInDate(String inDate) {
+		this.inDate = inDate;
 	}
-
-	public String getDestination() {
-		return destination;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
-	}
-
-	public String getSector() {
-		return sector;
-	}
-
-	public void setSector(String sector) {
-		this.sector = sector;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public List<String> getExpressorder_ids() {
-		return expressorder_ids;
-	}
-
-	public void setExpressorder_ids(List<String> expressorder_ids) {
-		this.expressorder_ids = expressorder_ids;
-	}
-
 	public String getId() {
 		return id;
 	}
-
-	public void setId(String identifier) {
-		this.id = identifier;
+	public void setId(String id) {
+		this.id = id;
 	}
+	public String getIns_id() {
+		return ins_id;
+	}
+	public void setIns_id(String ins_id) {
+		this.ins_id = ins_id;
+	}
+	
+	
+
+	
 
 }

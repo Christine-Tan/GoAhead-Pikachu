@@ -19,7 +19,7 @@ public interface StockoutOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<StockoutOrderPO> get(String date) throws RemoteException;
+	public List<StockoutOrderPO> getOneDay(String date,String ins_id) throws RemoteException;
 	
 	/**
 	 * 查找某几天的出库单
@@ -28,5 +28,5 @@ public interface StockoutOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<StockoutOrderPO> getRequired(String beginDate,String endDate) throws RemoteException;
+	public List<StockoutOrderPO> getRequired(String beginDate,String endDate,String ins_id) throws RemoteException;
 }

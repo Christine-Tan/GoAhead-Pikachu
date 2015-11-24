@@ -11,7 +11,7 @@ import gap.common.util.ResultMessage;
 public interface StockinOrderDataService extends Remote {
 	public ResultMessage add(StockinOrderPO po) throws RemoteException;
 
-	public StockinOrderPO find(String order_id) throws RemoteException;
+	public StockinOrderPO find(String order_id,String ins_id) throws RemoteException;
 	
 	/**
 	 * 查找某天的入库单 
@@ -19,7 +19,7 @@ public interface StockinOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<StockinOrderPO> get(String date) throws RemoteException;
+	public List<StockinOrderPO> getOneDay(String date,String ins_id) throws RemoteException;
 	
 	/**
 	 * 查找某几天的入库单
@@ -28,7 +28,7 @@ public interface StockinOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<StockinOrderPO> getRequired(String beginDate,String endDate) throws RemoteException;
+	public List<StockinOrderPO> getRequired(String beginDate,String endDate,String ins_id) throws RemoteException;
 	
 	
 }
