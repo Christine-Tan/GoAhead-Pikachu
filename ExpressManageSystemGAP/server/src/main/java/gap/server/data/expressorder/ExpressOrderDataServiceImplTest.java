@@ -76,30 +76,30 @@ public class ExpressOrderDataServiceImplTest {
 
 	@Test
 	public void testSetReceived() {
-		try {
-			ExpressOrderDataService expre = ExpressOrderDataServiceImpl
-					.getInstance();
-			ReceiveInfo info = new ReceiveInfo("小明", "2015-03-01", "000000005",
-					"测试");
-			expre.setRecieved("0000000001", info);
-		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
+//		try {
+//			ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+//					.getInstance();
+//			ReceiveInfo info = new ReceiveInfo("小张", "2015-11-25", "000000005",
+//					"测试");
+//			expre.setRecieved("0000000003", info);
+//		} catch (RemoteException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		}
 	}
 
 	@Test
 	public void testGetDeliveryMoney() {
 
-		// try {
-		// ExpressOrderDataService expre = ExpressOrderDataServiceImpl
-		// .getInstance();
-		// double money = expre.getDeliveryMoney("2015-11-22", "000000005");
-		// System.out.println(money);
-		// } catch (RemoteException e) {
-		// // TODO 自动生成的 catch 块
-		// e.printStackTrace();
-		// }
+//		 try {
+//		 ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+//		 .getInstance();
+//		 double money = expre.getDeliveryMoney("2015-11-25", "000000005");
+//		 System.out.println(money);
+//		 } catch (RemoteException e) {
+//		 // TODO 自动生成的 catch 块
+//		 e.printStackTrace();
+//		 }
 	}
 
 	@Test
