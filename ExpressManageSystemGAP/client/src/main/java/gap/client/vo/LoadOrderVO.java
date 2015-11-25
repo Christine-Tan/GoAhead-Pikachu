@@ -1,28 +1,56 @@
 package gap.client.vo;
 
+import gap.common.po.LoadOrderPO;
+
 import java.util.List;
 
 public class LoadOrderVO {
 	//
-	private String date, number, departureins_id, targetins_id, loaded_id,
-			trans_id;
-	private List<String> orders_id;
+	private String order_id, date, car_number, departureins_id, targetins_id,
+			driver_id, guard_id;
+	private List<String> orders;
 
-	public LoadOrderVO(String date, String number, String departureins_id,
-			String targetins_id, String loaded_id, String trans_id,
-			List<String> orders_id) {
+	public LoadOrderVO(String order_id, String date, String car_number,
+			String departureins_id, String targetins_id, String driver_id,
+			String guard_id, List<String> orders) {
 		super();
+		this.order_id = order_id;
 		this.date = date;
-		this.number = number;
+		this.car_number = car_number;
 		this.departureins_id = departureins_id;
 		this.targetins_id = targetins_id;
-		this.loaded_id = loaded_id;
-		this.trans_id = trans_id;
-		this.orders_id = orders_id;
+		this.driver_id = driver_id;
+		this.guard_id = guard_id;
+		this.orders = orders;
 	}
 
 	public LoadOrderVO() {
 		// TODO 自动生成的构造函数存根
+	}
+
+	public LoadOrderVO(LoadOrderPO po) {
+		this.order_id = po.getOrder_id();
+		this.date = po.getDate();
+		this.car_number = po.getCar_number();
+		this.departureins_id = po.getDepartureins_id();
+		this.targetins_id = po.getTargetins_id();
+		this.driver_id = po.getDriver_id();
+		this.guard_id = po.getGuard_id();
+		this.orders = po.getOrders();
+	}
+
+	public LoadOrderPO toPO() {
+		LoadOrderPO po = new LoadOrderPO(order_id, date, car_number,
+				departureins_id, targetins_id, driver_id, guard_id, orders);
+		return po;
+	}
+
+	public String getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
 	}
 
 	public String getDate() {
@@ -33,12 +61,12 @@ public class LoadOrderVO {
 		this.date = date;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getCar_number() {
+		return car_number;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setCar_number(String car_number) {
+		this.car_number = car_number;
 	}
 
 	public String getDepartureins_id() {
@@ -57,27 +85,28 @@ public class LoadOrderVO {
 		this.targetins_id = targetins_id;
 	}
 
-	public String getLoaded_id() {
-		return loaded_id;
+	public String getDriver_id() {
+		return driver_id;
 	}
 
-	public void setLoaded_id(String loaded_id) {
-		this.loaded_id = loaded_id;
+	public void setDriver_id(String driver_id) {
+		this.driver_id = driver_id;
 	}
 
-	public String getTrans_id() {
-		return trans_id;
+	public String getGuard_id() {
+		return guard_id;
 	}
 
-	public void setTrans_id(String trans_id) {
-		this.trans_id = trans_id;
+	public void setGuard_id(String guard_id) {
+		this.guard_id = guard_id;
 	}
 
-	public List<String> getOrders_id() {
-		return orders_id;
+	public List<String> getOrders() {
+		return orders;
 	}
 
-	public void setOrders_id(List<String> orders_id) {
-		this.orders_id = orders_id;
+	public void setOrders(List<String> orders) {
+		this.orders = orders;
 	}
+
 }

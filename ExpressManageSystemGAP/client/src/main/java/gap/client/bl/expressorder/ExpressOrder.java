@@ -75,7 +75,7 @@ public class ExpressOrder implements ExpressOrderService {
 	@Override
 	public ExpressOrderVO createOrder(ExpressOrderVO order_info) {
 		// TODO 自动生成的方法存根
-		order_info.setPrice(priceCal.getPrice(order_info));
+		order_info.price = priceCal.getPrice(order_info);
 		return order_info;
 	}
 

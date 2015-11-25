@@ -76,16 +76,16 @@ public class ExpressOrderDataServiceImplTest {
 
 	@Test
 	public void testSetReceived() {
-		// ExpressOrderDataService expre = ExpressOrderDataServiceImpl
-		// .getInstance();
-		// ReceiveInfo info = new ReceiveInfo("小红", "2015-03-01", "000000005",
-		// "测试");
-		// try {
-		// expre.setRecieved("0000000001", info);
-		// } catch (RemoteException e) {
-		// // TODO 自动生成的 catch 块
-		// e.printStackTrace();
-		// }
+		try {
+			ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+					.getInstance();
+			ReceiveInfo info = new ReceiveInfo("小明", "2015-03-01", "000000005",
+					"测试");
+			expre.setRecieved("0000000001", info);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -128,8 +128,8 @@ public class ExpressOrderDataServiceImplTest {
 	@Test
 	public void testSetPassed() throws MalformedURLException, RemoteException,
 			NotBoundException {
-		ExpressOrderDataService express = (ExpressOrderDataService) Naming
-				.lookup(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE);
-		express.setPassed("0000000003", "南京栖霞营业厅已收入");
+		// ExpressOrderDataService express = (ExpressOrderDataService) Naming
+		// .lookup(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE);
+		// express.setPassed("0000000003", "南京栖霞营业厅已收入");
 	}
 }
