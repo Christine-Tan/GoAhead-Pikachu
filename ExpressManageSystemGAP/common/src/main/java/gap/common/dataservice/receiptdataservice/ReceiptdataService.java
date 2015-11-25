@@ -14,8 +14,7 @@ public interface ReceiptdataService extends Remote {
 	public boolean submitPayment(PaymentListPO paymentListPO)
 			throws RemoteException;
 
-	public PaymentListPO getApprovedPayment(String departmentID)
-			throws RemoteException;
+//	public boolean get
 
 	public boolean setLocked(String departmentID) throws RemoteException;
 
