@@ -1,14 +1,14 @@
 package gap.common.po;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class RentPO {
 
 	private double money;
 	private Date lastPaidDate;
-    private String institution;
-   
-	public RentPO(double money, Date lastPaidDate,String institution) {
+	private String institution;
+
+	public RentPO(String institution, double money,Date lastPaidDate) {
 		this.setMoney(money);
 		this.setLastPaidDate(lastPaidDate);
 		this.setInstitution(institution);
@@ -22,20 +22,20 @@ public class RentPO {
 		this.money = money;
 	}
 
-		public Date getLastPaidDate() {
-			return lastPaidDate;
-		}
+	public Date getLastPaidDate() {
+		return lastPaidDate;
+	}
 
-		public void setLastPaidDate(Date lastPaidDate) {
-			this.lastPaidDate = lastPaidDate;
-		}
+	public void setLastPaidDate(Date lastPaidDate) {
+		this.lastPaidDate = lastPaidDate;
+	}
 
-		public String getInstitution() {
-			return institution;
-		}
+	public String getInstitution() {
+		return institution;
+	}
 
-		public void setInstitution(String institution) {
-			this.institution = institution;
-		}
+	public void setInstitution(String institution) {
+		this.institution = institution;
+	}
 
 }

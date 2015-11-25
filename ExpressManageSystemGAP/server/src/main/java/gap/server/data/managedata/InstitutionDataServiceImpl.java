@@ -152,7 +152,6 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution;");
 			while (re.next()) {
 				String id = re.getString(id_f), name = re.getString(insname_f), city = re.getString(address_f);
-				;
 				int num = re.getInt(memberNum_f);
 				InstitutionPO po = new InstitutionPO(id, name, city, num);
 				institutions.add(po);
@@ -173,7 +172,6 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE address='" + city + "';");
 			while (re.next()) {
 				String id = re.getString(id_f), name = re.getString(insname_f);
-				;
 				int num = re.getInt(memberNum_f);
 				InstitutionPO po = new InstitutionPO(id, name, city, num);
 				institutions.add(po);

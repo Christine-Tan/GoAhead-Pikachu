@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import gap.common.dataservice.strategydataservice.RentDataService;
 import gap.common.po.RentPO;
+import gap.common.util.ResultMessage;
+import gap.server.data.util.InsertSQL;
+import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
 /**
@@ -22,9 +25,14 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 	// 字段
 	String money_f = "money", lastPaid_f = "lastPaid", insti_f = "institution_id";
 
+	InsertSQL insertSQL;
+	UpdateSQL updateSQL;
+
 	public RentDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
+		insertSQL = new InsertSQL(tablename);
+		updateSQL = new UpdateSQL(tablename);
 	}
 
 	@Override
@@ -38,7 +46,7 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 				String institution = re.getString("institution_f");
 				Date lastPaid = re.getDate("lastPaid_f");
 				double money = Double.valueOf(re.getString("money_f"));
-				RentPO po = new RentPO(money, lastPaid, institution);
+				RentPO po = new RentPO(institution, money, lastPaid);
 				rents.add(po);
 			}
 			return rents;
@@ -49,4 +57,85 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 		return null;
 	}
 
+	@Override
+	public ResultMessage add(RentPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		String insname = po.getInstitution();
+		double rent = po.getMoney();
+		Date date = po.getLastPaidDate();
+		try {
+			ResultSet re = NetModule.excutor.excuteQuery(
+					"SELECT rent.money money,institution.ins_id id FROM rent,institution WHERE institution.name='"
+							+ insname + "' AND institution.ins_id=rent.institution_id");
+			if (re.next())
+				return ResultMessage.EXITED;
+		   ResultSet rs=NetModule.excutor.excuteQuery("SELECT ins_id FROM institution WHERE name='"+insname+"';");
+		   rs.next();
+		   String id=rs.getString("ins_id");
+			insertSQL.clear();
+			insertSQL.add(insti_f,id);
+			insertSQL.add(money_f, rent);
+			insertSQL.add(lastPaid_f, date);
+			String sql = insertSQL.createSQL();
+			NetModule.excutor.excute(sql);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return ResultMessage.FAILED;
+		}
+		return ResultMessage.SUCCEED;
+	}
+
+	@Override
+	public ResultMessage update(RentPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		String insname = po.getInstitution();
+		double rent = po.getMoney();
+		Date date = po.getLastPaidDate();
+		try {
+			ResultSet re = NetModule.excutor.excuteQuery(
+					"SELECT rent.money money,institution.ins_id id FROM rent,institution WHERE institution.name='"
+							+ insname + "' AND rent.institution_id=id");
+			if (!re.next())
+				return ResultMessage.NOTFOUND;
+			updateSQL.clear();
+			updateSQL.add(insti_f, re.getString("id"));
+			updateSQL.add(money_f, rent);
+			updateSQL.add(lastPaid_f, date);
+			String sql = updateSQL.createSQL();
+			NetModule.excutor.excute(sql);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return ResultMessage.FAILED;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.SUCCEED;
+	}
+
+	@Override
+	public ResultMessage setPaid(String institution) throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT ins_id FROM institution WHERE name='" + institution + "';");
+			if (!re.next())
+				return ResultMessage.NOTFOUND;
+			String ins_id = re.getString("ins_id");
+			updateSQL.clear();
+			updateSQL.add(lastPaid_f, new Date(System.currentTimeMillis()));
+			updateSQL.add(insti_f, ins_id);
+			NetModule.excutor.excute(updateSQL.createSQL());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }
