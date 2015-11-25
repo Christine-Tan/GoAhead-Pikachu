@@ -34,10 +34,10 @@ public class DeliveryOrderDataServiceImplTest {
 			// DeliveryOrderPO po = new DeliveryOrderPO(orders, "2015-03-02",
 			// "00100012015030100001", "测试");
 			// deliveryData.add(po);
-			// deliveryData.setPassed("00100012015030100001", "xxx正在派件");
-			DeliveryOrderPO po = deliveryData.find("00100012015030100001");
-			System.out.println(po.getId() + "," + po.getTime() + ","
-					+ po.getComment());
+//			 deliveryData.setPassed("00100022015112500001", "xxx正在派件");
+//			DeliveryOrderPO po = deliveryData.find("00100012015030100001");
+//			System.out.println(po.getId() + "," + po.getTime() + ","
+//					+ po.getComment());
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

@@ -26,7 +26,7 @@ public class DeliveryOrder implements DeliveryOrderService {
 	@Override
 	public ResultMessage save(DeliveryOrderVO order) {
 		// TODO 自动生成的方法存根
-		return null;
+		return deliveryOrderData.add(order.toPO());
 	}
 
 	@Override
