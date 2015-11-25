@@ -1,15 +1,13 @@
 package gap.client.vo;
 
+import gap.common.po.ExpressOrderPO;
 import gap.common.util.CargoInfo;
 import gap.common.util.ExpressType;
+import gap.common.util.PeopleInfo;
 
 public class ExpressOrderVO {
-	// 寄件人姓名、地址、单位、电话
-	private String sender_name, sender_address, sender_depart,
-			sender_cellphone;
-	// 收件人姓名、地址、单位、电话
-	private String receiver_name, receiver_address, receiver_depart,
-			receiver_cellphone;
+	// 寄件人收件人信息姓名、地址、单位、电话
+	private PeopleInfo sender_info, receiver_info;
 	// 快递类型
 	private ExpressType expressType;
 	// 快递价格
@@ -27,6 +25,40 @@ public class ExpressOrderVO {
 
 	}
 
+	public ExpressOrderVO(ExpressOrderPO po) {
+		this.sender_info = po.getSenderInfo();
+		receiver_info = po.getReceiverInfo();
+		price = po.getPrice();
+		cargoInfo = po.getCargoInfo();
+		received = po.isReceived();
+		order_id = po.getOrder_id();
+		currentins_id = po.getCurrentins_id();
+		targetins_id = po.getTargetins_id();
+	}
+
+	public ExpressOrderVO(PeopleInfo sender_info, PeopleInfo receiver_info,
+			ExpressType expressType, double price, CargoInfo cargoInfo,
+			boolean received, String order_id, String currentins_id,
+			String targetins_id) {
+		super();
+		this.sender_info = sender_info;
+		this.receiver_info = receiver_info;
+		this.expressType = expressType;
+		this.price = price;
+		this.cargoInfo = cargoInfo;
+		this.received = received;
+		this.order_id = order_id;
+		this.currentins_id = currentins_id;
+		this.targetins_id = targetins_id;
+	}
+
+	public ExpressOrderPO toPO() {
+		ExpressOrderPO po = new ExpressOrderPO(sender_info, receiver_info,
+				expressType, cargoInfo, order_id, price, currentins_id,
+				targetins_id);
+		return po;
+	}
+
 	public ExpressOrderVO(String sender_name, String sender_address,
 			String sender_depart, String sender_cellphone,
 			String receiver_name, String receiver_address,
@@ -34,14 +66,6 @@ public class ExpressOrderVO {
 			ExpressType expressType, CargoInfo cargoInfo, boolean received,
 			String order_id, String currentins_id, String targetins_id) {
 		super();
-		this.sender_name = sender_name;
-		this.sender_address = sender_address;
-		this.sender_depart = sender_depart;
-		this.sender_cellphone = sender_cellphone;
-		this.receiver_name = receiver_name;
-		this.receiver_address = receiver_address;
-		this.receiver_depart = receiver_depart;
-		this.receiver_cellphone = receiver_cellphone;
 		this.expressType = expressType;
 		this.cargoInfo = cargoInfo;
 		this.received = received;
@@ -95,70 +119,6 @@ public class ExpressOrderVO {
 			return;
 		currentins_id = null;
 		this.targetins_id = targetins_id;
-	}
-
-	public String getSender_name() {
-		return sender_name;
-	}
-
-	public void setSender_name(String sender_name) {
-		this.sender_name = sender_name;
-	}
-
-	public String getSender_address() {
-		return sender_address;
-	}
-
-	public void setSender_address(String sender_address) {
-		this.sender_address = sender_address;
-	}
-
-	public String getSender_depart() {
-		return sender_depart;
-	}
-
-	public void setSender_depart(String sender_depart) {
-		this.sender_depart = sender_depart;
-	}
-
-	public String getSender_cellphone() {
-		return sender_cellphone;
-	}
-
-	public void setSender_cellphone(String sender_cellphone) {
-		this.sender_cellphone = sender_cellphone;
-	}
-
-	public String getReceiver_name() {
-		return receiver_name;
-	}
-
-	public void setReceiver_name(String receiver_name) {
-		this.receiver_name = receiver_name;
-	}
-
-	public String getReceiver_address() {
-		return receiver_address;
-	}
-
-	public void setReceiver_address(String receiver_address) {
-		this.receiver_address = receiver_address;
-	}
-
-	public String getReceiver_depart() {
-		return receiver_depart;
-	}
-
-	public void setReceiver_depart(String receiver_depart) {
-		this.receiver_depart = receiver_depart;
-	}
-
-	public String getReceiver_cellphone() {
-		return receiver_cellphone;
-	}
-
-	public void setReceiver_cellphone(String receiver_cellphone) {
-		this.receiver_cellphone = receiver_cellphone;
 	}
 
 	public String getOrder_id() {

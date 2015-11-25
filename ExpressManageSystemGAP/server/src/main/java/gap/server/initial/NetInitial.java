@@ -3,12 +3,16 @@ package gap.server.initial;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
+import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
+import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
 import gap.server.data.logdata.LogDataServiceImpl;
 import gap.server.data.order.ArrivedOrderDataServiceImpl;
+import gap.server.data.order.DeliveryOrderDataServiceImpl;
+import gap.server.data.order.LoadOrderDataServiceImpl;
 import gap.server.data.transdata.CarDataServiceImpl;
 import gap.server.data.transdata.DriverDataServiceImpl;
 import gap.server.data.userdata.UserDataServiceImpl;
@@ -27,11 +31,14 @@ public class NetInitial {
 	public static void initial() throws RemoteException {
 		NetModule.excutor = DataBaseLancher.lanch();
 
-		userdataservice = new UserDataServiceImpl();
-		logdataservice = new LogDataServiceImpl();
-		cardataservice = new CarDataServiceImpl();
-		driverdataservice = new DriverDataServiceImpl();
-		arrivedOrderdataservice = new ArrivedOrderDataServiceImpl();
+		userdataservice = UserDataServiceImpl.getInstance();
+		logdataservice = LogDataServiceImpl.getInstance();
+		cardataservice = CarDataServiceImpl.getInstance();
+		driverdataservice = DriverDataServiceImpl.getInstance();
+		arrivedOrderdataservice = ArrivedOrderDataServiceImpl.getInstance();
+		expressorderdataservice = ExpressOrderDataServiceImpl.getInstance();
+		deliveryorderdataservice = DeliveryOrderDataServiceImpl.getInstance();
+		loadorderdataservice = LoadOrderDataServiceImpl.getInstance();
 	}
 
 	public static void main(String[] args) {
@@ -48,7 +55,14 @@ public class NetInitial {
 					driverdataservice);
 			Naming.bind(RMIConfig.url + ServiceName.ARRIVEDORDER_DATA_SERVICE,
 					arrivedOrderdataservice);
-			
+			Naming.bind(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE,
+					expressorderdataservice);
+			Naming.bind(
+					RMIConfig.url + ServiceName.DELIVERYPORDER_DATA_SERVICE,
+					deliveryorderdataservice);
+			Naming.bind(RMIConfig.url + ServiceName.LOADORDER_DATA_SERVICE,
+					loadorderdataservice);
+
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

@@ -22,10 +22,18 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 	private InsertSQL insertSQL;
 	private UpdateSQL updateSQL;
 
-	public CarDataServiceImpl() throws RemoteException {
+	public static CarDataService instance;
+
+	private CarDataServiceImpl() throws RemoteException {
 		super();
 		insertSQL = new InsertSQL(tableName);
 		updateSQL = new UpdateSQL(tableName);
+	}
+
+	public static CarDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new CarDataServiceImpl();
+		return instance;
 	}
 
 	public List<CarPO> getAll(String localins_id) throws RemoteException {

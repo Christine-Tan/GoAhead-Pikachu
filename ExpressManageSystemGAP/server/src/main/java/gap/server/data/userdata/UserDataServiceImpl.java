@@ -31,10 +31,19 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 	private InsertSQL insertSQL;
 	private UpdateSQL updateSQL;
 
-	public UserDataServiceImpl() throws RemoteException {
+	public static UserDataService instance;
+
+	private UserDataServiceImpl() throws RemoteException {
 		super();
 		insertSQL = new InsertSQL(tableName);
 		updateSQL = new UpdateSQL(tableName);
+	}
+
+	public static UserDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new UserDataServiceImpl();
+		return instance;
+
 	}
 
 	public List<UserPO> getAll() throws RemoteException {

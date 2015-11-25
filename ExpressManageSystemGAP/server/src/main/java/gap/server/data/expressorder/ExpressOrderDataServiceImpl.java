@@ -16,13 +16,15 @@ import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
+public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
+		ExpressOrderDataService {
 	// 插入语句生成器
 	private InsertSQL senderInsert, receiverInsert, orderInsert, cargoInsert,
 			addressInsert, stateInsert, receivedInsert;
@@ -60,13 +62,13 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 
 	private static ExpressOrderDataService instance;
 
-	public static ExpressOrderDataService getInstance() {
+	public static ExpressOrderDataService getInstance() throws RemoteException {
 		if (instance == null)
 			instance = new ExpressOrderDataServiceImpl();
 		return instance;
 	}
 
-	private ExpressOrderDataServiceImpl() {
+	private ExpressOrderDataServiceImpl() throws RemoteException {
 		senderInsert = new InsertSQL(senderTable);
 		receiverInsert = new InsertSQL(receiverTable);
 		cargoInsert = new InsertSQL(cargoTable);
@@ -120,8 +122,8 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 			orderInsert.add(current_ins_id_f, current_ins_id);
 			orderInsert.add(order_type_f, type);
 			orderInsert.add(delivery_id_f, courier_id);
-			orderInsert
-					.add(create_time_f, new Date(System.currentTimeMillis()));
+			orderInsert.add(create_time_f,
+					(new Date(System.currentTimeMillis()).toString()));
 			String sql = orderInsert.createSQL();
 			NetModule.excutor.excute(sql);
 			return ResultMessage.SUCCEED;
@@ -291,9 +293,10 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	}
 
 	@Override
-	public ResultMessage setPassed(String order_id) throws RemoteException {
+	public ResultMessage setPassed(String order_id,String state) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
+			addState(order_id, state);
 			update.clear();
 			update.add(passed_f, true);
 			update.setKey(order_id_f, order_id);
@@ -375,6 +378,7 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 		receivedInsert.add(rece_receiver_name_f, info.getReceiver_name());
 		receivedInsert.add(rece_time_f, info.getReceive_time());
 		receivedInsert.add(rece_comment_f, info.getComment());
+
 		try {
 			NetModule.excutor.excute(receivedInsert.createSQL());
 			return ResultMessage.SUCCEED;
@@ -413,7 +417,9 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 	 */
 	private ExpressOrderPO getByResultSet(ResultSet re) {
 		try {
-			String order_id = re.getString(order_id_f);
+			String order_id = re.getString(order_id_f), currentins_id = re
+					.getString(current_ins_id_f), targetins_id = re
+					.getString(target_ins_id_f);
 			ExpressType type = ExpressType.valueOf(re.getString(order_type_f));
 			double price = re.getDouble(price_f);
 			int sender_id = re.getInt(sender_info_f), receiver_id = re
@@ -423,7 +429,7 @@ public class ExpressOrderDataServiceImpl implements ExpressOrderDataService {
 					receiver_id, receiverTable);
 			CargoInfo cargo = getCargo(cargo_id);
 			ExpressOrderPO order = new ExpressOrderPO(sender, receiver, type,
-					cargo, order_id, price);
+					cargo, order_id, price, currentins_id, targetins_id);
 			return order;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块

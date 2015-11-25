@@ -31,7 +31,7 @@ public interface ExpressOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ResultMessage setPassed(String order_id) throws RemoteException;
+	public ResultMessage setPassed(String order_id,String state) throws RemoteException;
 
 	/**
 	 * 根据订单号查询订单

@@ -16,9 +16,17 @@ import java.util.List;
 public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		DriverDataService {
 
-	public DriverDataServiceImpl() throws RemoteException {
+	public static DriverDataService instance;
+
+	private DriverDataServiceImpl() throws RemoteException {
 		super();
 		// TODO 自动生成的构造函数存根
+	}
+
+	public static DriverDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new DriverDataServiceImpl();
+		return instance;
 	}
 
 	public List<DriverPO> getAll(String localins_id) throws RemoteException {

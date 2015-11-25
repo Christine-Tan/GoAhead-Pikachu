@@ -31,7 +31,7 @@ public class ExpressOrderPO implements Serializable {
 
 	public ExpressOrderPO(PeopleInfo senderInfo, PeopleInfo receiverInfo,
 			ExpressType expressType, CargoInfo cargoInfo, String order_id,
-			double price) {
+			double price, String currentins_id, String targetins_id) {
 		super();
 		this.senderInfo = senderInfo;
 		this.receiverInfo = receiverInfo;
@@ -39,6 +39,8 @@ public class ExpressOrderPO implements Serializable {
 		this.cargoInfo = cargoInfo;
 		this.order_id = order_id;
 		this.price = price;
+		this.currentins_id = currentins_id;
+		this.targetins_id = targetins_id;
 	}
 
 	public ExpressOrderPO(PeopleInfo senderInfo, PeopleInfo receiverInfo,
@@ -135,6 +137,5 @@ public class ExpressOrderPO implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
 
 }

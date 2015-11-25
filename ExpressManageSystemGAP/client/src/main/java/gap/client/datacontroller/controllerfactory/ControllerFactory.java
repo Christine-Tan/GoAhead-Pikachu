@@ -9,6 +9,7 @@ import gap.common.util.UserType;
 
 public class ControllerFactory {
 	private static LoginDataController loginDataController;
+	private static ExpressOrderDataController expressOrderDataController;
 
 	public static LoginDataController getLoginDataController() {
 		if (loginDataController == null)
@@ -17,14 +18,16 @@ public class ControllerFactory {
 	}
 
 	public static ExpressOrderDataController getExpressOrderDataController() {
-		return null;
+		if (expressOrderDataController == null)
+			expressOrderDataController = new ExpressOrderDataController();
+		return expressOrderDataController;
 	}
 
 	public static TransDataController getTransDataController() {
 		return null;
 	}
-	
-	public static InventoryDataController getInventoryDataController(){
+
+	public static InventoryDataController getInventoryDataController() {
 		return null;
 	}
 

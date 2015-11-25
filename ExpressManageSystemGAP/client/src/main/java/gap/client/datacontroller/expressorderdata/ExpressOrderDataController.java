@@ -1,13 +1,19 @@
 package gap.client.datacontroller.expressorderdata;
 
 import gap.client.util.LocalInfo;
+import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.strategydataservice.PriceDataService;
+import gap.common.netconfig.RMIConfig;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
+import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -17,52 +23,89 @@ public class ExpressOrderDataController {
 	PriceDataService priceDataService;
 
 	public ExpressOrderDataController() {
-
+		try {
+			expressOrderData = (ExpressOrderDataService) Naming
+					.lookup(RMIConfig.url
+							+ ServiceName.EXPRESSORDER_DATA_SERVICE);
+		} catch (MalformedURLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 
-	public ResultMessage add(ExpressOrderPO po) throws RemoteException {
+	public ResultMessage add(ExpressOrderPO po) {
 		// TODO 自动生成的方法存根
-		return expressOrderData.add(po, LocalInfo.localuser.getUser_id());
+		try {
+			return expressOrderData.add(po, LocalInfo.localuser.getUser_id());
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
-	public ExpressOrderPO find(String order_id) throws RemoteException {
+	public ExpressOrderPO find(String order_id) {
 		// TODO 自动生成的方法存根
-		return expressOrderData.find(order_id);
+		try {
+			return expressOrderData.find(order_id);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public ResultMessage modify(ExpressOrderModifyPO po) throws RemoteException {
+	public ResultMessage modify(ExpressOrderModifyPO po) {
 		// TODO 自动生成的方法存根
-		return expressOrderData.modify(po);
+		try {
+			return expressOrderData.modify(po);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
-	public List<ExpressOrderPO> findArrivingOrders(String ins_id)
-			throws RemoteException {
+	public List<ExpressOrderPO> findArrivingOrders(String ins_id) {
 		// TODO 自动生成的方法存根
-		return expressOrderData.findArrivingOrders(ins_id);
+		try {
+			return expressOrderData.findArrivingOrders(ins_id);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
-	public List<ExpressOrderPO> findCurrentOrders(String ins_id)
-			throws RemoteException {
+	public List<ExpressOrderPO> findCurrentOrders(String ins_id) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
-	public List<ExpressOrderPO> findLoadOrders(String loadorder_id)
-			throws RemoteException {
-		// TODO 自动生成的方法存根
+	public List<String> getState(String order_id) {
+		try {
+			return expressOrderData.getState(order_id);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 
-	public List<ExpressOrderPO> findDeliveryOrders(String deliveryorder_id)
-			throws RemoteException {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	public List<ExpressOrderPO> findArrivedOrders(String arrivedorder_id)
-			throws RemoteException {
-		// TODO 自动生成的方法存根
-		return null;
+	public ResultMessage setReceived(String order_id, ReceiveInfo info) {
+		try {
+			return expressOrderData.setRecieved(order_id, info);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
 }

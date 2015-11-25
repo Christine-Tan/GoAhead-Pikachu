@@ -16,6 +16,14 @@ public class User {
 		gender = user.getGender();
 	}
 
+	public User(UserType userType, String name, String user_id, Gender gender) {
+		super();
+		this.userType = userType;
+		this.name = name;
+		this.user_id = user_id;
+		this.gender = gender;
+	}
+
 	public UserType getUserType() {
 		return userType;
 	}

@@ -27,10 +27,18 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 	private InsertSQL orderInsert, itemInsert;
 	private UpdateSQL update;
 
-	public LoadOrderDataServiceImpl() throws RemoteException {
+	public static LoadOrderDataService instance;
+
+	private LoadOrderDataServiceImpl() throws RemoteException {
 		orderInsert = new InsertSQL(tableName);
 		itemInsert = new InsertSQL(itemTable);
 		update = new UpdateSQL(tableName);
+	}
+
+	public static LoadOrderDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new LoadOrderDataServiceImpl();
+		return instance;
 	}
 
 	@Override
@@ -101,7 +109,7 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT * FROM " + tableName + " WHERE " + order_id_f
-					+ " = " + order_id + "AND" + passed_f + " = true ;";
+					+ " = " + order_id + " AND " + passed_f + " = true ;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			return getByResultSet(re);

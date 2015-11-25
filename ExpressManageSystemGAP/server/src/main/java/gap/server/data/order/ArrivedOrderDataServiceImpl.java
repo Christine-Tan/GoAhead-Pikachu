@@ -29,12 +29,19 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			item_order_id_f = "order_id", item_arrivedstate_f = "arrivedstate";
 	private InsertSQL orderInsert, itemInsert;
 	private UpdateSQL update;
+	private static ArrivedOrderDataService instance;
 
-	public ArrivedOrderDataServiceImpl() throws RemoteException {
+	private ArrivedOrderDataServiceImpl() throws RemoteException {
 		super();
 		orderInsert = new InsertSQL(tableName);
 		itemInsert = new InsertSQL(itemTable);
 		update = new UpdateSQL(tableName);
+	}
+
+	public static ArrivedOrderDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new ArrivedOrderDataServiceImpl();
+		return instance;
 	}
 
 	public ResultMessage add(ArrivedOrderPO po) throws RemoteException {

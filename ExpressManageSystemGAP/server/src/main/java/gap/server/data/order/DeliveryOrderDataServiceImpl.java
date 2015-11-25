@@ -32,12 +32,20 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 	private InsertSQL orderInsert, itemInsert;
 	private UpdateSQL update;
 
-	public DeliveryOrderDataServiceImpl() throws RemoteException {
+	public static DeliveryOrderDataService instance;
+
+	private DeliveryOrderDataServiceImpl() throws RemoteException {
 		super();
 		orderInsert = new InsertSQL(tableName);
 		itemInsert = new InsertSQL(itemTable);
 		update = new UpdateSQL(tableName);
 		// TODO 自动生成的构造函数存根
+	}
+
+	public static DeliveryOrderDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new DeliveryOrderDataServiceImpl();
+		return instance;
 	}
 
 	@Override
@@ -73,6 +81,16 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public DeliveryOrderPO find(String order_id) throws RemoteException {
 		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT * FROM " + tableName + " WHERE " + order_id
+					+ " = " + order_id + ";";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			re.next();
+			return getByResultSet(re);
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -80,6 +98,28 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage setPassed(String order_id, String state_info)
 			throws RemoteException {
 		// TODO 自动生成的方法存根
+		try {
+			update.clear();
+			update.add(passed_f, true);
+			update.setKey(order_id_f, order_id);
+			NetModule.excutor.excute(update.createSQL());
+			ExpressOrderDataService expressorder = ExpressOrderDataServiceImpl
+					.getInstance();
+			Map<String, List<String>> orders = getByOrder_id(order_id);
+			Set<String> keyset = orders.keySet();
+			for (String key : keyset) {
+				for (String order : orders.get(key)) {
+					expressorder.setDelivery(order, key, state_info);
+				}
+			}
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 

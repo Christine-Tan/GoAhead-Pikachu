@@ -23,9 +23,17 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 	private String timef = "time", user_idf = "user_id", operatef = "operate";
 	private InsertSQL insertSQL;
 
-	public LogDataServiceImpl() throws RemoteException {
+	public static LogDataService instance;
+
+	private LogDataServiceImpl() throws RemoteException {
 		super();
 		insertSQL = new InsertSQL(tableName);
+	}
+
+	public static LogDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new LogDataServiceImpl();
+		return instance;
 	}
 
 	public List<LogPO> getLogList() throws RemoteException {
@@ -34,7 +42,7 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 			List<LogPO> logs = new ArrayList<LogPO>();
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM "
 					+ tableName + " ORDER BY " + timef + " DESC ;");
-			UserDataService userdata = new UserDataServiceImpl();
+			UserDataService userdata = UserDataServiceImpl.getInstance();
 			while (re.next()) {
 				UserPO user = userdata.findById(re.getString(user_idf));
 				String date = re.getString(timef);

@@ -13,7 +13,7 @@ public interface ExpressOrderService {
 	 * @param order_id
 	 * @return
 	 */
-	public StateVO find(String order_id);
+	public List<String> getState(String order_id);
 
 	public ExpressOrderVO getOrder(String order_id);
 
