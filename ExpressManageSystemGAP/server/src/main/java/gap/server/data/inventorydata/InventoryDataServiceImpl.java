@@ -20,11 +20,11 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 	//表名
 	private String sectorTable = "sector";
 	//字段
-	private String sector_id_f = "sector_id",type_f = "type",ins_id_f = "ins_id",alarmValue_f = "Alarm_Value";
+	private String sector_id_f = "sector_id",type_f = "type",ins_id_f = "ins_id",alarmValue_f = "alarmValue";
 	//表名
 	private String sectorItemTable = "sector_item";
 	//字段
-	private String id_f = "id",location_f = "location",sectorid_f = "sector_id",
+	private String id_f = "id",location_f = "location",sectorId_f = "sector_id",
 			expressorder_id_f = "expressorder_id",time_f = "time",belong_sec_f="belong_sec",destination_f= "destination";
 	
 	private InsertSQL sectorInsert,sectorItemInsert;
@@ -42,22 +42,13 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 	}
 	
 	@Override
-	public List<GoodsPO> getAll(String ins_id) throws RemoteException {
+	public List<GoodsPO> getOneSector(String sector_id,String ins_id) throws RemoteException {
 		// TODO Auto-generated method stub
-		ArrayList<String> sector_ids = new ArrayList<String>();
 		try {
+			String sql = "SELECT * FROM"+ sectorTable+" WHERE "+ins_id_f+"='"+ins_id+"' AND"+sector_id_f+"='"+sector_id+"';";
 			ResultSet re = NetModule.excutor.
-					excuteQuery("SELECT * FROM sector WHERE ins_id='"+ins_id+"';");
+					excuteQuery(sql);
 			if(!re.next()){
-				System.out.println("中转中心编号不存在！！！");
-				return null;
-			}
-			while(re.next()){
-				String sector_id = re.getString(sector_id_f);
-				sector_ids.add(sector_id);
-			}
-			
-			if(sector_ids.size()!=4){
 				System.out.println("中转中心编号不存在！！！");
 				return null;
 			}
@@ -69,13 +60,12 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		
 		ArrayList<GoodsPO> goodsPOs = new ArrayList<GoodsPO>();
 		try {
-			for(int i = 0;i<sector_ids.size();i++){
+				String sql1 ="SELECT * FROM"+ sectorItemTable+" WHERE "+sectorId_f+"='"+sector_id+"';";
 				ResultSet re = NetModule.excutor.
-						excuteQuery("SELECT * FROM sector_item WHERE sector_id='"+sector_ids.get(i)+"';");
+						excuteQuery(sql1);
 				while(re.next()){
 					int id = re.getInt(id_f);
 					String location = re.getString(location_f),
-							sector_id = re.getString(sectorid_f),
 							expressorder_id = re.getString(expressorder_id_f),
 							time = re.getString(time_f),
 							blong_sector = re.getString(belong_sec_f),
@@ -84,7 +74,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 					
 					GoodsPO po = new GoodsPO(expressorder_id, location, type, time, sector_id, blong_sector,destination);
 					goodsPOs.add(po);
-				}
+				
 				
 			}
 			return goodsPOs;
@@ -128,18 +118,21 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		}
 		
 		try {
+//			System.out.println("插入啦");
 			sectorItemInsert.clear();
 			sectorItemInsert.add(location_f, location);
-			sectorItemInsert.add(sectorid_f, sector_id);
+			sectorItemInsert.add(sectorId_f, sector_id);
 			sectorItemInsert.add(expressorder_id_f, expressorder_id);
 			sectorItemInsert.add(time_f, date);
 			sectorItemInsert.add(belong_sec_f,belong_sector);
 			sectorItemInsert.add(destination_f,destination);
 			String sql = sectorItemInsert.createSQL();
 			NetModule.excutor.excute(sql);
+//			System.out.println("插入好啦");
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
+			System.out.println("报警");
 			return ResultMessage.FAILED;
 		}
 		return ResultMessage.SUCCEED;
@@ -160,9 +153,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 	public ResultMessage delete(String expressorder_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.
-					excuteQuery("DELETE FROM sector_item WHERE expressorder_id='"+expressorder_id+"';");
-			
+			NetModule.excutor.excute("DELETE FROM sector_item WHERE expressorder_id='"+expressorder_id+"';");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,7 +182,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT *FROM user WHERE id='" + expressorder_id
+					.excuteQuery("SELECT * FROM "+sectorItemTable+" WHERE "+ expressorder_id_f+"='" + expressorder_id
 							+ "';");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
@@ -204,9 +195,10 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		
 		
 		try {
+			System.out.println("found");
 			sectorItemUpdate.clear();
 			sectorItemUpdate.add(location_f, location);
-			sectorItemUpdate.add(sectorid_f, sector_id);
+			sectorItemUpdate.add(sectorId_f, sector_id);
 			sectorItemUpdate.add(time_f, date);
 			sectorItemUpdate.add(belong_sec_f,belong_sector);
 			sectorItemUpdate.add(destination_f,destination);
@@ -242,16 +234,19 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		try {
 			ResultSet re = NetModule.excutor.
 					excuteQuery("SELECT * FROM sector_item WHERE expressorder_id='"+expressorder_id+"';");
-			int id = re.getInt(id_f);
-			String location = re.getString(location_f),
-					sector_id = re.getString(sectorid_f),
-					time = re.getString(time_f),
-					blong_sector = re.getString(belong_sec_f),
-					destination = re.getString(destination_f);
-			SectorType type = getSectorType(sector_id.charAt(sector_id.length()-1));
+			if(re.next()){
+				String location = re.getString(location_f),
+						sector_id = re.getString(sectorId_f),
+						time = re.getString(time_f),
+						blong_sector = re.getString(belong_sec_f),
+						destination = re.getString(destination_f);
+				SectorType type = getSectorType(sector_id.charAt(sector_id.length()-1));
+				
+				GoodsPO po = new GoodsPO(expressorder_id, location, type, time, sector_id, blong_sector,destination);
+				return po;
+				
+			}
 			
-			GoodsPO po = new GoodsPO(expressorder_id, location, type, time, sector_id, blong_sector,destination);
-			return po;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -269,7 +264,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		try {
 			sectorUpdate.clear();
 			sectorUpdate.add(alarmValue_f, alarmValue);
-			sectorUpdate.setKey(ins_id, ins_id);
+			sectorUpdate.setKey(ins_id_f, ins_id);
 			String sql = sectorUpdate.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (Exception e) {

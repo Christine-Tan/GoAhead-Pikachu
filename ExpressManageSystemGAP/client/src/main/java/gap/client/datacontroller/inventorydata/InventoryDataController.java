@@ -103,10 +103,10 @@ public class InventoryDataController {
 		return null;
 	}
 
-	public List<GoodsPO> getAll(String ins_id) {
+	public List<GoodsPO> getOneSector(String sector_id,String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.getAll(ins_id);
+			return inventory.getOneSector(sector_id, ins_id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

@@ -94,7 +94,7 @@ public class InventoryDataService_stub implements InventoryDataService{
 	}
 
 	@Override
-	public List<GoodsPO> getAll(String ins_id) throws RemoteException {
+	public List<GoodsPO> getOneSector(String ins_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

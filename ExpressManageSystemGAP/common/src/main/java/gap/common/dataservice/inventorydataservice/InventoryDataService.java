@@ -25,7 +25,7 @@ public interface InventoryDataService extends Remote {
 
 	public GoodsPO find(String expressorder_id) throws RemoteException;
 
-	public List<GoodsPO> getAll(String ins_id) throws RemoteException;
+	public List<GoodsPO> getOneSector(String sector_id,String ins_id) throws RemoteException;
 
 	public ResultMessage setAlarm(double alarmValue, String ins_id)
 			throws RemoteException;
