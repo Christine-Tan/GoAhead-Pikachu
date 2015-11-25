@@ -141,8 +141,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	public ExpressOrderPO find(String order_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			String sql = "SELECT * FROM expressorder WHERE order_id="
-					+ order_id + " AND " + passed_f + " = true;";
+			String sql = "SELECT * FROM expressorder WHERE order_id = '"
+					+ order_id + "' AND " + passed_f + " = true;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			return getByResultSet(re);
@@ -164,7 +164,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 					.isTransed();
 
 			String sele = "SELECT * FROM " + tableName + " WHERE " + order_id_f
-					+ " = " + order_id + ";";
+					+ " = '" + order_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sele);
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
@@ -195,8 +195,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
-			String sql = "SELECT * FROM expressorder WHERE targetIns_id="
-					+ ins_id + " AND " + passed_f + " = true;";
+			String sql = "SELECT * FROM expressorder WHERE targetIns_id='"
+					+ ins_id + "' AND " + passed_f + " = true;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
 				orders.add(getByResultSet(re));
@@ -215,8 +215,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
-			String sql = "SELECT * FROM expressorder WHERE currentIns_id="
-					+ ins_id + " AND " + passed_f + " = true;";
+			String sql = "SELECT * FROM expressorder WHERE currentIns_id='"
+					+ ins_id + "' AND " + passed_f + " = true;";
 			if (type == CurrentOrderType.ALL)
 				sql += " ;";
 			else if (type == CurrentOrderType.LOAD)
@@ -315,8 +315,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	public List<String> getState(String order_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			String sql = "SELECT * FROM " + stateTable + " WHERE order_id="
-					+ order_id + " ORDER BY " + state_time_f + ";";
+			String sql = "SELECT * FROM " + stateTable + " WHERE order_id='"
+					+ order_id + "' ORDER BY " + state_time_f + ";";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<String> states = new ArrayList<String>();
 			while (re.next()) {
@@ -395,7 +395,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT " + price_f + " FROM " + tableName + " WHERE "
-					+ delivery_id_f + " = " + delivery_id + " AND "
+					+ delivery_id_f + " = '" + delivery_id + "' AND "
 					+ create_time_f + " = '" + date + "';";
 			double sum = 0;
 			ResultSet re = NetModule.excutor.excuteQuery(sql);

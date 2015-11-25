@@ -30,14 +30,14 @@ public class ArrivedOrderDataServiceImplTest {
 			ArrivedOrderDataService arrivedOrderDataService = (ArrivedOrderDataService) Naming
 					.lookup(RMIConfig.url
 							+ ServiceName.ARRIVEDORDER_DATA_SERVICE);
-			// Map<String, String> orders = new HashMap<>();
-			// orders.put("0000000001", "完好");
-			// orders.put("0000000002", "损坏");
-			// ArrivedOrderPO po = new ArrivedOrderPO(orders, "2015-03-01",
-			// "00100011996030100001", "0010001", "001002", "测试");
-			// arrivedOrderDataService.add(po);
-			arrivedOrderDataService.setPassed("00100011996030100001",
-					"南京中转中心已收件");
+//			 Map<String, String> orders = new HashMap<>();
+//			 orders.put("0000000003", "完好");
+//			 orders.put("0000000002", "损坏");
+//			 ArrivedOrderPO po = new ArrivedOrderPO(orders, "2015-03-01",
+//			 "00100011996030100002", "0010001", "001002", "测试");
+//			 arrivedOrderDataService.add(po);
+			arrivedOrderDataService.setPassed("00100012015112500001",
+					"南京玄武营业厅已收件");
 			// ArrivedOrderPO po = arrivedOrderDataService
 			// .find("00100011996030100001");
 			// System.out.println(po.getId() + "," + po.getDes_ins_id() + ","

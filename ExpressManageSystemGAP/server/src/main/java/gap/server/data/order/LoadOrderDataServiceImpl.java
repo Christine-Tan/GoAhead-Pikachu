@@ -90,7 +90,7 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 	private List<String> getByOrder_id(String order_id) {
 		try {
 			String sql = "SELECT * FROM " + itemTable + " WHERE "
-					+ item_order_id_f + " = " + order_id + ";";
+					+ item_order_id_f + " = '" + order_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<String> result = new ArrayList<String>();
 			while (re.next()) {
@@ -109,7 +109,7 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT * FROM " + tableName + " WHERE " + order_id_f
-					+ " = " + order_id + " AND " + passed_f + " = true ;";
+					+ " = '" + order_id + "' AND " + passed_f + " = true ;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			return getByResultSet(re);
@@ -130,11 +130,12 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
 			String sql = "SELECT * FROM " + itemTable + " WHERE "
-					+ item_order_id_f + " = " + order_id + ";";
+					+ item_order_id_f + " = '" + order_id + "';";
 			ExpressOrderDataService orderData = ExpressOrderDataServiceImpl
 					.getInstance();
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
+				// System.out.println(re.getString(item_expressorder_id_f));
 				orderData.setLoad(re.getString(item_expressorder_id_f),
 						order_id.substring(0, 7), state_info);
 			}

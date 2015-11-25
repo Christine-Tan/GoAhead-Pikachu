@@ -83,7 +83,7 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT * FROM " + tableName + " WHERE " + order_id
-					+ " = " + order_id + ";";
+					+ " = '" + order_id + "' AND " + passed_f + " = true;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			return getByResultSet(re);
@@ -142,7 +142,7 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 	private Map<String, List<String>> getByOrder_id(String order_id) {
 		try {
 			String sql = "SELECT * FROM " + itemTable + " WHERE "
-					+ item_order_id_f + " = " + order_id + " GROUP BY "
+					+ item_order_id_f + " = '" + order_id + "' GROUP BY "
 					+ item_delivery_id_f + ";";
 			Map<String, List<String>> result = new HashMap<String, List<String>>();
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
@@ -162,8 +162,8 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 	private List<String> getByDelivery_id(String delivery_id, String order_id) {
 		try {
 			String sql = "SELECT * FROM " + itemTable + " WHERE "
-					+ item_order_id_f + " = " + order_id + " AND "
-					+ item_delivery_id_f + " = " + delivery_id + ";";
+					+ item_order_id_f + " = '" + order_id + "' AND "
+					+ item_delivery_id_f + " = '" + delivery_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<String> orders = new ArrayList<String>();
 			while (re.next())

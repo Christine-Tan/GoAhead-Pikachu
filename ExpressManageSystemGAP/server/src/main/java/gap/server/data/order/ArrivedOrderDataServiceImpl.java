@@ -78,7 +78,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT * FROM " + tableName + " WHERE " + order_id_f
-					+ " = " + order_id + " AND " + passed_f + " = true;";
+					+ " = '" + order_id + "' AND " + passed_f + " = true;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			return getByResultSet(re);
@@ -112,7 +112,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 	private Map<String, String> getByOrder_id(String order_id) {
 		try {
 			String sql = "SELECT * from " + itemTable + " WHERE "
-					+ item_order_id_f + " = " + order_id + ";";
+					+ item_order_id_f + " = '" + order_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			Map<String, String> result = new HashMap<String, String>();
 			while (re.next()) {
@@ -138,7 +138,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
 			String sql = "SELECT * FROM " + itemTable + " WHERE "
-					+ item_order_id_f + " = " + order_id + ";";
+					+ item_order_id_f + " = '" + order_id + "';";
 			ExpressOrderDataService orderData = ExpressOrderDataServiceImpl
 					.getInstance();
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
