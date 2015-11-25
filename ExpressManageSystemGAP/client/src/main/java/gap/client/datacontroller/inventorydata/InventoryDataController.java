@@ -1,16 +1,38 @@
 package gap.client.datacontroller.inventorydata;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
+import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
+import gap.common.netconfig.RMIConfig;
 import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
 
-public class InventoryDataController{
+public class InventoryDataController {
 	InventoryDataService inventory;
 
-	public ResultMessage add(GoodsPO goodsPO){
+	public InventoryDataController() {
+		try {
+			inventory = (InventoryDataService) Naming.lookup(RMIConfig.url
+					+ ServiceName.INVENTORY_DATA_SERVICE);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public ResultMessage add(GoodsPO goodsPO) {
 		// TODO Auto-generated method stub
 		try {
 			return inventory.add(goodsPO);
@@ -21,11 +43,11 @@ public class InventoryDataController{
 		return ResultMessage.FAILED;
 	}
 
-	public ResultMessage add(List<GoodsPO> goodsPOs){
+	public ResultMessage add(List<GoodsPO> goodsPOs) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.add(goodsPOs);
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
@@ -33,9 +55,9 @@ public class InventoryDataController{
 
 	public ResultMessage delete(String goods_id) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.delete(goods_id);
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
@@ -43,19 +65,19 @@ public class InventoryDataController{
 
 	public ResultMessage delete(List<String> goods_ids) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.delete(goods_ids);
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
 	}
 
-	public ResultMessage modify(GoodsPO goods)  {
+	public ResultMessage modify(GoodsPO goods) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.modify(goods);
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
@@ -63,64 +85,58 @@ public class InventoryDataController{
 
 	public ResultMessage modify(List<GoodsPO> goodsPOs) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.modify(goodsPOs);
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
 	}
 
-	public GoodsPO find(String goods_id)  {
+	public GoodsPO find(String goods_id) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.find(goods_id);
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	public List<GoodsPO> getAll(String ins_id)  {
+	public List<GoodsPO> getAll(String ins_id) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.getAll(ins_id);
-		}catch(RemoteException e){
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public List<GoodsPO> getAll()  {
-		// TODO Auto-generated method stub
-		try{
-			return inventory.getAll();
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	public ResultMessage setAlarm(double alarmValue,String ins_id)  {
+	/*
+	 * public List<GoodsPO> getAll() { // TODO Auto-generated method stub try{
+	 * return inventory.getAll(); }catch(RemoteException e){
+	 * e.printStackTrace(); } return null; }
+	 */
+
+	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
-		try{
-			return inventory.setAlarm(alarmValue,ins_id);
-		}catch(RemoteException e){
+		try {
+			return inventory.setAlarm(alarmValue, ins_id);
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
 	}
 
-	public double getAlarm(String ins_id)  {
+	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			return inventory.getAlarm(ins_id);
-		}catch(RemoteException e){
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
-	
-	
 
 }

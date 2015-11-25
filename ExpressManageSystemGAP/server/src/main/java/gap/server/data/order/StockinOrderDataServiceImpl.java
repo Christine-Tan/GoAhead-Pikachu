@@ -1,9 +1,10 @@
 package gap.server.data.order;
 
+
 import gap.common.dataservice.orderdataservice.StockinOrderDataService;
 import gap.common.po.GoodsPO;
+import gap.common.po.LoadOrderPO;
 import gap.common.po.StockinOrderPO;
-import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.UpdateSQL;
@@ -16,153 +17,223 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements StockinOrderDataService{
-		//表名
-		private String stockinTable = "stockinorder";
-		//字段
-		private String order_id_f = "order_id",time_f = "time",ins_id_f = "ins_id";
-		//表名
-		private String stockinItemTable = "stockinitem";
-		//字段
-		private String expressorder_id_f = "expressorder_id",orderId_f = "order_id"
-				,destination_f = "destination",sector_id_f = "sector_id",location_f = "location";
-		
-		private InsertSQL orderInsert,itemInsert;
+public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
+		StockinOrderDataService {
+	// 表名
+	private String stockinTable = "stockinorder";
+	// 字段
+	private String order_id_f = "order_id", time_f = "time",
+			ins_id_f = "ins_id", passed_f = "passed";
+	// 表名
+	private String stockinItemTable = "stockinitem";
+	// 字段
+	private String expressorder_id_f = "expressorder_id",
+			orderId_f = "order_id", destination_f = "destination",
+			sector_id_f = "sector_id", location_f = "location";
+
+	private InsertSQL orderInsert, itemInsert;
+	private UpdateSQL update;
+
+	public static StockinOrderDataService instance;
 
 	public StockinOrderDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 		orderInsert = new InsertSQL(stockinTable);
 		itemInsert = new InsertSQL(stockinItemTable);
-		
+		update = new UpdateSQL(stockinTable);
+
+	}
+
+	public static StockinOrderDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new StockinOrderDataServiceImpl();
+		return instance;
 	}
 
 	@Override
 	public ResultMessage add(StockinOrderPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		
-		String order_id = po.getId(),time = po.getInDate(),ins_id = po.getIns_id();
-		List<GoodsPO> goodPOs = po.getGoods();
-				
-				try {
-					orderInsert.clear();
-					orderInsert.add(order_id_f, order_id);
-					orderInsert.add(time_f, time);
-					orderInsert.add(ins_id_f, ins_id);
-					NetModule.excutor.excute(orderInsert.createSQL());
-					for (GoodsPO goods: goodPOs) {
-						itemInsert.clear();
-						itemInsert.add(expressorder_id_f, goods.getExpressorder_id());
-						itemInsert.add(orderId_f, order_id);
-						itemInsert.add(destination_f,goods.getDestination());
-						itemInsert.add(sector_id_f,goods.getSector_id());
-						itemInsert.add(location_f, goods.getLocation());
-						NetModule.excutor.excute(itemInsert.createSQL());
-					}
-					return ResultMessage.SUCCEED;
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					System.out.println("入库单增加失败");
-					
-				}
-				return ResultMessage.FAILED;
-	}
 
-	@Override
-	public StockinOrderPO find(String order_id,String ins_id) throws RemoteException {
-		// TODO Auto-generated method stub
+		String order_id = po.getId(), time = po.getInDate(), ins_id = po
+				.getIns_id();
+		List<GoodsPO> goodPOs = po.getGoods();
+
 		try {
-			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM stockinorder WHERE order_id = '"+order_id+"';");
-			re.next();
-			String date = re.getString(time_f);
-			ArrayList<GoodsPO> goodPOs = new ArrayList<GoodsPO>();
-			ResultSet itemre = NetModule.excutor
-					.excuteQuery("SELECT *　FROM storkinitem WHERE order_id = '"+order_id+"';");
-			
-			while(itemre.next()){
-				String id = itemre.getString(expressorder_id_f),destination = itemre.getString(destination_f),
-						sector_id = itemre.getString(sector_id_f),location = itemre.getString(location_f);
-				GoodsPO goods = new GoodsPO(id, location, null, date, sector_id, null, destination);
-				goodPOs.add(goods);
+			orderInsert.clear();
+			orderInsert.add(order_id_f, order_id);
+			orderInsert.add(time_f, time);
+			orderInsert.add(ins_id_f, ins_id);
+			NetModule.excutor.excute(orderInsert.createSQL());
+			for (GoodsPO goods : goodPOs) {
+				itemInsert.clear();
+				itemInsert.add(expressorder_id_f, goods.getExpressorder_id());
+				itemInsert.add(orderId_f, order_id);
+				itemInsert.add(destination_f, goods.getDestination());
+				itemInsert.add(sector_id_f, goods.getSector_id());
+				itemInsert.add(location_f, goods.getLocation());
+				NetModule.excutor.excute(itemInsert.createSQL());
 			}
-			StockinOrderPO po = new StockinOrderPO(goodPOs, date, order_id, ins_id);
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("入库单增加失败");
+
+		}
+		return ResultMessage.FAILED;
+	}
+	
+	public StockinOrderPO getByResultSet(ResultSet re) {
+
+		try {
+			String date = re.getString(time_f);
+			String order_id = re.getString(order_id_f);
+			String ins_id = re.getString(ins_id_f);
+
+			List<GoodsPO> goodPOs = getPOsByOrderId(order_id);
+
+			StockinOrderPO po = new StockinOrderPO(goodPOs, date, order_id,
+					ins_id);
 			return po;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("入库单号为"+order_id+"的入库单获取失败");
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	@Override
-	public List<StockinOrderPO> getOneDay(String date,String ins_id) throws RemoteException {
-		// TODO Auto-generated method stub
+	public List<GoodsPO> getPOsByOrderId(String order_id) {
 		try {
-			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM stockinorder WHERE ins_id = '"+ins_id
-							+"' AND time = '"+date+"';");
-			ArrayList<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
-			while(re.next()){
-				String order_id = re.getString(order_id_f);
-				ArrayList<GoodsPO> goodPOs = new ArrayList<GoodsPO>();
-				ResultSet itemre = NetModule.excutor
-						.excuteQuery("SELECT *　FROM storkinitem WHERE order_id = '"+order_id+"';");
-				
-				while(itemre.next()){
-					String id = itemre.getString(expressorder_id_f),destination = itemre.getString(destination_f),
-							sector_id = itemre.getString(sector_id_f),location = itemre.getString(location_f);
-					GoodsPO goods = new GoodsPO(id, location, null, date, sector_id, null, destination);
-					goodPOs.add(goods);
-				}
-				StockinOrderPO po = new StockinOrderPO(goodPOs, date, order_id, ins_id);
-				stockinOrders.add(po);
+
+			List<GoodsPO> goodPOs = new ArrayList<GoodsPO>();
+			ResultSet itemre = NetModule.excutor
+					.excuteQuery("SELECT *　FROM stockinitem WHERE order_id = '"
+							+ order_id + "';");
+
+			while (itemre.next()) {
+				String id = itemre.getString(expressorder_id_f), destination = itemre
+						.getString(destination_f), sector_id = itemre
+						.getString(sector_id_f), location = itemre
+						.getString(location_f);
+				GoodsPO goods = new GoodsPO(id, location, null, "", sector_id,
+						"", destination);
+				goodPOs.add(goods);
 			}
-			return stockinOrders;
-			
+			return goodPOs;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("中转中心"+ins_id+","+date+"号的入库单获取失败");
 			e.printStackTrace();
-			
 		}
 		return null;
 	}
 
 	@Override
-	public List<StockinOrderPO> getRequired(String beginDate, String endDate,String ins_id)
+	public StockinOrderPO find(String order_id, String ins_id)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM stockoutorder WHERE ins_id = '"+ins_id
-							+"' AND time >= '"+beginDate+"'AND time<= '"+endDate+"';");
-			ArrayList<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
-			while(re.next()){
-				String order_id = re.getString(order_id_f);
-				String date = re.getString(time_f);
-				ArrayList<GoodsPO> goodPOs = new ArrayList<GoodsPO>();
-				ResultSet itemre = NetModule.excutor
-						.excuteQuery("SELECT *　FROM storkinitem WHERE order_id = '"+order_id+"';");
-				
-				while(itemre.next()){
-					String id = itemre.getString(expressorder_id_f),destination = itemre.getString(destination_f),
-							sector_id = itemre.getString(sector_id_f),location = itemre.getString(location_f);
-					GoodsPO goods = new GoodsPO(id, location, null, date, sector_id, null, destination);
-					goodPOs.add(goods);
-				}
-				StockinOrderPO po = new StockinOrderPO(goodPOs, date, order_id, ins_id);
+					.excuteQuery("SELECT * FROM stockinorder WHERE order_id = '"
+							+ order_id + "';");
+			re.next();
+			return getByResultSet(re);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("入库单号为" + order_id + "的入库单获取失败");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	
+
+	@Override
+	public List<StockinOrderPO> getOneDay(String date, String ins_id)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM stockinorder WHERE ins_id = '"
+							+ ins_id + "' AND time = '" + date + "';");
+			List<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
+			while (re.next()) {
+				StockinOrderPO po = getByResultSet(re);
 				stockinOrders.add(po);
 			}
 			return stockinOrders;
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.out.println("中转中心"+ins_id+","+beginDate+"号到"+endDate+"号的入库单获取失败");
+			System.out.println("中转中心" + ins_id + "," + date + "号的入库单获取失败");
 			e.printStackTrace();
-			
+
+		}
+		return null;
+	}
+
+	@Override
+	public List<StockinOrderPO> getRequired(String beginDate, String endDate,
+			String ins_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM stockoutorder WHERE ins_id = '"
+							+ ins_id + "' AND time >= '" + beginDate
+							+ "'AND time<= '" + endDate + "';");
+			ArrayList<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
+			while (re.next()) {
+				StockinOrderPO po = getByResultSet(re);
+				stockinOrders.add(po);
+			}
+			return stockinOrders;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("中转中心" + ins_id + "," + beginDate + "号到"
+					+ endDate + "号的入库单获取失败");
+			e.printStackTrace();
+
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage setPassed(String order_id, String state_info)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			update.clear();
+			update.add(passed_f, true);
+			update.setKey(order_id_f, order_id);
+			NetModule.excutor.excute(update.createSQL());
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
+	}
+
+	@Override
+	public List<StockinOrderPO> getUnpassedOrders() throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "SELECT * FROM " + stockinTable + " WHERE " + passed_f
+					+ " = false ;";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			List<StockinOrderPO> orders = new ArrayList<StockinOrderPO>();
+			while (re.next()) {
+				orders.add(getByResultSet(re));
+			}
+			return orders;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
 		}
 		return null;
 	}

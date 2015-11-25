@@ -6,6 +6,8 @@ import gap.client.datacontroller.logindata.LoginDataController;
 import gap.client.datacontroller.orderdata.ArrivedOrderDataController;
 import gap.client.datacontroller.orderdata.DeliveryOrderDataController;
 import gap.client.datacontroller.orderdata.LoadOrderDataController;
+import gap.client.datacontroller.orderdata.StockinOrderDataController;
+import gap.client.datacontroller.orderdata.StockoutOrderDataController;
 import gap.client.datacontroller.transdata.TransDataController;
 import gap.client.util.LocalInfo;
 import gap.common.util.UserType;
@@ -16,6 +18,10 @@ public class ControllerFactory {
 	private static LoadOrderDataController loadorderdatacontroller;
 	private static ArrivedOrderDataController arrivedorderdatacontroller;
 	private static DeliveryOrderDataController deliveryorderdatacontroller;
+	private static InventoryDataController inventoryDataController;
+	private static StockinOrderDataController stockinOrderDataController;
+	private static StockoutOrderDataController stockoutOrderDataController;
+	
 
 	public static LoginDataController getLoginDataController() {
 		if (loginDataController == null)
@@ -34,7 +40,9 @@ public class ControllerFactory {
 	}
 
 	public static InventoryDataController getInventoryDataController() {
-		return null;
+		if (inventoryDataController == null)
+			inventoryDataController = new InventoryDataController();
+		return inventoryDataController;
 	}
 
 	public static LoadOrderDataController getLoadOrderDataController() {
@@ -53,6 +61,18 @@ public class ControllerFactory {
 		if (deliveryorderdatacontroller == null)
 			deliveryorderdatacontroller = new DeliveryOrderDataController();
 		return deliveryorderdatacontroller;
+	}
+	
+	public static StockinOrderDataController getStockinOrderDataController() {
+		if (stockinOrderDataController == null)
+			stockinOrderDataController = new StockinOrderDataController();
+		return stockinOrderDataController;
+	}
+	
+	public static StockoutOrderDataController getStockoutOrderDataController() {
+		if (stockoutOrderDataController == null)
+			stockoutOrderDataController = new StockoutOrderDataController();
+		return stockoutOrderDataController;
 	}
 
 }

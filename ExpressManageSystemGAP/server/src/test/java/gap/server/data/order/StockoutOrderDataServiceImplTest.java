@@ -1,9 +1,9 @@
-package gap.server.data.inventorydata;
+package gap.server.data.order;
 
 import static org.junit.Assert.*;
 import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.dataservice.orderdataservice.StockinOrderDataService;
+import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
 import gap.common.netconfig.RMIConfig;
 
 import java.net.MalformedURLException;
@@ -14,7 +14,7 @@ import java.rmi.RemoteException;
 import org.junit.Before;
 import org.junit.Test;
 
-public class InventoryDataServiceImplTest {
+public class StockoutOrderDataServiceImplTest {
 	
 	@Before
 	public void setUp() throws Exception {
@@ -23,9 +23,9 @@ public class InventoryDataServiceImplTest {
 	@Test
 	public void test() {
 		try {
-			InventoryDataService stockinorder = (InventoryDataService) Naming
+			StockoutOrderDataService stockinorder = (StockoutOrderDataService) Naming
 					.lookup(RMIConfig.url
-							+ ServiceName.INVENTORY_DATA_SERVICE);
+							+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

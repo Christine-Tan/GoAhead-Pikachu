@@ -106,11 +106,6 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements Inv
 		}
 	}
 	
-	@Override
-	public List<GoodsPO> getAll() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ResultMessage add(GoodsPO po) throws RemoteException {

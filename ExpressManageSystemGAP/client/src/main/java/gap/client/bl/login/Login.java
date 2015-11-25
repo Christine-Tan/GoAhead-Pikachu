@@ -27,6 +27,7 @@ public class Login implements LoginService {
 
 	/**
 	 * 登录后设置本地信息
+	 * 
 	 * @param user
 	 */
 	private void setLocalInfo(UserPO user) {
