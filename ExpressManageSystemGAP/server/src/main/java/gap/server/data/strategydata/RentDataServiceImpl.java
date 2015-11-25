@@ -75,7 +75,7 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 			insertSQL.clear();
 			insertSQL.add(insti_f,id);
 			insertSQL.add(money_f, rent);
-			insertSQL.add(lastPaid_f, date);
+			insertSQL.add(lastPaid_f, date.toString());
 			String sql = insertSQL.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (SQLException e1) {
@@ -101,7 +101,7 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 			updateSQL.clear();
 			updateSQL.add(insti_f, re.getString("id"));
 			updateSQL.add(money_f, rent);
-			updateSQL.add(lastPaid_f, date);
+			updateSQL.add(lastPaid_f, date.toString());
 			String sql = updateSQL.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (SQLException e1) {

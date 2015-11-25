@@ -1,7 +1,7 @@
 package gap.common.util;
 
 public enum UserType {
-	DELIVERY, BUSSINESSCLERK, CENTERCLERK, INVENTORY, MANAGER, ADMINISTRATOR;
+	DELIVERY, BUSSINESSCLERK, CENTERCLERK, INVENTORY, ACCOUNTER, MANAGER, ADMINISTRATOR;
 	public static UserType getUserType(String str) {
 		switch (str) {
 		case "DELIVERY":
@@ -12,6 +12,8 @@ public enum UserType {
 			return CENTERCLERK;
 		case "INVENTORY":
 			return INVENTORY;
+		case "ACCOUNTER":
+			return ACCOUNTER;
 		case "MANAGER":
 			return MANAGER;
 		case "ADMINISTRATOR":
