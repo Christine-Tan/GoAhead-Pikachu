@@ -4,8 +4,10 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import gap.client.blservice.expressorderblservice.ExpressOrderService;
+import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.datacontroller.controllerfactory.ControllerFactory;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
+import gap.client.exception.InvalidInputException;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StateVO;
 import gap.common.po.ExpressOrderPO;
@@ -27,15 +29,20 @@ public class ExpressOrder implements ExpressOrderService {
 	}
 
 	@Override
-	public List<String> getState(String order_id) {
+	public List<String> getState(String order_id) throws InvalidInputException {
 		// TODO 自动生成的方法存根
+		if (order_id.length() != 10)
+			throw new InvalidInputException("快件单号位数错误");
 		return expressorderData.getState(order_id);
 	}
 
 	@Override
-	public ExpressOrderVO getOrder(String order_id) {
+	public ExpressOrderVO getOrder(String order_id)
+			throws InvalidInputException {
 		// TODO 自动生成的方法存根
-		ExpressOrderPO po = expressorderData.find(order_id);
+		if (order_id.length() != 10)
+			throw new InvalidInputException("快件单号位数错误");
+		ExpressOrderPO po = expressorderData.findExpressOrder(order_id);
 		if (po != null)
 			return new ExpressOrderVO(po);
 		return null;

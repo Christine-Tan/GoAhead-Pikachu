@@ -29,6 +29,7 @@ public class ExpressOrderVO {
 		this.sender_info = po.getSenderInfo();
 		receiver_info = po.getReceiverInfo();
 		price = po.getPrice();
+		expressType=po.getExpressType();
 		cargoInfo = po.getCargoInfo();
 		received = po.isReceived();
 		order_id = po.getOrder_id();

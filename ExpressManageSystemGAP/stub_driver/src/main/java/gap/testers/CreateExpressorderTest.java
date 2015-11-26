@@ -2,7 +2,7 @@ package gap.testers;
 
 import static org.junit.Assert.*;
 import gap.client.bl.expressorder.ExpressOrder;
-import gap.client.bl.expressorder.PriceCal;
+import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.ExpressType;
 import gap.mockobject.MockPriceCal;
