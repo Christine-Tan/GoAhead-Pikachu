@@ -37,7 +37,7 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 	public SalaryPO find(UserType type) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + type + "';");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + type.toString() + "';");
 			re.next();
 			double salary = re.getDouble(salary_f);
 			SalaryPO po = new SalaryPO(type, salary);
@@ -55,11 +55,11 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		UserType usertype = po.getType();
 		double salary = po.getSalary();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT *FROM salary WHERE userType='" + usertype + "';");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
 			if (re.next())
 				return ResultMessage.EXITED;
 			insertSQL.clear();
-			insertSQL.add(usertype_f, usertype);
+			insertSQL.add(usertype_f, usertype.toString());
 			insertSQL.add(salary_f, salary);
 			String sql = insertSQL.createSQL();
 			NetModule.excutor.excute(sql);
@@ -77,11 +77,13 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		UserType usertype = po.getType();
 		double salary = po.getSalary();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype + "';");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
 			if (!re.next())
 				return ResultMessage.NOTFOUND;
+		    int id=re.getInt(id_f);
 			updateSQL.clear();
-			updateSQL.add(usertype_f, usertype);
+			updateSQL.setKey(id_f, id);
+			updateSQL.add(usertype_f, usertype.toString());
 			updateSQL.add(salary_f, salary);
 			String sql = updateSQL.createSQL();
 			NetModule.excutor.excute(sql);

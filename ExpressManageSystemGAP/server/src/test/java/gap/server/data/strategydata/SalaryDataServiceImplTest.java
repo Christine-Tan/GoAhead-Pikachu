@@ -8,9 +8,13 @@ import org.junit.Test;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
 import gap.common.po.SalaryPO;
 import gap.common.util.UserType;
+import gap.server.initial.NetInitial;
 
 public class SalaryDataServiceImplTest {
    @Before
+	public void setup() throws Exception {
+		NetInitial.initial();
+	}
 	@Test
 	public void test() throws RemoteException {
 	   SalaryDataService salarydata = new SalaryDataServiceImpl();

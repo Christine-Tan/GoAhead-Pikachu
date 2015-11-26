@@ -41,7 +41,7 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 		List<RentPO> rents = new ArrayList<RentPO>();
 		try {
 			ResultSet re = NetModule.excutor.excuteQuery(
-					"SELECT rent.money money_f,institution.name institution_f,rent.lastPaid lastPaid_f  FROM rent,institution WHERE institution.id=rent.institution_id;");
+					"SELECT rent.money money_f,institution.name institution_f,rent.lastPaid lastPaid_f  FROM rent,institution WHERE institution.ins_id=rent.institution_id;");
 			while (re.next()) {
 				String institution = re.getString("institution_f");
 				Date lastPaid = re.getDate("lastPaid_f");
@@ -94,12 +94,13 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 		Date date = po.getLastPaidDate();
 		try {
 			ResultSet re = NetModule.excutor.excuteQuery(
-					"SELECT rent.money money,institution.ins_id id FROM rent,institution WHERE institution.name='"
-							+ insname + "' AND rent.institution_id=id");
+					"SELECT rent.money money,institution.ins_id ins_id,rent.id id FROM rent,institution WHERE institution.name='"
+							+ insname + "' AND institution.ins_id=rent.institution_id");
 			if (!re.next())
 				return ResultMessage.NOTFOUND;
 			updateSQL.clear();
-			updateSQL.add(insti_f, re.getString("id"));
+			updateSQL.setKey("id", re.getInt("id"));
+			updateSQL.add(insti_f, re.getString("ins_id"));
 			updateSQL.add(money_f, rent);
 			updateSQL.add(lastPaid_f, date.toString());
 			String sql = updateSQL.createSQL();
