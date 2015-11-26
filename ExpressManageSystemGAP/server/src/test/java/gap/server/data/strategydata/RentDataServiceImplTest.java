@@ -2,13 +2,18 @@ package gap.server.data.strategydata;
 
 import static org.junit.Assert.*;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.Date;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.strategydataservice.RentDataService;
+import gap.common.netconfig.RMIConfig;
 import gap.common.po.RentPO;
 import gap.server.initial.NetInitial;
 
@@ -19,9 +24,9 @@ public class RentDataServiceImplTest {
 	}
 
 	@Test
-	public void test() throws RemoteException {
-		RentDataService rentdata = new RentDataServiceImpl();
-		Date date=new Date(System.currentTimeMillis());
+	public void test() throws RemoteException, MalformedURLException, NotBoundException {
+		RentDataService rentdata = (RentDataService) Naming.lookup(RMIConfig.url + ServiceName.RENT_DATA_SERVICE);
+		Date date = new Date(System.currentTimeMillis());
 		RentPO po1 = new RentPO("南京市栖霞区营业厅", 1000, date);
 		RentPO po2 = new RentPO("南京市玄武区中转中心", 1000, date);
 		RentPO po3 = new RentPO("北京市栖霞区营业厅", 1000, date);
@@ -39,12 +44,12 @@ public class RentDataServiceImplTest {
 		System.out.println(rentdata.add(po6).getMessage());
 		System.out.println(rentdata.add(po7).getMessage());
 		System.out.println(rentdata.add(po8).getMessage());
-		System.out.println(rentdata.update(po9).getMessage());
-		
+		System.out.println(rentdata.modify(po9).getMessage());
+
 		for (RentPO get : rentdata.getAll()) {
-			System.out.println(get.getInstitution() + get.getMoney() );
+			System.out.println(get.getInstitution() + get.getMoney());
 		}
-		
+
 	}
 
 }

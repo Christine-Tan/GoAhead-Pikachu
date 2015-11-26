@@ -1,23 +1,18 @@
 package gap.server.initial;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.logdataservice.LogDataService;
-import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
-import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
-import gap.common.dataservice.transdataservice.CarDataService;
-import gap.common.dataservice.transdataservice.DriverDataService;
-import gap.common.dataservice.userdataservice.UserDataService;
-import gap.common.netconfig.RMIConfig;
-import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
-import gap.server.data.logdata.LogDataServiceImpl;
-import gap.server.data.order.ArrivedOrderDataServiceImpl;
-import gap.server.data.order.DeliveryOrderDataServiceImpl;
-import gap.server.data.order.LoadOrderDataServiceImpl;
-import gap.server.data.strategydata.PriceDataServiceImpl;
-import gap.server.data.transdata.CarDataServiceImpl;
-import gap.server.data.transdata.DriverDataServiceImpl;
-import gap.server.data.userdata.UserDataServiceImpl;
-import gap.server.databaseutility.DataBaseLancher;
+import static gap.server.initial.NetModule.arrivedOrderdataservice;
+import static gap.server.initial.NetModule.cardataservice;
+import static gap.server.initial.NetModule.citydataservice;
+import static gap.server.initial.NetModule.deliveryorderdataservice;
+import static gap.server.initial.NetModule.driverdataservice;
+import static gap.server.initial.NetModule.expressorderdataservice;
+import static gap.server.initial.NetModule.institutiondataservice;
+import static gap.server.initial.NetModule.loadorderdataservice;
+import static gap.server.initial.NetModule.logdataservice;
+import static gap.server.initial.NetModule.pricedataservice;
+import static gap.server.initial.NetModule.rentdataservice;
+import static gap.server.initial.NetModule.salarydataservice;
+import static gap.server.initial.NetModule.userdataservice;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -25,7 +20,22 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import static gap.server.initial.NetModule.*;
+import gap.common.dataservice.ServiceName;
+import gap.common.netconfig.RMIConfig;
+import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
+import gap.server.data.logdata.LogDataServiceImpl;
+import gap.server.data.managedata.InstitutionDataServiceImpl;
+import gap.server.data.order.ArrivedOrderDataServiceImpl;
+import gap.server.data.order.DeliveryOrderDataServiceImpl;
+import gap.server.data.order.LoadOrderDataServiceImpl;
+import gap.server.data.strategydata.CityDataServiceImpl;
+import gap.server.data.strategydata.PriceDataServiceImpl;
+import gap.server.data.strategydata.RentDataServiceImpl;
+import gap.server.data.strategydata.SalaryDataServiceImpl;
+import gap.server.data.transdata.CarDataServiceImpl;
+import gap.server.data.transdata.DriverDataServiceImpl;
+import gap.server.data.userdata.UserDataServiceImpl;
+import gap.server.databaseutility.DataBaseLancher;
 
 public class NetInitial {
 
@@ -40,7 +50,11 @@ public class NetInitial {
 		expressorderdataservice = ExpressOrderDataServiceImpl.getInstance();
 		deliveryorderdataservice = DeliveryOrderDataServiceImpl.getInstance();
 		loadorderdataservice = LoadOrderDataServiceImpl.getInstance();
-		pricedataservice = new PriceDataServiceImpl();
+		pricedataservice = PriceDataServiceImpl.getInstance();
+		rentdataservice = RentDataServiceImpl.getInstance();		
+		salarydataservice = SalaryDataServiceImpl.getInstance();
+		citydataservice = CityDataServiceImpl.getInstance();
+		institutiondataservice = InstitutionDataServiceImpl.getInstance();
 	}
 
 	public static void main(String[] args) {
@@ -66,7 +80,15 @@ public class NetInitial {
 					loadorderdataservice);
 			Naming.bind(RMIConfig.url + ServiceName.PRICE_DATA_SERVICE,
 					pricedataservice);
-
+			Naming.bind(RMIConfig.url + ServiceName.RENT_DATA_SERVICE,
+					rentdataservice);
+			Naming.bind(RMIConfig.url + ServiceName.SALARY_DATA_SERVICE,
+					salarydataservice);
+			Naming.bind(RMIConfig.url + ServiceName.CITY_DATA_SERVICE,
+					citydataservice);
+			Naming.bind(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE,
+					institutiondataservice);
+			
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

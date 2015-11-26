@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
+import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.po.InstitutionPO;
 import gap.common.util.Address;
 import gap.common.util.InstitutionType;
 import gap.common.util.ResultMessage;
+import gap.server.data.strategydata.CityDataServiceImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
@@ -27,7 +29,13 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 
 	private InsertSQL insertSQL;
 	private UpdateSQL updateSQL;
+	public static InstitutionDataService instance;
 
+	public static InstitutionDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new InstitutionDataServiceImpl();
+		return instance;
+	}
 	public InstitutionDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub

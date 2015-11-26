@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.dataservice.strategydataservice.RentDataService;
 import gap.common.po.RentPO;
 import gap.common.util.ResultMessage;
@@ -21,12 +23,20 @@ import gap.server.initial.NetModule;
  */
 public class RentDataServiceImpl extends UnicastRemoteObject implements RentDataService {
 	// 表名
-	String tablename = "rent", instable = "institution";
+	private String tablename = "rent", instable = "institution";
 	// 字段
-	String money_f = "money", lastPaid_f = "lastPaid", insti_f = "institution_id";
+	private String money_f = "money", lastPaid_f = "lastPaid", insti_f = "institution_id";
 
-	InsertSQL insertSQL;
-	UpdateSQL updateSQL;
+	private InsertSQL insertSQL;
+	private UpdateSQL updateSQL;
+
+	public static RentDataService instance;
+
+	public static RentDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new RentDataServiceImpl();
+		return instance;
+	}
 
 	public RentDataServiceImpl() throws RemoteException {
 		super();
@@ -69,11 +79,12 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 							+ insname + "' AND institution.ins_id=rent.institution_id");
 			if (re.next())
 				return ResultMessage.EXITED;
-		   ResultSet rs=NetModule.excutor.excuteQuery("SELECT ins_id FROM institution WHERE name='"+insname+"';");
-		   rs.next();
-		   String id=rs.getString("ins_id");
+			ResultSet rs = NetModule.excutor
+					.excuteQuery("SELECT ins_id FROM institution WHERE name='" + insname + "';");
+			rs.next();
+			String id = rs.getString("ins_id");
 			insertSQL.clear();
-			insertSQL.add(insti_f,id);
+			insertSQL.add(insti_f, id);
 			insertSQL.add(money_f, rent);
 			insertSQL.add(lastPaid_f, date.toString());
 			String sql = insertSQL.createSQL();
@@ -87,7 +98,7 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 	}
 
 	@Override
-	public ResultMessage update(RentPO po) throws RemoteException {
+	public ResultMessage modify(RentPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		String insname = po.getInstitution();
 		double rent = po.getMoney();

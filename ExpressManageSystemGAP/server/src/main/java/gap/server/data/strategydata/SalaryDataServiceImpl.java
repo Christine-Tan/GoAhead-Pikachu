@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
 import gap.common.po.SalaryPO;
 import gap.common.util.ResultMessage;
@@ -20,11 +21,18 @@ import gap.server.initial.NetModule;
  */
 public class SalaryDataServiceImpl extends UnicastRemoteObject implements SalaryDataService {
 	// 表名
-	String tablename = "salary";
+	private String tablename = "salary";
 	// 字段
-	String id_f = "id", usertype_f = "userType", salary_f = "salary";
-	InsertSQL insertSQL;
-	UpdateSQL updateSQL;
+	private String id_f = "id", usertype_f = "userType", salary_f = "salary";
+	private InsertSQL insertSQL;
+	private UpdateSQL updateSQL;
+	public static SalaryDataService instance;
+
+	public static SalaryDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new SalaryDataServiceImpl();
+		return instance;
+	}
 
 	public SalaryDataServiceImpl() throws RemoteException {
 		super();
@@ -37,7 +45,8 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 	public SalaryPO find(UserType type) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + type.toString() + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM salary WHERE userType='" + type.toString() + "';");
 			re.next();
 			double salary = re.getDouble(salary_f);
 			SalaryPO po = new SalaryPO(type, salary);
@@ -55,7 +64,8 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		UserType usertype = po.getType();
 		double salary = po.getSalary();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
 			if (re.next())
 				return ResultMessage.EXITED;
 			insertSQL.clear();
@@ -77,10 +87,11 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		UserType usertype = po.getType();
 		double salary = po.getSalary();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
 			if (!re.next())
 				return ResultMessage.NOTFOUND;
-		    int id=re.getInt(id_f);
+			int id = re.getInt(id_f);
 			updateSQL.clear();
 			updateSQL.setKey(id_f, id);
 			updateSQL.add(usertype_f, usertype.toString());

@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import gap.common.dataservice.strategydataservice.CityDataService;
+import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.CityPO;
 import gap.common.po.InstitutionPO;
 import gap.common.util.ResultMessage;
+import gap.server.data.userdata.UserDataServiceImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
@@ -19,8 +21,15 @@ public class CityDataServiceImpl extends UnicastRemoteObject implements CityData
 	private String tablename = "city";
 	// 字段
 	private String id_f = "id", city_f = "name", lati_f = "latitude", long_f = "longitude", province_f = "province_id";
-
 	private InsertSQL insertSQL;
+
+	public static CityDataService instance;
+
+	public static CityDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new CityDataServiceImpl();
+		return instance;
+	}
 
 	public CityDataServiceImpl() throws RemoteException {
 		super();

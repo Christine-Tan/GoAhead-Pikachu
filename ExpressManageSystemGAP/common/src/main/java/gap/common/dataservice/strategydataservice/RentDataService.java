@@ -12,7 +12,7 @@ public interface RentDataService extends Remote {
 
 	public ResultMessage add(RentPO po) throws RemoteException;
 
-	public ResultMessage update(RentPO po) throws RemoteException;
-	
-	public ResultMessage setPaid(String institution)throws RemoteException;
+	public ResultMessage modify(RentPO po) throws RemoteException;
+
+	public ResultMessage setPaid(String institution) throws RemoteException;
 }
