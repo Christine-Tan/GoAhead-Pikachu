@@ -1,6 +1,7 @@
 package gap.client.bl.expressorder;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import gap.client.blservice.expressorderblservice.ExpressOrderService;
@@ -11,6 +12,7 @@ import gap.client.exception.InvalidInputException;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StateVO;
 import gap.common.po.ExpressOrderPO;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -57,13 +59,28 @@ public class ExpressOrder implements ExpressOrderService {
 	@Override
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id) {
 		// TODO 自动生成的方法存根
-		return null;
+		List<ExpressOrderPO> orders = expressorderData
+				.findArrivingOrders(ins_id);
+		if (orders == null)
+			return null;
+		List<ExpressOrderVO> ordersVO = new ArrayList<ExpressOrderVO>();
+		for (ExpressOrderPO po : orders)
+			ordersVO.add(new ExpressOrderVO(po));
+		return ordersVO;
 	}
 
 	@Override
-	public List<ExpressOrderVO> getCurrentOrders(String ins_id) {
+	public List<ExpressOrderVO> getCurrentOrders(String ins_id,
+			CurrentOrderType type) {
 		// TODO 自动生成的方法存根
-		return null;
+		List<ExpressOrderPO> orders = expressorderData.findCurrentOrders(
+				ins_id, type);
+		if (orders == null)
+			return null;
+		List<ExpressOrderVO> ordersVO = new ArrayList<ExpressOrderVO>();
+		for (ExpressOrderPO po : orders)
+			ordersVO.add(new ExpressOrderVO(po));
+		return ordersVO;
 	}
 
 	@Override

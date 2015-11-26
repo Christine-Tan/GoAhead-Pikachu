@@ -13,6 +13,7 @@ public class ServiceName {
 			ARRIVEDORDER_DATA_SERVICE = "arrivedorderdataservice",
 			DELIVERYPORDER_DATA_SERVICE = "deliveryorderdataservice",
 			LOADORDER_DATA_SERVICE = "loadorderdataservice",
+			BILLORDER_DATA_SERVICE = "billorderdataservice",
 			STOCKINORDER_DATA_SERVICE = "stockinorderdataservice",
 			STOCKOUTORDER_DATA_SERVICE = "stockoutorderdataservice",
 			INSTITUTION_DATA_SERVICE = "institutiondataservice",

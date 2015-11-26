@@ -4,6 +4,7 @@ import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.logindata.LoginDataController;
 import gap.client.datacontroller.orderdata.ArrivedOrderDataController;
+import gap.client.datacontroller.orderdata.BillOrderDateController;
 import gap.client.datacontroller.orderdata.DeliveryOrderDataController;
 import gap.client.datacontroller.orderdata.LoadOrderDataController;
 import gap.client.datacontroller.orderdata.StockinOrderDataController;
@@ -21,7 +22,7 @@ public class ControllerFactory {
 	private static InventoryDataController inventoryDataController;
 	private static StockinOrderDataController stockinOrderDataController;
 	private static StockoutOrderDataController stockoutOrderDataController;
-	
+	private static BillOrderDateController billorderdatacontroller;
 
 	public static LoginDataController getLoginDataController() {
 		if (loginDataController == null)
@@ -57,18 +58,24 @@ public class ControllerFactory {
 		return arrivedorderdatacontroller;
 	}
 
+	public static BillOrderDateController getBillOrderDateController() {
+		if (billorderdatacontroller == null)
+			billorderdatacontroller = new BillOrderDateController();
+		return billorderdatacontroller;
+	}
+
 	public static DeliveryOrderDataController getDeliveryOrderDataController() {
 		if (deliveryorderdatacontroller == null)
 			deliveryorderdatacontroller = new DeliveryOrderDataController();
 		return deliveryorderdatacontroller;
 	}
-	
+
 	public static StockinOrderDataController getStockinOrderDataController() {
 		if (stockinOrderDataController == null)
 			stockinOrderDataController = new StockinOrderDataController();
 		return stockinOrderDataController;
 	}
-	
+
 	public static StockoutOrderDataController getStockoutOrderDataController() {
 		if (stockoutOrderDataController == null)
 			stockoutOrderDataController = new StockoutOrderDataController();

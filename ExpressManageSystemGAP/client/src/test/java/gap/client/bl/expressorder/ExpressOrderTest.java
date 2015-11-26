@@ -10,9 +10,11 @@ import gap.client.util.User;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.Address;
 import gap.common.util.CargoInfo;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ExpressType;
 import gap.common.util.Gender;
 import gap.common.util.PeopleInfo;
+import gap.common.util.ReceiveInfo;
 import gap.common.util.UserType;
 
 import org.junit.Assert;
@@ -73,12 +75,21 @@ public class ExpressOrderTest {
 
 	@Test
 	public void testGetArrivingOrders() {
-		fail("尚未实现");
+		List<ExpressOrderVO> orders = expressorder.getArrivingOrders("0010002");
+		for (ExpressOrderVO vo : orders) {
+			System.out.println(vo.order_id + "," + vo.expressType + ","
+					+ vo.price);
+		}
 	}
 
 	@Test
 	public void testGetCurrentOrders() {
-		fail("尚未实现");
+		List<ExpressOrderVO> orders = expressorder.getCurrentOrders("0010001",
+				CurrentOrderType.ALL);
+		for (ExpressOrderVO vo : orders) {
+			System.out.println(vo.order_id + "," + vo.expressType + ","
+					+ vo.price);
+		}
 	}
 
 	@Test
@@ -98,7 +109,9 @@ public class ExpressOrderTest {
 
 	@Test
 	public void testReceiveOrder() {
-		fail("尚未实现");
+		expressorder.receiveOrder("0000000001", new ReceiveInfo("小明",
+				"2015-11-26", "000000005", "测试1"));
+		// fail("尚未实现");
 	}
 
 }

@@ -5,6 +5,7 @@ import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.server.initial.NetInitial;
 
@@ -12,15 +13,18 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class ExpressOrderDataServiceImplTest {
+	ExpressOrderDataService expressorderdataservice;
 
 	@Before
 	public void setUp() throws Exception {
-		NetInitial.initial();
+		expressorderdataservice = (ExpressOrderDataService) Naming
+				.lookup(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE);
 	}
 
 	@Test
@@ -76,30 +80,30 @@ public class ExpressOrderDataServiceImplTest {
 
 	@Test
 	public void testSetReceived() {
-//		try {
-//			ExpressOrderDataService expre = ExpressOrderDataServiceImpl
-//					.getInstance();
-//			ReceiveInfo info = new ReceiveInfo("小张", "2015-11-25", "000000005",
-//					"测试");
-//			expre.setRecieved("0000000003", info);
-//		} catch (RemoteException e) {
-//			// TODO 自动生成的 catch 块
-//			e.printStackTrace();
-//		}
+		// try {
+		// ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+		// .getInstance();
+		// ReceiveInfo info = new ReceiveInfo("小张", "2015-11-25", "000000005",
+		// "测试");
+		// expre.setRecieved("0000000003", info);
+		// } catch (RemoteException e) {
+		// // TODO 自动生成的 catch 块
+		// e.printStackTrace();
+		// }
 	}
 
 	@Test
 	public void testGetDeliveryMoney() {
 
-//		 try {
-//		 ExpressOrderDataService expre = ExpressOrderDataServiceImpl
-//		 .getInstance();
-//		 double money = expre.getDeliveryMoney("2015-11-25", "000000005");
-//		 System.out.println(money);
-//		 } catch (RemoteException e) {
-//		 // TODO 自动生成的 catch 块
-//		 e.printStackTrace();
-//		 }
+		// try {
+		// ExpressOrderDataService expre = ExpressOrderDataServiceImpl
+		// .getInstance();
+		// double money = expre.getDeliveryMoney("2015-11-25", "000000005");
+		// System.out.println(money);
+		// } catch (RemoteException e) {
+		// // TODO 自动生成的 catch 块
+		// e.printStackTrace();
+		// }
 	}
 
 	@Test
@@ -131,5 +135,33 @@ public class ExpressOrderDataServiceImplTest {
 		// ExpressOrderDataService express = (ExpressOrderDataService) Naming
 		// .lookup(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE);
 		// express.setPassed("0000000003", "南京栖霞营业厅已收入");
+	}
+
+	@Test
+	public void testGetArrivingOrders() {
+		try {
+			List<ExpressOrderPO> order = expressorderdataservice
+					.findArrivingOrders("0010002");
+			for (ExpressOrderPO po : order) {
+				System.out.println(po.getOrder_id());
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testGetCurrentOrders() {
+		try {
+			List<ExpressOrderPO> order = expressorderdataservice
+					.findCurrentOrders("0010001", CurrentOrderType.ALL);
+			for (ExpressOrderPO po : order) {
+				System.out.println(po.getOrder_id());
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 }

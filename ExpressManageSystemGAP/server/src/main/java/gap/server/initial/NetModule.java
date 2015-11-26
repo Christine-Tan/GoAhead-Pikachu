@@ -4,6 +4,7 @@ import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
 import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
+import gap.common.dataservice.orderdataservice.BillOrderDataService;
 import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
 import gap.common.dataservice.orderdataservice.LoadOrderDataService;
 import gap.common.dataservice.strategydataservice.CityDataService;
@@ -31,4 +32,5 @@ public class NetModule {
 	public static SalaryDataService salarydataservice;
 	public static CityDataService citydataservice;
 	public static InstitutionDataService institutiondataservice;
+	public static BillOrderDataService billorderdataservice;
 }

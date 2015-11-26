@@ -8,6 +8,7 @@ import gap.common.netconfig.RMIConfig;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.po.PricePO;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
@@ -96,8 +97,15 @@ public class ExpressOrderDataController {
 		return null;
 	}
 
-	public List<ExpressOrderPO> findCurrentOrders(String ins_id) {
+	public List<ExpressOrderPO> findCurrentOrders(String ins_id,
+			CurrentOrderType type) {
 		// TODO 自动生成的方法存根
+		try {
+			return expressOrderData.findCurrentOrders(ins_id, type);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 		return null;
 	}
 

@@ -1,18 +1,6 @@
 package gap.server.initial;
 
-import static gap.server.initial.NetModule.arrivedOrderdataservice;
-import static gap.server.initial.NetModule.cardataservice;
-import static gap.server.initial.NetModule.citydataservice;
-import static gap.server.initial.NetModule.deliveryorderdataservice;
-import static gap.server.initial.NetModule.driverdataservice;
-import static gap.server.initial.NetModule.expressorderdataservice;
-import static gap.server.initial.NetModule.institutiondataservice;
-import static gap.server.initial.NetModule.loadorderdataservice;
-import static gap.server.initial.NetModule.logdataservice;
-import static gap.server.initial.NetModule.pricedataservice;
-import static gap.server.initial.NetModule.rentdataservice;
-import static gap.server.initial.NetModule.salarydataservice;
-import static gap.server.initial.NetModule.userdataservice;
+import static gap.server.initial.NetModule.*;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -26,6 +14,7 @@ import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
 import gap.server.data.logdata.LogDataServiceImpl;
 import gap.server.data.managedata.InstitutionDataServiceImpl;
 import gap.server.data.order.ArrivedOrderDataServiceImpl;
+import gap.server.data.order.BillOrderDataServiceImpl;
 import gap.server.data.order.DeliveryOrderDataServiceImpl;
 import gap.server.data.order.LoadOrderDataServiceImpl;
 import gap.server.data.strategydata.CityDataServiceImpl;
@@ -51,10 +40,11 @@ public class NetInitial {
 		deliveryorderdataservice = DeliveryOrderDataServiceImpl.getInstance();
 		loadorderdataservice = LoadOrderDataServiceImpl.getInstance();
 		pricedataservice = PriceDataServiceImpl.getInstance();
-		rentdataservice = RentDataServiceImpl.getInstance();		
+		rentdataservice = RentDataServiceImpl.getInstance();
 		salarydataservice = SalaryDataServiceImpl.getInstance();
 		citydataservice = CityDataServiceImpl.getInstance();
 		institutiondataservice = InstitutionDataServiceImpl.getInstance();
+		billorderdataservice = BillOrderDataServiceImpl.getInstance();
 	}
 
 	public static void main(String[] args) {
@@ -69,6 +59,7 @@ public class NetInitial {
 					cardataservice);
 			Naming.bind(RMIConfig.url + ServiceName.DRIVER_DATA_SERVICE,
 					driverdataservice);
+
 			Naming.bind(RMIConfig.url + ServiceName.ARRIVEDORDER_DATA_SERVICE,
 					arrivedOrderdataservice);
 			Naming.bind(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE,
@@ -78,6 +69,9 @@ public class NetInitial {
 					deliveryorderdataservice);
 			Naming.bind(RMIConfig.url + ServiceName.LOADORDER_DATA_SERVICE,
 					loadorderdataservice);
+			Naming.bind(RMIConfig.url + ServiceName.BILLORDER_DATA_SERVICE,
+					billorderdataservice);
+
 			Naming.bind(RMIConfig.url + ServiceName.PRICE_DATA_SERVICE,
 					pricedataservice);
 			Naming.bind(RMIConfig.url + ServiceName.RENT_DATA_SERVICE,
@@ -88,7 +82,7 @@ public class NetInitial {
 					citydataservice);
 			Naming.bind(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE,
 					institutiondataservice);
-			
+
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

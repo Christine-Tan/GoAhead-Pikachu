@@ -1,6 +1,8 @@
 package gap.common.util;
 
-public class ReceiveInfo {
+import java.io.Serializable;
+
+public class ReceiveInfo implements Serializable {
 	private String receiver_name, receive_time, delivery_id, comment;
 
 	public ReceiveInfo(String receiver_name, String receive_time,

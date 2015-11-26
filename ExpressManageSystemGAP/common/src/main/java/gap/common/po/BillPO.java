@@ -1,20 +1,17 @@
 package gap.common.po;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BillPO {
+public class BillPO implements Serializable {
 
-	private Date billDate;
-	private int money;
+	private double money;
 	private String courierID;
-	private String expressOrderID;
 
-	public Date getBillDate() {
-		return billDate;
-	}
-
-	public void setBillDate(Date billDate) {
-		this.billDate = billDate;
+	public BillPO(double money, String courierID) {
+		super();
+		this.money = money;
+		this.courierID = courierID;
 	}
 
 	public String getCourierID() {
@@ -25,20 +22,12 @@ public class BillPO {
 		this.courierID = courierID;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
-	}
-
-	public String getExpressOrderID() {
-		return expressOrderID;
-	}
-
-	public void setExpressOrderID(String expressOrderID) {
-		this.expressOrderID = expressOrderID;
 	}
 
 }

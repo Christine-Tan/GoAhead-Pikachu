@@ -200,6 +200,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
 				orders.add(getByResultSet(re));
+				System.out.println("HERE");
 			}
 			return orders;
 		} catch (SQLException e) {
@@ -293,7 +294,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage setPassed(String order_id,String state) throws RemoteException {
+	public ResultMessage setPassed(String order_id, String state)
+			throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			addState(order_id, state);

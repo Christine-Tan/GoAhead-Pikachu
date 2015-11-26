@@ -3,6 +3,7 @@ package gap.client.blservice.expressorderblservice;
 import gap.client.exception.InvalidInputException;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StateVO;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -24,7 +25,8 @@ public interface ExpressOrderService {
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id)
 			throws InvalidInputException;
 
-	public List<ExpressOrderVO> getCurrentOrders(String ins_id)
+	public List<ExpressOrderVO> getCurrentOrders(String ins_id,
+			CurrentOrderType type)
 			throws InvalidInputException;
 
 	public ResultMessage setArrivedOrders(List<ExpressOrderVO> orders,
