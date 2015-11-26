@@ -13,6 +13,7 @@ import gap.server.data.logdata.LogDataServiceImpl;
 import gap.server.data.order.ArrivedOrderDataServiceImpl;
 import gap.server.data.order.DeliveryOrderDataServiceImpl;
 import gap.server.data.order.LoadOrderDataServiceImpl;
+import gap.server.data.strategydata.PriceDataServiceImpl;
 import gap.server.data.transdata.CarDataServiceImpl;
 import gap.server.data.transdata.DriverDataServiceImpl;
 import gap.server.data.userdata.UserDataServiceImpl;
@@ -39,6 +40,7 @@ public class NetInitial {
 		expressorderdataservice = ExpressOrderDataServiceImpl.getInstance();
 		deliveryorderdataservice = DeliveryOrderDataServiceImpl.getInstance();
 		loadorderdataservice = LoadOrderDataServiceImpl.getInstance();
+		pricedataservice = new PriceDataServiceImpl();
 	}
 
 	public static void main(String[] args) {
@@ -62,6 +64,8 @@ public class NetInitial {
 					deliveryorderdataservice);
 			Naming.bind(RMIConfig.url + ServiceName.LOADORDER_DATA_SERVICE,
 					loadorderdataservice);
+			Naming.bind(RMIConfig.url + ServiceName.PRICE_DATA_SERVICE,
+					pricedataservice);
 
 			System.out.println("Service started");
 		} catch (RemoteException e) {

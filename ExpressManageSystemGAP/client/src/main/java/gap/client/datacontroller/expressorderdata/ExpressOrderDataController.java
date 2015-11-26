@@ -7,6 +7,7 @@ import gap.common.dataservice.strategydataservice.PriceDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
+import gap.common.po.PricePO;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
@@ -27,6 +28,8 @@ public class ExpressOrderDataController {
 			expressOrderData = (ExpressOrderDataService) Naming
 					.lookup(RMIConfig.url
 							+ ServiceName.EXPRESSORDER_DATA_SERVICE);
+			priceDataService = (PriceDataService) Naming.lookup(RMIConfig.url
+					+ ServiceName.PRICE_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -50,7 +53,17 @@ public class ExpressOrderDataController {
 		return ResultMessage.FAILED;
 	}
 
-	public ExpressOrderPO find(String order_id) {
+	public PricePO findPrice(String city) {
+		try {
+			return priceDataService.find(city);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public ExpressOrderPO findExpressOrder(String order_id) {
 		// TODO 自动生成的方法存根
 		try {
 			return expressOrderData.find(order_id);

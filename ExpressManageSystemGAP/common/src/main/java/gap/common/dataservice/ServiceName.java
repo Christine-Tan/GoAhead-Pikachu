@@ -6,7 +6,7 @@ public class ServiceName {
 			CAR_DATA_SERVICE = "cardataservice",
 			DRIVER_DATA_SERVICE = "driverdataservice",
 			DISTANCE_DATA_SERVICE = "distancedataservice",
-			PRIVE_DATA_SERVICE = "pricedataservice",
+			PRICE_DATA_SERVICE = "pricedataservice",
 			RENT_DATA_SERVICE = "rentdataservice",
 			SALARY_DATA_SERVICE = "salarydataservice",
 			RECEIPT_DATA_SERVICE = "receiptdataservice",
