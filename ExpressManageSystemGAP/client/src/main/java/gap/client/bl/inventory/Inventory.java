@@ -22,26 +22,26 @@ public class Inventory implements InventoryService {
 	}
 
 	@Override
-	public StockObVO observeStock(String begindate, String enddate) {
+	public StockObVO observeStock(String beginDate, String endDate,
+			String ins_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public StockCheckVO countStock() {
+	public StockCheckVO countStock(String ins_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage setAlarm(double alarmValue) {
+	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
-
 		return null;
 	}
 
 	@Override
-	public double getAlarm() {
+	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -72,13 +72,13 @@ public class Inventory implements InventoryService {
 	}
 
 	@Override
-	public List<ExpressOrderVO> getArrivingOrders(String institution_id) {
+	public List<ExpressOrderVO> getArrivingOrders(String ins_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String stockIn(ExpressOrderVO expressorder, String ins_center_id) {
+	public String stockIn(ExpressOrderVO expressorder, String ins_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -87,7 +87,7 @@ public class Inventory implements InventoryService {
 	public void stockOut(String destination, String transportation,
 			String expressorder_id, String ins_center_id) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -97,8 +97,7 @@ public class Inventory implements InventoryService {
 	}
 
 	@Override
-	public StockoutOrderVO createStockoutOrder(
-			List<ExpressOrderVO> expressorders) {
+	public StockoutOrderVO createStockoutOrder(List<GoodsVO> expressorders) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -115,4 +114,5 @@ public class Inventory implements InventoryService {
 		return null;
 	}
 
+	
 }

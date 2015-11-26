@@ -4,6 +4,7 @@ import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
+import gap.server.data.util.SQLBuilder;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
@@ -20,7 +21,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 	private String stockoutTable = "stockoutorder";
 	// 字段
 	private String order_id_f = "order_id", time_f = "time",
-			transport_f = "transform", target_ins_f = "target_ins",
+			transport_f = "transport", target_ins_f = "target_ins",
 			ins_id_f = "ins_id",passed_f = "passed";
 	// 表名
 	private String stockoutItemTable = "stockoutitem";
@@ -62,10 +63,11 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(target_ins_f, target_ins);
 			orderInsert.add(time_f, time);
 			orderInsert.add(ins_id_f, ins_id);
+			orderInsert.add(passed_f,"false");
 			NetModule.excutor.excute(orderInsert.createSQL());
 			for (String str : expressorder_ids) {
 				itemInsert.clear();
-				itemInsert.add(expressorder_id_f, expressorder_ids);
+				itemInsert.add(expressorder_id_f, str);
 				itemInsert.add(orderId_f, order_id);
 				NetModule.excutor.excute(itemInsert.createSQL());
 			}
@@ -79,16 +81,29 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		return ResultMessage.FAILED;
 
 	}
+	
+	public ResultMessage delete(String order_id){
+		SQLBuilder sql = new SQLBuilder();
+		sql.DeleteFrom(stockoutTable).Where(order_id_f).EQUALS(order_id).excute();
+		sql.DeleteFrom(stockoutItemTable).Where(orderId_f).EQUALS(order_id).excute();
+		System.out.println("删除了");
+		return ResultMessage.SUCCEED;
+		
+	}
 
 	@Override
-	public StockoutOrderPO find(String order_id) throws RemoteException {
+	public StockoutOrderPO find(String order_id,String ins_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockoutorder WHERE order_id = '"
-							+ order_id + "';");
-			re.next();
-			return getByResultSet(re);
+							+ order_id +"' And "+ins_id_f+" = '"+ins_id+ "';");
+			if(re.next()){
+				return getByResultSet(re);
+			}else{
+				System.out.println("出库单号为" + order_id + "的出库单没找到");
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("出库单号为" + order_id + "的出库单获取失败");
@@ -145,8 +160,8 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM stockoutorder WHERE ins_id = '"
-							+ ins_id + "' AND time = '" + date + "';");
+					.excuteQuery("SELECT * FROM stockoutorder WHERE ins_id ='"
+							+ ins_id + "' AND time ='" + date + "';");
 			List<StockoutOrderPO> stockoutOrders = new ArrayList<StockoutOrderPO>();
 			while (re.next()) {
 				StockoutOrderPO po = getByResultSet(re);
@@ -195,7 +210,26 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			update.clear();
-			update.add(passed_f, true);
+			update.add(passed_f, "true");
+			update.setKey(order_id_f, order_id);
+			NetModule.excutor.excute(update.createSQL());
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
+	}
+	
+	public ResultMessage setUnPassed(String order_id, String state_info)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			update.clear();
+			update.add(passed_f, "false");
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
 			return ResultMessage.SUCCEED;
@@ -214,7 +248,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			String sql = "SELECT * FROM " + stockoutTable + " WHERE " + passed_f
-					+ " = false ;";
+					+ " = 'false' ;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<StockoutOrderPO> orders = new ArrayList<StockoutOrderPO>();
 			while (re.next()) {
@@ -227,5 +261,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
+
+	
 
 }

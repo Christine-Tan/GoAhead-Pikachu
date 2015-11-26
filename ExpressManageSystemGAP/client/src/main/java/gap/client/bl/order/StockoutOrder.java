@@ -31,7 +31,7 @@ public class StockoutOrder implements StockoutOrderService {
 	}
 
 	@Override
-	public StockoutOrderVO find(String id) {
+	public StockoutOrderVO find(String id,String ins_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

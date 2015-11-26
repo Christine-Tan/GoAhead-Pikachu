@@ -11,7 +11,7 @@ import gap.common.util.ResultMessage;
 public interface StockoutOrderDataService extends Remote {
 	public ResultMessage add(StockoutOrderPO po) throws RemoteException;
 
-	public StockoutOrderPO find(String order_id) throws RemoteException;
+	public StockoutOrderPO find(String order_id,String ins_id) throws RemoteException;
 
 	public List<StockoutOrderPO> getOneDay(String date, String ins_id)
 			throws RemoteException;

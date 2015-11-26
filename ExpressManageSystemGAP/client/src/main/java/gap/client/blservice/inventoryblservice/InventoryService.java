@@ -17,22 +17,22 @@ public interface InventoryService {
 	 * @param end
 	 * @return
 	 */
-	public StockObVO observeStock(String beginDate,String endDate);
+	public StockObVO observeStock(String beginDate,String endDate,String ins_id);
 	
 	/**
 	 * 库存盘点
 	 * @return
 	 */
-	public StockCheckVO countStock();
+	public StockCheckVO countStock(String ins_id);
 	
 	/**
 	 * 设置警戒值
 	 * @param alarmValue
 	 * @return
 	 */
-	public ResultMessage setAlarm (double alarmValue);
+	public ResultMessage setAlarm (double alarmValue,String ins_id);
 	
-	public double getAlarm();
+	public double getAlarm(String ins_id);
 	
 	/**
 	 * 调整库存分区，选择分配区域及分配给的分区
@@ -60,7 +60,7 @@ public interface InventoryService {
 	 * @param institution_id
 	 * @return
 	 */
-	public List<ExpressOrderVO> getArrivingOrders(String institution_id);
+	public List<ExpressOrderVO> getArrivingOrders(String ins_id);
 	
 	/**
 	 * 快递入库
@@ -69,7 +69,7 @@ public interface InventoryService {
 	 * @return
 	 */
 	
-	public String stockIn(ExpressOrderVO expressorder,String ins_center_id);
+	public String stockIn(ExpressOrderVO expressorder,String ins_id);
 	
 	/**
 	 * 快递出库，填写快递编号设置目的地，货运方式
@@ -91,7 +91,7 @@ public interface InventoryService {
 	 * @param expressorders
 	 * @return
 	 */
-	public StockoutOrderVO createStockoutOrder(List<ExpressOrderVO> expressorders);
+	public StockoutOrderVO createStockoutOrder(List<GoodsVO> expressorders);
 	
 	/**
 	 * 查找单个快递

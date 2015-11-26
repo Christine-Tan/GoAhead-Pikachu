@@ -44,10 +44,10 @@ public class StockoutOrderDataController {
 		return ResultMessage.FAILED;
 	}
 
-	public StockoutOrderPO find(String order_id) {
+	public StockoutOrderPO find(String order_id,String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockoutOrder.find(order_id);
+			return stockoutOrder.find(order_id,ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

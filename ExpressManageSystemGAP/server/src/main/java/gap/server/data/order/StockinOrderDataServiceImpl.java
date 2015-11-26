@@ -7,6 +7,7 @@ import gap.common.po.LoadOrderPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
+import gap.server.data.util.SQLBuilder;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
@@ -64,6 +65,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(order_id_f, order_id);
 			orderInsert.add(time_f, time);
 			orderInsert.add(ins_id_f, ins_id);
+			orderInsert.add(passed_f,"false");
 			NetModule.excutor.excute(orderInsert.createSQL());
 			for (GoodsPO goods : goodPOs) {
 				itemInsert.clear();
@@ -105,11 +107,12 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 
 	public List<GoodsPO> getPOsByOrderId(String order_id) {
 		try {
-
+			
 			List<GoodsPO> goodPOs = new ArrayList<GoodsPO>();
 			ResultSet itemre = NetModule.excutor
-					.excuteQuery("SELECT *　FROM stockinitem WHERE order_id = '"
-							+ order_id + "';");
+					.excuteQuery("SELECT * FROM stockinitem WHERE order_id = '"
+							+ order_id + "' ;");
+//			System.out.println(order_id);
 
 			while (itemre.next()) {
 				String id = itemre.getString(expressorder_id_f), destination = itemre
@@ -135,9 +138,13 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockinorder WHERE order_id = '"
-							+ order_id + "';");
-			re.next();
-			return getByResultSet(re);
+							+ order_id +"' And "+ins_id_f+" = '"+ins_id+ "';");
+			if(re.next()){
+				return getByResultSet(re);
+			}else{
+				System.out.println("入库单号为" + order_id + "的入库单没找到");
+			}
+			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -147,7 +154,14 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	
+	public ResultMessage delete(String order_id){
+		SQLBuilder sql = new SQLBuilder();
+		sql.DeleteFrom(stockinTable).Where(order_id_f).EQUALS(order_id).excute();
+		sql.DeleteFrom(stockinItemTable).Where(orderId_f).EQUALS(order_id).excute();
+		System.out.println("删除了");
+		return ResultMessage.SUCCEED;
+		
+	}
 
 	@Override
 	public List<StockinOrderPO> getOneDay(String date, String ins_id)
@@ -159,6 +173,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 							+ ins_id + "' AND time = '" + date + "';");
 			List<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
 			while (re.next()) {
+//				System.out.println("找到啦");
 				StockinOrderPO po = getByResultSet(re);
 				stockinOrders.add(po);
 			}
@@ -179,10 +194,13 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM stockoutorder WHERE ins_id = '"
+					.excuteQuery("SELECT * FROM stockinorder WHERE ins_id = '"
 							+ ins_id + "' AND time >= '" + beginDate
-							+ "'AND time<= '" + endDate + "';");
+							+ "'AND time <= '" + endDate + "';");
 			ArrayList<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
+//			if(!re.next()){
+//				System.out.println();
+//			}
 			while (re.next()) {
 				StockinOrderPO po = getByResultSet(re);
 				stockinOrders.add(po);
@@ -205,7 +223,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			update.clear();
-			update.add(passed_f, true);
+			update.add(passed_f, "true");
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
 			return ResultMessage.SUCCEED;
@@ -224,7 +242,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			String sql = "SELECT * FROM " + stockinTable + " WHERE " + passed_f
-					+ " = false ;";
+					+ " = 'false' ;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<StockinOrderPO> orders = new ArrayList<StockinOrderPO>();
 			while (re.next()) {

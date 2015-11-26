@@ -12,7 +12,7 @@ public interface StockoutOrderService {
 
 	public ResultMessage save(StockoutOrderVO order);
 
-	public StockoutOrderVO find(String id);
+	public StockoutOrderVO find(String id,String ins_id);
 	
 	/**
 	 * 获得一张入库单上快递的数量
