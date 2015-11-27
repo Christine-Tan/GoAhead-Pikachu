@@ -2,6 +2,10 @@ package gap.server.data.util;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import gap.server.databaseutility.Excutor;
 
@@ -27,40 +31,58 @@ public class SQLBuilder {
 	
 	public static void main(String[] args) {
 		SQLBuilder sqlBuilder = new SQLBuilder();		
-		sqlBuilder.Select("T.account","T.balance").From("account").AS("T")
-			.Where("Balance").EQUALS(150).AND("Income").EQUALS(200);
+//		sqlBuilder.Select("T.account","T.balance").From("account").AS("T")
+//			.Where("Balance").EQUALS(150).AND("Income").EQUALS(200);
+//		System.out.println(sqlBuilder.getSQL());
+//		
+//		sqlBuilder.clear();
+//		sqlBuilder.InsertInto("account", "(balance,name,income)").Values("(15,100,'test')");
+//		System.out.println(sqlBuilder.getSQL());
+//		
+//		sqlBuilder.clear();
+//		sqlBuilder.InsertInto("account","balance","income","Name").Values(15,100,"test");
+//		System.out.println(sqlBuilder.getSQL());
+//		
+//		sqlBuilder.clear();
+//		sqlBuilder.Update("account").Set("Name").Assign("账户1").Comma("balance").Assign(12321.5)
+//				.Where("Income").EQUALS(12345);
+//		System.out.println(sqlBuilder.getSQL());
+//		
+//		sqlBuilder.clear();
+//		sqlBuilder.Update("account").Set("Name = '账户1'").Comma("balance = 12233")
+//				.Where("Income = 12345");
+//		System.out.println(sqlBuilder.toString());
+//		
+//		
+//		sqlBuilder.clear();
+//		sqlBuilder.DeleteFrom("account").Where("Name").EQUALS("账户1");
+//		System.out.println(sqlBuilder.getSQL());
+		sqlBuilder.handleString("2015-11-01");
 		System.out.println(sqlBuilder.getSQL());
-		
 		sqlBuilder.clear();
-		sqlBuilder.InsertInto("account", "(balance,name,income)").Values("(15,100,'test')");
+		sqlBuilder.handleString("2015-11-01 22:15:1");
 		System.out.println(sqlBuilder.getSQL());
-		
 		sqlBuilder.clear();
-		sqlBuilder.InsertInto("account","balance","income","Name").Values(15,100,"test");
-		System.out.println(sqlBuilder.getSQL());
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2015, 11, 11);
 		
-		sqlBuilder.clear();
-		sqlBuilder.Update("account").Set("Name").Assign("账户1").Comma("balance").Assign(12321.5)
-				.Where("Income").EQUALS(12345);
-		System.out.println(sqlBuilder.getSQL());
-		
-		sqlBuilder.clear();
-		sqlBuilder.Update("account").Set("Name = '账户1'").Comma("balance = 12233")
-				.Where("Income = 12345");
+		sqlBuilder.Select("Date").From("sector").Where("Date").Between(calendar).AND(calendar);
 		System.out.println(sqlBuilder.toString());
-		
-		
-		sqlBuilder.clear();
-		sqlBuilder.DeleteFrom("account").Where("Name").EQUALS("账户1");
-		System.out.println(sqlBuilder.getSQL());
-	
 	}
 
 	private Excutor excutor;
 	private StringBuilder builder;
+	
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+
 	public SQLBuilder(){
 		excutor = Excutor.getInstance();
 		builder = new StringBuilder();
+	}
+	
+	public enum DateType{
+		date,datetime
 	}
 	
 	public boolean equals() {
@@ -297,10 +319,78 @@ public class SQLBuilder {
 		return this;		
 	}
 	
+	public SQLBuilder EQUALS(Calendar calendar,DateType type){
+		String time = convertDate(calendar, type);
+		EQUALS(time);
+		return this;
+	}
+	
+	public SQLBuilder EQUALS(Calendar calendar){		
+		EQUALS(calendar,DateType.date);
+		return this;
+	}
+	
+	private String convertDate(Calendar calendar,DateType type){
+		String time = null;
+		if(type == DateType.date){
+			time = dateFormat.format(calendar.getTime());
+		}else if(type == DateType.datetime){
+			time = dateTimeFormat.format(calendar.getTime());
+		}
+		return time;
+	}
+	
+	public SQLBuilder Between(int num){
+		addSpace();
+		builder.append("Between ");
+		builder.append(num+" ");
+		return this;
+	}
+	
+	public SQLBuilder Between(double num){
+		addSpace();
+		builder.append("Between ");
+		builder.append(num+" ");
+		return this;
+	}
+	
+	public SQLBuilder Between(String s){
+		addSpace();
+		builder.append("Between ");
+		handleString(s);
+		builder.append(" ");
+		return this;
+	}
+	
+	public SQLBuilder Between(Calendar calendar,DateType type){
+		String time = convertDate(calendar, type);
+		Between(time);
+		return this;
+	}
+	
+	public SQLBuilder Between(Calendar calendar){
+		Between(calendar, DateType.date);
+		return this;
+	}
+	
+	
 	public SQLBuilder AND(String string){
 		addSpace();
 		builder.append("AND ");
 		builder.append(string);
+		return this;
+	}
+	
+	public SQLBuilder AND(Calendar calendar,DateType type){
+		addSpace();
+		String time = convertDate(calendar, type);	
+		builder.append("AND ");
+		handleString(time);
+		return this;
+	}
+	
+	public SQLBuilder AND(Calendar calendar){
+		AND(calendar,DateType.date);
 		return this;
 	}
 	
@@ -313,9 +403,11 @@ public class SQLBuilder {
 	
 	
 	private void handleString(String string){
-		builder.append("'");
-		builder.append(string);
-		builder.append("'");
+		
+			builder.append("'");
+			builder.append(string);
+			builder.append("'");
+		
 	}
 	
 	private void judgeKeyWord(String judgeWord){
