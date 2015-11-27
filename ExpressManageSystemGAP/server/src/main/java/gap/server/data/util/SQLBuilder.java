@@ -66,7 +66,9 @@ public class SQLBuilder {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(2015, 11, 11);
 		
-		sqlBuilder.Select("Date").From("sector").Where("Date").Between(calendar).AND(calendar);
+		sqlBuilder.Select("*").From("stockoutorder")
+		.Where("ins_id").EQUALS("00110").AND("time").Between(calendar).AND(calendar);
+		
 		System.out.println(sqlBuilder.toString());
 	}
 
