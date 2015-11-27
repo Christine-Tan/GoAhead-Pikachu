@@ -11,9 +11,11 @@ public interface CarService {
 
 	public CarVO getSingle(String id);
 
-	public ResultMessage modify(Car vo);
+	public void modify(Car vo);
 
-	public ResultMessage delete(String id);
+	public void delete(String id);
 
-	public ResultMessage add(Car vo);
+	public void add(Car vo);
+
+	public ResultMessage flush();
 }

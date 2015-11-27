@@ -23,6 +23,7 @@ public class ControllerFactory {
 	private static StockinOrderDataController stockinOrderDataController;
 	private static StockoutOrderDataController stockoutOrderDataController;
 	private static BillOrderDateController billorderdatacontroller;
+	private static TransDataController transdatacontroller;
 
 	public static LoginDataController getLoginDataController() {
 		if (loginDataController == null)
@@ -37,7 +38,9 @@ public class ControllerFactory {
 	}
 
 	public static TransDataController getTransDataController() {
-		return null;
+		if (transdatacontroller == null)
+			transdatacontroller = new TransDataController();
+		return transdatacontroller;
 	}
 
 	public static InventoryDataController getInventoryDataController() {

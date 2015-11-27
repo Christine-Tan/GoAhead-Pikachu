@@ -146,14 +146,16 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage delete(String car_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			NetModule.excutor.excute("DELETE FROM user WHERE id=" + car_id
-					+ ";");
+			NetModule.excutor.excute("DELETE FROM car WHERE car_id = '"
+					+ car_id + "' ;");
+			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return ResultMessage.FAILED;
+
 		}
-		return ResultMessage.SUCCEED;
+		return ResultMessage.FAILED;
+
 	}
 
 }

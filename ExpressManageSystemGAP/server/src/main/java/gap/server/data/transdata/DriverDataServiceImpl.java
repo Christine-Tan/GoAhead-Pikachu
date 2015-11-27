@@ -34,8 +34,8 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			List<DriverPO> drivers = new ArrayList<DriverPO>();
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM driver WHERE institution="
-							+ localins_id + ";");
+					.excuteQuery("SELECT * FROM driver WHERE institution='"
+							+ localins_id + "';");
 			while (re.next()) {
 				String name = re.getString("name"), ins_id = re
 						.getString("institution"), birth = re
@@ -67,7 +67,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 				+ po.getIdentity_number() + "'";
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT *FROM driver WHERE id=" + id + ";");
+					.excuteQuery("SELECT * FROM driver WHERE id=" + id + ";");
 			if (re.next()) {
 				System.out.println("司机存在 司机名字为:" + re.getString("name"));
 				return ResultMessage.EXITED;
@@ -107,7 +107,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT *FROM driver WHERE id=" + id + ";");
+					.excuteQuery("SELECT *FROM driver WHERE id='" + id + "';");
 			re.next();
 			String name = re.getString("name"), ins_id = re
 					.getString("institution"), birth = re.getString("birth"), driving_licence_due = re
@@ -132,8 +132,8 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 				+ po.getIns_id() + "'", birth = "'" + po.getBirth() + "'", phone = "'"
 				+ po.getPhone() + "'", driving_lice_due = "'"
 				+ po.getDriving_license_due() + "'", gender = "'"
-				+ po.getGender() + "'", identity_number = po
-				.getIdentity_number();
+				+ po.getGender() + "'", identity_number = "'"
+				+ po.getIdentity_number() + "'";
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT *FROM driver WHERE id=" + id + ";");
@@ -163,7 +163,8 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage delete(String id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			NetModule.excutor.excute("DELETE FROM driver WHERE id=" + id + ";");
+			NetModule.excutor.excute("DELETE FROM driver WHERE id='" + id
+					+ "';");
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

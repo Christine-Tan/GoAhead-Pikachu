@@ -2,6 +2,7 @@ package gap;
 
 import gap.client.bl.distance.City;
 import gap.client.bl.distance.DistanceCal;
+import gap.client.bl.expressorder.ExpressOrder;
 import gap.client.bl.expressorder.PriceCalImpl;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.Address;
@@ -15,6 +16,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO 自动生成的方法存根
+		ExpressOrder expressorder;
 		PriceCalImpl prical;
 		DistanceCal discal;
 		City city;
@@ -22,6 +24,7 @@ public class Test {
 		discal = new MockDistanceCal();
 		city = new MockCity(discal);
 		prical = new PriceCalImpl(city);
+		expressorder = new ExpressOrder(prical);
 
 		Address add1 = new Address("江苏省", "南京市", "玄武区");
 		Address add2 = new Address("北京市", "北京市", "东城区");
@@ -31,7 +34,8 @@ public class Test {
 		ExpressOrderVO vo = new ExpressOrderVO(sender, receiver,
 				ExpressType.EXPRESS, 20.5, cargo, false, "0000000003",
 				"0010001", null);
-		System.out.println(prical.getPrice(vo));
+		ExpressOrderVO newVO = expressorder.createOrder(vo);
+		System.out.println(newVO.price);
 	}
 
 }

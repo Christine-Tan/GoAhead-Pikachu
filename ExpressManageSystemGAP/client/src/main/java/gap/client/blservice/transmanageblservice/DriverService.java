@@ -1,5 +1,6 @@
 package gap.client.blservice.transmanageblservice;
 
+import gap.client.util.Driver;
 import gap.client.vo.DriverVO;
 import gap.common.util.ResultMessage;
 
@@ -10,9 +11,11 @@ public interface DriverService {
 
 	public DriverVO getSingle(String id);
 
-	public ResultMessage modify(DriverVO vo);
+	public void modify(Driver vo);
 
-	public ResultMessage delete(String id);
+	public void delete(String id);
 
-	public ResultMessage add(DriverVO vo);
+	public void add(Driver vo);
+
+	public ResultMessage flush();
 }
