@@ -9,14 +9,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-/*
- * 小结一下流操作
- * fileReader和writer的mark和reset是不能用的
- * 可以用一个char[]读取文件内容，但是假如直接写回去，会写很多'\0'
- * 这时候要计算一下'\0'的位置，然后写回去。尤其是代码这种不能错的，一个'\0'都不能多写
- * 
- */
 
+
+/**
+ * 这是一个批量修改包名的类
+ *
+ */
 public class packageAdder {
 	
 	ArrayList<String> strings;

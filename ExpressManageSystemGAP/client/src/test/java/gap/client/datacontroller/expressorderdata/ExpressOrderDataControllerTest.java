@@ -1,6 +1,7 @@
 package gap.client.datacontroller.expressorderdata;
 
 import static org.junit.Assert.*;
+
 import gap.client.datacontroller.controllerfactory.ControllerFactory;
 import gap.common.po.PricePO;
 

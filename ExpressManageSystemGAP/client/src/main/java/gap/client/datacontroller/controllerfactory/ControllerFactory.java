@@ -1,5 +1,6 @@
 package gap.client.datacontroller.controllerfactory;
 
+import gap.client.datacontroller.AccountDate.AccountDateController;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.logindata.LoginDataController;
@@ -24,6 +25,15 @@ public class ControllerFactory {
 	private static StockoutOrderDataController stockoutOrderDataController;
 	private static BillOrderDateController billorderdatacontroller;
 	private static TransDataController transdatacontroller;
+	private static AccountDateController accountDateController;
+	
+	
+	public static AccountDateController getAccountDataController(){
+		if(accountDateController==null){
+			accountDateController = new AccountDateController();
+		}
+		return accountDateController;
+	}
 
 	public static LoginDataController getLoginDataController() {
 		if (loginDataController == null)

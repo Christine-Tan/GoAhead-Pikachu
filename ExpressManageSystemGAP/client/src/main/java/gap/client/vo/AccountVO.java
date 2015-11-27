@@ -2,7 +2,7 @@ package gap.client.vo;
 
 import gap.common.po.AccountPO;
 
-public class AccountVO {
+public class AccountVO{
 
 
 		private String name;
@@ -55,6 +55,16 @@ public class AccountVO {
 		public void setNewName(String newName) {
 			this.newName = newName;
 		}
+
+		public boolean equals(Object object){
+			if(object instanceof AccountVO){
+				AccountVO o = (AccountVO)object;
+				return name.equals(o.name);
+			}
+			
+			return false;
+		}
+		
 
 	
 }
