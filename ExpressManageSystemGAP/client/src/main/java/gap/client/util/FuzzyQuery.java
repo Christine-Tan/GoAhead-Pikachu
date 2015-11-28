@@ -8,7 +8,7 @@ import java.util.Collections;
  * 
  * 这是一个模糊查找字符串的类，需要用的地方调用静态方法fuzzyQuery。<br/>
  * 参数是一个字符串组或者一个arraylist
- * 返回的SearchResult中属性有：被匹配的字符串，关键字，被匹配字符的位置数组
+ * 返回的SearchResult中属性有：被匹配的字符串，关键字，被匹配字符的位置数组,和该字符串在原来list中的index
  * @author 申彬
  *
  */
@@ -41,8 +41,8 @@ public class FuzzyQuery {
 	public ArrayList<SearchResult> query(String[] source,String keyword)
 	{
 		ArrayList<Power> powers = new ArrayList<>(source.length);
-		for(String s:source){
-			powers.add(new Power(s));
+		for(int i=0;i<source.length;i++){
+			powers.add(new Power(source[i],i));
 		}
 		
 		for(Power onePower:powers){
@@ -75,7 +75,8 @@ public class FuzzyQuery {
 		{
 			if(onePower.getPower()>0){
 				SearchResult result = new SearchResult
-									(onePower.getString(), keyword, onePower.getHitPos());
+										(onePower.getString(), keyword, 
+										onePower.getHitPos(),onePower.getFormerIndex());
 				results.add(result);
 			}
 		}
@@ -89,15 +90,17 @@ public class FuzzyQuery {
 		private String originalString;
 		private String LowcaseString;
 		private boolean isContinue = false;
+		private int formerIndex = 0;
 		private int myIndex = 0;
 		
 		ArrayList<Integer> hitPos = new ArrayList<>(10);
 		
 		Integer value1 = new Integer(0);
 		Integer value2 = new Integer(0);
-		private Power(String string){
+		private Power(String string,int formerIndex){
 			this.originalString = string;
 			this.LowcaseString =string.toLowerCase();
+			this.formerIndex = formerIndex;
 		}
 		
 		/**
@@ -153,6 +156,10 @@ public class FuzzyQuery {
 				pos[i] = hitPos.get(i);
 			}			
 			return pos;
+		}
+		
+		public int getFormerIndex() {
+			return formerIndex;
 		}
 		@Override
 		public int compareTo(Power o) {

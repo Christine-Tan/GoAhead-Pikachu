@@ -76,7 +76,7 @@ public class AccountBlController implements AccountService{
 	}
 
 	@Override
-	public ArrayList<SearchResult> searchAccount(String keyword) {
+	public ArrayList<AccountSearchResult> searchAccount(String keyword) {
 		// TODO Auto-generated method stub
 		return null;
 	}

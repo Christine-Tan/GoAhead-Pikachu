@@ -53,7 +53,7 @@ public class FuzzyQueryTest {
 		
 		for(SearchResult result:results)
 		{
-			String s = result.getName();
+			String s = result.getString();
 			int[] targets = result.getMatchIndex();
 			
 			int targetIndex = 0;
