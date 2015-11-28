@@ -1,7 +1,8 @@
 package gap.common.dataservice;
 
 public class ServiceName {
-	public final static String USER_DATA_SERVICE = "userdataservice",
+	public final static String 
+			USER_DATA_SERVICE = "userdataservice",
 			TRANSFARE_DATA_SERVICE = "transfaredataservice",
 			CAR_DATA_SERVICE = "cardataservice",
 			DRIVER_DATA_SERVICE = "driverdataservice",
@@ -22,4 +23,7 @@ public class ServiceName {
 			INITIAL_DATA_SERVICE = "initial_data_service",
 			EXPRESSORDER_DATA_SERVICE = "expressorderdataservice",
 			ACCOUNT_DATA_SERVICE = "accountdataservice";
+	
+	public final static int serviceNumber = 21;
+	
 }

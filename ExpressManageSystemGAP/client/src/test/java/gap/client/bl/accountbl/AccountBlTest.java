@@ -17,7 +17,42 @@ public class AccountBlTest {
 	}
 
 	@Test
-	public void test() {
+	public void testGetInstance() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testInitial() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetAccountManageList() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testAddAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testModifyAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSearchAccount() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testConfirm() {
 		fail("Not yet implemented");
 	}
 

@@ -48,7 +48,7 @@ public class FuzzyQueryTest {
 	public void testFuzzyQuery() {
 		String[] stringArray = new String[strings.size()];
 		strings.toArray(stringArray);
-		ArrayList<SearchResult> results = FuzzyQuery.FuzzyQuery(stringArray, keyword);
+		ArrayList<SearchResult> results = FuzzyQuery.fuzzyQuery(stringArray, keyword);
 		StringBuilder builder = new StringBuilder();
 		
 		for(SearchResult result:results)

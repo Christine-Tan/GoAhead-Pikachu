@@ -1,6 +1,7 @@
 package gap.server.data.receiptdata;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,25 @@ import gap.common.po.BillPO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.ReceiptPO;
 
-public class ReceiptDataService implements ReceiptdataService{
+public class ReceiptDataServiceImpl extends UnicastRemoteObject implements ReceiptdataService{
+	
+	private static ReceiptdataService receiptdataService;
+	private ReceiptDataServiceImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public static ReceiptdataService getInstance(){
+		if(receiptdataService==null){
+			try {
+				receiptdataService = new ReceiptDataServiceImpl();
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return receiptdataService;
+	}
 
 	@Override
 	public boolean submitPayment(PaymentListPO paymentListPO) throws RemoteException {

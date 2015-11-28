@@ -5,11 +5,17 @@ import static gap.server.initial.NetModule.*;
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.HashMap;
+import java.util.Map;
 
 import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.netconfig.RMIConfig;
+import gap.server.data.accountdata.AccountDataServiceImpl;
 import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
 import gap.server.data.logdata.LogDataServiceImpl;
 import gap.server.data.managedata.InstitutionDataServiceImpl;
@@ -27,10 +33,10 @@ import gap.server.data.userdata.UserDataServiceImpl;
 import gap.server.databaseutility.DataBaseLancher;
 
 public class NetInitial {
-
+	private static HashMap<String, Object> serviceMap;
 	public static void initial() throws RemoteException {
 		NetModule.excutor = DataBaseLancher.lanch();
-
+		accountDataService = AccountDataServiceImpl.getInstance();
 		userdataservice = UserDataServiceImpl.getInstance();
 		logdataservice = LogDataServiceImpl.getInstance();
 		cardataservice = CarDataServiceImpl.getInstance();
@@ -45,43 +51,36 @@ public class NetInitial {
 		citydataservice = CityDataServiceImpl.getInstance();
 		institutiondataservice = InstitutionDataServiceImpl.getInstance();
 		billorderdataservice = BillOrderDataServiceImpl.getInstance();
+		
+		serviceMap = new HashMap<>(ServiceName.serviceNumber+10);
+		
+		serviceMap.put(ServiceName.USER_DATA_SERVICE,userdataservice);
+		serviceMap.put(ServiceName.LOG_DATA_SERVICE,logdataservice);
+		serviceMap.put(ServiceName.CAR_DATA_SERVICE,cardataservice);
+		serviceMap.put(ServiceName.DRIVER_DATA_SERVICE,driverdataservice);
+		serviceMap.put(ServiceName.ARRIVEDORDER_DATA_SERVICE,arrivedOrderdataservice);
+		serviceMap.put(ServiceName.EXPRESSORDER_DATA_SERVICE,expressorderdataservice);
+		serviceMap.put(ServiceName.DELIVERYPORDER_DATA_SERVICE,deliveryorderdataservice);
+		serviceMap.put(ServiceName.LOADORDER_DATA_SERVICE,loadorderdataservice);
+		serviceMap.put(ServiceName.BILLORDER_DATA_SERVICE,billorderdataservice);
+		serviceMap.put(ServiceName.PRICE_DATA_SERVICE,pricedataservice);
+		serviceMap.put(ServiceName.RENT_DATA_SERVICE,rentdataservice);
+		serviceMap.put(ServiceName.SALARY_DATA_SERVICE,salarydataservice);
+		serviceMap.put(ServiceName.CITY_DATA_SERVICE,citydataservice);
+		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,institutiondataservice);
+
+		
 	}
 
 	public static void main(String[] args) {
 		try {
 			initial();
 			LocateRegistry.createRegistry(RMIConfig.RMI_port);
-			Naming.bind(RMIConfig.url + ServiceName.USER_DATA_SERVICE,
-					userdataservice);
-			Naming.bind(RMIConfig.url + ServiceName.LOG_DATA_SERVICE,
-					logdataservice);
-			Naming.bind(RMIConfig.url + ServiceName.CAR_DATA_SERVICE,
-					cardataservice);
-			Naming.bind(RMIConfig.url + ServiceName.DRIVER_DATA_SERVICE,
-					driverdataservice);
 
-			Naming.bind(RMIConfig.url + ServiceName.ARRIVEDORDER_DATA_SERVICE,
-					arrivedOrderdataservice);
-			Naming.bind(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE,
-					expressorderdataservice);
-			Naming.bind(
-					RMIConfig.url + ServiceName.DELIVERYPORDER_DATA_SERVICE,
-					deliveryorderdataservice);
-			Naming.bind(RMIConfig.url + ServiceName.LOADORDER_DATA_SERVICE,
-					loadorderdataservice);
-			Naming.bind(RMIConfig.url + ServiceName.BILLORDER_DATA_SERVICE,
-					billorderdataservice);
-
-			Naming.bind(RMIConfig.url + ServiceName.PRICE_DATA_SERVICE,
-					pricedataservice);
-			Naming.bind(RMIConfig.url + ServiceName.RENT_DATA_SERVICE,
-					rentdataservice);
-			Naming.bind(RMIConfig.url + ServiceName.SALARY_DATA_SERVICE,
-					salarydataservice);
-			Naming.bind(RMIConfig.url + ServiceName.CITY_DATA_SERVICE,
-					citydataservice);
-			Naming.bind(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE,
-					institutiondataservice);
+			for(Map.Entry<String, Object> entry:serviceMap.entrySet()){
+				Naming.bind(RMIConfig.url + entry.getKey(),
+						(UnicastRemoteObject) entry.getValue());
+			}
 
 			System.out.println("Service started");
 		} catch (RemoteException e) {

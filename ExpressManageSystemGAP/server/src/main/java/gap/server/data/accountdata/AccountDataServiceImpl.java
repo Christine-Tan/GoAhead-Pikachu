@@ -2,6 +2,7 @@ package gap.server.data.accountdata;
 
 import java.nio.file.attribute.AclEntry.Builder;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,14 +21,37 @@ import gap.server.data.util.ListMakerTest;
 import gap.server.data.util.SQLBuilder;
 import gap.server.databaseutility.Excutor;
 
-public class AccountDataServiceImpl implements AccountDataService{
+public class AccountDataServiceImpl extends UnicastRemoteObject implements AccountDataService{
 
+	protected AccountDataServiceImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final String tableName = "account"; 
 	public final String Name_Col= "Name";	
 	public final String Balance_Col = "Balance";
 	public final String Income_Col="Income";
 	public final String Pay_Col="Pay";
 	private SQLBuilder builder = new SQLBuilder();
+	private static AccountDataServiceImpl accountDataService;
+	
+	public static AccountDataService getInstance() {
+		
+		if(accountDataService==null){
+			try {
+				accountDataService = new AccountDataServiceImpl();
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return accountDataService;
+	}
 	
 	@Override
 	public boolean add(AccountPO accountPO) throws RemoteException {

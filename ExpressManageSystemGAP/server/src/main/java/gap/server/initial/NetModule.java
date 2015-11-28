@@ -1,5 +1,6 @@
 package gap.server.initial;
 
+import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
@@ -18,7 +19,7 @@ import gap.server.databaseutility.Excutor;
 
 public class NetModule {
 	public static Excutor excutor;
-
+	public static AccountDataService accountDataService;
 	public static UserDataService userdataservice;
 	public static LogDataService logdataservice;
 	public static CarDataService cardataservice;
