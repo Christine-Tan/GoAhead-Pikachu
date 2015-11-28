@@ -335,13 +335,20 @@ public class LoginAnimation extends JLabel{
 		
 		double vx = 0.2+Math.random()*0.3;
 		double vy = Math.random()*0.25;
-		double distanceX = 50+Math.random()*50;
-		double distanceY = 10+Math.random()*10;
+		double distanceX = 30+Math.random()*50;
+		double distanceY = 20+Math.random()*10;
 		
 		public MovePoint(double x,double y){
 			this.startX = x;
 			this.startY = y;
 			point = new Point2D.Double(x, y);
+			if(Math.random()>=0.5){
+				vx = -vx;
+			}
+			if(Math.random()>=0.5){
+				vy = -vy;
+			}
+			
 		}
 		
 		public double[] getLocation(){

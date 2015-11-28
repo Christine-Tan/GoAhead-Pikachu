@@ -49,6 +49,14 @@ public class LoginButton extends JLabel{
 		addKeyListener(mylistener);
 	}
 	
+	public void enterPressed(KeyEvent e){
+		mylistener.keyPressed(e);
+	}
+	
+	public void enterReleased(KeyEvent e){
+		mylistener.keyReleased(e);
+	}
+	
 	public void paintComponent(Graphics g){
 		//�?特效
 		Graphics2D g2d = RenderSetter.OpenRender(g);
@@ -96,7 +104,6 @@ public class LoginButton extends JLabel{
 	
 			if(e.getKeyCode()==KeyEvent.VK_ENTER)
 			{
-				System.out.println("aaa");
 				mouseEntered(null);
 				mouseClicked(null);		
 			}
@@ -106,7 +113,6 @@ public class LoginButton extends JLabel{
 		public void keyReleased(KeyEvent e) {
 			if(e.getKeyCode()==KeyEvent.VK_ENTER)
 			{
-				System.out.println("bbbb");
 				mouseExited(null);		
 			}
 		}

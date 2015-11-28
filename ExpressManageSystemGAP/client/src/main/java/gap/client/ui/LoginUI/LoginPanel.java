@@ -26,8 +26,8 @@ import gap.client.ui.UITools.RenderSetter;
 public class LoginPanel extends JPanel{
 	
 	private JTextField userName = new LoginTextField("people");
-	private JPasswordField passwordField = new LoginPassword();
 	private LoginButton signInButton = new LoginButton("signIn");
+	private JPasswordField passwordField = new LoginPassword(signInButton);
 	//private LoginButton goBackButton = new LoginButton("goBack");
 	private WhiteExitButton exitButton = new WhiteExitButton();
 	private LoginAnimation animation = new LoginAnimation();

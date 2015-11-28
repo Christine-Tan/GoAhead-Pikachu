@@ -3,8 +3,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 
 import gap.client.ui.UITools.ColorAndFonts;
@@ -16,8 +19,11 @@ public class LoginPassword extends JPasswordField implements TextInterface{
 	Image image;
 	Font font = ColorAndFonts.English;
 	boolean hadFoucsed = false;
+	LoginButton loginButton;
+	KeyListener keyListener;
 	
-	public LoginPassword(){		
+	public LoginPassword(LoginButton loginButton){	
+		this.loginButton = loginButton;
 		image = new ImageIcon("images/login/lock.png").getImage();
 		setEchoChar('\0');
 		setBounds(35, 235, 360, 30);
@@ -25,6 +31,8 @@ public class LoginPassword extends JPasswordField implements TextInterface{
 		setForeground(Color.gray);
 		setText("Password");
 		new LoginTextListener(this);
+		keyListener = new MyKeyListener();
+		addKeyListener(keyListener);
 		
 	}
 	
@@ -53,6 +61,35 @@ public class LoginPassword extends JPasswordField implements TextInterface{
 			setForeground(Color.gray);
 			setText("Password");
 		}
+	}
+	
+	class MyKeyListener implements KeyListener{
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getKeyChar()==KeyEvent.VK_ENTER)
+			{ 
+		         loginButton.enterPressed(e);
+		    } 
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getKeyChar()==KeyEvent.VK_ENTER)
+			{ 
+		         loginButton.enterReleased(e);
+		    } 
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 	
 }
