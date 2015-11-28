@@ -54,6 +54,7 @@ public class NetInitial {
 		
 		serviceMap = new HashMap<>(ServiceName.serviceNumber+10);
 		
+		serviceMap.put(ServiceName.ACCOUNT_DATA_SERVICE, accountDataService);
 		serviceMap.put(ServiceName.USER_DATA_SERVICE,userdataservice);
 		serviceMap.put(ServiceName.LOG_DATA_SERVICE,logdataservice);
 		serviceMap.put(ServiceName.CAR_DATA_SERVICE,cardataservice);
