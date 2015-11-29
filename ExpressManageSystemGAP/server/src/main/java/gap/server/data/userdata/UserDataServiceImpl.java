@@ -46,11 +46,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 
 	}
 
-	public List<UserPO> getAll() throws RemoteException {
+	public List<UserPO> getAll(UserType userType) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
 			List<UserPO> users = new ArrayList<UserPO>();
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM user;");
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM user WHERE userType='"+userType+"';");
 			while (re.next()) {
 				users.add(getByResultSet(re));
 			}

@@ -40,7 +40,7 @@ public class UserDataServiceImplTest {
 		System.out.println(userdata.add(po2).getMessage());
 		System.out.println(userdata.add(po3).getMessage());
 		System.out.println(userdata.add(po4).getMessage());
-		for (UserPO get : userdata.getAll())
+		for (UserPO get : userdata.getAll(UserType.ADMINISTRATOR))
 			System.out.println(get.getName() + "," + get.getType());
 		userdata.modify(po1);
 		userdata.setPaid("0000000002");

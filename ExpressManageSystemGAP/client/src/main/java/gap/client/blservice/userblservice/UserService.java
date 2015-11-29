@@ -2,11 +2,12 @@ package gap.client.blservice.userblservice;
 
 import gap.client.vo.UserVO;
 import gap.common.util.ResultMessage;
+import gap.common.util.UserType;
 
 import java.util.List;
 
 public interface UserService {
-	public List<UserVO> getAll();
+	public List<UserVO> getAll(UserType userType);
 
 	public UserVO getSingle(String id);
 

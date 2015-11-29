@@ -1,17 +1,19 @@
 package gap.client.blservice.strategyblservice;
 
 import java.util.List;
+
+import gap.client.util.City;
 import gap.client.vo.CityVO;
 import gap.common.util.ResultMessage;
 
 public interface CityService {
 	public List<CityVO> getAll();
 
-	public ResultMessage modifyCity(CityVO vo);
+	public void modifyCity(City city);
 
-	public CityVO getCity(String CityId);
+	public CityVO getCity(String City);
 	
-	public ResultMessage add(CityVO vo);
+	public void addCity(City city);
 	
-	public double getDistance(CityVO vo1,CityVO vo2);
+	public double getDistance(City city1,City city2);
 }

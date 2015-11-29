@@ -16,23 +16,16 @@ public class UserVO {
 	private String userName;
 	// 密码
 	private String password;
-	// 用户等级
-	private int rank;
-	// 指向所属机构id
-	private String ins_id;
 
 	public UserVO() {
 
 	}
 
-	public UserVO(String userId, UserType type, String userName, int rank,
-			String ins_id, String password) {
+	public UserVO(String userId, UserType type, String userName, String password) {
 		super();
 		this.userId = userId;
 		this.type = type;
 		this.userName = userName;
-		this.rank = rank;
-		this.ins_id = ins_id;
 		this.password = password;
 	}
 
@@ -44,7 +37,8 @@ public class UserVO {
 	}
 
 	/**
-	 * @param userId 要设置的 userId
+	 * @param userId
+	 *            要设置的 userId
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -58,7 +52,8 @@ public class UserVO {
 	}
 
 	/**
-	 * @param type 要设置的 type
+	 * @param type
+	 *            要设置的 type
 	 */
 	public void setType(UserType type) {
 		this.type = type;
@@ -72,7 +67,8 @@ public class UserVO {
 	}
 
 	/**
-	 * @param userName 要设置的 userName
+	 * @param userName
+	 *            要设置的 userName
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
@@ -86,38 +82,12 @@ public class UserVO {
 	}
 
 	/**
-	 * @param password 要设置的 password
+	 * @param password
+	 *            要设置的 password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	/**
-	 * @return rank
-	 */
-	public int getRank() {
-		return rank;
-	}
-
-	/**
-	 * @param rank 要设置的 rank
-	 */
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-
-	/**
-	 * @return ins_id
-	 */
-	public String getIns_id() {
-		return ins_id;
-	}
-
-	/**
-	 * @param ins_id 要设置的 ins_id
-	 */
-	public void setIns_id(String ins_id) {
-		this.ins_id = ins_id;
-	}
 
 }

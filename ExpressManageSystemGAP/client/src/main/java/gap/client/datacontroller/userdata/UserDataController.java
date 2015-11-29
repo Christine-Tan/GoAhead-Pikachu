@@ -12,6 +12,7 @@ import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
+import gap.common.util.UserType;
 
 public class UserDataController {
 	UserDataService userData;
@@ -31,9 +32,9 @@ public class UserDataController {
 		}
 	}
 
-	public List<UserPO> getAll() {
+	public List<UserPO> getAll(UserType userType) {
 		try {
-			return userData.getAll();
+			return userData.getAll(userType);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
