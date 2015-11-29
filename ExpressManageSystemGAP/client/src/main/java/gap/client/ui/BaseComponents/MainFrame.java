@@ -3,14 +3,23 @@ package gap.client.ui.BaseComponents;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.Set;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.LookAndFeel;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+import javax.swing.plaf.basic.BasicLookAndFeel;
+import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.swing.plaf.metal.MetalScrollBarUI;
 
 import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.BaseListener.ResizeListener;
 import gap.client.ui.UITools.Defaut;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.bussinessui.GAPScrollBarUI;
 
 public class MainFrame extends JFrame {
 	TitlePanel titlePanel;
@@ -25,6 +34,29 @@ public class MainFrame extends JFrame {
 	private GridBagConstraints gcons;
 
 	public MainFrame() {
+		try {
+//			UIManager
+//			.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			BasicLookAndFeel metal = new MetalLookAndFeel(){
+
+				public UIDefaults getDefaults(){
+					UIDefaults defaults = super.getDefaults();
+					//Object o = defaults.get("ScrollBarUI");
+					defaults.remove("ScrollBarUI");
+					defaults.put("ScrollBarUI","com.sun.java.swing.plaf.windows.WindowsScrollBarUI");
+					
+				
+					defaults.get("ScrollBarUI");
+					return defaults;
+				}
+				
+			};
+			
+			UIManager.setLookAndFeel(metal);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		setSize(Defaut.WIDTH, Defaut.HEIGHT);
 		setUndecorated(true);
