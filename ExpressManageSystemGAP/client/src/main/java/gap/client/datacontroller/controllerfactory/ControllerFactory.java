@@ -1,18 +1,21 @@
 package gap.client.datacontroller.controllerfactory;
 
-import gap.client.datacontroller.AccountDate.AccountDateController;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.logindata.LoginDataController;
+import gap.client.datacontroller.managedata.InstitutionDataController;
 import gap.client.datacontroller.orderdata.ArrivedOrderDataController;
 import gap.client.datacontroller.orderdata.BillOrderDateController;
 import gap.client.datacontroller.orderdata.DeliveryOrderDataController;
 import gap.client.datacontroller.orderdata.LoadOrderDataController;
 import gap.client.datacontroller.orderdata.StockinOrderDataController;
 import gap.client.datacontroller.orderdata.StockoutOrderDataController;
+import gap.client.datacontroller.strategydata.CityDataController;
+import gap.client.datacontroller.strategydata.PriceDataController;
+import gap.client.datacontroller.strategydata.RentDataController;
+import gap.client.datacontroller.strategydata.SalaryDataController;
 import gap.client.datacontroller.transdata.TransDataController;
-import gap.client.util.LocalInfo;
-import gap.common.util.UserType;
+import gap.client.datacontroller.userdata.UserDataController;
 
 public class ControllerFactory {
 	private static LoginDataController loginDataController;
@@ -26,7 +29,12 @@ public class ControllerFactory {
 	private static BillOrderDateController billorderdatacontroller;
 	private static TransDataController transdatacontroller;
 	private static AccountDateController accountDateController;
-	
+	private static InstitutionDataController institutionDataController;
+	private static CityDataController cityDataController;
+	private static PriceDataController priceDataController;
+	private static RentDataController rentDataController;
+	private static SalaryDataController salaryDataController;
+	private static UserDataController userDataController;
 	
 	public static AccountDateController getAccountDataController(){
 		if(accountDateController==null){
@@ -95,4 +103,39 @@ public class ControllerFactory {
 		return stockoutOrderDataController;
 	}
 
+	public static InstitutionDataController getInstitutionDataController(){
+		if(institutionDataController==null)
+			institutionDataController=new InstitutionDataController();
+		return institutionDataController;
+	}
+	
+	public static CityDataController getCityDataController(){
+		if(cityDataController==null)
+			cityDataController=new CityDataController();
+		return cityDataController;
+	}
+	
+	public static RentDataController getRentDataController(){
+		if(rentDataController==null)
+			rentDataController=new RentDataController();
+		return rentDataController;
+	}
+	
+	public static PriceDataController getPriceDataController(){
+		if(priceDataController==null)
+			priceDataController=new priceDataController();
+		return priceDataController;
+	}
+	
+	public static SalaryDataController getSalaryDataController(){
+		if(salaryDataController==null)
+			salaryDataController=new SalaryDataController();
+		return salaryDataController;
+	}
+	
+	public static UserDataController getUserDataController(){
+		if(userDataController==null)
+			userDataController=new UserDataController();
+		return userDataController;
+	}
 }
