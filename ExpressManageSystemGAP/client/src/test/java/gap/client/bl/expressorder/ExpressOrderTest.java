@@ -1,9 +1,6 @@
 package gap.client.bl.expressorder;
 
 import static org.junit.Assert.fail;
-
-import java.util.List;
-
 import gap.client.exception.InvalidInputException;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
@@ -17,7 +14,8 @@ import gap.common.util.PeopleInfo;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.UserType;
 
-import org.junit.Assert;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +25,9 @@ public class ExpressOrderTest {
 	@Before
 	public void setUp() throws Exception {
 		expressorder = new ExpressOrder();
-		User user = new User(UserType.DELIVERY, "xiaoming", "000000005",
+		// User user = new User(UserType.DELIVERY, "xiaoming", "000000005",
+		// Gender.MALE);
+		User user = new User(UserType.DELIVERY, "小明", "000000005", "123456",
 				Gender.MALE);
 		LocalInfo.localuser = user;
 	}

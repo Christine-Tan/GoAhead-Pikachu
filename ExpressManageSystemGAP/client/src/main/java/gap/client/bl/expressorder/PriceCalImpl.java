@@ -1,10 +1,10 @@
 package gap.client.bl.expressorder;
 
-import gap.client.bl.distance.City;
+import gap.client.bl.strategy.CityManage;
 import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.datacontroller.controllerfactory.ControllerFactory;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
-import gap.client.vo.CityVO;
+import gap.client.util.City;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.po.PricePO;
 
@@ -15,7 +15,7 @@ public class PriceCalImpl extends PriceCal {
 		dataController = ControllerFactory.getExpressOrderDataController();
 	}
 
-	public PriceCalImpl(City city) {
+	public PriceCalImpl(CityManage city) {
 		this();
 		this.city = city;
 	}
@@ -25,8 +25,8 @@ public class PriceCalImpl extends PriceCal {
 		// TODO 自动生成的方法存根
 		String sender_city = vo.sender_info.getAddress().getCity_name();
 		String receiver_city = vo.receiver_info.getAddress().getCity_name();
-		CityVO sender = city.getCity(sender_city), receiver = city
-				.getCity(receiver_city);
+		City sender = new City(city.getCity(sender_city)), receiver = new City(
+				city.getCity(receiver_city));
 		double distance = city.getDistance(sender, receiver);
 		System.out.println(sender_city);
 		PricePO priceInfo = dataController.findPrice(sender_city);

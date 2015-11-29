@@ -1,5 +1,6 @@
 package gap.client.datacontroller.controllerfactory;
 
+import gap.client.datacontroller.AccountDate.AccountDateController;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.logindata.LoginDataController;
@@ -35,9 +36,9 @@ public class ControllerFactory {
 	private static RentDataController rentDataController;
 	private static SalaryDataController salaryDataController;
 	private static UserDataController userDataController;
-	
-	public static AccountDateController getAccountDataController(){
-		if(accountDateController==null){
+
+	public static AccountDateController getAccountDataController() {
+		if (accountDateController == null) {
 			accountDateController = new AccountDateController();
 		}
 		return accountDateController;
@@ -103,39 +104,39 @@ public class ControllerFactory {
 		return stockoutOrderDataController;
 	}
 
-	public static InstitutionDataController getInstitutionDataController(){
-		if(institutionDataController==null)
-			institutionDataController=new InstitutionDataController();
+	public static InstitutionDataController getInstitutionDataController() {
+		if (institutionDataController == null)
+			institutionDataController = new InstitutionDataController();
 		return institutionDataController;
 	}
-	
-	public static CityDataController getCityDataController(){
-		if(cityDataController==null)
-			cityDataController=new CityDataController();
+
+	public static CityDataController getCityDataController() {
+		if (cityDataController == null)
+			cityDataController = new CityDataController();
 		return cityDataController;
 	}
-	
-	public static RentDataController getRentDataController(){
-		if(rentDataController==null)
-			rentDataController=new RentDataController();
+
+	public static RentDataController getRentDataController() {
+		if (rentDataController == null)
+			rentDataController = new RentDataController();
 		return rentDataController;
 	}
-	
-	public static PriceDataController getPriceDataController(){
-		if(priceDataController==null)
-			priceDataController=new priceDataController();
+
+	public static PriceDataController getPriceDataController() {
+		if (priceDataController == null)
+			priceDataController = new PriceDataController();
 		return priceDataController;
 	}
-	
-	public static SalaryDataController getSalaryDataController(){
-		if(salaryDataController==null)
-			salaryDataController=new SalaryDataController();
+
+	public static SalaryDataController getSalaryDataController() {
+		if (salaryDataController == null)
+			salaryDataController = new SalaryDataController();
 		return salaryDataController;
 	}
-	
-	public static UserDataController getUserDataController(){
-		if(userDataController==null)
-			userDataController=new UserDataController();
+
+	public static UserDataController getUserDataController() {
+		if (userDataController == null)
+			userDataController = new UserDataController();
 		return userDataController;
 	}
 }
