@@ -13,7 +13,7 @@ public class InstitutionPO implements Serializable {
 	private String insId;
 	// 机构名称
 	private String insName;
-	// 机构所在地址
+	// 机构所在城市
 	private String insCity;
 	// 机构人员数目
 	private int insMember;

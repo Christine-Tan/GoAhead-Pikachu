@@ -9,7 +9,9 @@ import java.util.List;
 public interface UserService {
 	public List<UserVO> getAll(UserType userType);
 
-	public UserVO getSingle(String id);
+	public UserVO findById(String id);
+
+	public UserVO findByUsername(String username);
 
 	public ResultMessage delete(String id);
 

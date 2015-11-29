@@ -8,11 +8,13 @@ import java.util.List;
 public interface InstitutionService {
 	public List<InstitutionVO> getAll();
 
-	public InstitutionVO getSingle(String id);
+	public InstitutionVO findById(String id);
+	
+	public List<InstitutionVO> findByCity(String city);
 
-	public ResultMessage modify(InstitutionVO vo);
+	public void modifyInstitution(InstitutionVO vo);
 
-	public ResultMessage delete(String id);
+	public void deleteInstitution(String id);
 
-	public ResultMessage add(InstitutionVO vo);
+	public void addInstitution(InstitutionVO vo);
 }

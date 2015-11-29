@@ -1,5 +1,6 @@
 package gap.client.vo;
 
+import gap.common.po.SalaryPO;
 import gap.common.util.UserType;
 
 public class SalaryVO {
@@ -16,7 +17,15 @@ public class SalaryVO {
 			this.type = type;
 			this.salary = salary;
 		}
-
+        
+		public SalaryVO(SalaryPO po){
+			this.type=po.getType();
+			this.salary=po.getSalary();
+		}
+		
+		public SalaryPO toSalaryPO(){
+			return new SalaryPO(type,salary);
+		}
 		/**
 		 * @return type
 		 */

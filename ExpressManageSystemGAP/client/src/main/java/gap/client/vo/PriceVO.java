@@ -30,6 +30,10 @@ public class PriceVO {
 		this.city=po.getCity();
 	}
      
+	public PricePO toPricePO(){
+		return new PricePO(city,express,standard,economic,base);
+	}
+	
 	public int getExpress() {
 		return express;
 	}

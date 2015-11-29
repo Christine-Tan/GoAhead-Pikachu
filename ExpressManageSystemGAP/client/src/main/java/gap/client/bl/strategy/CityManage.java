@@ -51,9 +51,14 @@ public class CityManage implements CityService {
 	@Override
 	public void modifyCity(City city) {
 		// TODO Auto-generated method stub
-        operations.add(new ModifyOperation(city.toCityPO()));
+		operations.add(new ModifyOperation(city.toCityPO()));
 	}
-	
+
+	/**
+	 * 将操作缓存起来，按序处理缓存队列
+	 * 
+	 * @return
+	 */
 	public ResultMessage flush() {
 		for (Operation ope : operations) {
 			ResultMessage re = ope.excute();
@@ -69,7 +74,7 @@ public class CityManage implements CityService {
 	@Override
 	public double getDistance(City city1, City city2) {
 		// TODO Auto-generated method stub
-		Distance dis=new Distance();
+		Distance dis = new Distance();
 		return dis.distanceCal(city1.getLatitude(), city1.getLongitude(), city2.getLatitude(), city2.getLongitude());
 	}
 

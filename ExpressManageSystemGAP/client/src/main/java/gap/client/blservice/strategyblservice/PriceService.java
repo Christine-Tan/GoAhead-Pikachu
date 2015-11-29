@@ -8,10 +8,10 @@ import java.util.List;
 public interface PriceService {
 	public List<PriceVO> getAll();
 
-	public ResultMessage modifyPrice(PriceVO vo);
+	public void modifyPrice(PriceVO vo);
 
-	public PriceVO getPrice(String city_id);
+	public PriceVO getPrice(String city);
 	
-	public ResultMessage add(PriceVO vo);
+	public void addPrice(PriceVO vo);
 	
 }

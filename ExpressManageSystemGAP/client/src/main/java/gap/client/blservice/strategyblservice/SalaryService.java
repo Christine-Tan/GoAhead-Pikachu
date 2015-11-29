@@ -9,9 +9,9 @@ import java.util.List;
 public interface SalaryService {
 	public List<SalaryVO> getAll();
 
-	public ResultMessage modifySalary(SalaryVO vo);
-
 	public SalaryVO getSalary(UserType type);
-	
-    public ResultMessage addSalary(SalaryVO vo);
+
+	public void modifySalary(SalaryVO vo);
+
+	public void addSalary(SalaryVO vo);
 }

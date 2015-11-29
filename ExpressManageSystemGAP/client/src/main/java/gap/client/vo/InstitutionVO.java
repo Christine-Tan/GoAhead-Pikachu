@@ -1,6 +1,9 @@
 package gap.client.vo;
 
-public class InstitutionVO {
+import gap.common.po.InstitutionPO;
+import gap.common.util.InstitutionType;
+
+public class InstitutionVO{
 
 	// 机构编号
 	private String insId;
@@ -23,6 +26,17 @@ public class InstitutionVO {
 
 	}
 
+	public InstitutionVO(InstitutionPO po){
+		this.insCity=po.getInsCity();
+		this.insId=po.getInsId();
+		this.insMember=po.getInsMember();
+		this.insName=po.getInsName();
+	}
+	
+	public InstitutionPO toInstitutionPO(){
+		return new InstitutionPO(insId,insName,insCity,insMember);
+	}
+	
 	/**
 	 * @return insId
 	 */

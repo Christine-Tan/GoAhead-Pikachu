@@ -35,9 +35,9 @@ public class PriceDataController {
 		}
 	}
 
-	public PricePO find(String city_id) {
+	public PricePO find(String city) {
 		try {
-			return priceData.find(city_id);
+			return priceData.find(city);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

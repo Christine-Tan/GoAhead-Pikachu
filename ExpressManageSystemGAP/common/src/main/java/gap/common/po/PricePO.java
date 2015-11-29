@@ -26,10 +26,7 @@ public class PricePO implements Serializable {
 		this.express = express;
 		this.city = city;
 	}
-   
-	public PricePO(PriceVO vo){
-		
-	}
+
 	public int getEconomic() {
 		return economic;
 	}
