@@ -27,17 +27,12 @@ public class UserManage implements UserService{
        List<UserVO> users=new ArrayList<UserVO>();
        for(UserPO po:controller.getAll(userType)){
     	   User user=new User(po);
-    	   users.add(user.toUserVO());
+//    	   users.add(user.toUserVO());
        }
 		return users;
 	}
 
-	@Override
-	public UserVO getSingle(String id) {
-		// TODO Auto-generated method stub
-		User user=new User(controller.findById(id));
-		return user.toUserVO();
-	}
+
 
 	@Override
 	public ResultMessage delete(String id) {
@@ -67,5 +62,16 @@ public class UserManage implements UserService{
 			// TODO Auto-generated constructor stub
 		}
 		
+	}
+
+	@Override
+	public UserVO findById(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public UserVO findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

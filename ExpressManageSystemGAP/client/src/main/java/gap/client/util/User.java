@@ -27,9 +27,9 @@ public class User {
 		this.gender = gender;
 	}
  
-	public UserVO toUserVO(){
-		return new UserVO(user_id,userType,name,password);
-	}
+//	public UserVO toUserVO(){
+//		return new UserVO(user_id,userType,name,password);
+//	}
 	public UserType getUserType() {
 		return userType;
 	}
