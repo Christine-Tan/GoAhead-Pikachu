@@ -1,6 +1,7 @@
 package gap.common.po;
 
 import java.io.Serializable;
+
 /**
  * 
  * @author seven
@@ -11,13 +12,13 @@ public class PricePO implements Serializable {
 	private int economic, standard, express;
 	// 比例基准
 	private double base;
-	// 城市编号
+	// 城市名
 	private String city;
 
 	public PricePO() {
 
 	}
-
+   
 	public PricePO(String city, int express, int standard, int economic, double base) {
 		this.base = base;
 		this.economic = economic;
@@ -25,7 +26,10 @@ public class PricePO implements Serializable {
 		this.express = express;
 		this.city = city;
 	}
-
+   
+	public PricePO(PriceVO vo){
+		
+	}
 	public int getEconomic() {
 		return economic;
 	}

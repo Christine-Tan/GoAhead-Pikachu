@@ -1,35 +1,65 @@
 package gap.client.vo;
 
+import gap.common.po.PricePO;
+
 public class PriceVO {
 	//经济：标准：特快的比例式
-	String rate;
+   private int express,standard,economic;
 	//比例基准
-	double base;
-	//城市编号
-	String cityId;
+	private double base;
+	//城市名
+	private String city;
 	
 	public PriceVO(){
 		
 	}
 
-	public PriceVO(String id, String  rate, double base) {
-		this.rate = rate;
+	public PriceVO(String city,int express, int standard,int economic, double base) {
+		this.express = express;
+		this.standard=standard;
+		this.economic=economic;
 		this.base = base;
-		cityId = id;
+		this.city=city;
+	}
+  
+	public PriceVO(PricePO po){
+		this.express=po.getExpress();
+		this.standard=po.getStandard();
+		this.economic=po.getEconomic();
+		this.base=po.getBase();
+		this.city=po.getCity();
+	}
+     
+	public int getExpress() {
+		return express;
 	}
 
-	/**
-	 * @return rate
-	 */
-	public String getRate() {
-		return rate;
+	public void setExpress(int express) {
+		this.express = express;
 	}
 
-	/**
-	 * @param rate Ҫ���õ� rate
-	 */
-	public void setRate(String rate) {
-		this.rate = rate;
+	public int getStandard() {
+		return standard;
+	}
+
+	public void setStandard(int standard) {
+		this.standard = standard;
+	}
+
+	public int getEconomic() {
+		return economic;
+	}
+
+	public void setEconomic(int economic) {
+		this.economic = economic;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	/**
@@ -44,20 +74,6 @@ public class PriceVO {
 	 */
 	public void setBase(double base) {
 		this.base = base;
-	}
-
-	/**
-	 * @return cityId
-	 */
-	public String getCityId() {
-		return cityId;
-	}
-
-	/**
-	 * @param cityId Ҫ���õ� cityId
-	 */
-	public void setCityId(String cityId) {
-		this.cityId = cityId;
 	}
 
 }
