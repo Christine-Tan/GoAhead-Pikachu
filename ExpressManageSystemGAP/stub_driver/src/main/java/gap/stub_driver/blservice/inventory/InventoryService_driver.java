@@ -3,7 +3,7 @@ package gap.stub_driver.blservice.inventory;
 import gap.client.blservice.inventoryblservice.InventoryService;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
-import gap.client.vo.StockCheckVO;
+import gap.client.vo.StockCountVO;
 import gap.client.vo.StockObVO;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
@@ -29,7 +29,7 @@ public class InventoryService_driver {
 			System.out.println("setAlarm succeed");
 		System.out.println(inventory.getAlarm());
 		
-		StockCheckVO stockCheck =  inventory.countStock();
+		StockCountVO stockCheck =  inventory.countStock();
 		StockObVO stockOb = inventory.observeStock("20151025","20151026");
 		ArrayList<String> list = new ArrayList<String>();
 		list.add(order1.getOrder_id());

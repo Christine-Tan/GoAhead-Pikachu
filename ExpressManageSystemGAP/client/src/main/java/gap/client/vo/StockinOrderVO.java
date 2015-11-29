@@ -1,6 +1,10 @@
 package gap.client.vo;
 
+import gap.common.po.GoodsPO;
+import gap.common.po.StockinOrderPO;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StockinOrderVO {
@@ -56,6 +60,16 @@ public class StockinOrderVO {
 
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
+	}
+	
+	public StockinOrderPO toPO(){
+		List<GoodsPO> goods = new ArrayList<GoodsPO>();
+		for(GoodsVO vo : this.goods){
+			goods.add(vo.toPO());
+		}
+		StockinOrderPO po = new StockinOrderPO(goods, inDate, id, ins_id);
+		return po;
+		
 	}
 
 }

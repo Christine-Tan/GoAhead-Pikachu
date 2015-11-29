@@ -1,5 +1,6 @@
 package gap.client.vo;
 
+import gap.common.po.GoodsPO;
 import gap.common.util.SectorType;
 
 public class GoodsVO {
@@ -110,5 +111,12 @@ public class GoodsVO {
 
 	public void setDestination(String destination) {
 		this.destination = destination;
+	}
+
+	public GoodsPO toPO() {
+		GoodsPO po = new GoodsPO(this.expressorder_id, this.location,
+				this.sector, this.date, this.sector_id, this.belong_sector_id,
+				this.destination);
+		return po;
 	}
 }

@@ -15,7 +15,9 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
@@ -55,10 +57,25 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public ResultMessage add(StockinOrderPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-
 		String order_id = po.getId(), time = po.getInDate(), ins_id = po
 				.getIns_id();
 		List<GoodsPO> goodPOs = po.getGoods();
+		
+		try {
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM stockinorder WHERE order_id='"
+							+ order_id + "';");
+			if (re.next()) {
+				System.out.println(" 入库单号为" + order_id + "的入库单已经存在");
+				return ResultMessage.EXITED;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
+
+		
 
 		try {
 			orderInsert.clear();
@@ -138,7 +155,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockinorder WHERE order_id = '"
-							+ order_id +"' And "+ins_id_f+" = '"+ins_id+ "';");
+							+ order_id +"' AND "+ins_id_f+" = '"+ins_id+ "';");
 			if(re.next()){
 				return getByResultSet(re);
 			}else{
@@ -167,6 +184,13 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 	public List<StockinOrderPO> getOneDay(String date, String ins_id)
 			throws RemoteException {
 		// TODO Auto-generated method stub
+		
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.set(2005, 11, 11);
+//		
+//		SimpleDateFormat simple = new SimpleDateFormat("yyyy-mm-dd");
+//		simple.format(calendar.getTime());
+		
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockinorder WHERE ins_id = '"

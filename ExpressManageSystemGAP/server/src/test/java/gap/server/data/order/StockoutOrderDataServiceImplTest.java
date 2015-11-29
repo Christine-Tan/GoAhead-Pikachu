@@ -94,7 +94,7 @@ public class StockoutOrderDataServiceImplTest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testDelete(){
 		for(int i = 0;i<=5;i++){
 			stockout.delete(or[i].getId());
@@ -103,10 +103,10 @@ public class StockoutOrderDataServiceImplTest {
 
 	@Test
 	public void testFind() {
-		//测试没过！！！！！！！！！！！！！！！！！！！！！！！！
 		try {
 			StockoutOrderPO po = stockout.find("00000000000000000005", "0000002");
-//			System.out.println(po.getOutDate()+"   "+po.getExpressorder_ids().size());
+			System.out.println(po.getId());
+			System.out.println(po.getOutDate()+"   "+po.getExpressorder_ids().size());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -115,9 +115,8 @@ public class StockoutOrderDataServiceImplTest {
 
 	@Test
 	public void testGetOneDay() {
-		//测试没过！！！！！！！！！！！！！！！！！！！！！！！！
 		try {
-			List<StockoutOrderPO> list = stockout.getOneDay("2015-11-22", "0000002");
+			List<StockoutOrderPO> list = stockout.getOneDay("2015-11-28", "0000002");
 			System.out.println(list.isEmpty());
 			if(!list.isEmpty()){
 				for(StockoutOrderPO po :list){
@@ -134,9 +133,8 @@ public class StockoutOrderDataServiceImplTest {
 
 	@Test
 	public void testGetRequired() {
-		//测试没过！！！！！！！！！！！！！！！！！！！！！！！！
 		try {
-			List<StockoutOrderPO> list = stockout.getRequired("2015-11-21", "2015-11-25", "0000002");
+			List<StockoutOrderPO> list = stockout.getRequired("2015-11-26", "2015-11-29", "0000002");
 			System.out.println(list.isEmpty());
 			if(!list.isEmpty()){
 				for(StockoutOrderPO po :list){
@@ -175,9 +173,7 @@ public class StockoutOrderDataServiceImplTest {
 	}*/
 	
 	@Test
-	public void testGetUnpassedOrders() {
-		//测试没过！！！！！！！！！！！！！！！！！！！！！！！！
-		
+	public void testGetUnpassedOrders() {	
 		try {
 			List<StockoutOrderPO> list = stockout.getUnpassedOrders();
 			System.out.println(list.isEmpty());

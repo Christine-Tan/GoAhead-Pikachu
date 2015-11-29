@@ -3,7 +3,7 @@ package gap.stub_driver.blservice.inventory;
 import gap.client.blservice.inventoryblservice.InventoryService;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
-import gap.client.vo.StockCheckVO;
+import gap.client.vo.StockCountVO;
 import gap.client.vo.StockObVO;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
@@ -23,9 +23,9 @@ public class InventoryService_stub implements InventoryService{
 	}
 
 	@Override
-	public StockCheckVO countStock() {
+	public StockCountVO countStock() {
 		// TODO Auto-generated method stub
-		return new StockCheckVO();
+		return new StockCountVO();
 	}
 
 	@Override

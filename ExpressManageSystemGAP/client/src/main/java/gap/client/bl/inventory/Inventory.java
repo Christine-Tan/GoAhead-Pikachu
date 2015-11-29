@@ -6,9 +6,11 @@ import gap.client.blservice.inventoryblservice.InventoryService;
 import gap.client.datacontroller.controllerfactory.ControllerFactory;
 import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.orderdata.ArrivedOrderDataController;
+import gap.client.datacontroller.orderdata.StockinOrderDataController;
+import gap.client.datacontroller.orderdata.StockoutOrderDataController;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
-import gap.client.vo.StockCheckVO;
+import gap.client.vo.StockCountVO;
 import gap.client.vo.StockObVO;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
@@ -16,6 +18,8 @@ import gap.common.util.ResultMessage;
 
 public class Inventory implements InventoryService {
 	InventoryDataController inventoryData;
+	StockinOrderDataController stockinOrderData;
+	StockoutOrderDataController stockoutOrderData;
 
 	public Inventory() {
 		inventoryData = ControllerFactory.getInventoryDataController();
@@ -25,25 +29,34 @@ public class Inventory implements InventoryService {
 	public StockObVO observeStock(String beginDate, String endDate,
 			String ins_id) {
 		// TODO Auto-generated method stub
-		return null;
+		StockObVO vo = new StockObVO();
+		vo.setInList(stockinOrderData.getRequired(beginDate, endDate, ins_id));
+		vo.setOutList(stockoutOrderData.getRequired(beginDate, endDate, ins_id));
+
+		return vo;
 	}
 
 	@Override
-	public StockCheckVO countStock(String ins_id) {
+	public StockCountVO countStock(String ins_id) {
 		// TODO Auto-generated method stub
-		return null;
+		StockCountVO vo = new StockCountVO();
+		vo.setFlexList(inventoryData.getOneSector(ins_id+"0", ins_id));
+		vo.setCarList(inventoryData.getOneSector(ins_id+"1", ins_id));
+		vo.setTrainList(inventoryData.getOneSector(ins_id+"2", ins_id));
+		vo.setPlaneList(inventoryData.getOneSector(ins_id+"3", ins_id));
+		return vo;
 	}
 
 	@Override
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return inventoryData.setAlarm(alarmValue, ins_id);
 	}
 
 	@Override
 	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return inventoryData.getAlarm(ins_id);
 	}
 
 	@Override
@@ -54,21 +67,21 @@ public class Inventory implements InventoryService {
 	}
 
 	@Override
-	public ResultMessage initialadd(GoodsVO expressorder) {
+	public ResultMessage initialadd(GoodsVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return inventoryData.add(vo.toPO());
 	}
 
 	@Override
-	public ResultMessage initialdelete(String expressorder_id) {
+	public ResultMessage initialdelete(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return inventoryData.delete(id);
 	}
 
 	@Override
-	public ResultMessage initialmodify(GoodsVO expressorder) {
+	public ResultMessage initialmodify(GoodsVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return inventoryData.modify(vo.toPO());
 	}
 
 	@Override
