@@ -2,7 +2,7 @@ package gap.client.blservice.inventoryblservice;
 
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
-import gap.client.vo.StockCheckVO;
+import gap.client.vo.StockCountVO;
 import gap.client.vo.StockObVO;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
@@ -23,7 +23,7 @@ public interface InventoryService {
 	 * 库存盘点
 	 * @return
 	 */
-	public StockCheckVO countStock(String ins_id);
+	public StockCountVO countStock(String ins_id);
 	
 	/**
 	 * 设置警戒值

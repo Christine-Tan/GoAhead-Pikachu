@@ -9,6 +9,7 @@ import gap.client.datacontroller.orderdata.StockinOrderDataController;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockinOrderVO;
+import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
 
 public class StockinOrder implements StockinOrderService {
@@ -28,13 +29,13 @@ public class StockinOrder implements StockinOrderService {
 	@Override
 	public ResultMessage save(StockinOrderVO order) {
 		// TODO Auto-generated method stub
-		return null;
+		return stockinData.add(order.toPO());
 	}
 
 	@Override
-	public StockinOrderVO find(String id) {
+	public StockinOrderPO find(String id,String ins_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return stockinData.find(id, ins_id);
 	}
 
 	@Override
@@ -43,10 +44,5 @@ public class StockinOrder implements StockinOrderService {
 		return null;
 	}
 
-	@Override
-	public int getOrdersNum() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }

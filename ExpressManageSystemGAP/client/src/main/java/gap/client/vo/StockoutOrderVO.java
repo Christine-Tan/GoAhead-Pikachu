@@ -1,5 +1,7 @@
 package gap.client.vo;
 
+import gap.common.po.StockoutOrderPO;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,10 +16,7 @@ public class StockoutOrderVO implements Serializable {
 	private String ins_id;
 
 	// 出库日期，目标机构，货运方式，中转单编号或装车单编号(20位0~9数字)
-
-	public List<String> getExpressorder_ids() {
-		return expressorder_ids;
-	}
+	
 
 	public StockoutOrderVO(List<String> expressorder_ids, String outDate,
 			String target_ins, String id, String transport, String ins_id) {
@@ -28,6 +27,14 @@ public class StockoutOrderVO implements Serializable {
 		this.id = id;
 		this.transport = transport;
 		this.ins_id = ins_id;
+	}
+	
+	public StockoutOrderVO() {
+		super();
+	}
+
+	public List<String> getExpressorder_ids() {
+		return expressorder_ids;
 	}
 
 	public void setExpressorder_ids(List<String> expressorder_ids) {
@@ -81,6 +88,13 @@ public class StockoutOrderVO implements Serializable {
 
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
+	}
+	
+	public StockoutOrderPO toPO(){
+		StockoutOrderPO po = new StockoutOrderPO(expressorder_ids, outDate, target_ins, id, transport, ins_id);
+		return po;
+		
+		
 	}
 
 }

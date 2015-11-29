@@ -52,6 +52,10 @@ public class StockinOrderPO implements Serializable {
 		this.ins_id = ins_id;
 	}
 	
+	public int getNum(){
+		return this.goods.size();
+	}
+	
 	
 
 	

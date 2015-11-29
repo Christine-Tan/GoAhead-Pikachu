@@ -3,6 +3,7 @@ package gap.client.blservice.orderblservice;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockinOrderVO;
+import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.util.List;
@@ -13,13 +14,8 @@ public interface StockinOrderService {
 
 	public ResultMessage save(StockinOrderVO order);
 
-	public StockinOrderVO find(String id);
+	public StockinOrderPO find(String id,String ins_id);
 	
 	public String getLocation(GoodsVO vo);
-	
-	/**
-	 * 获得一张入库单上快递的数量
-	 * @return
-	 */
-	public int getOrdersNum();
+
 }

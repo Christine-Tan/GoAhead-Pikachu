@@ -55,6 +55,21 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 				.getOutDate(), transport = po.getTransport(), ins_id = po
 				.getIns_id();
 		List<String> expressorder_ids = po.getExpressorder_ids();
+		
+		try {
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM stockoutorder WHERE order_id='"
+							+ order_id + "';");
+			if (re.next()) {
+				System.out.println(" 出库单号为" + order_id + "的出库单已经存在");
+				return ResultMessage.EXITED;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
+
 
 		try {
 			orderInsert.clear();
@@ -96,8 +111,8 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM stockoutorder WHERE order_id = '"
-							+ order_id +"' And "+ins_id_f+" = '"+ins_id+ "';");
+					.excuteQuery("SELECT *FROM stockoutorder WHERE order_id = '"
+							+ order_id +"' AND "+ins_id_f+" ='"+ins_id+ "';");
 			if(re.next()){
 				return getByResultSet(re);
 			}else{
@@ -123,7 +138,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			List<String> order_ids = getidsByOrderId(order_id);
 			
 			StockoutOrderPO po = new StockoutOrderPO(order_ids, outDate,
-					target_ins, transport, order_id, ins_id);
+					target_ins, order_id, transport, ins_id);
 			
 			return po;
 		} catch (SQLException e) {
@@ -136,7 +151,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 	public List<String> getidsByOrderId(String order_id) {
 		try {
 			List<String> order_ids = new ArrayList<String>();
-			ResultSet itemre = NetModule.excutor.excuteQuery("SELECT *　FROM "
+			ResultSet itemre = NetModule.excutor.excuteQuery("SELECT * FROM "
 					+ stockoutItemTable + " WHERE order_id = '" + order_id
 					+ "';");
 

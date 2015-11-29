@@ -87,6 +87,10 @@ public class StockoutOrderPO implements Serializable {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
+	
+	public int getNum(){
+		return this.expressorder_ids.size();
+	}
 
 	
 
