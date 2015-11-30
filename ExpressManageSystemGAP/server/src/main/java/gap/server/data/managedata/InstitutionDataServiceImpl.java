@@ -36,6 +36,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 			instance = new InstitutionDataServiceImpl();
 		return instance;
 	}
+
 	public InstitutionDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -185,6 +186,24 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 				institutions.add(po);
 			}
 			return institutions;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public InstitutionPO findByName(String ins_name) throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE name='" + ins_name + "';");
+			if (re.next()) {
+				String id = re.getString(id_f), city = re.getString(address_f);
+				int num = re.getInt(memberNum_f);
+				InstitutionPO po = new InstitutionPO(id, ins_name, city, num);
+				return po;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

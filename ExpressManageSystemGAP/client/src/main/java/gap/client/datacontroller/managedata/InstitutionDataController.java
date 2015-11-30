@@ -84,4 +84,13 @@ public class InstitutionDataController {
 		}
 		return null;
 	}
+	public InstitutionPO findByName(String ins_name){
+		try {
+			return institutionData.findByName(ins_name);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

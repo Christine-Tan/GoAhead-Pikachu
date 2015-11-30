@@ -13,9 +13,9 @@ public interface UserService {
 
 	public UserVO findByUsername(String username);
 
-	public ResultMessage delete(String id);
+	public  void delete(String id);
 
-	public ResultMessage modify(UserVO vo);
+	public void modify(UserVO vo);
 
-	public ResultMessage add(UserVO vo);
+	public void add(UserVO vo);
 }
