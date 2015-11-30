@@ -5,6 +5,7 @@ import java.util.List;
 
 import gap.client.blservice.userblservice.UserService;
 import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.managedata.InstitutionDataController;
 import gap.client.datacontroller.userdata.UserDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
@@ -15,10 +16,13 @@ import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
 public class UserManage implements UserService{
+	private static final String ADD="add",DELETE="delete",MODIFY="modify";
     List<Operation> operations;
     UserDataController controller;
+    InstitutionDataController insController;
     public UserManage(){
 		controller=ControllerFactory.getUserDataController();
+		insController=ControllerFactory.getInstitutionDataController();
 		operations = new ArrayList<Operation>();
     }
 	@Override
@@ -26,52 +30,80 @@ public class UserManage implements UserService{
 		// TODO Auto-generated method stub
        List<UserVO> users=new ArrayList<UserVO>();
        for(UserPO po:controller.getAll(userType)){
+    	   String insname=insController.findById(po.getIns_id()).getInsName();
     	   User user=new User(po);
-//    	   users.add(user.toUserVO());
+     	   users.add(user.toUserVO(insname));
        }
 		return users;
 	}
 
-
-
 	@Override
-	public ResultMessage delete(String id) {
+	public void delete(String id) {
 		// TODO Auto-generated method stub
-		
-		return null;
+	   operations.add(new DeleteOperation(id));	
 	}
 
 	@Override
-	public ResultMessage modify(UserVO vo) {
+	public void modify(UserVO vo) {
 		// TODO Auto-generated method stub
-		
-		return null;
+ 	   String insId=insController.findByName(vo.getInsName()).getInsId();
+		operations.add(new ModifyOperation(vo.toUserPO(insId)));
 	}
 
 	@Override
-	public ResultMessage add(UserVO vo) {
+	public void add(UserVO vo) {
 		// TODO Auto-generated method stub
-		
-		return null;
+	 	   String insId=insController.findByName(vo.getInsName()).getInsId();
+			operations.add(new AddOperation(vo.toUserPO(insId)));
 	}
  
-	class AddOperation extends AbstractOperation{
-
-		public AddOperation(Object args) {
-			super(controller, "add", args);
-			// TODO Auto-generated constructor stub
+	/**
+	 * 将操作缓存起来，按序处理缓存队列
+	 * 
+	 * @return
+	 */
+	public ResultMessage flush() {
+		for (Operation ope : operations) {
+			ResultMessage re = ope.excute();
+			if (!re.equals(ResultMessage.SUCCEED)) {
+				operations.clear();
+				return re;
+			}
 		}
-		
+		operations.clear();
+		return ResultMessage.SUCCEED;
 	}
 
+	class AddOperation extends AbstractOperation {
+		public AddOperation(Object args) {
+			super(controller, ADD, args);
+		}
+	}
+
+	class DeleteOperation extends AbstractOperation {
+		public DeleteOperation(Object args) {
+			super(controller, DELETE, args);
+		}
+	}
+
+	class ModifyOperation extends AbstractOperation {
+		public ModifyOperation(Object args) {
+			super(controller, MODIFY, args);
+		}
+	}
+    
 	@Override
 	public UserVO findById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		User user=new User(controller.findById(id));
+ 	   String insname=insController.findById(user.getInsId()).getInsName();
+		return user.toUserVO(insname);
 	}
 	@Override
 	public UserVO findByUsername(String username) {
 		// TODO Auto-generated method stub
-		return null;
+		User user=new User(controller.findByUsername(username));
+		String insname=insController.findById(user.getInsId()).getInsName();
+		return user.toUserVO(insname);
 	}
 }

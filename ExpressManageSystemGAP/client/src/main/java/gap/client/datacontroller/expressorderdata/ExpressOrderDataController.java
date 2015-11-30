@@ -46,7 +46,7 @@ public class ExpressOrderDataController {
 	public ResultMessage add(ExpressOrderPO po) {
 		// TODO 自动生成的方法存根
 		try {
-			return expressOrderData.add(po, LocalInfo.localuser.getUser_id());
+			return expressOrderData.add(po, LocalInfo.localuser.getUserId());
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

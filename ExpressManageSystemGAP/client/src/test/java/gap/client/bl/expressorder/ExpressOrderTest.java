@@ -27,9 +27,9 @@ public class ExpressOrderTest {
 		expressorder = new ExpressOrder();
 		// User user = new User(UserType.DELIVERY, "xiaoming", "000000005",
 		// Gender.MALE);
-		User user = new User(UserType.DELIVERY, "小明", "000000005", "123456",
-				Gender.MALE);
-		LocalInfo.localuser = user;
+//		User user = new User(UserType.DELIVERY, "小明", "000000005", "123456",
+//				Gender.MALE);
+//		LocalInfo.localuser = user;
 	}
 
 	@Test

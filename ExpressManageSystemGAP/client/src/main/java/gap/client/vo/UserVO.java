@@ -1,5 +1,6 @@
 package gap.client.vo;
 
+import gap.common.po.UserPO;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
 
@@ -17,10 +18,8 @@ public class UserVO {
 	private String userName;
 	// 密码
 	private String password;
-	// 用户等级
-	private int rank;
-	// 指向所属机构id
-	private String ins_id;
+	// 所属机构的名字
+	private String insName;
 	// 用户性别
 	private Gender gender;
 	// 用户姓名
@@ -30,17 +29,27 @@ public class UserVO {
 
 	}
 
-	public UserVO(String userId, UserType type, String userName, int rank,
-			String ins_id, String password, String name, Gender gender) {
+	public UserVO(String userId, String userName, String password, String name, UserType type, Gender gender,
+			String insName) {
 		super();
 		this.userId = userId;
 		this.type = type;
 		this.userName = userName;
-		this.rank = rank;
-		this.ins_id = ins_id;
+		this.insName = insName;
 		this.password = password;
 		this.name = name;
 		this.gender = gender;
+	}
+
+	public UserPO toUserPO(String ins_id){
+		return new UserPO (userId,userName,password,name,type,gender,ins_id);
+	}
+	public String getInsName() {
+		return insName;
+	}
+
+	public void setInsName(String insname) {
+		this.insName = insname;
 	}
 
 	public String getUserId() {
@@ -75,22 +84,6 @@ public class UserVO {
 		this.password = password;
 	}
 
-	public int getRank() {
-		return rank;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
-
-	public String getIns_id() {
-		return ins_id;
-	}
-
-	public void setIns_id(String ins_id) {
-		this.ins_id = ins_id;
-	}
-
 	public Gender getGender() {
 		return gender;
 	}
@@ -106,7 +99,5 @@ public class UserVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 }

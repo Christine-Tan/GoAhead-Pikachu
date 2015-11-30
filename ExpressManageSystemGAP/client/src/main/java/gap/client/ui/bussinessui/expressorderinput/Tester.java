@@ -1,4 +1,4 @@
-package gap.client.ui.bussinessui;
+package gap.client.ui.bussinessui.expressorderinput;
 
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.UserBox.Sex;
@@ -11,7 +11,7 @@ public class Tester {
 		ConstInfo.setNumber("000000001");
 		ConstInfo.setSex(Sex.man);
 		MainFrame mainFrame=new MainFrame();
-		BussinessPanel panel=new BussinessPanel(mainFrame);
+		ExpressorderInputPanel panel=new ExpressorderInputPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}
 }

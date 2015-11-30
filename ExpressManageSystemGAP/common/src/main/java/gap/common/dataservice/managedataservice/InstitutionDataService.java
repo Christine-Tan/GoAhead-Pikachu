@@ -19,4 +19,6 @@ public interface InstitutionDataService extends Remote {
 	public List<InstitutionPO> findByCity(String city) throws RemoteException;
 	
 	public InstitutionPO findById(String ins_id) throws RemoteException;
+	
+	public InstitutionPO findByName(String ins_name) throws RemoteException;
 }

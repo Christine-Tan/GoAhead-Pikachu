@@ -14,8 +14,6 @@ public class UserPO implements Serializable {
 	private String userName;
 	// 密码
 	private String password;
-	// 用户等级
-	private int rank;
 	// 指向所属机构id
 	private String ins_id;
 	// 用户性别
@@ -27,13 +25,12 @@ public class UserPO implements Serializable {
 
 	}
 
-	public UserPO(String userId, UserType type, String userName, int rank,
-			String ins_id, String password, String name, Gender gender) {
+	public UserPO(String userId, String userName, String password, String name, UserType type, Gender gender,
+			String ins_id) {
 		super();
 		this.userId = userId;
 		this.type = type;
 		this.userName = userName;
-		this.rank = rank;
 		this.ins_id = ins_id;
 		this.password = password;
 		this.name = name;
@@ -83,14 +80,6 @@ public class UserPO implements Serializable {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public int getRank() {
-		return rank;
-	}
-
-	public void setRank(int rank) {
-		this.rank = rank;
 	}
 
 	public Gender getGender() {

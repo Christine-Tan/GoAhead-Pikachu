@@ -57,7 +57,7 @@ public class InstitutionManage implements InstitutionService {
 	@Override
 	public void deleteInstitution(String id) {
 		// TODO Auto-generated method stub
-		operations.add(new DeleteOperation(controller.delete(id)));
+		operations.add(new DeleteOperation(id));
 	}
 
 	@Override
