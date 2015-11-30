@@ -1,5 +1,7 @@
 package gap.client.ui.gapcomponents;
 
+import gap.client.ui.UITools.ColorAndFonts;
+
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
@@ -14,6 +16,7 @@ public class GAPComboBox<E> extends JComboBox<E> {
 		setFocusable(false);
 		setFont(ComponentStyle.defaultFont);
 		setMaximumRowCount(6);
-//		setUI(new GAPComboBoxUI<>(this));
+		setBorder(BorderFactory.createLineBorder(ColorAndFonts.gray.darker()));
+		setUI(new GAPComboBoxUI<>(this));
 	}
 }

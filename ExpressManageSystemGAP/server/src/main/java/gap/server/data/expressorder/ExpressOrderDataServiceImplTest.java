@@ -108,25 +108,23 @@ public class ExpressOrderDataServiceImplTest {
 
 	@Test
 	public void testFind() {
-		// try {
-		// ExpressOrderDataService expre = ExpressOrderDataServiceImpl
-		// .getInstance();
-		// ExpressOrderPO po = expre.find("0000000001");
-		// System.out.println("Found order!!");
-		// System.out.println("sender_Name:" + po.getSenderInfo().getName()
-		// + ",receicerName:" + po.getReceiverInfo().getName());
-		// expre.addState("0000000001", "到达xxx营业厅");
-		// expre.addState("0000000001", "到达xxx中转中心");
-		// for (String str : expre.getState("0000000001"))
-		// System.out.println(str);
-		// ExpressOrderModifyPO modify = new ExpressOrderModifyPO(
-		// "0000000001", "0010001", null, false, false, false);
-		// expre.modify(modify);
-		// expre.setArrived("0000000001", "0010002", "xx营业厅收件");
-		// } catch (RemoteException e) {
-		// // TODO 自动生成的 catch 块
-		// e.printStackTrace();
-		// }
+		try {
+			ExpressOrderPO po = expressorderdataservice.find("0000000001");
+			System.out.println("Found order!!");
+			System.out.println("sender_Name:" + po.getSenderInfo().getName()
+					+ ",receicerName:" + po.getReceiverInfo().getName());
+			// expre.addState("0000000001", "到达xxx营业厅");
+			// expre.addState("0000000001", "到达xxx中转中心");
+			// for (String str : expre.getState("0000000001"))
+			// System.out.println(str);
+			// ExpressOrderModifyPO modify = new ExpressOrderModifyPO(
+			// "0000000001", "0010001", null, false, false, false);
+			// expre.modify(modify);
+			// expre.setArrived("0000000001", "0010002", "xx营业厅收件");
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -163,5 +161,22 @@ public class ExpressOrderDataServiceImplTest {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void testUnpassedOrders() {
+		List<ExpressOrderPO> orders;
+		try {
+			orders = expressorderdataservice.getUnpassedOrder();
+			for (ExpressOrderPO po : orders) {
+				System.out.println("sender_Name:"
+						+ po.getSenderInfo().getName() + ",receicerName:"
+						+ po.getReceiverInfo().getName());
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+
 	}
 }

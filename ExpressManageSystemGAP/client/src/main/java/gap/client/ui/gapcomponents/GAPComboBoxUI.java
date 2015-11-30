@@ -13,6 +13,6 @@ public class GAPComboBoxUI<E> extends BasicComboBoxUI {
 	}
 
 	protected ComboPopup createPopup() {
-		return new GAPComboPoupUI(comboBox);
+		return new GAPComboPoupUI<E>(comboBox);
 	}
 }

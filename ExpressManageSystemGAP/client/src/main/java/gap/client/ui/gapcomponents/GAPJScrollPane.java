@@ -1,8 +1,11 @@
 package gap.client.ui.gapcomponents;
 
+import gap.client.ui.UITools.ColorAndFonts;
+
 import java.awt.Component;
 import java.awt.Dimension;
 
+import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 
 public class GAPJScrollPane extends JScrollPane {
@@ -22,7 +25,7 @@ public class GAPJScrollPane extends JScrollPane {
 //		getHorizontalScrollBar().setUI(new GAPScrollBarUI());
 		getVerticalScrollBar().setPreferredSize(new Dimension(12, 0));
 		getHorizontalScrollBar().setPreferredSize(new Dimension(0, 12));
-		setBorder(ComponentStyle.text_border);
+		setBorder(BorderFactory.createLineBorder(ColorAndFonts.gray));
 	}
 
 }
