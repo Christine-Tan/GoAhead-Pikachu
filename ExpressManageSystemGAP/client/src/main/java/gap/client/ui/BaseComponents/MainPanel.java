@@ -1,6 +1,6 @@
 package gap.client.ui.BaseComponents;
 
-import gap.client.ui.bussinessui.GAPJScrollPane;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
 
 import java.awt.Color;
 

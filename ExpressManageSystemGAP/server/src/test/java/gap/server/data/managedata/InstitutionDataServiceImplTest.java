@@ -20,14 +20,14 @@ public class InstitutionDataServiceImplTest {
 
 	@Before
 	public void setup() throws Exception {
-		NetInitial.initial();
+//		NetInitial.initial();
 	}
 
 	@Test
 	public void test() throws RemoteException, MalformedURLException, NotBoundException {
 		InstitutionDataService institutiondata = (InstitutionDataService) Naming
 				.lookup(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE);
-		InstitutionPO po1 = new InstitutionPO("0010002", "南京市栖霞区营业厅", "南京市", 53);
+//		InstitutionPO po1 = new InstitutionPO("0010002", "南京市栖霞区营业厅", "南京市", 53);
 		InstitutionPO po2 = new InstitutionPO("0011001", "南京市栖霞区中转中心", "南京市", 28);
 		InstitutionPO po3 = new InstitutionPO("0020001", "北京市栖霞区营业厅", "北京市", 53);
 		InstitutionPO po4 = new InstitutionPO("0021001", "北京市栖霞区中转中心", "北京市", 28);
@@ -35,7 +35,7 @@ public class InstitutionDataServiceImplTest {
 		InstitutionPO po6 = new InstitutionPO("0031001", "广州市栖霞区中转中心", "广州市", 28);
 		InstitutionPO po7 = new InstitutionPO("0040001", "上海市静安区营业厅", "上海市", 45);
 		InstitutionPO po8 = new InstitutionPO("0041001", "上海市静安区中转中心", "上海市", 45);
-		System.out.println(institutiondata.add(po1).getMessage());
+//		System.out.println(institutiondata.add(po1).getMessage());
 		System.out.println(institutiondata.add(po2).getMessage());
 		System.out.println(institutiondata.add(po3).getMessage());
 		System.out.println(institutiondata.add(po4).getMessage());

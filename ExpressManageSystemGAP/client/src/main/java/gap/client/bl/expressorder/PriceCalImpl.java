@@ -28,7 +28,8 @@ public class PriceCalImpl extends PriceCal {
 		City sender = new City(city.getCity(sender_city)), receiver = new City(
 				city.getCity(receiver_city));
 		double distance = city.getDistance(sender, receiver);
-		System.out.println(sender_city);
+		System.out.println("The distance from " + sender_city + " to "
+				+ receiver_city + " is " + distance);
 		PricePO priceInfo = dataController.findPrice(sender_city);
 		double base = priceInfo.getBase();
 		double price = 0;
@@ -45,7 +46,7 @@ public class PriceCalImpl extends PriceCal {
 		default:
 			break;
 		}
-		return price;
+		return price * vo.cargoInfo.getWeight();
 	}
 
 	public static void main(String[] args) {

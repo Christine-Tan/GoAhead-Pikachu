@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.Set;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.LookAndFeel;
@@ -17,9 +18,10 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 
 import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.BaseListener.ResizeListener;
+import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Defaut;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.bussinessui.GAPScrollBarUI;
+import gap.client.ui.gapcomponents.GAPScrollBarUI;
 
 public class MainFrame extends JFrame {
 	TitlePanel titlePanel;
@@ -35,25 +37,25 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 		try {
-//			UIManager
-//			.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-			BasicLookAndFeel metal = new MetalLookAndFeel(){
+			// UIManager
+			// .setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			BasicLookAndFeel metal = new MetalLookAndFeel() {
 
-				public UIDefaults getDefaults(){
+				public UIDefaults getDefaults() {
 					UIDefaults defaults = super.getDefaults();
-					//Object o = defaults.get("ScrollBarUI");
+					// Object o = defaults.get("ScrollBarUI");
 					defaults.remove("ScrollBarUI");
-					defaults.put("ScrollBarUI","com.sun.java.swing.plaf.windows.WindowsScrollBarUI");
-					
-				
+					defaults.put("ScrollBarUI",
+							"com.sun.java.swing.plaf.windows.WindowsScrollBarUI");
+
 					defaults.get("ScrollBarUI");
 					return defaults;
 				}
-				
+
 			};
-			
+
 			UIManager.setLookAndFeel(metal);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -63,6 +65,7 @@ public class MainFrame extends JFrame {
 
 		JPanel contentPanel = (JPanel) this.getContentPane();
 		contentPanel.setBackground(Color.white);
+		contentPanel.setBorder(BorderFactory.createLineBorder(ColorAndFonts.gray));
 
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
@@ -91,11 +94,12 @@ public class MainFrame extends JFrame {
 				2, 1, 1, 0);
 		SwingConsole.addComponent(grid, gcons, contentPanel, navigateBar, 0, 1,
 				1, 2, 0, 1);
-		SwingConsole.addComponent(grid, gcons, contentPanel, mainPanel.getJsPanel(), 1, 1,
-				1, 1, 1, 1);
+		SwingConsole.addComponent(grid, gcons, contentPanel,
+				mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
 		SwingConsole.addComponent(grid, gcons, contentPanel, messagePanel, 1,
 				2, 1, 1, 1, 0);
 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
 	}
