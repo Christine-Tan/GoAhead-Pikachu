@@ -1,5 +1,6 @@
 package gap.client.ui.bussinessui.expressorderinput;
 
+import gap.client.ui.UITools.Defaut;
 import gap.client.ui.UITools.GapTextControll;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -32,7 +33,7 @@ public class PeopleInfoUI extends JPanel {
 	public PeopleInfoUI(String titleName) {
 
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(850, 150));
+		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 150));
 		// setSize(0,200);
 
 		// 初始化组件

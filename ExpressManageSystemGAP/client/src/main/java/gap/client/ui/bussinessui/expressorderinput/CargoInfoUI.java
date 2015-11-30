@@ -1,5 +1,6 @@
 package gap.client.ui.bussinessui.expressorderinput;
 
+import gap.client.ui.UITools.Defaut;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -25,7 +26,7 @@ public class CargoInfoUI extends JPanel {
 
 	public CargoInfoUI() {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(850, 150));
+		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 150));
 
 		// 初始化组件
 		title = new GAPLabel("货物信息：");
