@@ -27,9 +27,9 @@ public class ExpressOrderTest {
 		expressorder = new ExpressOrder();
 		// User user = new User(UserType.DELIVERY, "xiaoming", "000000005",
 		// Gender.MALE);
-//		User user = new User(UserType.DELIVERY, "小明", "000000005", "123456",
-//				Gender.MALE);
-//		LocalInfo.localuser = user;
+		// User user = new User(UserType.DELIVERY, "小明", "000000005", "123456",
+		// Gender.MALE);
+		// LocalInfo.localuser = user;
 	}
 
 	@Test
@@ -109,7 +109,7 @@ public class ExpressOrderTest {
 
 	@Test
 	public void testReceiveOrder() {
-		expressorder.receiveOrder("0000000001", new ReceiveInfo("小明",
+		expressorder.receiveOrder(new ReceiveInfo("0000000001", "小明",
 				"2015-11-26", "000000005", "测试1"));
 		// fail("尚未实现");
 	}

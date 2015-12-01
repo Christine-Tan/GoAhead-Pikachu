@@ -1,5 +1,7 @@
 package gap.client.ui.gapcomponents;
 
+import java.awt.Color;
+
 import javax.swing.JLabel;
 
 public class GAPLabel extends JLabel {
@@ -14,6 +16,8 @@ public class GAPLabel extends JLabel {
 	}
 
 	private void initial() {
+		setOpaque(true);
 		setFont(ComponentStyle.defaultFont);
+		setBackground(Color.white);
 	}
 }

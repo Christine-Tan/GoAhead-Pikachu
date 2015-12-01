@@ -1,9 +1,9 @@
 package gap.client.ui.inventoryui;
 
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.bussinessui.ComponentStyle;
-import gap.client.ui.bussinessui.GAPLabel;
-import gap.client.ui.bussinessui.GAPTextField;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
 
 import java.awt.Color;
 import java.awt.Dimension;

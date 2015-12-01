@@ -24,8 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class PeopleInfoUI extends JPanel {
-	JLabel title, name, phone, address, province, city, district;
-	JTextField name_text, phone_text, depart_text;
+	GAPLabel title, name, phone, address, province, city, district;
+	GAPTextField name_text, phone_text, depart_text;
 	JComboBox<String> pro_list, city_list, dis_list;
 	GridBagLayout grid;
 	GridBagConstraints gcon;
@@ -47,7 +47,8 @@ public class PeopleInfoUI extends JPanel {
 		phone = new GAPLabel("电话");
 		phone.setFont(ComponentStyle.defaultFont);
 		phone_text = new GAPTextField(15);
-		phone_text.setDocument(GapTextControll.getNumberDocument(11));
+		phone_text.setControl("", 11, 11);
+		// phone_text.setDocument(GapTextControll.getNumberDocument(11));
 
 		address = new GAPLabel("住址");
 
@@ -109,10 +110,10 @@ public class PeopleInfoUI extends JPanel {
 		g2d.drawLine(10, height - 5, width - 20, height - 5);
 	}
 
-//	public PeopleInfo getPeopleInfo(){
-//		
-//		return new PeopleInfo(name_text.getText(), , depart, cellphone)
-//	}
+	// public PeopleInfo getPeopleInfo(){
+	//
+	// return new PeopleInfo(name_text.getText(), , depart, cellphone)
+	// }
 	// public static void main(String[] args) {
 	// JFrame jf = new JFrame();
 	// jf.setContentPane(new PeopleInfoUI("寄件人信息"));

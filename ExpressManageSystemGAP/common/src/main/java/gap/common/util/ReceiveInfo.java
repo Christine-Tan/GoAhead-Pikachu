@@ -3,11 +3,12 @@ package gap.common.util;
 import java.io.Serializable;
 
 public class ReceiveInfo implements Serializable {
-	private String receiver_name, receive_time, delivery_id, comment;
+	private String receiver_name, receive_time, delivery_id, comment, order_id;
 
-	public ReceiveInfo(String receiver_name, String receive_time,
-			String delivery_id, String comment) {
+	public ReceiveInfo(String order_id, String receiver_name,
+			String receive_time, String delivery_id, String comment) {
 		super();
+		this.order_id = order_id;
 		this.receiver_name = receiver_name;
 		this.receive_time = receive_time;
 		this.delivery_id = delivery_id;
@@ -44,6 +45,14 @@ public class ReceiveInfo implements Serializable {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
 	}
 
 }

@@ -26,8 +26,7 @@ public interface ExpressOrderService {
 			throws InvalidInputException;
 
 	public List<ExpressOrderVO> getCurrentOrders(String ins_id,
-			CurrentOrderType type)
-			throws InvalidInputException;
+			CurrentOrderType type) throws InvalidInputException;
 
 	public ResultMessage setArrivedOrders(List<ExpressOrderVO> orders,
 			String ins_id);
@@ -38,5 +37,5 @@ public interface ExpressOrderService {
 
 	public ResultMessage save(ExpressOrderVO order);
 
-	public ResultMessage receiveOrder(String order_id, ReceiveInfo receiveInfo);
+	public ResultMessage receiveOrder(ReceiveInfo receiveInfo);
 }

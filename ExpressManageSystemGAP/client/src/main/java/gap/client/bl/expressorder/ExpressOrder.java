@@ -110,9 +110,9 @@ public class ExpressOrder implements ExpressOrderService {
 	}
 
 	@Override
-	public ResultMessage receiveOrder(String order_id, ReceiveInfo receiveInfo) {
+	public ResultMessage receiveOrder(ReceiveInfo receiveInfo) {
 		// TODO 自动生成的方法存根
-		return expressorderData.setReceived(order_id, receiveInfo);
+		return expressorderData.setReceived(receiveInfo);
 	}
 
 }

@@ -143,7 +143,7 @@ public interface ExpressOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ResultMessage setRecieved(String order_id, ReceiveInfo info)
+	public ResultMessage setRecieved(ReceiveInfo info)
 			throws RemoteException;
 
 	/**

@@ -1,8 +1,10 @@
 package gap.server.data.expressorder;
 
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
+import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
+import gap.common.po.UserPO;
 import gap.common.util.Address;
 import gap.common.util.CargoInfo;
 import gap.common.util.CurrentOrderType;
@@ -10,6 +12,7 @@ import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
+import gap.server.data.userdata.UserDataServiceImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SelectSQL;
 import gap.server.data.util.UpdateSQL;
@@ -360,13 +363,16 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage setDelivery(String order_id, String delivery_id,
 			String stateMessage) throws RemoteException {
 		// TODO 自动生成的方法存根
-		return addState(order_id, stateMessage);
+		UserDataService user = UserDataServiceImpl.getInstance();
+		UserPO userPO = user.findById(delivery_id);
+		String message = userPO.getName() + "正在派件";
+		return addState(order_id, message);
 	}
 
 	@Override
-	public ResultMessage setRecieved(String order_id, ReceiveInfo info)
-			throws RemoteException {
+	public ResultMessage setRecieved(ReceiveInfo info) throws RemoteException {
 		// TODO 自动生成的方法存根
+		String order_id = info.getOrder_id();
 		String stateMessage = "快递已签收,收件人:" + info.getReceiver_name();
 		if (addState(order_id, stateMessage) == ResultMessage.FAILED)
 			return ResultMessage.FAILED;
