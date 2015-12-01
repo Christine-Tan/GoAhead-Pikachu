@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import gap.client.bl.strategy.CityManage;
 import gap.client.blservice.expressorderblservice.ExpressOrderService;
 import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.datacontroller.controllerfactory.ControllerFactory;
@@ -24,9 +25,11 @@ public class ExpressOrder implements ExpressOrderService {
 	public ExpressOrder() {
 		// TODO 自动生成的构造函数存根
 		expressorderData = ControllerFactory.getExpressOrderDataController();
+		priceCal = new PriceCalImpl(new CityManage());
 	}
 
 	public ExpressOrder(PriceCal p) {
+		expressorderData = ControllerFactory.getExpressOrderDataController();
 		priceCal = p;
 	}
 
