@@ -20,11 +20,20 @@ public class WareHouseDataServiceImpl implements WareHouseDataService{
 	private InsertSQL sectorInsert;
 	private double defaultAlarm = 80;
 	private int rows = 10,shelves = 10, units = 10;
-	SQLBuilder sql;
+	public static WareHouseDataService instance;
+	
+	private SQLBuilder sql;
 	
 	public WareHouseDataServiceImpl(){
 		sectorInsert = new InsertSQL(sectorTable);
 		sql = new SQLBuilder();
+	}
+	
+	public WareHouseDataService getInstance(){
+		if(instance==null){
+			instance = new WareHouseDataServiceImpl();
+		}
+		return instance;
 	}
 
 	@Override
