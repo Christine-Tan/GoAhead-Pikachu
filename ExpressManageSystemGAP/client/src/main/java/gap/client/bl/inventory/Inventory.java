@@ -1,13 +1,17 @@
 package gap.client.bl.inventory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gap.client.blservice.inventoryblservice.InventoryService;
 import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.orderdata.ArrivedOrderDataController;
 import gap.client.datacontroller.orderdata.StockinOrderDataController;
 import gap.client.datacontroller.orderdata.StockoutOrderDataController;
+import gap.client.util.AbstractOperation;
+import gap.client.util.Operation;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockCountVO;
@@ -17,12 +21,19 @@ import gap.client.vo.StockoutOrderVO;
 import gap.common.util.ResultMessage;
 
 public class Inventory implements InventoryService {
+	private static final String ADD = "addGoods", DELETE = "deleteGoods", MODIFY = "modifyGoods";
+	List<Operation> operations;
 	InventoryDataController inventoryData;
 	StockinOrderDataController stockinOrderData;
 	StockoutOrderDataController stockoutOrderData;
+	ExpressOrderDataController expressorderData;
 
 	public Inventory() {
 		inventoryData = ControllerFactory.getInventoryDataController();
+		stockinOrderData = ControllerFactory.getStockinOrderDataController();
+		stockoutOrderData = ControllerFactory.getStockoutOrderDataController();
+		expressorderData = ControllerFactory.getExpressOrderDataController();
+		operations = new ArrayList<Operation>();
 	}
 
 	@Override
@@ -67,21 +78,21 @@ public class Inventory implements InventoryService {
 	}
 
 	@Override
-	public ResultMessage initialadd(GoodsVO vo) {
+	public void initialadd(GoodsVO vo) {
 		// TODO Auto-generated method stub
-		return inventoryData.add(vo.toPO());
+		operations.add(new AddOperation(vo.toPO()));
 	}
 
 	@Override
-	public ResultMessage initialdelete(String id) {
+	public void initialdelete(String id) {
 		// TODO Auto-generated method stub
-		return inventoryData.delete(id);
+		operations.add(new DeleteOperation(id));
 	}
 
 	@Override
-	public ResultMessage initialmodify(GoodsVO vo) {
+	public void initialmodify(GoodsVO vo) {
 		// TODO Auto-generated method stub
-		return inventoryData.modify(vo.toPO());
+		operations.add(new ModifyOperation(vo.toPO()));
 	}
 
 	@Override
@@ -125,6 +136,24 @@ public class Inventory implements InventoryService {
 	public String Alarm() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	class AddOperation extends AbstractOperation {
+		public AddOperation(Object args) {
+			super(inventoryData, ADD, args);
+		}
+	}
+
+	class DeleteOperation extends AbstractOperation {
+		public DeleteOperation(Object args) {
+			super(inventoryData, DELETE, args);
+		}
+	}
+
+	class ModifyOperation extends AbstractOperation {
+		public ModifyOperation(Object args) {
+			super(inventoryData, MODIFY, args);
+		}
 	}
 
 	

@@ -97,8 +97,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			double price = po.getPrice();
 
 			// 判断对应订单号是否已经存在
-			String sele = "SELECT * FROM expressorder WHERE order_id="
-					+ order_id + ";";
+			String sele = "SELECT * FROM expressorder WHERE order_id='"
+					+ order_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sele);
 			if (re.next()) {
 				System.out
@@ -142,7 +142,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT * FROM expressorder WHERE order_id = '"
-					+ order_id + "' AND " + passed_f + " = true;";
+					+ order_id + "' AND " + passed_f + " = 'true';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			return getByResultSet(re);
@@ -196,7 +196,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
 			String sql = "SELECT * FROM expressorder WHERE targetIns_id='"
-					+ ins_id + "' AND " + passed_f + " = true;";
+					+ ins_id + "' AND " + passed_f + " != 'false';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
 				orders.add(getByResultSet(re));
@@ -217,7 +217,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
 			String sql = "SELECT * FROM expressorder WHERE currentIns_id='"
-					+ ins_id + "' AND " + passed_f + " = true;";
+					+ ins_id + "' AND " + passed_f + " = 'true';";
 			if (type == CurrentOrderType.ALL)
 				sql += " ;";
 			else if (type == CurrentOrderType.LOAD)
@@ -280,7 +280,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String sql = "SELECT * FROM " + tableName + " WHERE " + passed_f
-					+ " = false;";
+					+ " = 'false';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
 			while (re.next())

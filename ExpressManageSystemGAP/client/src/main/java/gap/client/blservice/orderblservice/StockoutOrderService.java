@@ -13,6 +13,6 @@ public interface StockoutOrderService {
 
 	public ResultMessage save(StockoutOrderVO order);
 
-	public StockoutOrderPO find(String id,String ins_id);
+	public StockoutOrderVO find(String id,String ins_id);
 	
 }

@@ -6,6 +6,8 @@ import gap.common.util.SectorType;
 
 public class SectorFlexPO {
 	final public SectorType type = SectorType.FLEX;
+	
+	public String Stype;
 	// 警戒值，百分比
 	private double alarmVal;
 

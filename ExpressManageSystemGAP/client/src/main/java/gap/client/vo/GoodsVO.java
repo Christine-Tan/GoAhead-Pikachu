@@ -28,6 +28,16 @@ public class GoodsVO {
 	public GoodsVO() {
 
 	}
+	
+	public GoodsVO(GoodsPO po){
+		this.expressorder_id = po.getExpressorder_id();
+		this.location = po.getLocation();
+		this.sector = po.getSector();
+		this.date = po.getDate();
+		this.sector_id = po.getSector_id();
+		this.belong_sector_id = po.getBelong_sector_id();
+		this.destination = po.getDestination();
+	}
 
 	public GoodsVO(String expressorder_id, String location, SectorType sector,
 			String date, String sector_id, String belong_sector_id,

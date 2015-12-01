@@ -32,6 +32,15 @@ public class StockoutOrderVO implements Serializable {
 	public StockoutOrderVO() {
 		super();
 	}
+	
+	public StockoutOrderVO(StockoutOrderPO po) {
+		this.expressorder_ids = po.getExpressorder_ids();
+		this.outDate = po.getOutDate();
+		this.target_ins = po.getTarget_ins();
+		this.id = po.getId();
+		this.transport = po.getTransport();
+		this.ins_id = po.getIns_id();
+	}
 
 	public List<String> getExpressorder_ids() {
 		return expressorder_ids;

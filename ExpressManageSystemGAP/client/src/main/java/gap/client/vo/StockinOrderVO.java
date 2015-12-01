@@ -12,13 +12,22 @@ public class StockinOrderVO {
 	private List<GoodsVO> goods;
 	private String inDate, id, ins_id;
 
-	/**
-	 * 目的地是最终目的地，先不管是什么，不存入数据库。。。
-	 */
 	// 到达日期,入库单编号(20位0~9数字),所属中转中心编号
 
 	public StockinOrderVO() {
 		// TODO 自动生成的构造函数存根
+	}
+	
+	public StockinOrderVO(StockinOrderPO po){
+		List<GoodsPO> list = po.getGoods();
+		List<GoodsVO> goods = new ArrayList<GoodsVO>();
+		for(GoodsPO go : list){
+			goods.add(new GoodsVO(go));
+		}
+		this.goods = goods;
+		this.inDate = po.getInDate();
+		this.id = po.getId();
+		this.ins_id = po.getIns_id();
 	}
 
 	public StockinOrderVO(List<GoodsVO> goods, String inDate, String id,

@@ -9,6 +9,8 @@ import gap.common.util.SectorType;
 public class SectorFixedPO {
 	// 分区类型
 	public SectorType type;
+	
+	public String Stype;
 	// 警戒值，百分比
 	private double alarmVal;
 
