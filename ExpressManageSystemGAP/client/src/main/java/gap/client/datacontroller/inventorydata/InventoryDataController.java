@@ -138,5 +138,16 @@ public class InventoryDataController {
 		}
 		return 0;
 	}
+	
+	public List<GoodsPO> getOneTypeInFlex(String ins_id,String belong_sec_id){
+		try {
+			return inventory.getOneTypeInFlex(ins_id, belong_sec_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 
 }

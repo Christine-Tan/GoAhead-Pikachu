@@ -23,8 +23,9 @@ public class ServiceName {
 			INITIAL_DATA_SERVICE = "initial_data_service",
 			EXPRESSORDER_DATA_SERVICE = "expressorderdataservice",
 			ACCOUNT_DATA_SERVICE = "accountdataservice",
-			WAREHOUSE_DATA_SERVICE = "warehousedataservice";
+			WAREHOUSE_DATA_SERVICE = "warehousedataservice",
+			FLEXSECTOR_DATA_SERVICE = "flexsectordataservice";
 	
-	public final static int serviceNumber = 21;
+	public final static int serviceNumber = 23;
 	
 }
