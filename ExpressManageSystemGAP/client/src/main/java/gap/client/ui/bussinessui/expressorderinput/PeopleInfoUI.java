@@ -1,15 +1,24 @@
-package gap.client.ui.bussinessui;
+package gap.client.ui.bussinessui.expressorderinput;
 
+import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.GapTextControll;
+import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.common.util.PeopleInfo;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -24,7 +33,7 @@ public class PeopleInfoUI extends JPanel {
 	public PeopleInfoUI(String titleName) {
 
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(850, 150));
+		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 150));
 		// setSize(0,200);
 
 		// 初始化组件
@@ -38,6 +47,7 @@ public class PeopleInfoUI extends JPanel {
 		phone = new GAPLabel("电话");
 		phone.setFont(ComponentStyle.defaultFont);
 		phone_text = new GAPTextField(15);
+		phone_text.setDocument(GapTextControll.getNumberDocument(11));
 
 		address = new GAPLabel("住址");
 
@@ -91,6 +101,18 @@ public class PeopleInfoUI extends JPanel {
 				0);
 	}
 
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2d = RenderSetter.OpenRender(g);
+		g2d.setColor(ComponentStyle.light_gray);
+		int width = getWidth(), height = getHeight();
+		g2d.drawLine(10, height - 5, width - 20, height - 5);
+	}
+
+//	public PeopleInfo getPeopleInfo(){
+//		
+//		return new PeopleInfo(name_text.getText(), , depart, cellphone)
+//	}
 	// public static void main(String[] args) {
 	// JFrame jf = new JFrame();
 	// jf.setContentPane(new PeopleInfoUI("寄件人信息"));

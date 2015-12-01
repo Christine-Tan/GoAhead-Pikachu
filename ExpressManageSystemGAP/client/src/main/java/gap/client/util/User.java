@@ -1,57 +1,79 @@
 package gap.client.util;
 
+import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.userdata.UserDataController;
 import gap.client.vo.UserVO;
 import gap.common.po.UserPO;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
 
 public class User {
-	UserType userType;
-	String name, user_id, password;
-	Gender gender;
+	// 用户编号
+	private String userId;
+	// 用户类型
+	private UserType type;
+	// 用户名
+	private String userName;
+	// 密码
+	private String password;
+	// 所属机构的id
+	private String insId;
+	// 用户性别
+	private Gender gender;
+	// 用户姓名
+	private String name;
 
-	public User(UserPO user) {
-		userType = user.getType();
-		name = user.getName();
-		user_id = user.getIns_id();
-		gender = user.getGender();
-		password=user.getPassword();
+	public User() {
+
 	}
-
-	public User(UserType userType, String name, String user_id, String password, Gender gender) {
+    
+	public User(UserPO po){
+	    this.userId=po.getUserId();
+	    this.userName=po.getUserName();
+	    this.password=po.getPassword();
+	    this.type=po.getType();
+	    this.insId=po.getIns_id();
+	    this.name=po.getName();
+	    this.gender=po.getGender();
+	}
+	
+	public User(String userId, UserType type, String userName, String password, String insId, String name,
+			Gender gender) {
 		super();
-		this.userType = userType;
+		this.userId = userId;
+		this.type = type;
+		this.userName = userName;
+		this.insId = insId;
+		this.password = password;
 		this.name = name;
-		this.user_id = user_id;
-		this.password=password;
 		this.gender = gender;
 	}
- 
-//	public UserVO toUserVO(){
-//		return new UserVO(user_id,userType,name,password);
-//	}
-	public UserType getUserType() {
-		return userType;
+	
+	public UserVO toUserVO(String insname){
+		return new UserVO(userId,userName,password,name,type,gender,insname);
+	}
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUserType(UserType userType) {
-		this.userType = userType;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	public String getName() {
-		return name;
+	public UserType getType() {
+		return type;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setType(UserType type) {
+		this.type = type;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -62,12 +84,28 @@ public class User {
 		this.password = password;
 	}
 
+	public String getInsId() {
+		return insId;
+	}
+
+	public void setInsId(String insid) {
+		this.insId = insid;
+	}
+
 	public Gender getGender() {
 		return gender;
 	}
 
 	public void setGender(Gender gender) {
 		this.gender = gender;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

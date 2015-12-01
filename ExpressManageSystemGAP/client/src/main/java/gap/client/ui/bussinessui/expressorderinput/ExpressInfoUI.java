@@ -1,10 +1,15 @@
-package gap.client.ui.bussinessui;
+package gap.client.ui.bussinessui.expressorderinput;
 
+import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPLabel;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -13,6 +18,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.SoftBevelBorder;
 
 public class ExpressInfoUI extends JPanel {
@@ -21,7 +27,7 @@ public class ExpressInfoUI extends JPanel {
 
 	public ExpressInfoUI() {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(850, 100));
+		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 100));
 
 		// 初始化组件
 		title = new GAPLabel("快件信息：");

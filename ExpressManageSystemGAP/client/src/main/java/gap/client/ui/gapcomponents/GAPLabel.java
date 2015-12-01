@@ -1,4 +1,4 @@
-package gap.client.ui.bussinessui;
+package gap.client.ui.gapcomponents;
 
 import javax.swing.JLabel;
 

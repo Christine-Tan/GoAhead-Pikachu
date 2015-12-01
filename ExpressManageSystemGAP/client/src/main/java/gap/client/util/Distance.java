@@ -1,14 +1,14 @@
 package gap.client.util;
 
 public class Distance {
-	private static final double EARTH_RADIUS = 6378137;
+	private static final double EARTH_RADIUS = 6378.137;
 
 	private double rad(double d) {
 		return d * Math.PI / 180.0;
 	}
 
 	/**
-	 * 根据粮店街经纬度坐标值，计算两点间距离，单位为米
+	 * 根据两点间经纬度坐标值，计算两点间距离，单位为米
 	 * 
 	 * @param latitude1
 	 * @param longitude1

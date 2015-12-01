@@ -13,6 +13,13 @@ public abstract class AbstractOperation implements Operation {
 	String operation;
 	Method method;
 
+	/**
+	 * 抽象操作的构造函数
+	 * 
+	 * @param classinstance 一个对象的实例，需要其来执行之后的方法
+	 * @param operation  具体的方法
+	 * @param args  方法需要的参数
+	 */
 	public AbstractOperation(Object classinstance, String operation, Object args) {
 		classname = classinstance.getClass();
 		this.classinstance = classinstance;

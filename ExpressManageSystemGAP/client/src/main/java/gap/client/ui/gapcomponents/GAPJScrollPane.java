@@ -1,4 +1,4 @@
-package gap.client.ui.bussinessui;
+package gap.client.ui.gapcomponents;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -18,8 +18,8 @@ public class GAPJScrollPane extends JScrollPane {
 	}
 
 	private void intial() {
-		getVerticalScrollBar().setUI(new GAPScrollBarUI());
-		getHorizontalScrollBar().setUI(new GAPScrollBarUI());
+//		getVerticalScrollBar().setUI(new GAPScrollBarUI());
+//		getHorizontalScrollBar().setUI(new GAPScrollBarUI());
 		getVerticalScrollBar().setPreferredSize(new Dimension(12, 0));
 		getHorizontalScrollBar().setPreferredSize(new Dimension(0, 12));
 		setBorder(ComponentStyle.text_border);
