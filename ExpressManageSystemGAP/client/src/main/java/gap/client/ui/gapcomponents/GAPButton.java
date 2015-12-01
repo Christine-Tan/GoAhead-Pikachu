@@ -49,14 +49,13 @@ public class GAPButton extends JButton {
 			public void mouseExited(MouseEvent e) {
 				// TODO 自动生成的方法存根
 				setForeground(ColorAndFonts.blue);
-				setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
 				setForeground(ColorAndFonts.blue.darker());
-
+				setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 
 			@Override

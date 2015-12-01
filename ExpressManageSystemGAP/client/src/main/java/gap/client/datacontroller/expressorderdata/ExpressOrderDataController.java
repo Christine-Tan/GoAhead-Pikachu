@@ -119,9 +119,9 @@ public class ExpressOrderDataController {
 		return null;
 	}
 
-	public ResultMessage setReceived(String order_id, ReceiveInfo info) {
+	public ResultMessage setReceived(ReceiveInfo info) {
 		try {
-			return expressOrderData.setRecieved(order_id, info);
+			return expressOrderData.setRecieved(info);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

@@ -136,6 +136,17 @@ public class ExpressOrderDataServiceImplTest {
 	}
 
 	@Test
+	public void testDelivery() {
+		try {
+			expressorderdataservice
+					.setDelivery("0000000001", "000000005", null);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+	}
+
+	@Test
 	public void testGetArrivingOrders() {
 		try {
 			List<ExpressOrderPO> order = expressorderdataservice

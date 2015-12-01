@@ -33,17 +33,21 @@ public class TitlePanel extends JPanel {
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets=new Insets(20, 20, 0, 60);
+		gcons.anchor=GridBagConstraints.EAST;
+		gcons.insets = new Insets(20, 22, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(20, 55, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(20, 85, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, receiver, 2, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, receiver, 3, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, receive_day, 4, 0, 1, 1, 0,
+		gcons.insets = new Insets(20, 78, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, receive_day, 3, 0, 1, 1, 0,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, comment, 5, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(20, 200, 0, 200);
+		SwingConsole.addComponent(gb, gcons, this, comment, 4, 0, 1, 1, 0, 0);
 
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);
