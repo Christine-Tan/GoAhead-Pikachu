@@ -51,7 +51,6 @@ public class NetInitial {
 		citydataservice = CityDataServiceImpl.getInstance();
 		institutiondataservice = InstitutionDataServiceImpl.getInstance();
 		billorderdataservice = BillOrderDataServiceImpl.getInstance();
-		
 		serviceMap = new HashMap<>(ServiceName.serviceNumber+10);
 		
 		serviceMap.put(ServiceName.ACCOUNT_DATA_SERVICE, accountDataService);
@@ -69,7 +68,6 @@ public class NetInitial {
 		serviceMap.put(ServiceName.SALARY_DATA_SERVICE,salarydataservice);
 		serviceMap.put(ServiceName.CITY_DATA_SERVICE,citydataservice);
 		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,institutiondataservice);
-
 		
 	}
 
