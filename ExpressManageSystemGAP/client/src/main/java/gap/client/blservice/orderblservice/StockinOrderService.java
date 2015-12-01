@@ -14,7 +14,7 @@ public interface StockinOrderService {
 
 	public ResultMessage save(StockinOrderVO order);
 
-	public StockinOrderPO find(String id,String ins_id);
+	public StockinOrderVO find(String id,String ins_id);
 	
 	public String getLocation(GoodsVO vo);
 

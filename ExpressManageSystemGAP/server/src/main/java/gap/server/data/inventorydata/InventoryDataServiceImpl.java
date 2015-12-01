@@ -3,7 +3,6 @@ package gap.server.data.inventorydata;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
-import gap.common.util.SectorType;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
@@ -21,26 +20,37 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	// 表名
 	private String sectorTable = "sector";
 	// 字段
-	private String sector_id_f = "sector_id", ins_id_f = "ins_id",
-			alarmValue_f = "alarmValue";
+	private String ins_id_f = "ins_id",alarmValue_f = "alarmValue";
 	// 表名
 	private String sectorItemTable = "sector_item";
 	// 字段
 	private String location_f = "location", sectorId_f = "sector_id",
 			expressorder_id_f = "expressorder_id", time_f = "time",
 			belong_sec_f = "belong_sec", destination_f = "destination";
+	//表名
+	private String sector_flexTable = "sector_flex";
+	//字段
+	private String flex_sector_id_f = "sector_id",beginshelf_f = "beginshelf",
+			endshelf_f = "endshelf",belong_sec_id_f = "belong_sec_id";
 
-	private InsertSQL sectorInsert, sectorItemInsert;
+	private InsertSQL sectorItemInsert;
 	private UpdateSQL sectorUpdate, sectorItemUpdate;
+	public static InventoryDataService instance;
 
 	public InventoryDataServiceImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
-		sectorInsert = new InsertSQL(sectorTable);
+		
 		sectorUpdate = new UpdateSQL(sectorTable);
 		sectorItemInsert = new InsertSQL(sectorItemTable);
 		sectorItemUpdate = new UpdateSQL(sectorItemTable);
 
+	}
+	
+	public static InventoryDataService getInstance() throws RemoteException {
+		if (instance == null)
+			instance = new InventoryDataServiceImpl();
+		return instance;
 	}
 
 	@Override
@@ -298,6 +308,20 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return 0;
+	}
+
+	@Override
+	public int getFlexNum(String ins_id) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+			try {
+				ResultSet re = NetModule.excutor.excuteQuery("");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		return 0;
 	}
 

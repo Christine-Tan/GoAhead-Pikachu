@@ -33,9 +33,9 @@ public class StockinOrder implements StockinOrderService {
 	}
 
 	@Override
-	public StockinOrderPO find(String id,String ins_id) {
+	public StockinOrderVO find(String id,String ins_id) {
 		// TODO Auto-generated method stub
-		return stockinData.find(id, ins_id);
+		return new StockinOrderVO(stockinData.find(id, ins_id));
 	}
 
 	@Override

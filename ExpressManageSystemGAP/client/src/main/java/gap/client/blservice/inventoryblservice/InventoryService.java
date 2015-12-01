@@ -49,11 +49,11 @@ public interface InventoryService {
 	 * @param location
 	 * @return
 	 */
-	public ResultMessage initialadd (GoodsVO expressorder);
+	public void initialadd (GoodsVO vo);
 	
-	public ResultMessage initialdelete(String expressorder_id);
+	public void initialdelete(String id);
 	
-	public ResultMessage initialmodify (GoodsVO expressorder);
+	public void initialmodify (GoodsVO vo);
 	
 	/**
 	 * 获得到达的快递
