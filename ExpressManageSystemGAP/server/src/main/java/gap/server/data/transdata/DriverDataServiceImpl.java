@@ -37,7 +37,8 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 					.excuteQuery("SELECT * FROM driver WHERE institution='"
 							+ localins_id + "';");
 			while (re.next()) {
-				String name = re.getString("name"), ins_id = re
+				String order_id = re.getString("id"), name = re
+						.getString("name"), ins_id = re
 						.getString("institution"), birth = re
 						.getString("birth"), driving_licence_due = re
 						.getString("driving_license_due"), phone = re
@@ -45,7 +46,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 						.getString("identity_num");
 				Gender gender = Gender.valueOf(re.getString("gender")
 						.toUpperCase());
-				DriverPO po = new DriverPO(ins_id, ins_id, name, birth,
+				DriverPO po = new DriverPO(order_id, ins_id, name, birth,
 						identity_number, phone, driving_licence_due, gender);
 				drivers.add(po);
 			}

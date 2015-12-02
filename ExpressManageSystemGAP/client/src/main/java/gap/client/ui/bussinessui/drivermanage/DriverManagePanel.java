@@ -1,5 +1,6 @@
 package gap.client.ui.bussinessui.drivermanage;
 
+import gap.client.blcontroller.DriverManageController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
@@ -7,6 +8,8 @@ import gap.client.ui.gapcomponents.GAPJScrollPane;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,8 +25,17 @@ public class DriverManagePanel extends MainPanel {
 		super(frame);
 		queryPanel = new QueryPanel();
 		titlePanel = new TitlePanel();
-		listItem = new ListItemPanel();
+		listItem = new ListItemPanel(frame);
 		buttonArea = new ButtonArea();
+
+		buttonArea.submit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				DriverManageController.flush();
+			}
+		});
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
