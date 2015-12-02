@@ -2,7 +2,7 @@ package gap.client.datacontroller.expressorderdata;
 
 import static org.junit.Assert.*;
 
-import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.ControllerFactory;
 import gap.common.po.PricePO;
 
 import org.junit.Before;

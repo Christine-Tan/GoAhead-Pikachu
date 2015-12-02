@@ -1,7 +1,7 @@
 package gap.client.bl.order;
 
 import gap.client.blservice.orderblservice.BillOrderService;
-import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.orderdata.BillOrderDateController;
 import gap.common.po.BillOrderPO;
 import gap.common.po.BillPO;

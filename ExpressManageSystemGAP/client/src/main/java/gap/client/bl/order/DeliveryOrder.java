@@ -3,7 +3,7 @@ package gap.client.bl.order;
 import java.util.List;
 
 import gap.client.blservice.orderblservice.DeliveryOrderService;
-import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.orderdata.DeliveryOrderDataController;
 import gap.client.vo.DeliveryOrderVO;
 import gap.client.vo.ExpressOrderVO;

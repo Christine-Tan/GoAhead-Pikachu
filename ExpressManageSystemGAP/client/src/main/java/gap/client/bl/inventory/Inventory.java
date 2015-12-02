@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gap.client.blservice.inventoryblservice.InventoryService;
-import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.datacontroller.inventorydata.InventoryDataController;
 import gap.client.datacontroller.orderdata.ArrivedOrderDataController;

@@ -7,7 +7,7 @@ import java.util.List;
 import gap.client.bl.strategy.CityManage;
 import gap.client.blservice.expressorderblservice.ExpressOrderService;
 import gap.client.blservice.expressorderblservice.PriceCal;
-import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.exception.InvalidInputException;
 import gap.client.vo.ExpressOrderVO;

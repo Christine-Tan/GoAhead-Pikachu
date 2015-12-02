@@ -1,5 +1,6 @@
-package gap.client.datacontroller.controllerfactory;
+package gap.client.datacontroller;
 
+import gap.client.bl.receipt.ReceiptController;
 import gap.client.datacontroller.AccountDate.AccountDateController;
 import gap.client.datacontroller.approvaldata.ApprovalDataController;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
@@ -40,15 +41,22 @@ public class ControllerFactory {
 	private static SalaryDataController salaryDataController;
 	private static UserDataController userDataController;
 	private static ApprovalDataController approvalDataController;
-
 	private static WareHouseDataController wareHouseDataController;
 	private static FlexSectorDataController flexSectorDataController;
+	private static ReceiptDataController receiptDataController;
 
 	public static AccountDateController getAccountDataController() {
 		if (accountDateController == null) {
 			accountDateController = new AccountDateController();
 		}
 		return accountDateController;
+	}
+	
+	public static ReceiptDataController getReceiptDataController(){
+		if(receiptDataController==null){
+			receiptDataController = new ReceiptDataController();
+		}
+		return receiptDataController;
 	}
 
 	public static LoginDataController getLoginDataController() {

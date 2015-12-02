@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gap.client.blservice.manageblservice.InstitutionService;
-import gap.client.datacontroller.controllerfactory.ControllerFactory;
+import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.managedata.InstitutionDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;

@@ -6,7 +6,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
-public interface TransFareData extends Remote {
+public interface TransFareDataService extends Remote {
 
 	public List<TransFarePO> getTransFare() throws RemoteException;
 
