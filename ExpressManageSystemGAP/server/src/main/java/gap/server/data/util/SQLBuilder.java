@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import gap.server.data.receiptdata.PaymentListTable;
 import gap.server.databaseutility.Excutor;
 
 /**
@@ -23,7 +24,8 @@ import gap.server.databaseutility.Excutor;
  *	如<br/>
  *	(Balance = 100,name = '账户1')<p/>
  *
- *	excute和excuteQuery执行完了之后会自动清空builder
+ *	excute和excuteQuery执行完了之后会自动清空builder<p/>
+ *	想把日期格式变成datetime，就调用setType方法。
  * @author 申彬
  *
  */
@@ -39,14 +41,14 @@ public class SQLBuilder {
 //		sqlBuilder.InsertInto("account", "(balance,name,income)").Values("(15,100,'test')");
 //		System.out.println(sqlBuilder.getSQL());
 //		
-//		sqlBuilder.clear();
-//		sqlBuilder.InsertInto("account","balance","income","Name").Values(15,100,"test");
-//		System.out.println(sqlBuilder.getSQL());
+		sqlBuilder.clear();
+		sqlBuilder.InsertInto("account","balance","income","Name").Values(15,100,"test");
+		System.out.println(sqlBuilder.getSQL());
 //		
-//		sqlBuilder.clear();
-//		sqlBuilder.Update("account").Set("Name").Assign("账户1").Comma("balance").Assign(12321.5)
-//				.Where("Income").EQUALS(12345);
-//		System.out.println(sqlBuilder.getSQL());
+		sqlBuilder.clear();
+		sqlBuilder.Update("account").Set("Name").Assign("账户1").Comma("balance").Assign(12321.5)
+				.Where("Income").EQUALS(12345);
+		System.out.println(sqlBuilder.getSQL());
 //		
 //		sqlBuilder.clear();
 //		sqlBuilder.Update("account").Set("Name = '账户1'").Comma("balance = 12233")
@@ -54,7 +56,7 @@ public class SQLBuilder {
 //		System.out.println(sqlBuilder.toString());
 //		
 //		
-//		sqlBuilder.clear();
+		sqlBuilder.clear();
 //		sqlBuilder.DeleteFrom("account").Where("Name").EQUALS("账户1");
 //		System.out.println(sqlBuilder.getSQL());
 		sqlBuilder.handleString("2015-11-01");
@@ -70,6 +72,22 @@ public class SQLBuilder {
 		.Where("ins_id").EQUALS("00110").AND("time").Between(calendar).AND(calendar);
 		
 		System.out.println(sqlBuilder.toString());
+		sqlBuilder.clear();
+		
+		sqlBuilder.InsertInto(PaymentListTable.tableName, 
+				PaymentListTable.paymentListID_col,
+				PaymentListTable.total_col,
+				PaymentListTable.payer_col,
+				PaymentListTable.date_col,
+				PaymentListTable.passed_col).Values(
+						"11111",
+						50.3,
+						"小春",
+						Calendar.getInstance(),
+						0);
+		System.out.println(sqlBuilder.toString());
+		
+		
 	}
 
 	private Excutor excutor;
@@ -77,6 +95,9 @@ public class SQLBuilder {
 	
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+	private DateType dateType = DateType.date;
+	
+	
 
 	public SQLBuilder(){
 		excutor = Excutor.getInstance();
@@ -87,24 +108,30 @@ public class SQLBuilder {
 		date,datetime
 	}
 	
+	public void setType(DateType type){
+		this.dateType = type;
+	}
+	
 	public boolean equals() {
 		System.out.println("想输入等号，请不要调用equals，请调用EQUALS");	
 		return false;
 	}
 	
 	public boolean excute(){
-		boolean result = false;
+		
 		String sql = builder.toString();
 		clear();
 		try {
-			result = excutor.excute(sql);
+			excutor.excute(sql);
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("SQL语句有问题");
 			e.printStackTrace();
+			return false;
 		}
 
-		return result;
+		
 	}
 	
 	public ResultSet excuteQuery(){
@@ -130,13 +157,15 @@ public class SQLBuilder {
 		builder.append("Insert into ");
 		builder.append(table);
 		builder.append(" ");
-		
+		leftBra();
 		makeList(column,true);
 		return this;
 	}
 	
 	public SQLBuilder Values(Object ... values) {
-		builder.append("Values ");
+		deleteSpace();
+		rightBra();
+		builder.append(" Values ");
 		if(values.length==0){
 			System.out.println("值列表为空");
 		}
@@ -185,6 +214,10 @@ public class SQLBuilder {
 		return this;
 	}
 	
+	public SQLBuilder Assign(Enum e){
+		return Assign(e.toString());
+	}
+	
 	/**
 	 * 用于在update中加","的语句，传入参数是列名
 	 * @param column
@@ -225,7 +258,15 @@ public class SQLBuilder {
 				if(!isColumnName && (objects[i] instanceof String) && !hasBra){
 					String value = objects[i].toString();
 					handleString(value);
-				}else{
+				}
+				else if(objects[i] instanceof Calendar){
+					String time = convertDate((Calendar)objects[i], dateType);
+					handleString(time);
+				}
+				else if(objects[i] instanceof Enum){
+					handleEnum((Enum)objects[i]);
+				}
+				else{
 					builder.append(objects[i].toString());
 				}
 			}
@@ -235,6 +276,10 @@ public class SQLBuilder {
 			}
 			builder.append(" ");
 		}
+	}
+	
+	private void handleEnum(Enum e){
+		handleString(e.toString());
 	}
 	
 	public SQLBuilder Select(String ... column){
@@ -324,6 +369,11 @@ public class SQLBuilder {
 	public SQLBuilder EQUALS(Calendar calendar,DateType type){
 		String time = convertDate(calendar, type);
 		EQUALS(time);
+		return this;
+	}
+	
+	public SQLBuilder EQUALS(Enum e){
+		EQUALS(e.toString());
 		return this;
 	}
 	
