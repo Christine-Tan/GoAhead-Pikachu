@@ -1,33 +1,37 @@
 package gap.client.vo;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import gap.common.po.PayeePO;
+import gap.common.util.PaymentType;
 import gap.common.util.UserType;
 
 public class PayeeVO {
 
-	private UserType type;
+	private PaymentType type;
 	private String userID;
 	private String userName;
-	private Date lastPaydate;
+	private Calendar lastPaydate;
 	private int expressOrderNum = 0;
+	private double money = 0;
+	private String accountName;
+	private String note;
 
-	public PayeeVO(UserType type, String userID, String userName,
-			Date lastPaydate) {
-		this(type, userID, userName, lastPaydate, 0);
 
-	}
-
-	public PayeeVO(UserType type, String userID, String userName,
-			Date lastPaydate, int expressOrderNum) {
+	public PayeeVO(PaymentType type, String userID, String userName,
+			Calendar lastPaydate, int expressOrderNum, 
+			double money,String accountName,String note) {
 		this.type = type;
 		this.userID = userID;
-		this.lastPaydate = lastPaydate;
 		this.userName = userName;
+		this.lastPaydate = lastPaydate;
 		this.expressOrderNum = expressOrderNum;
+		this.money = money;
+		this.accountName = accountName;
+		this.setNote(note);
 
-		if (type != UserType.DELIVERY) {
+		if (type != PaymentType.DELIVERY) {
 			expressOrderNum = 0;
 		}
 
@@ -42,10 +46,13 @@ public class PayeeVO {
 	}
 
 	public PayeePO toPO(){
-		PayeePO po = new PayeePO(type, userID, userName, lastPaydate,expressOrderNum);
+		PayeePO po = new PayeePO(type, userID, userName, lastPaydate, 
+				expressOrderNum, money, accountName);
+		po.setNote(note);
+		
 		return po;
 	}
-	public UserType getType() {
+	public PaymentType getType() {
 		return type;
 	}
 
@@ -63,7 +70,7 @@ public class PayeeVO {
 
 
 
-	public Date getLastPaydate() {
+	public Calendar getLastPaydate() {
 		return lastPaydate;
 	}
 
@@ -71,6 +78,14 @@ public class PayeeVO {
 
 	public int getExpressOrderNum() {
 		return expressOrderNum;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	

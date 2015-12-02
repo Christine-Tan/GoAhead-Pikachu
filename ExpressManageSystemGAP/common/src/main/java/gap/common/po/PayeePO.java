@@ -1,42 +1,46 @@
 package gap.common.po;
 
-import gap.common.util.UserType;
 
-import java.util.Date;
+
+import java.util.Calendar;
+
+
+import gap.common.util.PaymentType;
 
 public class PayeePO {
 
-	private UserType type;
+	private PaymentType type;
 	private String userID;
 	private String userName;
-	private Date lastPaydate;
+	private Calendar lastPaydate;
 	private int expressOrderNum = 0;
+	private double money = 0;
+	private String AccountName;
+	private String note;
 
-	public PayeePO(UserType type, String userID, String userName,
-			Date lastPaydate) {
-		this(type, userID, userName, lastPaydate, 0);
-
-	}
-
-	public PayeePO(UserType type, String userID, String userName,
-			Date lastPaydate, int expressOrderNum) {
+	
+	public PayeePO(PaymentType type, String userID, String userName,
+			Calendar lastPaydate, int expressOrderNum, 
+			double money,String accountName) {
 		this.setType(type);
 		this.setUserID(userID);
 		this.setUserName(userName);
 		this.setLastPaydate(lastPaydate);
 		this.setExpressOrderNum(expressOrderNum);
+		setMoney(money);
+		setAccountName(accountName);
 
-		if (type != UserType.DELIVERY) {
+		if (type != PaymentType.DELIVERY) {
 			expressOrderNum = 0;
 		}
 
 	}
 
-	public UserType getType() {
+	public PaymentType getType() {
 		return type;
 	}
 
-	public void setType(UserType type) {
+	public void setType(PaymentType type) {
 		this.type = type;
 	}
 
@@ -56,11 +60,11 @@ public class PayeePO {
 		this.userID = userID;
 	}
 
-	public Date getLastPaydate() {
+	public Calendar getLastPaydate() {
 		return lastPaydate;
 	}
 
-	public void setLastPaydate(Date lastPaydate) {
+	public void setLastPaydate(Calendar lastPaydate) {
 		this.lastPaydate = lastPaydate;
 	}
 
@@ -70,6 +74,30 @@ public class PayeePO {
 
 	public void setExpressOrderNum(int expressOrderNum) {
 		this.expressOrderNum = expressOrderNum;
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
+	public String getAccountName() {
+		return AccountName;
+	}
+
+	public void setAccountName(String accountName) {
+		AccountName = accountName;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 }
