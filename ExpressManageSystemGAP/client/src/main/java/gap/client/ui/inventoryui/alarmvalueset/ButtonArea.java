@@ -1,6 +1,6 @@
 package gap.client.ui.inventoryui.alarmvalueset;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -22,7 +22,11 @@ public class ButtonArea extends JPanel{
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
+<<<<<<< HEAD:ExpressManageSystemGAP/client/src/main/java/gap/client/ui/inventoryui/alarmvalueset/ButtonArea.java
 		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 60));
+=======
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
+>>>>>>> origin/master:ExpressManageSystemGAP/client/src/main/java/gap/client/ui/inventoryui/ButtonArea.java
 
 		confirm = new GAPButton("确认");
 

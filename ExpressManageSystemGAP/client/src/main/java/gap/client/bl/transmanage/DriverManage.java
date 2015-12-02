@@ -71,6 +71,7 @@ public class DriverManage implements DriverService {
 				return re;
 			}
 		}
+		System.out.println("sucess");
 		operations.clear();
 		return ResultMessage.SUCCEED;
 	}

@@ -1,6 +1,6 @@
 package gap.client.ui.bussinessui.drivermanage;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -21,7 +21,7 @@ public class TitlePanel extends JPanel {
 	JLabel car_id, name, gender, id_card;
 
 	public TitlePanel() {
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 50));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 		setBackground(Color.white);
 		car_id = new GAPLabel("司机编号");
 		name = new GAPLabel("姓名");

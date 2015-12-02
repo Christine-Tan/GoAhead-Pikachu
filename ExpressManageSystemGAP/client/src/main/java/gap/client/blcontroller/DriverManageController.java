@@ -1,11 +1,13 @@
 package gap.client.blcontroller;
 
+import java.math.BigInteger;
 import java.rmi.RemoteException;
 import java.util.List;
 
 import gap.client.bl.transmanage.DriverManage;
 import gap.client.blservice.transmanageblservice.DriverService;
 import gap.client.util.Driver;
+import gap.client.util.LocalInfo;
 import gap.client.vo.DriverVO;
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.po.CarPO;
@@ -19,14 +21,30 @@ public class DriverManageController {
 		return driverManage.getAll();
 	}
 
+	public static String nextId() throws Exception {
+		List<DriverVO> drivers = driverManage.getAll();
+		if (drivers.size() == 0)
+			return LocalInfo.ins_id + "001";
+		int num = Integer.valueOf(drivers.get(drivers.size() - 1).getId()
+				.substring(7));
+		num++;
+		if (num >= 1000)
+			throw new Exception();
+		String last = String.valueOf(num);
+		int length = last.length();
+		while (length++ < 3)
+			last = "0" + last;
+		return LocalInfo.ins_id + last;
+	}
+
 	public static DriverVO getSingle(String id) {
 		// TODO 自动生成的方法存根
 		return driverManage.getSingle(id);
 	}
 
-	public static void modify(Driver vo) {
+	public static void modify(DriverVO vo) {
 		// TODO 自动生成的方法存根
-		driverManage.modify(vo);
+		driverManage.modify(new Driver(vo));
 	}
 
 	public static void delete(String id) {
@@ -34,9 +52,9 @@ public class DriverManageController {
 		driverManage.delete(id);
 	}
 
-	public static void add(Driver vo) {
+	public static void add(DriverVO vo) {
 		// TODO 自动生成的方法存根
-		driverManage.add(vo);
+		driverManage.add(new Driver(vo));
 	}
 
 	public static ResultMessage flush() {

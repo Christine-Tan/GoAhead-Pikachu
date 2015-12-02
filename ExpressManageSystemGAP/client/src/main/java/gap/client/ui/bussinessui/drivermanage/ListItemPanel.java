@@ -7,6 +7,7 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.util.LocalInfo;
 import gap.client.vo.DriverVO;
 import gap.common.util.Gender;
 
@@ -42,6 +43,14 @@ public class ListItemPanel extends JPanel {
 		// setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 500));
 
 		addButton = new GAPButton("+");
+		addButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				addNewItem();
+			}
+		});
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -62,6 +71,23 @@ public class ListItemPanel extends JPanel {
 
 	private void addItem(DriverVO driver) {
 		items.add(new ItemPanel(driver));
+		reLayout();
+		frame.validate();
+	}
+
+	private void addNewItem() {
+		ItemPanel item = new ItemPanel();
+		item.original = true;
+		item.openEdit();
+		item.showDetail();
+		try {
+			String id = DriverManageController.nextId();
+			item.id.setText(id);
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		items.add(item);
 		reLayout();
 		frame.validate();
 	}
@@ -92,10 +118,10 @@ public class ListItemPanel extends JPanel {
 		GridBagLayout gb;
 		GridBagConstraints gcons;
 		JPanel detailPanel;
+		boolean original;
+		boolean edited, showed;
 
-		public ItemPanel(DriverVO driver) {
-			this.driver = driver;
-			// this.setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 200));
+		public ItemPanel() {
 			setBackground(Color.white);
 			setFocusable(true);
 			gb = new GridBagLayout();
@@ -104,7 +130,6 @@ public class ListItemPanel extends JPanel {
 			detail_la = new GAPButton(">");
 			detail_la.setFont(ComponentStyle.defaultFont);
 			detail_la.addMouseListener(new MouseListener() {
-				boolean showed = false;
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
@@ -135,10 +160,8 @@ public class ListItemPanel extends JPanel {
 					// TODO 自动生成的方法存根
 					if (showed) {
 						closeDetail();
-						showed = false;
 					} else {
 						showDetail();
-						showed = true;
 					}
 				}
 			});
@@ -149,7 +172,16 @@ public class ListItemPanel extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO 自动生成的方法存根
-					openEdit();
+					if (!edited) {
+						openEdit();
+					} else {
+						closeEdit();
+						if (original) {
+							DriverManageController.add(driver);
+						} else {
+							DriverManageController.modify(driver);
+						}
+					}
 				}
 			});
 			delete_la = new GAPButton("x");
@@ -162,26 +194,21 @@ public class ListItemPanel extends JPanel {
 					removeItem(ItemPanel.this);
 				}
 			});
-			id = new GAPTextField(driver.getId(), 8);
-			name = new GAPTextField(driver.getName(), 4);
-			switch (driver.getGender()) {
-			case MALE:
-				gender = new GAPTextField("男", 2);
-				break;
-			case FEMALE:
-				gender = new GAPTextField("女", 2);
-				break;
-			}
-			id_card = new GAPTextField(driver.getIdentity_number(), 15);
+			id = new GAPTextField(8);
+			name = new GAPTextField(4);
+
+			gender = new GAPTextField(2);
+
+			id_card = new GAPTextField(15);
 
 			birth_la = new GAPLabel("生日：");
-			birth = new GAPTextField(driver.getBirth(), 7);
+			birth = new GAPTextField(7);
 
 			phone_la = new GAPLabel("手机：");
-			phone = new GAPTextField(driver.getPhone(), 8);
+			phone = new GAPTextField(8);
 
 			license_la = new GAPLabel("行驶证期限：");
-			driverLi_due = new GAPTextField(driver.getDriving_license_due(), 7);
+			driverLi_due = new GAPTextField(7);
 
 			detailPanel = new JPanel();
 			detailPanel.setBackground(Color.white);
@@ -231,6 +258,25 @@ public class ListItemPanel extends JPanel {
 			closeEdit();
 		}
 
+		public ItemPanel(DriverVO driver) {
+			this();
+			this.driver = driver;
+			birth.setText(driver.getBirth());
+			phone.setText(driver.getPhone());
+			id_card.setText(driver.getIdentity_number());
+			id.setText(driver.getId());
+			name.setText(driver.getName());
+			driverLi_due.setText(driver.getDriving_license_due());
+			switch (driver.getGender()) {
+			case MALE:
+				gender.setText("男");
+				break;
+			case FEMALE:
+				gender.setText("女");
+				break;
+			}
+		}
+
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			Graphics2D g2d = RenderSetter.OpenRender(g);
@@ -239,21 +285,38 @@ public class ListItemPanel extends JPanel {
 			g2d.drawLine(10, height - 5, width - 20, height - 5);
 		}
 
+		DriverVO getDriverVO() {
+			Gender gen = null;
+			switch (gender.getText()) {
+			case "男":
+				gen = Gender.MALE;
+				break;
+			case "女":
+				gen = Gender.FEMALE;
+				break;
+			}
+			return new DriverVO(id.getText(), LocalInfo.ins_id, name.getText(),
+					birth.getText(), id_card.getText(), phone.getText(),
+					driverLi_due.getText(), gen);
+		}
+
 		// 打开详细信息面板
 		void showDetail() {
 			detailPanel.setVisible(true);
 			detail_la.setText("v");
-
+			showed = true;
 		}
 
 		// 关闭详细信息面板
 		void closeDetail() {
 			detailPanel.setVisible(false);
 			detail_la.setText(">");
+			showed = false;
 		}
 
 		// 关闭编辑
 		void closeEdit() {
+
 			id.closeEdit();
 			name.closeEdit();
 			gender.closeEdit();
@@ -261,16 +324,24 @@ public class ListItemPanel extends JPanel {
 			birth.closeEdit();
 			phone.closeEdit();
 			driverLi_due.closeEdit();
+			edit_la.setText("E");
+			driver = getDriverVO();
+			edited = false;
+			original = false;
 		}
 
 		// 启用编辑
 		void openEdit() {
+
+			id.closeEdit();
 			name.openEdit();
 			gender.openEdit();
 			id_card.openEdit();
 			birth.openEdit();
 			phone.openEdit();
 			driverLi_due.openEdit();
+			edit_la.setText("√");
+			edited = true;
 		}
 	}
 }
