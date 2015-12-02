@@ -25,11 +25,16 @@ public class DriverManageController {
 		List<DriverVO> drivers = driverManage.getAll();
 		if (drivers.size() == 0)
 			return LocalInfo.ins_id + "001";
-		int num = Integer.valueOf(drivers.get(drivers.size() - 1).getId().substring(7));
+		int num = Integer.valueOf(drivers.get(drivers.size() - 1).getId()
+				.substring(7));
 		num++;
 		if (num >= 1000)
 			throw new Exception();
-		return LocalInfo.ins_id + String.valueOf(num);
+		String last = String.valueOf(num);
+		int length = last.length();
+		while (length++ < 3)
+			last = "0" + last;
+		return LocalInfo.ins_id + last;
 	}
 
 	public static DriverVO getSingle(String id) {
@@ -44,6 +49,7 @@ public class DriverManageController {
 
 	public static void delete(String id) {
 		// TODO 自动生成的方法存根
+		System.out.println(id);
 		driverManage.delete(id);
 	}
 

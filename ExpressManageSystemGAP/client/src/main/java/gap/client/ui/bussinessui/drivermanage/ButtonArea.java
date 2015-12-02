@@ -1,6 +1,6 @@
 package gap.client.ui.bussinessui.drivermanage;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -22,7 +22,7 @@ public class ButtonArea extends JPanel {
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 60));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 
 		submit = new GAPButton("提交修改");
 

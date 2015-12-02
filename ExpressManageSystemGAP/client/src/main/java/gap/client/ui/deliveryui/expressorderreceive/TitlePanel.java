@@ -1,6 +1,6 @@
 package gap.client.ui.deliveryui.expressorderreceive;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -22,7 +22,7 @@ public class TitlePanel extends JPanel {
 
 	public TitlePanel() {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 80));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
 
 		id = new GAPLabel("编号");
 		order_id = new GAPLabel("订单号");

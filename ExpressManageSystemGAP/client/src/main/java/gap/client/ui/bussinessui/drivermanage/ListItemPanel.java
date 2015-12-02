@@ -79,6 +79,7 @@ public class ListItemPanel extends JPanel {
 		ItemPanel item = new ItemPanel();
 		item.original = true;
 		item.openEdit();
+		item.showDetail();
 		try {
 			String id = DriverManageController.nextId();
 			item.id.setText(id);
@@ -118,6 +119,7 @@ public class ListItemPanel extends JPanel {
 		GridBagConstraints gcons;
 		JPanel detailPanel;
 		boolean original;
+		boolean edited, showed;
 
 		public ItemPanel() {
 			setBackground(Color.white);
@@ -128,7 +130,6 @@ public class ListItemPanel extends JPanel {
 			detail_la = new GAPButton(">");
 			detail_la.setFont(ComponentStyle.defaultFont);
 			detail_la.addMouseListener(new MouseListener() {
-				boolean showed = false;
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
@@ -159,31 +160,27 @@ public class ListItemPanel extends JPanel {
 					// TODO 自动生成的方法存根
 					if (showed) {
 						closeDetail();
-						showed = false;
 					} else {
 						showDetail();
-						showed = true;
 					}
 				}
 			});
 			edit_la = new GAPButton("E");
 			edit_la.setFont(ComponentStyle.defaultFont);
 			edit_la.addActionListener(new ActionListener() {
-				boolean edited;
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO 自动生成的方法存根
 					if (!edited) {
 						openEdit();
-						edited = true;
 					} else {
 						closeEdit();
-						if (original)
-							DriverManageController.add(getDriverVO());
-						else
-							DriverManageController.modify(getDriverVO());
-						edited = false;
+						if (original) {
+							DriverManageController.add(driver);
+						} else {
+							DriverManageController.modify(driver);
+						}
 					}
 				}
 			});
@@ -263,6 +260,7 @@ public class ListItemPanel extends JPanel {
 
 		public ItemPanel(DriverVO driver) {
 			this();
+			this.driver = driver;
 			birth.setText(driver.getBirth());
 			phone.setText(driver.getPhone());
 			id_card.setText(driver.getIdentity_number());
@@ -306,17 +304,19 @@ public class ListItemPanel extends JPanel {
 		void showDetail() {
 			detailPanel.setVisible(true);
 			detail_la.setText("v");
-
+			showed = true;
 		}
 
 		// 关闭详细信息面板
 		void closeDetail() {
 			detailPanel.setVisible(false);
 			detail_la.setText(">");
+			showed = false;
 		}
 
 		// 关闭编辑
 		void closeEdit() {
+
 			id.closeEdit();
 			name.closeEdit();
 			gender.closeEdit();
@@ -325,11 +325,14 @@ public class ListItemPanel extends JPanel {
 			phone.closeEdit();
 			driverLi_due.closeEdit();
 			edit_la.setText("E");
-
+			driver = getDriverVO();
+			edited = false;
+			original = false;
 		}
 
 		// 启用编辑
 		void openEdit() {
+
 			id.closeEdit();
 			name.openEdit();
 			gender.openEdit();
@@ -338,6 +341,7 @@ public class ListItemPanel extends JPanel {
 			phone.openEdit();
 			driverLi_due.openEdit();
 			edit_la.setText("√");
+			edited = true;
 		}
 	}
 }
