@@ -19,7 +19,7 @@ import javax.swing.plaf.metal.MetalScrollBarUI;
 import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.BaseListener.ResizeListener;
 import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPScrollBarUI;
 
@@ -60,7 +60,7 @@ public class MainFrame extends JFrame {
 			e.printStackTrace();
 		}
 
-		setSize(Defaut.WIDTH, Defaut.HEIGHT);
+		setSize(Default.WIDTH, Default.HEIGHT);
 		setUndecorated(true);
 
 		JPanel contentPanel = (JPanel) this.getContentPane();
@@ -73,8 +73,8 @@ public class MainFrame extends JFrame {
 		grid = new GridBagLayout();
 		gcons = new GridBagConstraints();
 
-		gcons.ipadx = Defaut.NAV_WIDTH;
-		gcons.ipady = Defaut.TITLE_HEIGHT;
+		gcons.ipadx = Default.NAV_WIDTH;
+		gcons.ipady = Default.TITLE_HEIGHT;
 		gcons.fill = GridBagConstraints.BOTH;
 		contentPanel.setLayout(grid);
 
