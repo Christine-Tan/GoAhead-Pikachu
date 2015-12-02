@@ -1,6 +1,6 @@
 package gap.client.ui.inventoryui.alarmvalueset;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPTextField;
@@ -17,7 +17,7 @@ public class AlarmValueUI extends JPanel{
 	
 	public AlarmValueUI(){
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH,80));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH,80));
 		
 		alarmValue = new JTextField(10);
 		alarmValue.setBorder(ComponentStyle.text_border);

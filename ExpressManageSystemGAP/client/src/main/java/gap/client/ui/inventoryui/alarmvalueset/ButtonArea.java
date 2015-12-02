@@ -22,11 +22,9 @@ public class ButtonArea extends JPanel{
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
-<<<<<<< HEAD:ExpressManageSystemGAP/client/src/main/java/gap/client/ui/inventoryui/alarmvalueset/ButtonArea.java
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 60));
-=======
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
->>>>>>> origin/master:ExpressManageSystemGAP/client/src/main/java/gap/client/ui/inventoryui/ButtonArea.java
+
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
+
 
 		confirm = new GAPButton("确认");
 

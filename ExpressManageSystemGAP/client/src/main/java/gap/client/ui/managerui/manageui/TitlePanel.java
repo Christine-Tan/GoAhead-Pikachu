@@ -11,7 +11,7 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -21,7 +21,7 @@ public class TitlePanel extends JPanel{
    JLabel ins_id,ins_type,ins_name,ins_city,ins_member;
    
    public TitlePanel(){
-	   setPreferredSize(new Dimension(Defaut.PANEL_WIDTH,80));
+	   setPreferredSize(new Dimension(Default.PANEL_WIDTH,80));
 	   setBackground(Color.WHITE);
 	   ins_id=new GAPLabel("机构编号");
 	   ins_type=new GAPLabel("机构类型");

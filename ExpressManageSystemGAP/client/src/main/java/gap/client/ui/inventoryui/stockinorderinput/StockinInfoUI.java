@@ -1,6 +1,6 @@
 package gap.client.ui.inventoryui.stockinorderinput;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -29,7 +29,7 @@ public class StockinInfoUI extends JPanel{
 	
 	public StockinInfoUI (){
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 70));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 70));
 		
 		title = new GAPLabel("入库单信息：");
 		title.setFont(ComponentStyle.defaultFont);

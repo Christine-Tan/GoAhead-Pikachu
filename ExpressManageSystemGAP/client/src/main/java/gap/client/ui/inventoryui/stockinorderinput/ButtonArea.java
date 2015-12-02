@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import gap.client.ui.UITools.Defaut;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -20,7 +20,7 @@ public class ButtonArea extends JPanel{
 	
 	public ButtonArea(){
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH,60));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH,60));
 		
 		confirm = new GAPButton("确认入库");
 		
