@@ -1,4 +1,4 @@
-package gap.client.ui.deliveryui.expressorderinput;
+package gap.client.ui.bussinessui.drivermanage;
 
 import gap.client.ui.UITools.Defaut;
 import gap.client.ui.UITools.RenderSetter;
@@ -15,7 +15,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ButtonArea extends JPanel {
@@ -25,16 +24,16 @@ public class ButtonArea extends JPanel {
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 60));
 
-		submit = new GAPButton("提交订单");
+		submit = new GAPButton("提交修改");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets=new Insets(10, 10, 10, 50);
+		gcons.insets = new Insets(10, 10, 10, 50);
 		gcons.anchor = GridBagConstraints.EAST;
 		SwingConsole.addComponent(gb, gcons, this, submit, 0, 0, 1, 1, 1, 0);
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);

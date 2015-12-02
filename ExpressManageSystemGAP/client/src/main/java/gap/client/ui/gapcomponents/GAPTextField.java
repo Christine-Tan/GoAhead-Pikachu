@@ -100,4 +100,10 @@ public class GAPTextField extends JTextField {
 		setFocusable(false);
 		setBorder(BorderFactory.createEmptyBorder());
 	}
+
+	public void openEdit() {
+		setEditable(true);
+		setFocusable(true);
+		setBorder(ComponentStyle.text_border);
+	}
 }

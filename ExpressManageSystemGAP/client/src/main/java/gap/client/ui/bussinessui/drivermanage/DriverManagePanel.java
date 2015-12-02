@@ -1,6 +1,10 @@
-package gap.client.ui.bussinessui;
+package gap.client.ui.bussinessui.drivermanage;
 
-import java.awt.Color;
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -8,39 +12,39 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.deliveryui.expressorderreceive.ExpressorderReceivePanel;
-import gap.client.ui.gapcomponents.GAPJScrollPane;
-
-public class CarManagePanel extends MainPanel {
+public class DriverManagePanel extends MainPanel {
 	QueryPanel queryPanel;
 	TitlePanel titlePanel;
+	ListItemPanel listItem;
+	ButtonArea buttonArea;
 
-	public CarManagePanel(MainFrame frame) {
+	public DriverManagePanel(MainFrame frame) {
 		super(frame);
 		queryPanel = new QueryPanel();
 		titlePanel = new TitlePanel();
+		listItem = new ListItemPanel();
+		buttonArea = new ButtonArea();
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
 		JPanel jp = new JPanel();
-//		jp.setBackground(Color.red);
-		 jp.setOpaque(false);
+		// jp.setBackground(Color.red);
+		jp.setOpaque(false);
 		SwingConsole
 				.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
 		SwingConsole
 				.addComponent(gb, gcons, this, titlePanel, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, jp, 0, 2, 1, 1, 1, 1);
-		// TODO 自动生成的构造函数存根
+		SwingConsole.addComponent(gb, gcons, this, listItem, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
+		SwingConsole
+				.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 	}
 
 	public static void main(String[] args) {
 		JFrame jf = new JFrame();
-		CarManagePanel pa = new CarManagePanel(null);
+		DriverManagePanel pa = new DriverManagePanel(null);
 		JScrollPane js = new GAPJScrollPane(pa);
 
 		jf.setContentPane(js);
