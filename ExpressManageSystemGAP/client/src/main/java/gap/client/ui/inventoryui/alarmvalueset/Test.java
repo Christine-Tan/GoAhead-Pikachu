@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui;
+package gap.client.ui.inventoryui.alarmvalueset;
 
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.UserBox.Sex;
