@@ -23,9 +23,7 @@ public class ServiceName {
 			INITIAL_DATA_SERVICE = "initial_data_service",
 			EXPRESSORDER_DATA_SERVICE = "expressorderdataservice",
 			ACCOUNT_DATA_SERVICE = "accountdataservice",
-	        APPROVAL_DATA_SERVICE="approvaldataservice",
-			WAREHOUSE_DATA_SERVICE = "warehousedataservice",
-			FLEXSECTOR_DATA_SERVICE = "flexsectordataservice";
-	public final static int serviceNumber = 24;
+	        APPROVAL_DATA_SERVICE="approvaldataservice";
+	public final static int serviceNumber = 21;
 	
 }
