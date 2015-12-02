@@ -115,7 +115,7 @@ public class ListItemPanel extends JPanel {
 
 		JLabel id;
 		JButton delete;
-		JTextField order_id, receiver, receiver_date, comment;
+		GAPTextField order_id, receiver, receiver_date, comment;
 		boolean last;
 
 		public ItemPanel(int id) {
@@ -160,6 +160,7 @@ public class ListItemPanel extends JPanel {
 			order_id = new GAPTextField(8);
 			receiver = new GAPTextField(6);
 			receiver_date = new GAPTextField(8);
+			receiver_date.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
 			comment = new GAPTextField(22);
 
 			GridBagLayout gb = new GridBagLayout();

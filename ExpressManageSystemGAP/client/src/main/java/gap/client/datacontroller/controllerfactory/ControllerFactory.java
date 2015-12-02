@@ -39,13 +39,10 @@ public class ControllerFactory {
 	private static RentDataController rentDataController;
 	private static SalaryDataController salaryDataController;
 	private static UserDataController userDataController;
-<<<<<<< HEAD
 	private static ApprovalDataController approvalDataController;
-=======
-	
+
 	private static WareHouseDataController wareHouseDataController;
 	private static FlexSectorDataController flexSectorDataController;
->>>>>>> origin/master
 
 	public static AccountDateController getAccountDataController() {
 		if (accountDateController == null) {
@@ -149,24 +146,22 @@ public class ControllerFactory {
 			userDataController = new UserDataController();
 		return userDataController;
 	}
-<<<<<<< HEAD
 
 	public static ApprovalDataController getApprovalDataController() {
 		if (approvalDataController == null)
 			approvalDataController = new ApprovalDataController();
 		return approvalDataController;
-=======
-	
+	}
+
 	public static WareHouseDataController getWareHouseDataController() {
 		if (wareHouseDataController == null)
 			wareHouseDataController = new WareHouseDataController();
 		return wareHouseDataController;
 	}
-	
+
 	public static FlexSectorDataController getFlexSectorDataController() {
 		if (flexSectorDataController == null)
 			flexSectorDataController = new FlexSectorDataController();
 		return flexSectorDataController;
->>>>>>> origin/master
 	}
 }

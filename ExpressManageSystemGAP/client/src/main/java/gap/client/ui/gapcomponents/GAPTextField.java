@@ -9,6 +9,7 @@ import java.awt.event.FocusListener;
 
 import gap.client.ui.UITools.GapTextControll;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -21,6 +22,12 @@ public class GAPTextField extends JTextField {
 
 	public GAPTextField(int column) {
 		super(column);
+		normal();
+	}
+
+	public GAPTextField(String str, int columns) {
+		super(str);
+		setColumns(columns);
 		normal();
 	}
 
@@ -86,5 +93,11 @@ public class GAPTextField extends JTextField {
 		setBorder(ComponentStyle.text_border);
 		setFont(ComponentStyle.defaultFont);
 		validate();
+	}
+
+	public void closeEdit() {
+		setEditable(false);
+		setFocusable(false);
+		setBorder(BorderFactory.createEmptyBorder());
 	}
 }

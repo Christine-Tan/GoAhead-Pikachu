@@ -2,14 +2,17 @@ package gap.client.ui.bussinessui;
 
 import gap.client.ui.UITools.Defaut;
 import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,7 +21,8 @@ public class TitlePanel extends JPanel {
 	JLabel car_id, name, gender, id_card;
 
 	public TitlePanel() {
-		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 80));
+		setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 50));
+		setBackground(Color.white);
 		car_id = new GAPLabel("司机编号");
 		name = new GAPLabel("姓名");
 		gender = new GAPLabel("性别");
@@ -27,6 +31,12 @@ public class TitlePanel extends JPanel {
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
+
+		gcons.insets = new Insets(10, 10, 10, 10);
+		SwingConsole.addComponent(gb, gcons, this, car_id, 0, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, name, 1, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, gender, 2, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, id_card, 3, 0, 1, 1, 0, 0);
 
 	}
 
