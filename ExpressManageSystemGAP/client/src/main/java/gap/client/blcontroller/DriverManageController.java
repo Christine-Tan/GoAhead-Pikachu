@@ -49,7 +49,6 @@ public class DriverManageController {
 
 	public static void delete(String id) {
 		// TODO 自动生成的方法存根
-		System.out.println(id);
 		driverManage.delete(id);
 	}
 

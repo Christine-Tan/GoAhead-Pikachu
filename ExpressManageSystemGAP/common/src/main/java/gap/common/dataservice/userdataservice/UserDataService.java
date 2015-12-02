@@ -1,5 +1,6 @@
 package gap.common.dataservice.userdataservice;
 
+import gap.common.po.DeliveryOrderPO;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
@@ -25,5 +26,8 @@ public interface UserDataService extends Remote {
 	public List<UserPO> findUnpaidUser(Date date) throws RemoteException;
 
 	public ResultMessage setPaid(String user_id) throws RemoteException;
+
+	public List<UserPO> getDilivery(String ins_id)
+			throws RemoteException;
 
 }

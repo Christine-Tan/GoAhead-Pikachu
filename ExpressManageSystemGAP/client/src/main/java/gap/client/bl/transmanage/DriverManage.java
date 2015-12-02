@@ -46,8 +46,6 @@ public class DriverManage implements DriverService {
 	@Override
 	public void modify(Driver vo) {
 		// TODO 自动生成的方法存根
-		System.out.println("modify");
-		System.out.println(vo.getIdentity_number());
 		operations.add(new ModifyOperation(vo.toDriverPO()));
 	}
 
