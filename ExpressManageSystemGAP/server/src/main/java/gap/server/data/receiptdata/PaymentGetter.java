@@ -35,7 +35,7 @@ public class PaymentGetter {
 		builder.Select("*").From(PaymentListTable.tableName)
 						.Where(PaymentListTable.passed_col).EQUALS(1)
 						.AND(PaymentListTable.date_col).Between(start).AND(end);
-		
+
 		PaymentListMaker paymentListMaker = new PaymentListMaker();
 		return paymentListMaker.getList(builder);
 	}
@@ -46,6 +46,7 @@ public class PaymentGetter {
 		
 		public PaymentListPO getPO(ResultSet resultSet) {
 			// TODO Auto-generated method stub
+
 			PaymentListPO po = null;
 			try {
 				String ID = resultSet.
