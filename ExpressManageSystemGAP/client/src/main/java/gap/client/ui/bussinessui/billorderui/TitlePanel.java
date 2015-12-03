@@ -4,7 +4,8 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.ui.gapcomponents.GAPTextField;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,20 +17,21 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class TitlePanel extends JPanel {
-	JLabel id, delivery_id, order_id, receiver, receive_day, comment;
+	GAPTextField id, delivery_id, name, money, date;
 
 	public TitlePanel() {
 		// setBackground(Color.white);
 		setOpaque(false);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
 
-		id = new GAPLabel("编号");
-		delivery_id = new GAPLabel("快递员编号");
-		order_id = new GAPLabel("快递员");
-		receiver = new GAPLabel("收款金额");
-		receive_day = new GAPLabel("收款日期");
+		id = new GAPTextField("编号", 3);
+		delivery_id = new GAPTextField("快递员编号", 7);
+		name = new GAPTextField("快递员", 5);
+		money = new GAPTextField("收款金额", 5);
+		date = new GAPTextField("收款日期", 7);
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
@@ -37,15 +39,27 @@ public class TitlePanel extends JPanel {
 		gcons.anchor = GridBagConstraints.EAST;
 		gcons.insets = new Insets(40, 0, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(40, 90, 0, 0);
+		gcons.insets = new Insets(40, 55, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, delivery_id, 1, 0, 1, 1, 0,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, order_id, 2, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(40, 90, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, receiver, 3, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(40, 90, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, receive_day, 4, 0, 1, 1, 0,
-				0);
+		SwingConsole.addComponent(gb, gcons, this, name, 2, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, money, 3, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, date, 4, 0, 1, 1, 0, 0);
+		closeEdit();
+	}
+
+	void closeEdit() {
+		id.closeEdit();
+		delivery_id.closeEdit();
+		name.closeEdit();
+		money.closeEdit();
+		date.closeEdit();
+
+		id.setHorizontalAlignment(JTextField.CENTER);
+		delivery_id.setHorizontalAlignment(JTextField.CENTER);
+		name.setHorizontalAlignment(JTextField.CENTER);
+		money.setHorizontalAlignment(JTextField.CENTER);
+		date.setHorizontalAlignment(JTextField.CENTER);
 	}
 
 	public void paintComponent(Graphics g) {

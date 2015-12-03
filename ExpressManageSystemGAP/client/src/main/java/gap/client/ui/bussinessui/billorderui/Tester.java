@@ -3,7 +3,6 @@ package gap.client.ui.bussinessui.billorderui;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.UserBox.Sex;
 import gap.client.ui.UITools.ConstInfo;
-import gap.client.ui.bussinessui.drivermanage.DriverManagePanel;
 import gap.client.util.LocalInfo;
 
 public class Tester {

@@ -1,13 +1,14 @@
 package gap.client.ui.bussinessui.billorderui;
 
+import gap.client.blcontroller.BillOrderController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.BillVO;
+import gap.common.po.BillOrderPO;
+import gap.common.po.BillPO;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class ListItemPanel extends JPanel {
 	List<ItemPanel> items;
@@ -31,17 +32,41 @@ public class ListItemPanel extends JPanel {
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
-		BillVO billVO = new BillVO();
-		billVO.id = "000000005";
-		billVO.name = "yyf";
-		billVO.money = 50;
-		billVO.date = "2015-02-01";
-		addItem(billVO);
+		// BillVO billVO = new BillVO();
+		// billVO.id = "000000005";
+		// billVO.name = "yyf";
+		// billVO.money = 50;
+		// billVO.date = "2015-02-01";
+		// addItem(billVO);
+		reFresh();
 	}
+
+	public void reFresh() {
+		clear();
+		List<BillVO> billVO = BillOrderController.getBills("2015-11-23");
+		for (BillVO bi : billVO) {
+			addItem(bi);
+		}
+		reLayout();
+	}
+
+	// public BillOrderPO getBillOrderPO() {
+	// List<BillPO> list = new ArrayList<BillPO>();
+	// for (ItemPanel item : items) {
+	// list.add(item.getBill());
+	// }
+	// // return new BillOrderPO(list, id, billDate)
+	// }
 
 	private void addItem(BillVO billVO) {
 		items.add(new ItemPanel(billVO));
-		reLayout();
+	}
+
+	private void clear() {
+		for (ItemPanel item : items) {
+			remove(item);
+		}
+		items.clear();
 	}
 
 	private void reLayout() {
@@ -61,10 +86,10 @@ public class ListItemPanel extends JPanel {
 			this.billVO = billVO;
 			setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 			setOpaque(false);
-			id = new GAPTextField(2);
+			id = new GAPTextField(3);
 			delivery_id = new GAPTextField(billVO.id, 7);
-			name = new GAPTextField(billVO.name, 4);
-			money = new GAPTextField(String.valueOf(billVO.money), 3);
+			name = new GAPTextField(billVO.name, 5);
+			money = new GAPTextField(String.valueOf(billVO.money), 5);
 			date = new GAPTextField(billVO.date, 7);
 
 			GridBagLayout gb = new GridBagLayout();
@@ -73,13 +98,11 @@ public class ListItemPanel extends JPanel {
 
 			gcons.insets = new Insets(10, 0, 10, 0);
 			SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 70, 10, 0);
+			gcons.insets = new Insets(10, 55, 10, 0);
 			SwingConsole.addComponent(gb, gcons, this, delivery_id, 1, 0, 1, 1,
 					0, 0);
 			SwingConsole.addComponent(gb, gcons, this, name, 2, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 70, 10, 0);
 			SwingConsole.addComponent(gb, gcons, this, money, 3, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 70, 10, 0);
 			SwingConsole.addComponent(gb, gcons, this, date, 4, 0, 1, 1, 0, 0);
 
 			closeEdit();
@@ -91,6 +114,16 @@ public class ListItemPanel extends JPanel {
 			name.closeEdit();
 			money.closeEdit();
 			date.closeEdit();
+
+			id.setHorizontalAlignment(JTextField.CENTER);
+			delivery_id.setHorizontalAlignment(JTextField.CENTER);
+			name.setHorizontalAlignment(JTextField.CENTER);
+			money.setHorizontalAlignment(JTextField.CENTER);
+			date.setHorizontalAlignment(JTextField.CENTER);
+		}
+
+		public BillPO getBill() {
+			return new BillPO(billVO.money, billVO.id);
 		}
 
 		public void setId(String id) {

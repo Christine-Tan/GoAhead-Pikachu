@@ -1,5 +1,6 @@
 package gap.client.bl.order;
 
+import gap.client.vo.BillVO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.BillPO;
 
@@ -23,9 +24,9 @@ public class BillOrderTest {
 		List<String> ids = new ArrayList<String>();
 		ids.add("000000005");
 		ids.add("000000006");
-		List<BillPO> bills = billorder.getPreviewBills(ids, "2015-11-23");
-		for (BillPO bill : bills) {
-			System.out.println(bill.getCourierID() + "," + bill.getMoney());
+		List<BillVO> bills = billorder.getPreviewBills("2015-11-23");
+		for (BillVO bill : bills) {
+			System.out.println(bill.id + "," + bill.money);
 		}
 	}
 
