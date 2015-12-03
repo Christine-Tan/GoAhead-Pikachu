@@ -8,7 +8,7 @@ import java.security.Provider.Service;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
-import gap.common.dataservice.receiptdataservice.ReceiptdataService;
+import gap.common.dataservice.receiptdataservice.PaymentdataService;
 import gap.common.dataservice.strategydataservice.RentDataService;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
 import gap.common.dataservice.transFareDataService.TransFareDataService;
@@ -17,7 +17,7 @@ import gap.common.netconfig.RMIConfig;
 
 public class ReceiptDataController {
 	AccountDataService accountDataService;
-	ReceiptdataService receiptdataService;
+	PaymentdataService receiptdataService;
 	UserDataService userDataService;
 	TransFareDataService transFareDataService;
 	RentDataService rentDataService;
@@ -29,7 +29,7 @@ public class ReceiptDataController {
 				accountDataService = (AccountDataService)Naming
 						.lookup(RMIConfig.url+ServiceName.ACCOUNT_DATA_SERVICE);
 				
-				receiptdataService =(ReceiptdataService)Naming
+				receiptdataService =(PaymentdataService)Naming
 						.lookup(RMIConfig.url+ServiceName.RECEIPT_DATA_SERVICE);
 			
 				userDataService = (UserDataService)Naming
