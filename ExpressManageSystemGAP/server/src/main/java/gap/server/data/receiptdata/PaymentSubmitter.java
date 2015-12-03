@@ -20,7 +20,7 @@ public class PaymentSubmitter {
 						list.getPaymentID(),
 						list.getTotal(),
 						list.getPayer(),
-						list.getPayDate(),
+						list.getDate(),
 						0);
 		
 		boolean pass = builder.excute();

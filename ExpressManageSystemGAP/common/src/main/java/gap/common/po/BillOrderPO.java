@@ -2,9 +2,12 @@ package gap.common.po;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
-public class BillOrderPO implements Serializable {
+import gap.common.ListInterface.Receipt;
+
+public class BillOrderPO implements Serializable,Receipt {
 	// 快递员id和所收运费
 	private List<BillPO> bills;
 	private double totalMoney;
@@ -37,7 +40,7 @@ public class BillOrderPO implements Serializable {
 		this.bills = bills;
 	}
 
-	public double getTotalMoney() {
+	public double getMoney() {
 		return totalMoney;
 	}
 
@@ -53,8 +56,10 @@ public class BillOrderPO implements Serializable {
 		this.id = id;
 	}
 
-	public Date getBillDate() {
-		return billDate;
+	public Calendar getDate() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(billDate);
+		return calendar;
 	}
 
 	public void setBillDate(Date billDate) {

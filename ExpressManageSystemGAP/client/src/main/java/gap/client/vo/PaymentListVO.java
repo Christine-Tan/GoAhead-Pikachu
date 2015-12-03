@@ -19,7 +19,7 @@ public class PaymentListVO {
 	}
 	
 	public PaymentListVO(PaymentListPO po){
-		initial(po.getPaymentID(), po.getPayer(), po.getTotal(), po.getPayDate(),po.paymentList);
+		initial(po.getPaymentID(), po.getPayer(), po.getTotal(), po.getDate(),po.paymentList);
 	}
 	
 	private void initial(String ID,String payer,double total

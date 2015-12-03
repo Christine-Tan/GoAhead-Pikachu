@@ -42,7 +42,7 @@ public class SQLBuilder {
 //		System.out.println(sqlBuilder.getSQL());
 //		
 		sqlBuilder.clear();
-		sqlBuilder.InsertInto("account","balance","income","Name").Values(15,100,"test");
+		sqlBuilder.InsertInto("account").Values(15,100,"test");
 		System.out.println(sqlBuilder.getSQL());
 //		
 		sqlBuilder.clear();
@@ -157,14 +157,19 @@ public class SQLBuilder {
 		builder.append("Insert into ");
 		builder.append(table);
 		builder.append(" ");
-		leftBra();
+		if(column.length>0)
+		{
+			leftBra();
+		}
 		makeList(column,true);
 		return this;
 	}
 	
 	public SQLBuilder Values(Object ... values) {
 		deleteSpace();
-		rightBra();
+		if(builder.toString().contains("(")){
+			rightBra();
+		}
 		builder.append(" Values ");
 		if(values.length==0){
 			System.out.println("值列表为空");

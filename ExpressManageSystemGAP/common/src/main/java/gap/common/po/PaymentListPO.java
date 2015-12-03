@@ -3,8 +3,10 @@ package gap.common.po;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import gap.common.ListInterface.Receipt;
 
-public class PaymentListPO {
+
+public class PaymentListPO implements Receipt{
 	public ArrayList<PayeePO> paymentList;
 	private String paymentID;
 	private Calendar payDate;
@@ -18,13 +20,8 @@ public class PaymentListPO {
 		this.payDate = calendar;
 		paymentList = new ArrayList<>();
 	}
-	
 
-
-
-
-
-	public Calendar getPayDate() {	
+	public Calendar getDate() {	
 		return payDate;
 	}
 
