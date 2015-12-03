@@ -2,6 +2,7 @@ package gap.server.data.receiptdata;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,11 +12,12 @@ import gap.common.dataservice.receiptdataservice.ReceiptdataService;
 import gap.common.po.BillPO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.ReceiptPO;
+import gap.common.util.ResultMessage;
 
 public class ReceiptDataServiceImpl extends UnicastRemoteObject implements ReceiptdataService{
 	
 	private static ReceiptdataService receiptdataService;
-	
+	PaymentSubmitter paymentSubmitter = new PaymentSubmitter();
 	
 	
 	
@@ -41,7 +43,19 @@ public class ReceiptDataServiceImpl extends UnicastRemoteObject implements Recei
 	@Override
 	public boolean submitPayment(PaymentListPO paymentListPO) throws RemoteException {
 		// TODO Auto-generated method stub
-		return false;
+		ResultMessage result = paymentSubmitter.submit(paymentListPO);
+
+		if(result==ResultMessage.SUCCEED){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+	
+	public ArrayList<PaymentListPO> getNotPassedPayment(){
+		
+		return null;
 	}
 
 	@Override
