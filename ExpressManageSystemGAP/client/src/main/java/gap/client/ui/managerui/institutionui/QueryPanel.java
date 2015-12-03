@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import gap.client.bl.strategy.CityManage;
+import gap.client.blcontroller.CityController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
@@ -31,7 +31,7 @@ public class QueryPanel extends JPanel {
 	JButton search1,search2;
 	JTextField id;
 	JComboBox<String> city_list;
-	CityManage cityManage;
+	CityController cityManage;
 
 	public QueryPanel() {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
@@ -44,7 +44,7 @@ public class QueryPanel extends JPanel {
 		city_list = new GAPComboBox<String>();
 
 		// 初始化城市选择下拉框
-		cityManage = new CityManage();
+		cityManage = new CityController();
 		for (CityVO city : cityManage.getAll()) {
 			city_list.addItem(city.getCityName());
 		}
