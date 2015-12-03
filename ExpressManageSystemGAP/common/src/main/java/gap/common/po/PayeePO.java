@@ -21,7 +21,7 @@ public class PayeePO {
 	
 	public PayeePO(PaymentType type, String userID, String userName,
 			Calendar lastPaydate, int expressOrderNum, 
-			double money,String accountName) {
+			double money,String accountName,String note) {
 		this.setType(type);
 		this.setUserID(userID);
 		this.setUserName(userName);
@@ -29,6 +29,7 @@ public class PayeePO {
 		this.setExpressOrderNum(expressOrderNum);
 		setMoney(money);
 		setAccountName(accountName);
+		this.note = note;
 
 		if (type != PaymentType.DELIVERY) {
 			expressOrderNum = 0;

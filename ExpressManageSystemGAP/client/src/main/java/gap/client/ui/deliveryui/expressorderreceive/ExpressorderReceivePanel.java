@@ -11,6 +11,7 @@ import gap.client.blcontroller.ExpressorderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.common.util.ReceiveInfo;
 

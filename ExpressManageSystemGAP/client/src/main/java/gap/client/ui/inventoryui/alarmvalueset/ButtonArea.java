@@ -1,4 +1,4 @@
-package gap.client.ui.bussinessui.drivermanage;
+package gap.client.ui.inventoryui.alarmvalueset;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -17,23 +17,24 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ButtonArea extends JPanel {
-	public JButton submit;
+public class ButtonArea extends JPanel{
+	public JButton confirm;
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
+
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 
-		submit = new GAPButton("提交修改");
+
+		confirm = new GAPButton("确认");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(10, 10, 10, 50);
-		gcons.anchor = GridBagConstraints.EAST;
-		SwingConsole.addComponent(gb, gcons, this, submit, 0, 0, 1, 1, 1, 0);
+		gcons.anchor = GridBagConstraints.CENTER;
+		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 0, 1, 1, 1, 0);
 	}
-
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);
