@@ -1,12 +1,12 @@
 package gap.stub_driver.blservice.receipte;
 
-import gap.client.blservice.receiptblservice.ReceiptService;
+import gap.client.blservice.receiptblservice.PaymentService;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.PaymentListVO;
 
 public class Receipt_driver {
 
-	public void drive(ReceiptService stub){
+	public void drive(PaymentService stub){
 		BillOrderVO billOrderVO = stub.getBillOrder();
 		System.out.println("get bill order!");
 		PaymentListVO paymentListVO = stub.getPaymentList();

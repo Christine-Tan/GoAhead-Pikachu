@@ -18,7 +18,6 @@ import gap.common.netconfig.RMIConfig;
 import gap.common.po.PaymentListPO;
 import gap.common.util.OrderState;
 import gap.common.util.ResultMessage;
-import gap.server.data.receiptdata.PaymentGetter.PaymentListMaker;
 import gap.server.initial.NetInitial;
 
 public class PaymentImplTest {

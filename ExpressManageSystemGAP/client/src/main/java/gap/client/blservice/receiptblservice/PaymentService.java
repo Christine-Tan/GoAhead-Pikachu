@@ -4,7 +4,7 @@ import gap.client.vo.BillOrderVO;
 import gap.client.vo.PaymentListVO;
 import gap.common.util.ResultMessage;
 
-public interface ReceiptService {
+public interface PaymentService {
 
 	public PaymentListVO getPaymentList();
 	public ResultMessage submitPaymentList(PaymentListVO paymentListVO);

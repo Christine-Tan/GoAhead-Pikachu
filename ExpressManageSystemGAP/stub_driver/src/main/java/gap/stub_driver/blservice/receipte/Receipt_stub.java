@@ -1,11 +1,11 @@
 package gap.stub_driver.blservice.receipte;
 
-import gap.client.blservice.receiptblservice.ReceiptService;
+import gap.client.blservice.receiptblservice.PaymentService;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.PaymentListVO;
 import gap.common.util.ResultMessage;
 
-public class Receipt_stub implements ReceiptService {
+public class Receipt_stub implements PaymentService {
 
 	@Override
 	public PaymentListVO getPaymentList() {

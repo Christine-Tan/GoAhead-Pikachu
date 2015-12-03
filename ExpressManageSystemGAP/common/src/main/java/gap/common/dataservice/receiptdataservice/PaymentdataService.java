@@ -16,7 +16,6 @@ public interface PaymentdataService extends Remote {
 	
 	public ArrayList<PaymentListPO> getNotPassedPayment() throws RemoteException;
 
-
 	public ArrayList<PaymentListPO> getPassedPayment(Calendar begin, Calendar end) throws RemoteException;
 	
 	public OrderState isPaymentPassed(String paymentID) throws RemoteException;
