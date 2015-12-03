@@ -10,27 +10,27 @@ import gap.common.util.ResultMessage;
 public class CityController {
 	public static CityManage cityManage = new CityManage();
 
-	public List<CityVO> getAll() {
+	public static List<CityVO> getAll() {
 		// TODO Auto-generated method stub
 		return cityManage.getAll();
 	}
 
-	public CityVO getCity(String City) {
+	public static CityVO getCity(String City) {
 		// TODO Auto-generated method stub
 		return cityManage.getCity(City);
 	}
 
-	public void addCity(City city) {
+	public static void addCity(City city) {
 		// TODO Auto-generated method stub
 		cityManage.addCity(city);
 	}
 
-	public void modifyCity(City city) {
+	public static void modifyCity(City city) {
 		// TODO Auto-generated method stub
 		cityManage.modifyCity(city);
 	}
 
-	public ResultMessage flush() {
+	public static ResultMessage flush() {
 		return cityManage.flush();
 	}
 

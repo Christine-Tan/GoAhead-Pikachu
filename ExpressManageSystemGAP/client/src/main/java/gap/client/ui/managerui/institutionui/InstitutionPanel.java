@@ -13,6 +13,11 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 
+/**
+ * 总经理机构管理界面
+ * 
+ * @author seven
+ */
 public class InstitutionPanel extends MainPanel {
 	QueryPanel queryPanel;
 	TitlePanel titlePanel;
