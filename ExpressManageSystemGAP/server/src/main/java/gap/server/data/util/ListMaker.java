@@ -27,6 +27,11 @@ public abstract class ListMaker<T> {
 		return getList(builder.getSQL());	
 	}
 	
+	/**
+	 * 若没找到返回一个空的Arraylist
+	 * @param SQL_or_TableName
+	 * @return
+	 */
 	public final ArrayList<T> getList(String SQL_or_TableName){
 		Excutor excutor = Excutor.getInstance();
 		String sql = null;

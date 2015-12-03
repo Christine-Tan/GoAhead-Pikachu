@@ -36,8 +36,21 @@ public class PaymentGetter {
 						.Where(PaymentListTable.passed_col).EQUALS(1)
 						.AND(PaymentListTable.date_col).Between(start).AND(end);
 
+		return getPaymentBySQL(builder);
+	}
+
+	public ArrayList<PaymentListPO> getNotPassedPayment(){
+		//获得所有未审批通过的单据
+		builder.Select("*").From(PaymentListTable.tableName)
+			.Where(PaymentListTable.passed_col).EQUALS(0);	
+		
+		return getPaymentBySQL(builder);
+	}
+	
+	
+	private ArrayList<PaymentListPO> getPaymentBySQL(SQLBuilder myBuilder){
 		PaymentListMaker paymentListMaker = new PaymentListMaker();
-		return paymentListMaker.getList(builder);
+		return paymentListMaker.getList(myBuilder);	
 	}
 	
 	class PaymentListMaker extends ListMaker<PaymentListPO>{
