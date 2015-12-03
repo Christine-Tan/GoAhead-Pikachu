@@ -49,7 +49,10 @@ public class AccountBlController implements AccountService{
 
 	@Override
 	public ResultMessage addAccount(AccountVO vo) {
-		// TODO Auto-generated method stub
+		//名字相同的账户视为相同
+		if(accounts.contains(vo)){
+			return ResultMessage.EXITED;
+		}
 		accounts.add(vo);
 		return buffer.addCommond(new AddAccountCmd(vo));
 	}
@@ -65,11 +68,21 @@ public class AccountBlController implements AccountService{
 	public ResultMessage modifyAccount(AccountVO vo) {
 		//accountVO在名字相同的情况下视为相同
 		int index = accounts.indexOf(vo);
+		//该旧名字不存在
 		if(index == -1){
 			return ResultMessage.FAILED;
 		}
 		else{
-			accounts.set(index, vo);
+
+			AccountVO newVO = new AccountVO(vo.getNewName(), vo.getBalance());
+			
+			if(accounts.contains(newVO)){
+				//名字已经存在
+				return ResultMessage.EXITED;
+			}
+			
+			accounts.set(index, newVO);
+			
 			buffer.addCommond(new ModifyAccountCmd(vo));
 			return ResultMessage.SUCCEED;
 		}

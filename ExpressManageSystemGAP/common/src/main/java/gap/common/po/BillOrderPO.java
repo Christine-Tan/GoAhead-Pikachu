@@ -40,7 +40,7 @@ public class BillOrderPO implements Serializable,Receipt {
 		this.bills = bills;
 	}
 
-	public double getMoney() {
+	public double getTotal() {
 		return totalMoney;
 	}
 
@@ -60,6 +60,10 @@ public class BillOrderPO implements Serializable,Receipt {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(billDate);
 		return calendar;
+	}
+	
+	public Date getBillDate(){
+		return billDate;
 	}
 
 	public void setBillDate(Date billDate) {

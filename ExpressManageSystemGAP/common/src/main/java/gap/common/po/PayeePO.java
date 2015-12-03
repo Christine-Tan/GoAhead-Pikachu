@@ -2,12 +2,13 @@ package gap.common.po;
 
 
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 
 import gap.common.util.PaymentType;
 
-public class PayeePO {
+public class PayeePO implements Serializable{
 
 	private PaymentType type;
 	private String userID;

@@ -49,7 +49,7 @@ public class BillOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			String order_id = po.getId(), time = po.getBillDate().toString();
-			double total_money = po.getTotalMoney();
+			double total_money = po.getTotal();
 			List<BillPO> bills = po.getBills();
 			tableInsert.add(order_id_f, order_id);
 			tableInsert.add(time_f, time);

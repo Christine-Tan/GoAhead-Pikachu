@@ -9,5 +9,5 @@ public class PayeeTable {
 	public static final String type_col = "Type";
 	public static final String comment_col = "Comment";
 	public static final String paymentList_col = "PaymentList";
-	
+	public static final String expressNum_col = "expressNum";
 }
