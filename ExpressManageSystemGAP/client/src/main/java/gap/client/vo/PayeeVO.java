@@ -47,8 +47,8 @@ public class PayeeVO {
 
 	public PayeePO toPO(){
 		PayeePO po = new PayeePO(type, userID, userName, lastPaydate, 
-				expressOrderNum, money, accountName);
-		po.setNote(note);
+				expressOrderNum, money, accountName,note);
+
 		
 		return po;
 	}

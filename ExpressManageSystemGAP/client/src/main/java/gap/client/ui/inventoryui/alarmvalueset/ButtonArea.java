@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui;
+package gap.client.ui.inventoryui.alarmvalueset;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -22,15 +22,16 @@ public class ButtonArea extends JPanel{
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
+
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
+
 
 		confirm = new GAPButton("确认");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets=new Insets(10, 10, 10, 408);
-		gcons.anchor = GridBagConstraints.EAST;
+		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 0, 1, 1, 1, 0);
 	}
 	
