@@ -3,15 +3,14 @@ package gap.client.ui.deliveryui.expressorderinput;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class ExpressorderInputPanel extends MainPanel {
 	PeopleInfoUI sender, receiver;
@@ -26,6 +25,7 @@ public class ExpressorderInputPanel extends MainPanel {
 		cargo = new CargoInfoUI();
 		express = new ExpressInfoUI();
 		buttonArea = new ButtonArea();
+		buttonArea.submit.setText("提交订单");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();

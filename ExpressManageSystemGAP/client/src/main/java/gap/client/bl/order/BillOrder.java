@@ -3,9 +3,10 @@ package gap.client.bl.order;
 import gap.client.blservice.orderblservice.BillOrderService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.orderdata.BillOrderDateController;
+import gap.client.datacontroller.userdata.UserDataController;
 import gap.client.util.LocalInfo;
+import gap.client.vo.BillVO;
 import gap.common.po.BillOrderPO;
-import gap.common.po.BillPO;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 
@@ -22,13 +23,20 @@ public class BillOrder implements BillOrderService {
 	}
 
 	@Override
-	public List<BillPO> getPreviewBills(List<String> delivery_ids, String date) {
+	public List<BillVO> getPreviewBills(String date) {
 		// TODO 自动生成的方法存根
-		List<BillPO> bills = new ArrayList<>();
-		for (String id : delivery_ids) {
-			BillPO po = new BillPO(billorderdataController.getDeliveryMoney(
-					date, id), id);
-			bills.add(po);
+		List<UserPO> users = getDelivery();
+		List<BillVO> bills = new ArrayList<>();
+		for (UserPO user : users) {
+			BillVO vo = new BillVO();
+			String id = user.getUserId();
+			vo.id = id;
+			UserDataController userdata = ControllerFactory
+					.getUserDataController();
+			vo.name = userdata.findById(id).getName();
+			vo.date = date;
+			vo.money = billorderdataController.getDeliveryMoney(vo.date, id);
+			bills.add(vo);
 		}
 		return bills;
 	}

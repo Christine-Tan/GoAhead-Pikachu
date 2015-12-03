@@ -4,6 +4,7 @@ import gap.client.blcontroller.DriverManageController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 
 import java.awt.GridBagConstraints;
@@ -27,6 +28,7 @@ public class DriverManagePanel extends MainPanel {
 		titlePanel = new TitlePanel();
 		listItem = new ListItemPanel(frame);
 		buttonArea = new ButtonArea();
+		buttonArea.submit.setText("提交修改");
 
 		buttonArea.submit.addActionListener(new ActionListener() {
 

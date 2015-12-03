@@ -1,10 +1,8 @@
-package gap.client.ui.bussinessui.drivermanage;
+package gap.client.ui.gapcomponents;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButton;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,7 +22,7 @@ public class ButtonArea extends JPanel {
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 
-		submit = new GAPButton("提交修改");
+		submit = new GAPButton("提交订单");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
