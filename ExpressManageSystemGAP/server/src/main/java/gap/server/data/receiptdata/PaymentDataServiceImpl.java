@@ -6,22 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
-import javax.management.loading.PrivateClassLoader;
-import javax.naming.spi.DirStateFactory.Result;
-
 import gap.common.dataservice.receiptdataservice.PaymentdataService;
-import gap.common.po.BillPO;
 import gap.common.po.PaymentListPO;
-import gap.common.po.ReceiptPO;
 import gap.common.util.OrderState;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.SQLBuilder;
 
 public class PaymentDataServiceImpl extends UnicastRemoteObject implements PaymentdataService{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static PaymentdataService receiptdataService;
 	PaymentSubmitter paymentSubmitter = new PaymentSubmitter();
 	PaymentGetter paymentGetter = new PaymentGetter();

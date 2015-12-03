@@ -89,7 +89,6 @@ public class PaymentGetter {
 			builder.Select("*").From(PayeeTable.tableName)
 				.Where(PayeeTable.paymentList_col).EQUALS(paymentListID);
 			String sql = builder.getSQL();
-			System.out.println(sql);
 
 			PayeeMaker payeeMaker = new PayeeMaker();
 			return payeeMaker.getList(sql);

@@ -10,7 +10,7 @@ public class ServiceName {
 			PRICE_DATA_SERVICE = "pricedataservice",
 			RENT_DATA_SERVICE = "rentdataservice",
 			SALARY_DATA_SERVICE = "salarydataservice",
-			RECEIPT_DATA_SERVICE = "receiptdataservice",
+			PAYMENT_DATA_SERVICE = "paymentdataservice",
 			ARRIVEDORDER_DATA_SERVICE = "arrivedorderdataservice",
 			DELIVERYPORDER_DATA_SERVICE = "deliveryorderdataservice",
 			LOADORDER_DATA_SERVICE = "loadorderdataservice",

@@ -41,7 +41,6 @@ public class PaymentSubmitterTest {
 
 	@Test
 	public void testSubmit() {
-	
 		System.out.println(submitter.submit(list));
 	}
 

@@ -23,6 +23,7 @@ import gap.server.data.order.ArrivedOrderDataServiceImpl;
 import gap.server.data.order.BillOrderDataServiceImpl;
 import gap.server.data.order.DeliveryOrderDataServiceImpl;
 import gap.server.data.order.LoadOrderDataServiceImpl;
+import gap.server.data.receiptdata.PaymentDataServiceImpl;
 import gap.server.data.strategydata.CityDataServiceImpl;
 import gap.server.data.strategydata.PriceDataServiceImpl;
 import gap.server.data.strategydata.RentDataServiceImpl;
@@ -51,6 +52,9 @@ public class NetInitial {
 		citydataservice = CityDataServiceImpl.getInstance();
 		institutiondataservice = InstitutionDataServiceImpl.getInstance();
 		billorderdataservice = BillOrderDataServiceImpl.getInstance();
+		paymentdataService = PaymentDataServiceImpl.getInstance();
+		
+		
 		serviceMap = new HashMap<>(ServiceName.serviceNumber+10);
 		
 		serviceMap.put(ServiceName.ACCOUNT_DATA_SERVICE, accountDataService);
@@ -68,7 +72,7 @@ public class NetInitial {
 		serviceMap.put(ServiceName.SALARY_DATA_SERVICE,salarydataservice);
 		serviceMap.put(ServiceName.CITY_DATA_SERVICE,citydataservice);
 		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,institutiondataservice);
-		
+		serviceMap.put(ServiceName.PAYMENT_DATA_SERVICE, paymentdataService);
 	}
 
 	public static void main(String[] args) {
