@@ -4,14 +4,15 @@ import gap.client.blcontroller.BillOrderController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;
-import gap.common.po.BillOrderPO;
 import gap.common.po.BillPO;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,19 +51,21 @@ public class ListItemPanel extends JPanel {
 		reLayout();
 	}
 
-	// public BillOrderPO getBillOrderPO() {
-	// List<BillPO> list = new ArrayList<BillPO>();
-	// for (ItemPanel item : items) {
-	// list.add(item.getBill());
-	// }
-	// // return new BillOrderPO(list, id, billDate)
-	// }
+	public BillOrderVO getBillOrderVO() {
+		BillOrderVO vo = new BillOrderVO();
+		vo.bills = new ArrayList<BillPO>();
+		for (ItemPanel item : items) {
+			vo.bills.add(item.getBill());
+		}
+		vo.date = new Date(System.currentTimeMillis());
+		return vo;
+	}
 
 	private void addItem(BillVO billVO) {
 		items.add(new ItemPanel(billVO));
 	}
 
-	private void clear() {
+	public void clear() {
 		for (ItemPanel item : items) {
 			remove(item);
 		}

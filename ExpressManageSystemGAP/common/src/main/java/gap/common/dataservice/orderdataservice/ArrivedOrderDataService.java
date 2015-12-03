@@ -17,4 +17,6 @@ public interface ArrivedOrderDataService extends Remote {
 
 	public List<ArrivedOrderPO> getUnpassedOrders() throws RemoteException;
 
+	public int getMaxId(String cons) throws RemoteException;
+
 }

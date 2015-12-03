@@ -18,4 +18,6 @@ public interface BillOrderDataService extends Remote {
 
 	public List<BillOrderPO> getUnpassedOrders() throws RemoteException;
 
+	public int getMaxId(String cons) throws RemoteException;
+
 }

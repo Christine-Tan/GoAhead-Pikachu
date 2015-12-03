@@ -71,4 +71,13 @@ public class BillOrderDateController {
 		return null;
 	}
 
+	public int getNextID(String cons) {
+		try {
+			return billorder.getMaxId(cons);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }

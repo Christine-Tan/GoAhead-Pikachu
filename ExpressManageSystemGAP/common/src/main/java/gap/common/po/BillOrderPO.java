@@ -33,16 +33,32 @@ public class BillOrderPO implements Serializable {
 		return bills;
 	}
 
-	public String getId() {
-		return id;
+	public void setBills(List<BillPO> bills) {
+		this.bills = bills;
 	}
 
 	public double getTotalMoney() {
 		return totalMoney;
 	}
 
+	public void setTotalMoney(double totalMoney) {
+		this.totalMoney = totalMoney;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public Date getBillDate() {
 		return billDate;
+	}
+
+	public void setBillDate(Date billDate) {
+		this.billDate = billDate;
 	}
 
 }

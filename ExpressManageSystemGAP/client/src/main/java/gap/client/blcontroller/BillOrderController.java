@@ -1,8 +1,8 @@
 package gap.client.blcontroller;
 
 import gap.client.bl.order.BillOrder;
+import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;
-import gap.common.po.BillOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class BillOrderController {
 		return billOrder.getPreviewBills(date);
 	}
 
-	public static ResultMessage saveBill(BillOrderPO VO) {
+	public static ResultMessage saveBill(BillOrderVO VO) {
 		return billOrder.save(VO);
 	}
 

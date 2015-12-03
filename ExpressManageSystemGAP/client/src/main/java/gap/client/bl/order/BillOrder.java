@@ -5,6 +5,7 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.orderdata.BillOrderDateController;
 import gap.client.datacontroller.userdata.UserDataController;
 import gap.client.util.LocalInfo;
+import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.UserPO;
@@ -42,9 +43,17 @@ public class BillOrder implements BillOrderService {
 	}
 
 	@Override
-	public ResultMessage save(BillOrderPO billorder) {
+	public ResultMessage save(BillOrderVO billorder) {
 		// TODO 自动生成的方法存根
-		return billorderdataController.add(billorder);
+		String date = billorder.date.toString().replaceAll("-", "");
+		String pre = LocalInfo.ins_id + date;
+		String id = billorderdataController.getNextID(pre) + "";
+		while (id.length() < 5)
+			id = "0" + id;
+		System.out.println(pre + id);
+		BillOrderPO billOrderPO = new BillOrderPO(billorder.bills, pre + id,
+				billorder.date);
+		return billorderdataController.add(billOrderPO);
 	}
 
 	@Override
@@ -52,4 +61,5 @@ public class BillOrder implements BillOrderService {
 		// TODO 自动生成的方法存根
 		return billorderdataController.getDelivery(LocalInfo.ins_id);
 	}
+
 }

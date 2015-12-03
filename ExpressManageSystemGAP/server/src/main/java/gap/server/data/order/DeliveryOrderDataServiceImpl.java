@@ -196,4 +196,24 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
+	@Override
+	public int getMaxId(String cons) throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT max(RIGHT(order_id,5)) max_id FROM "
+					+ tableName + " WHERE LEFT(order_id,15)='" + cons + "';";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			int result;
+			if (re.next()) {
+				result = re.getInt(1) + 1;
+			} else {
+				result = 0;
+			}
+			return result;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }

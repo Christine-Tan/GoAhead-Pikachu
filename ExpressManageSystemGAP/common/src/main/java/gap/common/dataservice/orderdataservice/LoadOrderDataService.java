@@ -16,4 +16,6 @@ public interface LoadOrderDataService extends Remote {
 			throws RemoteException;
 
 	public List<LoadOrderPO> getUnpassedOrders() throws RemoteException;
+
+	public int getMaxId(String cons) throws RemoteException;
 }

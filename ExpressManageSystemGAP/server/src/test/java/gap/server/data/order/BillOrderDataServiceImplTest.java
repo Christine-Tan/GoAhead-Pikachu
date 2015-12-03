@@ -87,7 +87,12 @@ public class BillOrderDataServiceImplTest {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
+	}
 
+	@Test
+	public void testGetMax() throws RemoteException {
+		int result = billorder.getMaxId("001000120151126");
+		System.out.println(result);
 	}
 
 }

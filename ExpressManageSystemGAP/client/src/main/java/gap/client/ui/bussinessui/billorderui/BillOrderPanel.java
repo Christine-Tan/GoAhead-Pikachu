@@ -1,17 +1,18 @@
 package gap.client.ui.bussinessui.billorderui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
-import javax.swing.JPanel;
-
+import gap.client.blcontroller.BillOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
 
 public class BillOrderPanel extends MainPanel {
 
@@ -28,6 +29,16 @@ public class BillOrderPanel extends MainPanel {
 		listItem = new ListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交订单");
+
+		buttonArea.submit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				BillOrderController.saveBill(listItem.getBillOrderVO());
+				listItem.clear();
+			}
+		});
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
