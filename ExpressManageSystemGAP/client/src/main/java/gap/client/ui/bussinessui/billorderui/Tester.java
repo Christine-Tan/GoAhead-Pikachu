@@ -10,7 +10,7 @@ public class Tester {
 		ConstInfo.setJob("营业厅业务员");
 		ConstInfo.setName("王小二");
 		ConstInfo.setNumber("000000001");
-		ConstInfo.setSex(Sex.man);
+		ConstInfo.setSex(Sex.woman);
 		LocalInfo.ins_id = "0010001";
 		MainFrame mainFrame = new MainFrame();
 		BillOrderPanel panel = new BillOrderPanel(mainFrame);
