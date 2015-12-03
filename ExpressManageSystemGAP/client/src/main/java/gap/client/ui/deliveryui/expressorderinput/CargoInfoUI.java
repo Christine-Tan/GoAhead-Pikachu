@@ -6,6 +6,7 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.common.util.CargoInfo;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -85,6 +86,11 @@ public class CargoInfoUI extends JPanel {
 		g2d.drawLine(10, height - 5, width - 20, height - 5);
 	}
 
+	public CargoInfo getCargo() {
+		return new CargoInfo(new Integer(number_text.getText()), new Double(
+				weight_text.getText()), new Double(volunm_text.getText()),
+				name_text.getText());
+	}
 	// public static void main(String[] args) {
 	// JFrame jf = new JFrame();
 	// jf.setContentPane(new CargoInfoUI());

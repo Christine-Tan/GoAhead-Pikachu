@@ -2,6 +2,7 @@ package gap.server.data.expressorder;
 
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
+import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.po.UserPO;
@@ -24,7 +25,9 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		ExpressOrderDataService {
@@ -416,6 +419,69 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return -1;
+	}
+
+	@Override
+	public int nextId() throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT max(order_id) FROM expressorder;";
+			ResultSet re;
+			re = NetModule.excutor.excuteQuery(sql);
+			if (re.next()) {
+				return re.getInt(1) + 1;
+			} else
+				return 0;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
+
+	}
+
+	@Override
+	public AllAddressPO getAllAddress() throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			List<String> provinces = new ArrayList<String>();
+			Map<String, List<String>> province2city = new HashMap<>();
+			Map<String, List<String>> city2district = new HashMap<>();
+			String sql = "SELECT * FROM province;";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			while (re.next()) {
+				provinces.add(re.getString("name"));
+			}
+			for (String str : provinces) {
+				List<String> cities = new ArrayList<String>();
+				String sql1 = "SELECT city.name FROM city,province WHERE province.name='"
+						+ str + "' AND city.province_id=province.id;";
+				ResultSet re1 = NetModule.excutor.excuteQuery(sql1);
+				while (re1.next()) {
+					cities.add(re1.getString("name"));
+				}
+				province2city.put(str, cities);
+				for (String str1 : cities) {
+					List<String> districts = new ArrayList<String>();
+					String sql2 = "SELECT district.name FROM city,district WHERE city.name='"
+							+ str1 + "' AND city.id=district.city_id;";
+					ResultSet re2 = NetModule.excutor.excuteQuery(sql2);
+					while (re2.next()) {
+						districts.add(re2.getString("name"));
+					}
+					city2district.put(str1, districts);
+				}
+			}
+			AllAddressPO po = new AllAddressPO();
+			po.setCity2district(city2district);
+			po.setProvinces(provinces);
+			po.setProvince2city(province2city);
+			return po;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**

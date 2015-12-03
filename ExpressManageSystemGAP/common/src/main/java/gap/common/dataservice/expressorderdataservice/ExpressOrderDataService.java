@@ -1,5 +1,6 @@
 package gap.common.dataservice.expressorderdataservice;
 
+import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
@@ -31,7 +32,8 @@ public interface ExpressOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ResultMessage setPassed(String order_id,String state) throws RemoteException;
+	public ResultMessage setPassed(String order_id, String state)
+			throws RemoteException;
 
 	/**
 	 * 根据订单号查询订单
@@ -143,8 +145,7 @@ public interface ExpressOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ResultMessage setRecieved(ReceiveInfo info)
-			throws RemoteException;
+	public ResultMessage setRecieved(ReceiveInfo info) throws RemoteException;
 
 	/**
 	 * 获得某个快递员某天所收运费
@@ -155,4 +156,9 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public double getDeliveryMoney(String date, String delivery_id)
 			throws RemoteException;
+
+	public int nextId() throws RemoteException;
+
+	public AllAddressPO getAllAddress() throws RemoteException;
+
 }

@@ -10,8 +10,10 @@ import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.exception.InvalidInputException;
+import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StateVO;
+import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
@@ -102,6 +104,7 @@ public class ExpressOrder implements ExpressOrderService {
 	@Override
 	public ExpressOrderVO createOrder(ExpressOrderVO order_info) {
 		// TODO 自动生成的方法存根
+		order_info.currentins_id = LocalInfo.ins_id;
 		order_info.price = priceCal.getPrice(order_info);
 		return order_info;
 	}
@@ -109,6 +112,10 @@ public class ExpressOrder implements ExpressOrderService {
 	@Override
 	public ResultMessage save(ExpressOrderVO order) {
 		// TODO 自动生成的方法存根
+		String id = expressorderData.nextID() + "";
+		while (id.length() < 10)
+			id = "0" + id;
+		order.order_id = id;
 		return expressorderData.add(order.toPO());
 	}
 
@@ -116,6 +123,12 @@ public class ExpressOrder implements ExpressOrderService {
 	public ResultMessage receiveOrder(ReceiveInfo receiveInfo) {
 		// TODO 自动生成的方法存根
 		return expressorderData.setReceived(receiveInfo);
+	}
+
+	@Override
+	public AllAddressPO getAllAddress() {
+		// TODO 自动生成的方法存根
+		return expressorderData.getAllAddress();
 	}
 
 }

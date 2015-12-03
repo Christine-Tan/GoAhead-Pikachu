@@ -3,6 +3,7 @@ package gap.server.data.expressorder;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.netconfig.RMIConfig;
+import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
@@ -14,6 +15,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -189,5 +191,27 @@ public class ExpressOrderDataServiceImplTest {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Test
+	public void testGetAllAddress() {
+		try {
+			AllAddressPO allAdd = expressorderdataservice.getAllAddress();
+			List<String> provinces = allAdd.getProvinces();
+			Map<String, List<String>> province2city = allAdd.getProvince2city();
+			Map<String, List<String>> city2district = allAdd.getCity2district();
+			for (String str : provinces) {
+				System.out.println(str);
+				for (String str1 : province2city.get(str)) {
+					System.out.println("   " + str1);
+					for (String str2 : city2district.get(str1)) {
+						System.out.println("       " + str2);
+					}
+				}
+			}
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 	}
 }

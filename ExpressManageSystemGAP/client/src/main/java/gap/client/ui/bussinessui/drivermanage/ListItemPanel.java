@@ -57,11 +57,6 @@ public class ListItemPanel extends JPanel {
 		setLayout(gb);
 
 		items = new ArrayList<>();
-		//
-		// addItem(new DriverVO("0010001001", "0010001", "杨雁飞", "1996-03-01",
-		// "500113199603013932", "15520065137", "2015-03-01", Gender.MALE));
-		// addItem(new DriverVO("0010002001", "0010001", "txy", "1996-05-16",
-		// "12345678997654321", "12345678912", "2015-02-01", Gender.FEMALE));
 
 		List<DriverVO> drivers = DriverManageController.getAll();
 		for (DriverVO driver : drivers) {

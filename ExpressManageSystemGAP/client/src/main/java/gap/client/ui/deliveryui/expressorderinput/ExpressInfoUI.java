@@ -5,6 +5,7 @@ import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.common.util.ExpressType;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -50,6 +51,20 @@ public class ExpressInfoUI extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, type, 1, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 10, 10, 540);
 		SwingConsole.addComponent(gb, gcons, this, type_list, 2, 0, 1, 1, 0, 0);
+	}
+
+	public ExpressType getType() {
+		switch ((String) type_list.getSelectedItem()) {
+		case "特快":
+			return ExpressType.EXPRESS;
+		case "经济":
+			return ExpressType.ECONOMIC;
+		case "标准":
+			return ExpressType.STANDARD;
+		default:
+			break;
+		}
+		return null;
 	}
 
 }

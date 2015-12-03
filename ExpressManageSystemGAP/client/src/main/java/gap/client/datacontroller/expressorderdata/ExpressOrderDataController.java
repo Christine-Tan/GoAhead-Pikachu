@@ -5,6 +5,7 @@ import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.strategydataservice.PriceDataService;
 import gap.common.netconfig.RMIConfig;
+import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.po.PricePO;
@@ -20,7 +21,6 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public class ExpressOrderDataController {
-	private final UserType[] users = { UserType.DELIVERY, UserType.MANAGER };
 	ExpressOrderDataService expressOrderData;
 	PriceDataService priceDataService;
 
@@ -127,6 +127,26 @@ public class ExpressOrderDataController {
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
+	}
+
+	public int nextID() {
+		try {
+			return expressOrderData.nextId();
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public AllAddressPO getAllAddress() {
+		try {
+			return expressOrderData.getAllAddress();
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

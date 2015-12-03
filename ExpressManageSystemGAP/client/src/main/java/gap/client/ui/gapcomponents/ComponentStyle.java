@@ -1,5 +1,7 @@
 package gap.client.ui.gapcomponents;
 
+import gap.client.ui.UITools.ColorAndFonts;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -15,11 +17,13 @@ public class ComponentStyle {
 
 	public final static Color blue = new Color(Integer.parseInt("3399CC", 16)),
 			light_gray = new Color(Integer.parseInt("DDDDDD", 16)),
-			gray = new Color(Integer.parseInt("888888", 16)), red = new Color(255, 0, 0, 80);
+			gray = new Color(Integer.parseInt("888888", 16)), red = new Color(
+					255, 0, 0, 80);
 
 	public final static Border text_border = BorderFactory
 			.createBevelBorder(BevelBorder.LOWERED, ComponentStyle.light_gray,
-					ComponentStyle.gray), alarm_border = BorderFactory
+					ComponentStyle.gray), focus_border = BorderFactory
+			.createLineBorder(ColorAndFonts.blue), alarm_border = BorderFactory
 			.createBevelBorder(BevelBorder.LOWERED, ComponentStyle.red,
 					ComponentStyle.red.brighter());
 

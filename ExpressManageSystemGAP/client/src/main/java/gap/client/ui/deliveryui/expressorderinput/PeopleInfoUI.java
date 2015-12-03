@@ -1,5 +1,6 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
+import gap.client.blcontroller.ExpressorderController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.GapTextControll;
 import gap.client.ui.UITools.RenderSetter;
@@ -8,6 +9,8 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.common.po.AllAddressPO;
+import gap.common.util.Address;
 import gap.common.util.PeopleInfo;
 
 import java.awt.Color;
@@ -17,6 +20,10 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -29,6 +36,7 @@ public class PeopleInfoUI extends JPanel {
 	JComboBox<String> pro_list, city_list, dis_list;
 	GridBagLayout grid;
 	GridBagConstraints gcon;
+	AllAddressPO allAddress;
 
 	public PeopleInfoUI(String titleName) {
 
@@ -47,32 +55,12 @@ public class PeopleInfoUI extends JPanel {
 		phone = new GAPLabel("电话");
 		phone.setFont(ComponentStyle.defaultFont);
 		phone_text = new GAPTextField(15);
-		phone_text.setControl("", 11, 11);
+		phone_text.setControl("\\D" + "", 11, 11);
 		// phone_text.setDocument(GapTextControll.getNumberDocument(11));
 
 		address = new GAPLabel("住址");
 
-		province = new GAPLabel("省");
-		pro_list = new GAPComboBox<String>();
-		pro_list.addItem("北京市");
-		pro_list.addItem("江苏");
-		// pro_list.setFocusable(false);
-
-		city = new GAPLabel("市");
-		city_list = new GAPComboBox<String>();
-		city_list.addItem("北京市");
-		city_list.addItem("南京");
-
-		district = new GAPLabel("区");
-		dis_list = new GAPComboBox<String>();
-		dis_list.addItem("栖霞区1");
-		dis_list.addItem("栖霞区2");
-		dis_list.addItem("栖霞区3");
-		dis_list.addItem("栖霞区4");
-		dis_list.addItem("栖霞区5");
-		dis_list.addItem("栖霞区6");
-		dis_list.addItem("栖霞区7");
-		dis_list.addItem("栖霞区8");
+		initialList();
 
 		depart_text = new GAPTextField();
 
@@ -108,6 +96,69 @@ public class PeopleInfoUI extends JPanel {
 		g2d.setColor(ComponentStyle.light_gray);
 		int width = getWidth(), height = getHeight();
 		g2d.drawLine(10, height - 5, width - 20, height - 5);
+	}
+
+	private void initialList() {
+		allAddress = ExpressorderController.getAllAddress();
+
+		province = new GAPLabel("省");
+		pro_list = new GAPComboBox<String>();
+
+		city = new GAPLabel("市");
+		city_list = new GAPComboBox<String>();
+
+		district = new GAPLabel("区");
+		dis_list = new GAPComboBox<String>();
+
+		for (String str : allAddress.getProvinces())
+			pro_list.addItem(str);
+		pro_list.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO 自动生成的方法存根
+				String item = (String) e.getItem();
+				setCity(item);
+			}
+		});
+
+		city_list.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO 自动生成的方法存根
+				String city = (String) e.getItem();
+				setDistrict(city);
+			}
+		});
+		setCity(pro_list.getItemAt(0));
+
+		setDistrict(city_list.getItemAt(0));
+	}
+
+	private void setCity(String province) {
+		city_list.removeAllItems();
+		for (String str : allAddress.getProvince2city().get(province)) {
+			city_list.addItem(str);
+		}
+	}
+
+	private void setDistrict(String city) {
+		dis_list.removeAllItems();
+		for (String str : allAddress.getCity2district().get(city)) {
+			dis_list.addItem(str);
+		}
+	}
+
+	public PeopleInfo getInfo() {
+		return new PeopleInfo(name_text.getText(), getAddress(),
+				depart_text.getText(), phone_text.getText());
+	}
+
+	public Address getAddress() {
+		return new Address((String) pro_list.getSelectedItem(),
+				(String) city_list.getSelectedItem(),
+				(String) dis_list.getSelectedItem());
 	}
 
 	// public PeopleInfo getPeopleInfo(){

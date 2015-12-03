@@ -1,14 +1,18 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
+import gap.client.blcontroller.ExpressorderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.vo.ExpressOrderVO;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
@@ -26,6 +30,16 @@ public class ExpressorderInputPanel extends MainPanel {
 		express = new ExpressInfoUI();
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交订单");
+		buttonArea.submit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				ExpressOrderVO vo = getExpressOrderVO();
+				vo = ExpressorderController.createOrder(vo);
+				ExpressorderController.save(vo);
+			}
+		});
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
@@ -48,6 +62,15 @@ public class ExpressorderInputPanel extends MainPanel {
 		gcons.fill = GridBagConstraints.HORIZONTAL;
 		SwingConsole
 				.addComponent(gb, gcons, this, buttonArea, 0, 7, 1, 1, 1, 0);
+	}
+
+	public ExpressOrderVO getExpressOrderVO() {
+		ExpressOrderVO vo = new ExpressOrderVO();
+		vo.cargoInfo = cargo.getCargo();
+		vo.sender_info = sender.getInfo();
+		vo.receiver_info = receiver.getInfo();
+		vo.expressType = express.getType();
+		return vo;
 	}
 
 	// public static void main(String[] args) {
