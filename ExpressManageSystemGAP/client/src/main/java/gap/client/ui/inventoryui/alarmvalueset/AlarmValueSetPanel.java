@@ -38,7 +38,7 @@ public class AlarmValueSetPanel extends MainPanel{
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, alarmValue, 0, 1, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 2, 1, 1, 1, 0);
-		gcons.fill = GridBagConstraints.CENTER;
+//		gcons.fill = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
 		
 	}

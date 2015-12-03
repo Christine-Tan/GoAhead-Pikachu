@@ -24,12 +24,12 @@ public class StockinInfoUI extends JPanel{
 	JLabel title,date,id;
 	JTextField date_text,id_text;
 	
-	GridBagLayout grid;
+	GridBagLayout gb;
 	GridBagConstraints gcon;
 	
 	public StockinInfoUI (){
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 70));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 90));
 		
 		title = new GAPLabel("入库单信息：");
 		title.setFont(ComponentStyle.defaultFont);
@@ -42,20 +42,23 @@ public class StockinInfoUI extends JPanel{
 		id.setFont(ComponentStyle.defaultFont);
 		id_text = new GAPTextField(20);
 		
-		grid = new GridBagLayout();
+		gb = new GridBagLayout();
 		gcon = new GridBagConstraints();
-//		gcon.insets = new Insets(10, 10, 10, 10);
-		gcon.anchor = GridBagConstraints.CENTER;
-		setLayout(grid);
 		
-		SwingConsole.addComponent(grid, gcon, this, title, 0, 0, 1, 1, 0, 0);
-		gcon.fill = GridBagConstraints.HORIZONTAL;
-		
-		SwingConsole.addComponent(grid, gcon, this,date, 1, 0, 1, 1, 0, 0);
+//		gcon.anchor = GridBagConstraints.CENTER;
+		setLayout(gb);
+		gcon.insets = new Insets(20, 20, 10, 10);
+		SwingConsole.addComponent(gb, gcon, this, title, 0, 0, 1, 1, 0, 0);
+//		gcon.fill = GridBagConstraints.HORIZONTAL;
+		gcon.insets = new Insets(20, 20, 10, 10);
+		SwingConsole.addComponent(gb, gcon, this,date, 1, 0, 1, 1, 0, 0);
+		gcon.insets = new Insets(20, 10, 10, 10);
 		SwingConsole
-				.addComponent(grid, gcon, this, date_text, 2, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(grid, gcon, this, id, 3, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(grid, gcon, this, id_text, 4, 0, 1, 1, 0,
+				.addComponent(gb, gcon, this, date_text, 2, 0, 1, 1, 0, 0);
+		gcon.insets = new Insets(20, 30,10, 10);
+		SwingConsole.addComponent(gb, gcon, this, id, 3, 0, 1, 1, 0, 0);
+		gcon.insets = new Insets(20, 10, 10, 10);
+		SwingConsole.addComponent(gb, gcon, this, id_text, 4, 0, 1, 1, 0,
 				0);
 	}
 	
@@ -66,7 +69,7 @@ public class StockinInfoUI extends JPanel{
 		g2d.setColor(ComponentStyle.light_gray);
 		
 		int width = getWidth(),height = getHeight();
-		g2d.drawLine(10, height-5, width-20, height-5);
+		g2d.drawLine(10, height-5, width-10, height-5);
 	}
 	
 }

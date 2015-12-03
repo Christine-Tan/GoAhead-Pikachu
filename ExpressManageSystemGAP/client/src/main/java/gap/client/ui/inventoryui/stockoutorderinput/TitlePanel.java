@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.stockinorderinput;
+package gap.client.ui.inventoryui.stockoutorderinput;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -32,7 +32,7 @@ public class TitlePanel extends JPanel {
 		id = new GAPLabel("快递编号");
 		inDate = new GAPLabel("入库日期");
 		destination = new GAPLabel("目的地");
-		sector = new GAPLabel("分区");
+//		sector = new GAPLabel("分区");
 		location = new GAPLabel("存放位置");
 		
 		
@@ -41,22 +41,19 @@ public class TitlePanel extends JPanel {
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 		
-		
+		gcons.insets = new Insets(0,-15,0,95);
 		gcons.anchor = GridBagConstraints.EAST;
-		gcons.insets = new Insets(0, -32, 0, 100);
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
 		
 		gcons.anchor = GridBagConstraints.WEST;
-		gcons.insets = new Insets(0, -5, 0, 25);
+		gcons.insets = new Insets(0,-17,0,37);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 45, 0, 7);
+		gcons.insets = new Insets(0,30,0,-10);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 25, 0, 3);
+		gcons.insets = new Insets(0,30,0,-10);
 		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1,
 				0);
-		gcons.insets = new Insets(0, 25, 0, -3);
-		SwingConsole.addComponent(gb, gcons, this, sector, 4, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 25, 0, -5);
+		gcons.insets = new Insets(0,27,0,-7);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
 
 	}
@@ -67,7 +64,7 @@ public class TitlePanel extends JPanel {
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 		g2d.setColor(ComponentStyle.light_gray);
 		int width = getWidth(), height = getHeight();
-		g2d.drawLine(20, height - 5, width - 20, height - 5);
+		g2d.drawLine(20, height - 5, width - 30, height - 5);
 	}
 
 }

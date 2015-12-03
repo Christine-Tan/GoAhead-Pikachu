@@ -17,7 +17,7 @@ public class AlarmValueUI extends JPanel{
 	
 	public AlarmValueUI(){
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH,80));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH,120));
 		
 		alarmValue = new JTextField(10);
 		alarmValue.setBorder(ComponentStyle.text_border);
@@ -25,17 +25,18 @@ public class AlarmValueUI extends JPanel{
 		alarmValue.setHorizontalAlignment(JTextField.CENTER);
 		alarmValue.setForeground(ComponentStyle.gray);
 		alarmValue.setText("80");
+//		alarmValue.setPreferredSize(new Dimension(850, 80));
 //		scroller = new JScrollPane(alarmValue);
 		
 //		this.setLayout(null);
 //		this.add(alarmValue);
-//		GridBagLayout gb = new GridBagLayout();
-//		GridBagConstraints gcons = new GridBagConstraints();
-//		setLayout(gb);
-//		gcons.insets=new Insets(10, 10, 10, 10);
+		GridBagLayout gb = new GridBagLayout();
+		GridBagConstraints gcons = new GridBagConstraints();
+		setLayout(gb);
+		gcons.insets=new Insets(10, 10, 10, 10);
 //		gcons.anchor = GridBagConstraints.CENTER;
-//		SwingConsole.addComponent(gb, gcons, this, alarmValue, 0, 0, 1, 1, 1, 0);
-		this.add(alarmValue);
+		SwingConsole.addComponent(gb, gcons, this, alarmValue, 0, 0, 1, 1, 1, 0);
+//		this.add(alarmValue);
 	}
 	
 //	public static void main(String[] args) {

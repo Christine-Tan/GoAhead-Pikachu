@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.stockinorderinput;
+package gap.client.ui.inventoryui.observestock;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
@@ -20,16 +20,16 @@ public class ListPanel extends JPanel{
 		setBackground(Color.white);
 		
 		items = new ArrayList<ListItem>();
-		int size = 10;
-		for(int i = 0;i<size;i++){
-			ListItem item = new ListItem();
+		int size = 5;
+		for(int i = 1;i<=size;i++){
+			ListItem item = new ListItem(i);
 			items.add(item);
 		}
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		
+
 		gcons.insets = new Insets(0,10,0,10);
 		for(int i = 0;i<size;i++){
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
