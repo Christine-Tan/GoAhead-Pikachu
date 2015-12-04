@@ -9,6 +9,11 @@ import javax.swing.BorderFactory;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+/**
+ * 组件样式
+ * @author YangYanfei
+ *
+ */
 public class ComponentStyle {
 	public final static int PANEL_WIDTH = 850, PANEL_HEIGHT = 150;
 	public final static int TITLE_FONT_SIZE = 15, ITEM_FONT_SIZE = 15;

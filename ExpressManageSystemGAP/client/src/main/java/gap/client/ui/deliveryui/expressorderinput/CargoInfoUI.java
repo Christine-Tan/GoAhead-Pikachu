@@ -20,6 +20,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * 货物信息面板
+ * @author YangYanfei
+ *
+ */
 public class CargoInfoUI extends JPanel {
 	JLabel title, name, number, weight, volumn;
 	JTextField name_text, number_text, weight_text, volunm_text;
@@ -86,6 +91,7 @@ public class CargoInfoUI extends JPanel {
 		g2d.drawLine(10, height - 5, width - 20, height - 5);
 	}
 
+	//获得货物信息
 	public CargoInfo getCargo() {
 		return new CargoInfo(new Integer(number_text.getText()), new Double(
 				weight_text.getText()), new Double(volunm_text.getText()),
