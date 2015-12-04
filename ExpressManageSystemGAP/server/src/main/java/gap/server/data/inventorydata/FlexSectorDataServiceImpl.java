@@ -52,7 +52,7 @@ public class FlexSectorDataServiceImpl implements FlexSectorDataService {
 					.EQUALS(beginShelf).AND(endshelf_f).EQUALS(endShelf)
 					.excuteQuery();
 			if (re.next()) {
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			} else {
 				insert.clear();
 				insert.add(sector_id_f, ins_id + "0");

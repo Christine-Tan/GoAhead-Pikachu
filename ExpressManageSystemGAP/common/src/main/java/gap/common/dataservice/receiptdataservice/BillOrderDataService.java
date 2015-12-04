@@ -1,4 +1,4 @@
-package gap.common.dataservice.orderdataservice;
+package gap.common.dataservice.receiptdataservice;
 
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;

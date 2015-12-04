@@ -1,6 +1,6 @@
-package gap.server.data.order;
+package gap.server.data.receiptdata;
 
-import gap.common.dataservice.orderdataservice.BillOrderDataService;
+import gap.common.dataservice.receiptdataservice.BillOrderDataService;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.BillPO;

@@ -10,7 +10,7 @@ import java.util.Calendar;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
-import gap.common.dataservice.orderdataservice.BillOrderDataService;
+import gap.common.dataservice.receiptdataservice.BillOrderDataService;
 import gap.common.dataservice.receiptdataservice.PaymentdataService;
 import gap.common.dataservice.strategydataservice.RentDataService;
 import gap.common.dataservice.strategydataservice.SalaryDataService;

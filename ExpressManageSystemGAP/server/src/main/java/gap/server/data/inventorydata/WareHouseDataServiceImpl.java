@@ -45,7 +45,7 @@ public class WareHouseDataServiceImpl implements WareHouseDataService{
 			
 			ResultSet re = sql.Select("*").From(sectorTable).Where(ins_id_f).EQUALS(ins_id).excuteQuery();
 			if(re.next()){
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

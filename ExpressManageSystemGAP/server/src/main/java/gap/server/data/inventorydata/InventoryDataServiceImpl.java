@@ -144,7 +144,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 							+ expressorder_id + "';");
 			if (re.next()) {
 				System.out.println("订单号为" + expressorder_id + "的订单已经存在");
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

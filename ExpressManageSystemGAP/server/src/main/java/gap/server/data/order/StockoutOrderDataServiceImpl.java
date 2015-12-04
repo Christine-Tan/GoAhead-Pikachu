@@ -62,7 +62,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 							+ order_id + "';");
 			if (re.next()) {
 				System.out.println(" 出库单号为" + order_id + "的出库单已经存在");
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

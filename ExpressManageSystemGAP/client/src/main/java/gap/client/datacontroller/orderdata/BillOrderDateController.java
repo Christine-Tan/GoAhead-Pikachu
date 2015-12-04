@@ -2,7 +2,7 @@ package gap.client.datacontroller.orderdata;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
-import gap.common.dataservice.orderdataservice.BillOrderDataService;
+import gap.common.dataservice.receiptdataservice.BillOrderDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.BillOrderPO;

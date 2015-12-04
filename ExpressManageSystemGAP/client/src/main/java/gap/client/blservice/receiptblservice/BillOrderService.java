@@ -1,4 +1,4 @@
-package gap.client.blservice.orderblservice;
+package gap.client.blservice.receiptblservice;
 
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;

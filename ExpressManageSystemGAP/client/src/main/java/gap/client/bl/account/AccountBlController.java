@@ -51,7 +51,7 @@ public class AccountBlController implements AccountService{
 	public ResultMessage addAccount(AccountVO vo) {
 		//名字相同的账户视为相同
 		if(accounts.contains(vo)){
-			return ResultMessage.EXITED;
+			return ResultMessage.EXISTED;
 		}
 		accounts.add(vo);
 		return buffer.addCommond(new AddAccountCmd(vo));
@@ -78,7 +78,7 @@ public class AccountBlController implements AccountService{
 			
 			if(accounts.contains(newVO)){
 				//名字已经存在
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 			
 			accounts.set(index, newVO);

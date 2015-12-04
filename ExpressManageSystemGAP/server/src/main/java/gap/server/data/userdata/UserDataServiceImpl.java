@@ -79,7 +79,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 							+ "';");
 			if (re.next()) {
 				System.out.println(re.getString("username"));
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块

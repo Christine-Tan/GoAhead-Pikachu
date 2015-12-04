@@ -1,5 +1,6 @@
 package gap.client.bl.order;
 
+import gap.client.bl.receipt.BillOrder;
 import gap.client.vo.BillVO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.BillPO;

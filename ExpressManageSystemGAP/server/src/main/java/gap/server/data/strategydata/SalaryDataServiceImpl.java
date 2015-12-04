@@ -67,7 +67,7 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
 			if (re.next())
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			insertSQL.clear();
 			insertSQL.add(usertype_f, usertype.toString());
 			insertSQL.add(salary_f, salary);

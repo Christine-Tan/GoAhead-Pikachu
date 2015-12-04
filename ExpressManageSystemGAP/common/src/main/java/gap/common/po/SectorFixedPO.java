@@ -60,7 +60,7 @@ public class SectorFixedPO {
 	public ResultMessage add(GoodsPO goods) {
 		for (GoodsPO g : this.goodsList) {
 			if (g.getExpressorder_id().equals(goods.getExpressorder_id())) {
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		}
 		this.goodsList.add(goods);

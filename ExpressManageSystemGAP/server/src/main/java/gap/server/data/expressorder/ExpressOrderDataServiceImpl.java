@@ -109,7 +109,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			if (re.next()) {
 				System.out
 						.println("Expressorder Exist!!\nOrder_id:" + order_id);
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 
 			int sender_id, receiver_id, cargo_id;

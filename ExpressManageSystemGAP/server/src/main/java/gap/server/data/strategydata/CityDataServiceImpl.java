@@ -66,7 +66,7 @@ public class CityDataServiceImpl extends UnicastRemoteObject implements CityData
 		try {
 			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
 			if (rs.next()) {
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT id FROM province WHERE name='" + province + "';");
 			re.next();
