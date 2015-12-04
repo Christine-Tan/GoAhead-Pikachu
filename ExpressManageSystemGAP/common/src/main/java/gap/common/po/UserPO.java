@@ -4,6 +4,7 @@ import gap.common.util.Gender;
 import gap.common.util.UserType;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class UserPO implements Serializable {
 	// 用户编号
@@ -20,6 +21,9 @@ public class UserPO implements Serializable {
 	private Gender gender;
 	// 用户姓名
 	private String name;
+	
+	//上次付款日期，这个属性只对财务人员有用
+	private Date lastPayDate = null;
 
 	public UserPO() {
 
@@ -92,6 +96,14 @@ public class UserPO implements Serializable {
 
 	public String getName() {
 		return name;
+	}
+
+	public Date getLastPayDate() {
+		return lastPayDate;
+	}
+
+	public void setLastPayDate(Date lastPayDate) {
+		this.lastPayDate = lastPayDate;
 	}
 
 }

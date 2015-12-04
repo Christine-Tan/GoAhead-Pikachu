@@ -4,6 +4,7 @@ import gap.common.dataservice.receiptdataservice.BillOrderDataService;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.BillPO;
+import gap.common.util.NumberLength;
 import gap.common.util.OrderState;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
@@ -211,23 +212,73 @@ public class BillOrderDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public List<BillOrderPO> getPassedOrder(Calendar oneDay, String institutionID) throws RemoteException {
+	public List<BillOrderPO> getPassedOrder(Calendar oneDay, String institutionID) 
+			throws RemoteException {
 		// TODO Auto-generated method stub
 		if(oneDay==null && institutionID==null){
 			return null;
 		}
+		
+		//机构编号格式不对
+		if(institutionID.length()!=NumberLength.INSTITUTION_NUM_LEN){
+			return null;
+		}
+		
 		SQLBuilder builder = new SQLBuilder();
-		builder.Select("*").From(tableName);
+		builder.Select("*").From(tableName).Where(passed_f).EQUALS(1);
 		
-		//if()
+
+		if(oneDay!=null){
+			builder.AND(time_f).EQUALS(oneDay);
+		}
 		
-		return null;
+		//假如机构编号不是空，且长度符合要求
+		if(institutionID!=null){
+			//机构编号是单据编号的开头
+			builder.AND(order_id_f).LIKE(institutionID+"%");
+		}
+		
+		ResultSet set = builder.excuteQuery();
+		List<BillOrderPO> orders = new ArrayList<>();
+		try {
+			while (set.next()) {
+				orders.add(getByResultSet(set));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return orders;
 	}
 
 	@Override
 	public OrderState isOrderPassed(String orderID) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		SQLBuilder builder = new SQLBuilder();
+		builder.Select(passed_f).From(tableName).Where(order_id_f).EQUALS(orderID);
+		ResultSet set = builder.excuteQuery();
+		boolean hasNext = false;
+		try {
+			hasNext = set.next();
+			if(!hasNext){
+				return null;
+			}else{
+				boolean isPassed = set.getBoolean(passed_f);
+				
+				if(isPassed){
+					return OrderState.PASSED;
+				}else{
+					return OrderState.SUBMITTED;
+				}
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 }
