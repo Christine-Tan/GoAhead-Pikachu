@@ -17,6 +17,7 @@ import javax.swing.SwingUtilities;
 
 public class GAPTextField extends JTextField {
 	TextListener listener;
+	boolean edited;
 
 	public GAPTextField() {
 		super();
@@ -73,6 +74,7 @@ public class GAPTextField extends JTextField {
 			listener = new TextListener();
 			addFocusListener(listener);
 		}
+		edited = true;
 		setBackground(Color.white);
 		setBorder(ComponentStyle.text_border);
 		setFont(ComponentStyle.defaultFont);
@@ -81,6 +83,7 @@ public class GAPTextField extends JTextField {
 
 	// 关闭编辑样式
 	public void closeEdit() {
+		edited = false;
 		setEditable(false);
 		setFocusable(false);
 		setBorder(BorderFactory.createEmptyBorder());
@@ -88,6 +91,7 @@ public class GAPTextField extends JTextField {
 
 	// 打开编辑样式
 	public void openEdit() {
+		edited = true;
 		setEditable(true);
 		setFocusable(true);
 		normal();
@@ -130,8 +134,10 @@ public class GAPTextField extends JTextField {
 					&& (minLen != -1 && maxLen != -1 && (text.length() < minLen || text
 							.length() > maxLen))) {
 				alarm();
-			} else {
+			} else if (edited) {
 				normal();
+			} else {
+				closeEdit();
 			}
 
 		}

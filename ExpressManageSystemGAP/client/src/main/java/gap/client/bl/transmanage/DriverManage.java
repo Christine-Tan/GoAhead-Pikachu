@@ -67,6 +67,7 @@ public class DriverManage implements DriverService {
 		for (Operation ope : operations) {
 			ResultMessage re = ope.excute();
 			if (!re.equals(ResultMessage.SUCCEED)) {
+				System.out.println("failed");
 				operations.clear();
 				return re;
 			}

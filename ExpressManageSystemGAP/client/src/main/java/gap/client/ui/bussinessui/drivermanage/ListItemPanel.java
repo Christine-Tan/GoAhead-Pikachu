@@ -172,9 +172,12 @@ public class ListItemPanel extends JPanel {
 					} else {
 						closeEdit();
 						if (original) {
+							original = false;
 							DriverManageController.add(driver);
+							System.out.println("add");
 						} else {
 							DriverManageController.modify(driver);
+							System.out.println("modify");
 						}
 					}
 				}
@@ -311,7 +314,6 @@ public class ListItemPanel extends JPanel {
 
 		// 关闭编辑
 		void closeEdit() {
-
 			id.closeEdit();
 			name.closeEdit();
 			gender.closeEdit();
@@ -319,15 +321,14 @@ public class ListItemPanel extends JPanel {
 			birth.closeEdit();
 			phone.closeEdit();
 			driverLi_due.closeEdit();
+			
 			edit_la.setText("E");
 			driver = getDriverVO();
 			edited = false;
-			original = false;
 		}
 
 		// 启用编辑
 		void openEdit() {
-
 			id.closeEdit();
 			name.openEdit();
 			gender.openEdit();

@@ -54,6 +54,7 @@ public class DriverManageController {
 
 	public static void add(DriverVO vo) {
 		// TODO 自动生成的方法存根
+		System.out.println(vo.getId() + "," + vo.getName());
 		driverManage.add(new Driver(vo));
 	}
 
