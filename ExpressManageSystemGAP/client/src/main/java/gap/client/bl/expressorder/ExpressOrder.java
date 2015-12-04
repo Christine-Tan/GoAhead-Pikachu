@@ -1,9 +1,5 @@
 package gap.client.bl.expressorder;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.bl.strategy.CityManage;
 import gap.client.blservice.expressorderblservice.ExpressOrderService;
 import gap.client.blservice.expressorderblservice.PriceCal;
@@ -12,17 +8,20 @@ import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
 import gap.client.exception.InvalidInputException;
 import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
-import gap.client.vo.StateVO;
 import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExpressOrder implements ExpressOrderService {
 
 	PriceCal priceCal;
 	ExpressOrderDataController expressorderData;
+	AllAddressPO allAddress;
 
 	public ExpressOrder() {
 		// TODO 自动生成的构造函数存根
@@ -128,7 +127,9 @@ public class ExpressOrder implements ExpressOrderService {
 	@Override
 	public AllAddressPO getAllAddress() {
 		// TODO 自动生成的方法存根
-		return expressorderData.getAllAddress();
+		if (allAddress == null)
+			allAddress = expressorderData.getAllAddress();
+		return allAddress;
 	}
 
 }

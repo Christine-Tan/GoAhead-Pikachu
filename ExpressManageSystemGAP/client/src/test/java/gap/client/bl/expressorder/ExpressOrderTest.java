@@ -2,17 +2,13 @@ package gap.client.bl.expressorder;
 
 import static org.junit.Assert.fail;
 import gap.client.exception.InvalidInputException;
-import gap.client.util.LocalInfo;
-import gap.client.util.User;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.Address;
 import gap.common.util.CargoInfo;
 import gap.common.util.CurrentOrderType;
 import gap.common.util.ExpressType;
-import gap.common.util.Gender;
 import gap.common.util.PeopleInfo;
 import gap.common.util.ReceiveInfo;
-import gap.common.util.UserType;
 
 import java.util.List;
 

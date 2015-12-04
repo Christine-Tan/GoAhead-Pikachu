@@ -1,8 +1,5 @@
 package gap.client.bl.strategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.blservice.strategyblservice.SalaryService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.strategydata.SalaryDataController;
@@ -12,6 +9,9 @@ import gap.client.vo.SalaryVO;
 import gap.common.po.SalaryPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SalaryManage implements SalaryService {
 	private static final String ADD = "addSalary", MODIFY = "modifySalary";

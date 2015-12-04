@@ -49,7 +49,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			order_type_f = "order_type", cargo_info_f = "cargo_info",
 			price_f = "price", delivery_id_f = "delivery_id",
 			create_time_f = "create_time";
-
+	// received表字段名
 	private String rece_time_f = "time", rece_order_id_f = "order_id",
 			rece_delivery_id_f = "delivery_id",
 			rece_receiver_name_f = "receiver_name", rece_comment_f = "comment";
@@ -159,6 +159,9 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
+	/**
+	 * 修改订单
+	 */
 	@Override
 	public ResultMessage modify(ExpressOrderModifyPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
@@ -206,7 +209,6 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
 				orders.add(getByResultSet(re));
-				System.out.println("HERE");
 			}
 			return orders;
 		} catch (SQLException e) {
@@ -216,6 +218,9 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
+	/**
+	 * 获得目前在机构的订单
+	 */
 	@Override
 	public List<ExpressOrderPO> findCurrentOrders(String ins_id,
 			CurrentOrderType type) throws RemoteException {
@@ -440,6 +445,9 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 
 	}
 
+	/**
+	 * 获得所有地址
+	 */
 	@Override
 	public AllAddressPO getAllAddress() throws RemoteException {
 		// TODO 自动生成的方法存根

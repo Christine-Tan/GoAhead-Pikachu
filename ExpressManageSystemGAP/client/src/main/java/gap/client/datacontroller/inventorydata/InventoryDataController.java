@@ -1,17 +1,16 @@
 package gap.client.datacontroller.inventorydata;
 
+import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.inventorydataservice.InventoryDataService;
+import gap.common.netconfig.RMIConfig;
+import gap.common.po.GoodsPO;
+import gap.common.util.ResultMessage;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
-
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.inventorydataservice.InventoryDataService;
-import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
-import gap.common.netconfig.RMIConfig;
-import gap.common.po.GoodsPO;
-import gap.common.util.ResultMessage;
 
 public class InventoryDataController {
 	InventoryDataService inventory;

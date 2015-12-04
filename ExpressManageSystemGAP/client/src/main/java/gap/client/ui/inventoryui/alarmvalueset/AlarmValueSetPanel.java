@@ -1,15 +1,15 @@
 package gap.client.ui.inventoryui.alarmvalueset;
 
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.SwingConsole;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
-
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.SwingConsole;
 
 public class AlarmValueSetPanel extends MainPanel{
 	

@@ -1,6 +1,5 @@
 package gap.client.bl.expressorder;
 
-import static org.junit.Assert.*;
 import gap.client.bl.strategy.CityManage;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.Address;

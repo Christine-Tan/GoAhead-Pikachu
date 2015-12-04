@@ -18,28 +18,28 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TitlePanel extends JPanel {
-	JLabel car_id, name, gender, id_card;
+	JLabel id, car_id, car_num, server_time;
 
 	public TitlePanel() {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 		setBackground(Color.white);
-		car_id = new GAPLabel("编号");
-		name = new GAPLabel("车辆代号");
-		gender = new GAPLabel("车牌号");
-		id_card = new GAPLabel("服役时间");
+		id = new GAPLabel("编号");
+		car_id = new GAPLabel("车辆代号");
+		car_num = new GAPLabel("车牌号");
+		server_time = new GAPLabel("服役时间（年）");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		gcons.insets = new Insets(10, 150, 10, 0);
-		SwingConsole.addComponent(gb, gcons, this, car_id, 0, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 85, 10, 0);
-		SwingConsole.addComponent(gb, gcons, this, name, 1, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 65, 10, 0);
-		SwingConsole.addComponent(gb, gcons, this, gender, 2, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 130, 10, 240);
-		SwingConsole.addComponent(gb, gcons, this, id_card, 3, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 165, 10, 0);
+		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 73, 10, 0);
+		SwingConsole.addComponent(gb, gcons, this, car_id, 1, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 117, 10, 0);
+		SwingConsole.addComponent(gb, gcons, this, car_num, 2, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 100, 10, 215);
+		SwingConsole.addComponent(gb, gcons, this, server_time, 3, 0, 1, 1, 0, 0);
 
 	}
 

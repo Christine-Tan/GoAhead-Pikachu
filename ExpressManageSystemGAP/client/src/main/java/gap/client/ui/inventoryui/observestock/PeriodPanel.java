@@ -2,7 +2,6 @@ package gap.client.ui.inventoryui.observestock;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;

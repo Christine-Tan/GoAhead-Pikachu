@@ -3,11 +3,6 @@ package gap.client.datacontroller.approvaldata;
 /**
  * @author seven
  */
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.util.List;
 import gap.client.vo.ArrivedOrderVO;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.DeliveryOrderVO;
@@ -33,6 +28,12 @@ import gap.common.po.LoadOrderPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.List;
 
 public class ApprovalDataController {
 	ExpressOrderDataService expressOrderData;

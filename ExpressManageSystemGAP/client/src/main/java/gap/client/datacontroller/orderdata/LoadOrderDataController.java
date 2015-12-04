@@ -1,6 +1,5 @@
 package gap.client.datacontroller.orderdata;
 
-import gap.client.blservice.orderblservice.LoadOrderService;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.orderdataservice.LoadOrderDataService;
 import gap.common.netconfig.RMIConfig;

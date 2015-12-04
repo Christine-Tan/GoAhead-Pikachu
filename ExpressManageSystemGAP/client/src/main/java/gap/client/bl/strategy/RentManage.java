@@ -1,8 +1,5 @@
 package gap.client.bl.strategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.blservice.strategyblservice.RentService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.strategydata.RentDataController;
@@ -11,6 +8,9 @@ import gap.client.util.Operation;
 import gap.client.vo.RentVO;
 import gap.common.po.RentPO;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RentManage implements RentService {
 	private static final String ADD = "addRent", MODIFY = "modifyRent";

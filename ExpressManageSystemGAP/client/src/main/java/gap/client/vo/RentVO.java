@@ -1,8 +1,8 @@
 package gap.client.vo;
 
-import java.sql.Date;
-
 import gap.common.po.RentPO;
+
+import java.sql.Date;
 
 public class RentVO {
 

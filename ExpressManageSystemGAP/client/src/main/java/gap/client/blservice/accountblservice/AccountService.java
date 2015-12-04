@@ -1,12 +1,11 @@
 package gap.client.blservice.accountblservice;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import gap.client.bl.account.AccountSearchResult;
-import gap.client.util.SearchResult;
 import gap.client.vo.AccountVO;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public interface AccountService {
 	

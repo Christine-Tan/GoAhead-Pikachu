@@ -1,13 +1,8 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.expressorder.ExpressOrder;
-import gap.client.blservice.expressorderblservice.ExpressOrderService;
-import gap.client.exception.InvalidInputException;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.po.AllAddressPO;
-import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 

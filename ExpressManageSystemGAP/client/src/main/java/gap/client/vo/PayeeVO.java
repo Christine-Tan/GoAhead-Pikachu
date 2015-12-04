@@ -1,11 +1,9 @@
 package gap.client.vo;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import gap.common.po.PayeePO;
 import gap.common.util.PaymentType;
-import gap.common.util.UserType;
+
+import java.util.Calendar;
 
 public class PayeeVO {
 

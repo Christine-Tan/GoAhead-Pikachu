@@ -3,13 +3,16 @@ package gap.client.ui.inventoryui.alarmvalueset;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPTextField;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
-import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.BevelBorder;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class AlarmValueUI extends JPanel{
 	public JTextField alarmValue;

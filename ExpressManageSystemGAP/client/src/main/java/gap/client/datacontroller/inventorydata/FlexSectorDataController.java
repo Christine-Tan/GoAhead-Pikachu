@@ -1,14 +1,14 @@
 package gap.client.datacontroller.inventorydata;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.inventorydataservice.FlexSectorDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.util.ResultMessage;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 public class FlexSectorDataController {
 	FlexSectorDataService flexSectorData;

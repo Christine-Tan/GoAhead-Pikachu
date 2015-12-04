@@ -1,7 +1,6 @@
 package gap.client.blservice.strategyblservice;
 
 import gap.client.vo.PriceVO;
-import gap.common.util.ResultMessage;
 
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package gap.client.blservice.strategyblservice;
 
 import gap.client.vo.SalaryVO;
-import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
 import java.util.List;

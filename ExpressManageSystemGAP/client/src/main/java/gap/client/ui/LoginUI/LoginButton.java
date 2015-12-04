@@ -1,22 +1,19 @@
 package gap.client.ui.LoginUI;
+import gap.client.ui.UITools.AreaMaker;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Area;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import gap.client.ui.UITools.AreaMaker;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.RenderSetter;
 
 
 

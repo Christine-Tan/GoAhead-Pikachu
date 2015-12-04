@@ -1,6 +1,5 @@
 package gap.client.ui.UITools;
 import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.RoundRectangle2D;
 
 public class AreaMaker {

@@ -3,7 +3,6 @@ package gap.client.ui.inventoryui.stockoutorderinput;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.UserBox.Sex;
 import gap.client.ui.UITools.ConstInfo;
-import gap.client.ui.inventoryui.stockoutorderinput.StockoutOrderInputPanel;
 
 public class Test {
 	public static void main(String []args){

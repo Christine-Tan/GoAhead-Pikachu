@@ -1,7 +1,6 @@
 package gap.client.blservice.userblservice;
 
 import gap.client.vo.UserVO;
-import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
 import java.util.List;

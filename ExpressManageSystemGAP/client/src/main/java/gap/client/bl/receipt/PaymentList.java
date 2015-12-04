@@ -1,9 +1,8 @@
 package gap.client.bl.receipt;
 
-import java.util.ArrayList;
-
 import gap.client.vo.PayeeVO;
-import gap.common.po.PayeePO;
+
+import java.util.ArrayList;
 
 public class PaymentList {
 	ArrayList<PayeeVO> payeeList;

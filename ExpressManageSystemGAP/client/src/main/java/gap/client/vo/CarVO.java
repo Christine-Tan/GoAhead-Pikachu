@@ -1,6 +1,5 @@
 package gap.client.vo;
 
-import gap.common.po.CarPO;
 
 public class CarVO {
 	// 车辆编号

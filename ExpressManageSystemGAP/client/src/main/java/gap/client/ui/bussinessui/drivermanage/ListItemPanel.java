@@ -19,8 +19,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,16 +29,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ListItemPanel extends JPanel {
+	// 列表中所有的项
 	List<ItemPanel> items;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
+	// 添加button
 	JButton addButton;
 	JFrame frame;
 
 	public ListItemPanel(JFrame frame) {
 		this.frame = frame;
 		setBackground(Color.white);
-		// setPreferredSize(new Dimension(Defaut.PANEL_WIDTH, 500));
 
 		addButton = new GAPButton("+");
 		addButton.addActionListener(new ActionListener() {
@@ -64,12 +63,19 @@ public class ListItemPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * 根据一个已有VO添加项
+	 * @param driver
+	 */
 	private void addItem(DriverVO driver) {
 		items.add(new ItemPanel(driver));
 		reLayout();
 		frame.validate();
 	}
 
+	/**
+	 * 添加一个新项目
+	 */
 	private void addNewItem() {
 		ItemPanel item = new ItemPanel();
 		item.original = true;
@@ -87,6 +93,10 @@ public class ListItemPanel extends JPanel {
 		frame.validate();
 	}
 
+	/**
+	 * 移除一项
+	 * @param item
+	 */
 	private void removeItem(ItemPanel item) {
 		items.remove(item);
 		remove(item);
@@ -95,6 +105,9 @@ public class ListItemPanel extends JPanel {
 		frame.validate();
 	}
 
+	/**
+	 * 重新布局
+	 */
 	private void reLayout() {
 		for (int i = 0; i < items.size(); i++) {
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
@@ -108,6 +121,7 @@ public class ListItemPanel extends JPanel {
 	class ItemPanel extends JPanel {
 		DriverVO driver;
 		JLabel birth_la, phone_la, license_la;
+		// 显示详细信息、删除、改变编辑状态的按钮
 		JButton detail_la, delete_la, edit_la;
 		GAPTextField id, name, gender, id_card, birth, phone, driverLi_due;
 		GridBagLayout gb;
@@ -124,34 +138,10 @@ public class ListItemPanel extends JPanel {
 
 			detail_la = new GAPButton(">");
 			detail_la.setFont(ComponentStyle.defaultFont);
-			detail_la.addMouseListener(new MouseListener() {
+			detail_la.addActionListener(new ActionListener() {
 
 				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO 自动生成的方法存根
-
-				}
-
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO 自动生成的方法存根
-
-				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO 自动生成的方法存根
-
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO 自动生成的方法存根
-
-				}
-
-				@Override
-				public void mouseClicked(MouseEvent e) {
+				public void actionPerformed(ActionEvent e) {
 					// TODO 自动生成的方法存根
 					if (showed) {
 						closeDetail();
@@ -321,7 +311,7 @@ public class ListItemPanel extends JPanel {
 			birth.closeEdit();
 			phone.closeEdit();
 			driverLi_due.closeEdit();
-			
+
 			edit_la.setText("E");
 			driver = getDriverVO();
 			edited = false;

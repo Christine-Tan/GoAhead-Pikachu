@@ -1,17 +1,16 @@
 package gap.client.datacontroller.orderdata;
 
+import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
+import gap.common.netconfig.RMIConfig;
+import gap.common.po.StockoutOrderPO;
+import gap.common.util.ResultMessage;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
-
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.orderdataservice.StockinOrderDataService;
-import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
-import gap.common.netconfig.RMIConfig;
-import gap.common.po.StockoutOrderPO;
-import gap.common.util.ResultMessage;
 
 public class StockoutOrderDataController {
 	StockoutOrderDataService stockoutOrder;

@@ -2,7 +2,6 @@ package gap.client.blservice.expressorderblservice;
 
 import gap.client.exception.InvalidInputException;
 import gap.client.vo.ExpressOrderVO;
-import gap.client.vo.StateVO;
 import gap.common.po.AllAddressPO;
 import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;

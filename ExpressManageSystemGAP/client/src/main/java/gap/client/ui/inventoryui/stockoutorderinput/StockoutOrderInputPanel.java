@@ -1,17 +1,13 @@
 package gap.client.ui.inventoryui.stockoutorderinput;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
-import javax.swing.JPanel;
-
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JPanel;
 
 public class StockoutOrderInputPanel extends MainPanel{
 	StockoutInfoPanel stockoutInfo;

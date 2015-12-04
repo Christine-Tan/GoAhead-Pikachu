@@ -17,7 +17,6 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.Box.Filler;
 
 public class TitlePanel extends JPanel {
 	Checkbox box;

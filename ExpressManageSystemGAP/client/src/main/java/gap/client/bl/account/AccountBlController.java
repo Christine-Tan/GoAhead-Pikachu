@@ -1,15 +1,14 @@
 package gap.client.bl.account;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import gap.client.blservice.accountblservice.AccountService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.AccountDate.AccountDateController;
-import gap.client.util.SearchResult;
 import gap.client.vo.AccountVO;
 import gap.common.po.AccountPO;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class AccountBlController implements AccountService{
 

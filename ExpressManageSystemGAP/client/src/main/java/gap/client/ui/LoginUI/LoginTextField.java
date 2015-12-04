@@ -1,4 +1,6 @@
 package gap.client.ui.LoginUI;
+import gap.client.ui.UITools.ColorAndFonts;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -6,12 +8,6 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import javax.swing.text.PlainDocument;
-
-import gap.client.ui.UITools.ColorAndFonts;
 
 
 

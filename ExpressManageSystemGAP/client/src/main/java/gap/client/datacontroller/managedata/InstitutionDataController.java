@@ -1,16 +1,16 @@
 package gap.client.datacontroller.managedata;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.util.List;
-
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.InstitutionPO;
 import gap.common.util.ResultMessage;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.List;
 
 public class InstitutionDataController {
 	InstitutionDataService institutionData;

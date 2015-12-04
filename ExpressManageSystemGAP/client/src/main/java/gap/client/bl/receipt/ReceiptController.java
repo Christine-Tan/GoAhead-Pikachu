@@ -1,8 +1,5 @@
 package gap.client.bl.receipt;
 
-import javax.naming.ldap.ControlFactory;
-
-import gap.client.blservice.receiptblservice.PaymentService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.ReceiptDataController;
 import gap.client.vo.BillOrderVO;

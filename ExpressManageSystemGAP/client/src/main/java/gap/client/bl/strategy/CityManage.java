@@ -1,8 +1,5 @@
 package gap.client.bl.strategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.blservice.strategyblservice.CityService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.strategydata.CityDataController;
@@ -13,6 +10,9 @@ import gap.client.util.Operation;
 import gap.client.vo.CityVO;
 import gap.common.po.CityPO;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CityManage implements CityService {
 	private static final String ADD = "addCity", MODIFY = "modifyCity";

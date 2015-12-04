@@ -1,6 +1,5 @@
 package gap.client.datacontroller;
 
-import gap.client.bl.receipt.ReceiptController;
 import gap.client.datacontroller.AccountDate.AccountDateController;
 import gap.client.datacontroller.approvaldata.ApprovalDataController;
 import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;

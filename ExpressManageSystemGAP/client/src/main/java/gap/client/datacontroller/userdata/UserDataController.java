@@ -1,18 +1,18 @@
 package gap.client.datacontroller.userdata;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.sql.Date;
-import java.util.List;
-
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.sql.Date;
+import java.util.List;
 
 public class UserDataController {
 	UserDataService userData;

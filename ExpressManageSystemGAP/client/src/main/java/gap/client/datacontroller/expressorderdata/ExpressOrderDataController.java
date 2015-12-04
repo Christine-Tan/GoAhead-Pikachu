@@ -12,7 +12,6 @@ import gap.common.po.PricePO;
 import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
-import gap.common.util.UserType;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

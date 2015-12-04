@@ -3,7 +3,6 @@ package gap.client.vo;
 import gap.common.po.GoodsPO;
 import gap.common.po.StockinOrderPO;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

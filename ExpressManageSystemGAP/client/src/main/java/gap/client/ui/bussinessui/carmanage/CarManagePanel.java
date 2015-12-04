@@ -1,6 +1,6 @@
 package gap.client.ui.bussinessui.carmanage;
 
-import gap.client.blcontroller.DriverManageController;
+import gap.client.blcontroller.CarManageController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
@@ -35,7 +35,7 @@ public class CarManagePanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				DriverManageController.flush();
+				CarManageController.flush();
 			}
 		});
 

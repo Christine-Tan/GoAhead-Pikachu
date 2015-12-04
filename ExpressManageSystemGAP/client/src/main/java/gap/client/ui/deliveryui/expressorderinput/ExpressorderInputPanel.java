@@ -24,6 +24,8 @@ public class ExpressorderInputPanel extends MainPanel {
 
 	public ExpressorderInputPanel(MainFrame frame) {
 		super(frame);
+
+		// 初始化组件
 		sender = new PeopleInfoUI("寄件人信息：");
 		receiver = new PeopleInfoUI("收件人信息：");
 		cargo = new CargoInfoUI();
@@ -41,6 +43,7 @@ public class ExpressorderInputPanel extends MainPanel {
 			}
 		});
 
+		// 布局
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
@@ -64,6 +67,10 @@ public class ExpressorderInputPanel extends MainPanel {
 				.addComponent(gb, gcons, this, buttonArea, 0, 7, 1, 1, 1, 0);
 	}
 
+	/**
+	 * 获得订单VO
+	 * @return
+	 */
 	public ExpressOrderVO getExpressOrderVO() {
 		ExpressOrderVO vo = new ExpressOrderVO();
 		vo.cargoInfo = cargo.getCargo();
@@ -72,17 +79,4 @@ public class ExpressorderInputPanel extends MainPanel {
 		vo.expressType = express.getType();
 		return vo;
 	}
-
-	// public static void main(String[] args) {
-	//
-	// BussinessPanel pa = new BussinessPanel();
-	// JScrollPane js = new GAPJScrollPane(pa);
-	// JFrame jf = new JFrame();
-	// jf.setContentPane(js);
-	// // jf.getContentPane().add(pa);
-	// jf.setSize(1027, 768);
-	// jf.setVisible(true);
-	// jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//
-	// }
 }

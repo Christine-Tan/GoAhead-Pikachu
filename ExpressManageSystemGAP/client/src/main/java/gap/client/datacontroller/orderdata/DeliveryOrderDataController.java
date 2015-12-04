@@ -1,15 +1,15 @@
 package gap.client.datacontroller.orderdata;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.DeliveryOrderPO;
 import gap.common.util.ResultMessage;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 public class DeliveryOrderDataController {
 	DeliveryOrderDataService deliveryOrder;
