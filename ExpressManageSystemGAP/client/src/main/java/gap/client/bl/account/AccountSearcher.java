@@ -1,12 +1,10 @@
 package gap.client.bl.account;
 
-import java.awt.event.MouseWheelEvent;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 import gap.client.util.FuzzyQuery;
 import gap.client.util.SearchResult;
 import gap.client.vo.AccountVO;
+
+import java.util.ArrayList;
 
 public class AccountSearcher {
 	ArrayList<AccountVO> originalList;

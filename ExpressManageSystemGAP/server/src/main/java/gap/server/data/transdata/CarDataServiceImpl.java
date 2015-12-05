@@ -70,7 +70,7 @@ public class CarDataServiceImpl extends UnicastRemoteObject implements
 							+ ";");
 			if (re.next()) {
 				System.out.println("车辆存在 车牌号为:" + re.getString(car_num_f));
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块

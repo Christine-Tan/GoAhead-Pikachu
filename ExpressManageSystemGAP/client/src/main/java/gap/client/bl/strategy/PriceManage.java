@@ -1,16 +1,16 @@
 package gap.client.bl.strategy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.blservice.strategyblservice.PriceService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.strategydata.PriceDataController;
+import gap.client.datacontroller.PriceDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
 import gap.client.vo.PriceVO;
 import gap.common.po.PricePO;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PriceManage implements PriceService {
 	private static final String ADD = "addPrice", MODIFY = "modifyPrice";

@@ -1,8 +1,8 @@
 package gap.client.blservice.strategyblservice;
 
-import java.util.List;
-
 import gap.client.vo.RentVO;
+
+import java.util.List;
 
 public interface RentService {
 	public List<RentVO> getAll();

@@ -1,11 +1,10 @@
 package gap.client.ui.BaseComponents;
 
+import gap.client.ui.UITools.ColorAndFonts;
+
 import java.awt.Color;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-
-import gap.client.ui.UITools.ColorAndFonts;
 
 
 

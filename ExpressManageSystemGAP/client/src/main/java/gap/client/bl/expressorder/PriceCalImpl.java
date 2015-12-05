@@ -3,7 +3,7 @@ package gap.client.bl.expressorder;
 import gap.client.bl.strategy.CityManage;
 import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
+import gap.client.datacontroller.ExpressOrderDataController;
 import gap.client.util.City;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.po.PricePO;

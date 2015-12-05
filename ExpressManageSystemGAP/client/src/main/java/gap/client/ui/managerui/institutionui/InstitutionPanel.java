@@ -1,17 +1,17 @@
 package gap.client.ui.managerui.institutionui;
 
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.GAPJScrollPane;
 
 /**
  * 总经理机构管理界面

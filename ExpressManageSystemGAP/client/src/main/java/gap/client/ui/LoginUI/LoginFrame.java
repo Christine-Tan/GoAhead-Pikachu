@@ -1,21 +1,10 @@
 package gap.client.ui.LoginUI;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.event.MouseListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import gap.client.ui.BaseListener.MoveListener;
 
-import javax.swing.JTextField;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
 import javax.swing.UIManager;
-import javax.swing.JPasswordField;
 
 public class LoginFrame extends JFrame {
 

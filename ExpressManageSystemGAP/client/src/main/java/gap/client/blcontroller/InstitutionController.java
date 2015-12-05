@@ -1,10 +1,10 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.manage.InstitutionManage;
 import gap.client.vo.InstitutionVO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class InstitutionController {
 	public static InstitutionManage institutionManage = new InstitutionManage();

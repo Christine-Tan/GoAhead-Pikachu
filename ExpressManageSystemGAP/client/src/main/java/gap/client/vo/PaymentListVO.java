@@ -1,10 +1,10 @@
 package gap.client.vo;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
 import gap.common.po.PayeePO;
 import gap.common.po.PaymentListPO;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PaymentListVO {
 

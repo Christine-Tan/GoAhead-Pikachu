@@ -2,7 +2,6 @@ package gap.client.ui.deliveryui.expressorderinput;
 
 import gap.client.blcontroller.ExpressorderController;
 import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.GapTextControll;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -20,16 +19,17 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+/**
+ * 收件人、寄件人信息
+ * @author YangYanfei
+ *
+ */
 public class PeopleInfoUI extends JPanel {
 	GAPLabel title, name, phone, address, province, city, district;
 	GAPTextField name_text, phone_text, depart_text;
@@ -42,12 +42,10 @@ public class PeopleInfoUI extends JPanel {
 
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 150));
-		// setSize(0,200);
 
 		// 初始化组件
 		title = new GAPLabel(titleName);
 		title.setFont(ComponentStyle.defaultFont);
-		// title.set/
 		name = new GAPLabel("姓名");
 		name.setFont(ComponentStyle.defaultFont);
 		name_text = new GAPTextField();
@@ -56,7 +54,6 @@ public class PeopleInfoUI extends JPanel {
 		phone.setFont(ComponentStyle.defaultFont);
 		phone_text = new GAPTextField(15);
 		phone_text.setControl("\\D" + "", 11, 11);
-		// phone_text.setDocument(GapTextControll.getNumberDocument(11));
 
 		address = new GAPLabel("住址");
 
@@ -98,6 +95,9 @@ public class PeopleInfoUI extends JPanel {
 		g2d.drawLine(10, height - 5, width - 20, height - 5);
 	}
 
+	/**
+	 * 初始化下拉列表
+	 */
 	private void initialList() {
 		allAddress = ExpressorderController.getAllAddress();
 

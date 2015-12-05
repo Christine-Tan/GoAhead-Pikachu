@@ -2,7 +2,7 @@ package gap.client.bl.transmanage;
 
 import gap.client.blservice.transmanageblservice.DriverService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.transdata.TransDataController;
+import gap.client.datacontroller.TransDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Driver;
 import gap.client.util.Operation;
@@ -67,6 +67,7 @@ public class DriverManage implements DriverService {
 		for (Operation ope : operations) {
 			ResultMessage re = ope.excute();
 			if (!re.equals(ResultMessage.SUCCEED)) {
+				System.out.println("failed");
 				operations.clear();
 				return re;
 			}

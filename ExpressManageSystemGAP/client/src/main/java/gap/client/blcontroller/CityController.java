@@ -1,11 +1,11 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.strategy.CityManage;
 import gap.client.util.City;
 import gap.client.vo.CityVO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class CityController {
 	public static CityManage cityManage = new CityManage();

@@ -1,12 +1,12 @@
 package gap.client.bl.approval;
 
+import gap.client.blservice.approvalblservice.ApprovalService;
+import gap.client.datacontroller.ApprovalDataController;
+import gap.client.datacontroller.ControllerFactory;
+import gap.common.util.ResultMessage;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import gap.client.blservice.approvalblservice.ApprovalService;
-import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.approvaldata.ApprovalDataController;
-import gap.common.util.ResultMessage;
 
 public class Approval implements ApprovalService {
 	ApprovalDataController controller;

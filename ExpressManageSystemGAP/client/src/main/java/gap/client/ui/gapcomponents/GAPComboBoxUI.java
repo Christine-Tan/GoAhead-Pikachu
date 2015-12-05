@@ -1,5 +1,9 @@
 package gap.client.ui.gapcomponents;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.ComboPopup;
@@ -15,4 +19,10 @@ public class GAPComboBoxUI<E> extends BasicComboBoxUI {
 	protected ComboPopup createPopup() {
 		return new GAPComboPoupUI<E>(comboBox);
 	}
+
+	// protected JButton createArrowButton() {
+	// JButton jb = super.createArrowButton();
+	// jb.setBorder(BorderFactory.createLineBorder(Color.gray));
+	// return jb;
+	// }
 }

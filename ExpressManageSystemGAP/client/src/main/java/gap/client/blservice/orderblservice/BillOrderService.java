@@ -2,7 +2,6 @@ package gap.client.blservice.orderblservice;
 
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;
-import gap.common.po.BillOrderPO;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 

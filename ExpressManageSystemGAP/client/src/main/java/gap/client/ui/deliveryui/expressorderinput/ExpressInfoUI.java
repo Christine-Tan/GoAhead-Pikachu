@@ -1,7 +1,6 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
 import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
@@ -9,18 +8,13 @@ import gap.common.util.ExpressType;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.SoftBevelBorder;
 
 public class ExpressInfoUI extends JPanel {
 	JLabel title, type;
@@ -53,6 +47,7 @@ public class ExpressInfoUI extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, type_list, 2, 0, 1, 1, 0, 0);
 	}
 
+	//获得快递类型
 	public ExpressType getType() {
 		switch ((String) type_list.getSelectedItem()) {
 		case "特快":

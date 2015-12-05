@@ -1,7 +1,5 @@
 package gap.client.util;
 
-import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.userdata.UserDataController;
 import gap.client.vo.UserVO;
 import gap.common.po.UserPO;
 import gap.common.util.Gender;

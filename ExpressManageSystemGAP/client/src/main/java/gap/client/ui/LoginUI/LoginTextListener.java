@@ -1,12 +1,9 @@
 package gap.client.ui.LoginUI;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 public class LoginTextListener implements FocusListener{
 	JTextField textField;

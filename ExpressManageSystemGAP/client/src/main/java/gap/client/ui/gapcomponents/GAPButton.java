@@ -1,12 +1,11 @@
 package gap.client.ui.gapcomponents;
 
+import gap.client.ui.UITools.ColorAndFonts;
+
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import gap.client.ui.UITools.ColorAndFonts;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;

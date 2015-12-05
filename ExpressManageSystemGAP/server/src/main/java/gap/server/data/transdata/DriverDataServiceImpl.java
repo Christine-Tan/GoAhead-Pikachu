@@ -71,7 +71,7 @@ public class DriverDataServiceImpl extends UnicastRemoteObject implements
 					.excuteQuery("SELECT * FROM driver WHERE id=" + id + ";");
 			if (re.next()) {
 				System.out.println("司机存在 司机名字为:" + re.getString("name"));
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块

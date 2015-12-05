@@ -1,12 +1,9 @@
 package gap.client.bl.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.blservice.userblservice.UserService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.managedata.InstitutionDataController;
-import gap.client.datacontroller.userdata.UserDataController;
+import gap.client.datacontroller.InstitutionDataController;
+import gap.client.datacontroller.UserDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
 import gap.client.util.User;
@@ -14,6 +11,9 @@ import gap.client.vo.UserVO;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserManage implements UserService{
 	private static final String ADD="add",DELETE="delete",MODIFY="modify";

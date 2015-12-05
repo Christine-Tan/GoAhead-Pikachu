@@ -1,9 +1,9 @@
 package gap.client.blservice.strategyblservice;
 
-import java.util.List;
-
 import gap.client.util.City;
 import gap.client.vo.CityVO;
+
+import java.util.List;
 
 public interface CityService {
 	public List<CityVO> getAll();

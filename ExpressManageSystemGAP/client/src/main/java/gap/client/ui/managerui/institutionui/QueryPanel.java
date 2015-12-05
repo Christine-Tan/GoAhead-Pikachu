@@ -1,5 +1,13 @@
 package gap.client.ui.managerui.institutionui;
 
+import gap.client.blcontroller.CityController;
+import gap.client.ui.UITools.Default;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.CityVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -11,14 +19,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.CityController;
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.CityVO;
 
 /**
  * 

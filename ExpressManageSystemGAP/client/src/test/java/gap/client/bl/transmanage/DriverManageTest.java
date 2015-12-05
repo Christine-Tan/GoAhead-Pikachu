@@ -1,6 +1,6 @@
 package gap.client.bl.transmanage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 import gap.client.util.Driver;
 import gap.common.util.Gender;
 

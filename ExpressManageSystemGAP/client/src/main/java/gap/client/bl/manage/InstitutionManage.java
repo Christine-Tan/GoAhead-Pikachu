@@ -1,16 +1,16 @@
 package gap.client.bl.manage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.blservice.manageblservice.InstitutionService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.managedata.InstitutionDataController;
+import gap.client.datacontroller.InstitutionDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
 import gap.client.vo.InstitutionVO;
 import gap.common.po.InstitutionPO;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InstitutionManage implements InstitutionService {
 	private static final String ADD = "addInstitution", DELETE = "deleteInstitution", MODIFY = "modifyInstitution";

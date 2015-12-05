@@ -1,6 +1,7 @@
 package gap.client.blcontroller;
 
-import gap.client.bl.order.BillOrder;
+import gap.client.bl.receipt.BillOrder;
+
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;
 import gap.common.util.ResultMessage;

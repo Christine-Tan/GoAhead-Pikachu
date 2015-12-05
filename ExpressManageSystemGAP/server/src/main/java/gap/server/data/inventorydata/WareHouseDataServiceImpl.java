@@ -40,12 +40,13 @@ public class WareHouseDataServiceImpl implements WareHouseDataService{
 	public ResultMessage add(String ins_id,String sector_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		
+		System.out.println("开始了");
 		try {
 			
 			ResultSet re = sql.Select("*").From(sectorTable).Where(ins_id_f).EQUALS(ins_id).excuteQuery();
 			if(re.next()){
-				return ResultMessage.EXITED;
+				System.out.println("已经存在了");
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

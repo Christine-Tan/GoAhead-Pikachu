@@ -55,7 +55,7 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
 			if (re.next()) {
 				System.out.println(re.getString(insname_f));
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

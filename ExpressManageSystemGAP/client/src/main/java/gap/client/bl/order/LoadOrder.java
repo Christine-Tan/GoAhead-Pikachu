@@ -1,12 +1,12 @@
 package gap.client.bl.order;
 
-import java.util.List;
-
 import gap.client.blservice.orderblservice.LoadOrderService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.orderdata.LoadOrderDataController;
+import gap.client.datacontroller.LoadOrderDataController;
 import gap.client.vo.LoadOrderVO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class LoadOrder implements LoadOrderService {
 	LoadOrderDataController loadDataController;

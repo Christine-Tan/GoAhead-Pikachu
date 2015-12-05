@@ -1,13 +1,13 @@
 package gap.client.bl.order;
 
-import java.util.List;
-
 import gap.client.blservice.orderblservice.ArrivedOrderService;
+import gap.client.datacontroller.ArrivedOrderDataController;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.orderdata.ArrivedOrderDataController;
 import gap.client.vo.ArrivedOrderVO;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class ArrivedOrder implements ArrivedOrderService {
 

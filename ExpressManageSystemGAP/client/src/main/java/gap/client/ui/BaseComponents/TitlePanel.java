@@ -1,17 +1,13 @@
 package gap.client.ui.BaseComponents;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import gap.client.ui.BaseComponents.TitleButton.Type;
+import gap.client.ui.UITools.SwingConsole;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
-import gap.client.ui.BaseComponents.TitleButton.Type;
-import gap.client.ui.UITools.SwingConsole;
 
 
 

@@ -1,7 +1,6 @@
 package gap.client.blservice.manageblservice;
 
 import gap.client.vo.InstitutionVO;
-import gap.common.util.ResultMessage;
 
 import java.util.List;
 

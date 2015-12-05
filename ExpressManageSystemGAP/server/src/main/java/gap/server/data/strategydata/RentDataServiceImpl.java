@@ -78,7 +78,7 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 					"SELECT rent.money money,institution.ins_id id FROM rent,institution WHERE institution.name='"
 							+ insname + "' AND institution.ins_id=rent.institution_id");
 			if (re.next())
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			ResultSet rs = NetModule.excutor
 					.excuteQuery("SELECT ins_id FROM institution WHERE name='" + insname + "';");
 			rs.next();

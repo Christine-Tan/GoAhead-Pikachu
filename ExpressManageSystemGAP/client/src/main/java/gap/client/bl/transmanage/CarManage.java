@@ -2,7 +2,7 @@ package gap.client.bl.transmanage;
 
 import gap.client.blservice.transmanageblservice.CarService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.transdata.TransDataController;
+import gap.client.datacontroller.TransDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Car;
 import gap.client.util.Operation;

@@ -1,8 +1,8 @@
 package gap.client.bl.account;
 
-import java.util.ArrayList;
-
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
 
 public class AccountCmdBuffer {
 	ArrayList<AccountCommond> commonds = new ArrayList<>(20);

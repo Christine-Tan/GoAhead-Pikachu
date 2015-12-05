@@ -1,7 +1,6 @@
 package gap.client.vo;
 
 import gap.common.po.InstitutionPO;
-import gap.common.util.InstitutionType;
 
 public class InstitutionVO{
 

@@ -1,9 +1,7 @@
 package gap.client.vo;
 
 import gap.common.po.ArrivedOrderPO;
-import gap.common.po.ExpressOrderPO;
 
-import java.util.List;
 import java.util.Map;
 
 public class ArrivedOrderVO {

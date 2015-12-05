@@ -1,7 +1,6 @@
 package gap.client.util;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**

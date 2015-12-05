@@ -1,9 +1,9 @@
 package gap.client.bl.order;
 
+import gap.client.vo.ArrivedOrderVO;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import gap.client.vo.ArrivedOrderVO;
 
 import org.junit.Before;
 import org.junit.Test;

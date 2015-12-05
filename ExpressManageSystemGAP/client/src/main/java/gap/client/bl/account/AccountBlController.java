@@ -1,15 +1,14 @@
 package gap.client.bl.account;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import gap.client.blservice.accountblservice.AccountService;
+import gap.client.datacontroller.AccountDateController;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.AccountDate.AccountDateController;
-import gap.client.util.SearchResult;
 import gap.client.vo.AccountVO;
 import gap.common.po.AccountPO;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class AccountBlController implements AccountService{
 
@@ -51,7 +50,7 @@ public class AccountBlController implements AccountService{
 	public ResultMessage addAccount(AccountVO vo) {
 		//名字相同的账户视为相同
 		if(accounts.contains(vo)){
-			return ResultMessage.EXITED;
+			return ResultMessage.EXISTED;
 		}
 		accounts.add(vo);
 		return buffer.addCommond(new AddAccountCmd(vo));
@@ -78,7 +77,7 @@ public class AccountBlController implements AccountService{
 			
 			if(accounts.contains(newVO)){
 				//名字已经存在
-				return ResultMessage.EXITED;
+				return ResultMessage.EXISTED;
 			}
 			
 			accounts.set(index, newVO);

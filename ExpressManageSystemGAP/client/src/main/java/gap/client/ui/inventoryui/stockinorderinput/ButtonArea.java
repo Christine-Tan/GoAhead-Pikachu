@@ -1,16 +1,16 @@
 package gap.client.ui.inventoryui.stockinorderinput;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -38,7 +38,7 @@ public class ButtonArea extends JPanel{
 		Graphics g2d = RenderSetter.OpenRender(g);
 		g2d.setColor(ComponentStyle.light_gray);
 		int width = getWidth();
-		g2d.drawLine(10, 5, width-20, 5);
+		g2d.drawLine(10, 5, width-10, 5);
 	}
 
 }

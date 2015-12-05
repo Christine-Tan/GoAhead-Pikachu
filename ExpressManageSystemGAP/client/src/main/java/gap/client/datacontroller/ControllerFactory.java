@@ -1,27 +1,5 @@
 package gap.client.datacontroller;
 
-import gap.client.bl.receipt.ReceiptController;
-import gap.client.datacontroller.AccountDate.AccountDateController;
-import gap.client.datacontroller.approvaldata.ApprovalDataController;
-import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
-import gap.client.datacontroller.inventorydata.FlexSectorDataController;
-import gap.client.datacontroller.inventorydata.InventoryDataController;
-import gap.client.datacontroller.inventorydata.WareHouseDataController;
-import gap.client.datacontroller.logindata.LoginDataController;
-import gap.client.datacontroller.managedata.InstitutionDataController;
-import gap.client.datacontroller.orderdata.ArrivedOrderDataController;
-import gap.client.datacontroller.orderdata.BillOrderDateController;
-import gap.client.datacontroller.orderdata.DeliveryOrderDataController;
-import gap.client.datacontroller.orderdata.LoadOrderDataController;
-import gap.client.datacontroller.orderdata.StockinOrderDataController;
-import gap.client.datacontroller.orderdata.StockoutOrderDataController;
-import gap.client.datacontroller.strategydata.CityDataController;
-import gap.client.datacontroller.strategydata.PriceDataController;
-import gap.client.datacontroller.strategydata.RentDataController;
-import gap.client.datacontroller.strategydata.SalaryDataController;
-import gap.client.datacontroller.transdata.TransDataController;
-import gap.client.datacontroller.userdata.UserDataController;
-
 public class ControllerFactory {
 	private static LoginDataController loginDataController;
 	private static ExpressOrderDataController expressOrderDataController;
@@ -43,7 +21,8 @@ public class ControllerFactory {
 	private static ApprovalDataController approvalDataController;
 	private static WareHouseDataController wareHouseDataController;
 	private static FlexSectorDataController flexSectorDataController;
-	private static ReceiptDataController receiptDataController;
+	private static AccountorReceiptDataController receiptDataController;
+	private static TableDataController tableDataController;
 
 	public static AccountDateController getAccountDataController() {
 		if (accountDateController == null) {
@@ -52,9 +31,9 @@ public class ControllerFactory {
 		return accountDateController;
 	}
 	
-	public static ReceiptDataController getReceiptDataController(){
+	public static AccountorReceiptDataController getReceiptDataController(){
 		if(receiptDataController==null){
-			receiptDataController = new ReceiptDataController();
+			receiptDataController = new AccountorReceiptDataController();
 		}
 		return receiptDataController;
 	}
@@ -171,5 +150,12 @@ public class ControllerFactory {
 		if (flexSectorDataController == null)
 			flexSectorDataController = new FlexSectorDataController();
 		return flexSectorDataController;
+	}
+	
+	public static TableDataController getTableDataController(){
+		if(tableDataController == null){
+			tableDataController = new TableDataController();
+		}
+		return tableDataController;
 	}
 }

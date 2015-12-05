@@ -1,22 +1,19 @@
 package gap.client.ui.gapcomponents;
 
+import gap.client.ui.UITools.GapTextControll;
+
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.TextListener;
-
-import gap.client.ui.UITools.GapTextControll;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 public class GAPTextField extends JTextField {
 	TextListener listener;
+	boolean edited;
 
 	public GAPTextField() {
 		super();
@@ -47,11 +44,9 @@ public class GAPTextField extends JTextField {
 
 	// 警告样式
 	private void alarm() {
-		// setBorder(ComponentStyle.alarm_border);
 		setBackground(ComponentStyle.red);
 		setFont(ComponentStyle.defaultFont);
 		setBorder(ComponentStyle.text_border);
-		// repaint();
 		Container con = getParent();
 		while (!(con instanceof JFrame)) {
 			con = con.getParent();
@@ -73,14 +68,17 @@ public class GAPTextField extends JTextField {
 			listener = new TextListener();
 			addFocusListener(listener);
 		}
+		edited = true;
 		setBackground(Color.white);
 		setBorder(ComponentStyle.text_border);
 		setFont(ComponentStyle.defaultFont);
+//		setHorizontalAlignment(JTextField.CENTER);
 		validate();
 	}
 
 	// 关闭编辑样式
 	public void closeEdit() {
+		edited = false;
 		setEditable(false);
 		setFocusable(false);
 		setBorder(BorderFactory.createEmptyBorder());
@@ -88,6 +86,7 @@ public class GAPTextField extends JTextField {
 
 	// 打开编辑样式
 	public void openEdit() {
+		edited = true;
 		setEditable(true);
 		setFocusable(true);
 		normal();
@@ -130,8 +129,10 @@ public class GAPTextField extends JTextField {
 					&& (minLen != -1 && maxLen != -1 && (text.length() < minLen || text
 							.length() > maxLen))) {
 				alarm();
-			} else {
+			} else if (edited) {
 				normal();
+			} else {
+				closeEdit();
 			}
 
 		}
