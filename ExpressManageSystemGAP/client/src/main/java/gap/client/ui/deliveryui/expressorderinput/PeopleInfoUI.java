@@ -134,6 +134,7 @@ public class PeopleInfoUI extends JPanel {
 		setCity(pro_list.getItemAt(0));
 
 		setDistrict(city_list.getItemAt(0));
+
 	}
 
 	private void setCity(String province) {

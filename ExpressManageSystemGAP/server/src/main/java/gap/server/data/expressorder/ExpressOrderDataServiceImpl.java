@@ -228,7 +228,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			List<ExpressOrderPO> orders = new ArrayList<ExpressOrderPO>();
 			String sql = "SELECT * FROM expressorder WHERE currentIns_id='"
-					+ ins_id + "' AND " + passed_f + " = 'true';";
+					+ ins_id + "' AND " + passed_f + " = 'true' ";
 			if (type == CurrentOrderType.ALL)
 				sql += " ;";
 			else if (type == CurrentOrderType.LOAD)

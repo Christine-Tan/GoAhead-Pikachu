@@ -166,7 +166,7 @@ public class ExpressOrderDataServiceImplTest {
 	public void testGetCurrentOrders() {
 		try {
 			List<ExpressOrderPO> order = expressorderdataservice
-					.findCurrentOrders("0010001", CurrentOrderType.ALL);
+					.findCurrentOrders("0010001", CurrentOrderType.LOAD);
 			for (ExpressOrderPO po : order) {
 				System.out.println(po.getOrder_id());
 			}
