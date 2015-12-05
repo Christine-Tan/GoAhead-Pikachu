@@ -1,12 +1,21 @@
-package gap.client.blservice.receiptblservice;
+package gap.client.blservice.accountorReceiptblservice;
 
+
+import java.util.Calendar;
+import java.util.List;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;
+import gap.common.po.BillOrderPO;
 import gap.common.po.PaymentListPO;
 import gap.common.util.ResultMessage;
 
-public interface PaymentService {
+/**
+ * 和财务人员相关的收付款单的逻辑层接口，支持的需求有：制定付款单，处理收款单、付款单，按天按营业厅查收款单。
+ * @author 申彬
+ *
+ */
+public interface AccountorReceiptService {
 
 	/**
 	 * 获得付款单草稿
@@ -48,7 +57,25 @@ public interface PaymentService {
 	 * @return
 	 */
 	public ResultMessage modifyPayee(PayeeVO payeeVO);
+	
+	
+	/**
+	 * 导出excel
+	 * @param paymentListVO
+	 * @return
+	 */
 	public ResultMessage paymetnExcel(PaymentListVO paymentListVO);	
-	public BillOrderVO getBillOrder();
-	public ResultMessage submitBillOrder(BillOrderVO billOrderVO);
+	
+	/**
+	 * 按天、按营业厅获得收款单
+	 * @return
+	 */
+	public List<BillOrderVO> getBillOrderByDateOrIns(Calendar oneDay,String insitituteID);
+	
+	/**
+	 * 处理收款单
+	 * @param billOrderPO
+	 * @return
+	 */
+	public ResultMessage handleBillOrder(BillOrderPO billOrderPO);
 }
