@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InstitutionManage implements InstitutionService {
-	private static final String ADD = "addInstitution", DELETE = "deleteInstitution", MODIFY = "modifyInstitution";
+	private static final String ADD = "add", DELETE = "delete", MODIFY = "modify";
 	List<Operation> operations;
 	InstitutionDataController controller;
 

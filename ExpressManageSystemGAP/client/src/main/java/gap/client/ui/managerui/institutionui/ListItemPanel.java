@@ -29,9 +29,12 @@ import gap.client.vo.CityVO;
 import gap.client.vo.InstitutionVO;
 
 public class ListItemPanel extends JPanel {
+	//列表中所有的项
 	List<ItemPanel> items;
+	//布局
 	GridBagLayout gb;
 	GridBagConstraints gcons;
+	
 	JButton addButton;
 	JFrame frame;
 
@@ -49,7 +52,7 @@ public class ListItemPanel extends JPanel {
 			}
 			
 		});
-
+		
 		// 布局
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -97,9 +100,10 @@ public class ListItemPanel extends JPanel {
 		InstitutionVO vo;
 		GAPTextField ins_id, ins_name, ins_member;
 		JComboBox<String> ins_type_list, ins_city_list;
+		//编辑、删除按钮
 		JButton edit, delete;
 		GridBagLayout gbl;
-//		GridBagConstraints gbc;
+		//是否处于编辑状态，是否是新建的表项
 		boolean edited, newly;
 
 		public ItemPanel() {
@@ -111,7 +115,10 @@ public class ListItemPanel extends JPanel {
 			ins_member = new GAPTextField(5);
 			ins_type_list = new GAPComboBox<String>();
 			ins_city_list = new GAPComboBox<String>();
-			setLayout(gbl);
+			this.setLayout(gbl);
+			ins_id.setHorizontalAlignment(JTextField.CENTER);
+			ins_name.setHorizontalAlignment(JTextField.CENTER);
+			ins_member.setHorizontalAlignment(JTextField.CENTER);
 			
 			// 初始化下拉框列表项
 			ins_type_list.addItem("营业厅");
@@ -134,12 +141,15 @@ public class ListItemPanel extends JPanel {
 					if (!edited) {
 						openEdit();
 					} else {
+						closeEdit();
 						if (newly) {
+							newly=false;
+							vo=getInstitutionVO();
 							InstitutionController.addInstitution(vo);
 						} else {
 							InstitutionController.modifyInstitution(vo);
 						}
-						closeEdit();
+						
 					}
 				}
 			});
@@ -172,14 +182,13 @@ public class ListItemPanel extends JPanel {
 			SwingConsole.addComponent(gbl, gcons, this, edit, 5, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 10, 10, 0);
 			SwingConsole.addComponent(gbl, gcons, this, delete, 6, 0, 1, 1, 0, 0);
-			// closeEdit();
+			
 		}
 
 		public ItemPanel(InstitutionVO vo) {
 			this();
 			this.vo = vo;
 			ins_id.setText(vo.getInsId());
-			int type_id;
 			ins_type_list.setSelectedIndex(vo.getInsId().charAt(3) - '0');
 			ins_name.setText(vo.getInsName());
 			// 获得机构所在城市对应的id
@@ -189,7 +198,10 @@ public class ListItemPanel extends JPanel {
 				if (vo.getInsCity().equals(cities.get(i).getCityName()))
 					city_id = i;
 			}
+//			System.out.println(vo.getInsMember());
 			ins_city_list.setSelectedIndex(city_id);
+			ins_member.setText(vo.getInsMember()+"");
+			 closeEdit();
 		}
 
 		public void paintComponent(Graphics g) {
@@ -225,10 +237,9 @@ public class ListItemPanel extends JPanel {
 //			ins_type_list.setFocusable(false);
 //			ins_city_list.setEditable(false);
 //			ins_city_list.setFocusable(false);
-			vo = getInstitutionVO();
 			edit.setText("E");
+			vo = getInstitutionVO();
 			edited = false;
-			newly = false;
 		}
 
 	}

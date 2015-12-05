@@ -17,7 +17,7 @@ public class Config {
 	 */
 	public static void config() {
 		driver = "com.mysql.jdbc.Driver";
-		url = "jdbc:mysql://172.28.178.255:3306/expressmanagesystem?useUnicode=true&characterEncoding=UTF-8";
+		url = "jdbc:mysql://172.25.135.177:3306/expressmanagesystem?useUnicode=true&characterEncoding=UTF-8";
 		user = "root";
 		password = "";
 		database = "expressmanagesystem";
