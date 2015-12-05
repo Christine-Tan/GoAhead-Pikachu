@@ -12,14 +12,14 @@ import gap.client.ui.UITools.SwingConsole;
 
 public class CheckStockPanel extends MainPanel{
 	ButtonArea buttonArea;
-	ListPanel list;
+	listPanel list;
 	
 	public CheckStockPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
 
 		buttonArea = new ButtonArea();
-		list = new ListPanel(10);
+		list = new listPanel(10);
 		
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();

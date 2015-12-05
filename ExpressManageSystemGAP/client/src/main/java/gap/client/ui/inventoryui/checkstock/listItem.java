@@ -19,11 +19,11 @@ import java.math.RoundingMode;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ListItem extends JPanel{
+public class listItem extends JPanel{
 	Unit[] shelf;
 	JLabel rowName;
 	
-	public ListItem(int numOfshf,int idOfRow){
+	public listItem(int numOfshf,int idOfRow){
 		setBackground(Color.white);
 		int width = Default.PANEL_WIDTH;
 		width = Math.max(width, (Icon.width+20)*(numOfshf+2));
