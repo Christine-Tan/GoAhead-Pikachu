@@ -57,7 +57,7 @@ public class PricePanel extends MainPanel {
 	
 	public static void main(String[] args) {
 		JFrame jf = new JFrame();
-		InstitutionPanel ip = new InstitutionPanel(null);
+		PricePanel ip = new PricePanel(null);
 		JScrollPane js = new GAPJScrollPane(ip);
 
 		jf.setContentPane(js);
