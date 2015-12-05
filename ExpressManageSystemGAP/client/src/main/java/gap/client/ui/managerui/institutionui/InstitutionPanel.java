@@ -21,14 +21,16 @@ import gap.client.ui.gapcomponents.GAPJScrollPane;
 public class InstitutionPanel extends MainPanel {
 	QueryPanel queryPanel;
 	TitlePanel titlePanel;
+	ListItemPanel listItemPanel;
 	ButtonArea buttonArea;
 
 	public InstitutionPanel(MainFrame frame) {
 		super(frame);
 		titlePanel = new TitlePanel();
 		queryPanel = new QueryPanel();
+		listItemPanel=new ListItemPanel(frame);
 		buttonArea = new ButtonArea();
-		buttonArea.submit.setText("保存修改");
+		buttonArea.submit.setText("提交修改");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
@@ -37,8 +39,9 @@ public class InstitutionPanel extends MainPanel {
 		jp.setOpaque(false);
 		SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, titlePanel, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, jp, 0, 2, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, listItemPanel, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 	}
 
 	public static void main(String[] args) {
