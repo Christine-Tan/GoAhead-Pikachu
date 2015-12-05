@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.stockoutorderinput;
+package gap.client.ui.inventoryui.checkstock;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 
 public class ButtonArea extends JPanel{
 	public JButton confirm;
+	public JButton export;
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
@@ -25,13 +26,29 @@ public class ButtonArea extends JPanel{
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 
 
-		confirm = new GAPButton("确认出库");
+		confirm = new GAPButton("开始盘点");
+		export = new GAPButton("导出Excel");
+		
+		JPanel panel1 = new JPanel();
+		panel1.setPreferredSize(new Dimension(200,50));
+		panel1.setBackground(null);
+		panel1.setOpaque(false);  
+		
+		JPanel panel2 = new JPanel();
+		panel2.setPreferredSize(new Dimension(200,50));
+		panel2.setBackground(null);
+		panel2.setOpaque(false); 
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.anchor = GridBagConstraints.CENTER;
-		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 0, 1, 1, 1, 0);
+		
+//		gcons.anchor = GridBagConstraints.CENTER;
+		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 0, 1, 1, 1, 0.5);
+		SwingConsole.addComponent(gb, gcons, this, panel2, 3, 0, 1, 1, 1, 0.5);
+		SwingConsole.addComponent(gb, gcons, this, confirm, 1, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, export, 2, 0, 1, 1, 1, 0);
+		
 	}
 	
 	public void paintComponent(Graphics g) {

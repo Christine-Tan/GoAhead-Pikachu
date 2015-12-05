@@ -67,7 +67,7 @@ public class InventoryDataServiceImplTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void testAddGoodsPO() {
 		
 		try {
@@ -86,7 +86,7 @@ public class InventoryDataServiceImplTest {
 		
 	}
 
-	//@Test
+	@Test
 	public void testDeleteString() {
 			try {
 				for(int i = 1;i<=16;i++){

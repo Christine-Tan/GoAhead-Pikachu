@@ -26,7 +26,11 @@ public class ListItem extends JPanel{
 
 		
 		id = new GAPLabel();
+//		id.setBackground(Color.red);
+		id.setPreferredSize(new Dimension(80,30));
+		id.setHorizontalAlignment(JLabel.RIGHT);
 		id.setText(num+"");
+		
 //		id.setControl("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", 20, 20);
 		
 		inDate = new GAPLabel();
@@ -34,7 +38,7 @@ public class ListItem extends JPanel{
 //		inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
 		
 		order_id = new GAPLabel();
-		order_id.setText("0000000001");
+		order_id.setText("00000000000000000001");
 		
 		amount = new GAPLabel();
 		amount.setText("30");	
@@ -46,7 +50,7 @@ public class ListItem extends JPanel{
 		
 		gcons.insets = new Insets(0,10,0,10);
 		gcons.anchor = GridBagConstraints.CENTER;
-		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0.3, 0);
 		SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, amount, 3, 0, 1, 1, 1, 0);

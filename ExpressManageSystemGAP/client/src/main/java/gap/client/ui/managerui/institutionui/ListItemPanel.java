@@ -98,9 +98,9 @@ public class ListItemPanel extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					if (!edited) {
-						openEdit();
+//						openEdit();
 					} else {
-						closeEdit();
+//						closeEdit();
 						if (newly) {
 							InstitutionController.addInstitution(vo);
 						} else {
@@ -118,7 +118,7 @@ public class ListItemPanel extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
-					removeItem(ItemPanel.this);
+//					removeItem(ItemPanel.this);
 				}
 
 			});
@@ -141,7 +141,7 @@ public class ListItemPanel extends JPanel {
             ins_id.setText(vo.getInsId());
             int type_id;
             ins_type_list.setSelectedIndex(vo.getInsId().charAt(3)-'0');
-            ins_name
+//            ins_name
             //获得机构所在城市对应的id
             int city_id=1;
             List<CityVO> cities=CityController.getAll();

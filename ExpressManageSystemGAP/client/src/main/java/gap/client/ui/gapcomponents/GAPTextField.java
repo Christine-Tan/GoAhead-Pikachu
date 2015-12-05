@@ -72,6 +72,7 @@ public class GAPTextField extends JTextField {
 		setBackground(Color.white);
 		setBorder(ComponentStyle.text_border);
 		setFont(ComponentStyle.defaultFont);
+		setHorizontalAlignment(JTextField.CENTER);
 		validate();
 	}
 

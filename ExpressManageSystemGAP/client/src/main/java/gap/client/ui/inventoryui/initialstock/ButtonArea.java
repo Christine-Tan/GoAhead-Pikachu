@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.stockoutorderinput;
+package gap.client.ui.inventoryui.initialstock;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -21,11 +21,10 @@ public class ButtonArea extends JPanel{
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
-
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 
 
-		confirm = new GAPButton("确认出库");
+		confirm = new GAPButton("确认初始化");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();

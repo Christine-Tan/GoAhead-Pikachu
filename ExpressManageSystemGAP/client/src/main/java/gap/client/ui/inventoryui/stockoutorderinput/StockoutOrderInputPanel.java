@@ -29,6 +29,7 @@ public class StockoutOrderInputPanel extends MainPanel{
 		
 		JPanel panel = new JPanel();
 		SwingConsole.addComponent(gb, gcons, this, stockoutInfo, 0, 0, 1, 1, 1, 0);
+		//还差一个选项卡
 		SwingConsole.addComponent(gb, gcons, this, title, 0, 2, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, list, 0, 3, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 4, 1, 1, 1, 1);
