@@ -24,7 +24,7 @@ public class ControllerFactory {
 	private static AccountorReceiptDataController receiptDataController;
 	private static TableDataController tableDataController;
 
-	protected static AccountDateController getAccountDataController() {
+	public static AccountDateController getAccountDataController() {
 		if (accountDateController == null) {
 			accountDateController = new AccountDateController();
 		}

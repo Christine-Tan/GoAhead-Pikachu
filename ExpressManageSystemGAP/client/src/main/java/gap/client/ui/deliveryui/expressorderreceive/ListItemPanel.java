@@ -6,9 +6,8 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.util.ConstInfo;
+import gap.client.util.LocalInfo;
 import gap.common.util.ReceiveInfo;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -201,7 +200,7 @@ public class ListItemPanel extends JPanel {
 					.getText(), date = receiver_date.getText(), com = comment
 					.getText();
 			return new ReceiveInfo(order, receiver_name, date,
-					ConstInfo.getNumber(), com);
+					LocalInfo.getUserID(), com);
 		}
 
 		public void setId(String str) {
