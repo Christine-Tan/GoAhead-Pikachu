@@ -1,4 +1,4 @@
-package gap.client.datacontroller.transdata;
+package gap.client.datacontroller;
 
 import gap.client.util.LocalInfo;
 import gap.common.dataservice.ServiceName;
@@ -19,7 +19,7 @@ public class TransDataController {
 	CarDataService carData;
 	DriverDataService driverData;
 
-	public TransDataController() {
+	protected TransDataController() {
 		try {
 			carData = (CarDataService) Naming.lookup(RMIConfig.url
 					+ ServiceName.CAR_DATA_SERVICE);

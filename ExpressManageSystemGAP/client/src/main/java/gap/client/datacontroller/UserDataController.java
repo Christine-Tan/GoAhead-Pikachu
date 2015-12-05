@@ -1,4 +1,4 @@
-package gap.client.datacontroller.userdata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.userdataservice.UserDataService;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UserDataController {
 	UserDataService userData;
 
-	public UserDataController() {
+	protected UserDataController() {
 		try {
 			userData = (UserDataService) Naming.lookup(RMIConfig.url + ServiceName.USER_DATA_SERVICE);
 		} catch (MalformedURLException e) {

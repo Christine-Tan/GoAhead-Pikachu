@@ -1,4 +1,4 @@
-package gap.client.datacontroller.strategydata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
@@ -16,7 +16,7 @@ import java.util.List;
 public class SalaryDataController {
 	SalaryDataService salaryData;
 
-	public SalaryDataController() {
+	protected SalaryDataController() {
 		try {
 			salaryData = (SalaryDataService) Naming.lookup(RMIConfig.url + ServiceName.SALARY_DATA_SERVICE);
 		} catch (MalformedURLException e) {

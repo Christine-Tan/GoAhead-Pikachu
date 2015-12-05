@@ -1,4 +1,4 @@
-package gap.client.datacontroller.logindata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.userdataservice.UserDataService;
@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
 public class LoginDataController {
 	private UserDataService userDataService;
 
-	public LoginDataController() {
+	protected LoginDataController() {
 		try {
 			userDataService = (UserDataService) Naming.lookup(RMIConfig.url
 					+ ServiceName.USER_DATA_SERVICE);

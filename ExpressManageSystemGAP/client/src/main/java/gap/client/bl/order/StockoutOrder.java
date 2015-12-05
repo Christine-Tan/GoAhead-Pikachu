@@ -2,7 +2,7 @@ package gap.client.bl.order;
 
 import gap.client.blservice.orderblservice.StockoutOrderService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.orderdata.StockoutOrderDataController;
+import gap.client.datacontroller.StockoutOrderDataController;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StockoutOrderVO;
 import gap.common.util.ResultMessage;

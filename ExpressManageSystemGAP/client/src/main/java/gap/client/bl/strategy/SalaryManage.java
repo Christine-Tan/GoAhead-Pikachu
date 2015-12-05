@@ -2,7 +2,7 @@ package gap.client.bl.strategy;
 
 import gap.client.blservice.strategyblservice.SalaryService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.strategydata.SalaryDataController;
+import gap.client.datacontroller.SalaryDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
 import gap.client.vo.SalaryVO;

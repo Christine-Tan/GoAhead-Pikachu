@@ -1,9 +1,9 @@
-package gap.client.datacontroller.orderdata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.orderdataservice.LoadOrderDataService;
+import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
 import gap.common.netconfig.RMIConfig;
-import gap.common.po.LoadOrderPO;
+import gap.common.po.DeliveryOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.net.MalformedURLException;
@@ -11,13 +11,14 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-public class LoadOrderDataController {
-	private LoadOrderDataService loadOrder;
+public class DeliveryOrderDataController {
+	DeliveryOrderDataService deliveryOrder;
 
-	public LoadOrderDataController() {
+	protected DeliveryOrderDataController() {
 		try {
-			loadOrder = (LoadOrderDataService) Naming.lookup(RMIConfig.url
-					+ ServiceName.LOADORDER_DATA_SERVICE);
+			deliveryOrder = (DeliveryOrderDataService) Naming
+					.lookup(RMIConfig.url
+							+ ServiceName.DELIVERYPORDER_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -30,9 +31,9 @@ public class LoadOrderDataController {
 		}
 	}
 
-	public ResultMessage add(LoadOrderPO po) {
+	public ResultMessage add(DeliveryOrderPO po) {
 		try {
-			return loadOrder.add(po);
+			return deliveryOrder.add(po);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

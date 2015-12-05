@@ -1,4 +1,4 @@
-package gap.client.datacontroller.inventorydata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.inventorydataservice.WareHouseDataService;
@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
 public class WareHouseDataController {
 	WareHouseDataService wareHouse;
 	
-	public WareHouseDataController(){
+	protected WareHouseDataController(){
 		try {
 			wareHouse = (WareHouseDataService)Naming.lookup(RMIConfig.url+ServiceName.WAREHOUSE_DATA_SERVICE);
 		} catch (MalformedURLException e) {

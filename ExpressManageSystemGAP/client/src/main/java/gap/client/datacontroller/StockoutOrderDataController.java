@@ -1,9 +1,9 @@
-package gap.client.datacontroller.orderdata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.orderdataservice.StockinOrderDataService;
+import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
 import gap.common.netconfig.RMIConfig;
-import gap.common.po.StockinOrderPO;
+import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.net.MalformedURLException;
@@ -12,14 +12,14 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
-public class StockinOrderDataController {
-	StockinOrderDataService stockinOrder;
+public class StockoutOrderDataController {
+	StockoutOrderDataService stockoutOrder;
 
-	public StockinOrderDataController() {
+	protected StockoutOrderDataController() {
 		try {
-			stockinOrder = (StockinOrderDataService) Naming
+			stockoutOrder = (StockoutOrderDataService) Naming
 					.lookup(RMIConfig.url
-							+ ServiceName.STOCKINORDER_DATA_SERVICE);
+							+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,10 +32,10 @@ public class StockinOrderDataController {
 		}
 	}
 
-	public ResultMessage add(StockinOrderPO po) {
+	public ResultMessage add(StockoutOrderPO po) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.add(po);
+			return stockoutOrder.add(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,10 +43,10 @@ public class StockinOrderDataController {
 		return ResultMessage.FAILED;
 	}
 
-	public StockinOrderPO find(String order_id, String ins_id) {
+	public StockoutOrderPO find(String order_id,String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.find(order_id, ins_id);
+			return stockoutOrder.find(order_id,ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,10 +54,10 @@ public class StockinOrderDataController {
 		return null;
 	}
 
-	public List<StockinOrderPO> getOneDay(String date, String ins_id) {
+	public List<StockoutOrderPO> getOneDay(String date, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.getOneDay(date, ins_id);
+			return stockoutOrder.getOneDay(date, ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,11 +65,11 @@ public class StockinOrderDataController {
 		return null;
 	}
 
-	public List<StockinOrderPO> getRequired(String beginDate, String endDate,
+	public List<StockoutOrderPO> getRequired(String beginDate, String endDate,
 			String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.getRequired(beginDate, endDate, ins_id);
+			return stockoutOrder.getRequired(beginDate, endDate, ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,8 +82,7 @@ public class StockinOrderDataController {
 	 * TODO Auto-generated method stub return null; }
 	 * 
 	 * 
-	 * public List<StockinOrderPO> getUnpassedOrders(){ // TODO Auto-generated
+	 * public List<StockoutOrderPO> getUnpassedOrders() { // TODO Auto-generated
 	 * method stub return null; }
 	 */
-
 }

@@ -1,4 +1,4 @@
-package gap.client.datacontroller.inventorydata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
@@ -15,7 +15,7 @@ import java.util.List;
 public class InventoryDataController {
 	InventoryDataService inventory;
 
-	public InventoryDataController() {
+	protected InventoryDataController() {
 		try {
 			inventory = (InventoryDataService) Naming.lookup(RMIConfig.url
 					+ ServiceName.INVENTORY_DATA_SERVICE);

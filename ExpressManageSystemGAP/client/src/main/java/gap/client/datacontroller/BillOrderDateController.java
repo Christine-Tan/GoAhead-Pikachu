@@ -1,4 +1,4 @@
-package gap.client.datacontroller.orderdata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
@@ -20,7 +20,7 @@ public class BillOrderDateController {
 	BillOrderDataService billorder;
 	UserDataService userdata;
 
-	public BillOrderDateController() {
+	protected BillOrderDateController() {
 		try {
 			expressorder = (ExpressOrderDataService) Naming
 					.lookup(RMIConfig.url

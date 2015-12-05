@@ -1,4 +1,4 @@
-package gap.client.datacontroller.AccountDate;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AccountDateController {
 	AccountDataService accountDataService;
 	
-	public AccountDateController(){
+	protected AccountDateController(){
 		
 		try {
 			accountDataService = (AccountDataService) Naming.lookup(RMIConfig.url+ServiceName.ACCOUNT_DATA_SERVICE);

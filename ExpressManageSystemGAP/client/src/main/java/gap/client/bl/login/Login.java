@@ -2,7 +2,7 @@ package gap.client.bl.login;
 
 import gap.client.blservice.loginblservice.LoginService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.logindata.LoginDataController;
+import gap.client.datacontroller.LoginDataController;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.client.vo.LogVO;

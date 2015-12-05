@@ -1,9 +1,9 @@
 package gap.client.bl.receipt;
 
 import gap.client.blservice.orderblservice.BillOrderService;
+import gap.client.datacontroller.BillOrderDateController;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.orderdata.BillOrderDateController;
-import gap.client.datacontroller.userdata.UserDataController;
+import gap.client.datacontroller.UserDataController;
 import gap.client.util.LocalInfo;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;

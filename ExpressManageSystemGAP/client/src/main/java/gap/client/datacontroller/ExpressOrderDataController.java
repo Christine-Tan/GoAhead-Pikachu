@@ -1,4 +1,4 @@
-package gap.client.datacontroller.expressorderdata;
+package gap.client.datacontroller;
 
 import gap.client.util.LocalInfo;
 import gap.common.dataservice.ServiceName;
@@ -23,7 +23,7 @@ public class ExpressOrderDataController {
 	ExpressOrderDataService expressOrderData;
 	PriceDataService priceDataService;
 
-	public ExpressOrderDataController() {
+	protected ExpressOrderDataController() {
 		try {
 			expressOrderData = (ExpressOrderDataService) Naming
 					.lookup(RMIConfig.url

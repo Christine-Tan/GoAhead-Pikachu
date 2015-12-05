@@ -1,4 +1,4 @@
-package gap.client.datacontroller;
+package gap.client.exception;
 
 public class AuthorityException extends Exception {
 	public AuthorityException() {

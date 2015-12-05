@@ -1,4 +1,4 @@
-package gap.client.datacontroller.inventorydata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.inventorydataservice.FlexSectorDataService;
@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
 public class FlexSectorDataController {
 	FlexSectorDataService flexSectorData;
 
-	public FlexSectorDataController() {
+	protected FlexSectorDataController() {
 		try {
 			flexSectorData = (FlexSectorDataService) Naming
 					.lookup(RMIConfig.url + ServiceName.FLEXSECTOR_DATA_SERVICE);

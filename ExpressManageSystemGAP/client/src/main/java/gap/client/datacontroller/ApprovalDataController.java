@@ -1,4 +1,4 @@
-package gap.client.datacontroller.approvaldata;
+package gap.client.datacontroller;
 
 /**
  * @author seven
@@ -45,7 +45,7 @@ public class ApprovalDataController {
 	StockoutOrderDataService stockoutOrderData;
 	InstitutionDataService institutionData;
 
-	public ApprovalDataController() {
+	protected ApprovalDataController() {
 		try {
 			expressOrderData = (ExpressOrderDataService) Naming
 					.lookup(RMIConfig.url + ServiceName.EXPRESSORDER_DATA_SERVICE);

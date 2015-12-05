@@ -2,7 +2,7 @@ package gap.client.bl.strategy;
 
 import gap.client.blservice.strategyblservice.RentService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.strategydata.RentDataController;
+import gap.client.datacontroller.RentDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
 import gap.client.vo.RentVO;

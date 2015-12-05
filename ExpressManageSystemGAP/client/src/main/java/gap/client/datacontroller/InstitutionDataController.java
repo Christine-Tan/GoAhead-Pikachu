@@ -1,4 +1,4 @@
-package gap.client.datacontroller.managedata;
+package gap.client.datacontroller;
 
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
@@ -15,7 +15,7 @@ import java.util.List;
 public class InstitutionDataController {
 	InstitutionDataService institutionData;
 
-	public InstitutionDataController() {
+	protected InstitutionDataController() {
 		try {
 			institutionData = (InstitutionDataService) Naming.lookup(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE);
 		} catch (MalformedURLException e) {
