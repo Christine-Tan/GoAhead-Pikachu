@@ -38,6 +38,10 @@ public class DesAddressPanel extends JPanel {
 	JTextField comment_text;
 	AllAddressPO allAddress;
 
+	public String getTargetIns_id() {
+		return ((InstitutionVO) ins_name.getSelectedItem()).getInsId();
+	}
+
 	public DesAddressPanel() {
 		setOpaque(false);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 100));

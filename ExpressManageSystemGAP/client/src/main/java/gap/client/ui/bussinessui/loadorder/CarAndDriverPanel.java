@@ -49,6 +49,14 @@ public class CarAndDriverPanel extends JPanel {
 
 	}
 
+	public DriverVO getDriver() {
+		return driver.current_driver;
+	}
+
+	public CarVO getCar() {
+		return car.current_car;
+	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);
@@ -122,6 +130,7 @@ public class CarAndDriverPanel extends JPanel {
 			license_due_text.setText(driver.getDriving_license_due());
 			validate();
 		}
+
 	}
 
 	class CarPanel extends JPanel {
@@ -187,5 +196,6 @@ public class CarAndDriverPanel extends JPanel {
 			server_time_text.setText("" + car.getServe_time());
 			validate();
 		}
+
 	}
 }

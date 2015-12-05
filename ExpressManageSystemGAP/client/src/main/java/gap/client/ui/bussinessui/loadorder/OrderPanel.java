@@ -124,7 +124,13 @@ public class OrderPanel extends JPanel {
 		reLayout();
 	}
 
-	
+	public List<String> getOrders() {
+		List<String> list = new ArrayList<String>();
+		for (OrderItemPanel item : items) {
+			list.add(item.getOrder().order_id);
+		}
+		return list;
+	}
 
 	private void addItem(ExpressOrderVO vo) {
 		items.add(new OrderItemPanel(vo));

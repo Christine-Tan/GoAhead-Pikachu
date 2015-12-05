@@ -109,6 +109,8 @@ public class PeopleInfoUI extends JPanel {
 
 		district = new GAPLabel("区");
 		dis_list = new GAPComboBox<String>();
+		dis_list.setPreferredSize(new Dimension(85, 25));
+		// dis_list.setEditable(true);
 
 		for (String str : allAddress.getProvinces())
 			pro_list.addItem(str);
@@ -161,15 +163,5 @@ public class PeopleInfoUI extends JPanel {
 				(String) city_list.getSelectedItem(),
 				(String) dis_list.getSelectedItem());
 	}
-
-	// public PeopleInfo getPeopleInfo(){
-	//
-	// return new PeopleInfo(name_text.getText(), , depart, cellphone)
-	// }
-	// public static void main(String[] args) {
-	// JFrame jf = new JFrame();
-	// jf.setContentPane(new PeopleInfoUI("寄件人信息"));
-	// SwingConsole.run(jf, 900, 150);
-	// }
 
 }
