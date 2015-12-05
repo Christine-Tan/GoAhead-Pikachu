@@ -1,11 +1,14 @@
 package gap.client.bl.receipt.payee;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import gap.client.vo.PayeeVO;
+import gap.common.po.AccountPO;
 import gap.common.po.SalaryPO;
 import gap.common.po.UserPO;
+import gap.common.util.PaymentType;
 
 /**
  * 
@@ -16,14 +19,27 @@ import gap.common.po.UserPO;
 public class FixedSalaryPayee extends Payee{
 	UserPO userPO;
 	Iterator<SalaryPO> salaryItr;
-	public FixedSalaryPayee(UserPO userPO,Iterator<SalaryPO> salaryItr) {
-		// TODO Auto-generated constructor stub
+	public FixedSalaryPayee(UserPO userPO,Iterator<SalaryPO> salaryItr,
+			ArrayList<AccountPO> accountList)
+	{
+		super(accountList);
+		
 		this.userPO = userPO;
 		this.salaryItr = salaryItr;
 	}
 	
 	@Override
 	PayeeVO makePayeeVO() {
+		SalaryPO salaryPO = getSalaryPO(salaryItr, userPO);		
+		PaymentType type = getType(userPO);
+		double salary = salaryPO.getSalary();
+
+		String accountName = getRandomAccount();	
+		
+		//entry是条目的意思
+		PayeeVO vo = new PayeeVO(type, userPO.getUserId(), userPO.getName(),null,salary,
+							accountName,type.getEntry(),getNote(userPO));
+		return vo;
 		
 	}
 
