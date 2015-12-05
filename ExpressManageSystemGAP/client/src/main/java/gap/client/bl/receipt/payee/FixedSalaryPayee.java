@@ -24,7 +24,7 @@ public class FixedSalaryPayee extends Payee{
 	
 	@Override
 	PayeeVO makePayeeVO() {
-		return null;
+		
 	}
 
 }
