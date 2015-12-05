@@ -18,7 +18,7 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 
 public class TitlePanel extends JPanel {
-	JLabel city, express, standard, economic, colon1, colon2;
+	JLabel city, express, standard, economic, colon1, colon2, base;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
@@ -30,6 +30,7 @@ public class TitlePanel extends JPanel {
 		express = new GAPLabel("特快");
 		standard = new GAPLabel("标准");
 		economic = new GAPLabel("经济");
+		base = new GAPLabel("基准价格");
 		colon1 = new GAPLabel(":");
 		colon2 = new GAPLabel(":");
 
@@ -49,6 +50,8 @@ public class TitlePanel extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, colon2, 4, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, economic, 5, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 80, 10, 0);
+		SwingConsole.addComponent(gb, gcons, this, base, 6, 0, 1, 1, 0, 0);
 	}
 
 	public void paintComponent(Graphics g) {

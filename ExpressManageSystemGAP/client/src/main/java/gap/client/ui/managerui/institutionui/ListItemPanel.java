@@ -29,12 +29,12 @@ import gap.client.vo.CityVO;
 import gap.client.vo.InstitutionVO;
 
 public class ListItemPanel extends JPanel {
-	//列表中所有的项
+	// 列表中所有的项
 	List<ItemPanel> items;
-	//布局
+	// 布局
 	GridBagLayout gb;
 	GridBagConstraints gcons;
-	
+
 	JButton addButton;
 	JFrame frame;
 
@@ -43,16 +43,16 @@ public class ListItemPanel extends JPanel {
 		setBackground(Color.WHITE);
 		addButton = new GAPButton("+");
 		// 对新增列表项的按钮添加监听
-		addButton.addActionListener(new ActionListener(){
+		addButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				addNewItem();
 			}
-			
+
 		});
-		
+
 		// 布局
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -100,10 +100,10 @@ public class ListItemPanel extends JPanel {
 		InstitutionVO vo;
 		GAPTextField ins_id, ins_name, ins_member;
 		JComboBox<String> ins_type_list, ins_city_list;
-		//编辑、删除按钮
+		// 编辑、删除按钮
 		JButton edit, delete;
 		GridBagLayout gbl;
-		//是否处于编辑状态，是否是新建的表项
+		// 是否处于编辑状态，是否是新建的表项
 		boolean edited, newly;
 
 		public ItemPanel() {
@@ -119,17 +119,17 @@ public class ListItemPanel extends JPanel {
 			ins_id.setHorizontalAlignment(JTextField.CENTER);
 			ins_name.setHorizontalAlignment(JTextField.CENTER);
 			ins_member.setHorizontalAlignment(JTextField.CENTER);
-			
+
 			// 初始化下拉框列表项
 			ins_type_list.addItem("营业厅");
 			ins_type_list.addItem("中转中心");
-            ins_type_list.setSelectedIndex(0);
-            
+			ins_type_list.setSelectedIndex(0);
+
 			for (CityVO city : CityController.getAll()) {
 				ins_city_list.addItem(city.getCityName());
 			}
 			ins_city_list.setSelectedIndex(0);
-			
+
 			// 对编辑按钮添加监听
 			edit = new GAPButton("E");
 			edit.setFont(ComponentStyle.defaultFont);
@@ -143,13 +143,12 @@ public class ListItemPanel extends JPanel {
 					} else {
 						closeEdit();
 						if (newly) {
-							newly=false;
-							vo=getInstitutionVO();
+							newly = false;
+							vo = getInstitutionVO();
 							InstitutionController.addInstitution(vo);
 						} else {
 							InstitutionController.modifyInstitution(vo);
 						}
-						
 					}
 				}
 			});
@@ -168,21 +167,21 @@ public class ListItemPanel extends JPanel {
 			});
 
 			// 列表项布局
-			gcons.insets = new Insets(10, 0, 10, 20);
+			gcons.insets = new Insets(10, 0, 0, 20);
 			SwingConsole.addComponent(gbl, gcons, this, ins_id, 0, 0, 1, 1, 1, 0);
-			gcons.insets = new Insets(10, 28, 10, 50);
+			gcons.insets = new Insets(10, 28, 0, 50);
 			SwingConsole.addComponent(gbl, gcons, this, ins_type_list, 1, 0, 1, 1, 1, 0);
-			gcons.insets = new Insets(10, 10, 10, 35);
+			gcons.insets = new Insets(10, 10, 0, 35);
 			SwingConsole.addComponent(gbl, gcons, this, ins_name, 2, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 20, 10, 20);
+			gcons.insets = new Insets(10, 20, 0, 20);
 			SwingConsole.addComponent(gbl, gcons, this, ins_city_list, 3, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 20, 10, 0);
+			gcons.insets = new Insets(10, 20, 0, 0);
 			SwingConsole.addComponent(gbl, gcons, this, ins_member, 4, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 15, 10, 0);
+			gcons.insets = new Insets(10, 15, 0, 0);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 5, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 10, 10, 0);
+			gcons.insets = new Insets(10, 10, 0, 0);
 			SwingConsole.addComponent(gbl, gcons, this, delete, 6, 0, 1, 1, 0, 0);
-			
+
 		}
 
 		public ItemPanel(InstitutionVO vo) {
@@ -198,10 +197,9 @@ public class ListItemPanel extends JPanel {
 				if (vo.getInsCity().equals(cities.get(i).getCityName()))
 					city_id = i;
 			}
-//			System.out.println(vo.getInsMember());
 			ins_city_list.setSelectedIndex(city_id);
-			ins_member.setText(vo.getInsMember()+"");
-			 closeEdit();
+			ins_member.setText(vo.getInsMember() + "");
+			closeEdit();
 		}
 
 		public void paintComponent(Graphics g) {
@@ -221,10 +219,10 @@ public class ListItemPanel extends JPanel {
 			ins_id.openEdit();
 			ins_name.openEdit();
 			ins_member.openEdit();
-//			ins_type_list.setEditable(true);
-//			ins_type_list.setFocusable(true);
-//			ins_city_list.setEditable(true);
-//			ins_city_list.setFocusable(true);
+			// ins_type_list.setEditable(true);
+			// ins_type_list.setFocusable(true);
+			// ins_city_list.setEditable(true);
+			// ins_city_list.setFocusable(true);
 			edit.setText("√");
 			edited = true;
 		}
@@ -233,10 +231,10 @@ public class ListItemPanel extends JPanel {
 			ins_id.closeEdit();
 			ins_name.closeEdit();
 			ins_member.closeEdit();
-//			ins_type_list.setEditable(false);
-//			ins_type_list.setFocusable(false);
-//			ins_city_list.setEditable(false);
-//			ins_city_list.setFocusable(false);
+			// ins_type_list.setEditable(false);
+			// ins_type_list.setFocusable(false);
+			// ins_city_list.setEditable(false);
+			// ins_city_list.setFocusable(false);
 			edit.setText("E");
 			vo = getInstitutionVO();
 			edited = false;

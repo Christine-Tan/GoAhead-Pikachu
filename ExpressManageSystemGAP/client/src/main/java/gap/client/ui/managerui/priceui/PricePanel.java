@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import gap.client.blcontroller.PriceController;
@@ -26,6 +27,7 @@ import gap.client.ui.managerui.institutionui.InstitutionPanel;
  */
 public class PricePanel extends MainPanel {
 	TitlePanel titlePanel;
+	ListItemPanel listItem;
 	ButtonArea buttonArea;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
@@ -33,6 +35,7 @@ public class PricePanel extends MainPanel {
 	public PricePanel(MainFrame frame) {
 		super(frame);
 		titlePanel = new TitlePanel();
+		listItem = new ListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
 		buttonArea.submit.addActionListener(new ActionListener() {
@@ -48,13 +51,17 @@ public class PricePanel extends MainPanel {
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
-		
+
 		// 布局
-       gcons.insets=new Insets(10,20,10,0);
-       SwingConsole.addComponent(gb, gcons, this,titlePanel , 0, 0, 1, 1, 1, 0);
-  
+
+		JPanel jp = new JPanel();
+		jp.setOpaque(false);
+		SwingConsole.addComponent(gb, gcons, this, titlePanel, 0, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, listItem, 0, 1, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, jp, 0, 2, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1,0);
 	}
-	
+
 	public static void main(String[] args) {
 		JFrame jf = new JFrame();
 		PricePanel ip = new PricePanel(null);
