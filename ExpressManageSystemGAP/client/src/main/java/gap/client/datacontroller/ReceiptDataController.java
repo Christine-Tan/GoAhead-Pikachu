@@ -14,7 +14,11 @@ import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.Cost_profitPO;
 import gap.common.po.PaymentListPO;
+import gap.common.po.RentPO;
+import gap.common.po.SalaryPO;
 import gap.common.po.TradePO;
+import gap.common.po.TransFarePO;
+import gap.common.po.UserPO;
 import gap.common.util.OrderState;
 import gap.common.util.ResultMessage;
 
@@ -22,10 +26,16 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * 财务人员要用的，所有关于账单的接口
+ * @author 申彬
+ *
+ */
 public class ReceiptDataController {
 	AccountDataService accountDataService;
 	PaymentdataService paymentdataService;
@@ -101,38 +111,167 @@ public class ReceiptDataController {
 	
 	//PaymentData的接口
 	public ResultMessage submitPayment(PaymentListPO paymentListPO){
-		return null;
+		try {
+			return paymentdataService.submitPayment(paymentListPO);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
 	}
 	public ArrayList<PaymentListPO> getPassedPayment(Calendar begin, Calendar end){
+		try {
+			return paymentdataService.getPassedPayment(begin, end);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
 	public OrderState isPaymentPassed(String paymentID){
+		try {
+			return paymentdataService.isPaymentPassed(paymentID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
-	public ResultMessage setPassed(String paymentID){
+	public ResultMessage setPaymentPassed(String paymentID){
+		try {
+			return paymentdataService.setPassed(paymentID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
 	//BillOrder的接口
-	public ResultMessage setPassed(String order_id, String state_info){
+	public ResultMessage setBillOrderPassed(String order_id){
+		try {
+			return billOrderDataService.setPassed(order_id, null);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
-	public List<BillOrderPO> getPassedOrder(Calendar start,Calendar end){
+	public List<BillOrderPO> getPassedBill(Calendar start,Calendar end){
+		try {
+			return billOrderDataService.getPassedOrder(start, end);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
-	public List<BillOrderPO> getPassedOrder(Calendar oneDay,String institutionID){
+	public List<BillOrderPO> getPassedBill(Calendar oneDay,String institutionID){
+		try {
+			return billOrderDataService.getPassedOrder(oneDay, institutionID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
-	public OrderState isOrderPassed(String orderID){
+	public OrderState isBillPassed(String orderID){
+		try {
+			return billOrderDataService.isOrderPassed(orderID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
+	}
+	
+	//expressOrderData的接口
+	public double getDeliveryMoney(String date, String delivery_id){
+		try {
+			return expressOrderDataService.getDeliveryMoney(date, delivery_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	
 	//userdate的接口
+	public List<UserPO> findUnpaidUser(Date date){
+		try {
+			return userDataService.findUnpaidUser(date);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public ResultMessage setUserPaid(String user_id){
+		try {
+			return userDataService.setPaid(user_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
+	//transFareData
+	public List<TransFarePO> getTransFare(){
+		try {
+			return transFareDataService.getTransFare();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public boolean deleteTransFare(List<TransFarePO> transFareList){
+		try {
+			return transFareDataService.deleteTransFare(transFareList);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	//rentData
+	public List<RentPO> getAllRentPO(){
+		try {
+			return rentDataService.getAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public ResultMessage setInstitePaid(String institution){
+		try {
+			return rentDataService.setPaid(institution);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	//Salary
+	public List<SalaryPO> getAllSalaryPO(){
+		try {
+			return salaryDataService.getAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }
