@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 
 public class MainPanel extends JPanel {
 
-	MainFrame mainFrame;
+	protected MainFrame mainFrame;
 
 	private JScrollPane jspanel;
 
