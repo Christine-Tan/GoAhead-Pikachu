@@ -40,8 +40,15 @@ public class ListItemPanel extends JPanel {
 		setBackground(Color.WHITE);
 		addButton = new GAPButton("+");
 		// 对新增列表项的按钮添加监听
-		// 新增一项列表
-		// 删除一项列表
+		addButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				addNewItem();
+			}
+			
+		});
 
 		// 布局
 		gb = new GridBagLayout();
@@ -92,27 +99,30 @@ public class ListItemPanel extends JPanel {
 		JComboBox<String> ins_type_list, ins_city_list;
 		JButton edit, delete;
 		GridBagLayout gbl;
-		GridBagConstraints gbc;
+//		GridBagConstraints gbc;
 		boolean edited, newly;
 
 		public ItemPanel() {
 			setBackground(Color.WHITE);
 			setFocusable(true);
 			gbl = new GridBagLayout();
-			gbc = new GridBagConstraints();
 			ins_id = new GAPTextField(7);
 			ins_name = new GAPTextField(15);
 			ins_member = new GAPTextField(5);
 			ins_type_list = new GAPComboBox<String>();
 			ins_city_list = new GAPComboBox<String>();
 			setLayout(gbl);
+			
 			// 初始化下拉框列表项
 			ins_type_list.addItem("营业厅");
 			ins_type_list.addItem("中转中心");
-
+            ins_type_list.setSelectedIndex(0);
+            
 			for (CityVO city : CityController.getAll()) {
 				ins_city_list.addItem(city.getCityName());
 			}
+			ins_city_list.setSelectedIndex(0);
+			
 			// 对编辑按钮添加监听
 			edit = new GAPButton("E");
 			edit.setFont(ComponentStyle.defaultFont);
@@ -124,12 +134,12 @@ public class ListItemPanel extends JPanel {
 					if (!edited) {
 						openEdit();
 					} else {
-						closeEdit();
 						if (newly) {
 							InstitutionController.addInstitution(vo);
 						} else {
 							InstitutionController.modifyInstitution(vo);
 						}
+						closeEdit();
 					}
 				}
 			});
@@ -148,20 +158,20 @@ public class ListItemPanel extends JPanel {
 			});
 
 			// 列表项布局
-			gbc.insets = new Insets(10, 0, 10, 20);
-			SwingConsole.addComponent(gbl, gbc, this, ins_id, 0, 0, 1, 1, 1, 0);
-			gbc.insets = new Insets(10, 28, 10, 50);
-			SwingConsole.addComponent(gbl, gbc, this, ins_type_list, 1, 0, 1, 1, 1, 0);
-			gbc.insets = new Insets(10, 10, 10, 35);
-			SwingConsole.addComponent(gbl, gbc, this, ins_name, 2, 0, 1, 1, 0, 0);
-			gbc.insets = new Insets(10, 20, 10, 20);
-			SwingConsole.addComponent(gbl, gbc, this, ins_city_list, 3, 0, 1, 1, 0, 0);
-			gbc.insets = new Insets(10, 20, 10, 0);
-			SwingConsole.addComponent(gbl, gbc, this, ins_member, 4, 0, 1, 1, 0, 0);
-			gbc.insets = new Insets(10, 15, 10, 0);
-			SwingConsole.addComponent(gbl, gbc, this, edit, 5, 0, 1, 1, 0, 0);
-			gbc.insets = new Insets(10, 10, 10, 0);
-			SwingConsole.addComponent(gbl, gbc, this, delete, 6, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 0, 10, 20);
+			SwingConsole.addComponent(gbl, gcons, this, ins_id, 0, 0, 1, 1, 1, 0);
+			gcons.insets = new Insets(10, 28, 10, 50);
+			SwingConsole.addComponent(gbl, gcons, this, ins_type_list, 1, 0, 1, 1, 1, 0);
+			gcons.insets = new Insets(10, 10, 10, 35);
+			SwingConsole.addComponent(gbl, gcons, this, ins_name, 2, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 20, 10, 20);
+			SwingConsole.addComponent(gbl, gcons, this, ins_city_list, 3, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 20, 10, 0);
+			SwingConsole.addComponent(gbl, gcons, this, ins_member, 4, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 15, 10, 0);
+			SwingConsole.addComponent(gbl, gcons, this, edit, 5, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 10, 10, 0);
+			SwingConsole.addComponent(gbl, gcons, this, delete, 6, 0, 1, 1, 0, 0);
 			// closeEdit();
 		}
 
@@ -199,10 +209,10 @@ public class ListItemPanel extends JPanel {
 			ins_id.openEdit();
 			ins_name.openEdit();
 			ins_member.openEdit();
-			ins_type_list.setEditable(true);
-			ins_type_list.setFocusable(true);
-			ins_city_list.setEditable(true);
-			ins_city_list.setFocusable(true);
+//			ins_type_list.setEditable(true);
+//			ins_type_list.setFocusable(true);
+//			ins_city_list.setEditable(true);
+//			ins_city_list.setFocusable(true);
 			edit.setText("√");
 			edited = true;
 		}
