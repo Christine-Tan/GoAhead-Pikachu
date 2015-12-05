@@ -1,23 +1,17 @@
 package gap.common.dataservice;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
- * 用于测试客户端和网络端连接是否正常的类
+ * 用于测试客户端和网络端连接是否正常的接口
  * @author YangYanfei
  *
  */
-public class Contactor extends UnicastRemoteObject implements Remote {
+public interface Contactor extends Remote {
 
-	public Contactor() throws RemoteException {
-		super();
-		// TODO 自动生成的构造函数存根
-	}
-
-	public boolean getInfo() {
-		return true;
-	}
+	public boolean getInfo() throws RemoteException;
 
 }
