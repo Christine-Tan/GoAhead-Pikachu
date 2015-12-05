@@ -32,11 +32,11 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * 财务人员要用的，所有关于账单的接口
+ * 和财务人员相关的收付款单的data层接口，支持的需求有：制定付款单，处理收款单、付款单，按天按营业厅查收款单。
  * @author 申彬
  *
  */
-public class ReceiptDataController {
+public class AccountorReceiptDataController {
 	AccountDataService accountDataService;
 	PaymentdataService paymentdataService;
 	BillOrderDataService billOrderDataService;
@@ -47,7 +47,7 @@ public class ReceiptDataController {
 	SalaryDataService salaryDataService;
 	
 	
-	protected ReceiptDataController(){
+	protected AccountorReceiptDataController(){
 		
 			try {
 				accountDataService = (AccountDataService)Naming
@@ -89,15 +89,6 @@ public class ReceiptDataController {
 		}
 	}
 
-	public ArrayList<Cost_profitPO> getCost_Profit(){
-		try {
-			return accountDataService.getCost_Profit();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	public ArrayList<AccountPO> getAccountList(){
 		try {
@@ -153,16 +144,6 @@ public class ReceiptDataController {
 	public ResultMessage setBillOrderPassed(String order_id){
 		try {
 			return billOrderDataService.setPassed(order_id, null);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public List<BillOrderPO> getPassedBill(Calendar start,Calendar end){
-		try {
-			return billOrderDataService.getPassedOrder(start, end);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
