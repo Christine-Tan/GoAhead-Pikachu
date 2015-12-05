@@ -3,6 +3,7 @@ package gap.client.ui.inventoryui.stockinorderinput;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,6 +23,7 @@ public class StockinOrderInputPanel extends MainPanel{
 		stockinInfo = new StockinInfoUI();
 		title = new TitlePanel();
 		confirm = new ButtonArea();
+		confirm.submit.setText("确认入库");
 		list = new ListPanel();
 		
 		GridBagLayout gb = new GridBagLayout();

@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.checkstock;
+package gap.client.ui.inventoryui.distributesector;
 
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;

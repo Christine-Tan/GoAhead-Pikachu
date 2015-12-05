@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
 
 public class InitialStockPanel extends MainPanel{
 	ButtonArea confirm;
@@ -19,6 +20,7 @@ public class InitialStockPanel extends MainPanel{
 		// TODO Auto-generated constructor stub
 		
 		confirm = new ButtonArea();
+		confirm.submit.setText("确认初始化");
 		list = new ListItemPanel(frame);
 		title = new TitlePanel();
 		

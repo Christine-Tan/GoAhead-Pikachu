@@ -46,8 +46,6 @@ public class ListItem extends JPanel{
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		
-		
 		gcons.insets = new Insets(0,10,0,10);
 		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0.3, 0);
