@@ -31,11 +31,11 @@ public class TotalNumPanel extends JPanel{
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 		
-		gcons.insets = new Insets(10,60,10,50);
+		gcons.insets = new Insets(10,70,10,40);
 		gcons.anchor = GridBagConstraints.WEST;
 		SwingConsole.addComponent(gb, gcons, this, total, 0, 0, 1, 1, 1, 0);
 		gcons.anchor = GridBagConstraints.EAST;
-		gcons.insets = new Insets(10,60,10,80);
+		gcons.insets = new Insets(10,70,10,70);
 		SwingConsole.addComponent(gb, gcons, this, Num, 1, 0, 1, 1, 1, 0);
 	}
 	

@@ -35,13 +35,13 @@ public class TitlePanel extends JPanel {
 		setLayout(gb);
 
 		gcons.anchor = GridBagConstraints.CENTER;
-		gcons.insets = new Insets(0, 2, 0, 18);
+		gcons.insets = new Insets(0, 18, 0, 2);
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 0, 0, 20);
+		gcons.insets = new Insets(0, -5, 0, 25);
 		SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 12, 0, 8);
+		gcons.insets = new Insets(0, 42, 0, -22);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 12, 0, 8);
+		gcons.insets = new Insets(0, 27, 0, -7);
 		SwingConsole.addComponent(gb, gcons, this, amount, 3, 0, 1, 1, 1, 0);
 
 	}

@@ -2,10 +2,10 @@ package gap.client.bl.inventory;
 
 import gap.client.blservice.inventoryblservice.InventoryService;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.expressorderdata.ExpressOrderDataController;
-import gap.client.datacontroller.inventorydata.InventoryDataController;
-import gap.client.datacontroller.orderdata.StockinOrderDataController;
-import gap.client.datacontroller.orderdata.StockoutOrderDataController;
+import gap.client.datacontroller.ExpressOrderDataController;
+import gap.client.datacontroller.InventoryDataController;
+import gap.client.datacontroller.StockinOrderDataController;
+import gap.client.datacontroller.StockoutOrderDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
 import gap.client.vo.ExpressOrderVO;

@@ -31,7 +31,7 @@ public class ListItem extends JPanel{
 		box = new Checkbox();
 		
 		id = new GAPLabel();
-		id.setText("00000000000000000001");
+		id.setText("0000000001");
 //		id.setControl("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", 20, 20);
 		id.setHorizontalAlignment(JTextField.CENTER);
 		
@@ -55,7 +55,7 @@ public class ListItem extends JPanel{
 		
 		
 		gcons.insets = new Insets(0,10,0,10);
-		gcons.anchor = GridBagConstraints.EAST;
+		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
 		gcons.anchor = GridBagConstraints.WEST;
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);

@@ -18,7 +18,7 @@ public class ListPanel extends JPanel{
 		setBackground(Color.white);
 		
 		items = new ArrayList<ListItem>();
-		int size = 5;
+		int size = 10;
 		for(int i = 1;i<=size;i++){
 			ListItem item = new ListItem(i);
 			items.add(item);

@@ -1,8 +1,8 @@
 package gap.client.bl.strategy;
 
 import gap.client.blservice.strategyblservice.CityService;
+import gap.client.datacontroller.CityDataController;
 import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.strategydata.CityDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.City;
 import gap.client.util.Distance;

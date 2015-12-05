@@ -40,19 +40,19 @@ public class TitlePanel extends JPanel {
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 		
-		gcons.insets = new Insets(0,-15,0,95);
-		gcons.anchor = GridBagConstraints.EAST;
+		gcons.insets = new Insets(0,0,0,20);
+		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
 		
 		gcons.anchor = GridBagConstraints.WEST;
-		gcons.insets = new Insets(0,-17,0,37);
+		gcons.insets = new Insets(0,5,0,15);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0,30,0,-10);
+		gcons.insets = new Insets(0,15,0,5);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0,30,0,-10);
+		gcons.insets = new Insets(0,18,0,2);
 		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1,
 				0);
-		gcons.insets = new Insets(0,27,0,-7);
+		gcons.insets = new Insets(0,22,0,-2);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
 
 	}

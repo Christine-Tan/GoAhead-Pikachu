@@ -28,26 +28,26 @@ public class ListItem extends JPanel{
 		
 		box = new Checkbox();
 		
-		id = new GAPTextField(14);
-		id.setText("00000000000000000001");
+		id = new GAPTextField(7);
+		id.setText("0000000001");
 //		id.setControl("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", 20, 20);
-		id.setHorizontalAlignment(JTextField.CENTER);
+//		id.setHorizontalAlignment(JTextField.CENTER);
 		
 		inDate = new GAPTextField(7);
 		inDate.setText("2015-12-03");
 //		inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
-		inDate.setHorizontalAlignment(JTextField.CENTER);
+//		inDate.setHorizontalAlignment(JTextField.CENTER);
 		
-		destination = new GAPTextField(7);
-		destination.setText("南京栖霞区");
-		destination.setHorizontalAlignment(JTextField.CENTER);
+		destination = new GAPTextField(9);
+		destination.setText("南京市栖霞区");
+//		destination.setHorizontalAlignment(JTextField.CENTER);
 		
 		sector = new GAPTextField(5);
-		sector.setHorizontalAlignment(JTextField.CENTER);
+//		sector.setHorizontalAlignment(JTextField.CENTER);
 		sector.setText("航运区");
 		
 		location = new GAPTextField(7);
-		location.setHorizontalAlignment(JTextField.CENTER);
+//		location.setHorizontalAlignment(JTextField.CENTER);
 		location.setText("A排A架1位");
 		
 		
@@ -57,8 +57,8 @@ public class ListItem extends JPanel{
 		
 		
 
-		gcons.anchor = GridBagConstraints.EAST;
-		gcons.insets = new Insets(0,15,0,10);
+		gcons.anchor = GridBagConstraints.CENTER;
+		gcons.insets = new Insets(0,20,0,5);
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
 		gcons.anchor = GridBagConstraints.WEST;
 		gcons.insets = new Insets(0,10,0,10);

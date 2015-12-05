@@ -38,7 +38,7 @@ public class ButtonArea extends JPanel{
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 		g2d.setColor(ComponentStyle.light_gray);
-		int width = getWidth(), height = getHeight();
+		int width = getWidth();
 		g2d.drawLine(10, 5, width - 20, 5);
 	}
 }
