@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SalaryManage implements SalaryService {
-	private static final String ADD = "addSalary", MODIFY = "modifySalary";
+	private static final String ADD = "add", MODIFY = "modify";
 	SalaryDataController controller;
 	List<Operation> operations;
 

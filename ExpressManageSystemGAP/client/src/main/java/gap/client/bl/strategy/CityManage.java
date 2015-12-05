@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CityManage implements CityService {
-	private static final String ADD = "addCity", MODIFY = "modifyCity";
+	private static final String ADD = "add";
 	CityDataController controller;
 	List<Operation> operations;
 
@@ -48,11 +48,6 @@ public class CityManage implements CityService {
 		operations.add(new AddOperation(city.toCityPO()));
 	}
 
-	@Override
-	public void modifyCity(City city) {
-		// TODO Auto-generated method stub
-		operations.add(new ModifyOperation(city.toCityPO()));
-	}
 
 	/**
 	 * 将操作缓存起来，按序处理缓存队列
@@ -75,7 +70,7 @@ public class CityManage implements CityService {
 	public double getDistance(City city1, City city2) {
 		// TODO Auto-generated method stub
 		Distance dis = new Distance();
-		return dis.distanceCal(city1.getLatitude(), city1.getLongitude(), city2.getLatitude(), city2.getLongitude());
+		return 30000+dis.distanceCal(city1.getLatitude(), city1.getLongitude(), city2.getLatitude(), city2.getLongitude());
 	}
 
 	class AddOperation extends AbstractOperation {
@@ -84,9 +79,4 @@ public class CityManage implements CityService {
 		}
 	}
 
-	class ModifyOperation extends AbstractOperation {
-		public ModifyOperation(Object args) {
-			super(controller, MODIFY, args);
-		}
-	}
 }

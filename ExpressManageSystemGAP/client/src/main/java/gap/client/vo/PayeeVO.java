@@ -11,27 +11,24 @@ public class PayeeVO {
 	private String userID;
 	private String userName;
 	private Calendar lastPaydate;
-	private int expressOrderNum = 0;
 	private double money = 0;
 	private String accountName;
+	private String entry;
 	private String note;
 
 
 	public PayeeVO(PaymentType type, String userID, String userName,
-			Calendar lastPaydate, int expressOrderNum, 
-			double money,String accountName,String note) {
+			Calendar lastPaydate,double money,
+			String accountName,String entry,String note) {
 		this.type = type;
 		this.userID = userID;
 		this.userName = userName;
 		this.lastPaydate = lastPaydate;
-		this.expressOrderNum = expressOrderNum;
 		this.money = money;
 		this.accountName = accountName;
+		this.setEntry(entry);
 		this.setNote(note);
 
-		if (type != PaymentType.DELIVERY) {
-			expressOrderNum = 0;
-		}
 
 	}
 	
@@ -40,12 +37,12 @@ public class PayeeVO {
 		this.userID = po.getUserID();
 		this.lastPaydate = po.getLastPaydate();
 		this.userName = po.getUserName();
-		this.expressOrderNum = po.getExpressOrderNum();
+
 	}
 
 	public PayeePO toPO(){
 		PayeePO po = new PayeePO(type, userID, userName, lastPaydate, 
-				expressOrderNum, money, accountName,note);
+				0, money, accountName,note);
 
 		
 		return po;
@@ -73,17 +70,20 @@ public class PayeeVO {
 	}
 
 
-
-	public int getExpressOrderNum() {
-		return expressOrderNum;
-	}
-
 	public String getNote() {
 		return note;
 	}
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public String getEntry() {
+		return entry;
+	}
+
+	public void setEntry(String entry) {
+		this.entry = entry;
 	}
 
 	

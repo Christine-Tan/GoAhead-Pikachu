@@ -1,8 +1,12 @@
 package gap.client.blcontroller;
 
+import java.util.List;
+
 import gap.client.bl.expressorder.ExpressOrder;
+import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.po.AllAddressPO;
+import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -26,6 +30,10 @@ public class ExpressorderController {
 	public static ResultMessage receiveOrder(ReceiveInfo receiveInfo) {
 		// TODO 自动生成的方法存根
 		return expressorder.receiveOrder(receiveInfo);
+	}
+
+	public static List<ExpressOrderVO> getCurrentOrders(CurrentOrderType type) {
+		return expressorder.getCurrentOrders(LocalInfo.ins_id, type);
 	}
 
 }

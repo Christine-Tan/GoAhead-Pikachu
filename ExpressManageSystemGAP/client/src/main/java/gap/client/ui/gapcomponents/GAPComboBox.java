@@ -12,10 +12,11 @@ public class GAPComboBox<E> extends JComboBox<E> {
 		super();
 		setRenderer(new GAPCellRender<E>());
 		setBackground(Color.white);
-//		setFocusable(false);
+		// setFocusable(false);
 		setFont(ComponentStyle.defaultFont);
 		setMaximumRowCount(6);
 		setBorder(BorderFactory.createLineBorder(ColorAndFonts.gray.darker()));
 		setUI(new GAPComboBoxUI<>(this));
 	}
+
 }

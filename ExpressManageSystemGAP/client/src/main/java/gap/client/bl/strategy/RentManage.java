@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RentManage implements RentService {
-	private static final String ADD = "addRent", MODIFY = "modifyRent";
+	private static final String ADD = "add", MODIFY = "modify";
 	RentDataController controller;
 	List<Operation> operations;
 

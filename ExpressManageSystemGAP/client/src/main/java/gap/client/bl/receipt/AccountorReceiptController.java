@@ -20,7 +20,7 @@ import gap.client.datacontroller.AccountorReceiptDataController;
  */
 public class AccountorReceiptController implements AccountorReceiptService{
 
-	AccountorReceiptDataController receiptDateService = null;
+	AccountorReceiptDataController receiptDateController = null;
 	private static AccountorReceiptController receiptController =null;
 	PaymentList paymentList;
 	
@@ -32,8 +32,8 @@ public class AccountorReceiptController implements AccountorReceiptService{
 	}
 	
 	private AccountorReceiptController(){
-		receiptDateService = ControllerFactory.getReceiptDataController();
-		paymentList = new PaymentList();
+		receiptDateController = ControllerFactory.getReceiptDataController();
+		paymentList = new PaymentList(receiptDateController);
 	}
 
 	@Override

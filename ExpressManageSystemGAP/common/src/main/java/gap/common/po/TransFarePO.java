@@ -2,7 +2,7 @@ package gap.common.po;
 
 public class TransFarePO {
 
-	private int fare;
+	private double fare;
 	private String orderID;
 	private String carID;
 
@@ -13,11 +13,11 @@ public class TransFarePO {
 
 	}
 
-	public int getFare() {
+	public double getFare() {
 		return fare;
 	}
 
-	public void setFare(int fare) {
+	public void setFare(double fare) {
 		this.fare = fare;
 	}
 
