@@ -14,15 +14,15 @@ import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-public class listPanel1 extends JPanel{
-	listItem1[] list;
+public class ListPanel extends JPanel{
+	ListItem[] list;
 	
 	
-	public listPanel1(int rowNum){
+	public ListPanel(int rowNum){
 		setBackground(Color.white);
 		setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, ComponentStyle.light_gray));
 		
-		list = new listItem1[rowNum];
+		list = new ListItem[rowNum];
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
@@ -31,7 +31,7 @@ public class listPanel1 extends JPanel{
 		
 		gcons.insets = new Insets(10,0,0,0);
 		for(int i=0;i<rowNum;i++){
-			list[i] = new listItem1(10, i);
+			list[i] = new ListItem(10, i);
 			SwingConsole.addComponent(gb, gcons, this, list[i], 0, i, 1, 1, 1, 0);
 		}
 	}
