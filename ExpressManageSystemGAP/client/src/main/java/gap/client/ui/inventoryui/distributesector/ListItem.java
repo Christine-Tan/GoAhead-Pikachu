@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.checkstock;
+package gap.client.ui.inventoryui.distributesector;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -27,7 +27,7 @@ public class ListItem extends JPanel{
 		setBackground(Color.white);
 		int width = Default.PANEL_WIDTH;
 		width = Math.max(width, (Icon.width+20)*(numOfshf+2));
-		setPreferredSize(new Dimension(width,100));
+		setPreferredSize(new Dimension(width,120));
 		
 		char c = (char)('A'+idOfRow);
 		rowName = new GAPLabel(c+"排"); 
@@ -44,14 +44,14 @@ public class ListItem extends JPanel{
 		SwingConsole.addComponent(gb, gcons, this, rowName, 0, 0, 1, 1, 1, 0);
 		for(int i = 1;i<=numOfshf;i++){
 			double temp = i*9.1;
-			shelf[i-1] = new Unit(formatDouble(temp));
+			shelf[i-1] = new Unit(formatDouble(temp), "铁运区");
 			SwingConsole.addComponent(gb, gcons, this, shelf[i-1], i, 0, 1, 1, 1, 0);
 		}
 	}
 	
 	public double formatDouble(double ratio){
 		BigDecimal b = new BigDecimal(ratio);
-		ratio = b.setScale(3,RoundingMode.HALF_UP).doubleValue();
+		ratio = b.setScale(2,RoundingMode.HALF_UP).doubleValue();
 		return ratio;
 	}
 	

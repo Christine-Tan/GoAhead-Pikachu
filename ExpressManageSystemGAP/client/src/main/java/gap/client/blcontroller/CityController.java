@@ -25,11 +25,6 @@ public class CityController {
 		cityManage.addCity(city);
 	}
 
-	public static void modifyCity(City city) {
-		// TODO Auto-generated method stub
-		cityManage.modifyCity(city);
-	}
-
 	public static ResultMessage flush() {
 		return cityManage.flush();
 	}

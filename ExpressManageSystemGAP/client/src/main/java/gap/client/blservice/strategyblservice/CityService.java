@@ -8,8 +8,6 @@ import java.util.List;
 public interface CityService {
 	public List<CityVO> getAll();
 
-	public void modifyCity(City city);
-
 	public CityVO getCity(String City);
 
 	public void addCity(City city);

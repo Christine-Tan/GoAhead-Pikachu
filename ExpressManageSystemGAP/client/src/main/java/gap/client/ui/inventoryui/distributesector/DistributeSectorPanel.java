@@ -1,5 +1,6 @@
-package gap.client.ui.inventoryui.checkstock;
+package gap.client.ui.inventoryui.distributesector;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -9,28 +10,32 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 
-
-public class CheckStockPanel extends MainPanel{
+public class DistributeSectorPanel extends MainPanel {
 	ButtonArea buttonArea;
-	ListPanel list;
-	
-	public CheckStockPanel(MainFrame frame) {
+	ChoosePanel choose;
+	ListPanel listPanel;
+
+	public DistributeSectorPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
-
+		listPanel = new ListPanel(10);
 		buttonArea = new ButtonArea();
-		list = new ListPanel(10);
+		choose = new ChoosePanel();
+		
 		
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 		
 		JPanel panel = new JPanel();
-		//还差一个选项卡
-		SwingConsole.addComponent(gb, gcons, this, list, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel, 0, 2, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
+		panel.setBackground(Color.white);
 		
+		
+		SwingConsole.addComponent(gb, gcons, this, choose, 0, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, listPanel, 0, 1, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, panel, 0, 2, 1, 1, 1, 1);
+		gcons.fill = GridBagConstraints.HORIZONTAL;
+		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
 	}
 
 }

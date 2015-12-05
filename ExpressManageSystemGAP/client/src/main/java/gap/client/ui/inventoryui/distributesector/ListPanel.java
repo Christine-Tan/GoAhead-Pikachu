@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.checkstock;
+package gap.client.ui.inventoryui.distributesector;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
@@ -22,9 +22,11 @@ public class ListPanel extends JPanel{
 		setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, ComponentStyle.light_gray));
 		
 		list = new ListItem[rowNum];
+		
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
+		
 		gcons.insets = new Insets(0,10,0,10);
 		gcons.anchor = GridBagConstraints.CENTER;
 		

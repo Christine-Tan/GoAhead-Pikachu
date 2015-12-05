@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PriceManage implements PriceService {
-	private static final String ADD = "addPrice", MODIFY = "modifyPrice";
+	private static final String ADD = "add", MODIFY = "modify";
 	PriceDataController controller;
 	List<Operation> operations;
 

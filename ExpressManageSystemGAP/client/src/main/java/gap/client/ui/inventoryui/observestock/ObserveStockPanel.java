@@ -4,6 +4,7 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,6 +26,7 @@ public class ObserveStockPanel extends MainPanel{
 		// TODO Auto-generated constructor stub
 		
 		confirm = new ButtonArea();
+		confirm.submit.setText("确认");
 		stockinTitle = new TitlePanel("入库");
 		stockoutTitle = new TitlePanel("出库");
 		stockinList = new ListPanel();
@@ -40,8 +42,10 @@ public class ObserveStockPanel extends MainPanel{
 		setLayout(gb);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.white);
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.white);
+		
 		panel1.setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
 		SwingConsole.addComponent(gb, gcons, this, sectors, 0, 1, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, period, 0, 2, 1, 1, 1, 0);

@@ -43,7 +43,8 @@ public class InstitutionVO {
 	}
 
 	/**
-	 * @param insId 要设置的 insId
+	 * @param insId
+	 *            要设置的 insId
 	 */
 	public void setInsId(String insId) {
 		this.insId = insId;
@@ -57,7 +58,8 @@ public class InstitutionVO {
 	}
 
 	/**
-	 * @param insName 要设置的 insName
+	 * @param insName
+	 *            要设置的 insName
 	 */
 	public void setInsName(String insName) {
 		this.insName = insName;
@@ -71,7 +73,8 @@ public class InstitutionVO {
 	}
 
 	/**
-	 * @param insCity 要设置的 insCity
+	 * @param insCity
+	 *            要设置的 insCity
 	 */
 	public void setInsCity(String insCity) {
 		this.insCity = insCity;
@@ -85,7 +88,8 @@ public class InstitutionVO {
 	}
 
 	/**
-	 * @param insMember 要设置的 insMember
+	 * @param insMember
+	 *            要设置的 insMember
 	 */
 	public void setInsMember(int insMember) {
 		this.insMember = insMember;

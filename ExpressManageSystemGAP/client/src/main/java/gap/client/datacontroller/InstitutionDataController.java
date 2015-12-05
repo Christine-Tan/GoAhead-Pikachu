@@ -17,7 +17,8 @@ public class InstitutionDataController {
 
 	protected InstitutionDataController() {
 		try {
-			institutionData = (InstitutionDataService) Naming.lookup(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE);
+			institutionData = (InstitutionDataService) Naming
+					.lookup(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,7 +40,8 @@ public class InstitutionDataController {
 		}
 		return ResultMessage.FAILED;
 	}
-	public ResultMessage modify(InstitutionPO po){
+
+	public ResultMessage modify(InstitutionPO po) {
 		try {
 			return institutionData.modify(po);
 		} catch (RemoteException e) {
@@ -48,6 +50,7 @@ public class InstitutionDataController {
 		}
 		return ResultMessage.FAILED;
 	}
+
 	public ResultMessage delete(String ins_id) {
 		try {
 			return institutionData.delete(ins_id);
@@ -57,7 +60,8 @@ public class InstitutionDataController {
 		}
 		return ResultMessage.FAILED;
 	}
-	public List<InstitutionPO> getAll(){
+
+	public List<InstitutionPO> getAll() {
 		try {
 			return institutionData.getAll();
 		} catch (RemoteException e) {
@@ -66,7 +70,8 @@ public class InstitutionDataController {
 		}
 		return null;
 	}
-	public List<InstitutionPO> findByCity(String city){
+
+	public List<InstitutionPO> findByCity(String city) {
 		try {
 			return institutionData.findByCity(city);
 		} catch (RemoteException e) {
@@ -75,7 +80,8 @@ public class InstitutionDataController {
 		}
 		return null;
 	}
-	public InstitutionPO findById(String ins_id){
+
+	public InstitutionPO findById(String ins_id) {
 		try {
 			return institutionData.findById(ins_id);
 		} catch (RemoteException e) {
@@ -84,7 +90,8 @@ public class InstitutionDataController {
 		}
 		return null;
 	}
-	public InstitutionPO findByName(String ins_name){
+
+	public InstitutionPO findByName(String ins_name) {
 		try {
 			return institutionData.findByName(ins_name);
 		} catch (RemoteException e) {
