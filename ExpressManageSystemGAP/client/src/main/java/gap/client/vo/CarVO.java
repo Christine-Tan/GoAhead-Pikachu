@@ -1,6 +1,5 @@
 package gap.client.vo;
 
-
 public class CarVO {
 	// 车辆编号
 	private String car_id;
@@ -22,7 +21,6 @@ public class CarVO {
 	public CarVO() {
 
 	}
-
 
 	public String getCar_id() {
 		return car_id;
@@ -55,4 +53,9 @@ public class CarVO {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
+
+	public String toString() {
+		return car_id;
+	}
+
 }

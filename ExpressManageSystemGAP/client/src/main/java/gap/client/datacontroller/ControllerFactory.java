@@ -42,7 +42,8 @@ public class ControllerFactory {
 	private static ApprovalDataController approvalDataController;
 	private static WareHouseDataController wareHouseDataController;
 	private static FlexSectorDataController flexSectorDataController;
-	private static ReceiptDataController receiptDataController;
+	private static AccountorReceiptDataController receiptDataController;
+	private static TableDataController tableDataController;
 
 	public static AccountDateController getAccountDataController() {
 		if (accountDateController == null) {
@@ -51,9 +52,9 @@ public class ControllerFactory {
 		return accountDateController;
 	}
 	
-	public static ReceiptDataController getReceiptDataController(){
+	public static AccountorReceiptDataController getReceiptDataController(){
 		if(receiptDataController==null){
-			receiptDataController = new ReceiptDataController();
+			receiptDataController = new AccountorReceiptDataController();
 		}
 		return receiptDataController;
 	}
@@ -170,5 +171,12 @@ public class ControllerFactory {
 		if (flexSectorDataController == null)
 			flexSectorDataController = new FlexSectorDataController();
 		return flexSectorDataController;
+	}
+	
+	public static TableDataController getTableDataController(){
+		if(tableDataController == null){
+			tableDataController = new TableDataController();
+		}
+		return tableDataController;
 	}
 }

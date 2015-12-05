@@ -200,11 +200,16 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public List<UserPO> findUnpaidUser(Date date) throws RemoteException {
 		// TODO 自动生成的方法存根
+	
+		//把日期的天改成1，这样能获得上个月的未付款人	
+		@SuppressWarnings("deprecation")
+		Date dateForCompute = new Date(date.getYear(), date.getMonth(), 1);
+		
 		try {
 			List<UserPO> users = new ArrayList<UserPO>();
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM user WHERE " + lastpaid_f
-							+ "<'" + date.toString() + "';");
+							+ "<'" + dateForCompute.toString() + "';");
 			while (re.next()) {
 				users.add(getByResultSet(re));
 			}
@@ -269,6 +274,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 			UserType type = UserType.getUserType(re.getString(userType_f));
 			UserPO po = new UserPO(id, username, password, name, type, gender,
 					ins_id);
+			
+			//设置上次付款日期，这个属性只有财务人员用到，所以特意标注一下
+			Date lastPayDate = re.getDate(lastpaid_f);
+			po.setLastPayDate(lastPayDate);
+			
 			return po;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块

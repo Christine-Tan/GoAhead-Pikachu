@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.mysql.jdbc.Buffer;
+
 import gap.server.data.receiptdata.PaymentListTable;
 import gap.server.databaseutility.Excutor;
 
@@ -87,6 +89,12 @@ public class SQLBuilder {
 						0);
 		System.out.println(sqlBuilder.toString());
 		
+		sqlBuilder.clear();
+		sqlBuilder.Select("*").From("billorder").Where("time").EQUALS("2015-11-26")
+			.AND("order_id").LIKE("0010001%");
+		System.out.println(sqlBuilder);
+		sqlBuilder.clear();
+		
 		
 	}
 
@@ -127,6 +135,7 @@ public class SQLBuilder {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.println("SQL语句有问题");
+			System.out.println(sql);
 			e.printStackTrace();
 			return false;
 		}
@@ -143,6 +152,7 @@ public class SQLBuilder {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("SQL语句有问题");
+			System.out.println(sql);
 			e.printStackTrace();
 		}
 		
@@ -384,6 +394,13 @@ public class SQLBuilder {
 	
 	public SQLBuilder EQUALS(Calendar calendar){		
 		EQUALS(calendar,DateType.date);
+		return this;
+	}
+	
+	public SQLBuilder LIKE(String string){
+		addSpace();
+		builder.append("LIKE ");
+		handleString(string);
 		return this;
 	}
 	

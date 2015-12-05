@@ -15,6 +15,11 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author YangYanfei
+ * 主面板的按钮区域
+ */
 public class ButtonArea extends JPanel {
 	public JButton submit;
 
