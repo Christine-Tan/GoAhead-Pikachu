@@ -25,8 +25,8 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 	private String id_f = "id", cityid_f = "city_id", express_f = "express", standard_f = "standard",
 			economic_f = "economic", base_f = "base";
 
-	private InsertSQL priceInsert, cityInsert;
-	private UpdateSQL priceUpdate, cityUpdate;
+	private InsertSQL priceInsert;
+	private UpdateSQL priceUpdate;
 
 	public static PriceDataService instance;
 
@@ -40,9 +40,7 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		super();
 		// TODO Auto-generated constructor stub
 		priceInsert = new InsertSQL(tablename);
-		cityInsert = new InsertSQL(city);
 		priceUpdate = new UpdateSQL(tablename);
-		cityUpdate = new UpdateSQL(city);
 	}
 
 	@Override

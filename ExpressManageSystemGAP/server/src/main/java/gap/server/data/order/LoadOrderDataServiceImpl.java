@@ -21,7 +21,8 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 	private String tableName = "loadorder", itemTable = "loadorderitem";
 	private String order_id_f = "order_id", driver_id_f = "driver_id",
 			guard_id_f = "guard_id", car_num_f = "car_num", time_f = "time",
-			passed_f = "passed";
+			passed_f = "passed", target_ins_f = "target_ins_id",
+			departure_ins_f = "departure_ins_id", comment_f = "comment";
 	private String item_expressorder_id_f = "expressorder_id",
 			item_order_id_f = "order_id";
 	private InsertSQL orderInsert, itemInsert;
@@ -54,6 +55,9 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(guard_id_f, guard_id);
 			orderInsert.add(car_num_f, car_num);
 			orderInsert.add(time_f, time);
+			orderInsert.add(target_ins_f, po.getTargetins_id());
+			orderInsert.add(departure_ins_f, po.getDepartureins_id());
+			orderInsert.add(comment_f, po.getComment());
 			NetModule.excutor.excute(orderInsert.createSQL());
 			List<String> orders = po.getOrders();
 			for (String str : orders) {
@@ -75,10 +79,13 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			String order_id = re.getString(order_id_f), driver_id = re
 					.getString(driver_id_f), guard_id = re
 					.getString(guard_id_f), car_num = re.getString(car_num_f), time = re
-					.getString(time_f);
+					.getString(time_f), target_ins = re.getString(target_ins_f), departure_ins = re
+					.getString(departure_ins_f), comment = re
+					.getString(comment_f);
 			List<String> orders = getByOrder_id(order_id);
 			LoadOrderPO loadOrder = new LoadOrderPO(order_id, time, car_num,
-					"", "", driver_id, guard_id, orders);
+					departure_ins, target_ins, driver_id, guard_id, orders,
+					comment);
 			return loadOrder;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
@@ -129,15 +136,20 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.add(passed_f, true);
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
-			String sql = "SELECT * FROM " + itemTable + " WHERE "
-					+ item_order_id_f + " = '" + order_id + "';";
+			String sql = "SELECT * FROM " + tableName + " WHERE " + order_id_f
+					+ " = '" + order_id + "' AND " + passed_f + " = true ;";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			re.next();
+			String target_ins_id = re.getString(target_ins_f);
+			sql = "SELECT * FROM " + itemTable + " WHERE " + item_order_id_f
+					+ " = '" + order_id + "';";
 			ExpressOrderDataService orderData = ExpressOrderDataServiceImpl
 					.getInstance();
-			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
 				// System.out.println(re.getString(item_expressorder_id_f));
 				orderData.setLoad(re.getString(item_expressorder_id_f),
-						order_id.substring(0, 7), state_info);
+						target_ins_id, state_info);
 			}
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {

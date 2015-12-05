@@ -8,8 +8,20 @@ import java.util.Calendar;
 
 import gap.common.util.PaymentType;
 
+/**
+ * 
+ * 对于transFare，userID是运单号，userName是车辆ID
+ * @author 申彬
+ *
+ */
 public class PayeePO implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
 	private PaymentType type;
 	private String userID;
 	private String userName;

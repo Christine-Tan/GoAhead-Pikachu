@@ -26,8 +26,11 @@ public class PercentSalaryPayee extends Payee{
 	Iterator<SalaryPO> salaryItr;
 	AccountorReceiptDataController controller;
 	
-	public PercentSalaryPayee(UserPO userPO,Iterator<SalaryPO> salaryItr
-			,AccountorReceiptDataController controller) {
+	public PercentSalaryPayee(UserPO userPO,Iterator<SalaryPO> salaryItr,
+			AccountorReceiptDataController controller,
+			ArrayList<AccountPO> accountList) 
+	{
+		super(accountList);
 		this.userPO = userPO;
 		this.salaryItr = salaryItr;
 		this.controller = controller;
@@ -36,33 +39,20 @@ public class PercentSalaryPayee extends Payee{
 	@Override
 	PayeeVO makePayeeVO() {
 		//快递员提成比
-		SalaryPO percent=null;
-		while(salaryItr.hasNext()){
-			SalaryPO aPO = salaryItr.next();
-			if(aPO.getType().equals(UserType.DELIVERY)){
-				percent = aPO;
-				break;
-			}	
-		}
+		SalaryPO percent=getSalaryPO(salaryItr, userPO);
 		
-		if(percent==null){
-			System.out.println("未找到快递员的策略");
-			return null;
-		}
 		
 		double sumMoney = computeDeliveryMoney(userPO.getUserId());
 		double salary = sumMoney * percent.getSalary();
 		PaymentType type = getType(userPO);
 		
-		ArrayList<AccountPO> accountList = PaymentList.getAccounts();
-		int index = (int)(accountList.size()*Math.random());
-		AccountPO account = accountList.get(index);
+		String accountName = getRandomAccount();
 		
 //		(PaymentType type, String userID, String userName,
 //				Calendar lastPaydate,double money,
 //				String accountName,String entry,String note) 
 		PayeeVO vo = new PayeeVO(type, userPO.getUserId(), userPO.getName(),null,salary,
-							account.getName(),type.getEntry(),getNote(userPO));
+							accountName,type.getEntry(),getNote(userPO));
 		return vo;
 		
 	}
