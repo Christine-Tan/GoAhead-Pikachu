@@ -5,8 +5,8 @@ import gap.common.po.LoadOrderPO;
 import java.util.List;
 
 public class LoadOrderVO {
-	public String order_id, date, car_number, departureins_id, targetins_id,
-			driver_id, guard_id;
+	public String order_id, date, car_id, departureins_id, targetins_id,
+			driver_id, guard_id, comment;
 	public List<String> orders;
 
 	public LoadOrderVO(String order_id, String date, String car_number,
@@ -15,7 +15,7 @@ public class LoadOrderVO {
 		super();
 		this.order_id = order_id;
 		this.date = date;
-		this.car_number = car_number;
+		this.car_id = car_number;
 		this.departureins_id = departureins_id;
 		this.targetins_id = targetins_id;
 		this.driver_id = driver_id;
@@ -30,7 +30,7 @@ public class LoadOrderVO {
 	public LoadOrderVO(LoadOrderPO po) {
 		this.order_id = po.getOrder_id();
 		this.date = po.getDate();
-		this.car_number = po.getCar_number();
+		this.car_id = po.getCar_number();
 		this.departureins_id = po.getDepartureins_id();
 		this.targetins_id = po.getTargetins_id();
 		this.driver_id = po.getDriver_id();
@@ -39,8 +39,9 @@ public class LoadOrderVO {
 	}
 
 	public LoadOrderPO toPO() {
-		LoadOrderPO po = new LoadOrderPO(order_id, date, car_number,
-				departureins_id, targetins_id, driver_id, guard_id, orders);
+		LoadOrderPO po = new LoadOrderPO(order_id, date, car_id,
+				departureins_id, targetins_id, driver_id, guard_id, orders,
+				comment);
 		return po;
 	}
 

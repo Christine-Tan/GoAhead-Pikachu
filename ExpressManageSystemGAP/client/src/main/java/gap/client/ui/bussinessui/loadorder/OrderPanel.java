@@ -127,7 +127,8 @@ public class OrderPanel extends JPanel {
 	public List<String> getOrders() {
 		List<String> list = new ArrayList<String>();
 		for (OrderItemPanel item : items) {
-			list.add(item.getOrder().order_id);
+			if (item.getOrder() != null)
+				list.add(item.getOrder().order_id);
 		}
 		return list;
 	}
@@ -181,7 +182,9 @@ public class OrderPanel extends JPanel {
 		}
 
 		public ExpressOrderVO getOrder() {
-			return order;
+			if (checkbox.isSelected())
+				return order;
+			return null;
 		}
 	}
 

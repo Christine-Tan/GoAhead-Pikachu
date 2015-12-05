@@ -1,15 +1,17 @@
 package gap.client.bl.receipt.payee;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-
-import javax.print.CancelablePrintJob;
-
+import java.util.Iterator;
 import gap.client.vo.PayeeVO;
+import gap.common.po.AccountPO;
 import gap.common.po.RentPO;
+import gap.common.po.SalaryPO;
 import gap.common.po.TransFarePO;
 import gap.common.po.UserPO;
 import gap.common.util.PaymentType;
+import gap.common.util.UserType;
 
 /**
  * 被付款人的逻辑层对象
@@ -18,9 +20,17 @@ import gap.common.util.PaymentType;
  */
 public abstract class Payee {
 	protected PayeeVO payeeVO;
-	static SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
-	static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+	ArrayList<AccountPO> accountList;
+	private static SimpleDateFormat monthFormat = new SimpleDateFormat("MM");
+	private static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+	private static int accountIndex = 0;
+	private static double increaseRate = 0.25;
 	
+	public Payee(ArrayList<AccountPO> accountList){
+		this.accountList = accountList;
+	}
+	
+	//factory method
 	abstract PayeeVO makePayeeVO();
 	
 	public PayeeVO getVO(){
@@ -71,20 +81,50 @@ public abstract class Payee {
 			case CENTERCLERK:
 			case BUSSINESSCLERK:
 			{
-				//工资年份
+				//工资月份
 				String month = monthFormat.format(now.getTime());
 				return month+"月份工资";
 			}
 			
 			case RENT:
+				//房租年份
 				String year = yearFormat.format(now.getTime());
 				return year+"年房租";
 			case TRANSFARE:
+				//运费单号
 				TransFarePO transFarePO = (TransFarePO)o;
 				return transFarePO.getOrderID();
 		}
 		return null;
 		
+	}
+	
+	protected SalaryPO getSalaryPO(Iterator<SalaryPO> salaryItr,UserPO userPO){
+		SalaryPO salaryPO=null;
+		UserType userType = userPO.getType();
+		while(salaryItr.hasNext()){
+			SalaryPO aPO = salaryItr.next();
+			if(aPO.getType().equals(userType)){
+				salaryPO = aPO;
+				break;
+			}	
+		}
+		
+		if(salaryPO==null){
+			System.out.println("未找到"+userType+"的策略");
+			return null;
+		}
+		return salaryPO;
+	}
+	
+	protected String getRandomAccount(){		
+		//按一定概率将银行账户序号增加1.
+		if(Math.random()<increaseRate){
+			accountIndex = (accountIndex+1)%accountList.size();
+		}
+		
+		AccountPO account = accountList.get(accountIndex);
+		return account.getName();
 	}
 	
 }

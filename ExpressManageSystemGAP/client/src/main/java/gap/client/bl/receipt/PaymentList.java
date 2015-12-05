@@ -21,7 +21,7 @@ public class PaymentList {
 	
 	ArrayList<PayeeVO> payeeList;
 	AccountorReceiptDataController dataController;
-	static ArrayList<AccountPO> accounts;
+	private ArrayList<AccountPO> accounts;
 	
 	List<SalaryPO> salaryPOs;
 	
@@ -42,9 +42,7 @@ public class PaymentList {
 	 * @return
 	 */
 	
-	public static ArrayList<AccountPO> getAccounts(){
-		return accounts;
-	}
+
 	
 //	public PaymentListVO creatPaymentList(){
 //		
