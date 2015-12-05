@@ -2,7 +2,7 @@ package gap.client.ui.inventoryui.checkstock;
 
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.UserBox.Sex;
-import gap.client.ui.UITools.ConstInfo;
+import gap.client.util.ConstInfo;
 
 public class Test {
 	public static void main(String[] args) {

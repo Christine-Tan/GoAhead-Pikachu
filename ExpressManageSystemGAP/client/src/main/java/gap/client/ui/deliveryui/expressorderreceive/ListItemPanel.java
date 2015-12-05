@@ -1,12 +1,12 @@
 package gap.client.ui.deliveryui.expressorderreceive;
 
-import gap.client.ui.UITools.ConstInfo;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.util.ConstInfo;
 import gap.common.util.ReceiveInfo;
 
 import java.awt.Color;

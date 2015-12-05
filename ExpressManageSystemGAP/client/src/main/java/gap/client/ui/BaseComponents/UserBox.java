@@ -1,8 +1,8 @@
 package gap.client.ui.BaseComponents;
 
 import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.ConstInfo;
 import gap.client.ui.UITools.RenderSetter;
+import gap.client.util.ConstInfo;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;

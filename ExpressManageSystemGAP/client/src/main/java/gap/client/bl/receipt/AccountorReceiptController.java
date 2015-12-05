@@ -33,6 +33,7 @@ public class AccountorReceiptController implements AccountorReceiptService{
 	
 	private AccountorReceiptController(){
 		receiptDateService = ControllerFactory.getReceiptDataController();
+		paymentList = new PaymentList();
 	}
 
 	@Override
