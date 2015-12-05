@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 public class ListPanel extends JPanel{
 	ListItem[] list;
 	
+	
 	public ListPanel(int rowNum){
 		setBackground(Color.white);
 		setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0, ComponentStyle.light_gray));

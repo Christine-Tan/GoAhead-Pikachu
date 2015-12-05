@@ -49,6 +49,7 @@ public class ListItem extends JPanel{
 		}
 	}
 	
+	
 	public double formatDouble(double ratio){
 		BigDecimal b = new BigDecimal(ratio);
 		ratio = b.setScale(3,RoundingMode.HALF_UP).doubleValue();
