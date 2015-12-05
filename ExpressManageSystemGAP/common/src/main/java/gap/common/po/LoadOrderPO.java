@@ -6,12 +6,12 @@ import java.util.List;
 public class LoadOrderPO implements Serializable {
 	//
 	private String order_id, date, car_number, departureins_id, targetins_id,
-			driver_id, guard_id;
+			driver_id, guard_id,comment;
 	private List<String> orders;
 
 	public LoadOrderPO(String order_id, String date, String car_number,
 			String departureins_id, String targetins_id, String driver_id,
-			String guard_id, List<String> orders) {
+			String guard_id, List<String> orders,String comment) {
 		super();
 		this.order_id = order_id;
 		this.date = date;
@@ -21,6 +21,7 @@ public class LoadOrderPO implements Serializable {
 		this.driver_id = driver_id;
 		this.guard_id = guard_id;
 		this.orders = orders;
+		this.comment=comment;
 	}
 
 	public String getDate() {
@@ -85,6 +86,14 @@ public class LoadOrderPO implements Serializable {
 
 	public void setOrders(List<String> orders) {
 		this.orders = orders;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 }

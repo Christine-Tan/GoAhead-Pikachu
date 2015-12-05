@@ -38,10 +38,6 @@ public class DesAddressPanel extends JPanel {
 	JTextField comment_text;
 	AllAddressPO allAddress;
 
-	public String getTargetIns_id() {
-		return ((InstitutionVO) ins_name.getSelectedItem()).getInsId();
-	}
-
 	public DesAddressPanel() {
 		setOpaque(false);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 100));
@@ -71,6 +67,14 @@ public class DesAddressPanel extends JPanel {
 		gcons.insets = new Insets(5, 10, 5, 10);
 		SwingConsole.addComponent(gb, gcons, this, comment_text, 1, 1, 5, 1, 0,
 				0);
+	}
+
+	public String getTargetIns_id() {
+		return ((InstitutionVO) ins_name.getSelectedItem()).getInsId();
+	}
+
+	public String getComment() {
+		return comment_text.getText();
 	}
 
 	public void paintComponent(Graphics g) {
