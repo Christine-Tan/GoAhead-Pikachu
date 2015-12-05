@@ -61,7 +61,7 @@ public class PercentSalaryPayee extends Payee{
 //		(PaymentType type, String userID, String userName,
 //				Calendar lastPaydate,double money,
 //				String accountName,String entry,String note) 
-		PayeeVO vo = new PayeeVO(type, userPO.getUserId(), userPO.getName(),null,sumMoney,
+		PayeeVO vo = new PayeeVO(type, userPO.getUserId(), userPO.getName(),null,salary,
 							account.getName(),type.getEntry(),getNote(userPO));
 		return vo;
 		
