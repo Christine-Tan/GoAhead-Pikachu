@@ -17,11 +17,13 @@ import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.server.data.accountdata.AccountDataServiceImpl;
 import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
+import gap.server.data.inventorydata.InventoryDataServiceImpl;
 import gap.server.data.logdata.LogDataServiceImpl;
 import gap.server.data.managedata.InstitutionDataServiceImpl;
 import gap.server.data.order.ArrivedOrderDataServiceImpl;
 import gap.server.data.order.DeliveryOrderDataServiceImpl;
 import gap.server.data.order.LoadOrderDataServiceImpl;
+import gap.server.data.order.StockinOrderDataServiceImpl;
 import gap.server.data.receiptdata.BillOrderDataServiceImpl;
 import gap.server.data.receiptdata.PaymentDataServiceImpl;
 import gap.server.data.strategydata.CityDataServiceImpl;
@@ -53,7 +55,8 @@ public class NetInitial {
 		institutiondataservice = InstitutionDataServiceImpl.getInstance();
 		billorderdataservice = BillOrderDataServiceImpl.getInstance();
 		paymentdataService = PaymentDataServiceImpl.getInstance();
-		
+		inventorydataservice = InventoryDataServiceImpl.getInstance();
+//		stockindataservice = StockinOrderDataServiceImpl.getInstance();
 		
 		serviceMap = new HashMap<>(ServiceName.serviceNumber+10);
 		
@@ -73,6 +76,7 @@ public class NetInitial {
 		serviceMap.put(ServiceName.CITY_DATA_SERVICE,citydataservice);
 		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,institutiondataservice);
 		serviceMap.put(ServiceName.PAYMENT_DATA_SERVICE, paymentdataService);
+//		serviceMap.put(ServiceName.INVENTORY_DATA_SERVICE, inventorydataService);
 	}
 
 	public static void main(String[] args) {

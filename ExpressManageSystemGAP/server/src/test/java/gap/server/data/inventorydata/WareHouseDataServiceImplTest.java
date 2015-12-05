@@ -15,6 +15,7 @@ public class WareHouseDataServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 		NetInitial.initial();
+		wareHouse = new WareHouseDataServiceImpl();
 	}
 
 	@After
@@ -40,7 +41,12 @@ public class WareHouseDataServiceImplTest {
 
 	@Test
 	public void testDelete() {
-		fail("Not yet implemented");
+		try {
+			wareHouse.delete("0000001");
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -27,7 +27,7 @@ public class InventoryDataServiceImplTest {
 		po[1] = new GoodsPO("0000000001", "A,A,1", SectorType.FLEX, "2015-11-25", "00000010", "00000011", "nanjing");
 		po[2] = new GoodsPO("0000000002", "A,A,2", SectorType.CAR, "2015-11-25", "00000011", "00000011", "nanjing");
 		po[3] = new GoodsPO("0000000003", "A,A,3", SectorType.TRAIN, "2015-11-25", "00000012", "00000012", "nanjing");
-		po[4] = new GoodsPO("0000000004", "A,A,4", SectorType.PLANE, "2015-11-24", "00000013", "00000013", "nanjing");
+		po[4] = new GoodsPO("0000000004", "A,A,4", SectorType.PLANE, "2015-11-25", "00000013", "00000013", "nanjing");
 		po[5] = new GoodsPO("0000000005", "A,A,5", SectorType.FLEX, "2015-11-24", "00000010", "00000011", "nanjing");
 		po[6] = new GoodsPO("0000000006", "A,A,6", SectorType.CAR, "2015-11-24", "00000011", "00000011", "nanjing");
 		po[7] = new GoodsPO("0000000007", "A,A,7", SectorType.TRAIN, "2015-11-23", "00000012", "00000012", "nanjing");
