@@ -176,7 +176,7 @@ public class ApprovalDataController {
 					e.printStackTrace();
 				}
 			} else if (order instanceof LoadOrderVO) {
-				String targetInsId = ((LoadOrderVO) order).getTargetins_id();
+				String targetInsId = ((LoadOrderVO) order).targetins_id;
 				try {
 					String insname = institutionData.findById(targetInsId).getInsName();
 					String state = "正在发往" + insname;
