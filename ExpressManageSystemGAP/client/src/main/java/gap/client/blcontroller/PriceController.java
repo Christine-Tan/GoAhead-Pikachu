@@ -7,7 +7,7 @@ import gap.client.vo.PriceVO;
 import gap.common.util.ResultMessage;
 
 public class PriceController {
-         public static PriceManage priceManage=new PriceManage();
+         private static PriceManage priceManage=new PriceManage();
          
          public static List<PriceVO> getAll(){
         	 return priceManage.getAll();
