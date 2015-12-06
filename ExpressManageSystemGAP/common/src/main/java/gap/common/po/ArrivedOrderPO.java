@@ -9,6 +9,8 @@ public class ArrivedOrderPO implements Serializable {
 	private Map<String, String> orders;
 	// 生成时间
 	private String time;
+	// 对应的装车单编号
+	private String load_id;
 	// 到达单编号
 	private String id;
 	// 发货机构编号
@@ -19,7 +21,8 @@ public class ArrivedOrderPO implements Serializable {
 	String comment;
 
 	public ArrivedOrderPO(Map<String, String> orders, String time, String id,
-			String from_ins_id, String des_ins_id, String comment) {
+			String from_ins_id, String des_ins_id, String comment,
+			String load_id) {
 		super();
 		this.orders = orders;
 		this.time = time;
@@ -27,6 +30,7 @@ public class ArrivedOrderPO implements Serializable {
 		this.from_ins_id = from_ins_id;
 		this.des_ins_id = des_ins_id;
 		this.comment = comment;
+		this.load_id = load_id;
 	}
 
 	public ArrivedOrderPO() {
@@ -79,6 +83,14 @@ public class ArrivedOrderPO implements Serializable {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getLoad_id() {
+		return load_id;
+	}
+
+	public void setLoad_id(String load_id) {
+		this.load_id = load_id;
 	}
 
 }

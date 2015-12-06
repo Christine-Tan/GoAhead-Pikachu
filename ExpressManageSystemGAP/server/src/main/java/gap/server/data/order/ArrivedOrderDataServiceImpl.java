@@ -2,6 +2,7 @@ package gap.server.data.order;
 
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
+import gap.common.dataservice.orderdataservice.LoadOrderDataService;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
@@ -24,7 +25,8 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 	private String tableName = "arrivedorder", itemTable = "arrivedorderitem";
 	private String order_id_f = "order_id", des_insid_f = "des_ins_id",
 			from_ins_id_f = "from_ins_id", comment_f = "comment",
-			time_f = "time", passed_f = "passed";
+			time_f = "time", passed_f = "passed",
+			load_order_id_f = "load_order_id";
 	private String item_id_expressorder_f = "expressorder_id",
 			item_order_id_f = "order_id", item_arrivedstate_f = "arrivedstate";
 	private InsertSQL orderInsert, itemInsert;
@@ -56,6 +58,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(from_ins_id_f, from_ind);
 			orderInsert.add(comment_f, comment);
 			orderInsert.add(time_f, time);
+			orderInsert.add(load_order_id_f, po.getLoad_id());
 			NetModule.excutor.excute(orderInsert.createSQL());
 			Map<String, String> orders = po.getOrders();
 			Set<String> sets = orders.keySet();
@@ -66,6 +69,11 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 				itemInsert.add(item_arrivedstate_f, orders.get(str));
 				NetModule.excutor.excute(itemInsert.createSQL());
 			}
+
+			LoadOrderDataService loadOrder = LoadOrderDataServiceImpl
+					.getInstance();
+			loadOrder.setArrived(po.getLoad_id());
+
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
@@ -95,12 +103,13 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			String order_id = re.getString(order_id_f), des_ins_id = re
 					.getString(des_insid_f), from_ins_id = re
 					.getString(from_ins_id_f), comment = re
-					.getString(comment_f), time = re.getString(time_f);
+					.getString(comment_f), time = re.getString(time_f), load_id = re
+					.getString(load_order_id_f);
 			Map<String, String> orders = getByOrder_id(order_id);
 			if (orders == null)
 				return null;
 			ArrivedOrderPO po = new ArrivedOrderPO(orders, time, order_id,
-					from_ins_id, des_ins_id, comment);
+					from_ins_id, des_ins_id, comment, load_id);
 			return po;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
@@ -137,6 +146,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.add(passed_f, true);
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
+
 			String sql = "SELECT * FROM " + itemTable + " WHERE "
 					+ item_order_id_f + " = '" + order_id + "';";
 			ExpressOrderDataService orderData = ExpressOrderDataServiceImpl
@@ -175,7 +185,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
-	
+
 	@Override
 	public int getMaxId(String cons) throws RemoteException {
 		// TODO 自动生成的方法存根

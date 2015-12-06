@@ -42,6 +42,10 @@ public class GAPTextField extends JTextField {
 		listener.setControl(regex, maxLength, minLength);
 	}
 
+	public void setCenter() {
+		setHorizontalAlignment(JTextField.CENTER);
+	}
+
 	// 警告样式
 	private void alarm() {
 		setBackground(ComponentStyle.red);
@@ -72,7 +76,7 @@ public class GAPTextField extends JTextField {
 		setBackground(Color.white);
 		setBorder(ComponentStyle.text_border);
 		setFont(ComponentStyle.defaultFont);
-//		setHorizontalAlignment(JTextField.CENTER);
+		// setHorizontalAlignment(JTextField.CENTER);
 		validate();
 	}
 

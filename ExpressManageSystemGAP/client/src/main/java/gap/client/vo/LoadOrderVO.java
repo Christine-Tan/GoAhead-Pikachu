@@ -36,6 +36,7 @@ public class LoadOrderVO {
 		this.driver_id = po.getDriver_id();
 		this.guard_id = po.getGuard_id();
 		this.orders = po.getOrders();
+		this.comment = po.getComment();
 	}
 
 	public LoadOrderPO toPO() {

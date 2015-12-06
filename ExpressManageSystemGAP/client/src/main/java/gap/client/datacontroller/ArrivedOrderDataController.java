@@ -40,4 +40,15 @@ public class ArrivedOrderDataController {
 		}
 		return ResultMessage.FAILED;
 	}
+
+	public int nextId(String cons) {
+		try {
+			return arrivedOrderData.getMaxId(cons);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
 }
