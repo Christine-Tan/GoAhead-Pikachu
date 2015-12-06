@@ -24,22 +24,22 @@ public class InventoryDataServiceImplTest {
 		 NetInitial.initial();
 		inventory = new InventoryDataServiceImpl();
 		po[0] = null;
-		po[1] = new GoodsPO("0000000001", "A,A,1", SectorType.FLEX, "2015-11-25", "00000010", "00000011", "nanjing");
-		po[2] = new GoodsPO("0000000002", "A,A,2", SectorType.CAR, "2015-11-25", "00000011", "00000011", "nanjing");
-		po[3] = new GoodsPO("0000000003", "A,A,3", SectorType.TRAIN, "2015-11-25", "00000012", "00000012", "nanjing");
-		po[4] = new GoodsPO("0000000004", "A,A,4", SectorType.PLANE, "2015-11-25", "00000013", "00000013", "nanjing");
-		po[5] = new GoodsPO("0000000005", "A,A,5", SectorType.FLEX, "2015-11-24", "00000010", "00000011", "nanjing");
-		po[6] = new GoodsPO("0000000006", "A,A,6", SectorType.CAR, "2015-11-24", "00000011", "00000011", "nanjing");
-		po[7] = new GoodsPO("0000000007", "A,A,7", SectorType.TRAIN, "2015-11-23", "00000012", "00000012", "nanjing");
-		po[8] = new GoodsPO("0000000008", "A,A,8", SectorType.PLANE, "2015-11-23", "00000013", "00000013", "nanjing");
-		po[9] = new GoodsPO("0000000009", "A,A,9", SectorType.FLEX, "2015-11-23", "00000010", "00000011", "nanjing");
-		po[10] = new GoodsPO("0000000010", "A,A,10", SectorType.CAR, "2015-11-23", "00000011", "00000011", "nanjing");
-		po[11] = new GoodsPO("0000000011", "A,A,11", SectorType.TRAIN, "2015-11-22", "00000012", "00000012", "nanjing");
-		po[12] = new GoodsPO("0000000012", "A,A,12", SectorType.PLANE, "2015-11-22", "00000013", "00000013", "nanjing");
-		po[13] = new GoodsPO("0000000013", "A,A,13", SectorType.FLEX, "2015-11-22", "00000020", "00000021", "nanjing");
-		po[14] = new GoodsPO("0000000014", "A,A,14", SectorType.CAR, "2015-11-22", "00000021", "00000021", "nanjing");
-		po[15] = new GoodsPO("0000000015", "A,A,15", SectorType.TRAIN, "2015-11-21", "00000022", "00000022", "nanjing");
-		po[16] = new GoodsPO("0000000016", "A,A,16", SectorType.PLANE, "2015-11-21", "00000023", "00000023", "nanjing");
+		po[1] = new GoodsPO("0000000001", "A,A,1", SectorType.FLEX, "2015-11-25", "00110010", "00110011", "nanjing");
+		po[2] = new GoodsPO("0000000002", "A,A,2", SectorType.CAR, "2015-11-25", "00110011", "00000011", "nanjing");
+		po[3] = new GoodsPO("0000000003", "A,A,3", SectorType.TRAIN, "2015-11-25", "00110012", "00000012", "nanjing");
+		po[4] = new GoodsPO("0000000004", "A,A,4", SectorType.PLANE, "2015-11-25", "00110013", "00000013", "nanjing");
+//		po[5] = new GoodsPO("0000000005", "A,A,5", SectorType.FLEX, "2015-11-24", "00110010", "00000011", "nanjing");
+//		po[6] = new GoodsPO("0000000006", "A,A,6", SectorType.CAR, "2015-11-24", "00000011", "00000011", "nanjing");
+//		po[7] = new GoodsPO("0000000007", "A,A,7", SectorType.TRAIN, "2015-11-23", "00000012", "00000012", "nanjing");
+//		po[8] = new GoodsPO("0000000008", "A,A,8", SectorType.PLANE, "2015-11-23", "00000013", "00000013", "nanjing");
+//		po[9] = new GoodsPO("0000000009", "A,A,9", SectorType.FLEX, "2015-11-23", "00000010", "00000011", "nanjing");
+//		po[10] = new GoodsPO("0000000010", "A,A,10", SectorType.CAR, "2015-11-23", "00000011", "00000011", "nanjing");
+//		po[11] = new GoodsPO("0000000011", "A,A,11", SectorType.TRAIN, "2015-11-22", "00000012", "00000012", "nanjing");
+//		po[12] = new GoodsPO("0000000012", "A,A,12", SectorType.PLANE, "2015-11-22", "00000013", "00000013", "nanjing");
+//		po[13] = new GoodsPO("0000000013", "A,A,13", SectorType.FLEX, "2015-11-22", "00000020", "00000021", "nanjing");
+//		po[14] = new GoodsPO("0000000014", "A,A,14", SectorType.CAR, "2015-11-22", "00000021", "00000021", "nanjing");
+//		po[15] = new GoodsPO("0000000015", "A,A,15", SectorType.TRAIN, "2015-11-21", "00000022", "00000022", "nanjing");
+//		po[16] = new GoodsPO("0000000016", "A,A,16", SectorType.PLANE, "2015-11-21", "00000023", "00000023", "nanjing");
 	}
 
 	@After
@@ -49,7 +49,7 @@ public class InventoryDataServiceImplTest {
 	@Test
 	public void testGetOneSector() {
 		try {
-			ArrayList<GoodsPO> list = (ArrayList)inventory.getOneSector("00000010", "0000001");
+			List<GoodsPO> list = inventory.getOneSector("00000010", "0000001");
 			System.out.println(list.isEmpty());
 			for(GoodsPO po:list){
 				System.out.println("expressorder_id:"+po.getExpressorder_id());

@@ -1,8 +1,10 @@
 package gap.client.ui.inventoryui.alarmvalueset;
 
+import gap.client.blcontroller.InventoryController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.util.LocalInfo;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,27 +29,21 @@ public class AlarmValueUI extends JPanel{
 		alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
 		alarmValue.setHorizontalAlignment(JTextField.CENTER);
 		alarmValue.setForeground(ComponentStyle.gray);
-		alarmValue.setText("80");
-//		alarmValue.setPreferredSize(new Dimension(850, 80));
-//		scroller = new JScrollPane(alarmValue);
+		System.out.println(LocalInfo.getIns_ID());
 		
-//		this.setLayout(null);
-//		this.add(alarmValue);
+		double value = InventoryController.getAlarmValue(LocalInfo.getIns_ID());
+		alarmValue.setText(value+"%");
+		
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 		gcons.insets=new Insets(10, 10, 10, 10);
-//		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, alarmValue, 0, 0, 1, 1, 1, 0);
-//		this.add(alarmValue);
 	}
 	
-//	public static void main(String[] args) {
-//		AlarmValueUI alarm = new AlarmValueUI();
-//		JFrame jf = new JFrame();
-//		jf.getContentPane().add(alarm);
-//		jf.setSize(300, 400);
-//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		jf.setVisible(true);
-//	}
+	public double getAlarmValue(){
+		String newValue = alarmValue.getText();
+		newValue = newValue.split("%")[0];
+		return Double.parseDouble(newValue);
+	}
 }

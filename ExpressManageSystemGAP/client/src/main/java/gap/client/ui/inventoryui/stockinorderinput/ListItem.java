@@ -5,6 +5,7 @@ import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.ExpressOrderVO;
 
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -31,23 +32,23 @@ public class ListItem extends JPanel{
 		id = new GAPTextField(7);
 		id.setText("0000000001");
 //		id.setControl("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", 20, 20);
-//		id.setHorizontalAlignment(JTextField.CENTER);
+		id.setHorizontalAlignment(JTextField.CENTER);
 		
 		inDate = new GAPTextField(7);
 		inDate.setText("2015-12-03");
 //		inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
-//		inDate.setHorizontalAlignment(JTextField.CENTER);
+		inDate.setHorizontalAlignment(JTextField.CENTER);
 		
 		destination = new GAPTextField(9);
 		destination.setText("南京市栖霞区");
-//		destination.setHorizontalAlignment(JTextField.CENTER);
+		destination.setHorizontalAlignment(JTextField.CENTER);
 		
 		sector = new GAPTextField(5);
-//		sector.setHorizontalAlignment(JTextField.CENTER);
+		sector.setHorizontalAlignment(JTextField.CENTER);
 		sector.setText("航运区");
 		
 		location = new GAPTextField(7);
-//		location.setHorizontalAlignment(JTextField.CENTER);
+		location.setHorizontalAlignment(JTextField.CENTER);
 		location.setText("A排A架1位");
 		
 		
@@ -76,7 +77,18 @@ public class ListItem extends JPanel{
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 		g2d.setColor(ComponentStyle.light_gray);
 		int width=getWidth(),height=getHeight();
-		g2d.drawLine(20, height-5, width-20, height-5);
+		g2d.drawLine(20, height-5, width-30, height-5);
 	}
+	
+	public void setLine(ExpressOrderVO vo,String date){
+		inDate.setText(date);
+		inDate.closeEdit();
+		
+		id.setText(vo.order_id);
+		id.closeEdit();
+		
+//		destination.setText();
+	}
+	
 	
 }

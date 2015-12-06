@@ -11,6 +11,8 @@ public class ArrivedOrderVO {
 	public String time;
 	// 到达单编号
 	public String id;
+	// 对应的到装车单单号
+	public String load_id;
 	// 发货机构编号
 	public String from_ins_id;
 	// 到达机构编号
@@ -24,7 +26,7 @@ public class ArrivedOrderVO {
 
 	public ArrivedOrderPO toPO() {
 		return new ArrivedOrderPO(orders, time, id, from_ins_id, des_ins_id,
-				comment);
+				comment, load_id);
 	}
 
 	public ArrivedOrderVO(Map<String, String> orders, String time, String id,
@@ -36,6 +38,7 @@ public class ArrivedOrderVO {
 		this.from_ins_id = from_ins_id;
 		this.des_ins_id = des_ins_id;
 		this.comment = comment;
+		this.load_id = load_id;
 	}
 
 }
