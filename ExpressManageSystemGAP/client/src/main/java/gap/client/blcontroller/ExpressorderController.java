@@ -1,8 +1,10 @@
 package gap.client.blcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import gap.client.bl.expressorder.ExpressOrder;
+import gap.client.exception.InvalidInputException;
 import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.po.AllAddressPO;
@@ -34,6 +36,19 @@ public class ExpressorderController {
 
 	public static List<ExpressOrderVO> getCurrentOrders(CurrentOrderType type) {
 		return expressorder.getCurrentOrders(LocalInfo.ins_id, type);
+	}
+
+	public static List<ExpressOrderVO> getByOrderIdList(List<String> orderIds) {
+		List<ExpressOrderVO> orders = new ArrayList<ExpressOrderVO>();
+		for (String str : orderIds) {
+			try {
+				orders.add(expressorder.getOrder(str));
+			} catch (InvalidInputException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
+		}
+		return orders;
 	}
 
 }
