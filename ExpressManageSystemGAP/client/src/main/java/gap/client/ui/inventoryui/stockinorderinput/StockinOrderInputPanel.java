@@ -31,7 +31,7 @@ public class StockinOrderInputPanel extends MainPanel{
 		setLayout(gb);
 		
 		JPanel panel = new JPanel();
-		gcons.insets = new Insets(0,10,0,10);
+//		gcons.insets = new Insets(0,10,0,10);
 //		gcons.fill = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, stockinInfo, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);

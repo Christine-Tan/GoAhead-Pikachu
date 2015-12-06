@@ -55,6 +55,8 @@ public interface InventoryService {
 	
 	public void initialmodify (GoodsVO vo);
 	
+	public ResultMessage initialflush();
+	
 	/**
 	 * 获得到达的快递
 	 * @param institution_id
@@ -101,5 +103,7 @@ public interface InventoryService {
 	public ExpressOrderVO getSingleExpressOrder(String expressorder_id);
 	
 	public String Alarm();
+
+	
 	
 }

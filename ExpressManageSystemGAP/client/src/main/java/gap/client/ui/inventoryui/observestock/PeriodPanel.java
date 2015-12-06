@@ -55,4 +55,15 @@ public class PeriodPanel extends JPanel{
 		SwingConsole.addComponent(gb, gcons, this, confirm, 5, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel2, 6, 0, 1, 1, 1, 0);
 	}
+	
+	public String getBeginDate(){
+		return beginDate.getText();
+	}
+	
+	public String getEndDate(){
+		return endDate.getText();
+	} 
+	
+	
+	
 }

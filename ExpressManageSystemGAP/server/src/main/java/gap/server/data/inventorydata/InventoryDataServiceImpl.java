@@ -323,9 +323,14 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM sector WHERE ins_id ='"
 							+ ins_id + "';");
-			re.next();
-			String alarm = re.getString(alarmValue_f);
-			return Double.parseDouble(alarm);
+			if(re.next()){
+				String alarm = re.getString(alarmValue_f);
+				return Double.parseDouble(alarm);
+			}else{
+				System.out.println("错误的机构编号");
+				return 0;
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

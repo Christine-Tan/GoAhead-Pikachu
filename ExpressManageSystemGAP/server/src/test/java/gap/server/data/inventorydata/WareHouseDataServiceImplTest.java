@@ -25,14 +25,14 @@ public class WareHouseDataServiceImplTest {
 	@Test
 	public void testAdd() {
 		try {
-			wareHouse.add("0000001", "00000010");
-			wareHouse.add("0000001", "00000011");
-			wareHouse.add("0000001", "00000012");
-			wareHouse.add("0000001", "00000013");
-			wareHouse.add("0000002", "00000020");
-			wareHouse.add("0000002", "00000021");
-			wareHouse.add("0000002", "00000022");
-			wareHouse.add("0000002", "00000023");
+			wareHouse.add("0011001", "00110010");
+			wareHouse.add("0011001", "00110011");
+			wareHouse.add("0011001", "00110012");
+			wareHouse.add("0011001", "00110013");
+//			wareHouse.add("0000002", "00000020");
+//			wareHouse.add("0000002", "00000021");
+//			wareHouse.add("0000002", "00000022");
+//			wareHouse.add("0000002", "00000023");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

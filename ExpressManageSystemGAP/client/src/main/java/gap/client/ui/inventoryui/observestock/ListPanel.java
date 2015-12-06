@@ -1,6 +1,7 @@
 package gap.client.ui.inventoryui.observestock;
 
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.vo.StockinOrderVO;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -14,13 +15,12 @@ import javax.swing.JPanel;
 public class ListPanel extends JPanel{
 	List<ListItem> items;
 	
-	public ListPanel(){
+	public ListPanel(List<StockinOrderVO> list){
 		setBackground(Color.white);
-		
+
 		items = new ArrayList<ListItem>();
-		int size = 10;
-		for(int i = 1;i<=size;i++){
-			ListItem item = new ListItem(i);
+		for(int i = 1;i<=list.size();i++){
+			ListItem item = new ListItem(i,list.get(i-1));
 			items.add(item);
 		}
 
@@ -29,7 +29,7 @@ public class ListPanel extends JPanel{
 		setLayout(gb);
 
 		gcons.insets = new Insets(0,10,0,10);
-		for(int i = 0;i<size;i++){
+		for(int i = 0;i<items.size();i++){
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
 		}
 	}
