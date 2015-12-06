@@ -1,10 +1,8 @@
 package gap.client.datacontroller;
 
+import static gap.client.datacontroller.NetModule.expressorderdataservice;
+import static gap.client.datacontroller.NetModule.pricedataservice;
 import gap.client.util.LocalInfo;
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
-import gap.common.dataservice.strategydataservice.PriceDataService;
-import gap.common.netconfig.RMIConfig;
 import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
@@ -13,39 +11,19 @@ import gap.common.util.CurrentOrderType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
 public class ExpressOrderDataController {
-	ExpressOrderDataService expressOrderData;
-	PriceDataService priceDataService;
 
 	protected ExpressOrderDataController() {
-		try {
-			expressOrderData = (ExpressOrderDataService) Naming
-					.lookup(RMIConfig.url
-							+ ServiceName.EXPRESSORDER_DATA_SERVICE);
-			priceDataService = (PriceDataService) Naming.lookup(RMIConfig.url
-					+ ServiceName.PRICE_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
 	}
 
 	public ResultMessage add(ExpressOrderPO po) {
 		// TODO 自动生成的方法存根
 		try {
-			return expressOrderData.add(po, LocalInfo.localuser.getUserId());
+			return expressorderdataservice.add(po,
+					LocalInfo.localuser.getUserId());
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -55,7 +33,7 @@ public class ExpressOrderDataController {
 
 	public PricePO findPrice(String city) {
 		try {
-			return priceDataService.find(city);
+			return pricedataservice.find(city);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -66,7 +44,7 @@ public class ExpressOrderDataController {
 	public ExpressOrderPO findExpressOrder(String order_id) {
 		// TODO 自动生成的方法存根
 		try {
-			return expressOrderData.find(order_id);
+			return expressorderdataservice.find(order_id);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -77,7 +55,7 @@ public class ExpressOrderDataController {
 	public ResultMessage modify(ExpressOrderModifyPO po) {
 		// TODO 自动生成的方法存根
 		try {
-			return expressOrderData.modify(po);
+			return expressorderdataservice.modify(po);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -88,7 +66,7 @@ public class ExpressOrderDataController {
 	public List<ExpressOrderPO> findArrivingOrders(String ins_id) {
 		// TODO 自动生成的方法存根
 		try {
-			return expressOrderData.findArrivingOrders(ins_id);
+			return expressorderdataservice.findArrivingOrders(ins_id);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -100,7 +78,7 @@ public class ExpressOrderDataController {
 			CurrentOrderType type) {
 		// TODO 自动生成的方法存根
 		try {
-			return expressOrderData.findCurrentOrders(ins_id, type);
+			return expressorderdataservice.findCurrentOrders(ins_id, type);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -110,7 +88,7 @@ public class ExpressOrderDataController {
 
 	public List<String> getState(String order_id) {
 		try {
-			return expressOrderData.getState(order_id);
+			return expressorderdataservice.getState(order_id);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -120,7 +98,7 @@ public class ExpressOrderDataController {
 
 	public ResultMessage setReceived(ReceiveInfo info) {
 		try {
-			return expressOrderData.setRecieved(info);
+			return expressorderdataservice.setRecieved(info);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -130,7 +108,7 @@ public class ExpressOrderDataController {
 
 	public int nextID() {
 		try {
-			return expressOrderData.nextId();
+			return expressorderdataservice.nextId();
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -140,7 +118,7 @@ public class ExpressOrderDataController {
 
 	public AllAddressPO getAllAddress() {
 		try {
-			return expressOrderData.getAllAddress();
+			return expressorderdataservice.getAllAddress();
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

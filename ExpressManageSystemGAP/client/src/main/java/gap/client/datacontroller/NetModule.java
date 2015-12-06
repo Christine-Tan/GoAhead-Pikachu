@@ -24,6 +24,8 @@ import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -33,7 +35,9 @@ import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class NetModule {
 
@@ -61,18 +65,66 @@ public class NetModule {
 
 	public static GAPDialog dialog;
 
+	/**
+	 * 根据面板初始化对话框
+	 * @param jf
+	 */
 	public static void initial(JFrame jf) {
 		dialog = new GAPDialog(jf, "错误提示", false);
+
+		// dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+		dialog.cancel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				System.exit(1);
+			}
+		});
+
+		dialog.confirm.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				dialog.setVisible(false);
+			}
+		});
+
+		dialog.reconnect.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						connect();
+					}
+				}).start();
+
+			}
+		});
+
 	}
 
-	static void connect() {
+	/**
+	 * 创建连接的方法
+	 */
+	public static void connect() {
+		dialog.confirm.setVisible(false);
+		dialog.cancel.setVisible(true);
+		dialog.reconnect.setVisible(false);
 		int connect_time = 0;
 		boolean reconnect = false;
 		while (true) {
 			try {
 				if (!reconnect)
 					showMessage("连接中");
-
+				// 检测通讯是否成功的类
 				contactor = (Contactor) Naming.lookup(RMIConfig.url
 						+ ServiceName.CONTACTOR);
 
@@ -127,14 +179,16 @@ public class NetModule {
 								+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
 
 				showMessage("连接成功");
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO 自动生成的 catch 块
-					e.printStackTrace();
-				}
+				dialog.cancel.setVisible(false);
+				dialog.reconnect.setVisible(false);
+				dialog.confirm.setVisible(true);
+				dialog.validate();
 				// hideMessage();
-				new Thread(new CheckRunnable()).start();
+				// 启动检查线程
+				Thread chechThread = new Thread(new CheckRunnable());
+				chechThread.setDaemon(true);
+				chechThread.start();
+
 				break;
 			} catch (MalformedURLException e) {
 				// TODO 自动生成的 catch 块
@@ -145,8 +199,12 @@ public class NetModule {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 				reconnect = true;
-				if (connect_time > 10) {
-					showMessage("程序已结束");
+				if (connect_time > 5) {
+					showMessage("网络连接错误！！请稍后连接！！");
+					// dialog.confirm.setVisible(true);
+					dialog.cancel.setVisible(true);
+					dialog.reconnect.setVisible(true);
+					dialog.validate();
 					break;
 				} else {
 					showMessage("网络连接错误!!正在尝试重新连接，重连次数：" + (connect_time++)
@@ -171,10 +229,12 @@ public class NetModule {
 		dialog.showMessage(message);
 	}
 
-	private static void hideMessage() {
-		dialog.setVisible(false);
-	}
-
+	/**
+	 * 后台检查线程
+	 * 每5秒检查一次网络连接是否正常
+	 * @author YangYanfei
+	 *
+	 */
 	static class CheckRunnable implements Runnable {
 
 		@Override
