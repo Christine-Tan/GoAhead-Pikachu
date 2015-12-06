@@ -23,7 +23,7 @@ public class TitlePanel extends JPanel {
 	GridBagConstraints gcons;
 
 	public TitlePanel() {
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
 		setBackground(Color.WHITE);
 
 		city = new GAPLabel("出发城市");
@@ -50,7 +50,7 @@ public class TitlePanel extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, colon2, 4, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, economic, 5, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 80, 10, 0);
+		gcons.insets = new Insets(10, 100, 10, 300);
 		SwingConsole.addComponent(gb, gcons, this, base, 6, 0, 1, 1, 0, 0);
 	}
 

@@ -8,7 +8,7 @@ import gap.common.util.ResultMessage;
 import java.util.List;
 
 public class CityController {
-	public static CityManage cityManage = new CityManage();
+	private static CityManage cityManage = new CityManage();
 
 	public static List<CityVO> getAll() {
 		// TODO Auto-generated method stub
