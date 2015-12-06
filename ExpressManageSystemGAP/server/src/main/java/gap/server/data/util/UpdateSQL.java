@@ -53,7 +53,7 @@ public class UpdateSQL {
 			else
 				sql += " ";
 		}
-		sql += "WHERE " + keyField + "=" + keyValue + ";";
+		sql += "WHERE " + keyField + "='" + keyValue + "';";
 		return sql;
 	}
 

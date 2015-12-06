@@ -130,6 +130,7 @@ public class InventoryDataController {
 
 	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
+//		System.out.println("dataController");
 		try {
 			return inventory.getAlarm(ins_id);
 		} catch (RemoteException e) {

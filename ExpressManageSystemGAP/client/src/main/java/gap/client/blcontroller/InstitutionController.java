@@ -7,7 +7,7 @@ import gap.common.util.ResultMessage;
 import java.util.List;
 
 public class InstitutionController {
-	public static InstitutionManage institutionManage = new InstitutionManage();
+	private static InstitutionManage institutionManage = new InstitutionManage();
 
 	public static List<InstitutionVO> getAll() {
 		return institutionManage.getAll();

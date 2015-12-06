@@ -66,6 +66,7 @@ public class Inventory implements InventoryService {
 	@Override
 	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
+//		System.out.println("Inventory");
 		return inventoryData.getAlarm(ins_id);
 	}
 
@@ -92,6 +93,19 @@ public class Inventory implements InventoryService {
 	public void initialmodify(GoodsVO vo) {
 		// TODO Auto-generated method stub
 		operations.add(new ModifyOperation(vo.toPO()));
+	}
+	
+	@Override
+	public ResultMessage initialflush() {
+		for (Operation ope : operations) {
+			ResultMessage re = ope.excute();
+			if (!re.equals(ResultMessage.SUCCEED)) {
+				operations.clear();
+				return re;
+			}
+		}
+		operations.clear();
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override

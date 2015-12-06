@@ -1,8 +1,9 @@
 package gap.common.po;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class RentPO {
+public class RentPO implements Serializable{
 
 	private double money;
 	private Date lastPaidDate;

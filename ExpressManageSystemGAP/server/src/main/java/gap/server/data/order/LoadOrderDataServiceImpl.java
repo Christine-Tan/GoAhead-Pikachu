@@ -22,7 +22,8 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 	private String order_id_f = "order_id", driver_id_f = "driver_id",
 			guard_id_f = "guard_id", car_num_f = "car_num", time_f = "time",
 			passed_f = "passed", target_ins_f = "target_ins_id",
-			departure_ins_f = "departure_ins_id", comment_f = "comment";
+			departure_ins_f = "departure_ins_id", comment_f = "comment",
+			isSetArrived_f = "isSetArrived";
 	private String item_expressorder_id_f = "expressorder_id",
 			item_order_id_f = "order_id";
 	private InsertSQL orderInsert, itemInsert;
@@ -72,43 +73,6 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
-	}
-
-	private LoadOrderPO getByResultSet(ResultSet re) {
-		try {
-			String order_id = re.getString(order_id_f), driver_id = re
-					.getString(driver_id_f), guard_id = re
-					.getString(guard_id_f), car_num = re.getString(car_num_f), time = re
-					.getString(time_f), target_ins = re.getString(target_ins_f), departure_ins = re
-					.getString(departure_ins_f), comment = re
-					.getString(comment_f);
-			List<String> orders = getByOrder_id(order_id);
-			LoadOrderPO loadOrder = new LoadOrderPO(order_id, time, car_num,
-					departure_ins, target_ins, driver_id, guard_id, orders,
-					comment);
-			return loadOrder;
-		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private List<String> getByOrder_id(String order_id) {
-		try {
-			String sql = "SELECT * FROM " + itemTable + " WHERE "
-					+ item_order_id_f + " = '" + order_id + "';";
-			ResultSet re = NetModule.excutor.excuteQuery(sql);
-			List<String> result = new ArrayList<String>();
-			while (re.next()) {
-				result.add(re.getString(item_order_id_f));
-			}
-			return result;
-		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override
@@ -201,6 +165,86 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return -1;
+	}
+
+	@Override
+	public List<LoadOrderPO> getArrivingLoadOrder(String ins_id)
+			throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT * FROM " + tableName + " WHERE "
+					+ target_ins_f + " = '" + ins_id
+					+ "' AND isSetArrived = false AND passed=true;";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			List<LoadOrderPO> loadOrder = new ArrayList<LoadOrderPO>();
+			while (re.next()) {
+				loadOrder.add(getByResultSet(re));
+			}
+			return loadOrder;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	@Override
+	public ResultMessage setArrived(String order_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		update.clear();
+		update.add(isSetArrived_f, true);
+		update.setKey(order_id_f, order_id);
+		String sql;
+		try {
+			sql = update.createSQL();
+			NetModule.excutor.excute(sql);
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private LoadOrderPO getByResultSet(ResultSet re) {
+		try {
+			String order_id = re.getString(order_id_f), driver_id = re
+					.getString(driver_id_f), guard_id = re
+					.getString(guard_id_f), car_num = re.getString(car_num_f), time = re
+					.getString(time_f), target_ins = re.getString(target_ins_f), departure_ins = re
+					.getString(departure_ins_f), comment = re
+					.getString(comment_f);
+			List<String> orders = getByOrder_id(order_id);
+			LoadOrderPO loadOrder = new LoadOrderPO(order_id, time, car_num,
+					departure_ins, target_ins, driver_id, guard_id, orders,
+					comment);
+			return loadOrder;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private List<String> getByOrder_id(String order_id) {
+		try {
+			String sql = "SELECT * FROM " + itemTable + " WHERE "
+					+ item_order_id_f + " = '" + order_id + "';";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			List<String> result = new ArrayList<String>();
+			while (re.next()) {
+				result.add(re.getString(item_expressorder_id_f));
+			}
+			return result;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

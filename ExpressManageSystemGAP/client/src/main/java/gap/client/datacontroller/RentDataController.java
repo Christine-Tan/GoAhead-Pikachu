@@ -17,7 +17,7 @@ public class RentDataController {
 
 	protected RentDataController() {
 		try {
-			rentData = (RentDataService) Naming.lookup(RMIConfig.url + ServiceName.RENT_DATA_SERVICE);
+			rentData =(RentDataService) Naming.lookup(RMIConfig.url + ServiceName.RENT_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

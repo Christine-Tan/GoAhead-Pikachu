@@ -5,8 +5,10 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.LoadOrderDataController;
 import gap.client.util.LocalInfo;
 import gap.client.vo.LoadOrderVO;
+import gap.common.po.LoadOrderPO;
 import gap.common.util.ResultMessage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoadOrder implements LoadOrderService {
@@ -14,12 +16,6 @@ public class LoadOrder implements LoadOrderService {
 
 	public LoadOrder() {
 		loadDataController = ControllerFactory.getLoadOrderDataController();
-	}
-
-	@Override
-	public LoadOrderVO create(List<String> orders, LoadOrderVO orderinfo) {
-		// TODO 自动生成的方法存根
-		return null;
 	}
 
 	@Override
@@ -33,6 +29,24 @@ public class LoadOrder implements LoadOrderService {
 			id = "0" + id;
 		order.order_id = pre + id;
 		return loadDataController.add(order.toPO());
+	}
+
+	@Override
+	public List<LoadOrderVO> getArrivingLoadOrder(String ins_id) {
+		// TODO 自动生成的方法存根
+		List<LoadOrderPO> orders = loadDataController
+				.getArrivingLoadOrder(ins_id);
+		List<LoadOrderVO> vo_orders = new ArrayList<LoadOrderVO>();
+		for (LoadOrderPO order : orders) {
+			vo_orders.add(new LoadOrderVO(order));
+		}
+		return vo_orders;
+	}
+
+	@Override
+	public LoadOrderVO create(List<String> orders, LoadOrderVO orderinfo) {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 
 	@Override

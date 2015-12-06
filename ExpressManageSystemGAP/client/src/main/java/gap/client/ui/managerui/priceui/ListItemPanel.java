@@ -101,6 +101,7 @@ public class ListItemPanel extends JPanel {
 
 		public ItemPanel() {
 			setBackground(Color.WHITE);
+			setFocusable(true);
 			city_list = new GAPComboBox<String>();
 			express_f = new GAPTextField(3);
 			standard_f = new GAPTextField(3);

@@ -104,28 +104,33 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 	public ResultMessage modify(PricePO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		String city = po.getCity();
+		System.out.println("s");
 		try {
+			
 			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
 			rs.next();
-			int city_id = Integer.valueOf(rs.getString(id_f));
+			int city_id = rs.getInt(id_f);
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id + ";");
+
 			// 未找到该价格信息
-			if (!re.next())
+			if (!re.next()){
+				System.out.println("aaa");
 				return ResultMessage.NOTFOUND;
-			// 已存在该价格，可以修改
-			int express = Integer.valueOf(re.getString(express_f)),
-					standard = Integer.valueOf(re.getString(standard_f)),
-					economic = Integer.valueOf(re.getString(economic_f));
-			double base = Double.valueOf(re.getString(base_f));
-			priceUpdate.clear();
-			// priceUpdate.add(cityid_f, city_id);
-			priceUpdate.add(express_f, express);
-			priceUpdate.add(standard_f, standard);
-			priceUpdate.add(economic_f, economic);
-			priceUpdate.add(base_f, base);
-			priceUpdate.setKey(cityid_f, city_id);
-			String sql = priceUpdate.createSQL();
-			NetModule.excutor.excute(sql);
+			}
+			else {
+				System.out.println("bbb");
+				// 已存在该价格，可以修改
+				int express = po.getExpress(), standard = po.getStandard(), economic = po.getEconomic();
+				double base = po.getBase();
+				priceUpdate.clear();
+				priceUpdate.add(express_f, express);
+				priceUpdate.add(standard_f, standard);
+				priceUpdate.add(economic_f, economic);
+				priceUpdate.add(base_f, base);
+				priceUpdate.setKey(cityid_f, city_id);
+				String sql = priceUpdate.createSQL();
+				NetModule.excutor.excute(sql);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

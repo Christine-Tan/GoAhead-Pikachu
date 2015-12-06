@@ -70,6 +70,10 @@ public class StockinOrderVO {
 		this.ins_id = ins_id;
 	}
 	
+	public int getNum(){
+		return goods.size();
+	}
+	
 	public StockinOrderPO toPO(){
 		List<GoodsPO> goods = new ArrayList<GoodsPO>();
 		for(GoodsVO vo : this.goods){
@@ -77,6 +81,16 @@ public class StockinOrderVO {
 		}
 		StockinOrderPO po = new StockinOrderPO(goods, inDate, id, ins_id);
 		return po;
+		
+	}
+	
+	public static List<StockinOrderVO> toVOList(List<StockinOrderPO> list){
+		List<StockinOrderVO> voList = new ArrayList<StockinOrderVO>();
+		for(StockinOrderPO po:list){
+			StockinOrderVO vo = new StockinOrderVO(po);
+			voList.add(vo);
+		}
+		return voList;
 		
 	}
 

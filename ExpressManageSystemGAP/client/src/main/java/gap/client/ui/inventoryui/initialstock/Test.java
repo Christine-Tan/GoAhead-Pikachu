@@ -12,6 +12,7 @@ public class Test {
 		User user = new User("000000005", UserType.INVENTORY, "xiaoming",
 				"123456", "0010001", "王小二", Gender.FEMALE);
 		LocalInfo.localuser = user;
+		LocalInfo.ins_id = "0011001";
 		MainFrame mainFrame = new MainFrame();
 		InitialStockPanel panel = new InitialStockPanel(mainFrame);
 		mainFrame.setMainPanel(panel);

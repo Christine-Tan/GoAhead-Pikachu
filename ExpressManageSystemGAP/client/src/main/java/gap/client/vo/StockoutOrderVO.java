@@ -99,6 +99,10 @@ public class StockoutOrderVO implements Serializable {
 		this.ins_id = ins_id;
 	}
 	
+	public int getNum(){
+		return expressorder_ids.size();
+	}
+	
 	public StockoutOrderPO toPO(){
 		StockoutOrderPO po = new StockoutOrderPO(expressorder_ids, outDate, target_ins, id, transport, ins_id);
 		return po;

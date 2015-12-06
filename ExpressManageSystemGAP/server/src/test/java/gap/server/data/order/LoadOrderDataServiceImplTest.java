@@ -34,7 +34,10 @@ public class LoadOrderDataServiceImplTest {
 			// "0010001001", "000000001", orders);
 			// loadorder.add(po);
 			// loadorder.setPassed("00100012015120500001", "南京中转中心发出");
-			System.out.println(loadorder.getMaxId("001000120151205"));
+			List<LoadOrderPO> order=loadorder.getArrivingLoadOrder("0010001");
+			for(LoadOrderPO or:order){
+				System.out.println(or.getOrder_id());
+			}
 			// LoadOrderPO po = loadorder.find("00100011996030100001");
 			// System.out.println(po.getOrder_id() + "," + po.getDriver_id() +
 			// ","
