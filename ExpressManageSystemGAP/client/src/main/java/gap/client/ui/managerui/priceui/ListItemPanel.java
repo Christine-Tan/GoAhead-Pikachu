@@ -146,21 +146,21 @@ public class ListItemPanel extends JPanel {
 			// 列表项布局
 			gbl = new GridBagLayout();
 			this.setLayout(gbl);
-			gcons.insets = new Insets(10, 50, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, city_list, 0, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 100, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, express_f, 1, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 5, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, colon1, 2, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 5, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, standard_f, 3, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 5, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, colon2, 4, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 5, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, economic_f, 5, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 80, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, city_list, 0, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 90, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, express_f, 1, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 0, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, colon1, 2, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 0, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, standard_f, 3, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 0, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, colon2, 4, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 0, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, economic_f, 5, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 100, 0, 225);
 			SwingConsole.addComponent(gbl, gcons, this, base_f, 6, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(10, 150, 0, 0);
+			gcons.insets = new Insets(10, 10, 0, 50);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 7, 0, 1, 1, 0, 0);
 
 		}

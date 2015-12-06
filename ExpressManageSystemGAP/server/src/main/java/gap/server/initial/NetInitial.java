@@ -18,6 +18,9 @@ import static gap.server.initial.NetModule.pricedataservice;
 import static gap.server.initial.NetModule.rentdataservice;
 import static gap.server.initial.NetModule.salarydataservice;
 import static gap.server.initial.NetModule.userdataservice;
+import static gap.server.initial.NetModule.stockinorderdataservice;
+import static gap.server.initial.NetModule.stockoutorderdataservice;
+ 
 import gap.common.dataservice.ServiceName;
 import gap.common.netconfig.RMIConfig;
 import gap.server.data.ContactorImpl;
@@ -29,6 +32,8 @@ import gap.server.data.managedata.InstitutionDataServiceImpl;
 import gap.server.data.order.ArrivedOrderDataServiceImpl;
 import gap.server.data.order.DeliveryOrderDataServiceImpl;
 import gap.server.data.order.LoadOrderDataServiceImpl;
+import gap.server.data.order.StockinOrderDataServiceImpl;
+import gap.server.data.order.StockoutOrderDataServiceImpl;
 import gap.server.data.receiptdata.BillOrderDataServiceImpl;
 import gap.server.data.receiptdata.PaymentDataServiceImpl;
 import gap.server.data.strategydata.CityDataServiceImpl;
@@ -71,7 +76,8 @@ public class NetInitial {
 		billorderdataservice = BillOrderDataServiceImpl.getInstance();
 		paymentdataService = PaymentDataServiceImpl.getInstance();
 		inventorydataservice = InventoryDataServiceImpl.getInstance();
-		// stockindataservice = StockinOrderDataServiceImpl.getInstance();
+		stockinorderdataservice = StockinOrderDataServiceImpl.getInstance();
+		stockoutorderdataservice = StockoutOrderDataServiceImpl.getInstance();
 
 		contactor = new ContactorImpl();
 
@@ -99,8 +105,10 @@ public class NetInitial {
 		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,
 				institutiondataservice);
 		serviceMap.put(ServiceName.PAYMENT_DATA_SERVICE, paymentdataService);
-		// serviceMap.put(ServiceName.INVENTORY_DATA_SERVICE,
-		// inventorydataService);
+		serviceMap.put(ServiceName.INVENTORY_DATA_SERVICE,inventorydataservice);
+		serviceMap.put(ServiceName.STOCKINORDER_DATA_SERVICE,stockinorderdataservice);
+		serviceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE,stockoutorderdataservice);
+		
 	}
 
 	public static void main(String[] args) {

@@ -23,7 +23,7 @@ public class StockinOrderInputPanel extends MainPanel{
 		stockinInfo = new StockinInfoUI();
 		title = new TitlePanel();
 		confirm = new ButtonArea();
-		confirm.submit.setText("确认入库");
+		confirm.submit.setText("生成入库单");
 		list = new ListPanel();
 		
 		GridBagLayout gb = new GridBagLayout();
