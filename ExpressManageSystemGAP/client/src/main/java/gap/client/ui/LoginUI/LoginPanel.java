@@ -1,5 +1,6 @@
 package gap.client.ui.LoginUI;
 import gap.client.ui.BaseComponents.WhiteExitButton;
+import gap.client.ui.LoginUI.LogoPanel.LogoAnimation;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 
@@ -26,6 +27,7 @@ public class LoginPanel extends JPanel{
 	//private LoginButton goBackButton = new LoginButton("goBack");
 	private WhiteExitButton exitButton = new WhiteExitButton();
 	private LoginAnimation animation = new LoginAnimation();
+	private LogoPanel logoPanel = new LogoPanel();
 	
 	//渐变
 	LinearGradientPaint paint;
@@ -41,10 +43,11 @@ public class LoginPanel extends JPanel{
 		add(layer);
 		layer.add(userName);
 		layer.add(passwordField);
-		
-		
-		layer.add(animation,new Integer(10));	
+		layer.add(animation,Integer.valueOf(10));
 		animation.startAnimation();
+		
+		layer.add(logoPanel,Integer.valueOf(15));
+		logoPanel.startAnimation();
 		
 		int signInX = getWidth()/2-200/2;
 		signInButton.setBounds(signInX, 280, 200, 35);
@@ -52,7 +55,7 @@ public class LoginPanel extends JPanel{
 		exitButton.setBounds(400,15,15,15);
 
 		layer.add(signInButton);
-		layer.add(exitButton,new Integer(15));		
+		layer.add(exitButton,new Integer(20));		
 	}
 	
 	
