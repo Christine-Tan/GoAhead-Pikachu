@@ -107,7 +107,7 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		try {
 			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
 			rs.next();
-			int city_id = Integer.valueOf(rs.getString(id_f));
+			int city_id = rs.getInt(id_f);
 			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id + ";");
 			// 未找到该价格信息
 			if (!re.next())
