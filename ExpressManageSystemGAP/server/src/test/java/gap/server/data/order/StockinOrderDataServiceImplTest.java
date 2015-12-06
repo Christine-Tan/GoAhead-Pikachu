@@ -45,10 +45,10 @@ public class StockinOrderDataServiceImplTest {
 		gpo[10] = new GoodsPO("0000000010", "A,A,10", SectorType.CAR, "2015-11-23", "00000011", "00000011", "nanjing");
 		gpo[11] = new GoodsPO("0000000011", "A,A,11", SectorType.TRAIN, "2015-11-22", "00000012", "00000012", "nanjing");
 		gpo[12] = new GoodsPO("0000000012", "A,A,12", SectorType.PLANE, "2015-11-22", "00000013", "00000013", "nanjing");
-		gpo[13] = new GoodsPO("0000000013", "A,A,13", SectorType.FLEX, "2015-11-22", "00000020", "00000021", "nanjing");
-		gpo[14] = new GoodsPO("0000000014", "A,A,14", SectorType.CAR, "2015-11-22", "00000021", "00000021", "nanjing");
-		gpo[15] = new GoodsPO("0000000015", "A,A,15", SectorType.TRAIN, "2015-11-21", "00000022", "00000022", "nanjing");
-		gpo[16] = new GoodsPO("0000000016", "A,A,16", SectorType.PLANE, "2015-11-21", "00000023", "00000023", "nanjing");
+//		gpo[13] = new GoodsPO("0000000013", "A,A,13", SectorType.FLEX, "2015-11-22", "00000020", "00000021", "nanjing");
+//		gpo[14] = new GoodsPO("0000000014", "A,A,14", SectorType.CAR, "2015-11-22", "00000021", "00000021", "nanjing");
+//		gpo[15] = new GoodsPO("0000000015", "A,A,15", SectorType.TRAIN, "2015-11-21", "00000022", "00000022", "nanjing");
+//		gpo[16] = new GoodsPO("0000000016", "A,A,16", SectorType.PLANE, "2015-11-21", "00000023", "00000023", "nanjing");
 
 		list1.add(gpo[1]);
 		list1.add(gpo[2]);
@@ -62,17 +62,17 @@ public class StockinOrderDataServiceImplTest {
 		list3.add(gpo[10]);
 		list4.add(gpo[11]);
 		list4.add(gpo[12]);
-		list5.add(gpo[13]);
-		list5.add(gpo[14]);
-		list6.add(gpo[15]);
-		list6.add(gpo[16]);
+//		list5.add(gpo[13]);
+//		list5.add(gpo[14]);
+//		list6.add(gpo[15]);
+//		list6.add(gpo[16]);
 		
 		or[0] = new StockinOrderPO(list1, "2015-11-25", "00000000000000000001", "0000001");
 		or[1] = new StockinOrderPO(list2, "2015-11-24", "00000000000000000002", "0000001");
 		or[2] = new StockinOrderPO(list3, "2015-11-23", "00000000000000000003", "0000001");
 		or[3] = new StockinOrderPO(list4, "2015-11-22", "00000000000000000004", "0000001");
-		or[4] = new StockinOrderPO(list5, "2015-11-22", "00000000000000000005", "0000002");
-		or[5] = new StockinOrderPO(list6, "2015-11-21", "00000000000000000006", "0000002");
+//		or[4] = new StockinOrderPO(list5, "2015-11-22", "00000000000000000005", "0000002");
+//		or[5] = new StockinOrderPO(list6, "2015-11-21", "00000000000000000006", "0000002");
 	}
 
 	@After
@@ -82,7 +82,7 @@ public class StockinOrderDataServiceImplTest {
 	@Test
 	public void testAdd() {
 		try {
-			for(int i = 0;i<=5;i++){
+			for(int i = 0;i<=3;i++){
 				stockin.add(or[i]);
 			}
 			

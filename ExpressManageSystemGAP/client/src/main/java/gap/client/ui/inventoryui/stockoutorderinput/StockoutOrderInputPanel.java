@@ -21,7 +21,7 @@ public class StockoutOrderInputPanel extends MainPanel{
 		// TODO Auto-generated constructor stub
 		stockoutInfo = new StockoutInfoPanel();
 		confirm = new ButtonArea();
-		confirm.submit.setText("确认出库");
+		confirm.submit.setText("生成出库单");
 		list = new ListPanel();
 		title = new TitlePanel();
 		

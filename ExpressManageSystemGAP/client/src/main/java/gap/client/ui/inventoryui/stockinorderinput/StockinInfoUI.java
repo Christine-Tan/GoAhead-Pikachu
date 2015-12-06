@@ -35,7 +35,8 @@ public class StockinInfoUI extends JPanel{
 		
 		date = new GAPLabel("入库日期");
 		date.setFont(ComponentStyle.defaultFont);
-		date_text = new GAPTextField(10);
+		date_text = new GAPTextField(8);
+		
 		
 		id = new GAPLabel("入库单编号");
 		id.setFont(ComponentStyle.defaultFont);

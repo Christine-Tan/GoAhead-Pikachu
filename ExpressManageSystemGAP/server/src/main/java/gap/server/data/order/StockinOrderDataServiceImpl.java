@@ -82,7 +82,8 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(order_id_f, order_id);
 			orderInsert.add(time_f, time);
 			orderInsert.add(ins_id_f, ins_id);
-			orderInsert.add(passed_f,"false");
+//			boolean passed = false;
+			orderInsert.add(passed_f,false);
 			NetModule.excutor.excute(orderInsert.createSQL());
 			for (GoodsPO goods : goodPOs) {
 				itemInsert.clear();
@@ -247,7 +248,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			update.clear();
-			update.add(passed_f, "true");
+			update.add(passed_f, true);
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
 			return ResultMessage.SUCCEED;
@@ -278,6 +279,27 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	
+	public int getNextId(String cons) throws RemoteException {
+		// TODO 自动生成的方法存根
+		try {
+			String sql = "SELECT max(RIGHT(order_id,5)) max_id FROM "
+					+ stockinTable + " WHERE LEFT(order_id,15)='" + cons + "';";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			int result;
+			if (re.next()) {
+				result = re.getInt(1) + 1;
+			} else {
+				result = 0;
+			}
+			return result;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 }
