@@ -33,7 +33,11 @@ public interface InventoryDataService extends Remote {
 			throws RemoteException;
 
 	public double getAlarm(String ins_id) throws RemoteException;
+	
+	public int getOneSectorNum(String sector_id,String ins_id) throws RemoteException;
+	
 	//从机动区获得某一货运方式的快递
 	public List<GoodsPO> getOneTypeInFlex(String ins_id,String belong_sec_id) throws RemoteException;
+	
 
 }

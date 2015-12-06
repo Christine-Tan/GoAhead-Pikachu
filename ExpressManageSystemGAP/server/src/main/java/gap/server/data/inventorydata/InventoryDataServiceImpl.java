@@ -100,6 +100,13 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 	
+	
+	@Override
+	public int getOneSectorNum(String sector_id, String ins_id)
+			throws RemoteException {
+		return getOneSector(sector_id, ins_id).size();
+	}
+	
 	public List<GoodsPO> getListByResultSet(ResultSet re){
 		List<GoodsPO> goodsPOs = new ArrayList<GoodsPO>();
 		try {
@@ -342,12 +349,12 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	public int getFlexNum(String ins_id) throws RemoteException {
 		// TODO Auto-generated method stub
 
-		try {
-			ResultSet re = NetModule.excutor.excuteQuery("");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			ResultSet re = NetModule.excutor.excuteQuery("");
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		return 0;
 	}
@@ -373,5 +380,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 		
 	}
+
+	
 
 }

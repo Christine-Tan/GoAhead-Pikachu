@@ -25,6 +25,9 @@ public interface InventoryService {
 	 */
 	public StockCountVO countStock(String ins_id);
 	
+	
+	public int getOneSectorNum(String ins_id,String sector_id);
+	
 	/**
 	 * 设置警戒值
 	 * @param alarmValue

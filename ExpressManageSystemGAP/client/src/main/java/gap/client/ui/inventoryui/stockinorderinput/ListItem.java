@@ -31,7 +31,7 @@ public class ListItem extends JPanel{
 		
 		id = new GAPTextField(7);
 		id.setText("0000000001");
-//		id.setControl("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", 20, 20);
+//		id.setControl("\\d"+"", 20, 20);
 		id.setHorizontalAlignment(JTextField.CENTER);
 		
 		inDate = new GAPTextField(7);

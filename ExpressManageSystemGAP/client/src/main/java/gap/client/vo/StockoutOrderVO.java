@@ -1,8 +1,10 @@
 package gap.client.vo;
 
+import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StockoutOrderVO implements Serializable {
@@ -106,8 +108,16 @@ public class StockoutOrderVO implements Serializable {
 	public StockoutOrderPO toPO(){
 		StockoutOrderPO po = new StockoutOrderPO(expressorder_ids, outDate, target_ins, id, transport, ins_id);
 		return po;
-		
-		
+	}
+
+	public static List<StockoutOrderVO> toVOList(List<StockoutOrderPO> list) {
+		// TODO Auto-generated method stub
+		List<StockoutOrderVO> voList = new ArrayList<StockoutOrderVO>();
+		for(StockoutOrderPO po:list){
+			StockoutOrderVO vo = new StockoutOrderVO(po);
+			voList.add(vo);
+		}
+		return voList;
 	}
 
 }

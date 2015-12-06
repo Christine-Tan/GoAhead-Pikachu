@@ -32,8 +32,6 @@ public class ListItem extends JPanel{
 		id.setHorizontalAlignment(JLabel.RIGHT);
 		id.setText(num+"");
 		
-//		id.setControl("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d", 20, 20);
-		
 		inDate = new GAPLabel();
 		inDate.setText(vo.getInDate());
 //		inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);

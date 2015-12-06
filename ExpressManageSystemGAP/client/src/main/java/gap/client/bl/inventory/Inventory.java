@@ -56,6 +56,11 @@ public class Inventory implements InventoryService {
 		vo.setPlaneList(inventoryData.getOneSector(ins_id+"3", ins_id));
 		return vo;
 	}
+	
+	@Override
+	public int getOneSectorNum(String ins_id,String sector_id){
+		return inventoryData.getOneSectorNum(sector_id, ins_id);
+	}
 
 	@Override
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {

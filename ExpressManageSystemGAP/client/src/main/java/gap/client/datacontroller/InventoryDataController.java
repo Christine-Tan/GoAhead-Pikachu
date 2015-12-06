@@ -111,6 +111,16 @@ public class InventoryDataController {
 		}
 		return null;
 	}
+	
+	public int getOneSectorNum(String sector_id,String ins_id){
+		try {
+			return inventory.getOneSectorNum(sector_id, ins_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 	/*
 	 * public List<GoodsPO> getAll() { // TODO Auto-generated method stub try{

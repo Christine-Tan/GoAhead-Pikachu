@@ -14,4 +14,8 @@ public class InventoryController {
 //		System.out.println("InventoryController");
 		return inventory.getAlarm(ins_id);
 	}
+	
+	public static int getOneSectorNum(String sector_id,String ins_id){
+		return inventory.getOneSectorNum(ins_id, sector_id);
+	}
 }
