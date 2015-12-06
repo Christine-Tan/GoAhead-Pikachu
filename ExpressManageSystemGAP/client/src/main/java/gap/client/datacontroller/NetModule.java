@@ -31,13 +31,13 @@ public class NetModule {
 				contactor = (Contactor) Naming.lookup(RMIConfig.url
 						+ ServiceName.CONTACTOR);
 				showMessage("连接成功");
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO 自动生成的 catch 块
-					e.printStackTrace();
-				}
-				hideMessage();
+//				try {
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					// TODO 自动生成的 catch 块
+//					e.printStackTrace();
+//				}
+////				hideMessage();
 				new Thread(new CheckRunnable()).start();
 				break;
 			} catch (MalformedURLException e) {
