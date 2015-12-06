@@ -20,7 +20,7 @@ import gap.client.datacontroller.AccountorReceiptDataController;
  */
 public class AccountorReceiptController implements AccountorReceiptService{
 
-	AccountorReceiptDataController receiptDateController = null;
+	AccountorReceiptDataController receiptDataController = null;
 	private static AccountorReceiptController receiptController =null;
 	PaymentList paymentList;
 	
@@ -32,20 +32,21 @@ public class AccountorReceiptController implements AccountorReceiptService{
 	}
 	
 	private AccountorReceiptController(){
-		receiptDateController = ControllerFactory.getReceiptDataController();
-		paymentList = new PaymentList(receiptDateController);
+		receiptDataController = ControllerFactory.getReceiptDataController();
+		paymentList = new PaymentList(receiptDataController);
 	}
 
 	@Override
 	public PaymentListVO getPaymentList() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return paymentList.creatPaymentList();
 	}
 
 	@Override
 	public ResultMessage submitPaymentList(PaymentListVO paymentListVO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		PaymentListPO po = paymentListVO.toPO();
+		return receiptDataController.submitPayment(po);
 	}
 
 	@Override
@@ -56,24 +57,24 @@ public class AccountorReceiptController implements AccountorReceiptService{
 
 	@Override
 	public ResultMessage addPayee(PayeeVO payeeVO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return paymentList.addPayee(payeeVO);
 	}
 
 	@Override
 	public ResultMessage deletePayee(PayeeVO payeeVO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return paymentList.deletePayee(payeeVO);
 	}
 
 	@Override
 	public ResultMessage modifyPayee(PayeeVO payeeVO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return paymentList.modifyPayee(payeeVO);
 	}
 
 	@Override
-	public ResultMessage paymetnExcel(PaymentListVO paymentListVO) {
+	public ResultMessage paymentExcel(PaymentListVO paymentListVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}

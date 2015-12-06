@@ -1,6 +1,8 @@
 package gap.client.bl.receipt;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -87,9 +89,26 @@ public class PayeeFactory {
 	}
 	
 	private void addRentPayee(List<RentPO> rentList){
+		
+		//房租要判断是不是去年的
 		for(RentPO rent:rentList){
-			RentPayee rentPayee = new RentPayee(rent, accountList);
-			payeeList.add(rentPayee);
+			if(isLastYearRent(rent)){
+				RentPayee rentPayee = new RentPayee(rent, accountList);
+				payeeList.add(rentPayee);
+			}
+		}
+	}
+	
+	private boolean isLastYearRent(RentPO po){
+		Date date = po.getLastPaidDate();
+		Date today = Calendar.getInstance().getTime();
+		@SuppressWarnings("deprecation")
+		Date firstDay = new Date(today.getYear(), 0, 1);
+	
+		if(date.compareTo(firstDay)<0){
+			return true;
+		}else{
+			return false;
 		}
 	}
 	

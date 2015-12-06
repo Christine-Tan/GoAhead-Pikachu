@@ -8,7 +8,7 @@ import java.util.Calendar;
 
 public class PaymentListVO {
 
-	public ArrayList<PayeeVO> paymentList;
+	private ArrayList<PayeeVO> paymentList;
 	private String paymentID;
 	private Calendar payDate;
 	private String payer;
@@ -47,6 +47,13 @@ public class PaymentListVO {
 		}
 		return po;
 		
+	}
+	
+	public ArrayList<PayeeVO> getPayeeList(){
+		return paymentList;
+	}
+	public void setPayeeList(ArrayList<PayeeVO> list){
+		this.paymentList = list;
 	}
 
 
