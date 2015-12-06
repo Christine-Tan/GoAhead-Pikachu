@@ -64,7 +64,7 @@ public interface AccountorReceiptService {
 	 * @param paymentListVO
 	 * @return
 	 */
-	public ResultMessage paymetnExcel(PaymentListVO paymentListVO);	
+	public ResultMessage paymentExcel(PaymentListVO paymentListVO);	
 	
 	/**
 	 * 按天、按营业厅获得收款单

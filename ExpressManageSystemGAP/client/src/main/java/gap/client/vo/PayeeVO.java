@@ -5,7 +5,7 @@ import gap.common.util.PaymentType;
 
 import java.util.Calendar;
 
-public class PayeeVO {
+public class PayeeVO{
 
 	private PaymentType type;
 	private String userID;
@@ -51,7 +51,9 @@ public class PayeeVO {
 		return type;
 	}
 
-
+	public double getMoney(){
+		return money;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -84,6 +86,26 @@ public class PayeeVO {
 
 	public void setEntry(String entry) {
 		this.entry = entry;
+	}
+	
+	public String getAccountName(){
+		return accountName;
+	}
+
+	public boolean equals(Object o){
+		PayeeVO other = null;
+		if(o instanceof PayeeVO){
+			other = (PayeeVO) o;
+		}else{
+			return false;
+		}
+		
+		if(other.userID.equals(userID) && other.userName.equals(userName)){
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 
 	

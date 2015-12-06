@@ -29,6 +29,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,39 +61,8 @@ public class NetModule {
 
 	public static GAPDialog dialog;
 
-	public static Map<String, Object> ServiceMap = new HashMap<>(
-			ServiceName.serviceNumber + 10);
-
 	public static void initial(JFrame jf) {
 		dialog = new GAPDialog(jf, "错误提示", false);
-		ServiceMap.put(ServiceName.ACCOUNT_DATA_SERVICE, accountDataService);
-		ServiceMap.put(ServiceName.ARRIVEDORDER_DATA_SERVICE,
-				arrivedOrderdataservice);
-		ServiceMap
-				.put(ServiceName.BILLORDER_DATA_SERVICE, billorderdataservice);
-		ServiceMap.put(ServiceName.CAR_DATA_SERVICE, cardataservice);
-		ServiceMap.put(ServiceName.CITY_DATA_SERVICE, citydataservice);
-		ServiceMap.put(ServiceName.DELIVERYPORDER_DATA_SERVICE,
-				deliveryorderdataservice);
-		ServiceMap.put(ServiceName.DRIVER_DATA_SERVICE, driverdataservice);
-		ServiceMap.put(ServiceName.EXPRESSORDER_DATA_SERVICE,
-				expressorderdataservice);
-		ServiceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,
-				institutiondataservice);
-		ServiceMap
-				.put(ServiceName.INVENTORY_DATA_SERVICE, inventorydataservice);
-		ServiceMap
-				.put(ServiceName.LOADORDER_DATA_SERVICE, loadorderdataservice);
-		ServiceMap.put(ServiceName.LOG_DATA_SERVICE, logdataservice);
-		ServiceMap.put(ServiceName.PAYMENT_DATA_SERVICE, paymentdataService);
-		ServiceMap.put(ServiceName.PRICE_DATA_SERVICE, pricedataservice);
-		ServiceMap.put(ServiceName.RENT_DATA_SERVICE, rentdataservice);
-		ServiceMap.put(ServiceName.SALARY_DATA_SERVICE, salarydataservice);
-		ServiceMap.put(ServiceName.STOCKINORDER_DATA_SERVICE,
-				stockinorderdataservice);
-		ServiceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE,
-				stockoutorderdataservice);
-		ServiceMap.put(ServiceName.USER_DATA_SERVICE, userdataservice);
 	}
 
 	static void connect() {
@@ -105,8 +75,56 @@ public class NetModule {
 
 				contactor = (Contactor) Naming.lookup(RMIConfig.url
 						+ ServiceName.CONTACTOR);
-				for (Map.Entry<String, Object> entry : ServiceMap.entrySet()) {
-				}
+
+				accountDataService = (AccountDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.ACCOUNT_DATA_SERVICE);
+				userdataservice = (UserDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.USER_DATA_SERVICE);
+				logdataservice = (LogDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.LOG_DATA_SERVICE);
+				cardataservice = (CarDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.CAR_DATA_SERVICE);
+				driverdataservice = (DriverDataService) Naming
+						.lookup(RMIConfig.url + ServiceName.DRIVER_DATA_SERVICE);
+				arrivedOrderdataservice = (ArrivedOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.ARRIVEDORDER_DATA_SERVICE);
+				expressorderdataservice = (ExpressOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.EXPRESSORDER_DATA_SERVICE);
+				deliveryorderdataservice = (DeliveryOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.DELIVERYPORDER_DATA_SERVICE);
+				loadorderdataservice = (LoadOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.LOADORDER_DATA_SERVICE);
+				pricedataservice = (PriceDataService) Naming
+						.lookup(RMIConfig.url + ServiceName.PRICE_DATA_SERVICE);
+				rentdataservice = (RentDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.RENT_DATA_SERVICE);
+				salarydataservice = (SalaryDataService) Naming
+						.lookup(RMIConfig.url + ServiceName.SALARY_DATA_SERVICE);
+				citydataservice = (CityDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.CITY_DATA_SERVICE);
+				institutiondataservice = (InstitutionDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.INSTITUTION_DATA_SERVICE);
+				billorderdataservice = (BillOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.BILLORDER_DATA_SERVICE);
+				paymentdataService = (PaymentdataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.PAYMENT_DATA_SERVICE);
+				inventorydataservice = (InventoryDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.INVENTORY_DATA_SERVICE);
+				stockinorderdataservice = (StockinOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.STOCKINORDER_DATA_SERVICE);
+				stockoutorderdataservice = (StockoutOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
 
 				showMessage("连接成功");
 				try {
@@ -131,7 +149,8 @@ public class NetModule {
 					showMessage("程序已结束");
 					break;
 				} else {
-					showMessage("连接错误!!正在尝试重新连接，重连次数：" + (connect_time++) + "次");
+					showMessage("网络连接错误!!正在尝试重新连接，重连次数：" + (connect_time++)
+							+ "次");
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e1) {

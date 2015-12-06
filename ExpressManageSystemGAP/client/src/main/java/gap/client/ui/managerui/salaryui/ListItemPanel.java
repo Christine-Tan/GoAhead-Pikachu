@@ -1,4 +1,4 @@
-package gap.client.ui.managerui.rentui;
+package gap.client.ui.managerui.salaryui;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -14,12 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import gap.client.blcontroller.RentController;
+import gap.client.blcontroller.SalaryController;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.RentVO;
+import gap.client.vo.SalaryVO;
+import gap.common.util.UserType;
 
 public class ListItemPanel extends JPanel {
 	// 列表中所有的项
@@ -51,15 +52,15 @@ public class ListItemPanel extends JPanel {
 		setLayout(gb);
 		items = new ArrayList<>();
 
-		// 获得所有租金信息
-		for (RentVO rent : RentController.getAll()) {
-			addItem(rent);
+		// 获取所有薪水策略信息
+		for (SalaryVO salary : SalaryController.getAll()) {
+			addItem(salary);
 		}
 
 	}
 
-	private void addItem(RentVO rent) {
-		items.add(new ItemPanel(rent));
+	private void addItem(SalaryVO salary) {
+		items.add(new ItemPanel(salary));
 		reLayout();
 		frame.validate();
 	}
@@ -81,21 +82,22 @@ public class ListItemPanel extends JPanel {
 	}
 
 	class ItemPanel extends JPanel {
-		// 每一个列表项中的组件
-		GAPTextField institution, money;
+		// 列表中的每一项
+		GAPTextField usertype, money;
 		JButton edit;
 		// 是否处于被编辑状态，是否是新建表项
-		boolean newly, edited;
-		RentVO vo;
+		boolean edited, newly;
+
+		SalaryVO vo;
 		// 布局
 		GridBagLayout gbl;
 
 		public ItemPanel() {
 			setBackground(Color.WHITE);
 			setFocusable(true);
-			institution = new GAPTextField(10);
+			usertype = new GAPTextField(10);
 			money = new GAPTextField(7);
-			institution.setHorizontalAlignment(JTextField.CENTER);
+			usertype.setHorizontalAlignment(JTextField.CENTER);
 			money.setHorizontalAlignment(JTextField.CENTER);
 			// 对编辑按钮添加监听
 			edit = new GAPButton("E");
@@ -111,10 +113,10 @@ public class ListItemPanel extends JPanel {
 						closeEdit();
 						if (newly) {
 							newly = false;
-							vo = getRentVO();
-							RentController.addRent(vo);
+							vo = getSalaryVO();
+							SalaryController.addSalary(vo);
 						} else {
-							RentController.modifyRent(vo);
+							SalaryController.modifySalary(vo);
 						}
 					}
 				}
@@ -125,38 +127,39 @@ public class ListItemPanel extends JPanel {
 			gbl = new GridBagLayout();
 			this.setLayout(gbl);
 			gcons.insets = new Insets(10, 10, 10, 0);
-			SwingConsole.addComponent(gbl, gcons, this, institution, 0, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, usertype, 0, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 50, 10, 300);
 			SwingConsole.addComponent(gbl, gcons, this, money, 1, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 50, 10, 50);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 2, 0, 1, 1, 0, 0);
 		}
 
-		public ItemPanel(RentVO vo) {
+		public ItemPanel(SalaryVO vo) {
 			this();
 			this.vo = vo;
-			institution.setText(vo.getInstitution());
-			money.setText(vo.getMoney() + "");
+			usertype.setText(vo.getType().toString());
+			money.setText(vo.getSalary()+"");
 			closeEdit();
 		}
 
-		RentVO getRentVO() {
-			return new RentVO(institution.getText(), Double.valueOf(money.getText()));
+		SalaryVO getSalaryVO() {
+			return new SalaryVO (UserType.getUserType(usertype.getText()),Double.valueOf(money.getText()));
 		}
 
 		void openEdit() {
-			institution.openEdit();
+			usertype.openEdit();
 			money.openEdit();
 			edit.setText("√");
 			edited = true;
 		}
 
 		void closeEdit() {
-			institution.closeEdit();
+			usertype.closeEdit();
 			money.closeEdit();
 			edit.setText("E");
-			vo = getRentVO();
+			vo = getSalaryVO();
 			edited = false;
 		}
+
 	}
 }
