@@ -137,13 +137,58 @@ public class ListItemPanel extends JPanel {
 		public ItemPanel(SalaryVO vo) {
 			this();
 			this.vo = vo;
-			usertype.setText(vo.getType().toString());
+			String userType;
+			switch (vo.getType()){
+			case ACCOUNTER:
+				usertype.setText("财务人员");
+				break;
+			case DELIVERY:
+				usertype.setText("快递员");
+				break;
+			case ADMINISTRATOR:
+				usertype.setText("管理员");
+				break;
+			case BUSSINESSCLERK:
+				usertype.setText("营业厅业务员");
+				break;
+			case CENTERCLERK:
+				usertype.setText("中转中心业务员");
+				break;
+			case INVENTORY:
+				usertype.setText("仓库管理人员");
+				break;
+			case MANAGER:
+				usertype.setText("总经理");
+				break;
+			}
 			money.setText(vo.getSalary()+"");
 			closeEdit();
 		}
 
 		SalaryVO getSalaryVO() {
-			return new SalaryVO (UserType.getUserType(usertype.getText()),Double.valueOf(money.getText()));
+			UserType userType=null;
+			switch (usertype.getText()){
+			case "财务人员":
+				userType=UserType.ACCOUNTER;
+				break;
+			case"快递员":
+				userType=UserType.DELIVERY;
+				break;
+			case"管理员":
+				userType=UserType.ADMINISTRATOR;
+				break;
+			case"营业厅业务员":
+				userType=UserType.BUSSINESSCLERK;
+				break;
+			case"中转中心业务员":
+				userType=UserType.CENTERCLERK;
+				break;
+			case"仓库管理人员":
+				userType=UserType.INVENTORY;
+			case"总经理":
+				userType=UserType.MANAGER;
+			}
+			return new SalaryVO (userType,Double.valueOf(money.getText()));
 		}
 
 		void openEdit() {

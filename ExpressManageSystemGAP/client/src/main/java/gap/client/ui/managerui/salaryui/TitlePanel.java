@@ -1,5 +1,6 @@
 package gap.client.ui.managerui.salaryui;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
@@ -21,14 +22,16 @@ public class TitlePanel extends JPanel {
 
 	public TitlePanel() {
 		usertype = new GAPLabel("人员类型");
+		usertype.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		money = new GAPLabel("薪水价格");
+		money.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		// 布局
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(40, 50, 10, 0);
+		gcons.insets = new Insets(40, 70, 10, 15);
 		SwingConsole.addComponent(gb, gcons, this, usertype, 0, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(40, 130, 10, 450);
+		gcons.insets = new Insets(40, 90, 10, 450);
 		SwingConsole.addComponent(gb, gcons, this, money, 1, 0, 1, 1, 0, 0);
 	}
 	

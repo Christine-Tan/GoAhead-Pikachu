@@ -107,8 +107,8 @@ public class ListItemPanel extends JPanel {
 			standard_f = new GAPTextField(3);
 			economic_f = new GAPTextField(3);
 			base_f = new GAPTextField(4);
-			colon1 = new JLabel(":");
-			colon2 = new JLabel(":");
+			colon1 = new JLabel("：");
+			colon2 = new JLabel("：");
 
 			express_f.setHorizontalAlignment(JTextField.CENTER);
 			standard_f.setHorizontalAlignment(JTextField.CENTER);

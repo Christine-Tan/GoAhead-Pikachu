@@ -1,6 +1,7 @@
 package gap.client.ui.managerui.institutionui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
@@ -16,9 +17,11 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import gap.client.blcontroller.CityController;
 import gap.client.blcontroller.InstitutionController;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -202,14 +205,6 @@ public class ListItemPanel extends JPanel {
 			closeEdit();
 		}
 
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2d = RenderSetter.OpenRender(g);
-			g2d.setColor(ComponentStyle.light_gray);
-			int width = getWidth(), height = getHeight();
-			g2d.drawLine(10, height - 5, width - 20, height - 5);
-		}
-
 		InstitutionVO getInstitutionVO() {
 			return new InstitutionVO(ins_id.getText(), ins_name.getText(),
 					ins_city_list.getItemAt(ins_city_list.getSelectedIndex()), Integer.valueOf(ins_member.getText()));
@@ -219,10 +214,10 @@ public class ListItemPanel extends JPanel {
 			ins_id.openEdit();
 			ins_name.openEdit();
 			ins_member.openEdit();
-			// ins_type_list.setEditable(true);
-			// ins_type_list.setFocusable(true);
-			// ins_city_list.setEditable(true);
-			// ins_city_list.setFocusable(true);
+			 ins_type_list.setEnabled(true);
+			 ins_type_list.setFocusable(true);
+			 ins_city_list.setEnabled(true);
+			 ins_city_list.setFocusable(true);
 			edit.setText("√");
 			edited = true;
 		}
@@ -231,10 +226,10 @@ public class ListItemPanel extends JPanel {
 			ins_id.closeEdit();
 			ins_name.closeEdit();
 			ins_member.closeEdit();
-			// ins_type_list.setEditable(false);
-			// ins_type_list.setFocusable(false);
-			// ins_city_list.setEditable(false);
-			// ins_city_list.setFocusable(false);
+			 ins_type_list.setEnabled(false);
+			 ins_type_list.setFocusable(false);
+			 ins_city_list.setEnabled(false);
+			 ins_city_list.setFocusable(false);
 			edit.setText("E");
 			vo = getInstitutionVO();
 			edited = false;
