@@ -24,6 +24,7 @@ import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,16 +38,23 @@ public class CarAndDriverPanel extends JPanel {
 		setOpaque(false);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 120));
 
-		List<DriverVO> drivers = DriverManageController.getAll();
-		List<CarVO> cars = CarManageController.getAll();
 		BoxLayout box = new BoxLayout(this, BoxLayout.X_AXIS);
 		setLayout(box);
-		driver = new DriverPanel(drivers);
-		car = new CarPanel(cars);
+		driver = new DriverPanel();
+		car = new CarPanel();
 		add(driver);
 		add(Box.createHorizontalGlue());
 		add(car);
 
+		flush();
+
+	}
+
+	public void flush() {
+		List<DriverVO> drivers = DriverManageController.getAll();
+		List<CarVO> cars = CarManageController.getAll();
+		driver.flush(drivers);
+		car.flush(cars);
 	}
 
 	public DriverVO getDriver() {
@@ -106,10 +114,9 @@ public class CarAndDriverPanel extends JPanel {
 					1, 1, 0, 0);
 		}
 
-		public DriverPanel(List<DriverVO> list) {
-			this();
+		public void flush(List<DriverVO> list) {
+			drivers_list.removeAllItems();
 			for (DriverVO driver : list) {
-				System.out.println(driver.toString());
 				drivers_list.addItem(driver);
 			}
 			setDriver((DriverVO) drivers_list.getSelectedItem());
@@ -174,8 +181,8 @@ public class CarAndDriverPanel extends JPanel {
 					1, 1, 0, 0);
 		}
 
-		public CarPanel(List<CarVO> cars) {
-			this();
+		public void flush(List<CarVO> cars) {
+			cars_list.removeAllItems();
 			for (CarVO car : cars) {
 				cars_list.addItem(car);
 			}
