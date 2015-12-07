@@ -16,20 +16,22 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TitlePanel extends JPanel {
-	Checkbox box;
+	JCheckBox box;
 	GAPTextField id, outDate, destination, sector, location;
 
 	public TitlePanel() {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
-		box = new Checkbox();
+		box = new JCheckBox();
+		box.setBackground(Color.white);
 
-		id = new GAPTextField("快递编号",8);
+		id = new GAPTextField("快递编号",16);
 		id.setCenter();
 		id.closeEdit();
 		
@@ -41,7 +43,7 @@ public class TitlePanel extends JPanel {
 		destination.setCenter();
 		destination.closeEdit();
 		
-		location = new GAPTextField("存放位置",8);
+		location = new GAPTextField("存放位置",10);
 		location.setCenter();
 		location.closeEdit();
 
@@ -49,16 +51,14 @@ public class TitlePanel extends JPanel {
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		gcons.insets = new Insets(0,0,0,20);
-		gcons.anchor = GridBagConstraints.EAST;
+		gcons.insets = new Insets(0, 10, 0, 10);
+		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0,5,0,5);
 		gcons.anchor = GridBagConstraints.WEST;
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, outDate, 2, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
-
 	}
 
 	public void paintComponent(Graphics g) {

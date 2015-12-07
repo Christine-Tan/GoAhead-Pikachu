@@ -39,21 +39,36 @@ public class Inventory implements InventoryService {
 	}
 
 	
-	@Override
-	public List<GoodsVO> getOneSector(String ins_id,String sector_id) {
-		List<GoodsPO> poList = inventoryData.getOneSector(sector_id, ins_id);
-		List<GoodsVO> voList = GoodsVO.toVOList(poList);
-		return voList;
-	}
+//	@Override
+//	public List<GoodsVO> getOneSector(String ins_id,String sector_id) {
+//		List<GoodsPO> poList = inventoryData.getOneSector(sector_id, ins_id);
+//		List<GoodsVO> voList = GoodsVO.toVOList(poList);
+//		return voList;
+//	}
 
 	@Override
 	public int getOneSectorNum(String ins_id, String sector_id) {
 		return inventoryData.getOneSectorNum(sector_id, ins_id);
 	}
+	
+	@Override
+	public List<GoodsVO> getOneSector(String ins_id, String sector_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<ExpressOrderVO> getArrivedOrders(String ins_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	@Override
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
+		System.out.println(alarmValue);
 		return inventoryData.setAlarm(alarmValue, ins_id);
 	}
 
@@ -61,6 +76,7 @@ public class Inventory implements InventoryService {
 	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
 		// System.out.println("Inventory");
+		System.out.println(inventoryData.getAlarm(ins_id));
 		return inventoryData.getAlarm(ins_id);
 	}
 
@@ -101,11 +117,13 @@ public class Inventory implements InventoryService {
 		operations.clear();
 		return ResultMessage.SUCCEED;
 	}
-
+	
+	
 	@Override
-	public List<ExpressOrderVO> getArrivedOrders(String ins_id) {
+	public void stockOut(String destination, String transportation,
+			String expressorder_id, String ins_center_id) {
 		// TODO Auto-generated method stub
-		return null;
+
 	}
 
 	@Override
@@ -173,13 +191,27 @@ public class Inventory implements InventoryService {
 		return null;
 	
 	}
+	
+//	@Override
+//	public String getNextLocation(String ins_id, String sector_id) {
+//		int size = WareHouseSize.TOTAL.getSize();
+//		boolean[] isUsed = new boolean[size];
+//		
+//		List<GoodsPO> goods = inventoryData.getOneSector(sector_id, ins_id);
+//		for(GoodsPO po : goods){
+//			int i = locationToInt(po.getLocation());
+//			isUsed[i-1] = true;
+//		}
+//		
+//		int i;
+//		for(i = 0;isUsed[i]==true;i++);
+//		
+//		return getLocation(i);
+//	}
+	
+	
 
-	@Override
-	public void stockOut(String destination, String transportation,
-			String expressorder_id, String ins_center_id) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 
 	@Override
@@ -212,6 +244,7 @@ public class Inventory implements InventoryService {
 		}
 	}
 
+	
 	
 
 

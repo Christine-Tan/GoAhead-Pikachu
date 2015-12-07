@@ -25,6 +25,8 @@ public interface InventoryService {
 //	 * @return
 //	 */
 //	public StockCountVO countStock(String ins_id);
+	
+	
 	public List<GoodsVO> getOneSector(String ins_id, String sector_id);
 
 	public int getOneSectorNum(String ins_id, String sector_id);
