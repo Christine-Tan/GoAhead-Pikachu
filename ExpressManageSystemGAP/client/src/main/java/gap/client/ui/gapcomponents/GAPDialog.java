@@ -1,6 +1,7 @@
 package gap.client.ui.gapcomponents;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -25,8 +26,8 @@ public class GAPDialog extends JDialog {
 	public JButton cancelConnect;
 	Frame frame;
 
-	public GAPDialog(Frame frame, String title, boolean modal) {
-		super(frame, title, modal);
+	public GAPDialog(Frame frame) {
+		super(frame, "网络连接", false);
 		this.frame = frame;
 		textArea = new JTextArea();
 		textArea.setBackground(Color.white);
@@ -75,13 +76,13 @@ public class GAPDialog extends JDialog {
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		JFrame jf = new JFrame();
-		jf.setBounds(500, 500, 200, 200);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
-		GAPDialog dia = new GAPDialog(jf, "测试", true);
-		dia.showMessage("这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试");
-
-	}
+	// public static void main(String[] args) {
+	// JFrame jf = new JFrame();
+	// jf.setBounds(500, 500, 200, 200);
+	// jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// jf.setVisible(true);
+	// GAPDialog dia = new GAPDialog(jf, "测试", true);
+	// dia.showMessage("这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试这是一个测试");
+	//
+	// }
 }

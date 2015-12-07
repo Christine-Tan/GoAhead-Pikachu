@@ -13,28 +13,16 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.List;
+import static gap.client.datacontroller.NetModule.userdataservice;
 
 public class UserDataController {
-	UserDataService userData;
 
 	protected UserDataController() {
-		try {
-			userData = (UserDataService) Naming.lookup(RMIConfig.url + ServiceName.USER_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public List<UserPO> getAll(UserType userType) {
 		try {
-			return userData.getAll(userType);
+			return userdataservice.getAll(userType);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,7 +32,7 @@ public class UserDataController {
 
 	public ResultMessage add(UserPO po) {
 		try {
-			return userData.add(po);
+			return userdataservice.add(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,7 +42,7 @@ public class UserDataController {
 
 	public UserPO findById(String user_id) {
 		try {
-			return userData.findById(user_id);
+			return userdataservice.findById(user_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +52,7 @@ public class UserDataController {
 
 	public UserPO findByUsername(String username) {
 		try {
-			return userData.findByUsername(username);
+			return userdataservice.findByUsername(username);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,7 +62,7 @@ public class UserDataController {
 
 	public ResultMessage modify(UserPO po) {
 		try {
-			return userData.modify(po);
+			return userdataservice.modify(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,7 +72,7 @@ public class UserDataController {
 
 	public ResultMessage delete(String user_id) {
 		try {
-			return userData.delete(user_id);
+			return userdataservice.delete(user_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -94,7 +82,7 @@ public class UserDataController {
 
 	public List<UserPO> findUnpaidUser(Date date) {
 		try {
-			return userData.findUnpaidUser(date);
+			return userdataservice.findUnpaidUser(date);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,7 +92,7 @@ public class UserDataController {
 
 	public ResultMessage setPaid(String user_id) {
 		try {
-			return userData.setPaid(user_id);
+			return userdataservice.setPaid(user_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

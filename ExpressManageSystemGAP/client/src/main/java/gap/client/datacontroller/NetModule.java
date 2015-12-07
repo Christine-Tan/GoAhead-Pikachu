@@ -62,6 +62,7 @@ public class NetModule {
 	protected static StockoutOrderDataService stockoutorderdataservice;
 
 	private static Contactor contactor;
+	private static boolean dialogShowed = true;
 
 	public static GAPDialog dialog;
 
@@ -70,7 +71,7 @@ public class NetModule {
 	 * @param jf
 	 */
 	public static void initial(JFrame jf) {
-		dialog = new GAPDialog(jf, "错误提示", false);
+		dialog = new GAPDialog(jf);
 
 		// dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
@@ -114,7 +115,7 @@ public class NetModule {
 	/**
 	 * 创建连接的方法
 	 */
-	public static void connect() {
+	public static boolean connect() {
 		dialog.confirm.setVisible(false);
 		dialog.cancel.setVisible(true);
 		dialog.reconnect.setVisible(false);
@@ -188,13 +189,12 @@ public class NetModule {
 				Thread chechThread = new Thread(new CheckRunnable());
 				chechThread.setDaemon(true);
 				chechThread.start();
-
-				break;
+				return true;
 			} catch (MalformedURLException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 				showMessage("连接错误");
-				break;
+				return false;
 			} catch (RemoteException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
@@ -205,7 +205,7 @@ public class NetModule {
 					dialog.cancel.setVisible(true);
 					dialog.reconnect.setVisible(true);
 					dialog.validate();
-					break;
+					return false;
 				} else {
 					showMessage("网络连接错误!!正在尝试重新连接，重连次数：" + (connect_time++)
 							+ "次");
@@ -220,13 +220,14 @@ public class NetModule {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 				showMessage("服务器错误！！！");
-				break;
+				return false;
 			}
 		}
 	}
 
 	private static void showMessage(String message) {
-		dialog.showMessage(message);
+		if (dialogShowed)
+			dialog.showMessage(message);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.initialstock;
 
+import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
@@ -14,6 +15,8 @@ public class Test {
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0011001";
 		MainFrame mainFrame = new MainFrame();
+		NetModule.initial(mainFrame);
+		NetModule.connect();
 		InitialStockPanel panel = new InitialStockPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}

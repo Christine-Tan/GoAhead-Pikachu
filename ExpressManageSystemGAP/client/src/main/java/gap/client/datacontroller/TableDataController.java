@@ -17,7 +17,9 @@ import gap.common.netconfig.RMIConfig;
 import gap.common.po.BillOrderPO;
 import gap.common.po.Cost_profitPO;
 import gap.common.po.PaymentListPO;
-
+import static gap.client.datacontroller.NetModule.accountDataService;
+import static gap.client.datacontroller.NetModule.paymentdataService;
+import static gap.client.datacontroller.NetModule.billorderdataservice;
 /**
  * 财务人员和总经理的查看成本收益表和经营状况表的dataService
  * @author 申彬
@@ -25,25 +27,7 @@ import gap.common.po.PaymentListPO;
  */
 public class TableDataController {
 	
-	AccountDataService accountDataService;
-	PaymentdataService paymentdataService;
-	BillOrderDataService billOrderDataService;
-	
 	protected TableDataController(){
-		
-		try {
-			accountDataService = (AccountDataService)Naming
-					.lookup(RMIConfig.url+ServiceName.ACCOUNT_DATA_SERVICE);
-			
-			paymentdataService =(PaymentdataService)Naming
-					.lookup(RMIConfig.url+ServiceName.PAYMENT_DATA_SERVICE);
-		
-			billOrderDataService = (BillOrderDataService)Naming
-					.lookup(RMIConfig.url+ServiceName.BILLORDER_DATA_SERVICE);
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	
 	}
 	
@@ -72,7 +56,7 @@ public class TableDataController {
 	//Bill order data Interface
 	public List<BillOrderPO> getPassedBill(Calendar start,Calendar end){
 		try {
-			return billOrderDataService.getPassedOrder(start, end);
+			return billorderdataservice.getPassedOrder(start, end);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

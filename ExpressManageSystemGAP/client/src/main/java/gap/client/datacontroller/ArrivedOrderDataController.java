@@ -10,30 +10,16 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import static gap.client.datacontroller.NetModule.arrivedOrderdataservice;
 
 public class ArrivedOrderDataController {
-	ArrivedOrderDataService arrivedOrderData;
 
 	protected ArrivedOrderDataController() {
-		try {
-			arrivedOrderData = (ArrivedOrderDataService) Naming
-					.lookup(RMIConfig.url
-							+ ServiceName.ARRIVEDORDER_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
 	}
 
 	public ResultMessage add(ArrivedOrderPO po) {
 		try {
-			return arrivedOrderData.add(po);
+			return arrivedOrderdataservice.add(po);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -43,7 +29,7 @@ public class ArrivedOrderDataController {
 
 	public int nextId(String cons) {
 		try {
-			return arrivedOrderData.getMaxId(cons);
+			return arrivedOrderdataservice.getMaxId(cons);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

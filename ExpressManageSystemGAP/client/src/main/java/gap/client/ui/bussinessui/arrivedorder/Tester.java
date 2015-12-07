@@ -1,5 +1,6 @@
 package gap.client.ui.bussinessui.arrivedorder;
 
+import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.bussinessui.billorderui.BillOrderPanel;
 import gap.client.util.LocalInfo;
@@ -15,6 +16,8 @@ public class Tester {
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0011001";
 		MainFrame mainFrame = new MainFrame();
+		NetModule.initial(mainFrame);
+		NetModule.connect();
 		ArrivedOrderPanel panel = new ArrivedOrderPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}

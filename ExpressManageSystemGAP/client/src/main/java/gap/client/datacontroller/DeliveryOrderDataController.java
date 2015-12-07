@@ -11,29 +11,16 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import static gap.client.datacontroller.NetModule.deliveryorderdataservice;
+
 public class DeliveryOrderDataController {
-	DeliveryOrderDataService deliveryOrder;
 
 	protected DeliveryOrderDataController() {
-		try {
-			deliveryOrder = (DeliveryOrderDataService) Naming
-					.lookup(RMIConfig.url
-							+ ServiceName.DELIVERYPORDER_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
 	}
 
 	public ResultMessage add(DeliveryOrderPO po) {
 		try {
-			return deliveryOrder.add(po);
+			return deliveryorderdataservice.add(po);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

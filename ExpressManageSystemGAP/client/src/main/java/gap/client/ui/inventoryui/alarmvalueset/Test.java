@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.alarmvalueset;
 
+import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
@@ -15,6 +16,8 @@ public class Test {
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0011001";
 		MainFrame mainFrame=new MainFrame();
+		NetModule.initial(mainFrame);
+		NetModule.connect();
 		AlarmValueSetPanel panel=new AlarmValueSetPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}

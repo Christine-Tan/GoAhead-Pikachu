@@ -11,31 +11,17 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
+import static gap.client.datacontroller.NetModule.stockoutorderdataservice;
 
 public class StockoutOrderDataController {
-	StockoutOrderDataService stockoutOrder;
 
 	protected StockoutOrderDataController() {
-		try {
-			stockoutOrder = (StockoutOrderDataService) Naming
-					.lookup(RMIConfig.url
-							+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public ResultMessage add(StockoutOrderPO po) {
 		// TODO Auto-generated method stub
 		try {
-			return stockoutOrder.add(po);
+			return stockoutorderdataservice.add(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,10 +29,10 @@ public class StockoutOrderDataController {
 		return ResultMessage.FAILED;
 	}
 
-	public StockoutOrderPO find(String order_id,String ins_id) {
+	public StockoutOrderPO find(String order_id, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockoutOrder.find(order_id,ins_id);
+			return stockoutorderdataservice.find(order_id, ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,7 +43,7 @@ public class StockoutOrderDataController {
 	public List<StockoutOrderPO> getOneDay(String date, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockoutOrder.getOneDay(date, ins_id);
+			return stockoutorderdataservice.getOneDay(date, ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,7 +55,8 @@ public class StockoutOrderDataController {
 			String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockoutOrder.getRequired(beginDate, endDate, ins_id);
+			return stockoutorderdataservice.getRequired(beginDate, endDate,
+					ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

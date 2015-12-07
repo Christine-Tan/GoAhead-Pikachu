@@ -11,29 +11,15 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
-
+import static gap.client.datacontroller.NetModule.institutiondataservice;
 public class InstitutionDataController {
-	InstitutionDataService institutionData;
 
 	protected InstitutionDataController() {
-		try {
-			institutionData = (InstitutionDataService) Naming
-					.lookup(RMIConfig.url + ServiceName.INSTITUTION_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public ResultMessage add(InstitutionPO po) {
 		try {
-			return institutionData.add(po);
+			return institutiondataservice.add(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +29,7 @@ public class InstitutionDataController {
 
 	public ResultMessage modify(InstitutionPO po) {
 		try {
-			return institutionData.modify(po);
+			return institutiondataservice.modify(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,7 +39,7 @@ public class InstitutionDataController {
 
 	public ResultMessage delete(String ins_id) {
 		try {
-			return institutionData.delete(ins_id);
+			return institutiondataservice.delete(ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,7 +49,7 @@ public class InstitutionDataController {
 
 	public List<InstitutionPO> getAll() {
 		try {
-			return institutionData.getAll();
+			return institutiondataservice.getAll();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +59,7 @@ public class InstitutionDataController {
 
 	public List<InstitutionPO> findByCity(String city) {
 		try {
-			return institutionData.findByCity(city);
+			return institutiondataservice.findByCity(city);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,7 +69,7 @@ public class InstitutionDataController {
 
 	public InstitutionPO findById(String ins_id) {
 		try {
-			return institutionData.findById(ins_id);
+			return institutiondataservice.findById(ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,7 +79,7 @@ public class InstitutionDataController {
 
 	public InstitutionPO findByName(String ins_name) {
 		try {
-			return institutionData.findByName(ins_name);
+			return institutiondataservice.findByName(ins_name);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

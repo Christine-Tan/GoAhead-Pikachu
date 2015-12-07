@@ -1,5 +1,6 @@
 package gap.client.ui.bussinessui.carmanage;
 
+import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
@@ -14,6 +15,8 @@ public class Tester {
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0010001";
 		MainFrame mainFrame = new MainFrame();
+		NetModule.initial(mainFrame);
+		NetModule.connect();
 		CarManagePanel panel = new CarManagePanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}
