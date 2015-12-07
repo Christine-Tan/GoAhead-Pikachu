@@ -64,14 +64,14 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 		int width = frame.getWidth();
 		int height = frame.getHeight();
 
-		northEast.setBounds(width - 10, 0, 10, 10);
-		east.setBounds(width - 10, 10, 10, height - 20);
+//		northEast.setBounds(width - 10, 0, 10, 10);
+//		east.setBounds(width - 10, 10, 10, height - 20);
 		southEast.setBounds(width - 10, height - 10, 10, 10);
-		south.setBounds(10, height - 10, width - 20, 10);
-		southWest.setBounds(0, height - 10, 10, 10);
-		west.setBounds(0, 10, 10, height - 20);
-		northWest.setBounds(0, 0, 10, 10);
-		north.setBounds(10, 0, width - 20, 10);
+//		south.setBounds(10, height - 10, width - 20, 10);
+//		southWest.setBounds(0, height - 10, 10, 10);
+//		west.setBounds(0, 10, 10, height - 20);
+//		northWest.setBounds(0, 0, 10, 10);
+//		north.setBounds(10, 0, width - 20, 10);
 	}
 
 	@Override

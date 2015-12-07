@@ -19,5 +19,6 @@ public class GAPLabel extends JLabel {
 		setOpaque(true);
 		setFont(ComponentStyle.defaultFont);
 		setBackground(Color.white);
+		setForeground(ComponentStyle.dark_gray.brighter());
 	}
 }
