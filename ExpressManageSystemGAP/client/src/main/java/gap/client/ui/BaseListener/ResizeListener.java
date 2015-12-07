@@ -31,8 +31,8 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 		// TODO Auto-generated constructor stub
 		this.frame = frame;
 		refrashLoaction();
-		rectangles.add(northEast);
-		rectangles.add(east);
+		//rectangles.add(northEast);
+		//rectangles.add(east);
 		rectangles.add(southEast);
 		rectangles.add(south);
 		rectangles.add(southWest);
@@ -40,8 +40,8 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 		rectangles.add(northWest);
 		rectangles.add(north);
 
-		cursors.add(new Cursor(Cursor.NE_RESIZE_CURSOR));
-		cursors.add(new Cursor(Cursor.E_RESIZE_CURSOR));
+		//cursors.add(new Cursor(Cursor.NE_RESIZE_CURSOR));
+		//cursors.add(new Cursor(Cursor.E_RESIZE_CURSOR));
 		cursors.add(new Cursor(Cursor.SE_RESIZE_CURSOR));
 		cursors.add(new Cursor(Cursor.S_RESIZE_CURSOR));
 		cursors.add(new Cursor(Cursor.SW_RESIZE_CURSOR));
@@ -71,7 +71,7 @@ public class ResizeListener implements MouseListener, MouseMotionListener {
 		southWest.setBounds(0, height - 10, 10, 10);
 		west.setBounds(0, 10, 10, height - 20);
 		northWest.setBounds(0, 0, 10, 10);
-		north.setBounds(10, 0, width - 20, 10);
+		north.setBounds(10, 0, width - 100, 10);
 	}
 
 	@Override
