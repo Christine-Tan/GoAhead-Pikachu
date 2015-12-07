@@ -1,4 +1,4 @@
-package gap.client.ui.administratorui.userui;
+package gap.client.ui.administratorui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,29 +26,17 @@ public class TitlePanel extends JPanel {
 		user_id = new GAPLabel("用户ID");
 		user_name = new GAPLabel("用户名");
 		password = new GAPLabel("密码");
-		name = new GAPLabel("姓名");
-		user_type = new GAPLabel("用户类型");
-		gender = new GAPLabel("性别");
-		ins_name = new GAPLabel("所属机构");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		gcons.insets = new Insets(10, 0, 10, 0);
+		gcons.insets = new Insets(10, 20, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, user_id, 0, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 45, 10, 0);
+		gcons.insets = new Insets(10, 130, 10, 10);
 		SwingConsole.addComponent(gb, gcons, this, user_name, 1, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 45, 10, 20);
+		gcons.insets = new Insets(10, 140, 10, 130);
 		SwingConsole.addComponent(gb, gcons, this, password, 2, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 45, 10, 8);
-		SwingConsole.addComponent(gb, gcons, this, name, 3, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 45, 10, 25);
-		SwingConsole.addComponent(gb, gcons, this, user_type, 4, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 45, 10, 25);
-		SwingConsole.addComponent(gb, gcons, this, gender, 5, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 45, 10, 25);
-		SwingConsole.addComponent(gb, gcons, this, ins_name, 6, 0, 1, 1, 0, 0);
 	}
 
 	public void paintComponent(Graphics g) {
