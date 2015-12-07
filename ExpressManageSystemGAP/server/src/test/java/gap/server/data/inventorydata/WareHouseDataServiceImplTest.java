@@ -1,10 +1,8 @@
 package gap.server.data.inventorydata;
 
-import static org.junit.Assert.*;
+import gap.server.initial.NetInitial;
 
 import java.rmi.RemoteException;
-
-import gap.server.initial.NetInitial;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,6 +10,7 @@ import org.junit.Test;
 
 public class WareHouseDataServiceImplTest {
 	WareHouseDataServiceImpl wareHouse;
+
 	@Before
 	public void setUp() throws Exception {
 		NetInitial.initial();
@@ -29,10 +28,10 @@ public class WareHouseDataServiceImplTest {
 			wareHouse.add("0011001", "00110011");
 			wareHouse.add("0011001", "00110012");
 			wareHouse.add("0011001", "00110013");
-//			wareHouse.add("0000002", "00000020");
-//			wareHouse.add("0000002", "00000021");
-//			wareHouse.add("0000002", "00000022");
-//			wareHouse.add("0000002", "00000023");
+			// wareHouse.add("0000002", "00000020");
+			// wareHouse.add("0000002", "00000021");
+			// wareHouse.add("0000002", "00000022");
+			// wareHouse.add("0000002", "00000023");
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

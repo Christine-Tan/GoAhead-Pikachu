@@ -39,10 +39,10 @@ public class TitlePanel extends JPanel {
 		gcons.insets = new Insets(20, -15, 0, 10);
 		SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 1, 0);
 		gcons.insets = new Insets(20, 10, 0, 10);
-		SwingConsole.addComponent(gb, gcons, this, destination, 2, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(20, 10, 0, 10);
-		SwingConsole.addComponent(gb, gcons, this, inDate, 3, 0, 1, 1, 1,
+		SwingConsole.addComponent(gb, gcons, this, destination, 2, 0, 1, 1, 1,
 				0);
+		gcons.insets = new Insets(20, 10, 0, 10);
+		SwingConsole.addComponent(gb, gcons, this, inDate, 3, 0, 1, 1, 1, 0);
 		gcons.insets = new Insets(20, -10, 0, 55);
 		SwingConsole.addComponent(gb, gcons, this, location, 4, 0, 1, 1, 1, 0);
 

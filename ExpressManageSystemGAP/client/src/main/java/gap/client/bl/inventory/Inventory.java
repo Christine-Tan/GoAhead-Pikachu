@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory implements InventoryService {
-	private static final String ADD = "addGoods", DELETE = "deleteGoods", MODIFY = "modifyGoods";
+	private static final String ADD = "addGoods", DELETE = "deleteGoods",
+			MODIFY = "modifyGoods";
 	List<Operation> operations;
 	InventoryDataController inventoryData;
 	StockinOrderDataController stockinOrderData;
@@ -50,15 +51,15 @@ public class Inventory implements InventoryService {
 	public StockCountVO countStock(String ins_id) {
 		// TODO Auto-generated method stub
 		StockCountVO vo = new StockCountVO();
-		vo.setFlexList(inventoryData.getOneSector(ins_id+"0", ins_id));
-		vo.setCarList(inventoryData.getOneSector(ins_id+"1", ins_id));
-		vo.setTrainList(inventoryData.getOneSector(ins_id+"2", ins_id));
-		vo.setPlaneList(inventoryData.getOneSector(ins_id+"3", ins_id));
+		vo.setFlexList(inventoryData.getOneSector(ins_id + "0", ins_id));
+		vo.setCarList(inventoryData.getOneSector(ins_id + "1", ins_id));
+		vo.setTrainList(inventoryData.getOneSector(ins_id + "2", ins_id));
+		vo.setPlaneList(inventoryData.getOneSector(ins_id + "3", ins_id));
 		return vo;
 	}
-	
+
 	@Override
-	public int getOneSectorNum(String ins_id,String sector_id){
+	public int getOneSectorNum(String ins_id, String sector_id) {
 		return inventoryData.getOneSectorNum(sector_id, ins_id);
 	}
 
@@ -71,7 +72,7 @@ public class Inventory implements InventoryService {
 	@Override
 	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
-//		System.out.println("Inventory");
+		// System.out.println("Inventory");
 		return inventoryData.getAlarm(ins_id);
 	}
 
@@ -99,7 +100,7 @@ public class Inventory implements InventoryService {
 		// TODO Auto-generated method stub
 		operations.add(new ModifyOperation(vo.toPO()));
 	}
-	
+
 	@Override
 	public ResultMessage initialflush() {
 		for (Operation ope : operations) {
@@ -129,7 +130,7 @@ public class Inventory implements InventoryService {
 	public void stockOut(String destination, String transportation,
 			String expressorder_id, String ins_center_id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -155,7 +156,7 @@ public class Inventory implements InventoryService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	class AddOperation extends AbstractOperation {
 		public AddOperation(Object args) {
 			super(inventoryData, ADD, args);
@@ -174,5 +175,4 @@ public class Inventory implements InventoryService {
 		}
 	}
 
-	
 }

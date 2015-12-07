@@ -1,10 +1,10 @@
 package gap.server.data.util;
 
+import gap.server.databaseutility.Excutor;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import gap.server.databaseutility.Excutor;
 
 /**
  * 发现很多创建POlist的代码是重复的，执行一条SQL语句->创建一个ArrayList对象->循环，每次创建出一个对象，加入list->结束<br/>
@@ -21,27 +21,28 @@ import gap.server.databaseutility.Excutor;
 public abstract class ListMaker<T> {
 
 	private ResultSet resultSet;
+
 	public abstract T getPO(ResultSet resultSet);
-	
-	public final ArrayList<T> getList(SQLBuilder builder){
-		return getList(builder.getSQL());	
+
+	public final ArrayList<T> getList(SQLBuilder builder) {
+		return getList(builder.getSQL());
 	}
-	
+
 	/**
 	 * 若没找到返回一个空的Arraylist
 	 * @param SQL_or_TableName
 	 * @return
 	 */
-	public final ArrayList<T> getList(String SQL_or_TableName){
+	public final ArrayList<T> getList(String SQL_or_TableName) {
 		Excutor excutor = Excutor.getInstance();
 		String sql = null;
-		//若传入的string中不包含select，则视为表名，转化为SQL语句
-		if(!SQL_or_TableName.toLowerCase().contains("select")){
+		// 若传入的string中不包含select，则视为表名，转化为SQL语句
+		if (!SQL_or_TableName.toLowerCase().contains("select")) {
 			sql = new SQLBuilder().Select("*").From(SQL_or_TableName).getSQL();
-		}else{
+		} else {
 			sql = SQL_or_TableName;
 		}
-		
+
 		ArrayList<T> list = new ArrayList<>();
 		try {
 			resultSet = excutor.excuteQuery(sql);
@@ -49,11 +50,11 @@ public abstract class ListMaker<T> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		try {
-			while(resultSet.next()){
+			while (resultSet.next()) {
 				T po = getPO(resultSet);
-				if(po!=null){
+				if (po != null) {
 					list.add(po);
 				}
 			}
@@ -61,8 +62,8 @@ public abstract class ListMaker<T> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;		
-		
+		return list;
+
 	}
 
 }

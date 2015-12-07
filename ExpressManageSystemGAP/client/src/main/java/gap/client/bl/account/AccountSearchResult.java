@@ -6,16 +6,17 @@ import gap.client.vo.AccountVO;
 public class AccountSearchResult {
 	private SearchResult searchResult;
 	private AccountVO vo;
-	public AccountSearchResult(AccountVO vo,SearchResult result){
-		this.vo =vo;
+
+	public AccountSearchResult(AccountVO vo, SearchResult result) {
+		this.vo = vo;
 		this.searchResult = result;
 	}
-	
-	public AccountVO getAccountVO(){
+
+	public AccountVO getAccountVO() {
 		return vo;
 	}
-	
-	public int[] getMatchIndex(){
+
+	public int[] getMatchIndex() {
 		return searchResult.getMatchIndex();
 	}
 }

@@ -4,13 +4,11 @@ import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.orderdataservice.LoadOrderDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.LoadOrderPO;
-import gap.server.initial.NetInitial;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -34,8 +32,8 @@ public class LoadOrderDataServiceImplTest {
 			// "0010001001", "000000001", orders);
 			// loadorder.add(po);
 			// loadorder.setPassed("00100012015120500001", "南京中转中心发出");
-			List<LoadOrderPO> order=loadorder.getArrivingLoadOrder("0010001");
-			for(LoadOrderPO or:order){
+			List<LoadOrderPO> order = loadorder.getArrivingLoadOrder("0010001");
+			for (LoadOrderPO or : order) {
 				System.out.println(or.getOrder_id());
 			}
 			// LoadOrderPO po = loadorder.find("00100011996030100001");

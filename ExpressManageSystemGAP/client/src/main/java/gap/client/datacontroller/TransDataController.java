@@ -1,21 +1,14 @@
 package gap.client.datacontroller;
 
+import static gap.client.datacontroller.NetModule.cardataservice;
+import static gap.client.datacontroller.NetModule.driverdataservice;
 import gap.client.util.LocalInfo;
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.transdataservice.CarDataService;
-import gap.common.dataservice.transdataservice.DriverDataService;
-import gap.common.netconfig.RMIConfig;
 import gap.common.po.CarPO;
 import gap.common.po.DriverPO;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
-import static gap.client.datacontroller.NetModule.cardataservice;
-import static gap.client.datacontroller.NetModule.driverdataservice;
 
 public class TransDataController {
 

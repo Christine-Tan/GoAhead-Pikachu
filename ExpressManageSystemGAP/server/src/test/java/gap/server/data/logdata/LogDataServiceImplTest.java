@@ -14,7 +14,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.Date;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,11 +28,12 @@ public class LogDataServiceImplTest {
 		try {
 			LogDataService logdata = (LogDataService) Naming
 					.lookup(RMIConfig.url + ServiceName.LOG_DATA_SERVICE);
-			UserPO user = new UserPO("000000001", "yyf", "123456", "杨雁飞",UserType.ADMINISTRATOR,
-				Gender.MALE,"0010001");
-			LogPO log1 = new LogPO(user, new Date(System.currentTimeMillis()).toString(),
-					"test1"), log2 = new LogPO(user, new Date(
-					System.currentTimeMillis()).toString(), "test2");
+			UserPO user = new UserPO("000000001", "yyf", "123456", "杨雁飞",
+					UserType.ADMINISTRATOR, Gender.MALE, "0010001");
+			LogPO log1 = new LogPO(user,
+					new Date(System.currentTimeMillis()).toString(), "test1"), log2 = new LogPO(
+					user, new Date(System.currentTimeMillis()).toString(),
+					"test2");
 			logdata.addLog(log1);
 			logdata.addLog(log2);
 			for (LogPO log : logdata.getLogList()) {

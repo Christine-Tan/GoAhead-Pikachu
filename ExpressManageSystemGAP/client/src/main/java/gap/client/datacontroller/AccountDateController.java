@@ -1,5 +1,6 @@
 package gap.client.datacontroller;
 
+import static gap.client.datacontroller.NetModule.accountDataService;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.netconfig.RMIConfig;
@@ -12,8 +13,6 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
-import static gap.client.datacontroller.NetModule.accountDataService;
 
 public class AccountDateController {
 

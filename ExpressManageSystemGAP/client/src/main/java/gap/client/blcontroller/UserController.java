@@ -3,12 +3,12 @@ package gap.client.blcontroller;
 /**
  * @author seven
  */
-import java.util.List;
-
 import gap.client.bl.user.UserManage;
 import gap.client.vo.UserVO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
+
+import java.util.List;
 
 public class UserController {
 	private static UserManage userManage = new UserManage();

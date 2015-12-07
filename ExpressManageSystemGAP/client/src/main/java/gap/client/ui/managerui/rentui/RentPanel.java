@@ -1,22 +1,18 @@
 package gap.client.ui.managerui.rentui;
 
+import gap.client.blcontroller.RentController;
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import gap.client.blcontroller.RentController;
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.managerui.institutionui.InstitutionPanel;
 
 /**
  * 总经理制定租金界面
@@ -33,34 +29,37 @@ public class RentPanel extends MainPanel {
 	GridBagConstraints gcons;
 
 	public RentPanel(MainFrame frame) {
-       super(frame);
+		super(frame);
 		setBackground(Color.WHITE);
-        queryPanel=new QueryPanel(); 
+		queryPanel = new QueryPanel();
 		titlePanel = new TitlePanel();
-         listItem=new ListItemPanel(frame);
-         buttonArea=new ButtonArea();
-         buttonArea.submit.setText("提交修改");
-         buttonArea.submit.addActionListener(new ActionListener(){
+		listItem = new ListItemPanel(frame);
+		buttonArea = new ButtonArea();
+		buttonArea.submit.setText("提交修改");
+		buttonArea.submit.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				RentController.flush();
 			}
-        	 
-         });
-         
-         //布局
-         gb=new GridBagLayout();
-         gcons=new GridBagConstraints();
-         JPanel jp=new JPanel();
-         jp.setOpaque(false);
-         setLayout(gb);
-         SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
-         SwingConsole.addComponent(gb, gcons, this, titlePanel, 0, 1, 1, 1, 1, 0);
-         SwingConsole.addComponent(gb, gcons, this, listItem, 0, 2, 1, 1, 1, 0);
-         SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
-         SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
+
+		});
+
+		// 布局
+		gb = new GridBagLayout();
+		gcons = new GridBagConstraints();
+		JPanel jp = new JPanel();
+		jp.setOpaque(false);
+		setLayout(gb);
+		SwingConsole
+				.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
+		SwingConsole
+				.addComponent(gb, gcons, this, titlePanel, 0, 1, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, listItem, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
+		SwingConsole
+				.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 	}
 
 }

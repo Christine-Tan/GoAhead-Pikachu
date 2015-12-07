@@ -2,7 +2,6 @@ package gap.client.bl.order;
 
 import gap.client.vo.LoadOrderVO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;

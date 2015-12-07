@@ -39,7 +39,8 @@ public class TitlePanel extends JPanel {
 		gcons.insets = new Insets(10, 117, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, car_num, 2, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 100, 10, 215);
-		SwingConsole.addComponent(gb, gcons, this, server_time, 3, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, server_time, 3, 0, 1, 1, 0,
+				0);
 
 	}
 

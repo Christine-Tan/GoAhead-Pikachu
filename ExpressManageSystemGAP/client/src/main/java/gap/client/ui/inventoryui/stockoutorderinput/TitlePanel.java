@@ -31,28 +31,26 @@ public class TitlePanel extends JPanel {
 		id = new GAPLabel("快递编号");
 		inDate = new GAPLabel("入库日期");
 		destination = new GAPLabel("目的地");
-//		sector = new GAPLabel("分区");
+		// sector = new GAPLabel("分区");
 		location = new GAPLabel("存放位置");
-		
-		
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		
-		gcons.insets = new Insets(0,0,0,20);
+
+		gcons.insets = new Insets(0, 0, 0, 20);
 		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
-		
+
 		gcons.anchor = GridBagConstraints.WEST;
-		gcons.insets = new Insets(0,5,0,15);
+		gcons.insets = new Insets(0, 5, 0, 15);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0,15,0,5);
+		gcons.insets = new Insets(0, 15, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0,18,0,2);
+		gcons.insets = new Insets(0, 18, 0, 2);
 		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1,
 				0);
-		gcons.insets = new Insets(0,22,0,-2);
+		gcons.insets = new Insets(0, 22, 0, -2);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
 
 	}

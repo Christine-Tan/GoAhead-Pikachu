@@ -1,5 +1,15 @@
 package gap.client.ui.managerui.priceui;
 
+import gap.client.blcontroller.CityController;
+import gap.client.blcontroller.PriceController;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.CityVO;
+import gap.client.vo.PriceVO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,16 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import gap.client.blcontroller.CityController;
-import gap.client.blcontroller.PriceController;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.CityVO;
-import gap.client.vo.PriceVO;
-
 public class ListItemPanel extends JPanel {
 	// 列表中所有的项
 	List<ItemPanel> items;
@@ -39,16 +39,16 @@ public class ListItemPanel extends JPanel {
 	public ListItemPanel(JFrame frame) {
 		this.frame = frame;
 		setBackground(Color.WHITE);
-		addButton=new GAPButton("+");
-       //对新增按钮添加监听
-		addButton.addActionListener(new ActionListener(){
+		addButton = new GAPButton("+");
+		// 对新增按钮添加监听
+		addButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				addNewItem();
 			}
-			
+
 		});
 		// 对列表项里每一个panel进行布局
 		gb = new GridBagLayout();
@@ -82,9 +82,11 @@ public class ListItemPanel extends JPanel {
 	// 重新布局
 	private void reLayout() {
 		for (int i = 0; i < items.size(); i++) {
-			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
+					1, 1, 0);
 		}
-		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(), 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
+				1, 1, 1, 0);
 	}
 
 	class ItemPanel extends JPanel {
@@ -148,19 +150,26 @@ public class ListItemPanel extends JPanel {
 			gbl = new GridBagLayout();
 			this.setLayout(gbl);
 			gcons.insets = new Insets(10, 80, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, city_list, 0, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, city_list, 0, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(10, 90, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, express_f, 1, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, express_f, 1, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, colon1, 2, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, colon1, 2, 0, 1, 1, 0,
+					0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, standard_f, 3, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, standard_f, 3, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, colon2, 4, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, colon2, 4, 0, 1, 1, 0,
+					0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, economic_f, 5, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, economic_f, 5, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(10, 100, 0, 225);
-			SwingConsole.addComponent(gbl, gcons, this, base_f, 6, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, base_f, 6, 0, 1, 1, 0,
+					0);
 			gcons.insets = new Insets(10, 10, 0, 50);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 7, 0, 1, 1, 0, 0);
 
@@ -186,8 +195,10 @@ public class ListItemPanel extends JPanel {
 		}
 
 		PriceVO getPriceVO() {
-			return new PriceVO(city_list.getSelectedItem().toString(), Integer.valueOf(express_f.getText()),
-					Integer.valueOf(standard_f.getText()), Integer.valueOf(economic_f.getText()),
+			return new PriceVO(city_list.getSelectedItem().toString(),
+					Integer.valueOf(express_f.getText()),
+					Integer.valueOf(standard_f.getText()),
+					Integer.valueOf(economic_f.getText()),
 					Double.valueOf(base_f.getText()));
 		}
 

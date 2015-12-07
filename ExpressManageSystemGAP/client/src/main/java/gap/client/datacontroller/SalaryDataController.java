@@ -1,18 +1,12 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.strategydataservice.SalaryDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.salarydataservice;
 import gap.common.po.SalaryPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
-import static gap.client.datacontroller.NetModule.salarydataservice;
 
 public class SalaryDataController {
 

@@ -1,14 +1,5 @@
 package gap.client.ui.bussinessui.loadorder;
 
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
 import gap.client.blcontroller.ExpressorderController;
 import gap.client.blcontroller.InstitutionController;
 import gap.client.ui.UITools.Default;
@@ -20,6 +11,15 @@ import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.InstitutionVO;
 import gap.common.po.AllAddressPO;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;

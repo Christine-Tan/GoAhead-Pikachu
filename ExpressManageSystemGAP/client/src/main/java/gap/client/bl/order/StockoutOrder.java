@@ -5,12 +5,9 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.InventoryDataController;
 import gap.client.datacontroller.StockoutOrderDataController;
 import gap.client.vo.ExpressOrderVO;
-import gap.client.vo.GoodsVO;
 import gap.client.vo.StockoutOrderVO;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
-
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +34,7 @@ public class StockoutOrder implements StockoutOrderService {
 	}
 
 	@Override
-	public StockoutOrderVO find(String id,String ins_id) {
+	public StockoutOrderVO find(String id, String ins_id) {
 		// TODO Auto-generated method stub
 		return new StockoutOrderVO(stockoutData.find(id, ins_id));
 	}
@@ -45,7 +42,7 @@ public class StockoutOrder implements StockoutOrderService {
 	@Override
 	public String getLocation(String id) {
 		// TODO Auto-generated method stub
-		
+
 		return inventoryData.find(id).getLocation();
 	}
 
@@ -61,11 +58,10 @@ public class StockoutOrder implements StockoutOrderService {
 	public int getTotalNum(List<StockoutOrderVO> list) {
 		// TODO Auto-generated method stub
 		int num = 0;
-		for(StockoutOrderVO vo:list){
-			num+=vo.getNum();
+		for (StockoutOrderVO vo : list) {
+			num += vo.getNum();
 		}
 		return num;
 	}
-
 
 }

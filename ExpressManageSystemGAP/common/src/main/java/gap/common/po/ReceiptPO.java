@@ -2,9 +2,7 @@ package gap.common.po;
 
 import java.util.Date;
 
-import gap.common.ListInterface.Receipt;
-
-public class ReceiptPO{
+public class ReceiptPO {
 
 	private int money;
 	private Date lastPayDate;

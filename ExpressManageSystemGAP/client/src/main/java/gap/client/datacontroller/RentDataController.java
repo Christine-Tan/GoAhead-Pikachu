@@ -1,17 +1,12 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.strategydataservice.RentDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.rentdataservice;
 import gap.common.po.RentPO;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
-import static gap.client.datacontroller.NetModule.rentdataservice;
+
 public class RentDataController {
 
 	protected RentDataController() {

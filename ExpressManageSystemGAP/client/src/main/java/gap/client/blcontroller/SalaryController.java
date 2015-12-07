@@ -1,11 +1,11 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.strategy.SalaryManage;
 import gap.client.vo.SalaryVO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
+
+import java.util.List;
 
 public class SalaryController {
 	private static SalaryManage salaryManage = new SalaryManage();

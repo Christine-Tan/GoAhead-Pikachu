@@ -29,24 +29,24 @@ public class MainFrame extends JFrame {
 
 	public MainFrame() {
 		try {
-			 UIManager
-			 .setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-//			BasicLookAndFeel metal = new MetalLookAndFeel() {
-//
-//				public UIDefaults getDefaults() {
-//					UIDefaults defaults = super.getDefaults();
-//					// Object o = defaults.get("ScrollBarUI");
-//					defaults.remove("ScrollBarUI");
-//					defaults.put("ScrollBarUI",
-//							"com.sun.java.swing.plaf.windows.WindowsScrollBarUI");
-//
-//					defaults.get("ScrollBarUI");
-//					return defaults;
-//				}
-//
-//			};
-//
-//			UIManager.setLookAndFeel(metal);
+			UIManager
+					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			// BasicLookAndFeel metal = new MetalLookAndFeel() {
+			//
+			// public UIDefaults getDefaults() {
+			// UIDefaults defaults = super.getDefaults();
+			// // Object o = defaults.get("ScrollBarUI");
+			// defaults.remove("ScrollBarUI");
+			// defaults.put("ScrollBarUI",
+			// "com.sun.java.swing.plaf.windows.WindowsScrollBarUI");
+			//
+			// defaults.get("ScrollBarUI");
+			// return defaults;
+			// }
+			//
+			// };
+			//
+			// UIManager.setLookAndFeel(metal);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,7 +57,8 @@ public class MainFrame extends JFrame {
 
 		JPanel contentPanel = (JPanel) this.getContentPane();
 		contentPanel.setBackground(Color.white);
-		contentPanel.setBorder(BorderFactory.createLineBorder(ColorAndFonts.gray));
+		contentPanel.setBorder(BorderFactory
+				.createLineBorder(ColorAndFonts.gray));
 
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);

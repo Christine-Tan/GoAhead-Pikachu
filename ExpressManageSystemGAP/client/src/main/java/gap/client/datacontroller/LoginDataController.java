@@ -1,15 +1,10 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.userdataservice.UserDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.userdataservice;
 import gap.common.po.UserPO;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import static gap.client.datacontroller.NetModule.userdataservice;
+
 public class LoginDataController {
 
 	protected LoginDataController() {

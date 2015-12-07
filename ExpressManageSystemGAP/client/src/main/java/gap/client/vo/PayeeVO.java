@@ -5,7 +5,7 @@ import gap.common.util.PaymentType;
 
 import java.util.Calendar;
 
-public class PayeeVO{
+public class PayeeVO {
 
 	private PaymentType type;
 	private String userID;
@@ -16,10 +16,9 @@ public class PayeeVO{
 	private String entry;
 	private String note;
 
-
 	public PayeeVO(PaymentType type, String userID, String userName,
-			Calendar lastPaydate,double money,
-			String accountName,String entry,String note) {
+			Calendar lastPaydate, double money, String accountName,
+			String entry, String note) {
 		this.type = type;
 		this.userID = userID;
 		this.userName = userName;
@@ -29,10 +28,9 @@ public class PayeeVO{
 		this.setEntry(entry);
 		this.setNote(note);
 
-
 	}
-	
-	public PayeeVO(PayeePO po){
+
+	public PayeeVO(PayeePO po) {
 		this.type = po.getType();
 		this.userID = po.getUserID();
 		this.lastPaydate = po.getLastPaydate();
@@ -40,18 +38,18 @@ public class PayeeVO{
 
 	}
 
-	public PayeePO toPO(){
-		PayeePO po = new PayeePO(type, userID, userName, lastPaydate, 
-				0, money, accountName,note);
+	public PayeePO toPO() {
+		PayeePO po = new PayeePO(type, userID, userName, lastPaydate, 0, money,
+				accountName, note);
 
-		
 		return po;
 	}
+
 	public PaymentType getType() {
 		return type;
 	}
 
-	public double getMoney(){
+	public double getMoney() {
 		return money;
 	}
 
@@ -59,18 +57,13 @@ public class PayeeVO{
 		return userName;
 	}
 
-
-
 	public String getUserID() {
 		return userID;
 	}
 
-
-
 	public Calendar getLastPaydate() {
 		return lastPaydate;
 	}
-
 
 	public String getNote() {
 		return note;
@@ -87,26 +80,25 @@ public class PayeeVO{
 	public void setEntry(String entry) {
 		this.entry = entry;
 	}
-	
-	public String getAccountName(){
+
+	public String getAccountName() {
 		return accountName;
 	}
 
-	public boolean equals(Object o){
+	public boolean equals(Object o) {
 		PayeeVO other = null;
-		if(o instanceof PayeeVO){
+		if (o instanceof PayeeVO) {
 			other = (PayeeVO) o;
-		}else{
+		} else {
 			return false;
 		}
-		
-		if(other.userID.equals(userID) && other.userName.equals(userName)){
+
+		if (other.userID.equals(userID) && other.userName.equals(userName)) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
-		
+
 	}
 
-	
 }

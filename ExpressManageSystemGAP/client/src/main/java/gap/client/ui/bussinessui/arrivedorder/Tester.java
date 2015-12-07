@@ -2,7 +2,6 @@ package gap.client.ui.bussinessui.arrivedorder;
 
 import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.bussinessui.billorderui.BillOrderPanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.common.util.Gender;

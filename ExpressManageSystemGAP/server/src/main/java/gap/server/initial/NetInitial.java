@@ -17,10 +17,9 @@ import static gap.server.initial.NetModule.paymentdataService;
 import static gap.server.initial.NetModule.pricedataservice;
 import static gap.server.initial.NetModule.rentdataservice;
 import static gap.server.initial.NetModule.salarydataservice;
-import static gap.server.initial.NetModule.userdataservice;
 import static gap.server.initial.NetModule.stockinorderdataservice;
 import static gap.server.initial.NetModule.stockoutorderdataservice;
- 
+import static gap.server.initial.NetModule.userdataservice;
 import gap.common.dataservice.ServiceName;
 import gap.common.netconfig.RMIConfig;
 import gap.server.data.ContactorImpl;
@@ -105,10 +104,13 @@ public class NetInitial {
 		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,
 				institutiondataservice);
 		serviceMap.put(ServiceName.PAYMENT_DATA_SERVICE, paymentdataService);
-		serviceMap.put(ServiceName.INVENTORY_DATA_SERVICE,inventorydataservice);
-		serviceMap.put(ServiceName.STOCKINORDER_DATA_SERVICE,stockinorderdataservice);
-		serviceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE,stockoutorderdataservice);
-		
+		serviceMap
+				.put(ServiceName.INVENTORY_DATA_SERVICE, inventorydataservice);
+		serviceMap.put(ServiceName.STOCKINORDER_DATA_SERVICE,
+				stockinorderdataservice);
+		serviceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE,
+				stockoutorderdataservice);
+
 	}
 
 	public static void main(String[] args) {

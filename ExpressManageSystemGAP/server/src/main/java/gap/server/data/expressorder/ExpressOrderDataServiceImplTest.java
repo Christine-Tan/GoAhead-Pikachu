@@ -4,11 +4,8 @@ import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.AllAddressPO;
-import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
-import gap.common.util.ReceiveInfo;
-import gap.server.initial.NetInitial;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

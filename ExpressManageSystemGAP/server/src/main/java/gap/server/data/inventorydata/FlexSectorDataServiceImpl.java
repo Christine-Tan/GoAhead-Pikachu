@@ -1,15 +1,15 @@
 package gap.server.data.inventorydata;
 
-import java.rmi.RemoteException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import gap.common.dataservice.inventorydataservice.FlexSectorDataService;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SQLBuilder;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
+
+import java.rmi.RemoteException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class FlexSectorDataServiceImpl implements FlexSectorDataService {
 	private String tableName = "sector_flex";
@@ -37,15 +37,15 @@ public class FlexSectorDataServiceImpl implements FlexSectorDataService {
 	}
 
 	@Override
-	public ResultMessage add(String beginShelf, String endShelf, String belong_sec_id,
-			String ins_id) {
+	public ResultMessage add(String beginShelf, String endShelf,
+			String belong_sec_id, String ins_id) {
 		// TODO Auto-generated method stub
 
-//		String belong = getIdfromType(type, ins_id);
-//		if (belong.equals("null")) {
-//			System.out.println("分配给的分区类型填写错误");
-//			return ResultMessage.FAILED;
-//		}
+		// String belong = getIdfromType(type, ins_id);
+		// if (belong.equals("null")) {
+		// System.out.println("分配给的分区类型填写错误");
+		// return ResultMessage.FAILED;
+		// }
 
 		try {
 			ResultSet re = sql.Select("*").From(tableName).Where(beginshelf_f)
@@ -95,17 +95,17 @@ public class FlexSectorDataServiceImpl implements FlexSectorDataService {
 	public ResultMessage delete(String beginShelf, String endShelf,
 			String ins_id) {
 		// TODO Auto-generated method stub
-		
-		
+
 		try {
 			ResultSet re = sql.Select("*").From(tableName).Where(sector_id_f)
 					.EQUALS(ins_id + "0").AND(beginshelf_f).EQUALS(beginShelf)
 					.AND(endshelf_f).EQUALS(endShelf).excuteQuery();
-			if(re.next()){
+			if (re.next()) {
 				sql.DeleteFrom(tableName).Where(sector_id_f)
-				.EQUALS(ins_id + "0").AND(beginshelf_f).EQUALS(beginShelf)
-				.AND(endshelf_f).EQUALS(endShelf).excute();
-			}else{
+						.EQUALS(ins_id + "0").AND(beginshelf_f)
+						.EQUALS(beginShelf).AND(endshelf_f).EQUALS(endShelf)
+						.excute();
+			} else {
 				System.out.println("恢复的区域选择不正确");
 				return ResultMessage.FAILED;
 			}
@@ -174,21 +174,20 @@ public class FlexSectorDataServiceImpl implements FlexSectorDataService {
 				.EQUALS(beginShelf).AND(endshelf_f).EQUALS(endShelf)
 				.AND(sector_id_f).EQUALS(ins_id + "0").excuteQuery();
 		try {
-			if(re.next()){
+			if (re.next()) {
 				String belong = re.getString(belong_sec_id_f);
 				return belong;
-			}else{
+			} else {
 				System.out.println("获取类型：错误的区域");
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
-		
-		
+
 	}
 
 	@Override
@@ -198,18 +197,18 @@ public class FlexSectorDataServiceImpl implements FlexSectorDataService {
 				.EQUALS(beginShelf).AND(endshelf_f).EQUALS(endShelf)
 				.AND(sector_id_f).EQUALS(ins_id + "0").excuteQuery();
 		try {
-			if(re.next()){
+			if (re.next()) {
 				String used = re.getString(used_f);
 				return used;
-			}else{
+			} else {
 				System.out.println("获取类型：错误的区域");
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
 

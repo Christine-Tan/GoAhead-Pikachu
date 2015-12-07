@@ -3,7 +3,6 @@ package gap.server.data.order;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
 import gap.common.po.DeliveryOrderPO;
-import gap.common.po.LoadOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
 import gap.server.data.util.InsertSQL;

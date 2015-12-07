@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class AllAddressPO implements Serializable{
+public class AllAddressPO implements Serializable {
 	List<String> provinces;
 	Map<String, List<String>> province2city;
 	Map<String, List<String>> city2district;

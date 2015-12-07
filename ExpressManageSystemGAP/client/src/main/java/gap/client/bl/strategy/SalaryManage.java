@@ -26,8 +26,8 @@ public class SalaryManage implements SalaryService {
 	@Override
 	public List<SalaryVO> getAll() {
 		// TODO Auto-generated method stub
-		List<SalaryVO> salaries=new ArrayList<SalaryVO>();
-		for(SalaryPO po:controller.getAll()){
+		List<SalaryVO> salaries = new ArrayList<SalaryVO>();
+		for (SalaryPO po : controller.getAll()) {
 			salaries.add(new SalaryVO(po));
 		}
 		return salaries;
@@ -42,13 +42,13 @@ public class SalaryManage implements SalaryService {
 	@Override
 	public void modifySalary(SalaryVO vo) {
 		// TODO Auto-generated method stub
-       operations.add(new ModifyOperation(vo.toSalaryPO()));
+		operations.add(new ModifyOperation(vo.toSalaryPO()));
 	}
 
 	@Override
 	public void addSalary(SalaryVO vo) {
 		// TODO Auto-generated method stub
-       operations.add(new AddOperation(vo.toSalaryPO()));
+		operations.add(new AddOperation(vo.toSalaryPO()));
 	}
 
 	/**

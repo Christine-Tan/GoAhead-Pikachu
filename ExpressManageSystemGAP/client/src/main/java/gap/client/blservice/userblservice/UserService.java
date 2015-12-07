@@ -12,7 +12,7 @@ public interface UserService {
 
 	public UserVO findByUsername(String username);
 
-	public  void delete(String id);
+	public void delete(String id);
 
 	public void modify(UserVO vo);
 

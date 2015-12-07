@@ -1,13 +1,5 @@
 package gap.server.data.strategydata;
 
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
 import gap.common.po.SalaryPO;
 import gap.common.util.ResultMessage;
@@ -16,10 +8,18 @@ import gap.server.data.util.InsertSQL;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author seven
  */
-public class SalaryDataServiceImpl extends UnicastRemoteObject implements SalaryDataService {
+public class SalaryDataServiceImpl extends UnicastRemoteObject implements
+		SalaryDataService {
 	// 表名
 	private String tablename = "salary";
 	// 字段
@@ -46,7 +46,8 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		// TODO Auto-generated method stub
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM salary WHERE userType='" + type.toString() + "';");
+					.excuteQuery("SELECT * FROM salary WHERE userType='"
+							+ type.toString() + "';");
 			re.next();
 			double salary = re.getDouble(salary_f);
 			SalaryPO po = new SalaryPO(type, salary);
@@ -65,7 +66,8 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		double salary = po.getSalary();
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
+					.excuteQuery("SELECT * FROM salary WHERE userType='"
+							+ usertype.toString() + "';");
 			if (re.next())
 				return ResultMessage.EXISTED;
 			insertSQL.clear();
@@ -88,7 +90,8 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		double salary = po.getSalary();
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT * FROM salary WHERE userType='" + usertype.toString() + "';");
+					.excuteQuery("SELECT * FROM salary WHERE userType='"
+							+ usertype.toString() + "';");
 			if (!re.next())
 				return ResultMessage.NOTFOUND;
 			int id = re.getInt(id_f);
@@ -114,9 +117,11 @@ public class SalaryDataServiceImpl extends UnicastRemoteObject implements Salary
 		// TODO Auto-generated method stub
 		List<SalaryPO> salaries = new ArrayList<SalaryPO>();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM salary;");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM salary;");
 			while (re.next()) {
-				UserType usertype = UserType.getUserType(re.getString(usertype_f));
+				UserType usertype = UserType.getUserType(re
+						.getString(usertype_f));
 				double salary = re.getDouble(salary_f);
 				SalaryPO po = new SalaryPO(usertype, salary);
 				salaries.add(po);

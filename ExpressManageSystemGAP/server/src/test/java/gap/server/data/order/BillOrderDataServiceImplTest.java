@@ -1,6 +1,5 @@
 package gap.server.data.order;
 
-import static org.junit.Assert.fail;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.receiptdataservice.BillOrderDataService;
 import gap.common.netconfig.RMIConfig;

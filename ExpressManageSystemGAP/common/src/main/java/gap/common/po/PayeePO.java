@@ -1,12 +1,9 @@
 package gap.common.po;
 
-
+import gap.common.util.PaymentType;
 
 import java.io.Serializable;
 import java.util.Calendar;
-
-
-import gap.common.util.PaymentType;
 
 /**
  * 
@@ -14,14 +11,13 @@ import gap.common.util.PaymentType;
  * @author 申彬
  *
  */
-public class PayeePO implements Serializable{
+public class PayeePO implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	private PaymentType type;
 	private String userID;
 	private String userName;
@@ -31,10 +27,9 @@ public class PayeePO implements Serializable{
 	private String AccountName;
 	private String note;
 
-	
 	public PayeePO(PaymentType type, String userID, String userName,
-			Calendar lastPaydate, int expressOrderNum, 
-			double money,String accountName,String note) {
+			Calendar lastPaydate, int expressOrderNum, double money,
+			String accountName, String note) {
 		this.setType(type);
 		this.setUserID(userID);
 		this.setUserName(userName);

@@ -1,12 +1,11 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.order.LoadOrder;
 import gap.client.util.LocalInfo;
-import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.LoadOrderVO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class LoadOrderController {
 	private static LoadOrder loadOrder = new LoadOrder();

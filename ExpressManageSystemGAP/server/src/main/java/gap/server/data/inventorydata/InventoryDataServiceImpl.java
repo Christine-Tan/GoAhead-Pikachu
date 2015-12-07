@@ -80,13 +80,13 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		// System.out.println("分区找到了");
 
 		try {
-			
+
 			// String sql1 = "SELECT * FROM " + sectorItemTable + " WHERE "
 			// + sectorId_f + " ='" + sector_id + "';";
 			String sql1 = "SELECT * FROM sector_item WHERE sector_id = '"
 					+ sector_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql1);
-			if(!re.next()){
+			if (!re.next()) {
 				System.out.println("错误的分区编号");
 				return null;
 			}
@@ -99,15 +99,14 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
-	
-	
+
 	@Override
 	public int getOneSectorNum(String sector_id, String ins_id)
 			throws RemoteException {
 		return getOneSector(sector_id, ins_id).size();
 	}
-	
-	public List<GoodsPO> getListByResultSet(ResultSet re){
+
+	public List<GoodsPO> getListByResultSet(ResultSet re) {
 		List<GoodsPO> goodsPOs = new ArrayList<GoodsPO>();
 		try {
 			do {
@@ -116,13 +115,14 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 						.getString(expressorder_id_f), time = re
 						.getString(time_f), blong_sector = re
 						.getString(belong_sec_f), destination = re
-						.getString(destination_f),sector_id = re.getString(sectorId_f);
+						.getString(destination_f), sector_id = re
+						.getString(sectorId_f);
 
 				GoodsPO po = new GoodsPO(expressorder_id, location, null, time,
 						sector_id, blong_sector, destination);
 				goodsPOs.add(po);
 
-			}while(re.next());
+			} while (re.next());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -330,14 +330,14 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM sector WHERE ins_id ='"
 							+ ins_id + "';");
-			if(re.next()){
+			if (re.next()) {
 				String alarm = re.getString(alarmValue_f);
 				return Double.parseDouble(alarm);
-			}else{
+			} else {
 				System.out.println("错误的机构编号");
 				return 0;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -349,12 +349,12 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	public int getFlexNum(String ins_id) throws RemoteException {
 		// TODO Auto-generated method stub
 
-//		try {
-//			ResultSet re = NetModule.excutor.excuteQuery("");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// try {
+		// ResultSet re = NetModule.excutor.excuteQuery("");
+		// } catch (SQLException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 		return 0;
 	}
@@ -366,7 +366,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 				.EQUALS(ins_id + "0").AND(belong_sec_f).EQUALS(belong_sec_id)
 				.excuteQuery();
 		try {
-			if(!re.next()){
+			if (!re.next()) {
 				System.out.println("错误的分区编号或者错误的所属分区编号");
 				return null;
 			}
@@ -378,9 +378,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return null;
-		
-	}
 
-	
+	}
 
 }

@@ -10,7 +10,8 @@ import java.util.List;
 
 public class Approval implements ApprovalService {
 	ApprovalDataController controller;
-    List<Object> orders;
+	List<Object> orders;
+
 	public Approval() {
 		controller = ControllerFactory.getApprovalDataController();
 	}
@@ -18,7 +19,7 @@ public class Approval implements ApprovalService {
 	@Override
 	public List<Object> getUnpassedOrder() {
 		// TODO Auto-generated method stub
-		orders=new ArrayList<Object>();
+		orders = new ArrayList<Object>();
 		orders.add(controller.getUnpassedArrivedOrder());
 		orders.add(controller.getUnpassedBillOrder());
 		orders.add(controller.getUnpassedDeliveryOrder());

@@ -9,7 +9,7 @@ import gap.common.util.UserType;
 
 public class Tester {
 	public static void main(String[] args) {
-		
+
 		User user = new User("000000005", UserType.BUSSINESSCLERK, "xiaoming",
 				"123456", "0010001", "小明", Gender.MALE);
 		LocalInfo.localuser = user;

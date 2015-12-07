@@ -10,8 +10,8 @@ public class AccountPO {
 		this.setName(name);
 		this.setBalance(balance);
 	}
-	
-	public AccountPO(String oldName,String newName){
+
+	public AccountPO(String oldName, String newName) {
 		this.name = oldName;
 		this.setNewName(newName);
 	}

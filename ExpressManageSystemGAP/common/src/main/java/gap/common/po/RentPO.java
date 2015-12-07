@@ -3,13 +3,13 @@ package gap.common.po;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class RentPO implements Serializable{
+public class RentPO implements Serializable {
 
 	private double money;
 	private Date lastPaidDate;
 	private String institution;
 
-	public RentPO(String institution, double money,Date lastPaidDate) {
+	public RentPO(String institution, double money, Date lastPaidDate) {
 		this.setMoney(money);
 		this.setLastPaidDate(lastPaidDate);
 		this.setInstitution(institution);

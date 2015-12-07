@@ -10,26 +10,27 @@ import gap.common.util.ResultMessage;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class AccountBlController implements AccountService{
+public class AccountBlController implements AccountService {
 
 	AccountCmdBuffer buffer;
 	ArrayList<AccountVO> accounts;
-	private static AccountBlController controller=null;
+	private static AccountBlController controller = null;
 	private AccountDateController dateController;
+
 	private AccountBlController() {
 		buffer = new AccountCmdBuffer();
 		dateController = ControllerFactory.getAccountDataController();
 	}
-	
-	public static AccountBlController getInstance(){
-		
-		if(controller==null){
+
+	public static AccountBlController getInstance() {
+
+		if (controller == null) {
 			controller = new AccountBlController();
 		}
 		return controller;
 	}
-	
-	public void initial(){
+
+	public void initial() {
 		buffer.clear();
 		getAccountManageList();
 	}
@@ -39,17 +40,17 @@ public class AccountBlController implements AccountService{
 		// TODO Auto-generated method stub
 		ArrayList<AccountPO> pos = dateController.getAccountList();
 		accounts = new ArrayList<>(pos.size());
-		for(AccountPO po:pos){
+		for (AccountPO po : pos) {
 			accounts.add(new AccountVO(po));
 		}
 		return accounts.iterator();
-		
+
 	}
 
 	@Override
 	public ResultMessage addAccount(AccountVO vo) {
-		//名字相同的账户视为相同
-		if(accounts.contains(vo)){
+		// 名字相同的账户视为相同
+		if (accounts.contains(vo)) {
 			return ResultMessage.EXISTED;
 		}
 		accounts.add(vo);
@@ -65,23 +66,22 @@ public class AccountBlController implements AccountService{
 
 	@Override
 	public ResultMessage modifyAccount(AccountVO vo) {
-		//accountVO在名字相同的情况下视为相同
+		// accountVO在名字相同的情况下视为相同
 		int index = accounts.indexOf(vo);
-		//该旧名字不存在
-		if(index == -1){
+		// 该旧名字不存在
+		if (index == -1) {
 			return ResultMessage.FAILED;
-		}
-		else{
+		} else {
 
 			AccountVO newVO = new AccountVO(vo.getNewName(), vo.getBalance());
-			
-			if(accounts.contains(newVO)){
-				//名字已经存在
+
+			if (accounts.contains(newVO)) {
+				// 名字已经存在
 				return ResultMessage.EXISTED;
 			}
-			
+
 			accounts.set(index, newVO);
-			
+
 			buffer.addCommond(new ModifyAccountCmd(vo));
 			return ResultMessage.SUCCEED;
 		}
@@ -92,7 +92,7 @@ public class AccountBlController implements AccountService{
 		// TODO Auto-generated method stub
 		AccountSearcher searcher = new AccountSearcher(accounts);
 		return searcher.search(keyword);
-		
+
 	}
 
 	@Override
@@ -100,8 +100,5 @@ public class AccountBlController implements AccountService{
 		// TODO Auto-generated method stub
 		return buffer.flush();
 	}
-
-
-	
 
 }

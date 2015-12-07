@@ -18,6 +18,6 @@ public class Test {
 		NetModule.connect();
 		ObserveStockPanel panel = new ObserveStockPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
-		
+
 	}
 }

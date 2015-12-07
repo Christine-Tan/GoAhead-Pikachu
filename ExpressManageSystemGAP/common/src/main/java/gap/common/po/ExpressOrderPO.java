@@ -5,7 +5,6 @@ import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class ExpressOrderPO implements Serializable {
 	// 寄件人姓名、地址、单位、电话

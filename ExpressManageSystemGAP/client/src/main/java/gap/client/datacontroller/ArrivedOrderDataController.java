@@ -1,16 +1,10 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.arrivedOrderdataservice;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import static gap.client.datacontroller.NetModule.arrivedOrderdataservice;
 
 public class ArrivedOrderDataController {
 

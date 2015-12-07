@@ -1,7 +1,6 @@
 package gap.client.ui.gapcomponents;
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -9,7 +8,6 @@ import java.awt.Frame;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;

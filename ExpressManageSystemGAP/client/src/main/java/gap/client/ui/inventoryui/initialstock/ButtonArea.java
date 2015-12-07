@@ -16,13 +16,12 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ButtonArea extends JPanel{
+public class ButtonArea extends JPanel {
 	public JButton confirm;
 
 	public ButtonArea() {
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
-
 
 		confirm = new GAPButton("确认初始化");
 
@@ -32,7 +31,7 @@ public class ButtonArea extends JPanel{
 		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 0, 1, 1, 1, 0);
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);

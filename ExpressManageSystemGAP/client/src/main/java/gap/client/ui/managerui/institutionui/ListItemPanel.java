@@ -1,5 +1,16 @@
 package gap.client.ui.managerui.institutionui;
 
+import gap.client.blcontroller.CityController;
+import gap.client.blcontroller.InstitutionController;
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.CityVO;
+import gap.client.vo.InstitutionVO;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,17 +27,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.CityController;
-import gap.client.blcontroller.InstitutionController;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.CityVO;
-import gap.client.vo.InstitutionVO;
 
 public class ListItemPanel extends JPanel {
 	// 列表中所有的项
@@ -90,9 +90,11 @@ public class ListItemPanel extends JPanel {
 
 	private void reLayout() {
 		for (int i = 0; i < items.size(); i++) {
-			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
+					1, 1, 0);
 		}
-		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(), 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
+				1, 1, 1, 0);
 	}
 
 	// 每一个列表项都是一个panel，用GridBagLayout布局
@@ -168,19 +170,25 @@ public class ListItemPanel extends JPanel {
 
 			// 列表项布局
 			gcons.insets = new Insets(10, 0, 0, 20);
-			SwingConsole.addComponent(gbl, gcons, this, ins_id, 0, 0, 1, 1, 1, 0);
+			SwingConsole.addComponent(gbl, gcons, this, ins_id, 0, 0, 1, 1, 1,
+					0);
 			gcons.insets = new Insets(10, 28, 0, 50);
-			SwingConsole.addComponent(gbl, gcons, this, ins_type_list, 1, 0, 1, 1, 1, 0);
+			SwingConsole.addComponent(gbl, gcons, this, ins_type_list, 1, 0, 1,
+					1, 1, 0);
 			gcons.insets = new Insets(10, 10, 0, 35);
-			SwingConsole.addComponent(gbl, gcons, this, ins_name, 2, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, ins_name, 2, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(10, 20, 0, 20);
-			SwingConsole.addComponent(gbl, gcons, this, ins_city_list, 3, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, ins_city_list, 3, 0, 1,
+					1, 0, 0);
 			gcons.insets = new Insets(10, 20, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, ins_member, 4, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, ins_member, 4, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(10, 15, 0, 0);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 5, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 10, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, delete, 6, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, delete, 6, 0, 1, 1, 0,
+					0);
 
 		}
 
@@ -212,7 +220,8 @@ public class ListItemPanel extends JPanel {
 
 		InstitutionVO getInstitutionVO() {
 			return new InstitutionVO(ins_id.getText(), ins_name.getText(),
-					ins_city_list.getItemAt(ins_city_list.getSelectedIndex()), Integer.valueOf(ins_member.getText()));
+					ins_city_list.getItemAt(ins_city_list.getSelectedIndex()),
+					Integer.valueOf(ins_member.getText()));
 		}
 
 		void openEdit() {

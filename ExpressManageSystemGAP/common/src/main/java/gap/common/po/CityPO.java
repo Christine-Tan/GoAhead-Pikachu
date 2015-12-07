@@ -10,7 +10,8 @@ public class CityPO implements Serializable {
 	// 城市经纬度,规定正的为东经，北纬，负的为西经，南纬
 	double longitude, latitude;
 
-	public CityPO(String name, String province, double latitude, double longitude) {
+	public CityPO(String name, String province, double latitude,
+			double longitude) {
 		city = name;
 		this.province = province;
 		this.latitude = latitude;

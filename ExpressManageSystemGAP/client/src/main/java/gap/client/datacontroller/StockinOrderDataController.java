@@ -1,17 +1,12 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.orderdataservice.StockinOrderDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.stockinorderdataservice;
 import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
-import static gap.client.datacontroller.NetModule.stockinorderdataservice;
+
 public class StockinOrderDataController {
 
 	protected StockinOrderDataController() {
@@ -54,7 +49,8 @@ public class StockinOrderDataController {
 			String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinorderdataservice.getRequired(beginDate, endDate, ins_id);
+			return stockinorderdataservice.getRequired(beginDate, endDate,
+					ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -18,49 +18,48 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ListItem extends JPanel{
-	JLabel id,order_id,inDate,amount;
-	
-	public ListItem(int num,StockinOrderVO vo){
-		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
+public class ListItem extends JPanel {
+	JLabel id, order_id, inDate, amount;
 
-		
+	public ListItem(int num, StockinOrderVO vo) {
+		setBackground(Color.white);
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
+
 		id = new GAPLabel();
-//		id.setBackground(Color.red);
-		id.setPreferredSize(new Dimension(80,30));
+		// id.setBackground(Color.red);
+		id.setPreferredSize(new Dimension(80, 30));
 		id.setHorizontalAlignment(JLabel.RIGHT);
-		id.setText(num+"");
-		
+		id.setText(num + "");
+
 		inDate = new GAPLabel();
 		inDate.setText(vo.getInDate());
-//		inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
-		
+		// inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
+
 		order_id = new GAPLabel();
 		order_id.setText(vo.getId());
-		
+
 		amount = new GAPLabel();
-		amount.setText(vo.getNum()+"");	
-		
+		amount.setText(vo.getNum() + "");
+
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(0,10,0,10);
+		gcons.insets = new Insets(0, 10, 0, 10);
 		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0.3, 0);
 		SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, amount, 3, 0, 1, 1, 1, 0);
-		
+
 	}
-	
-	public void paintComponent(Graphics g){
+
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 		g2d.setColor(ComponentStyle.light_gray);
-		int width=getWidth(),height=getHeight();
-		g2d.drawLine(20, height-5, width-30, height-5);
+		int width = getWidth(), height = getHeight();
+		g2d.drawLine(20, height - 5, width - 30, height - 5);
 	}
-	
+
 }

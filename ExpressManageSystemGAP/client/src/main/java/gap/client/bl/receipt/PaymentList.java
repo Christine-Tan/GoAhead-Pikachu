@@ -10,6 +10,7 @@ import gap.common.po.SalaryPO;
 import gap.common.po.TransFarePO;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -21,130 +22,133 @@ import java.util.List;
  *
  */
 public class PaymentList {
-	
+
 	ArrayList<PayeeVO> payeeList;
 	AccountorReceiptDataController dataController;
 	private ArrayList<AccountPO> accounts;
-	
+
 	List<SalaryPO> salaryPOs;
-	
+
 	PaymentListVO listVO;
-	
-	public PaymentList(AccountorReceiptDataController dataController){
-		//payeeList = new ArrayList<>();
-		this.dataController = dataController;	
-		salaryPOs=dataController.getAllSalaryPO();
-		
-		if(accounts!=null){
+
+	public PaymentList(AccountorReceiptDataController dataController) {
+		// payeeList = new ArrayList<>();
+		this.dataController = dataController;
+		salaryPOs = dataController.getAllSalaryPO();
+
+		if (accounts != null) {
 			accounts = dataController.getAccountList();
 		}
 	}
-	
+
 	/**
 	 * 读取数据库，创建付款单草稿
 	 * @return
 	 */
-	public PaymentListVO creatPaymentList(){
-		//ArrayList<AccountPO> accountList,ArrayList<SalaryPO> salaryList,
-		//AccountorReceiptDataController controller
-		ArrayList<SalaryPO> salaryList = (ArrayList<SalaryPO>)dataController.getAllSalaryPO();
-		
-		PayeeFactory factory = new PayeeFactory(accounts, salaryList, dataController);
-		
-		Calendar today =  Calendar.getInstance();
-		
+	public PaymentListVO creatPaymentList() {
+		// ArrayList<AccountPO> accountList,ArrayList<SalaryPO> salaryList,
+		// AccountorReceiptDataController controller
+		ArrayList<SalaryPO> salaryList = (ArrayList<SalaryPO>) dataController
+				.getAllSalaryPO();
+
+		PayeeFactory factory = new PayeeFactory(accounts, salaryList,
+				dataController);
+
+		Calendar today = Calendar.getInstance();
+
 		@SuppressWarnings("deprecation")
-		java.sql.Date date = new java.sql.Date(today.get(Calendar.YEAR), 
+		java.sql.Date date = new java.sql.Date(today.get(Calendar.YEAR),
 				today.get(Calendar.MONTH), today.get(Calendar.DATE));
-		
-		
-		ArrayList<UserPO> userList = (ArrayList<UserPO>) dataController.findUnpaidUser(date);
-		ArrayList<TransFarePO> transFareList = 
-				(ArrayList<TransFarePO>) dataController.getTransFare();
-		ArrayList<RentPO> rentList = (ArrayList<RentPO>) dataController.getAllRentPO();
-		
+
+		ArrayList<UserPO> userList = (ArrayList<UserPO>) dataController
+				.findUnpaidUser(date);
+		ArrayList<TransFarePO> transFareList = (ArrayList<TransFarePO>) dataController
+				.getTransFare();
+		ArrayList<RentPO> rentList = (ArrayList<RentPO>) dataController
+				.getAllRentPO();
+
 		payeeList = factory.getPayeeList(userList, transFareList, rentList);
 		double sum = computeTotal(payeeList);
-		
+
 		listVO = new PaymentListVO(LocalInfo.getUserID(), LocalInfo.getName(),
 				sum, today);
 		listVO.setPayeeList(payeeList);
-		
+
 		return listVO;
-		
+
 	}
-	
-	private double computeTotal(ArrayList<PayeeVO> list){
-		if(list==null || list.isEmpty()){
+
+	private double computeTotal(ArrayList<PayeeVO> list) {
+		if (list == null || list.isEmpty()) {
 			System.out.println("付款单未能成功生成");
 			return 0;
 		}
-		
+
 		double sum = 0;
-		for(PayeeVO payeeVO:list){
-			sum+=payeeVO.getMoney();
+		for (PayeeVO payeeVO : list) {
+			sum += payeeVO.getMoney();
 		}
-		
+
 		return sum;
 	}
-	
-	
-	public ResultMessage addPayee(PayeeVO payeeVO){
+
+	public ResultMessage addPayee(PayeeVO payeeVO) {
 		String accountName = payeeVO.getAccountName();
 		AccountPO account = null;
-		for(AccountPO oneAccount:accounts){
-			if(oneAccount.getName().equals(accountName)){
+		for (AccountPO oneAccount : accounts) {
+			if (oneAccount.getName().equals(accountName)) {
 				account = oneAccount;
 				break;
 			}
 		}
-		
-		if(account==null){
+
+		if (account == null) {
 			System.out.println("该账户不存在");
 			return ResultMessage.NOTFOUND;
-		}else{
-			if(isBalanceEnough(payeeVO, account)){
+		} else {
+			if (isBalanceEnough(payeeVO, account)) {
 				payeeList.add(payeeVO);
 				return ResultMessage.SUCCEED;
-			}else{
+			} else {
 				return ResultMessage.FAILED;
 			}
 		}
-		
+
 	}
-	
-	private boolean isBalanceEnough(PayeeVO vo,AccountPO accountPO){
-		if(accountPO.getBalance()>vo.getMoney()){
+
+	private boolean isBalanceEnough(PayeeVO vo, AccountPO accountPO) {
+		if (accountPO.getBalance() > vo.getMoney()) {
 			return false;
-		}else{
+		} else {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * 删除
 	 * @param payeeVO
 	 * @return
 	 */
-	public ResultMessage deletePayee(PayeeVO payeeVO){
-		if(payeeList.remove(payeeVO)){
+	public ResultMessage deletePayee(PayeeVO payeeVO) {
+		if (payeeList.remove(payeeVO)) {
 			return ResultMessage.SUCCEED;
-		}else{
+		} else {
 			return ResultMessage.NOTFOUND;
 		}
-		
+
 	}
-//	
+
+	//
 	/**
 	 * 修改
 	 * @param payeeVO
 	 * @return
 	 */
-	public ResultMessage modifyPayee(PayeeVO payeeVO){
+	public ResultMessage modifyPayee(PayeeVO payeeVO) {
 		int index = payeeList.indexOf(payeeVO);
 		payeeList.set(index, payeeVO);
-		
+
 		return ResultMessage.SUCCEED;
 	}
-	
+
 }

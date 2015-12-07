@@ -5,17 +5,17 @@ import gap.common.util.ResultMessage;
 
 public class InventoryController {
 	private static Inventory inventory = new Inventory();
-	
-	public static ResultMessage setAlarmValue(double alarmValue,String ins_id){
+
+	public static ResultMessage setAlarmValue(double alarmValue, String ins_id) {
 		return inventory.setAlarm(alarmValue, ins_id);
 	}
-	
-	public static double getAlarmValue(String ins_id){
-//		System.out.println("InventoryController");
+
+	public static double getAlarmValue(String ins_id) {
+		// System.out.println("InventoryController");
 		return inventory.getAlarm(ins_id);
 	}
-	
-	public static int getOneSectorNum(String sector_id,String ins_id){
+
+	public static int getOneSectorNum(String sector_id, String ins_id) {
 		return inventory.getOneSectorNum(ins_id, sector_id);
 	}
 }

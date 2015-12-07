@@ -11,7 +11,8 @@ public class City {
 	// 城市经纬度 lat 纬度 longi 经度
 	double latitude, longitude;
 
-	public City(String cityName, String province, double latitude, double longitude) {
+	public City(String cityName, String province, double latitude,
+			double longitude) {
 		super();
 		this.cityName = cityName;
 		this.province = province;

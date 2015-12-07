@@ -8,7 +8,8 @@ public class CityVO {
 	// 城市经纬度
 	double latitude, longitude;
 
-	public CityVO(String cityName, String province, double latitude, double longitude) {
+	public CityVO(String cityName, String province, double latitude,
+			double longitude) {
 		this.cityName = cityName;
 		this.province = province;
 		this.latitude = latitude;

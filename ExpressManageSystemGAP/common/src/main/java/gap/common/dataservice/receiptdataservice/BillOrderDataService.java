@@ -1,6 +1,5 @@
 package gap.common.dataservice.receiptdataservice;
 
-import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.util.OrderState;
 import gap.common.util.ResultMessage;
@@ -21,7 +20,7 @@ public interface BillOrderDataService extends Remote {
 	public List<BillOrderPO> getUnpassedOrders() throws RemoteException;
 
 	public int getMaxId(String cons) throws RemoteException;
-	
+
 	/**
 	 * 
 	 * 获得这个时间段内所有通过的收款单。假如没有找到单据就返回一个空的list，不要返回null
@@ -29,9 +28,9 @@ public interface BillOrderDataService extends Remote {
 	 * @param end
 	 * @return
 	 */
-	public List<BillOrderPO> getPassedOrder(Calendar start,Calendar end)
+	public List<BillOrderPO> getPassedOrder(Calendar start, Calendar end)
 			throws RemoteException;
-	
+
 	/**
 	 * 
 	 * 根据一个具体日期和一个机构ID获得收款单list。<br/>
@@ -44,9 +43,9 @@ public interface BillOrderDataService extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public List<BillOrderPO> getPassedOrder(Calendar oneDay,String institutionID)
-			 throws RemoteException;
-	
+	public List<BillOrderPO> getPassedOrder(Calendar oneDay,
+			String institutionID) throws RemoteException;
+
 	/**
 	 * 
 	 * 根据ID查询收款单是不是通过。<br/>

@@ -74,6 +74,5 @@ public class Car {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
-	
-	
+
 }

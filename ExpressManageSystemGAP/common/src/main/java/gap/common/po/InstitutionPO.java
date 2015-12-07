@@ -1,11 +1,8 @@
 package gap.common.po;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import gap.common.util.Address;
 import gap.common.util.InstitutionType;
+
+import java.io.Serializable;
 
 public class InstitutionPO implements Serializable {
 
@@ -19,7 +16,7 @@ public class InstitutionPO implements Serializable {
 	private int insMember;
 	// 机构类型
 	private InstitutionType insType;
-    
+
 	public InstitutionPO(String id, String name, String city, int member) {
 		insId = id;
 		insName = name;
@@ -67,7 +64,7 @@ public class InstitutionPO implements Serializable {
 	}
 
 	public void setInsCity(String insCity) {
-		this.insCity= insCity;
+		this.insCity = insCity;
 	}
 
 	/**
@@ -85,13 +82,12 @@ public class InstitutionPO implements Serializable {
 		this.insMember = insMember;
 	}
 
-	public void setInsType(String insId){
-		insType=InstitutionType.getInsType(insId);
+	public void setInsType(String insId) {
+		insType = InstitutionType.getInsType(insId);
 	}
+
 	public InstitutionType getInsType() {
 		return insType;
 	}
-
-
 
 }

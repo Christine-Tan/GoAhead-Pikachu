@@ -21,16 +21,16 @@ public class UserPO implements Serializable {
 	private Gender gender;
 	// 用户姓名
 	private String name;
-	
-	//上次付款日期，这个属性只对财务人员有用
+
+	// 上次付款日期，这个属性只对财务人员有用
 	private Date lastPayDate = null;
 
 	public UserPO() {
 
 	}
 
-	public UserPO(String userId, String userName, String password, String name, UserType type, Gender gender,
-			String ins_id) {
+	public UserPO(String userId, String userName, String password, String name,
+			UserType type, Gender gender, String ins_id) {
 		super();
 		this.userId = userId;
 		this.type = type;

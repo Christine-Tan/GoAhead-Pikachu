@@ -1,6 +1,5 @@
 package gap.client.ui.BaseComponents;
 
-
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.common.util.Gender;

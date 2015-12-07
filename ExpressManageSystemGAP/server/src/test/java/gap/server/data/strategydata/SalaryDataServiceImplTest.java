@@ -1,5 +1,12 @@
 package gap.server.data.strategydata;
 
+import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.strategydataservice.SalaryDataService;
+import gap.common.netconfig.RMIConfig;
+import gap.common.po.SalaryPO;
+import gap.common.util.UserType;
+import gap.server.initial.NetInitial;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -8,13 +15,6 @@ import java.rmi.RemoteException;
 import org.junit.Before;
 import org.junit.Test;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.strategydataservice.SalaryDataService;
-import gap.common.netconfig.RMIConfig;
-import gap.common.po.SalaryPO;
-import gap.common.util.UserType;
-import gap.server.initial.NetInitial;
-
 public class SalaryDataServiceImplTest {
 	@Before
 	public void setup() throws Exception {
@@ -22,7 +22,8 @@ public class SalaryDataServiceImplTest {
 	}
 
 	@Test
-	public void test() throws RemoteException, MalformedURLException, NotBoundException {
+	public void test() throws RemoteException, MalformedURLException,
+			NotBoundException {
 		SalaryDataService salarydata = (SalaryDataService) Naming
 				.lookup(RMIConfig.url + ServiceName.SALARY_DATA_SERVICE);
 		SalaryPO po1 = new SalaryPO(UserType.ADMINISTRATOR, 2500);

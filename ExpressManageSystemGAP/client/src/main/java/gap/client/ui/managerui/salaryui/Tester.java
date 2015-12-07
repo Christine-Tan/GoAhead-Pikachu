@@ -2,7 +2,6 @@ package gap.client.ui.managerui.salaryui;
 
 import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.managerui.rentui.RentPanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.common.util.Gender;

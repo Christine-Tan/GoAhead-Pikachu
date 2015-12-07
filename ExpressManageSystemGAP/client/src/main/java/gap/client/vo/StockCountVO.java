@@ -11,7 +11,6 @@ public class StockCountVO {
 	private List<GoodsPO> flexList;
 
 	// 库存盘点信息列表
-	
 
 	public StockCountVO(List<GoodsPO> carList, List<GoodsPO> trainList,
 			List<GoodsPO> planeList, List<GoodsPO> flexList) {
@@ -58,7 +57,5 @@ public class StockCountVO {
 	public void setFlexList(List<GoodsPO> flexList) {
 		this.flexList = flexList;
 	}
-	
-	
 
 }

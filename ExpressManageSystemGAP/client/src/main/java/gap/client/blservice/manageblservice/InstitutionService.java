@@ -8,7 +8,7 @@ public interface InstitutionService {
 	public List<InstitutionVO> getAll();
 
 	public InstitutionVO findById(String id);
-	
+
 	public List<InstitutionVO> findByCity(String city);
 
 	public void modifyInstitution(InstitutionVO vo);

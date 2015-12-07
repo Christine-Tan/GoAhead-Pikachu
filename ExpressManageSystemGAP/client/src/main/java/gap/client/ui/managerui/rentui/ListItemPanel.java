@@ -1,5 +1,12 @@
 package gap.client.ui.managerui.rentui;
 
+import gap.client.blcontroller.RentController;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.RentVO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,13 +20,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.RentController;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.RentVO;
 
 public class ListItemPanel extends JPanel {
 	// 列表中所有的项
@@ -75,9 +75,11 @@ public class ListItemPanel extends JPanel {
 
 	private void reLayout() {
 		for (int i = 0; i < items.size(); i++) {
-			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
+					1, 1, 0);
 		}
-		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(), 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
+				1, 1, 1, 0);
 	}
 
 	class ItemPanel extends JPanel {
@@ -125,9 +127,11 @@ public class ListItemPanel extends JPanel {
 			gbl = new GridBagLayout();
 			this.setLayout(gbl);
 			gcons.insets = new Insets(10, 10, 10, 0);
-			SwingConsole.addComponent(gbl, gcons, this, institution, 0, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, institution, 0, 0, 1,
+					1, 0, 0);
 			gcons.insets = new Insets(10, 50, 10, 300);
-			SwingConsole.addComponent(gbl, gcons, this, money, 1, 0, 1, 1, 0, 0);
+			SwingConsole
+					.addComponent(gbl, gcons, this, money, 1, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 50, 10, 50);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 2, 0, 1, 1, 0, 0);
 		}
@@ -141,7 +145,8 @@ public class ListItemPanel extends JPanel {
 		}
 
 		RentVO getRentVO() {
-			return new RentVO(institution.getText(), Double.valueOf(money.getText()));
+			return new RentVO(institution.getText(), Double.valueOf(money
+					.getText()));
 		}
 
 		void openEdit() {

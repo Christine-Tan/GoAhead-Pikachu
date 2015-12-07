@@ -1,5 +1,12 @@
 package gap.server.data.strategydata;
 
+import gap.common.dataservice.strategydataservice.RentDataService;
+import gap.common.po.RentPO;
+import gap.common.util.ResultMessage;
+import gap.server.data.util.InsertSQL;
+import gap.server.data.util.UpdateSQL;
+import gap.server.initial.NetModule;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
@@ -8,24 +15,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import gap.common.dataservice.strategydataservice.CityDataService;
-import gap.common.dataservice.strategydataservice.RentDataService;
-import gap.common.po.RentPO;
-import gap.common.util.ResultMessage;
-import gap.server.data.util.InsertSQL;
-import gap.server.data.util.UpdateSQL;
-import gap.server.initial.NetModule;
-
 /**
  * 
  * @author seven
  *
  */
-public class RentDataServiceImpl extends UnicastRemoteObject implements RentDataService {
+public class RentDataServiceImpl extends UnicastRemoteObject implements
+		RentDataService {
 	// 表名
 	private String tablename = "rent", instable = "institution";
 	// 字段
-	private String money_f = "money", lastPaid_f = "lastPaid", insti_f = "institution_id";
+	private String money_f = "money", lastPaid_f = "lastPaid",
+			insti_f = "institution_id";
 
 	private InsertSQL insertSQL;
 	private UpdateSQL updateSQL;
@@ -50,8 +51,8 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 		// TODO Auto-generated method stub
 		List<RentPO> rents = new ArrayList<RentPO>();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery(
-					"SELECT rent.money money_f,institution.name institution_f,rent.lastPaid lastPaid_f  FROM rent,institution WHERE institution.ins_id=rent.institution_id;");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT rent.money money_f,institution.name institution_f,rent.lastPaid lastPaid_f  FROM rent,institution WHERE institution.ins_id=rent.institution_id;");
 			while (re.next()) {
 				String institution = re.getString("institution_f");
 				Date lastPaid = re.getDate("lastPaid_f");
@@ -74,13 +75,15 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 		double rent = po.getMoney();
 		Date date = po.getLastPaidDate();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery(
-					"SELECT rent.money money,institution.ins_id id FROM rent,institution WHERE institution.name='"
-							+ insname + "' AND institution.ins_id=rent.institution_id");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT rent.money money,institution.ins_id id FROM rent,institution WHERE institution.name='"
+							+ insname
+							+ "' AND institution.ins_id=rent.institution_id");
 			if (re.next())
 				return ResultMessage.EXISTED;
 			ResultSet rs = NetModule.excutor
-					.excuteQuery("SELECT ins_id FROM institution WHERE name='" + insname + "';");
+					.excuteQuery("SELECT ins_id FROM institution WHERE name='"
+							+ insname + "';");
 			rs.next();
 			String id = rs.getString("ins_id");
 			insertSQL.clear();
@@ -104,9 +107,10 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 		double rent = po.getMoney();
 		Date date = po.getLastPaidDate();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery(
-					"SELECT rent.money money,institution.ins_id ins_id,rent.id id FROM rent,institution WHERE institution.name='"
-							+ insname + "' AND institution.ins_id=rent.institution_id");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT rent.money money,institution.ins_id ins_id,rent.id id FROM rent,institution WHERE institution.name='"
+							+ insname
+							+ "' AND institution.ins_id=rent.institution_id");
 			if (!re.next())
 				return ResultMessage.NOTFOUND;
 			updateSQL.clear();
@@ -132,7 +136,8 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements RentData
 		// TODO Auto-generated method stub
 		try {
 			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT ins_id FROM institution WHERE name='" + institution + "';");
+					.excuteQuery("SELECT ins_id FROM institution WHERE name='"
+							+ institution + "';");
 			if (!re.next())
 				return ResultMessage.NOTFOUND;
 			String ins_id = re.getString("ins_id");
