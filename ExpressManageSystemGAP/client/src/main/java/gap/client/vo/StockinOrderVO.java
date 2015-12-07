@@ -16,11 +16,11 @@ public class StockinOrderVO {
 	public StockinOrderVO() {
 		// TODO 自动生成的构造函数存根
 	}
-	
-	public StockinOrderVO(StockinOrderPO po){
+
+	public StockinOrderVO(StockinOrderPO po) {
 		List<GoodsPO> list = po.getGoods();
 		List<GoodsVO> goods = new ArrayList<GoodsVO>();
-		for(GoodsPO go : list){
+		for (GoodsPO go : list) {
 			goods.add(new GoodsVO(go));
 		}
 		this.goods = goods;
@@ -69,29 +69,29 @@ public class StockinOrderVO {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
-	
-	public int getNum(){
+
+	public int getNum() {
 		return goods.size();
 	}
-	
-	public StockinOrderPO toPO(){
+
+	public StockinOrderPO toPO() {
 		List<GoodsPO> goods = new ArrayList<GoodsPO>();
-		for(GoodsVO vo : this.goods){
+		for (GoodsVO vo : this.goods) {
 			goods.add(vo.toPO());
 		}
 		StockinOrderPO po = new StockinOrderPO(goods, inDate, id, ins_id);
 		return po;
-		
+
 	}
-	
-	public static List<StockinOrderVO> toVOList(List<StockinOrderPO> list){
+
+	public static List<StockinOrderVO> toVOList(List<StockinOrderPO> list) {
 		List<StockinOrderVO> voList = new ArrayList<StockinOrderVO>();
-		for(StockinOrderPO po:list){
+		for (StockinOrderPO po : list) {
 			StockinOrderVO vo = new StockinOrderVO(po);
 			voList.add(vo);
 		}
 		return voList;
-		
+
 	}
 
 }

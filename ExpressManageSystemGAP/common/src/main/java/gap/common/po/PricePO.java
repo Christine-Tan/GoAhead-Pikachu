@@ -18,8 +18,9 @@ public class PricePO implements Serializable {
 	public PricePO() {
 
 	}
-   
-	public PricePO(String city, int express, int standard, int economic, double base) {
+
+	public PricePO(String city, int express, int standard, int economic,
+			double base) {
 		this.base = base;
 		this.economic = economic;
 		this.standard = standard;

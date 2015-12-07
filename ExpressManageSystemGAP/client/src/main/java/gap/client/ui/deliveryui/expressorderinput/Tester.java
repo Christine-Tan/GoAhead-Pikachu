@@ -1,5 +1,6 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
+import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
@@ -13,6 +14,8 @@ public class Tester {
 				"123456", "0010001", "小明", Gender.MALE);
 		LocalInfo.localuser = user;
 		MainFrame mainFrame = new MainFrame();
+		NetModule.initial(mainFrame);
+		NetModule.connect();
 		ExpressorderInputPanel panel = new ExpressorderInputPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}

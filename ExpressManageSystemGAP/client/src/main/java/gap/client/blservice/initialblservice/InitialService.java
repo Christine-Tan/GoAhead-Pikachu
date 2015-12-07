@@ -7,7 +7,9 @@ import gap.common.util.ResultMessage;
 public interface InitialService {
 
 	public InitialVO getInitialList();
+
 	public ResultMessage submitInitialList(InitialVO initialVO);
+
 	public InitialHistoryVO getInitialHistory();
-	
+
 }

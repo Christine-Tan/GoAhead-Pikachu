@@ -1,10 +1,10 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.strategy.RentManage;
 import gap.client.vo.RentVO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class RentController {
 	private static RentManage rentManage = new RentManage();

@@ -1,7 +1,7 @@
 package gap.client.ui.managerui.rentui;
 
+import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.managerui.priceui.PricePanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.common.util.Gender;
@@ -14,6 +14,8 @@ public class Tester {
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0010001";
 		MainFrame mainFrame = new MainFrame();
+		NetModule.initial(mainFrame);
+		NetModule.connect();
 		RentPanel panel = new RentPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}

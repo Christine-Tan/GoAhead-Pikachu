@@ -1,13 +1,5 @@
 package gap.server.data.strategydata;
 
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.dataservice.strategydataservice.PriceDataService;
 import gap.common.po.PricePO;
 import gap.common.util.ResultMessage;
@@ -15,15 +7,23 @@ import gap.server.data.util.InsertSQL;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author seven
  */
-public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDataService {
+public class PriceDataServiceImpl extends UnicastRemoteObject implements
+		PriceDataService {
 	// 表名
 	private String tablename = "price", city = "city";
 	// 字段
-	private String id_f = "id", cityid_f = "city_id", express_f = "express", standard_f = "standard",
-			economic_f = "economic", base_f = "base";
+	private String id_f = "id", cityid_f = "city_id", express_f = "express",
+			standard_f = "standard", economic_f = "economic", base_f = "base";
 
 	private InsertSQL priceInsert;
 	private UpdateSQL priceUpdate;
@@ -47,14 +47,17 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 	public PricePO find(String city) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM city WHERE name='" + city
+							+ "';");
 			re.next();
 			ResultSet rs = NetModule.excutor
-					.excuteQuery("SELECT * FROM price WHERE city_id=" + Integer.valueOf(re.getString(id_f)) + ";");
+					.excuteQuery("SELECT * FROM price WHERE city_id="
+							+ Integer.valueOf(re.getString(id_f)) + ";");
 			rs.next();
-			int express = Integer.valueOf(rs.getString(express_f)),
-					standard = Integer.valueOf(rs.getString(standard_f)),
-					economic = Integer.valueOf(rs.getString(economic_f));
+			int express = Integer.valueOf(rs.getString(express_f)), standard = Integer
+					.valueOf(rs.getString(standard_f)), economic = Integer
+					.valueOf(rs.getString(economic_f));
 			double base = Double.valueOf(rs.getString(base_f));
 			PricePO po = new PricePO(city, express, standard, economic, base);
 			return po;
@@ -70,14 +73,19 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		// TODO Auto-generated method stub
 		String city = po.getCity();
 		try {
-			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
+			ResultSet rs = NetModule.excutor
+					.excuteQuery("SELECT * FROM city WHERE name='" + city
+							+ "';");
 			rs.next();
 			int city_id = Integer.valueOf(rs.getString(id_f));
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id + ";");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id
+							+ ";");
 			if (re.next())
 				return ResultMessage.FAILED;
 			// 不存在该价格信息，可以新增
-			int express = po.getExpress(), standard = po.getStandard(), economic = po.getEconomic();
+			int express = po.getExpress(), standard = po.getStandard(), economic = po
+					.getEconomic();
 			double base = po.getBase();
 			try {
 				priceInsert.clear();
@@ -106,21 +114,25 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		String city = po.getCity();
 		System.out.println("s");
 		try {
-			
-			ResultSet rs = NetModule.excutor.excuteQuery("SELECT * FROM city WHERE name='" + city + "';");
+
+			ResultSet rs = NetModule.excutor
+					.excuteQuery("SELECT * FROM city WHERE name='" + city
+							+ "';");
 			rs.next();
 			int city_id = rs.getInt(id_f);
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id + ";");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM price WHERE city_id=" + city_id
+							+ ";");
 
 			// 未找到该价格信息
-			if (!re.next()){
+			if (!re.next()) {
 				System.out.println("aaa");
 				return ResultMessage.NOTFOUND;
-			}
-			else {
+			} else {
 				System.out.println("bbb");
 				// 已存在该价格，可以修改
-				int express = po.getExpress(), standard = po.getStandard(), economic = po.getEconomic();
+				int express = po.getExpress(), standard = po.getStandard(), economic = po
+						.getEconomic();
 				double base = po.getBase();
 				priceUpdate.clear();
 				priceUpdate.add(express_f, express);
@@ -147,17 +159,20 @@ public class PriceDataServiceImpl extends UnicastRemoteObject implements PriceDa
 		// TODO Auto-generated method stub
 		List<PricePO> prices = new ArrayList<PricePO>();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM price;");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM price;");
 			while (re.next()) {
 				ResultSet rs = NetModule.excutor
-						.excuteQuery("SELECT * FROM city WHERE id=" + Integer.valueOf(re.getString(cityid_f)) + ";");
+						.excuteQuery("SELECT * FROM city WHERE id="
+								+ Integer.valueOf(re.getString(cityid_f)) + ";");
 				rs.next();
 				String city = rs.getString("name");
-				int express = Integer.valueOf(re.getString(express_f)),
-						standard = Integer.valueOf(re.getString(standard_f)),
-						economic = Integer.valueOf(re.getString(economic_f));
+				int express = Integer.valueOf(re.getString(express_f)), standard = Integer
+						.valueOf(re.getString(standard_f)), economic = Integer
+						.valueOf(re.getString(economic_f));
 				double base = Double.valueOf(re.getString(base_f));
-				PricePO po = new PricePO(city, express, standard, economic, base);
+				PricePO po = new PricePO(city, express, standard, economic,
+						base);
 				prices.add(po);
 			}
 			return prices;

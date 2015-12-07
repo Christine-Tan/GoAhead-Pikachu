@@ -6,8 +6,6 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-
-
 public class MessagePanel extends JPanel {
 	private MainFrame mainFrame;
 

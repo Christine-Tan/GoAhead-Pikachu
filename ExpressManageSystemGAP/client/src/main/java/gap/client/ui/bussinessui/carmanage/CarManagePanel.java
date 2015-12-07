@@ -3,14 +3,10 @@ package gap.client.ui.bussinessui.carmanage;
 import gap.client.blcontroller.CarManageController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -72,6 +68,5 @@ public class CarManagePanel extends MainPanel {
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
-
 
 }

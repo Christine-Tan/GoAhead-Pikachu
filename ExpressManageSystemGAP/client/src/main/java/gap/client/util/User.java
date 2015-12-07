@@ -24,19 +24,19 @@ public class User {
 	public User() {
 
 	}
-    
-	public User(UserPO po){
-	    this.userId=po.getUserId();
-	    this.userName=po.getUserName();
-	    this.password=po.getPassword();
-	    this.type=po.getType();
-	    this.insId=po.getIns_id();
-	    this.name=po.getName();
-	    this.gender=po.getGender();
+
+	public User(UserPO po) {
+		this.userId = po.getUserId();
+		this.userName = po.getUserName();
+		this.password = po.getPassword();
+		this.type = po.getType();
+		this.insId = po.getIns_id();
+		this.name = po.getName();
+		this.gender = po.getGender();
 	}
-	
-	public User(String userId, UserType type, String userName, String password, String insId, String name,
-			Gender gender) {
+
+	public User(String userId, UserType type, String userName, String password,
+			String insId, String name, Gender gender) {
 		super();
 		this.userId = userId;
 		this.type = type;
@@ -46,10 +46,12 @@ public class User {
 		this.name = name;
 		this.gender = gender;
 	}
-	
-	public UserVO toUserVO(String insname){
-		return new UserVO(userId,userName,password,name,type,gender,insname);
+
+	public UserVO toUserVO(String insname) {
+		return new UserVO(userId, userName, password, name, type, gender,
+				insname);
 	}
+
 	public String getUserId() {
 		return userId;
 	}

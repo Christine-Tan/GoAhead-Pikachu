@@ -3,8 +3,6 @@ package gap.server.data.transdata;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.netconfig.RMIConfig;
-import gap.common.po.DriverPO;
-import gap.common.util.Gender;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

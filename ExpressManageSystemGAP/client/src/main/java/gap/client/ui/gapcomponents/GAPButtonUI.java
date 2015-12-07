@@ -17,6 +17,5 @@ public class GAPButtonUI extends BasicButtonUI {
 		g2d.setColor(ColorAndFonts.blue);
 		g2d.fillRect(viewRect.x, viewRect.y, viewRect.width, viewRect.height);
 	}
-	
 
 }

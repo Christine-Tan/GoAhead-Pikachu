@@ -1,4 +1,5 @@
 package gap.client.ui.LoginUI;
+
 import gap.client.ui.BaseListener.MoveListener;
 
 import java.awt.EventQueue;
@@ -10,9 +11,6 @@ public class LoginFrame extends JFrame {
 
 	LoginPanel loginPanel = new LoginPanel();
 
-	
-
-
 	/**
 	 * Launch the application.
 	 */
@@ -21,17 +19,14 @@ public class LoginFrame extends JFrame {
 			public void run() {
 				try {
 					UIManager
-					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-					
+							.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
 					LoginFrame frame = new LoginFrame();
-					
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
-		
-				
+
 			}
 		});
 	}
@@ -46,7 +41,7 @@ public class LoginFrame extends JFrame {
 		setUndecorated(true);
 		setLocationRelativeTo(null);
 		setVisible(true);
-		
+
 		getContentPane().setLayout(null);
 		getContentPane().add(loginPanel);
 		MoveListener movelistener = new MoveListener(this);

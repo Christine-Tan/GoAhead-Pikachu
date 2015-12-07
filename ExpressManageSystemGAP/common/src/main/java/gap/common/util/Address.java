@@ -2,7 +2,7 @@ package gap.common.util;
 
 import java.io.Serializable;
 
-public class Address implements Serializable{
+public class Address implements Serializable {
 	String province_name, city_name, district_name;
 
 	public Address(String province_name, String city_name, String district_name) {

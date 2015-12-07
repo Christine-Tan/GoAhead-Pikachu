@@ -1,9 +1,7 @@
 package gap.server.data.order;
 
-
 import gap.common.dataservice.orderdataservice.StockinOrderDataService;
 import gap.common.po.GoodsPO;
-import gap.common.po.LoadOrderPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.util.InsertSQL;
@@ -15,9 +13,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
@@ -60,7 +56,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		String order_id = po.getId(), time = po.getInDate(), ins_id = po
 				.getIns_id();
 		List<GoodsPO> goodPOs = po.getGoods();
-		
+
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockinorder WHERE order_id='"
@@ -75,15 +71,13 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			return ResultMessage.FAILED;
 		}
 
-		
-
 		try {
 			orderInsert.clear();
 			orderInsert.add(order_id_f, order_id);
 			orderInsert.add(time_f, time);
 			orderInsert.add(ins_id_f, ins_id);
-//			boolean passed = false;
-			orderInsert.add(passed_f,false);
+			// boolean passed = false;
+			orderInsert.add(passed_f, false);
 			NetModule.excutor.excute(orderInsert.createSQL());
 			for (GoodsPO goods : goodPOs) {
 				itemInsert.clear();
@@ -103,7 +97,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return ResultMessage.FAILED;
 	}
-	
+
 	public StockinOrderPO getByResultSet(ResultSet re) {
 
 		try {
@@ -125,12 +119,12 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 
 	public List<GoodsPO> getPOsByOrderId(String order_id) {
 		try {
-			
+
 			List<GoodsPO> goodPOs = new ArrayList<GoodsPO>();
 			ResultSet itemre = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockinitem WHERE order_id = '"
 							+ order_id + "' ;");
-//			System.out.println(order_id);
+			// System.out.println(order_id);
 
 			while (itemre.next()) {
 				String id = itemre.getString(expressorder_id_f), destination = itemre
@@ -156,13 +150,17 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockinorder WHERE order_id = '"
-							+ order_id +"' AND "+ins_id_f+" = '"+ins_id+ "';");
-			if(re.next()){
+							+ order_id
+							+ "' AND "
+							+ ins_id_f
+							+ " = '"
+							+ ins_id
+							+ "';");
+			if (re.next()) {
 				return getByResultSet(re);
-			}else{
+			} else {
 				System.out.println("入库单号为" + order_id + "的入库单没找到");
 			}
-			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -172,33 +170,35 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	public ResultMessage delete(String order_id){
+	public ResultMessage delete(String order_id) {
 		SQLBuilder sql = new SQLBuilder();
-		sql.DeleteFrom(stockinTable).Where(order_id_f).EQUALS(order_id).excute();
-		sql.DeleteFrom(stockinItemTable).Where(orderId_f).EQUALS(order_id).excute();
+		sql.DeleteFrom(stockinTable).Where(order_id_f).EQUALS(order_id)
+				.excute();
+		sql.DeleteFrom(stockinItemTable).Where(orderId_f).EQUALS(order_id)
+				.excute();
 		System.out.println("删除了");
 		return ResultMessage.SUCCEED;
-		
+
 	}
 
 	@Override
 	public List<StockinOrderPO> getOneDay(String date, String ins_id)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		
-//		Calendar calendar = Calendar.getInstance();
-//		calendar.set(2005, 11, 11);
-//		
-//		SimpleDateFormat simple = new SimpleDateFormat("yyyy-mm-dd");
-//		simple.format(calendar.getTime());
-		
+
+		// Calendar calendar = Calendar.getInstance();
+		// calendar.set(2005, 11, 11);
+		//
+		// SimpleDateFormat simple = new SimpleDateFormat("yyyy-mm-dd");
+		// simple.format(calendar.getTime());
+
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockinorder WHERE ins_id = '"
 							+ ins_id + "' AND time = '" + date + "';");
 			List<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
 			while (re.next()) {
-//				System.out.println("找到啦");
+				// System.out.println("找到啦");
 				StockinOrderPO po = getByResultSet(re);
 				stockinOrders.add(po);
 			}
@@ -223,9 +223,9 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 							+ ins_id + "' AND time >= '" + beginDate
 							+ "'AND time <= '" + endDate + "';");
 			ArrayList<StockinOrderPO> stockinOrders = new ArrayList<StockinOrderPO>();
-//			if(!re.next()){
-//				System.out.println();
-//			}
+			// if(!re.next()){
+			// System.out.println();
+			// }
 			while (re.next()) {
 				StockinOrderPO po = getByResultSet(re);
 				stockinOrders.add(po);
@@ -280,8 +280,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
-	
-	
+
 	public int getNextId(String cons) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {

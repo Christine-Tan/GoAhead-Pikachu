@@ -8,49 +8,56 @@ import java.util.Calendar;
 
 public class PaymentListVO {
 
-	public ArrayList<PayeeVO> paymentList;
+	private ArrayList<PayeeVO> paymentList;
 	private String paymentID;
 	private Calendar payDate;
 	private String payer;
 	private double total = 0;
-	
-	public PaymentListVO(String ID,String payer,double total,Calendar calendar){
-		initial(ID, payer, total, calendar,null);		
+
+	public PaymentListVO(String ID, String payer, double total,
+			Calendar calendar) {
+		initial(ID, payer, total, calendar, null);
 	}
-	
-	public PaymentListVO(PaymentListPO po){
-		initial(po.getPaymentID(), po.getPayer(), po.getTotal(), po.getDate(),po.paymentList);
+
+	public PaymentListVO(PaymentListPO po) {
+		initial(po.getPaymentID(), po.getPayer(), po.getTotal(), po.getDate(),
+				po.paymentList);
 	}
-	
-	private void initial(String ID,String payer,double total
-			,Calendar calendar,ArrayList<PayeePO> list)
-	{
+
+	private void initial(String ID, String payer, double total,
+			Calendar calendar, ArrayList<PayeePO> list) {
 		setPaymentID(ID);
 		this.setPayer(payer);
 		this.setTotal(total);
 		this.payDate = calendar;
 		paymentList = new ArrayList<>();
-		
-		if(list!=null){
-			for(PayeePO po:list){
+
+		if (list != null) {
+			for (PayeePO po : list) {
 				paymentList.add(new PayeeVO(po));
 			}
 		}
-		
+
 	}
-	
-	public PaymentListPO toPO()
-	{
-		PaymentListPO po = new PaymentListPO(paymentID, payer,total, payDate);
-		for(PayeeVO vo:paymentList){
+
+	public PaymentListPO toPO() {
+		PaymentListPO po = new PaymentListPO(paymentID, payer, total, payDate);
+		for (PayeeVO vo : paymentList) {
 			po.paymentList.add(vo.toPO());
 		}
 		return po;
-		
+
 	}
 
+	public ArrayList<PayeeVO> getPayeeList() {
+		return paymentList;
+	}
 
-	public Calendar getPayDate() {	
+	public void setPayeeList(ArrayList<PayeeVO> list) {
+		this.paymentList = list;
+	}
+
+	public Calendar getPayDate() {
 		return payDate;
 	}
 
@@ -66,28 +73,20 @@ public class PaymentListVO {
 		this.paymentID = paymentID;
 	}
 
-
-
 	public String getPayer() {
 		return payer;
 	}
-
-
 
 	public void setPayer(String payer) {
 		this.payer = payer;
 	}
 
-
-
 	public double getTotal() {
 		return total;
 	}
 
-
-
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	
+
 }

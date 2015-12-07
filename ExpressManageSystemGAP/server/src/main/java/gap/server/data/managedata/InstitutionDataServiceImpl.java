@@ -1,30 +1,30 @@
 package gap.server.data.managedata;
 
+import gap.common.dataservice.managedataservice.InstitutionDataService;
+import gap.common.po.InstitutionPO;
+import gap.common.util.InstitutionType;
+import gap.common.util.ResultMessage;
+import gap.server.data.util.InsertSQL;
+import gap.server.data.util.UpdateSQL;
+import gap.server.initial.NetModule;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import gap.common.dataservice.managedataservice.InstitutionDataService;
-import gap.common.dataservice.strategydataservice.CityDataService;
-import gap.common.po.InstitutionPO;
-import gap.common.util.Address;
-import gap.common.util.InstitutionType;
-import gap.common.util.ResultMessage;
-import gap.server.data.strategydata.CityDataServiceImpl;
-import gap.server.data.util.InsertSQL;
-import gap.server.data.util.UpdateSQL;
-import gap.server.initial.NetModule;
 
 /**
  * @author seven
  */
-public class InstitutionDataServiceImpl extends UnicastRemoteObject implements InstitutionDataService {
+public class InstitutionDataServiceImpl extends UnicastRemoteObject implements
+		InstitutionDataService {
 	// 表名
 	private String tableName = "institution";
 	// 字段
-	private String id_f = "ins_id", insname_f = "name", memberNum_f = "memberNum", address_f = "address",
+	private String id_f = "ins_id", insname_f = "name",
+			memberNum_f = "memberNum", address_f = "address",
 			instype_f = "ins_type";
 
 	private InsertSQL insertSQL;
@@ -52,7 +52,9 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		String city = po.getInsCity();
 		InstitutionType instype = po.getInsType();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM institution WHERE ins_id='"
+							+ ins_id + "';");
 			if (re.next()) {
 				System.out.println(re.getString(insname_f));
 				return ResultMessage.EXISTED;
@@ -84,9 +86,12 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		// TODO Auto-generated method stub
 		ResultSet re;
 		try {
-			re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
+			re = NetModule.excutor
+					.excuteQuery("SELECT * FROM institution WHERE ins_id='"
+							+ ins_id + "';");
 			re.next();
-			String id = re.getString(id_f), name = re.getString(insname_f), city = re.getString(address_f);
+			String id = re.getString(id_f), name = re.getString(insname_f), city = re
+					.getString(address_f);
 			;
 			int num = re.getInt(memberNum_f);
 			InstitutionPO po = new InstitutionPO(id, name, city, num);
@@ -107,7 +112,9 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		String city = po.getInsCity();
 		InstitutionType instype = po.getInsType();
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM institution WHERE ins_id='"
+							+ ins_id + "';");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
 			}
@@ -140,11 +147,15 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 	public ResultMessage delete(String ins_id) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE ins_id='" + ins_id + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM institution WHERE ins_id='"
+							+ ins_id + "';");
 			if (!re.next()) {
 				return ResultMessage.NOTFOUND;
 			} else
-				NetModule.excutor.excute("DELETE FROM institution WHERE ins_id='" + ins_id + "';");
+				NetModule.excutor
+						.excute("DELETE FROM institution WHERE ins_id='"
+								+ ins_id + "';");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -158,9 +169,11 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		// TODO Auto-generated method stub
 		try {
 			List<InstitutionPO> institutions = new ArrayList<InstitutionPO>();
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution;");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM institution;");
 			while (re.next()) {
-				String id = re.getString(id_f), name = re.getString(insname_f), city = re.getString(address_f);
+				String id = re.getString(id_f), name = re.getString(insname_f), city = re
+						.getString(address_f);
 				int num = re.getInt(memberNum_f);
 				InstitutionPO po = new InstitutionPO(id, name, city, num);
 				institutions.add(po);
@@ -178,7 +191,9 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 		// TODO Auto-generated method stub
 		try {
 			List<InstitutionPO> institutions = new ArrayList<InstitutionPO>();
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE address='" + city + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM institution WHERE address='"
+							+ city + "';");
 			while (re.next()) {
 				String id = re.getString(id_f), name = re.getString(insname_f);
 				int num = re.getInt(memberNum_f);
@@ -197,7 +212,9 @@ public class InstitutionDataServiceImpl extends UnicastRemoteObject implements I
 	public InstitutionPO findByName(String ins_name) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM institution WHERE name='" + ins_name + "';");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM institution WHERE name='"
+							+ ins_name + "';");
 			if (re.next()) {
 				String id = re.getString(id_f), city = re.getString(address_f);
 				int num = re.getInt(memberNum_f);

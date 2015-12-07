@@ -1,18 +1,15 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.accountdataservice.AccountDataService;
-import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
-import gap.common.dataservice.receiptdataservice.BillOrderDataService;
-import gap.common.dataservice.receiptdataservice.PaymentdataService;
-import gap.common.dataservice.strategydataservice.RentDataService;
-import gap.common.dataservice.strategydataservice.SalaryDataService;
+import static gap.client.datacontroller.NetModule.accountDataService;
+import static gap.client.datacontroller.NetModule.billorderdataservice;
+import static gap.client.datacontroller.NetModule.expressorderdataservice;
+import static gap.client.datacontroller.NetModule.paymentdataService;
+import static gap.client.datacontroller.NetModule.rentdataservice;
+import static gap.client.datacontroller.NetModule.salarydataservice;
+import static gap.client.datacontroller.NetModule.userdataservice;
 import gap.common.dataservice.transFareDataService.TransFareDataService;
-import gap.common.dataservice.userdataservice.UserDataService;
-import gap.common.netconfig.RMIConfig;
 import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
-import gap.common.po.Cost_profitPO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.RentPO;
 import gap.common.po.SalaryPO;
@@ -22,9 +19,6 @@ import gap.common.po.UserPO;
 import gap.common.util.OrderState;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -37,49 +31,15 @@ import java.util.List;
  *
  */
 public class AccountorReceiptDataController {
-	AccountDataService accountDataService;
-	PaymentdataService paymentdataService;
-	BillOrderDataService billOrderDataService;
-	ExpressOrderDataService expressOrderDataService;
-	UserDataService userDataService;
+	// 未找到注册
 	TransFareDataService transFareDataService;
-	RentDataService rentDataService;
-	SalaryDataService salaryDataService;
-	
-	
-	protected AccountorReceiptDataController(){
-		
-			try {
-				accountDataService = (AccountDataService)Naming
-						.lookup(RMIConfig.url+ServiceName.ACCOUNT_DATA_SERVICE);
-				
-				paymentdataService =(PaymentdataService)Naming
-						.lookup(RMIConfig.url+ServiceName.PAYMENT_DATA_SERVICE);
-			
-				userDataService = (UserDataService)Naming
-						.lookup(RMIConfig.url+ServiceName.USER_DATA_SERVICE);
-				
-				transFareDataService = (TransFareDataService)Naming
-						.lookup(RMIConfig.url+ServiceName.TRANSFARE_DATA_SERVICE);
-			
-				rentDataService = (RentDataService)Naming
-						.lookup(RMIConfig.url+ServiceName.RENT_DATA_SERVICE);
-			
-				salaryDataService = (SalaryDataService)Naming
-						.lookup(RMIConfig.url+ServiceName.SALARY_DATA_SERVICE);
-				
-				billOrderDataService = (BillOrderDataService)Naming
-						.lookup(RMIConfig.url+ServiceName.BILLORDER_DATA_SERVICE);
-			
-			} catch (MalformedURLException | RemoteException | NotBoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
+	protected AccountorReceiptDataController() {
 
 	}
-	
-	//accountData的接口
-	public boolean trade(TradePO tradePO){
+
+	// accountData的接口
+	public boolean trade(TradePO tradePO) {
 		try {
 			return accountDataService.trade(tradePO);
 		} catch (RemoteException e) {
@@ -89,8 +49,7 @@ public class AccountorReceiptDataController {
 		}
 	}
 
-
-	public ArrayList<AccountPO> getAccountList(){
+	public ArrayList<AccountPO> getAccountList() {
 		try {
 			return accountDataService.getAccountList();
 		} catch (RemoteException e) {
@@ -99,9 +58,9 @@ public class AccountorReceiptDataController {
 			return null;
 		}
 	}
-	
-	//PaymentData的接口
-	public ResultMessage submitPayment(PaymentListPO paymentListPO){
+
+	// PaymentData的接口
+	public ResultMessage submitPayment(PaymentListPO paymentListPO) {
 		try {
 			return paymentdataService.submitPayment(paymentListPO);
 		} catch (RemoteException e) {
@@ -110,7 +69,9 @@ public class AccountorReceiptDataController {
 			return ResultMessage.FAILED;
 		}
 	}
-	public ArrayList<PaymentListPO> getPassedPayment(Calendar begin, Calendar end){
+
+	public ArrayList<PaymentListPO> getPassedPayment(Calendar begin,
+			Calendar end) {
 		try {
 			return paymentdataService.getPassedPayment(begin, end);
 		} catch (RemoteException e) {
@@ -119,8 +80,8 @@ public class AccountorReceiptDataController {
 		}
 		return null;
 	}
-	
-	public OrderState isPaymentPassed(String paymentID){
+
+	public OrderState isPaymentPassed(String paymentID) {
 		try {
 			return paymentdataService.isPaymentPassed(paymentID);
 		} catch (RemoteException e) {
@@ -129,8 +90,8 @@ public class AccountorReceiptDataController {
 		}
 		return null;
 	}
-	
-	public ResultMessage setPaymentPassed(String paymentID){
+
+	public ResultMessage setPaymentPassed(String paymentID) {
 		try {
 			return paymentdataService.setPassed(paymentID);
 		} catch (RemoteException e) {
@@ -139,53 +100,11 @@ public class AccountorReceiptDataController {
 		}
 		return null;
 	}
-	
-	//BillOrder的接口
-	public ResultMessage setBillOrderPassed(String order_id){
+
+	// BillOrder的接口
+	public ResultMessage setBillOrderPassed(String order_id) {
 		try {
-			return billOrderDataService.setPassed(order_id, null);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public List<BillOrderPO> getPassedBill(Calendar oneDay,String institutionID){
-		try {
-			return billOrderDataService.getPassedOrder(oneDay, institutionID);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	public OrderState isBillPassed(String orderID){
-		try {
-			return billOrderDataService.isOrderPassed(orderID);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	//expressOrderData的接口
-	public double getDeliveryMoney(String date, String delivery_id){
-		try {
-			return expressOrderDataService.getDeliveryMoney(date, delivery_id);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return -1;
-	}
-	
-	//userdate的接口
-	public List<UserPO> findUnpaidUser(Date date){
-		try {
-			return userDataService.findUnpaidUser(date);
+			return billorderdataservice.setPassed(order_id, null);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -193,18 +112,60 @@ public class AccountorReceiptDataController {
 		return null;
 	}
 
-	public ResultMessage setUserPaid(String user_id){
+	public List<BillOrderPO> getPassedBill(Calendar oneDay, String institutionID) {
 		try {
-			return userDataService.setPaid(user_id);
+			return billorderdataservice.getPassedOrder(oneDay, institutionID);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	//transFareData
-	public List<TransFarePO> getTransFare(){
+
+	public OrderState isBillPassed(String orderID) {
+		try {
+			return billorderdataservice.isOrderPassed(orderID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	// expressOrderData的接口
+	public double getDeliveryMoney(String date, String delivery_id) {
+		try {
+			return expressorderdataservice.getDeliveryMoney(date, delivery_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	// userdate的接口
+	public List<UserPO> findUnpaidUser(Date date) {
+		try {
+			return userdataservice.findUnpaidUser(date);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public ResultMessage setUserPaid(String user_id) {
+		try {
+			return userdataservice.setPaid(user_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	// transFareData
+	public List<TransFarePO> getTransFare() {
 		try {
 			return transFareDataService.getTransFare();
 		} catch (RemoteException e) {
@@ -214,7 +175,7 @@ public class AccountorReceiptDataController {
 		return null;
 	}
 
-	public boolean deleteTransFare(List<TransFarePO> transFareList){
+	public boolean deleteTransFare(List<TransFarePO> transFareList) {
 		try {
 			return transFareDataService.deleteTransFare(transFareList);
 		} catch (RemoteException e) {
@@ -223,36 +184,37 @@ public class AccountorReceiptDataController {
 		}
 		return false;
 	}
-	
-	//rentData
-	public List<RentPO> getAllRentPO(){
+
+	// rentData
+	public List<RentPO> getAllRentPO() {
 		try {
-			return rentDataService.getAll();
+			return rentdataservice.getAll();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-	public ResultMessage setInstitePaid(String institution){
+
+	public ResultMessage setInstitePaid(String institution) {
 		try {
-			return rentDataService.setPaid(institution);
+			return rentdataservice.setPaid(institution);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-	//Salary
-	public List<SalaryPO> getAllSalaryPO(){
+
+	// Salary
+	public List<SalaryPO> getAllSalaryPO() {
 		try {
-			return salaryDataService.getAll();
+			return salarydataservice.getAll();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 }

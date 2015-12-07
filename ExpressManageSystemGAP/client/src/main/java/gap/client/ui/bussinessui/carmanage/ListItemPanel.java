@@ -116,7 +116,7 @@ public class ListItemPanel extends JPanel {
 
 		public ItemPanel() {
 			setBackground(Color.white);
-			setPreferredSize(new Dimension(Default.PANEL_WIDTH-80,45));
+			setPreferredSize(new Dimension(Default.PANEL_WIDTH - 80, 45));
 			setFocusable(true);
 			gb = new GridBagLayout();
 			gcons = new GridBagConstraints();

@@ -1,41 +1,21 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.orderdataservice.StockinOrderDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.stockinorderdataservice;
 import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
 public class StockinOrderDataController {
-	StockinOrderDataService stockinOrder;
 
 	protected StockinOrderDataController() {
-		try {
-			stockinOrder = (StockinOrderDataService) Naming
-					.lookup(RMIConfig.url
-							+ ServiceName.STOCKINORDER_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public ResultMessage add(StockinOrderPO po) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.add(po);
+			return stockinorderdataservice.add(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,7 +26,7 @@ public class StockinOrderDataController {
 	public StockinOrderPO find(String order_id, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.find(order_id, ins_id);
+			return stockinorderdataservice.find(order_id, ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,7 +37,7 @@ public class StockinOrderDataController {
 	public List<StockinOrderPO> getOneDay(String date, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.getOneDay(date, ins_id);
+			return stockinorderdataservice.getOneDay(date, ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,7 +49,8 @@ public class StockinOrderDataController {
 			String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return stockinOrder.getRequired(beginDate, endDate, ins_id);
+			return stockinorderdataservice.getRequired(beginDate, endDate,
+					ins_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

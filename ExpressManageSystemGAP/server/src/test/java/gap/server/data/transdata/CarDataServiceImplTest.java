@@ -3,7 +3,6 @@ package gap.server.data.transdata;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.netconfig.RMIConfig;
-import gap.common.po.CarPO;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

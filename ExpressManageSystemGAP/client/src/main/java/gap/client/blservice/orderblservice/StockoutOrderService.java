@@ -12,6 +12,12 @@ public interface StockoutOrderService {
 
 	public ResultMessage save(StockoutOrderVO order);
 
-	public StockoutOrderVO find(String id,String ins_id);
-	
+	public StockoutOrderVO find(String id, String ins_id);
+
+	public String getLocation(String expressorder_id);
+
+	public List<StockoutOrderVO> getRequired(String beginDate, String endDate,
+			String ins_id);
+
+	public int getTotalNum(List<StockoutOrderVO> list);
 }

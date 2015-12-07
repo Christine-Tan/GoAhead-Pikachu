@@ -2,15 +2,19 @@ package gap.client.bl.order;
 
 import gap.client.blservice.orderblservice.StockoutOrderService;
 import gap.client.datacontroller.ControllerFactory;
+import gap.client.datacontroller.InventoryDataController;
 import gap.client.datacontroller.StockoutOrderDataController;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StockoutOrderVO;
+import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StockoutOrder implements StockoutOrderService {
 	StockoutOrderDataController stockoutData;
+	InventoryDataController inventoryData;
 
 	public StockoutOrder() {
 		stockoutData = ControllerFactory.getStockoutOrderDataController();
@@ -30,9 +34,34 @@ public class StockoutOrder implements StockoutOrderService {
 	}
 
 	@Override
-	public StockoutOrderVO find(String id,String ins_id) {
+	public StockoutOrderVO find(String id, String ins_id) {
 		// TODO Auto-generated method stub
 		return new StockoutOrderVO(stockoutData.find(id, ins_id));
+	}
+
+	@Override
+	public String getLocation(String id) {
+		// TODO Auto-generated method stub
+
+		return inventoryData.find(id).getLocation();
+	}
+
+	@Override
+	public List<StockoutOrderVO> getRequired(String beginDate, String endDate,
+			String ins_id) {
+		// TODO Auto-generated method stub
+		List<StockoutOrderPO> list = new ArrayList<StockoutOrderPO>();
+		return StockoutOrderVO.toVOList(list);
+	}
+
+	@Override
+	public int getTotalNum(List<StockoutOrderVO> list) {
+		// TODO Auto-generated method stub
+		int num = 0;
+		for (StockoutOrderVO vo : list) {
+			num += vo.getNum();
+		}
+		return num;
 	}
 
 }

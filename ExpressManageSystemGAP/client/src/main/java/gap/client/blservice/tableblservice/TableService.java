@@ -9,12 +9,13 @@ import java.util.Date;
 public interface TableService {
 
 	public Cost_ProfitListVO getCost_ProfitList();
-	public OperatingConditionListVO getOperatingConditionList
-											(Date begin,Date end);
-	public ResultMessage Cost_ProfitExcel
-									(Cost_ProfitListVO costProfitListVO);
-	
-	public ResultMessage OperatingConditionExcel
-									(OperatingConditionListVO operatingConditionListVO);
+
+	public OperatingConditionListVO getOperatingConditionList(Date begin,
+			Date end);
+
+	public ResultMessage Cost_ProfitExcel(Cost_ProfitListVO costProfitListVO);
+
+	public ResultMessage OperatingConditionExcel(
+			OperatingConditionListVO operatingConditionListVO);
 
 }

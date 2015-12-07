@@ -153,6 +153,7 @@ public class ListItemPanel extends JPanel {
 			GridBagConstraints gcons = new GridBagConstraints();
 			setLayout(gb);
 			shortMessPanel.setLayout(gb);
+
 			gcons.insets = new Insets(5, 10, 0, 10);
 			SwingConsole.addComponent(gb, gcons, shortMessPanel, checkBox, 0,
 					0, 1, 1, 0, 0);

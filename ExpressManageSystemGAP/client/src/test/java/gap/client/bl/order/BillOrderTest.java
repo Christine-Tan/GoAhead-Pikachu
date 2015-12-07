@@ -40,7 +40,7 @@ public class BillOrderTest {
 		bills.add(po2);
 		BillOrderPO po = new BillOrderPO(bills, "00100012015112600002",
 				Date.valueOf("2015-11-24"));
-//		billorder.save(po);
+		// billorder.save(po);
 	}
 
 }

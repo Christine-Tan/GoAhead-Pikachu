@@ -5,29 +5,29 @@ import gap.common.util.SectorType;
 import java.io.Serializable;
 
 public class GoodsPO implements Serializable {
-	//快递编号(10位0~9数字)
+	// 快递编号(10位0~9数字)
 	private String expressorder_id;
-	
-	//仓库中存放位置
+
+	// 仓库中存放位置
 	private String location;
-	
-	//所在分区
+
+	// 所在分区
 	private SectorType sector;
-	
-	//入库日期
+
+	// 入库日期
 	private String date;
-	
-	//所在分区的id;
+
+	// 所在分区的id;
 	private String sector_id;
-	
-	//若在机动区分配到的分区的id
+
+	// 若在机动区分配到的分区的id
 	private String belong_sector_id;
-	
-	//最终目的地
+
+	// 最终目的地
 	private String destination;
-	
-	public GoodsPO(){
-		
+
+	public GoodsPO() {
+
 	}
 
 	public GoodsPO(String expressorder_id, String location, SectorType sector,
@@ -70,14 +70,19 @@ public class GoodsPO implements Serializable {
 	public SectorType getSector() {
 		return sector;
 	}
-	
-	public SectorType getSectorType(char c){
-		switch(c){
-		case'0': return SectorType.FLEX;
-		case'1': return SectorType.CAR;
-		case'2': return SectorType.TRAIN;
-		case'3': return SectorType.PLANE;
-		default: return null;
+
+	public SectorType getSectorType(char c) {
+		switch (c) {
+		case '0':
+			return SectorType.FLEX;
+		case '1':
+			return SectorType.CAR;
+		case '2':
+			return SectorType.TRAIN;
+		case '3':
+			return SectorType.PLANE;
+		default:
+			return null;
 		}
 	}
 

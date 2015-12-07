@@ -1,5 +1,13 @@
 package gap.client.ui.managerui.rentui;
 
+import gap.client.blcontroller.CityController;
+import gap.client.ui.UITools.Default;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.CityVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -12,17 +20,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import gap.client.blcontroller.CityController;
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.CityVO;
-
-public class QueryPanel extends JPanel{
-	JLabel inputId, inputCity,edit;
-	JButton search1,search2;
+public class QueryPanel extends JPanel {
+	JLabel inputId, inputCity, edit;
+	JButton search1, search2;
 	JTextField id;
 	JComboBox<String> city_list;
 
@@ -32,17 +32,17 @@ public class QueryPanel extends JPanel{
 		inputId = new GAPLabel("请输入机构ID：");
 		inputCity = new GAPLabel("请选择城市：");
 		search1 = new JButton("搜索");
-		search2=new JButton("搜索");
+		search2 = new JButton("搜索");
 		id = new GAPTextField(7);
 		city_list = new GAPComboBox<String>();
 
 		// 初始化城市选择下拉框
-		
+
 		for (CityVO city : CityController.getAll()) {
 			city_list.addItem(city.getCityName());
 		}
-		
-		//布局
+
+		// 布局
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);

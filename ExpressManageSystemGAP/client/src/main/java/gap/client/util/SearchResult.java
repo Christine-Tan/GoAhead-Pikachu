@@ -5,8 +5,9 @@ public class SearchResult {
 	private String keyword;
 	private int[] matchIndex;
 	private int formerIndex = 0;
-	
-	public SearchResult(String name,String keyword,int[] matchIndex,int formerIndex){
+
+	public SearchResult(String name, String keyword, int[] matchIndex,
+			int formerIndex) {
 		this.originalString = name;
 		this.keyword = keyword;
 		this.matchIndex = matchIndex;
@@ -25,9 +26,8 @@ public class SearchResult {
 		return matchIndex;
 	}
 
-	public int getFormerIndex(){
+	public int getFormerIndex() {
 		return formerIndex;
 	}
-
 
 }

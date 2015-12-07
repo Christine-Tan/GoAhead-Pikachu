@@ -1,7 +1,5 @@
 package gap.client.vo;
 
-
-
 import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
 
@@ -9,11 +7,9 @@ import java.util.List;
 
 public class StockObVO {
 	private List<StockinOrderPO> inList;
-	
+
 	private List<StockoutOrderPO> outList;
-	
-	
-	
+
 	public StockObVO() {
 		super();
 	}
@@ -24,11 +20,11 @@ public class StockObVO {
 		this.outList = outList;
 	}
 
-	public int getInNum(){
+	public int getInNum() {
 		return this.inList.size();
 	}
-	
-	public int getOutNum(){
+
+	public int getOutNum() {
 		return this.outList.size();
 	}
 
@@ -39,9 +35,5 @@ public class StockObVO {
 	public void setOutList(List<StockoutOrderPO> outList) {
 		this.outList = outList;
 	}
-	
-	
-	
-	
-	
+
 }

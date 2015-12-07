@@ -4,7 +4,6 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 
 import java.awt.Color;
@@ -16,7 +15,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TitlePanel extends JPanel {

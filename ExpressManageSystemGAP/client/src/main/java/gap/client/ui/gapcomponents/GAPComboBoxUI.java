@@ -1,9 +1,5 @@
 package gap.client.ui.gapcomponents;
 
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.plaf.basic.BasicComboBoxUI;
 import javax.swing.plaf.basic.ComboPopup;

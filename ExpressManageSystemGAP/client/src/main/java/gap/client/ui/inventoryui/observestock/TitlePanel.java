@@ -24,10 +24,9 @@ public class TitlePanel extends JPanel {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
-		
 		id = new GAPLabel("编号");
-		order_id = new GAPLabel(orderName +"单编号");
-		inDate = new GAPLabel(orderName+"日期");
+		order_id = new GAPLabel(orderName + "单编号");
+		inDate = new GAPLabel(orderName + "日期");
 		amount = new GAPLabel("数量");
 
 		GridBagLayout gb = new GridBagLayout();

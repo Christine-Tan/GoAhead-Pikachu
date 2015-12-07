@@ -1,24 +1,19 @@
 package gap.common.po;
 
-
-
 import java.io.Serializable;
 import java.util.List;
 
 public class StockoutOrderPO implements Serializable {
-	//快递编号
+	// 快递编号
 	private List<String> expressorder_ids;
-	//出库日期，目标机构编号,中转单编号（单据编号）
+	// 出库日期，目标机构编号,中转单编号（单据编号）
 	private String outDate, target_ins, id;
-	//货运方式
+	// 货运方式
 	private String transport;
-	//所属中转中心id
+	// 所属中转中心id
 	private String ins_id;
 
 	// 出库日期，目标机构，货运方式，中转单编号或装车单编号(20位0~9数字)
-
-
-	
 
 	public List<String> getExpressorder_ids() {
 		return expressorder_ids;
@@ -55,7 +50,7 @@ public class StockoutOrderPO implements Serializable {
 	public void setOutDate(String outDate) {
 		this.outDate = outDate;
 	}
-	
+
 	public String getTarget_ins() {
 		return target_ins;
 	}
@@ -87,11 +82,9 @@ public class StockoutOrderPO implements Serializable {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
-	
-	public int getNum(){
+
+	public int getNum() {
 		return this.expressorder_ids.size();
 	}
-
-	
 
 }

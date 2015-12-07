@@ -3,37 +3,38 @@ package gap.client.vo;
 import gap.common.po.PricePO;
 
 public class PriceVO {
-	//经济：标准：特快的比例式
-   private int express,standard,economic;
-	//比例基准
+	// 经济：标准：特快的比例式
+	private int express, standard, economic;
+	// 比例基准
 	private double base;
-	//城市名
+	// 城市名
 	private String city;
-	
-	public PriceVO(){
-		
+
+	public PriceVO() {
+
 	}
 
-	public PriceVO(String city,int express, int standard,int economic, double base) {
+	public PriceVO(String city, int express, int standard, int economic,
+			double base) {
 		this.express = express;
-		this.standard=standard;
-		this.economic=economic;
+		this.standard = standard;
+		this.economic = economic;
 		this.base = base;
-		this.city=city;
+		this.city = city;
 	}
-  
-	public PriceVO(PricePO po){
-		this.express=po.getExpress();
-		this.standard=po.getStandard();
-		this.economic=po.getEconomic();
-		this.base=po.getBase();
-		this.city=po.getCity();
+
+	public PriceVO(PricePO po) {
+		this.express = po.getExpress();
+		this.standard = po.getStandard();
+		this.economic = po.getEconomic();
+		this.base = po.getBase();
+		this.city = po.getCity();
 	}
-     
-	public PricePO toPricePO(){
-		return new PricePO(city,express,standard,economic,base);
+
+	public PricePO toPricePO() {
+		return new PricePO(city, express, standard, economic, base);
 	}
-	
+
 	public int getExpress() {
 		return express;
 	}

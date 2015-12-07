@@ -1,6 +1,5 @@
 package gap.server.data.util;
 
-import static org.junit.Assert.*;
 import gap.common.util.Gender;
 
 import org.junit.Before;

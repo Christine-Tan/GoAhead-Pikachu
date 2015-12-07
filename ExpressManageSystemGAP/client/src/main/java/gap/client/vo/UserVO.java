@@ -29,8 +29,8 @@ public class UserVO {
 
 	}
 
-	public UserVO(String userId, String userName, String password, String name, UserType type, Gender gender,
-			String insName) {
+	public UserVO(String userId, String userName, String password, String name,
+			UserType type, Gender gender, String insName) {
 		super();
 		this.userId = userId;
 		this.type = type;
@@ -41,9 +41,11 @@ public class UserVO {
 		this.gender = gender;
 	}
 
-	public UserPO toUserPO(String ins_id){
-		return new UserPO (userId,userName,password,name,type,gender,ins_id);
+	public UserPO toUserPO(String ins_id) {
+		return new UserPO(userId, userName, password, name, type, gender,
+				ins_id);
 	}
+
 	public String getInsName() {
 		return insName;
 	}

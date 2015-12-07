@@ -1,15 +1,15 @@
 package gap.common.po;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.common.util.ResultMessage;
 import gap.common.util.SectorType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SectorFixedPO {
 	// 分区类型
 	public SectorType type;
-	
+
 	public String Stype;
 	// 警戒值，百分比
 	private double alarmVal;
@@ -28,18 +28,15 @@ public class SectorFixedPO {
 
 	// 一架中位置个数
 	private int units;
-	
-	//机动区分配给的大小
+
+	// 机动区分配给的大小
 	private int addedsize;
 
 	// 快递list
 	private ArrayList<GoodsPO> goodsList;
-	
-	//分区编号
-	private String id;
 
-	
-	
+	// 分区编号
+	private String id;
 
 	public SectorFixedPO(SectorType type, double alarmVal, int maxCapacity,
 			double used, int rows, int shelves, int units, int addedsize,
@@ -189,8 +186,8 @@ public class SectorFixedPO {
 	public void setAddedsize(int addedsize) {
 		this.addedsize = addedsize;
 	}
-	
-	public int getNum(){
+
+	public int getNum() {
 		return this.goodsList.size();
 	}
 
@@ -201,7 +198,5 @@ public class SectorFixedPO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
-	
+
 }

@@ -1,6 +1,10 @@
 package gap.server.data.strategydata;
 
-import static org.junit.Assert.*;
+import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.strategydataservice.RentDataService;
+import gap.common.netconfig.RMIConfig;
+import gap.common.po.RentPO;
+import gap.server.initial.NetInitial;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -11,12 +15,6 @@ import java.sql.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.strategydataservice.RentDataService;
-import gap.common.netconfig.RMIConfig;
-import gap.common.po.RentPO;
-import gap.server.initial.NetInitial;
-
 public class RentDataServiceImplTest {
 	@Before
 	public void setup() throws Exception {
@@ -24,8 +22,10 @@ public class RentDataServiceImplTest {
 	}
 
 	@Test
-	public void test() throws RemoteException, MalformedURLException, NotBoundException {
-		RentDataService rentdata = (RentDataService) Naming.lookup(RMIConfig.url + ServiceName.RENT_DATA_SERVICE);
+	public void test() throws RemoteException, MalformedURLException,
+			NotBoundException {
+		RentDataService rentdata = (RentDataService) Naming
+				.lookup(RMIConfig.url + ServiceName.RENT_DATA_SERVICE);
 		Date date = new Date(System.currentTimeMillis());
 		RentPO po1 = new RentPO("南京市栖霞区营业厅", 1000, date);
 		RentPO po2 = new RentPO("南京市玄武区中转中心", 1000, date);

@@ -8,6 +8,7 @@ import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
 import gap.common.util.ReceiveInfo;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

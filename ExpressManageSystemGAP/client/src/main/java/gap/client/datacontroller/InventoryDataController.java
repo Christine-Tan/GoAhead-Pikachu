@@ -1,40 +1,21 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.inventorydataservice.InventoryDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.inventorydataservice;
 import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
 public class InventoryDataController {
-	InventoryDataService inventory;
 
 	protected InventoryDataController() {
-		try {
-			inventory = (InventoryDataService) Naming.lookup(RMIConfig.url
-					+ ServiceName.INVENTORY_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public ResultMessage add(GoodsPO goodsPO) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.add(goodsPO);
+			return inventorydataservice.add(goodsPO);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
@@ -45,7 +26,7 @@ public class InventoryDataController {
 	public ResultMessage add(List<GoodsPO> goodsPOs) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.add(goodsPOs);
+			return inventorydataservice.add(goodsPOs);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +36,7 @@ public class InventoryDataController {
 	public ResultMessage delete(String goods_id) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.delete(goods_id);
+			return inventorydataservice.delete(goods_id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +46,7 @@ public class InventoryDataController {
 	public ResultMessage delete(List<String> goods_ids) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.delete(goods_ids);
+			return inventorydataservice.delete(goods_ids);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -75,7 +56,7 @@ public class InventoryDataController {
 	public ResultMessage modify(GoodsPO goods) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.modify(goods);
+			return inventorydataservice.modify(goods);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -85,7 +66,7 @@ public class InventoryDataController {
 	public ResultMessage modify(List<GoodsPO> goodsPOs) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.modify(goodsPOs);
+			return inventorydataservice.modify(goodsPOs);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -95,33 +76,43 @@ public class InventoryDataController {
 	public GoodsPO find(String goods_id) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.find(goods_id);
+			return inventorydataservice.find(goods_id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 
-	public List<GoodsPO> getOneSector(String sector_id,String ins_id) {
+	public List<GoodsPO> getOneSector(String sector_id, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.getOneSector(sector_id, ins_id);
+			return inventorydataservice.getOneSector(sector_id, ins_id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public int getOneSectorNum(String sector_id, String ins_id) {
+		try {
+			return inventorydataservice.getOneSectorNum(sector_id, ins_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
 	}
 
 	/*
 	 * public List<GoodsPO> getAll() { // TODO Auto-generated method stub try{
-	 * return inventory.getAll(); }catch(RemoteException e){
+	 * return inventorydataservice.getAll(); }catch(RemoteException e){
 	 * e.printStackTrace(); } return null; }
 	 */
 
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
-			return inventory.setAlarm(alarmValue, ins_id);
+			return inventorydataservice.setAlarm(alarmValue, ins_id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -130,24 +121,23 @@ public class InventoryDataController {
 
 	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
-//		System.out.println("dataController");
+		// System.out.println("dataController");
 		try {
-			return inventory.getAlarm(ins_id);
+			return inventorydataservice.getAlarm(ins_id);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		return 0;
 	}
-	
-	public List<GoodsPO> getOneTypeInFlex(String ins_id,String belong_sec_id){
+
+	public List<GoodsPO> getOneTypeInFlex(String ins_id, String belong_sec_id) {
 		try {
-			return inventory.getOneTypeInFlex(ins_id, belong_sec_id);
+			return inventorydataservice.getOneTypeInFlex(ins_id, belong_sec_id);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
 
 }

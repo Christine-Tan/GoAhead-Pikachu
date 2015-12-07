@@ -30,27 +30,23 @@ public class FlexSectorDataController {
 
 	}
 
-	
 	public ResultMessage add(String beginShelf, String endShelf, String type,
 			String ins_id) {
 		// TODO Auto-generated method stub
 		return flexSectorData.add(beginShelf, endShelf, type, ins_id);
 	}
 
-	
 	public ResultMessage delete(String beginShelf, String endShelf,
 			String ins_id) {
 		// TODO Auto-generated method stub
 		return flexSectorData.delete(beginShelf, endShelf, ins_id);
 	}
 
-	
 	public ResultMessage modify(String beginShelf, String endShelf,
 			String type, String ins_id) {
 		// TODO Auto-generated method stub
 		return flexSectorData.modify(beginShelf, endShelf, type, ins_id);
 	}
-
 
 	public String getBelongSecId(String beginShelf, String endShelf,
 			String ins_id) {
@@ -58,7 +54,6 @@ public class FlexSectorDataController {
 		return flexSectorData.getBelongSecId(beginShelf, endShelf, ins_id);
 	}
 
-	
 	public String isUsed(String beginShelf, String endShelf, String ins_id) {
 		// TODO Auto-generated method stub
 		return flexSectorData.isUsed(beginShelf, endShelf, ins_id);

@@ -33,18 +33,15 @@ public class TitlePanel extends JPanel {
 		destination = new GAPLabel("目的地");
 		sector = new GAPLabel("分区");
 		location = new GAPLabel("存放位置");
-		
-		
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		
-		
+
 		gcons.anchor = GridBagConstraints.CENTER;
 		gcons.insets = new Insets(0, 1, 0, 19);
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
-		
+
 		gcons.anchor = GridBagConstraints.CENTER;
 		gcons.insets = new Insets(0, -40, 0, 60);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);

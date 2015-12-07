@@ -1,22 +1,20 @@
 package gap.client.ui.managerui.priceui;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import gap.client.blcontroller.PriceController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.managerui.institutionui.InstitutionPanel;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  * 
@@ -56,10 +54,12 @@ public class PricePanel extends MainPanel {
 
 		JPanel jp = new JPanel();
 		jp.setOpaque(false);
-		SwingConsole.addComponent(gb, gcons, this, titlePanel, 0, 0, 1, 1, 1, 0);
+		SwingConsole
+				.addComponent(gb, gcons, this, titlePanel, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, listItem, 0, 1, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, jp, 0, 2, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1,0);
+		SwingConsole
+				.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
 	}
 
 	public static void main(String[] args) {

@@ -12,10 +12,11 @@ import java.rmi.RemoteException;
 
 public class WareHouseDataController {
 	WareHouseDataService wareHouse;
-	
-	protected WareHouseDataController(){
+
+	protected WareHouseDataController() {
 		try {
-			wareHouse = (WareHouseDataService)Naming.lookup(RMIConfig.url+ServiceName.WAREHOUSE_DATA_SERVICE);
+			wareHouse = (WareHouseDataService) Naming.lookup(RMIConfig.url
+					+ ServiceName.WAREHOUSE_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,8 +29,7 @@ public class WareHouseDataController {
 		}
 	}
 
-	
-	public ResultMessage add(String ins_id, String sector_id){
+	public ResultMessage add(String ins_id, String sector_id) {
 		// TODO Auto-generated method stub
 		try {
 			wareHouse.add(ins_id, sector_id);
@@ -40,8 +40,7 @@ public class WareHouseDataController {
 		return null;
 	}
 
-	
-	public ResultMessage delete(String ins_id){
+	public ResultMessage delete(String ins_id) {
 		// TODO Auto-generated method stub
 		try {
 			wareHouse.delete(ins_id);

@@ -7,7 +7,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 public class SwingConsole {
-	private SwingConsole() {}
+	private SwingConsole() {
+	}
 
 	public static void addComponent(GridBagLayout gb, GridBagConstraints gcons,
 			JPanel pa, Component com, int x, int y, int w, int h, double wx,

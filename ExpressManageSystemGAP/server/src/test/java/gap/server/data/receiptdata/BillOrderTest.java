@@ -1,7 +1,9 @@
 package gap.server.data.receiptdata;
 
-import static org.junit.Assert.*;
-
+import gap.common.dataservice.receiptdataservice.BillOrderDataService;
+import gap.common.po.BillOrderPO;
+import gap.common.util.OrderState;
+import gap.server.initial.NetInitial;
 
 import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
@@ -12,29 +14,24 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import gap.common.dataservice.receiptdataservice.BillOrderDataService;
-import gap.common.po.BillOrderPO;
-import gap.common.util.OrderState;
-import gap.server.initial.NetInitial;
-
 public class BillOrderTest {
 	BillOrderDataService billOrderData;
 	Calendar start;
 	Calendar end;
-	
-	
+
 	@Before
 	public void setUp() throws Exception {
 		NetInitial.initial();
 		billOrderData = BillOrderDataServiceImpl.getInstance();
-		
+
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		String startString = "2015-11-24";
 		String endString = "2015-11-26";
-		
+
 		start = Calendar.getInstance();
-		start.setTime(format.parse(startString));;
-		
+		start.setTime(format.parse(startString));
+		;
+
 		end = Calendar.getInstance();
 		end.setTime(format.parse(endString));
 	}
@@ -57,7 +54,7 @@ public class BillOrderTest {
 		System.out.println(orders);
 		orders = billOrderData.getPassedOrder(null, "0010001");
 		System.out.println(orders);
-		
+
 	}
 
 	@Test

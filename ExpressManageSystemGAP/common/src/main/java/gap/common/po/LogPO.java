@@ -1,7 +1,6 @@
 package gap.common.po;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class LogPO implements Serializable {
 

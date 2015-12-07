@@ -1,6 +1,7 @@
 package gap.server.data.util;
 
-import static org.junit.Assert.*;
+import gap.common.po.AccountPO;
+import gap.server.initial.NetInitial;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,18 +11,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import gap.common.po.AccountPO;
-import gap.server.initial.NetInitial;
-
 public class ListMakerTest {
 	ListMaker<AccountPO> accountMaker;
 
-	private ListMakerTest(){};
+	private ListMakerTest() {
+	};
+
 	@Before
 	public void setUp() throws Exception {
 		NetInitial.initial();
 		accountMaker = new ListMaker<AccountPO>() {
-			
+
 			@Override
 			public AccountPO getPO(ResultSet resultSet) {
 				// TODO Auto-generated method stub
@@ -34,7 +34,7 @@ public class ListMakerTest {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
 				return new AccountPO(name, balance);
 			}
 		};
@@ -48,7 +48,7 @@ public class ListMakerTest {
 	public void testGetListString() {
 		ArrayList<AccountPO> accountPOs = accountMaker.getList("Account");
 		System.out.println();
-		
+
 	}
 
 }

@@ -34,15 +34,15 @@ public class StockinOrder implements StockinOrderService {
 		// TODO Auto-generated method stub
 		String date = order.getInDate().replaceAll("-", "");
 		String pre = LocalInfo.ins_id + date;
-//		String id = "" + loadDataController.nextId(LocalInfo.ins_id + date);
-//		while (id.length() < 5)
-//			id = "0" + id;
-//		order.order_id = pre + id;
+		// String id = "" + loadDataController.nextId(LocalInfo.ins_id + date);
+		// while (id.length() < 5)
+		// id = "0" + id;
+		// order.order_id = pre + id;
 		return stockinData.add(order.toPO());
 	}
 
 	@Override
-	public StockinOrderVO find(String id,String ins_id) {
+	public StockinOrderVO find(String id, String ins_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -63,7 +63,8 @@ public class StockinOrder implements StockinOrderService {
 	public List<StockinOrderVO> getRequired(String beginDate, String endDate,
 			String ins_id) {
 		// TODO Auto-generated method stub
-		List<StockinOrderPO> list = stockinData.getRequired(beginDate, endDate, ins_id);
+		List<StockinOrderPO> list = stockinData.getRequired(beginDate, endDate,
+				ins_id);
 		return StockinOrderVO.toVOList(list);
 	}
 
@@ -71,11 +72,10 @@ public class StockinOrder implements StockinOrderService {
 	public int getTotalNum(List<StockinOrderVO> list) {
 		// TODO Auto-generated method stub
 		int num = 0;
-		for(StockinOrderVO vo:list){
+		for (StockinOrderVO vo : list) {
 			num += vo.getNum();
 		}
 		return num;
 	}
-
 
 }

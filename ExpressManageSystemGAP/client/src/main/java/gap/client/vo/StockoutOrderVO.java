@@ -3,6 +3,7 @@ package gap.client.vo;
 import gap.common.po.StockoutOrderPO;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StockoutOrderVO implements Serializable {
@@ -16,7 +17,6 @@ public class StockoutOrderVO implements Serializable {
 	private String ins_id;
 
 	// 出库日期，目标机构，货运方式，中转单编号或装车单编号(20位0~9数字)
-	
 
 	public StockoutOrderVO(List<String> expressorder_ids, String outDate,
 			String target_ins, String id, String transport, String ins_id) {
@@ -28,11 +28,11 @@ public class StockoutOrderVO implements Serializable {
 		this.transport = transport;
 		this.ins_id = ins_id;
 	}
-	
+
 	public StockoutOrderVO() {
 		super();
 	}
-	
+
 	public StockoutOrderVO(StockoutOrderPO po) {
 		this.expressorder_ids = po.getExpressorder_ids();
 		this.outDate = po.getOutDate();
@@ -98,16 +98,25 @@ public class StockoutOrderVO implements Serializable {
 	public void setIns_id(String ins_id) {
 		this.ins_id = ins_id;
 	}
-	
-	public int getNum(){
+
+	public int getNum() {
 		return expressorder_ids.size();
 	}
-	
-	public StockoutOrderPO toPO(){
-		StockoutOrderPO po = new StockoutOrderPO(expressorder_ids, outDate, target_ins, id, transport, ins_id);
+
+	public StockoutOrderPO toPO() {
+		StockoutOrderPO po = new StockoutOrderPO(expressorder_ids, outDate,
+				target_ins, id, transport, ins_id);
 		return po;
-		
-		
+	}
+
+	public static List<StockoutOrderVO> toVOList(List<StockoutOrderPO> list) {
+		// TODO Auto-generated method stub
+		List<StockoutOrderVO> voList = new ArrayList<StockoutOrderVO>();
+		for (StockoutOrderPO po : list) {
+			StockoutOrderVO vo = new StockoutOrderVO(po);
+			voList.add(vo);
+		}
+		return voList;
 	}
 
 }

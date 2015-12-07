@@ -16,32 +16,34 @@ import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AlarmValueUI extends JPanel{
+public class AlarmValueUI extends JPanel {
 	public JTextField alarmValue;
-//	public JScrollPane scroller;
-	
-	public AlarmValueUI(){
+
+	// public JScrollPane scroller;
+
+	public AlarmValueUI() {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH,120));
-		
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 120));
+
 		alarmValue = new JTextField(10);
 		alarmValue.setBorder(ComponentStyle.text_border);
 		alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
 		alarmValue.setHorizontalAlignment(JTextField.CENTER);
 		alarmValue.setForeground(ComponentStyle.gray);
 		System.out.println(LocalInfo.getIns_ID());
-		
+
 		double value = InventoryController.getAlarmValue(LocalInfo.getIns_ID());
-		alarmValue.setText(value+"%");
-		
+		alarmValue.setText(value + "%");
+
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets=new Insets(10, 10, 10, 10);
-		SwingConsole.addComponent(gb, gcons, this, alarmValue, 0, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(10, 10, 10, 10);
+		SwingConsole
+				.addComponent(gb, gcons, this, alarmValue, 0, 0, 1, 1, 1, 0);
 	}
-	
-	public double getAlarmValue(){
+
+	public double getAlarmValue() {
 		String newValue = alarmValue.getText();
 		newValue = newValue.split("%")[0];
 		return Double.parseDouble(newValue);

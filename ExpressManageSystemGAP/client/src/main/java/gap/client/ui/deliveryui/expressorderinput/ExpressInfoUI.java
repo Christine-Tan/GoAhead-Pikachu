@@ -47,7 +47,7 @@ public class ExpressInfoUI extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, type_list, 2, 0, 1, 1, 0, 0);
 	}
 
-	//获得快递类型
+	// 获得快递类型
 	public ExpressType getType() {
 		switch ((String) type_list.getSelectedItem()) {
 		case "特快":

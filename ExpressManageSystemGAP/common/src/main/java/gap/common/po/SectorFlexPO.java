@@ -1,12 +1,12 @@
 package gap.common.po;
 
-import java.util.ArrayList;
-
 import gap.common.util.SectorType;
+
+import java.util.ArrayList;
 
 public class SectorFlexPO {
 	final public SectorType type = SectorType.FLEX;
-	
+
 	public String Stype;
 	// 警戒值，百分比
 	private double alarmVal;
@@ -25,31 +25,28 @@ public class SectorFlexPO {
 
 	// 一架中位置个数
 	private int units;
-	
-	//分配给航运区的架数
+
+	// 分配给航运区的架数
 	private int pshelves;
-	
-	//分配给铁运区的架数
+
+	// 分配给铁运区的架数
 	private int tshelves;
-	
-	//分配给汽运区的架数
+
+	// 分配给汽运区的架数
 	private int cshelves;
-	
-	//各架分配情况
+
+	// 各架分配情况
 	private SectorType[][] usedState;
-	
-	//分配给航运区的区域中存放的快递
+
+	// 分配给航运区的区域中存放的快递
 	private ArrayList<GoodsPO> toPlane;
-	//分配给铁运区的区域中存放的快递
+	// 分配给铁运区的区域中存放的快递
 	private ArrayList<GoodsPO> toTrain;
-	//分配给汽运区的区域中存放的快递
+	// 分配给汽运区的区域中存放的快递
 	private ArrayList<GoodsPO> toCar;
-	
-	//分区编号
+
+	// 分区编号
 	private String id;
-	
-	
-	
 
 	public double getAlarmVal() {
 		return alarmVal;
@@ -154,22 +151,22 @@ public class SectorFlexPO {
 	public void setToCar(ArrayList<GoodsPO> toCar) {
 		this.toCar = toCar;
 	}
-	
-	//获得快递数量
-	public int getCarNum(){
+
+	// 获得快递数量
+	public int getCarNum() {
 		return this.toCar.size();
 	}
-	
-	public int getPlaneNum(){
+
+	public int getPlaneNum() {
 		return this.toPlane.size();
 	}
-	
-	public int getTrainNum(){
+
+	public int getTrainNum() {
 		return this.toTrain.size();
 	}
-	
-	public int getNum(){
-		return getCarNum()+getPlaneNum()+getTrainNum();
+
+	public int getNum() {
+		return getCarNum() + getPlaneNum() + getTrainNum();
 	}
 
 	public String getId() {
@@ -183,8 +180,5 @@ public class SectorFlexPO {
 	public SectorType getType() {
 		return type;
 	}
-	
-	
-	
-	
+
 }

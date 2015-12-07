@@ -8,6 +8,7 @@ public class RentVO {
 
 	private double money;
 	private String institution;
+
 	public RentVO() {
 
 	}
@@ -21,11 +22,12 @@ public class RentVO {
 		this.setMoney(money);
 		this.setInstitution(institution);
 	}
-   
-	public RentPO toRentPO(){
-		return new RentPO(institution,money,new Date(System.currentTimeMillis()));
+
+	public RentPO toRentPO() {
+		return new RentPO(institution, money, new Date(
+				System.currentTimeMillis()));
 	}
-	
+
 	public double getMoney() {
 		return money;
 	}

@@ -1,19 +1,19 @@
 package gap.common.po;
 
+import gap.common.ListInterface.Receipt;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import gap.common.ListInterface.Receipt;
-
-
-public class PaymentListPO implements Receipt{
+public class PaymentListPO implements Receipt {
 	public ArrayList<PayeePO> paymentList;
 	private String paymentID;
 	private Calendar payDate;
 	private String payer;
 	private double total = 0;
-	
-	public PaymentListPO(String ID,String payer,double total,Calendar calendar){
+
+	public PaymentListPO(String ID, String payer, double total,
+			Calendar calendar) {
 		setPaymentID(ID);
 		this.setPayer(payer);
 		this.setTotal(total);
@@ -21,7 +21,7 @@ public class PaymentListPO implements Receipt{
 		paymentList = new ArrayList<>();
 	}
 
-	public Calendar getDate() {	
+	public Calendar getDate() {
 		return payDate;
 	}
 
@@ -37,25 +37,17 @@ public class PaymentListPO implements Receipt{
 		this.paymentID = paymentID;
 	}
 
-
-
 	public String getPayer() {
 		return payer;
 	}
-
-
 
 	public void setPayer(String payer) {
 		this.payer = payer;
 	}
 
-
-
 	public double getTotal() {
 		return total;
 	}
-
-
 
 	public void setTotal(double total) {
 		this.total = total;

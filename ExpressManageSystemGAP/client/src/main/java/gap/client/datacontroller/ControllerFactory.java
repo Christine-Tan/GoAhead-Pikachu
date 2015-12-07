@@ -30,9 +30,9 @@ public class ControllerFactory {
 		}
 		return accountDateController;
 	}
-	
-	public static AccountorReceiptDataController getReceiptDataController(){
-		if(receiptDataController==null){
+
+	public static AccountorReceiptDataController getReceiptDataController() {
+		if (receiptDataController == null) {
 			receiptDataController = new AccountorReceiptDataController();
 		}
 		return receiptDataController;
@@ -151,9 +151,9 @@ public class ControllerFactory {
 			flexSectorDataController = new FlexSectorDataController();
 		return flexSectorDataController;
 	}
-	
-	public static TableDataController getTableDataController(){
-		if(tableDataController == null){
+
+	public static TableDataController getTableDataController() {
+		if (tableDataController == null) {
 			tableDataController = new TableDataController();
 		}
 		return tableDataController;

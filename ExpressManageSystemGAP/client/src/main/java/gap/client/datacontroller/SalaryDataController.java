@@ -1,39 +1,21 @@
 package gap.client.datacontroller;
 
-import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.strategydataservice.SalaryDataService;
-import gap.common.netconfig.RMIConfig;
+import static gap.client.datacontroller.NetModule.salarydataservice;
 import gap.common.po.SalaryPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
 public class SalaryDataController {
-	SalaryDataService salaryData;
 
 	protected SalaryDataController() {
-		try {
-			salaryData = (SalaryDataService) Naming.lookup(RMIConfig.url + ServiceName.SALARY_DATA_SERVICE);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	public SalaryPO find(UserType type) {
 		try {
-			return salaryData.find(type);
+			return salarydataservice.find(type);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +25,7 @@ public class SalaryDataController {
 
 	public ResultMessage add(SalaryPO po) {
 		try {
-			return salaryData.add(po);
+			return salarydataservice.add(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -53,7 +35,7 @@ public class SalaryDataController {
 
 	public ResultMessage modify(SalaryPO po) {
 		try {
-			return salaryData.modify(po);
+			return salarydataservice.modify(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,7 +45,7 @@ public class SalaryDataController {
 
 	public List<SalaryPO> getAll() {
 		try {
-			return salaryData.getAll();
+			return salarydataservice.getAll();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

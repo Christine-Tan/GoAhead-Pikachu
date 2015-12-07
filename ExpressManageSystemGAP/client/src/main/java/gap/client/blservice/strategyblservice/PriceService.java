@@ -10,7 +10,7 @@ public interface PriceService {
 	public void modifyPrice(PriceVO vo);
 
 	public PriceVO getPrice(String city);
-	
+
 	public void addPrice(PriceVO vo);
-	
+
 }

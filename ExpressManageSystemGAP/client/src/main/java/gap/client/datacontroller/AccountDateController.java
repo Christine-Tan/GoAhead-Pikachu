@@ -1,5 +1,6 @@
 package gap.client.datacontroller;
 
+import static gap.client.datacontroller.NetModule.accountDataService;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.netconfig.RMIConfig;
@@ -14,12 +15,12 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class AccountDateController {
-	AccountDataService accountDataService;
-	
-	protected AccountDateController(){
-		
+
+	protected AccountDateController() {
+
 		try {
-			accountDataService = (AccountDataService) Naming.lookup(RMIConfig.url+ServiceName.ACCOUNT_DATA_SERVICE);
+			accountDataService = (AccountDataService) Naming
+					.lookup(RMIConfig.url + ServiceName.ACCOUNT_DATA_SERVICE);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,9 +31,9 @@ public class AccountDateController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public ResultMessage addAccount(AccountPO accountPO) {
 		try {
 			accountDataService.add(accountPO);
@@ -41,12 +42,12 @@ public class AccountDateController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResultMessage.FAILED;
-		
+
 		}
 	}
-	
-	public ResultMessage deleteAccount(AccountPO accountPO){
-		
+
+	public ResultMessage deleteAccount(AccountPO accountPO) {
+
 		try {
 			accountDataService.delete(accountPO);
 			return ResultMessage.SUCCEED;
@@ -56,9 +57,9 @@ public class AccountDateController {
 			return ResultMessage.FAILED;
 		}
 	}
-	
-	public ResultMessage modifyAccount(AccountPO accountPO){
-		
+
+	public ResultMessage modifyAccount(AccountPO accountPO) {
+
 		try {
 			accountDataService.modify(accountPO);
 			return ResultMessage.SUCCEED;
@@ -68,9 +69,9 @@ public class AccountDateController {
 			return ResultMessage.FAILED;
 		}
 	}
-	
-	public ArrayList<AccountPO> getAccountList(){
-		
+
+	public ArrayList<AccountPO> getAccountList() {
+
 		try {
 			return accountDataService.getAccountList();
 		} catch (RemoteException e) {
@@ -79,8 +80,8 @@ public class AccountDateController {
 			return null;
 		}
 	}
-	
-	public ArrayList<Cost_profitPO> getProfitList(){
+
+	public ArrayList<Cost_profitPO> getProfitList() {
 		try {
 			return accountDataService.getCost_Profit();
 		} catch (RemoteException e) {
@@ -89,7 +90,5 @@ public class AccountDateController {
 			return null;
 		}
 	}
-	
-	
-	
+
 }

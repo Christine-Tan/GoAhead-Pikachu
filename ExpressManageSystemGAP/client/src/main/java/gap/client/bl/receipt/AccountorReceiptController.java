@@ -1,5 +1,7 @@
 package gap.client.bl.receipt;
 
+import gap.client.blservice.accountorReceiptblservice.AccountorReceiptService;
+import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.PayeeVO;
@@ -7,45 +9,44 @@ import gap.client.vo.PaymentListVO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.PaymentListPO;
 import gap.common.util.ResultMessage;
+
 import java.util.Calendar;
 import java.util.List;
-import gap.client.blservice.accountorReceiptblservice.AccountorReceiptService;
-import gap.client.datacontroller.AccountorReceiptDataController;
-
 
 /**
  * 和财务人员相关的收付款单的逻辑层接口，支持的需求有：制定付款单，处理收款单、付款单，按天按营业厅查收款单。
  * @author 申彬
  *
  */
-public class AccountorReceiptController implements AccountorReceiptService{
+public class AccountorReceiptController implements AccountorReceiptService {
 
-	AccountorReceiptDataController receiptDateController = null;
-	private static AccountorReceiptController receiptController =null;
+	AccountorReceiptDataController receiptDataController = null;
+	private static AccountorReceiptController receiptController = null;
 	PaymentList paymentList;
-	
-	public AccountorReceiptController getInstance(){
-		if(receiptController==null){
+
+	public AccountorReceiptController getInstance() {
+		if (receiptController == null) {
 			receiptController = new AccountorReceiptController();
 		}
 		return receiptController;
 	}
-	
-	private AccountorReceiptController(){
-		receiptDateController = ControllerFactory.getReceiptDataController();
-		paymentList = new PaymentList(receiptDateController);
+
+	private AccountorReceiptController() {
+		receiptDataController = ControllerFactory.getReceiptDataController();
+		paymentList = new PaymentList(receiptDataController);
 	}
 
 	@Override
 	public PaymentListVO getPaymentList() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return paymentList.creatPaymentList();
 	}
 
 	@Override
 	public ResultMessage submitPaymentList(PaymentListVO paymentListVO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		PaymentListPO po = paymentListVO.toPO();
+		return receiptDataController.submitPayment(po);
 	}
 
 	@Override
@@ -56,30 +57,31 @@ public class AccountorReceiptController implements AccountorReceiptService{
 
 	@Override
 	public ResultMessage addPayee(PayeeVO payeeVO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return paymentList.addPayee(payeeVO);
 	}
 
 	@Override
 	public ResultMessage deletePayee(PayeeVO payeeVO) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return paymentList.deletePayee(payeeVO);
 	}
 
 	@Override
 	public ResultMessage modifyPayee(PayeeVO payeeVO) {
+
+		return paymentList.modifyPayee(payeeVO);
+	}
+
+	@Override
+	public ResultMessage paymentExcel(PaymentListVO paymentListVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResultMessage paymetnExcel(PaymentListVO paymentListVO) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<BillOrderVO> getBillOrderByDateOrIns(Calendar oneDay, String insitituteID) {
+	public List<BillOrderVO> getBillOrderByDateOrIns(Calendar oneDay,
+			String insitituteID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -89,8 +91,5 @@ public class AccountorReceiptController implements AccountorReceiptService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
-
 
 }

@@ -1,10 +1,11 @@
 package gap.common.dataservice.strategydataservice;
 
+import gap.common.po.RentPO;
+import gap.common.util.ResultMessage;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
-import gap.common.po.RentPO;
-import gap.common.util.ResultMessage;
 
 public interface RentDataService extends Remote {
 

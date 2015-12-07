@@ -26,8 +26,8 @@ import javax.swing.JTextField;
  *
  */
 public class QueryPanel extends JPanel {
-	JLabel inputId, inputCity,edit;
-	JButton search1,search2;
+	JLabel inputId, inputCity, edit;
+	JButton search1, search2;
 	JTextField id;
 	JComboBox<String> city_list;
 
@@ -37,17 +37,17 @@ public class QueryPanel extends JPanel {
 		inputId = new GAPLabel("请输入机构ID：");
 		inputCity = new GAPLabel("请选择城市：");
 		search1 = new JButton("搜索");
-		search2=new JButton("搜索");
+		search2 = new JButton("搜索");
 		id = new GAPTextField(7);
 		city_list = new GAPComboBox<String>();
 
 		// 初始化城市选择下拉框
-		
+
 		for (CityVO city : CityController.getAll()) {
 			city_list.addItem(city.getCityName());
 		}
-		
-		//布局
+
+		// 布局
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);

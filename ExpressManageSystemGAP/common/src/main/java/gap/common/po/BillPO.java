@@ -1,7 +1,6 @@
 package gap.common.po;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class BillPO implements Serializable {
 

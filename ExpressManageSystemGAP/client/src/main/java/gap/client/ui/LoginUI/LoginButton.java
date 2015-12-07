@@ -1,4 +1,5 @@
 package gap.client.ui.LoginUI;
+
 import gap.client.ui.UITools.AreaMaker;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
@@ -15,24 +16,25 @@ import java.awt.geom.Area;
 
 import javax.swing.JLabel;
 
-
-
-public class LoginButton extends JLabel{
+public class LoginButton extends JLabel {
 
 	Color currentColor = ColorAndFonts.darkBlue;
 	Font font = ColorAndFonts.Chinese;
 	Area area;
 	String text;
 	Mylistener mylistener;
-	
-	public LoginButton(String type){
-		switch(type){
-			case "signIn": text = "登录"; break;
-			case "goBack": text = "返回"; break;
+
+	public LoginButton(String type) {
+		switch (type) {
+		case "signIn":
+			text = "登录";
+			break;
+		case "goBack":
+			text = "返回";
+			break;
 		}
-		
-		
-		setSize(200,35);
+
+		setSize(200, 35);
 		setForeground(Color.white);
 		setOpaque(false);
 		setHorizontalAlignment(JLabel.CENTER);
@@ -45,27 +47,26 @@ public class LoginButton extends JLabel{
 		addMouseListener(mylistener);
 		addKeyListener(mylistener);
 	}
-	
-	public void enterPressed(KeyEvent e){
+
+	public void enterPressed(KeyEvent e) {
 		mylistener.keyPressed(e);
 	}
-	
-	public void enterReleased(KeyEvent e){
+
+	public void enterReleased(KeyEvent e) {
 		mylistener.keyReleased(e);
 	}
-	
-	public void paintComponent(Graphics g){
-		//�?特效
+
+	public void paintComponent(Graphics g) {
+		// �?特效
 		Graphics2D g2d = RenderSetter.OpenRender(g);
-		
+
 		g2d.setColor(currentColor);
 		g2d.fill(area);
 		super.paintComponent(g2d);
-		
+
 	}
-	
-	
-	class Mylistener implements MouseListener,KeyListener{
+
+	class Mylistener implements MouseListener, KeyListener {
 
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
@@ -98,30 +99,26 @@ public class LoginButton extends JLabel{
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-	
-			if(e.getKeyCode()==KeyEvent.VK_ENTER)
-			{
+
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 				mouseEntered(null);
-				mouseClicked(null);		
+				mouseClicked(null);
 			}
 		}
 
 		@Override
 		public void keyReleased(KeyEvent e) {
-			if(e.getKeyCode()==KeyEvent.VK_ENTER)
-			{
-				mouseExited(null);		
+			if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+				mouseExited(null);
 			}
 		}
 
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
-		
-		
+
 	}
-	
+
 }

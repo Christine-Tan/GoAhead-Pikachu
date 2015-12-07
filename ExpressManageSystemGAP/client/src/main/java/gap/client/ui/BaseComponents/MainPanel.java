@@ -16,7 +16,7 @@ public class MainPanel extends JPanel {
 	public MainPanel(MainFrame frame) {
 		mainFrame = frame;
 		setBackground(Color.white);
-//		setFocusable(false);
+		// setFocusable(false);
 	}
 
 	public JScrollPane getJsPanel() {

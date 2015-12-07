@@ -121,11 +121,11 @@ public class ListItemPanel extends JPanel {
 
 		public ItemPanel(int id) {
 			setBackground(Color.WHITE);
-			setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
+			setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
 			this.id = new GAPLabel(String.valueOf(id));
-//			this.id.setBackground(Color.red);
-			this.id.setPreferredSize(new Dimension(80,30));
+			// this.id.setBackground(Color.red);
+			this.id.setPreferredSize(new Dimension(80, 30));
 			this.id.setHorizontalAlignment(JLabel.RIGHT);
 			delete = new GAPButton("x");
 			delete.setFont(ComponentStyle.defaultFont);
@@ -168,14 +168,14 @@ public class ListItemPanel extends JPanel {
 			destination.setText("南京市栖霞区");
 			inDate = new GAPTextField(8);
 			inDate.setText("2015-12-04");
-//			receiver_date.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
+			// receiver_date.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
 			location = new GAPTextField(7);
 			location.setText("A排A架1位");
 
 			GridBagLayout gb = new GridBagLayout();
 			GridBagConstraints gcons = new GridBagConstraints();
 			setLayout(gb);
-			
+
 			gcons.anchor = GridBagConstraints.CENTER;
 			gcons.insets = new Insets(0, 5, 0, 15);
 			SwingConsole.addComponent(gb, gcons, this, this.id, 0, 0, 1, 1, 1,
@@ -184,10 +184,10 @@ public class ListItemPanel extends JPanel {
 			gcons.insets = new Insets(0, 10, 0, 10);
 			SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 1,
 					0);
-			SwingConsole.addComponent(gb, gcons, this, destination, 2, 0, 1, 1, 1,
-					0);
-			SwingConsole.addComponent(gb, gcons, this, inDate, 3, 0, 1,
-					1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, destination, 2, 0, 1, 1,
+					1, 0);
+			SwingConsole
+					.addComponent(gb, gcons, this, inDate, 3, 0, 1, 1, 1, 0);
 			SwingConsole.addComponent(gb, gcons, this, location, 4, 0, 1, 1, 1,
 					0);
 			gcons.anchor = GridBagConstraints.WEST;

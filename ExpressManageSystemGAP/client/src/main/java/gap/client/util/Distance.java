@@ -16,12 +16,14 @@ public class Distance {
 	 * @param longitude2
 	 * @return
 	 */
-	public double distanceCal(double latitude1, double longitude1, double latitude2, double longitude2) {
+	public double distanceCal(double latitude1, double longitude1,
+			double latitude2, double longitude2) {
 		double a = rad(latitude1) - rad(latitude2);
 		double b = rad(longitude1) - rad(longitude2);
 		double distance = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2)
-				+ Math.cos(rad(latitude1)) * Math.cos(rad(latitude2)) * Math.pow(Math.sin(b / 2), 2)));
-	   distance=Math.round(distance*EARTH_RADIUS*10000)/10000;
-	   return distance;
+				+ Math.cos(rad(latitude1)) * Math.cos(rad(latitude2))
+				* Math.pow(Math.sin(b / 2), 2)));
+		distance = Math.round(distance * EARTH_RADIUS * 10000) / 10000;
+		return distance;
 	}
 }

@@ -24,13 +24,12 @@ import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.JFrame;
 
@@ -57,81 +56,153 @@ public class NetModule {
 	protected static StockoutOrderDataService stockoutorderdataservice;
 
 	private static Contactor contactor;
+	private static boolean dialogShowed = true;
 
 	public static GAPDialog dialog;
 
-	public static Map<String, Object> ServiceMap = new HashMap<>(
-			ServiceName.serviceNumber + 10);
-
+	/**
+	 * 根据面板初始化对话框
+	 * @param jf
+	 */
 	public static void initial(JFrame jf) {
-		dialog = new GAPDialog(jf, "错误提示", false);
-		ServiceMap.put(ServiceName.ACCOUNT_DATA_SERVICE, accountDataService);
-		ServiceMap.put(ServiceName.ARRIVEDORDER_DATA_SERVICE,
-				arrivedOrderdataservice);
-		ServiceMap
-				.put(ServiceName.BILLORDER_DATA_SERVICE, billorderdataservice);
-		ServiceMap.put(ServiceName.CAR_DATA_SERVICE, cardataservice);
-		ServiceMap.put(ServiceName.CITY_DATA_SERVICE, citydataservice);
-		ServiceMap.put(ServiceName.DELIVERYPORDER_DATA_SERVICE,
-				deliveryorderdataservice);
-		ServiceMap.put(ServiceName.DRIVER_DATA_SERVICE, driverdataservice);
-		ServiceMap.put(ServiceName.EXPRESSORDER_DATA_SERVICE,
-				expressorderdataservice);
-		ServiceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,
-				institutiondataservice);
-		ServiceMap
-				.put(ServiceName.INVENTORY_DATA_SERVICE, inventorydataservice);
-		ServiceMap
-				.put(ServiceName.LOADORDER_DATA_SERVICE, loadorderdataservice);
-		ServiceMap.put(ServiceName.LOG_DATA_SERVICE, logdataservice);
-		ServiceMap.put(ServiceName.PAYMENT_DATA_SERVICE, paymentdataService);
-		ServiceMap.put(ServiceName.PRICE_DATA_SERVICE, pricedataservice);
-		ServiceMap.put(ServiceName.RENT_DATA_SERVICE, rentdataservice);
-		ServiceMap.put(ServiceName.SALARY_DATA_SERVICE, salarydataservice);
-		ServiceMap.put(ServiceName.STOCKINORDER_DATA_SERVICE,
-				stockinorderdataservice);
-		ServiceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE,
-				stockoutorderdataservice);
-		ServiceMap.put(ServiceName.USER_DATA_SERVICE, userdataservice);
+		dialog = new GAPDialog(jf);
+
+		// dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+		dialog.cancel.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				System.exit(1);
+			}
+		});
+
+		dialog.confirm.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				dialog.setVisible(false);
+			}
+		});
+
+		dialog.reconnect.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						connect();
+					}
+				}).start();
+
+			}
+		});
+
 	}
 
-	static void connect() {
+	/**
+	 * 创建连接的方法
+	 */
+	public static boolean connect() {
+		dialog.confirm.setVisible(false);
+		dialog.cancel.setVisible(true);
+		dialog.reconnect.setVisible(false);
 		int connect_time = 0;
 		boolean reconnect = false;
 		while (true) {
 			try {
 				if (!reconnect)
 					showMessage("连接中");
-
+				// 检测通讯是否成功的类
 				contactor = (Contactor) Naming.lookup(RMIConfig.url
 						+ ServiceName.CONTACTOR);
-				for (Map.Entry<String, Object> entry : ServiceMap.entrySet()) {
-				}
+
+				accountDataService = (AccountDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.ACCOUNT_DATA_SERVICE);
+				userdataservice = (UserDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.USER_DATA_SERVICE);
+				logdataservice = (LogDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.LOG_DATA_SERVICE);
+				cardataservice = (CarDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.CAR_DATA_SERVICE);
+				driverdataservice = (DriverDataService) Naming
+						.lookup(RMIConfig.url + ServiceName.DRIVER_DATA_SERVICE);
+				arrivedOrderdataservice = (ArrivedOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.ARRIVEDORDER_DATA_SERVICE);
+				expressorderdataservice = (ExpressOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.EXPRESSORDER_DATA_SERVICE);
+				deliveryorderdataservice = (DeliveryOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.DELIVERYPORDER_DATA_SERVICE);
+				loadorderdataservice = (LoadOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.LOADORDER_DATA_SERVICE);
+				pricedataservice = (PriceDataService) Naming
+						.lookup(RMIConfig.url + ServiceName.PRICE_DATA_SERVICE);
+				rentdataservice = (RentDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.RENT_DATA_SERVICE);
+				salarydataservice = (SalaryDataService) Naming
+						.lookup(RMIConfig.url + ServiceName.SALARY_DATA_SERVICE);
+				citydataservice = (CityDataService) Naming.lookup(RMIConfig.url
+						+ ServiceName.CITY_DATA_SERVICE);
+				institutiondataservice = (InstitutionDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.INSTITUTION_DATA_SERVICE);
+				billorderdataservice = (BillOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.BILLORDER_DATA_SERVICE);
+				paymentdataService = (PaymentdataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.PAYMENT_DATA_SERVICE);
+				inventorydataservice = (InventoryDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.INVENTORY_DATA_SERVICE);
+				stockinorderdataservice = (StockinOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.STOCKINORDER_DATA_SERVICE);
+				stockoutorderdataservice = (StockoutOrderDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
 
 				showMessage("连接成功");
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO 自动生成的 catch 块
-					e.printStackTrace();
-				}
+				dialog.cancel.setVisible(false);
+				dialog.reconnect.setVisible(false);
+				dialog.confirm.setVisible(true);
+				dialog.validate();
 				// hideMessage();
-				new Thread(new CheckRunnable()).start();
-				break;
+				// 启动检查线程
+				Thread chechThread = new Thread(new CheckRunnable());
+				chechThread.setDaemon(true);
+				chechThread.start();
+				return true;
 			} catch (MalformedURLException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 				showMessage("连接错误");
-				break;
+				return false;
 			} catch (RemoteException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 				reconnect = true;
-				if (connect_time > 10) {
-					showMessage("程序已结束");
-					break;
+				if (connect_time > 5) {
+					showMessage("网络连接错误！！请稍后连接！！");
+					// dialog.confirm.setVisible(true);
+					dialog.cancel.setVisible(true);
+					dialog.reconnect.setVisible(true);
+					dialog.validate();
+					return false;
 				} else {
-					showMessage("连接错误!!正在尝试重新连接，重连次数：" + (connect_time++) + "次");
+					showMessage("网络连接错误!!正在尝试重新连接，重连次数：" + (connect_time++)
+							+ "次");
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e1) {
@@ -143,19 +214,22 @@ public class NetModule {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 				showMessage("服务器错误！！！");
-				break;
+				return false;
 			}
 		}
 	}
 
 	private static void showMessage(String message) {
-		dialog.showMessage(message);
+		if (dialogShowed)
+			dialog.showMessage(message);
 	}
 
-	private static void hideMessage() {
-		dialog.setVisible(false);
-	}
-
+	/**
+	 * 后台检查线程
+	 * 每5秒检查一次网络连接是否正常
+	 * @author YangYanfei
+	 *
+	 */
 	static class CheckRunnable implements Runnable {
 
 		@Override
@@ -179,8 +253,9 @@ public class NetModule {
 
 	public static void main(String[] args) {
 		JFrame jf = new JFrame();
-		jf.setBounds(500, 500, 200, 200);
+		jf.setSize(200, 200);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setLocationRelativeTo(null);
 		jf.setVisible(true);
 		initial(jf);
 		connect();

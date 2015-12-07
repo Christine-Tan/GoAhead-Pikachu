@@ -7,10 +7,13 @@ import gap.common.po.AccountPO;
 import gap.common.util.ResultMessage;
 
 public abstract class AccountCommond {
-	protected AccountDateController accountDateController = ControllerFactory.getAccountDataController();
+	protected AccountDateController accountDateController = ControllerFactory
+			.getAccountDataController();
 	protected AccountPO po;
-	public AccountCommond(AccountVO vo){
+
+	public AccountCommond(AccountVO vo) {
 		po = vo.toPO();
 	}
+
 	public abstract ResultMessage excute();
 }
