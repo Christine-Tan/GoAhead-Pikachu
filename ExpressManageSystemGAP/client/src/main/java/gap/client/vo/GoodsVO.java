@@ -1,5 +1,8 @@
 package gap.client.vo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import gap.client.util.WareHouseSize;
 import gap.common.po.GoodsPO;
 import gap.common.util.SectorType;
@@ -168,5 +171,15 @@ public class GoodsVO {
 			this.location = l;
 		}
 
+	}
+
+	public static List<GoodsVO> toVOList(List<GoodsPO> list) {
+		// TODO Auto-generated method stub
+		List<GoodsVO> voList = new ArrayList<GoodsVO>();
+		for(GoodsPO po:list){
+			GoodsVO vo = new GoodsVO(po);
+			voList.add(vo);
+		}
+		return voList;
 	}
 }

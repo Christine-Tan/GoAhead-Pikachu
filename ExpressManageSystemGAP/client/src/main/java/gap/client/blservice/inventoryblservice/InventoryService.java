@@ -11,20 +11,21 @@ import gap.common.util.ResultMessage;
 import java.util.List;
 
 public interface InventoryService {
-	/**
-	 * 查看库存信息，一个时间段内出入库数量
-	 * @param begin
-	 * @param end
-	 * @return
-	 */
-	public StockObVO observeStock(String beginDate, String endDate,
-			String ins_id);
-
-	/**
-	 * 库存盘点
-	 * @return
-	 */
-	public StockCountVO countStock(String ins_id);
+//	/**
+//	 * 查看库存信息，一个时间段内出入库数量
+//	 * @param begin
+//	 * @param end
+//	 * @return
+//	 */
+//	public StockObVO observeStock(String beginDate, String endDate,
+//			String ins_id);
+//
+//	/**
+//	 * 库存盘点
+//	 * @return
+//	 */
+//	public StockCountVO countStock(String ins_id);
+	public List<GoodsVO> getOneSector(String ins_id, String sector_id);
 
 	public int getOneSectorNum(String ins_id, String sector_id);
 
@@ -36,6 +37,8 @@ public interface InventoryService {
 	public ResultMessage setAlarm(double alarmValue, String ins_id);
 
 	public double getAlarm(String ins_id);
+	
+	public String Alarm();
 
 	/**
 	 * 调整库存分区，选择分配区域及分配给的分区
@@ -66,7 +69,7 @@ public interface InventoryService {
 	 * @param institution_id
 	 * @return
 	 */
-	public List<ExpressOrderVO> getArrivingOrders(String ins_id);
+	public List<ExpressOrderVO> getArrivedOrders(String ins_id);
 
 	/**
 	 * 快递入库
@@ -76,6 +79,8 @@ public interface InventoryService {
 	 */
 
 	public String stockIn(ExpressOrderVO expressorder, String ins_id);
+	
+	public String getNextLocation(String ins_id,String sector_id);
 
 	/**
 	 * 快递出库，填写快递编号设置目的地，货运方式
@@ -86,19 +91,19 @@ public interface InventoryService {
 	public void stockOut(String destination, String transportation,
 			String expressorder_id, String ins_center_id);
 
-	/**
-	 * 生成入库单
-	 * @param expressorders
-	 * @return
-	 */
-	public StockinOrderVO createStockinOrder(List<String> expressorders_id);
-
-	/**
-	 * 生成出库单
-	 * @param expressorders
-	 * @return
-	 */
-	public StockoutOrderVO createStockoutOrder(List<GoodsVO> expressorders);
+//	/**
+//	 * 生成入库单
+//	 * @param expressorders
+//	 * @return
+//	 */
+//	public StockinOrderVO createStockinOrder(List<String> expressorders_id);
+//
+//	/**
+//	 * 生成出库单
+//	 * @param expressorders
+//	 * @return
+//	 */
+//	public StockoutOrderVO createStockoutOrder(List<GoodsVO> expressorders);
 
 	/**
 	 * 查找单个快递
@@ -107,6 +112,8 @@ public interface InventoryService {
 	 */
 	public ExpressOrderVO getSingleExpressOrder(String expressorder_id);
 
-	public String Alarm();
+	
+
+	
 
 }

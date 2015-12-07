@@ -31,21 +31,35 @@ public class ObserveStockPanel extends MainPanel {
 	public ObserveStockPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
+		
+		confirm = new ButtonArea();
+		confirm.submit.setText("确认");
+		stockinTitle = new TitlePanel("入库");
+		stockoutTitle = new TitlePanel("出库");
+		stockinList = new ListPanel();
+		stockoutList = new ListPanel();
+		stockinTotal = new TotalNumPanel("入库", "180");
+		stockoutTotal = new TotalNumPanel("出库", "180");
+		totalNum = new TotalNumPanel("库存","3600");
+		sectors = new ChoosePanel();
+		period = new PeriodPanel();
+		
+		
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		confirm = new ButtonArea();
-		confirm.submit.setText("确认");
-		sectors = new ChoosePanel();
-		period = new PeriodPanel();
-		stockinTitle = (TitlePanel) (new JPanel());
-		stockoutTitle = (TitlePanel) (new JPanel());
-		stockinList = (ListPanel) (new JPanel());
-		stockoutList = (ListPanel) (new JPanel());
-		stockinTotal = (TotalNumPanel) (new JPanel());
-		stockoutTotal = (TotalNumPanel) (new JPanel());
-		totalNum = (TotalNumPanel) (new JPanel());
+//		confirm = new ButtonArea();
+//		confirm.submit.setText("确认");
+//		sectors = new ChoosePanel();
+//		period = new PeriodPanel();
+//		stockinTitle = (TitlePanel) (new JPanel());
+//		stockoutTitle = (TitlePanel) (new JPanel());
+//		stockinList = (ListPanel) (new JPanel());
+//		stockoutList = (ListPanel) (new JPanel());
+//		stockinTotal = (TotalNumPanel) (new JPanel());
+//		stockoutTotal = (TotalNumPanel) (new JPanel());
+//		totalNum = (TotalNumPanel) (new JPanel());
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.white);
@@ -72,47 +86,47 @@ public class ObserveStockPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 11, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 12, 1, 1, 1, 0);
 
-		period.confirm.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String beginDate = period.getBeginDate();
-				String endDate = period.getEndDate();
-				String ins_id = LocalInfo.getIns_ID();
-
-				stockinTitle = new TitlePanel("入库");
-				List<StockinOrderVO> inlist = StockinOrderController
-						.getRequired(beginDate, endDate, ins_id);
-				if (inlist != null) {
-
-					stockinList = new ListPanel(inlist);
-					String inTotal = StockinOrderController.getTotalNum(inlist)
-							+ "";
-					stockinTotal = new TotalNumPanel("入库", inTotal);
-				} else {
-					stockinTotal = new TotalNumPanel("入库", "0");
-				}
-
-				List<StockinOrderVO> outlist = StockinOrderController
-						.getRequired(beginDate, endDate, ins_id);
-				stockoutTitle = new TitlePanel("出库");
-				if (outlist != null) {
-
-					stockoutList = new ListPanel(outlist);
-					String outTotal = StockinOrderController
-							.getTotalNum(outlist) + "";
-					stockoutTotal = new TotalNumPanel("出库", outTotal);
-				} else {
-					stockoutTotal = new TotalNumPanel("出库", "0");
-				}
-
-				int total = InventoryController.getOneSectorNum("00110011",
-						ins_id);
-				totalNum = new TotalNumPanel("库存", total + "");
-
-			}
-		});
+//		period.confirm.addActionListener(new ActionListener() {
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				String beginDate = period.getBeginDate();
+//				String endDate = period.getEndDate();
+//				String ins_id = LocalInfo.getIns_ID();
+//
+//				stockinTitle = new TitlePanel("入库");
+//				List<StockinOrderVO> inlist = StockinOrderController
+//						.getRequired(beginDate, endDate, ins_id);
+//				if (inlist != null) {
+//
+//					stockinList = new ListPanel(inlist);
+//					String inTotal = StockinOrderController.getTotalNum(inlist)
+//							+ "";
+//					stockinTotal = new TotalNumPanel("入库", inTotal);
+//				} else {
+//					stockinTotal = new TotalNumPanel("入库", "0");
+//				}
+//
+//				List<StockinOrderVO> outlist = StockinOrderController
+//						.getRequired(beginDate, endDate, ins_id);
+//				stockoutTitle = new TitlePanel("出库");
+//				if (outlist != null) {
+//
+//					stockoutList = new ListPanel(outlist);
+//					String outTotal = StockinOrderController
+//							.getTotalNum(outlist) + "";
+//					stockoutTotal = new TotalNumPanel("出库", outTotal);
+//				} else {
+//					stockoutTotal = new TotalNumPanel("出库", "0");
+//				}
+//
+//				int total = InventoryController.getOneSectorNum("00110011",
+//						ins_id);
+//				totalNum = new TotalNumPanel("库存", total + "");
+//
+//			}
+//		});
 
 	}
 

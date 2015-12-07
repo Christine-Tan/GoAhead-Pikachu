@@ -42,9 +42,7 @@ public class StockinInfoUI extends JPanel {
 		id = new GAPLabel("入库单编号  ：");
 		id.setFont(ComponentStyle.defaultFont);
 		id_text = new GAPTextField(20);
-		id_text.setControl(
-				"\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d",
-				20, 20);
+		id_text.setControl("\\d"+"",20, 20);
 
 		gb = new GridBagLayout();
 		gcon = new GridBagConstraints();

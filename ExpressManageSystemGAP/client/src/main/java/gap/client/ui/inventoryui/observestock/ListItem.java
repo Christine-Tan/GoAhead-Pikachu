@@ -19,9 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ListItem extends JPanel {
-	JLabel id, order_id, inDate, amount;
-
-	public ListItem(int num, StockinOrderVO vo) {
+	JLabel id,order_id,inDate,amount;
+//	StockinOrderVO vo;
+	
+	public ListItem(int num){
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
@@ -32,14 +33,14 @@ public class ListItem extends JPanel {
 		id.setText(num + "");
 
 		inDate = new GAPLabel();
-		inDate.setText(vo.getInDate());
-		// inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
-
+		inDate.setText("2015-12-03");
+//		inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
+		
 		order_id = new GAPLabel();
-		order_id.setText(vo.getId());
-
+		order_id.setText("00000000000000000001");
+		
 		amount = new GAPLabel();
-		amount.setText(vo.getNum() + "");
+		amount.setText("30");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();

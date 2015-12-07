@@ -5,6 +5,7 @@ import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
 
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -20,7 +21,7 @@ import javax.swing.JPanel;
 
 public class TitlePanel extends JPanel {
 	Checkbox box;
-	JLabel id, inDate, destination, sector, location;
+	GAPTextField id, outDate, destination, sector, location;
 
 	public TitlePanel() {
 		setBackground(Color.white);
@@ -28,29 +29,34 @@ public class TitlePanel extends JPanel {
 
 		box = new Checkbox();
 
-		id = new GAPLabel("快递编号");
-		inDate = new GAPLabel("入库日期");
-		destination = new GAPLabel("目的地");
-		// sector = new GAPLabel("分区");
-		location = new GAPLabel("存放位置");
+		id = new GAPTextField("快递编号",8);
+		id.setCenter();
+		id.closeEdit();
+		
+		outDate = new GAPTextField("出库日期",8);
+		outDate.setCenter();
+		outDate.closeEdit();
+		
+		destination = new GAPTextField("目的地",12);
+		destination.setCenter();
+		destination.closeEdit();
+		
+		location = new GAPTextField("存放位置",8);
+		location.setCenter();
+		location.closeEdit();
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		gcons.insets = new Insets(0, 0, 0, 20);
-		gcons.anchor = GridBagConstraints.CENTER;
+		gcons.insets = new Insets(0,0,0,20);
+		gcons.anchor = GridBagConstraints.EAST;
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
-
+		gcons.insets = new Insets(0,5,0,5);
 		gcons.anchor = GridBagConstraints.WEST;
-		gcons.insets = new Insets(0, 5, 0, 15);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 15, 0, 5);
-		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 18, 0, 2);
-		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1,
-				0);
-		gcons.insets = new Insets(0, 22, 0, -2);
+		SwingConsole.addComponent(gb, gcons, this, outDate, 2, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
 
 	}

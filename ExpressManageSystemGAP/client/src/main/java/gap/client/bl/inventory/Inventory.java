@@ -8,12 +8,14 @@ import gap.client.datacontroller.StockinOrderDataController;
 import gap.client.datacontroller.StockoutOrderDataController;
 import gap.client.util.AbstractOperation;
 import gap.client.util.Operation;
+import gap.client.util.WareHouseSize;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockCountVO;
 import gap.client.vo.StockObVO;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
+import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
 
 import java.util.ArrayList;
@@ -36,26 +38,12 @@ public class Inventory implements InventoryService {
 		operations = new ArrayList<Operation>();
 	}
 
+	
 	@Override
-	public StockObVO observeStock(String beginDate, String endDate,
-			String ins_id) {
-		// TODO Auto-generated method stub
-		StockObVO vo = new StockObVO();
-		vo.setInList(stockinOrderData.getRequired(beginDate, endDate, ins_id));
-		vo.setOutList(stockoutOrderData.getRequired(beginDate, endDate, ins_id));
-
-		return vo;
-	}
-
-	@Override
-	public StockCountVO countStock(String ins_id) {
-		// TODO Auto-generated method stub
-		StockCountVO vo = new StockCountVO();
-		vo.setFlexList(inventoryData.getOneSector(ins_id + "0", ins_id));
-		vo.setCarList(inventoryData.getOneSector(ins_id + "1", ins_id));
-		vo.setTrainList(inventoryData.getOneSector(ins_id + "2", ins_id));
-		vo.setPlaneList(inventoryData.getOneSector(ins_id + "3", ins_id));
-		return vo;
+	public List<GoodsVO> getOneSector(String ins_id,String sector_id) {
+		List<GoodsPO> poList = inventoryData.getOneSector(sector_id, ins_id);
+		List<GoodsVO> voList = GoodsVO.toVOList(poList);
+		return voList;
 	}
 
 	@Override
@@ -115,7 +103,7 @@ public class Inventory implements InventoryService {
 	}
 
 	@Override
-	public List<ExpressOrderVO> getArrivingOrders(String ins_id) {
+	public List<ExpressOrderVO> getArrivedOrders(String ins_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -125,6 +113,66 @@ public class Inventory implements InventoryService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public String getNextLocation(String ins_id, String sector_id) {
+		// TODO Auto-generated method stub
+		int size = WareHouseSize.TOTAL.getSize();
+		boolean[] isUsed = new boolean[size];
+		
+		List<GoodsPO> goods = inventoryData.getOneSector(sector_id, ins_id);
+		for(GoodsPO po : goods){
+			int i = locationToInt(po.getLocation());
+			isUsed[i-1] = true;
+		}
+		
+		int i;
+		for(i = 0;isUsed[i]==true;i++);
+		
+		return getLocation(i);
+	}
+	
+	public int locationToInt(String location){
+		String[] detail = location.split(",");
+		int num = 0;
+		if(detail.length==3){
+			int shelf = WareHouseSize.SHELF.getSize();
+			int unit = WareHouseSize.UNIT.getSize();
+			num += (detail[0].charAt(0)-'A')*shelf*unit;
+			num += (detail[1].charAt(0)-'A')*unit;
+			num += Integer.parseInt(detail[2]);
+			return num;
+		}
+		return -1;
+	}
+	
+	public String getLocation(int num){
+		if(num>0&&num<=WareHouseSize.TOTAL.getSize()){
+			int shelf = WareHouseSize.SHELF.getSize();
+			int unit = WareHouseSize.UNIT.getSize();
+			
+			int[] size = new int[3];
+			size[0] = num/unit*shelf;
+			num -= size[0]*unit*shelf;
+			size[1] = num/unit;
+			num -= size[1]*unit;
+			if(num==0){
+				size[1] --;
+				size[2] = unit;
+			}else{
+				size[2] = num;
+			}
+			
+			String l = (char)(size[0]+'A')+","+
+					(char)(size[1]+'A')+","+
+					size[2];
+			
+			return l;
+		}
+		System.out.println("location: wrong number");
+		return null;
+	
+	}
 
 	@Override
 	public void stockOut(String destination, String transportation,
@@ -133,17 +181,6 @@ public class Inventory implements InventoryService {
 
 	}
 
-	@Override
-	public StockinOrderVO createStockinOrder(List<String> expressorders_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public StockoutOrderVO createStockoutOrder(List<GoodsVO> expressorders) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ExpressOrderVO getSingleExpressOrder(String expressorder_id) {
@@ -174,5 +211,8 @@ public class Inventory implements InventoryService {
 			super(inventoryData, MODIFY, args);
 		}
 	}
+
+	
+
 
 }

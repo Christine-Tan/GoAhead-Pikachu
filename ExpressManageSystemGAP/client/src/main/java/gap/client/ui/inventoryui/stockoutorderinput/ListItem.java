@@ -5,6 +5,7 @@ import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
 
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -21,7 +22,7 @@ import javax.swing.JTextField;
 
 public class ListItem extends JPanel {
 	Checkbox box;
-	JLabel id, outDate, targetIns, location;
+	GAPTextField id, outDate, destination, location;
 
 	public ListItem() {
 		setBackground(Color.white);
@@ -29,22 +30,20 @@ public class ListItem extends JPanel {
 
 		box = new Checkbox();
 
-		id = new GAPLabel();
+		id = new GAPTextField(8);
 		id.setText("0000000001");
-		// id.setControl("\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d\\d",
-		// 20, 20);
 		id.setHorizontalAlignment(JTextField.CENTER);
 
-		outDate = new GAPLabel();
+		outDate = new GAPTextField(8);
 		outDate.setText("2015-12-03");
 		// inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
 		outDate.setHorizontalAlignment(JTextField.CENTER);
 
-		targetIns = new GAPLabel();
-		targetIns.setText("南京栖霞区");
-		targetIns.setHorizontalAlignment(JTextField.CENTER);
-
-		location = new GAPLabel();
+		destination = new GAPTextField(12);
+		destination.setText("江苏省南京市栖霞区");
+		destination.setHorizontalAlignment(JTextField.CENTER);
+		
+		location = new GAPTextField(8);
 		location.setHorizontalAlignment(JTextField.CENTER);
 		location.setText("A排A架1位");
 
@@ -58,7 +57,7 @@ public class ListItem extends JPanel {
 		gcons.anchor = GridBagConstraints.WEST;
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, outDate, 2, 0, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, targetIns, 3, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
 
 	}
