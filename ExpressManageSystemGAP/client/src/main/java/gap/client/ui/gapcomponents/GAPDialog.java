@@ -54,6 +54,7 @@ public class GAPDialog extends JDialog {
 		jp.add(cancel);
 		add(jspane, BorderLayout.CENTER);
 		add(jp, BorderLayout.SOUTH);
+		setLocationRelativeTo(frame);
 		setSize(WIDTH, HEIGHT);
 	}
 

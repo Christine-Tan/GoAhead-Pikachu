@@ -12,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-
+import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 
@@ -25,6 +25,7 @@ public class LogoPanel extends JPanel{
 		setBounds(0, 0, LoginConfig.width, LoginConfig.animationHeight);
 		setOpaque(false);
 		addMouseListener(new Listener());
+		//addMouseListener(new MoveListener(LoginFrame.getFrame()));
 	}
 	
 	public void startAnimation(){

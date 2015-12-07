@@ -259,8 +259,9 @@ public class NetModule {
 
 	public static void main(String[] args) {
 		JFrame jf = new JFrame();
-		jf.setBounds(500, 500, 200, 200);
+		jf.setSize(200, 200);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setLocationRelativeTo(null);
 		jf.setVisible(true);
 		initial(jf);
 		connect();
