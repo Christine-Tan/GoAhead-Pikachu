@@ -1,7 +1,13 @@
 package gap.common.po;
 
-public class AccountPO {
+import java.io.Serializable;
 
+public class AccountPO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String newName;
 	private double balance;

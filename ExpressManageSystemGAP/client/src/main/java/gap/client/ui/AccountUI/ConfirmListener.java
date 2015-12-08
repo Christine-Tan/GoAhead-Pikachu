@@ -14,7 +14,7 @@ public class ConfirmListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ResultMessage message = accountBlController.confirm();
-		if(message.equals(ResultMessage.SUCCEED)){
+		if(!message.equals(ResultMessage.SUCCEED)){
 			System.out.println(message);
 		}
 	}

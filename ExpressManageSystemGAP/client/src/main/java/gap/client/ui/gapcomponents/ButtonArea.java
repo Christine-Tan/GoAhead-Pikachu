@@ -14,6 +14,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -23,16 +24,27 @@ import javax.swing.JPanel;
  */
 public class ButtonArea extends JPanel {
 	public JButton submit;
-	private int buttonIndex = 0;
+	private int buttonIndex = 1;
 	GridBagLayout gb = new GridBagLayout();
 	GridBagConstraints gcons = new GridBagConstraints();
 	
 	public ButtonArea() {
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
-
 		submit = new GAPButton("提交订单");
 		setLayout(gb);
+		
+		//用来占位的label
+		JLabel label = new JLabel();
+		gcons.gridx = 0;
+		gcons.gridy = 0;
+		gcons.gridheight = 1;
+		gcons.gridwidth = 1;
+		gcons.weightx = 1;
+		gcons.weighty = 0;
+		gb.setConstraints(label, gcons);
+		super.add(label);
+		
 		add(submit);
 
 	}
@@ -44,7 +56,7 @@ public class ButtonArea extends JPanel {
 		gcons.gridy = 0;
 		gcons.gridheight = 1;
 		gcons.gridwidth = 1;
-		gcons.weightx = 1;
+		gcons.weightx = 0;
 		gcons.weighty = 0;
 		gb.setConstraints(component, gcons);
 		super.add(component);
@@ -55,8 +67,17 @@ public class ButtonArea extends JPanel {
 	
 
 	public void removeAll(){
-		buttonIndex = 0;
+		buttonIndex = 1;
 		super.removeAll();
+		JLabel label = new JLabel();
+		gcons.gridx = 0;
+		gcons.gridy = 0;
+		gcons.gridheight = 1;
+		gcons.gridwidth = 1;
+		gcons.weightx = 1;
+		gcons.weighty = 0;
+		gb.setConstraints(label, gcons);
+		super.add(label);
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

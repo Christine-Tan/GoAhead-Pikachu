@@ -19,7 +19,7 @@ public class Tester {
 		NetModule.initial(mainFrame);
 		NetModule.connect();
 		
-		AccountPanel panel = new AccountPanel(mainFrame);
+		AccountManagePanel panel = new AccountManagePanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}
 }
