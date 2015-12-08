@@ -58,13 +58,24 @@ public class StockinOrderDataController {
 		return null;
 	}
 
-	/*
-	 * public ResultMessage setPassed(String order_id, String state_info) { //
-	 * TODO Auto-generated method stub return null; }
-	 * 
-	 * 
-	 * public List<StockinOrderPO> getUnpassedOrders(){ // TODO Auto-generated
-	 * method stub return null; }
-	 */
+	public int getNextId(String cons){
+		try {
+			return stockinorderdataservice.getNextId(cons);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
+	public ResultMessage setPassed(String order_id, String state_info) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<StockinOrderPO> getUnpassedOrders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

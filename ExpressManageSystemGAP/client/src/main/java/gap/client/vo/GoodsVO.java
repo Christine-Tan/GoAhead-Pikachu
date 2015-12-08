@@ -134,45 +134,6 @@ public class GoodsVO {
 		return po;
 	}
 
-	public int locationToInt() {
-		String[] detail = location.split(",");
-		int num = 0;
-		if (detail.length == 3) {
-			int row = WareHouseSize.ROW.getSize();
-			int shelf = WareHouseSize.SHELF.getSize();
-			num += (detail[0].charAt(0) - 'A') * row * shelf;
-			num += (detail[1].charAt(0) - 'A') * shelf;
-			num += Integer.parseInt(detail[2]);
-		}
-
-		return num;
-	}
-
-	public void setLocation(int num) {
-		if (num > 0 && num <= WareHouseSize.TOTAL.getSize()) {
-			int row = WareHouseSize.ROW.getSize();
-			int shelf = WareHouseSize.SHELF.getSize();
-
-			int[] size = new int[3];
-			size[0] = num / shelf * row;
-			num -= size[0] * shelf * row;
-			size[1] = num / shelf;
-			num -= size[1] * shelf;
-			if (num == 0) {
-				size[1]--;
-				size[2] = shelf;
-			} else {
-				size[2] = num;
-			}
-
-			String l = (char) (size[0] + 'A') + "," + (char) (size[1] + 'A')
-					+ "," + size[2];
-
-			this.location = l;
-		}
-
-	}
-
 	public static List<GoodsVO> toVOList(List<GoodsPO> list) {
 		// TODO Auto-generated method stub
 		List<GoodsVO> voList = new ArrayList<GoodsVO>();

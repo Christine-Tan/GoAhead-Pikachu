@@ -92,6 +92,16 @@ public class InventoryDataController {
 		}
 		return null;
 	}
+	
+	public List<GoodsPO> getOneSectorExisted(String sector_id,String ins_id){
+		try {
+			return inventorydataservice.getOneSectorExisted(sector_id, ins_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public int getOneSectorNum(String sector_id, String ins_id) {
 		try {
@@ -102,12 +112,6 @@ public class InventoryDataController {
 		}
 		return -1;
 	}
-
-	/*
-	 * public List<GoodsPO> getAll() { // TODO Auto-generated method stub try{
-	 * return inventorydataservice.getAll(); }catch(RemoteException e){
-	 * e.printStackTrace(); } return null; }
-	 */
 
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub

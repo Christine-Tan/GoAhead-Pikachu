@@ -7,7 +7,8 @@ import gap.common.util.ResultMessage;
 import java.util.List;
 
 public class StockinOrderController {
-	private static StockinOrder stockinOrder;
+	private static StockinOrder stockinOrder = new StockinOrder();
+	
 
 	public static ResultMessage save(StockinOrderVO vo) {
 		return stockinOrder.save(vo);
@@ -21,5 +22,9 @@ public class StockinOrderController {
 
 	public static int getTotalNum(List<StockinOrderVO> list) {
 		return stockinOrder.getTotalNum(list);
+	}
+	
+	public static String getNextId(String cons){
+		return stockinOrder.getNextId(cons);
 	}
 }

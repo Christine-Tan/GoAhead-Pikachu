@@ -27,6 +27,8 @@ public interface InventoryDataService extends Remote {
 
 	public List<GoodsPO> getOneSector(String sector_id, String ins_id)
 			throws RemoteException;
+	
+	public List<GoodsPO> getOneSectorExisted(String sector_id,String ins_id) throws RemoteException;
 
 	public int getFlexNum(String ins_id) throws RemoteException;
 

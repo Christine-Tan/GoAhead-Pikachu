@@ -284,6 +284,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
+	@Override
 	public int getNextId(String cons) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
@@ -295,7 +296,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			if (re.next()) {
 				result = re.getInt(1) + 1;
 			} else {
-				result = 0;
+				result = 1;
 			}
 			return result;
 		} catch (SQLException e) {

@@ -81,14 +81,37 @@ public class InventoryDataServiceImplTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test 
+	public void test(){
+		try {
+			List<GoodsPO> list = inventory.getOneSectorExisted("00110010", "0011001");
+			System.out.println(list==null);
+			for (GoodsPO po : list) {
+				System.out
+						.println("expressorder_id:" + po.getExpressorder_id());
+				System.out.println("location:" + po.getLocation());
+				System.out.println("SectorType:" + po.getSector());
+				System.out.println("Date:" + po.getDate());
+				System.out.println("Sector_id:" + po.getSector_id());
+				System.out.println("Belong_sector_id:"
+						+ po.getBelong_sector_id());
+				System.out.println("Destination:" + po.getDestination());
+				System.out.println();
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	@Test
 	public void testAddGoodsPO() {
 
 		try {
-			for (int i = 1; i <= 16; i++) {
-				System.out.println(inventory.add(po[i]).toString());
-			}
+			
+				System.out.println(inventory.add(po[1]).toString());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

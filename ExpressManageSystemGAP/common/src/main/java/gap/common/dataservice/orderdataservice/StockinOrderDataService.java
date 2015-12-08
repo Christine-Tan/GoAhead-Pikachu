@@ -23,5 +23,7 @@ public interface StockinOrderDataService extends Remote {
 			throws RemoteException;
 
 	public List<StockinOrderPO> getUnpassedOrders() throws RemoteException;
+	
+	public int getNextId(String cons) throws RemoteException;
 
 }

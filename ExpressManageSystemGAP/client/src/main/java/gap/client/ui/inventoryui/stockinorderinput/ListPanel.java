@@ -22,17 +22,13 @@ public class ListPanel extends JPanel {
 	List<ExpressOrderVO> expressorders;
 	List<GoodsVO> goods;
 
-	public ListPanel() {
+	public ListPanel(List<ExpressOrderVO> orders) {
 		setBackground(Color.white);
 		
-		Address add = new Address("江苏省", "南京市", "栖霞区");
-		PeopleInfo receiver = new PeopleInfo("", add, "", "");
-		ExpressOrderVO vo = new ExpressOrderVO(null, receiver, ExpressType.STANDARD, 0, null,true, "00000000000000000001","", "");
-		
 		items = new ArrayList<ListItem>();
-		int size = 10;
+		int size = orders.size();
 		for (int i = 0; i < size; i++) {
-			ListItem item = new ListItem(vo);
+			ListItem item = new ListItem(orders.get(i));
 			items.add(item);
 		}
 
@@ -45,5 +41,16 @@ public class ListPanel extends JPanel {
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
 					1, 1, 0);
 		}
+	}
+	
+	public List<GoodsVO> getGoodsVOs(){
+		goods = new ArrayList<GoodsVO>();
+		for(ListItem item : items){
+			GoodsVO vo = item.getGoodVO();
+			if(vo!=null){
+				goods.add(vo);
+			}
+		}
+		return goods;
 	}
 }

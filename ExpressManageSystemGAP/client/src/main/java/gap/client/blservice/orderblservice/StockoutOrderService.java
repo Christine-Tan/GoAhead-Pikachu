@@ -20,4 +20,7 @@ public interface StockoutOrderService {
 			String ins_id);
 
 	public int getTotalNum(List<StockoutOrderVO> list);
+
+	public String getNextId(String cons);
+
 }

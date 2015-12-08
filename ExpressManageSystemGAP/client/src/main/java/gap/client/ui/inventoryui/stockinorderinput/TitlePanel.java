@@ -35,11 +35,11 @@ public class TitlePanel extends JPanel {
 		
 		
 
-		id = new GAPTextField("快递编号",13);
+		id = new GAPTextField("快递编号",8);
 		id.setCenter();
 		id.closeEdit();
 		
-		inDate = new GAPTextField("入库日期",6);
+		inDate = new GAPTextField("入库日期",8);
 		inDate.setCenter();
 		inDate.closeEdit();
 		
@@ -51,7 +51,7 @@ public class TitlePanel extends JPanel {
 		sector.setCenter();
 		sector.closeEdit();
 		
-		location = new GAPTextField("存放位置",9);
+		location = new GAPTextField("存放位置",10);
 		location.setCenter();
 		location.closeEdit();
 

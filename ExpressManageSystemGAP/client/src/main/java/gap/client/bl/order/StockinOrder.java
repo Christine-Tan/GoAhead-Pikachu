@@ -32,12 +32,6 @@ public class StockinOrder implements StockinOrderService {
 	@Override
 	public ResultMessage save(StockinOrderVO order) {
 		// TODO Auto-generated method stub
-		String date = order.getInDate().replaceAll("-", "");
-		String pre = LocalInfo.ins_id + date;
-		// String id = "" + loadDataController.nextId(LocalInfo.ins_id + date);
-		// while (id.length() < 5)
-		// id = "0" + id;
-		// order.order_id = pre + id;
 		return stockinData.add(order.toPO());
 	}
 
@@ -76,6 +70,17 @@ public class StockinOrder implements StockinOrderService {
 			num += vo.getNum();
 		}
 		return num;
+	}
+
+	@Override
+	public String getNextId(String cons) {
+		// TODO Auto-generated method stub
+		int n = stockinData.getNextId(cons);
+		String num = n+"";
+		while(num.length()<5){
+			num = "0" + num;
+		}
+		return cons+num;
 	}
 
 }

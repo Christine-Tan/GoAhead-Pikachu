@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.stockinorderinput;
 
+import gap.client.blcontroller.InventoryController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -41,13 +42,12 @@ public class ListItem extends JPanel {
 		box = new JCheckBox();
 		box.setBackground(Color.white);
 
-		id = new GAPTextField(13);
-//		id.setText("00000000000000000001");
+		id = new GAPTextField(8);
 		id.setText(vo.order_id);
 		id.setCenter();
 		id.closeEdit();
 
-		inDate = new GAPTextField(6);
+		inDate = new GAPTextField(8);
 		inDate.setText((new Date(System.currentTimeMillis())).toString());
 		inDate.setCenter();
 		inDate.closeEdit();
@@ -64,7 +64,7 @@ public class ListItem extends JPanel {
 		sector.setText(ExpressType.getSectorByExpressType(vo.expressType));
 		sector.closeEdit();
 
-		location = new GAPTextField(9);
+		location = new GAPTextField(10);
 		location.setHorizontalAlignment(JTextField.CENTER);
 //		location.setText("汽运区A排A架1位");
 		
@@ -92,8 +92,12 @@ public class ListItem extends JPanel {
 				// TODO Auto-generated method stub
 				int itemState = e.getStateChange();
 				if(itemState== ItemEvent.SELECTED){
+					setLocation();
 					setGoodsVO();
+					addGoodsVO();
 				}else{
+					deleteGoodsVO();
+					clearLocation();
 					goods = null;
 				}
 			}
@@ -118,6 +122,7 @@ public class ListItem extends JPanel {
 				loc = location.getText(),
 				sector_id = SectorType.getSectorId(LocalInfo.getIns_ID(), sec),
 				belong_sec = sector_id;
+		loc = loc.substring(loc.length()-5, loc.length());
 				
 		this.goods = new GoodsVO(expressorder_id, loc, sec, date, sector_id, belong_sec, des);	
 	}
@@ -125,8 +130,35 @@ public class ListItem extends JPanel {
 		return goods;
 	}
 	
+	public void addGoodsVO(){
+		InventoryController.Stockin(goods);
+	}
+	
+	public void deleteGoodsVO(){
+		InventoryController.Stockout(goods);
+	}
+	
 	public void setSelected(boolean bool){
 		this.box.setSelected(bool);
+	}
+	
+	public void setLocation(){
+		this.location.setText(getNextLocation());
+		this.location.closeEdit();
+	}
+	
+	public void clearLocation(){
+		this.location.openEdit();
+		this.location.setText("");
+	}
+	
+	public String getNextLocation(){
+		String ins_id = LocalInfo.getIns_ID();
+		SectorType sec = SectorType.getSectorTypeByChinese(sector.getText());
+		String sector_id = SectorType.getSectorId(ins_id, sec);
+		System.out.println(sector_id);
+		String location = InventoryController.getNextLocation(sector_id, ins_id);
+		return sector.getText()+location;
 	}
 	
 

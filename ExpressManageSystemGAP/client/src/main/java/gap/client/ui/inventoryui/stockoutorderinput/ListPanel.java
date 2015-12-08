@@ -21,7 +21,7 @@ public class ListPanel extends JPanel {
 	public ListPanel() {
 		setBackground(Color.white);
 
-		GoodsVO vo = new GoodsVO("00000000000000000001", "汽运区A排A架1位",
+		GoodsVO vo = new GoodsVO("0000000001", "汽运区A排A架1位",
 				SectorType.CAR, "2015-12-07", LocalInfo.ins_id + "1",
 				LocalInfo.ins_id + "1", "江苏省南京市栖霞区");
 		items = new ArrayList<ListItem>();

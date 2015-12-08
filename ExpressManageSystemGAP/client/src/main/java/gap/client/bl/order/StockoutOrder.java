@@ -64,4 +64,15 @@ public class StockoutOrder implements StockoutOrderService {
 		return num;
 	}
 
+	@Override
+	public String getNextId(String cons) {
+		// TODO Auto-generated method stub
+		int n = stockoutData.getNextId(cons);
+		String num = n+"";
+		while(num.length()<5){
+			num = "0" + num;
+		}
+		return cons+num;
+	}
+
 }

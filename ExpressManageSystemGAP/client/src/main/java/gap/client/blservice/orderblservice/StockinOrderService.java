@@ -25,4 +25,6 @@ public interface StockinOrderService {
 
 	public int getTotalNum(List<StockinOrderVO> list);
 
+	public String getNextId(String cons);
+
 }

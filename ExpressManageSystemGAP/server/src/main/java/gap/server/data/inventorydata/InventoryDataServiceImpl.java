@@ -27,7 +27,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	// 字段
 	private String location_f = "location", sectorId_f = "sector_id",
 			expressorder_id_f = "expressorder_id", time_f = "time",
-			belong_sec_f = "belong_sec", destination_f = "destination";
+			belong_sec_f = "belong_sec", destination_f = "destination",existed_f = "existed";
 	// 表名
 	private String sector_flexTable = "sector_flex";
 	// 字段
@@ -61,33 +61,34 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public List<GoodsPO> getOneSector(String sector_id, String ins_id)
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		// try {
-		// String sql = "SELECT * FROM "+
-		// sectorTable+" WHERE "+ins_id_f+" ='"+ins_id+"' AND "+sector_id_f+"='"+sector_id+"';";
-		// ResultSet re = NetModule.excutor.excuteQuery(sql);
-		// /*if(!re.next()){
-		// System.out.println("中转中心编号不存在！！！");
-		// return null;
-		// }*/
-		// re.next();
-		// System.out.println(re.getString(ins_id_f)+"    "+re.getString(sector_id_f));
-		//
-		// } catch (SQLException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// System.out.println("分区找到了");
-
 		try {
-
-			// String sql1 = "SELECT * FROM " + sectorItemTable + " WHERE "
-			// + sectorId_f + " ='" + sector_id + "';";
 			String sql1 = "SELECT * FROM sector_item WHERE sector_id = '"
 					+ sector_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql1);
 			if (!re.next()) {
-				System.out.println("错误的分区编号");
+				System.out.println("分区中无快递");
+				return null;
+			}
+			List<GoodsPO> goodsPOs = getListByResultSet(re);
+			return goodsPOs;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<GoodsPO> getOneSectorExisted(String sector_id, String ins_id)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			String sql1 = "SELECT * FROM sector_item WHERE sector_id = '"
+					+ sector_id + "' AND "+existed_f+" = "+true+";";
+			ResultSet re= NetModule.excutor.excuteQuery(sql1);
+			if (!re.next()) {
+//				System.out.println("错误的分区编号");
 				return null;
 			}
 			List<GoodsPO> goodsPOs = getListByResultSet(re);
@@ -110,7 +111,6 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		List<GoodsPO> goodsPOs = new ArrayList<GoodsPO>();
 		try {
 			do {
-				System.out.println("找到啦");
 				String location = re.getString(location_f), expressorder_id = re
 						.getString(expressorder_id_f), time = re
 						.getString(time_f), blong_sector = re
@@ -130,12 +130,6 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		return goodsPOs;
 	}
 
-	/*
-	 * public SectorType getSectorType(char c){ switch(c){ case'0': return
-	 * SectorType.FLEX; case'1': return SectorType.CAR; case'2': return
-	 * SectorType.TRAIN; case'3': return SectorType.PLANE; default: return null;
-	 * } }
-	 */
 
 	@Override
 	public ResultMessage add(GoodsPO po) throws RemoteException {
@@ -168,6 +162,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 			sectorItemInsert.add(time_f, date);
 			sectorItemInsert.add(belong_sec_f, belong_sector);
 			sectorItemInsert.add(destination_f, destination);
+			sectorItemInsert.add(existed_f,false);
 			String sql = sectorItemInsert.createSQL();
 			NetModule.excutor.excute(sql);
 			// System.out.println("插入好啦");
@@ -380,5 +375,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 
 	}
+
+	
 
 }

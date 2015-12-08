@@ -1,6 +1,7 @@
 package gap.client.blcontroller;
 
 import gap.client.bl.inventory.Inventory;
+import gap.client.vo.GoodsVO;
 import gap.common.util.ResultMessage;
 
 public class InventoryController {
@@ -17,5 +18,17 @@ public class InventoryController {
 
 	public static int getOneSectorNum(String sector_id, String ins_id) {
 		return inventory.getOneSectorNum(ins_id, sector_id);
+	}
+	
+	public static String getNextLocation(String sector_id,String ins_id){
+		return inventory.getNextLocation(ins_id, sector_id);
+	}
+	
+	public static ResultMessage Stockin(GoodsVO vo){
+		return inventory.stockIn(vo);
+	}
+	
+	public static ResultMessage Stockout(GoodsVO vo){
+		return inventory.stockOut(vo.getExpressorder_id());
 	}
 }

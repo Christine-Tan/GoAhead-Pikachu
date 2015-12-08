@@ -1,6 +1,7 @@
 package gap.client.ui.inventoryui.stockoutorderinput;
 
 import gap.client.blcontroller.InstitutionController;
+import gap.client.blcontroller.StockoutOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
@@ -11,6 +12,8 @@ import gap.client.vo.StockoutOrderVO;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
@@ -56,6 +59,16 @@ public class StockoutOrderInputPanel extends MainPanel {
 				}else{
 					setSelected(false);
 				}
+			}
+		});
+		
+		confirm.submit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				StockoutOrderVO vo = getStockoutOrderVO();
+				StockoutOrderController.save(vo);
 			}
 		});
 	}

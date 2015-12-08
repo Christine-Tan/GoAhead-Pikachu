@@ -57,13 +57,24 @@ public class StockoutOrderDataController {
 		}
 		return null;
 	}
+	
+	public int getNextId(String cons){
+		try {
+			return stockoutorderdataservice.getNextId(cons);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
-	/*
-	 * public ResultMessage setPassed(String order_id, String state_info) { //
-	 * TODO Auto-generated method stub return null; }
-	 * 
-	 * 
-	 * public List<StockoutOrderPO> getUnpassedOrders() { // TODO Auto-generated
-	 * method stub return null; }
-	 */
+	public ResultMessage setPassed(String order_id, String state_info) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<StockoutOrderPO> getUnpassedOrders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.stockoutorderinput;
 
+import gap.client.blcontroller.StockoutOrderController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -7,6 +8,7 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.util.LocalInfo;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,6 +17,9 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
+
+import java.sql.Date;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -28,7 +33,7 @@ import com.sun.xml.internal.ws.api.Component;
 
 public class StockoutInfoPanel extends JPanel {
 	JLabel title, outDate, targetIns, id, transport;
-	JTextField outDate_text, id_text;
+	GAPTextField outDate_text, id_text;
 	JComboBox<String> transport_list, targetIns_list;
 
 	public StockoutInfoPanel() {
@@ -39,6 +44,8 @@ public class StockoutInfoPanel extends JPanel {
 
 		outDate = new GAPLabel("出库日期：");
 		outDate_text = new GAPTextField(10);
+		outDate_text.setText((new Date(System.currentTimeMillis())).toString());
+		outDate_text.closeEdit();
 
 		targetIns = new GAPLabel("目的地：");
 		targetIns_list = new GAPComboBox<String>();
@@ -48,6 +55,8 @@ public class StockoutInfoPanel extends JPanel {
 
 		id = new GAPLabel("中转单编号：");
 		id_text = new GAPTextField(20);
+		id_text.setText(getNextId());
+		id_text.closeEdit();
 
 		transport = new GAPLabel("货运方式：");
 		transport_list = new GAPComboBox<String>();
@@ -115,6 +124,14 @@ public class StockoutInfoPanel extends JPanel {
 			setText(value.toString());
 			return this;
 		}
+		
+	}
+	
+	public String getNextId(){
+		String date = outDate_text.getText();
+		date = date.replaceAll("-", "");
+		String cons = LocalInfo.getIns_ID()+date;
+		return StockoutOrderController.getNextId(cons);
 		
 	}
 }
