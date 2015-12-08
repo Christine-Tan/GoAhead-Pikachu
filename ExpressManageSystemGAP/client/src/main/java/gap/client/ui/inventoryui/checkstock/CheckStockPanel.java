@@ -10,14 +10,14 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 public class CheckStockPanel extends MainPanel {
-	ButtonArea buttonArea;
+	StockCheckButtonArea buttonArea;
 	ListPanel list;
 
 	public CheckStockPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
 
-		buttonArea = new ButtonArea();
+		buttonArea = new StockCheckButtonArea();
 		list = new ListPanel(10);
 
 		GridBagLayout gb = new GridBagLayout();

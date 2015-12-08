@@ -11,7 +11,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
 public class DistributeSectorPanel extends MainPanel {
-	ButtonArea buttonArea;
+	DistributeButtonArea buttonArea;
 	ChoosePanel choose;
 	ListPanel listPanel;
 
@@ -19,7 +19,7 @@ public class DistributeSectorPanel extends MainPanel {
 		super(frame);
 		// TODO Auto-generated constructor stub
 		listPanel = new ListPanel(10);
-		buttonArea = new ButtonArea();
+		buttonArea = new DistributeButtonArea();
 		choose = new ChoosePanel();
 
 		GridBagLayout gb = new GridBagLayout();

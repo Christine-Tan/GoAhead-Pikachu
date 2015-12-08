@@ -19,12 +19,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class ButtonArea extends JPanel {
+public class DistributeButtonArea extends JPanel {
 	private JButton confirm;
 	private JComboBox<String> sectors;
 	private JLabel set;
 
-	public ButtonArea() {
+	public DistributeButtonArea() {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 

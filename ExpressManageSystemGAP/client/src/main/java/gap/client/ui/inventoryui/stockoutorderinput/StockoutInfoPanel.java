@@ -51,7 +51,7 @@ public class StockoutInfoPanel extends JPanel {
 		targetIns_list = new GAPComboBox<String>();
 		targetIns_list.setPreferredSize(new Dimension(185, 25));
 		targetIns_list.addItem("北京市栖霞区中转中心");
-		targetIns_list.setRenderer(new MyCellRenderer());
+//		targetIns_list.setRenderer(new MyCellRenderer());
 
 		id = new GAPLabel("中转单编号：");
 		id_text = new GAPTextField(20);
@@ -64,7 +64,7 @@ public class StockoutInfoPanel extends JPanel {
 		transport_list.addItem("汽车运输");
 		transport_list.addItem("铁路运输");
 		transport_list.addItem("航空运输");
-		transport_list.setRenderer(new MyCellRenderer());
+//		transport_list.setRenderer(new MyCellRenderer());
 		
 
 		GridBagLayout gb = new GridBagLayout();
@@ -110,22 +110,22 @@ public class StockoutInfoPanel extends JPanel {
 		g2d.drawLine(10, height - 5, width - 20, height - 5);
 	}
 	
-	class MyCellRenderer extends JLabel implements ListCellRenderer {     
-		public MyCellRenderer() {         
-			setOpaque(true);     
-		}     
-		@Override
-		public java.awt.Component getListCellRendererComponent(JList list,
-				Object value, int index, boolean isSelected,
-				boolean cellHasFocus) {
-			// TODO Auto-generated method stub
-			setBackground(Color.white);
-			setHorizontalAlignment(SwingConstants.CENTER);
-			setText(value.toString());
-			return this;
-		}
-		
-	}
+//	class MyCellRenderer extends JLabel implements ListCellRenderer {     
+//		public MyCellRenderer() {         
+//			setOpaque(true);     
+//		}     
+//		@Override
+//		public java.awt.Component getListCellRendererComponent(JList list,
+//				Object value, int index, boolean isSelected,
+//				boolean cellHasFocus) {
+//			// TODO Auto-generated method stub
+//			setBackground(Color.white);
+//			setHorizontalAlignment(SwingConstants.CENTER);
+//			setText(value.toString());
+//			return this;
+//		}
+//		
+//	}
 	
 	public String getNextId(){
 		String date = outDate_text.getText();
@@ -134,4 +134,6 @@ public class StockoutInfoPanel extends JPanel {
 		return StockoutOrderController.getNextId(cons);
 		
 	}
+	
+	
 }

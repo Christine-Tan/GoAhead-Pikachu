@@ -13,11 +13,11 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class ButtonArea extends JPanel {
+public class StockCheckButtonArea extends JPanel {
 	public JButton confirm;
 	public JButton export;
 
-	public ButtonArea() {
+	public StockCheckButtonArea() {
 		setBackground(Color.WHITE);
 
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 45));
