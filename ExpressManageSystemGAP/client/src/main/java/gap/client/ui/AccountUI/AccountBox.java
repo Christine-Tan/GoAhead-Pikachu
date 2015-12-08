@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -14,11 +15,13 @@ import gap.client.ui.UITools.RenderSetter;
 public class AccountBox extends JPanel{
 	private static Image accountIcon;
 	private String imageURL = "images/accountIcon/account.png";
+	private 
 	
 	AccountDisplayPanel accountPanel;
 	public AccountBox(AccountDisplayPanel accountDisplayPanel){
 		accountPanel = accountDisplayPanel;
 		setPreferredSize(new Dimension(150, 150));
+		setLayout(null);
 		if(accountIcon==null){
 			accountIcon = new ImageIcon(imageURL).getImage();
 		}	

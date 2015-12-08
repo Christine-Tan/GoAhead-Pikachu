@@ -5,6 +5,7 @@ import gap.client.ui.BaseListener.ResizeListener;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.util.MessageType;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -19,7 +20,7 @@ public class MainFrame extends JFrame {
 	TitlePanel titlePanel;
 	NavigateBar navigateBar;
 	MainPanel mainPanel;
-	MessagePanel messagePanel;
+	static MessagePanel messagePanel;
 
 	MoveListener moveListener;
 	ResizeListener resizeListener;
@@ -105,5 +106,9 @@ public class MainFrame extends JFrame {
 				mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
 		validate();
 	}
+	
+	public static void setMessage(String message,MessageType type,long time){
+		messagePanel.setMessage(message, type, time);
+	} 
 
 }
