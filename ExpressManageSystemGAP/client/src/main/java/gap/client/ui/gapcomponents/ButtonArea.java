@@ -5,6 +5,7 @@ import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -22,21 +23,40 @@ import javax.swing.JPanel;
  */
 public class ButtonArea extends JPanel {
 	public JButton submit;
-
+	private int buttonIndex = 10;
+	GridBagLayout gb = new GridBagLayout();
+	GridBagConstraints gcons = new GridBagConstraints();
+	
 	public ButtonArea() {
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 
 		submit = new GAPButton("提交订单");
-
-		GridBagLayout gb = new GridBagLayout();
-		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(10, 10, 10, 50);
-		gcons.anchor = GridBagConstraints.EAST;
-		SwingConsole.addComponent(gb, gcons, this, submit, 0, 0, 1, 1, 1, 0);
-	}
+		add(submit);
 
+	}
+	
+	public Component add(Component component){
+		gcons.insets = new Insets(10, 10, 10, 50);
+		gcons.anchor = GridBagConstraints.EAST;	
+		gcons.gridx = buttonIndex;
+		gcons.gridy = 0;
+		gcons.gridheight = 1;
+		gcons.gridwidth = 1;
+		gcons.weightx = 1;
+		gcons.weighty = 0;
+		gb.setConstraints(component, gcons);
+		super.add(component);
+		
+		return component;
+	}
+	
+
+	public void removeAll(){
+		buttonIndex = 0;
+		super.removeAll();
+	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);
