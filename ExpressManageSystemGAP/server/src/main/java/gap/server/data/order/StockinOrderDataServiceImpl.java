@@ -257,7 +257,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			List<GoodsPO> POs = getPOsByOrderId(order_id);
 			if(POs!=null){
 				InventoryDataService inventoryData = InventoryDataServiceImpl.getInstance();
-				inventoryData.setlistExited(POs);
+				inventoryData.setlistExisted(POs);
 			}
 //			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
