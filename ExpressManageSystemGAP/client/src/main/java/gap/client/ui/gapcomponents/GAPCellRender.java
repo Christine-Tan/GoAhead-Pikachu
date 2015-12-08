@@ -24,7 +24,7 @@ public class GAPCellRender<E> extends JLabel implements ListCellRenderer<E> {
 		if (dropLocation != null && !dropLocation.isInsert()
 				&& dropLocation.getIndex() == arg2) {
 			background = Color.white;
-			foreground = Color.black;
+			foreground = ComponentStyle.dark_gray;
 			// check if this cell is selected
 		} else if (arg3) {
 			background = ComponentStyle.blue;
@@ -32,9 +32,8 @@ public class GAPCellRender<E> extends JLabel implements ListCellRenderer<E> {
 			// unselected, and not the DnD drop location
 		} else {
 			background = Color.WHITE;
-			foreground = Color.black;
+			foreground = ComponentStyle.dark_gray;
 		}
-		;
 
 		setBackground(background);
 		setForeground(foreground);

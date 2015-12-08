@@ -1,11 +1,14 @@
-package gap.client.ui.administratorui.userui;
+package gap.client.ui.administratorui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,25 +26,27 @@ import gap.client.ui.gapcomponents.GAPTextField;
 import gap.common.util.UserType;
 
 public class QueryPanel extends JPanel {
+	
 	JLabel userid_jl;
-	JTextField userid_jt;
-	JButton search;
-	JLabel total;
-
+	protected static JTextField userid_jt;
+	protected static JButton search;
+	protected static JLabel total;
+	int resultNum;
 	public QueryPanel(UserType userType) {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
+		setBackground(Color.WHITE);
 		userid_jl = new GAPLabel("用户ID：");
 		userid_jt = new GAPTextField(9);
 		search = new GAPButton("搜索");
-
-		int resultNum = UserController.getAll(userType).size();
+        search.setFont(ComponentStyle.defaultFont);
+		resultNum = UserController.getAll(userType).size();
 		total = new JLabel("一共有" + resultNum + "条结果");
-
+	
 		// 布局
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(40, 10, 5, 0);
+		gcons.insets = new Insets(40, 0, 5, 100);
 		SwingConsole.addComponent(gb, gcons, this, total, 0, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 300, 35, 0);
 		SwingConsole.addComponent(gb, gcons, this, userid_jl, 1, 0, 1, 1, 0, 0);

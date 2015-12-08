@@ -56,7 +56,7 @@ public class NetModule {
 	protected static StockoutOrderDataService stockoutorderdataservice;
 
 	private static Contactor contactor;
-	private static boolean dialogShowed = true;
+	private static boolean dialogShowed = false;
 
 	public static GAPDialog dialog;
 
@@ -65,6 +65,7 @@ public class NetModule {
 	 * @param jf
 	 */
 	public static void initial(JFrame jf) {
+		dialogShowed = true;
 		dialog = new GAPDialog(jf);
 
 		// dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -110,9 +111,7 @@ public class NetModule {
 	 * 创建连接的方法
 	 */
 	public static boolean connect() {
-		dialog.confirm.setVisible(false);
-		dialog.cancel.setVisible(true);
-		dialog.reconnect.setVisible(false);
+		setConnecting();
 		int connect_time = 0;
 		boolean reconnect = false;
 		while (true) {
@@ -174,11 +173,7 @@ public class NetModule {
 								+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
 
 				showMessage("连接成功");
-				dialog.cancel.setVisible(false);
-				dialog.reconnect.setVisible(false);
-				dialog.confirm.setVisible(true);
-				dialog.validate();
-				// hideMessage();
+				setSucceedConnect();
 				// 启动检查线程
 				Thread chechThread = new Thread(new CheckRunnable());
 				chechThread.setDaemon(true);
@@ -195,10 +190,7 @@ public class NetModule {
 				reconnect = true;
 				if (connect_time > 5) {
 					showMessage("网络连接错误！！请稍后连接！！");
-					// dialog.confirm.setVisible(true);
-					dialog.cancel.setVisible(true);
-					dialog.reconnect.setVisible(true);
-					dialog.validate();
+					setFailConnect();
 					return false;
 				} else {
 					showMessage("网络连接错误!!正在尝试重新连接，重连次数：" + (connect_time++)
@@ -219,9 +211,35 @@ public class NetModule {
 		}
 	}
 
+	private static void setConnecting() {
+		if (dialogShowed) {
+			dialog.confirm.setVisible(false);
+			dialog.cancel.setVisible(true);
+			dialog.reconnect.setVisible(false);
+		}
+	}
+
+	private static void setFailConnect() {
+		if (dialogShowed) {
+			dialog.cancel.setVisible(true);
+			dialog.reconnect.setVisible(true);
+			dialog.cancelConnect.setVisible(false);
+		}
+	}
+
+	private static void setSucceedConnect() {
+		if (dialogShowed) {
+			dialog.cancel.setVisible(false);
+			dialog.reconnect.setVisible(false);
+			dialog.confirm.setVisible(true);
+		}
+	}
+
 	private static void showMessage(String message) {
 		if (dialogShowed)
 			dialog.showMessage(message);
+		else
+			System.out.println(message);
 	}
 
 	/**

@@ -8,6 +8,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class GAPButton extends JButton {
@@ -18,6 +20,16 @@ public class GAPButton extends JButton {
 
 	public GAPButton(String mess) {
 		super(mess);
+		initial();
+	}
+
+	public GAPButton(Icon icon) {
+		super(icon);
+		initial();
+	}
+
+	public GAPButton(String str, Icon icon) {
+		super(str, icon);
 		initial();
 	}
 
