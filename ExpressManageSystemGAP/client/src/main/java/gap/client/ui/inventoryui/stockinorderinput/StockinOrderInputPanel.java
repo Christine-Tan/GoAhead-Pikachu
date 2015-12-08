@@ -7,6 +7,8 @@ import gap.client.ui.gapcomponents.ButtonArea;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
@@ -38,6 +40,28 @@ public class StockinOrderInputPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, list, 0, 2, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
+		
+		title.box.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				int state = e.getStateChange();
+				if (state == ItemEvent.SELECTED) {
+					setSelected(true);
+				} else {
+					setSelected(false);
+				}
+				
+			}
+		});
+		
 
+	}
+	
+	public void setSelected(Boolean bool){
+		for(ListItem item:list.items){
+			item.setSelected(bool);
+		}
 	}
 }

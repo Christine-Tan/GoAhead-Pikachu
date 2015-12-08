@@ -4,6 +4,7 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPCheckBox;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
@@ -20,53 +21,60 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Date;
 
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ListItem extends JPanel {
-	Checkbox box;
+	JCheckBox box;
 	GAPTextField id, inDate, destination, sector, location;
-	ExpressOrderVO vo = new ExpressOrderVO();
-
-	public ListItem() {
+	GoodsVO goods;
+	public ListItem(ExpressOrderVO vo) {
+		
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
-		box = new Checkbox();
+		box = new JCheckBox();
+		box.setBackground(Color.white);
 
-		id = new GAPTextField(7);
-		id.setText("0000000001");
-		// id.setControl("\\d"+"", 20, 20);
-		id.setHorizontalAlignment(JTextField.CENTER);
+		id = new GAPTextField(13);
+//		id.setText("00000000000000000001");
+		id.setText(vo.order_id);
+		id.setCenter();
+		id.closeEdit();
 
-		inDate = new GAPTextField(7);
-		inDate.setText("2015-12-03");
-		// inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
-		inDate.setHorizontalAlignment(JTextField.CENTER);
+		inDate = new GAPTextField(6);
+		inDate.setText((new Date(System.currentTimeMillis())).toString());
+		inDate.setCenter();
+		inDate.closeEdit();
 
 		destination = new GAPTextField(12);
-		destination.setText("南京市栖霞区");
-		destination.setHorizontalAlignment(JTextField.CENTER);
+		Address addre = vo.receiver_info.getAddress();
+		String l = addre.getProvince_name()+addre.getCity_name()+addre.getDistrict_name();
+		destination.setText(l);
+		destination.setCenter();
+		destination.closeEdit();
 
-		sector = new GAPTextField(5);
-		sector.setHorizontalAlignment(JTextField.CENTER);
-		sector.setText("航运区");
+		sector = new GAPTextField(4);
+		sector.setCenter();
+		sector.setText(ExpressType.getSectorByExpressType(vo.expressType));
+		sector.closeEdit();
 
-		location = new GAPTextField(10);
+		location = new GAPTextField(9);
 		location.setHorizontalAlignment(JTextField.CENTER);
-//		location.setText("A排A架1位");
+//		location.setText("汽运区A排A架1位");
 		
-		inDate.setText((new Date(System.currentTimeMillis())).toString());
-		inDate.closeEdit();
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
 		gcons.anchor = GridBagConstraints.CENTER;
-		gcons.insets = new Insets(0, 20, 0, 5);
+		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
 		gcons.anchor = GridBagConstraints.WEST;
 		gcons.insets = new Insets(0, 5, 0, 5);
@@ -76,6 +84,20 @@ public class ListItem extends JPanel {
 				0);
 		SwingConsole.addComponent(gb, gcons, this, sector, 4, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
+		
+		box.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				int itemState = e.getStateChange();
+				if(itemState== ItemEvent.SELECTED){
+					setGoodsVO();
+				}else{
+					goods = null;
+				}
+			}
+		});
 
 	}
 
@@ -87,24 +109,8 @@ public class ListItem extends JPanel {
 		int width = getWidth(), height = getHeight();
 		g2d.drawLine(20, height - 5, width - 30, height - 5);
 	}
-
-	public void setLine(ExpressOrderVO vo) {
-		id.setText(vo.order_id);
-		id.closeEdit();
-		
-		inDate.setText((new Date(System.currentTimeMillis())).toString());
-		
-		Address address = vo.receiver_info.getAddress();
-		destination.setText(address.getProvince_name()+address.getDistrict_name()+address.getCity_name());
-		destination.closeEdit();
-		
-		sector.setText(ExpressType.getSectorByExpressType(vo.expressType));
-		sector.closeEdit();
-
-		// destination.setText();
-	}
 	
-	public GoodsVO getGoodsVO(){
+	public void setGoodsVO(){
 		SectorType sec = SectorType.getSectorTypeByChinese(sector.getText());
 		String expressorder_id = id.getText(),
 				date = inDate.getText(),
@@ -113,7 +119,14 @@ public class ListItem extends JPanel {
 				sector_id = SectorType.getSectorId(LocalInfo.getIns_ID(), sec),
 				belong_sec = sector_id;
 				
-		return new GoodsVO(expressorder_id, loc, sec, date, sector_id, belong_sec, des);	
+		this.goods = new GoodsVO(expressorder_id, loc, sec, date, sector_id, belong_sec, des);	
+	}
+	public GoodsVO getGoodVO(){
+		return goods;
+	}
+	
+	public void setSelected(boolean bool){
+		this.box.setSelected(bool);
 	}
 	
 

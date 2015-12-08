@@ -35,6 +35,7 @@ public class AlarmValueSetPanel extends MainPanel {
 				// TODO Auto-generated method stub
 				InventoryController.setAlarmValue(alarmValue.getAlarmValue(),
 						LocalInfo.getIns_ID());
+				alarmValue.alarmValue.closeEdit();
 				// InventoryController.setAlarmValue(alarmValue, ins_id);
 			}
 

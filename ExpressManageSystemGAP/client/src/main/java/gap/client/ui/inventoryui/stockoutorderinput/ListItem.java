@@ -6,6 +6,7 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.GoodsVO;
 
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -15,37 +16,47 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.Date;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ListItem extends JPanel {
-	Checkbox box;
+	JCheckBox box;
 	GAPTextField id, outDate, destination, location;
-
-	public ListItem() {
+	String goods_id;
+	GoodsVO vo;
+	public ListItem(GoodsVO vo) {
+		this.vo = vo;
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
-		box = new Checkbox();
+		box = new JCheckBox();
+		box.setBackground(Color.white);
 
-		id = new GAPTextField(8);
-		id.setText("0000000001");
-		id.setHorizontalAlignment(JTextField.CENTER);
+		id = new GAPTextField(16);
+		id.setText(vo.getExpressorder_id());
+		id.setCenter();
+		id.closeEdit();
 
 		outDate = new GAPTextField(8);
-		outDate.setText("2015-12-03");
-		// inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
-		outDate.setHorizontalAlignment(JTextField.CENTER);
+		outDate.setText((new Date(System.currentTimeMillis())).toString());
+		outDate.setCenter();
+		outDate.closeEdit();
 
 		destination = new GAPTextField(12);
-		destination.setText("江苏省南京市栖霞区");
-		destination.setHorizontalAlignment(JTextField.CENTER);
+		destination.setText(vo.getDestination());
+		destination.setCenter();
+		destination.closeEdit();
 		
-		location = new GAPTextField(8);
-		location.setHorizontalAlignment(JTextField.CENTER);
-		location.setText("A排A架1位");
+		location = new GAPTextField(10);
+		location.setCenter();
+		location.setText(vo.getLocation());
+		location.closeEdit();
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
@@ -59,12 +70,36 @@ public class ListItem extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, outDate, 2, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
+		
+		box.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				int state = e.getStateChange();
+				if(state == ItemEvent.SELECTED){
+					setGoodsId();
+				}else{
+					goods_id=null;
+				}
+			}
+		});
 
 	}
 
-	public void paintComponent(Graphics g) {
+	void setSelected(boolean bool){
+		this.box.setSelected(bool);
+	}
+	
+	public void setGoodsId(){
+		goods_id = vo.getExpressorder_id();
+	}
+	
+	public String getGoodsId(){
+		return goods_id;
+	}
+	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 		g2d.setColor(ComponentStyle.light_gray);
 		int width = getWidth(), height = getHeight();

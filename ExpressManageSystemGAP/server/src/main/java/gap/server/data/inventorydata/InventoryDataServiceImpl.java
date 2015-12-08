@@ -307,8 +307,8 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage setAlarm(double alarmValue, String ins_id)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-
 		try {
+			
 			sectorUpdate.clear();
 			sectorUpdate.add(alarmValue_f, alarmValue);
 			sectorUpdate.setKey(ins_id_f, ins_id);

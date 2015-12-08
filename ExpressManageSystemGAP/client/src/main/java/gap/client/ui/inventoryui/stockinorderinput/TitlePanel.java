@@ -5,6 +5,7 @@ import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
 
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -14,45 +15,60 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TitlePanel extends JPanel {
-	Checkbox box;
-	JLabel id, inDate, destination, sector, location;
+	JCheckBox box;
+	GAPTextField id, inDate, destination, sector, location;
 
 	public TitlePanel() {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
-		box = new Checkbox();
+		box = new JCheckBox();
+		box.setBackground(Color.white);
+		
+		
 
-		id = new GAPLabel("快递编号");
-		inDate = new GAPLabel("入库日期");
-		destination = new GAPLabel("目的地");
-		sector = new GAPLabel("分区");
-		location = new GAPLabel("存放位置");
+		id = new GAPTextField("快递编号",13);
+		id.setCenter();
+		id.closeEdit();
+		
+		inDate = new GAPTextField("入库日期",6);
+		inDate.setCenter();
+		inDate.closeEdit();
+		
+		destination = new GAPTextField("目的地",12);
+		destination.setCenter();
+		destination.closeEdit();
+		
+		sector = new GAPTextField("分区",4);
+		sector.setCenter();
+		sector.closeEdit();
+		
+		location = new GAPTextField("存放位置",9);
+		location.setCenter();
+		location.closeEdit();
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
 		gcons.anchor = GridBagConstraints.CENTER;
-		gcons.insets = new Insets(0, 1, 0, 19);
+		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, box, 0, 0, 1, 1, 1, 0);
-
-		gcons.anchor = GridBagConstraints.CENTER;
-		gcons.insets = new Insets(0, -40, 0, 60);
+		gcons.anchor = GridBagConstraints.WEST;
+		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, -45, 0, 65);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, -30, 0, 50);
 		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1,
 				0);
-		gcons.insets = new Insets(0, -7, 0, 27);
 		SwingConsole.addComponent(gb, gcons, this, sector, 4, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, -10, 0, 30);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
 
 	}

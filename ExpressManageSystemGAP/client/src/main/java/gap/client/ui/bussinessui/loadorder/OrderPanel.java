@@ -100,6 +100,7 @@ public class OrderPanel extends JPanel {
 				}
 			}
 		});
+
 		flush();
 	}
 
@@ -111,6 +112,12 @@ public class OrderPanel extends JPanel {
 
 	public void flush() {
 		items.clear();
+		removeAll();
+		SwingConsole.addComponent(gb, gcons, this, searchPanel, 0, 0, 1, 1, 1,
+				0);
+		SwingConsole
+				.addComponent(gb, gcons, this, titlePanel, 0, 1, 1, 1, 1, 0);
+
 		List<ExpressOrderVO> orders = ExpressorderController
 				.getCurrentOrders(CurrentOrderType.LOAD);
 		for (ExpressOrderVO vo : orders) {

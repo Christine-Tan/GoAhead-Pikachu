@@ -4,6 +4,7 @@ import gap.client.blcontroller.InventoryController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
 
 import java.awt.Color;
@@ -17,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class AlarmValueUI extends JPanel {
-	public JTextField alarmValue;
+	public GAPTextField alarmValue;
 
 	// public JScrollPane scroller;
 
@@ -25,7 +26,7 @@ public class AlarmValueUI extends JPanel {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 120));
 
-		alarmValue = new JTextField(10);
+		alarmValue = new GAPTextField(10);
 		alarmValue.setBorder(ComponentStyle.text_border);
 		alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
 		alarmValue.setHorizontalAlignment(JTextField.CENTER);
@@ -46,6 +47,7 @@ public class AlarmValueUI extends JPanel {
 	public double getAlarmValue() {
 		String newValue = alarmValue.getText();
 		newValue = newValue.split("%")[0];
+		System.out.println();
 		return Double.parseDouble(newValue);
 	}
 }

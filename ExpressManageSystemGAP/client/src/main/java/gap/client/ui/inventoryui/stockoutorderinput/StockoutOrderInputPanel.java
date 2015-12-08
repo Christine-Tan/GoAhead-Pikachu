@@ -1,12 +1,19 @@
 package gap.client.ui.inventoryui.stockoutorderinput;
 
+import gap.client.blcontroller.InstitutionController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.util.LocalInfo;
+import gap.client.util.Transport;
+import gap.client.vo.StockoutOrderVO;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -37,6 +44,39 @@ public class StockoutOrderInputPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, list, 0, 3, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 4, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 5, 1, 1, 1, 0);
+		
+		title.box.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				int state = e.getStateChange();
+				if(state == ItemEvent.SELECTED){
+					setSelected(true);
+				}else{
+					setSelected(false);
+				}
+			}
+		});
+	}
+	
+	public void setSelected(boolean bool){
+		for(ListItem item:list.items){
+			item.setSelected(bool);
+		}
+	}
+	
+	public StockoutOrderVO getStockoutOrderVO(){
+//		StockoutOrderVO vo = new StockoutOrderVO(expressorder_ids, outDate, target_ins, id, transport, ins_id)
+		
+		List<String> ids = list.getOrderIds();
+		String date = stockoutInfo.outDate_text.getText();
+		String target_ins = "南京市栖霞区中转中心";
+		String id = stockoutInfo.id_text.getText();
+		String transport = Transport.getTransportByName(stockoutInfo.transport.getText()).toString();
+		StockoutOrderVO vo = new StockoutOrderVO(ids, date, target_ins, id, transport, LocalInfo.ins_id);
+		return vo;
+		
 	}
 
 }

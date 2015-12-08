@@ -9,6 +9,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.LinearGradientPaint;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
@@ -53,6 +55,7 @@ public class LoginPanel extends JPanel {
 
 		layer.add(signInButton);
 		layer.add(exitButton, new Integer(20));
+		
 	}
 
 	public void paintComponent(Graphics g) {
