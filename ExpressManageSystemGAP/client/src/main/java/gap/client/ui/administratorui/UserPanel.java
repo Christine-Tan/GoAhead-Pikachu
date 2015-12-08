@@ -61,6 +61,7 @@ public class UserPanel extends MainPanel {
 				UserPanel.this.remove(listItemPanel);
 				listItemPanel = new ListItemPanel(frame, userType, searchUser);
 				SwingConsole.addComponent(gb, gcons, UserPanel.this, listItemPanel, 0, 2, 1, 1, 1, 0);
+				frame.validate();
 			}
 		});
 		gb = new GridBagLayout();

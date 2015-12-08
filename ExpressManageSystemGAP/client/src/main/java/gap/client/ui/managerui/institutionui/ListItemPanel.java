@@ -34,6 +34,7 @@ import gap.client.vo.InstitutionVO;
 public class ListItemPanel extends JPanel {
 	// 列表中所有的项
 	List<ItemPanel> items;
+	List<InstitutionVO> institutions;
 	// 布局
 	GridBagLayout gb;
 	GridBagConstraints gcons;
@@ -41,7 +42,7 @@ public class ListItemPanel extends JPanel {
 	JButton addButton;
 	JFrame frame;
 
-	public ListItemPanel(JFrame frame) {
+	public ListItemPanel(JFrame frame,String city,String id) {
 		this.frame = frame;
 		setBackground(Color.WHITE);
 		addButton = new GAPButton("+");
@@ -61,7 +62,17 @@ public class ListItemPanel extends JPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 		items = new ArrayList<>();
-		List<InstitutionVO> institutions = InstitutionController.getAll();
+		
+		if(city!=null){
+		       institutions=InstitutionController.findByCity(city); 
+		       System.out.println("City");
+		}else if(id!=null){
+			  institutions.add(InstitutionController.findById(id));
+			  System.out.println("ID");
+		}else{
+               institutions = InstitutionController.getAll();
+		}
+			
 		for (InstitutionVO institution : institutions) {
 			addItem(institution);
 		}
