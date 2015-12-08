@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -18,8 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.sun.javafx.property.adapter.PropertyDescriptor.Listener;
-import com.sun.org.apache.regexp.internal.REDebugCompiler;
-
 import gap.client.ui.BaseComponents.WhiteExitButton;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
@@ -85,7 +84,7 @@ public class AccountBox extends JPanel{
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);
 		
 		graphics2d.setColor(background);
-		graphics2d.fillRect(0, 10, this.getWidth(),this.getHeight()-100);
+		graphics2d.fillRect(0, 0, this.getWidth(),this.getHeight()-90);
 		
 		graphics2d.drawImage
 		(accountIcon, 0, -this.getWidth()/10, this.getWidth(), this.getWidth(), null);
@@ -97,6 +96,7 @@ public class AccountBox extends JPanel{
 		Color gray = new Color(100, 100, 100, 50);
 		Color red = new Color(251, 141, 158,100);
 		Color white = Color.white;
+		Rectangle rectangle = new Rectangle(0, 0, width-10, height-100);
 		
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
@@ -119,11 +119,13 @@ public class AccountBox extends JPanel{
 		}
 
 		@Override
-		public void mouseExited(MouseEvent arg0) {
+		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			background = white;
-			deleteButton.setVisible(false);
-			repaint();
+			if(!rectangle.contains(e.getPoint())){
+				background = white;
+				deleteButton.setVisible(false);
+				repaint();
+			}
 		}
 
 		@Override

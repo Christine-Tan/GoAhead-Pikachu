@@ -46,6 +46,7 @@ public class DeleteButton extends JLabel{
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
+			isEnter = true;
 			currentImage = selectedImage;
 			repaint();
 		}
@@ -53,6 +54,7 @@ public class DeleteButton extends JLabel{
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
+			isEnter = false;
 			currentImage = image;
 			repaint();
 		}
