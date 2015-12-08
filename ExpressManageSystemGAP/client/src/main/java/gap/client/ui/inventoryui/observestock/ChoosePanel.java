@@ -33,9 +33,9 @@ public class ChoosePanel extends JPanel {
 		plane = new GAPButton("航运区");
 		plane.setBorder(ComponentStyle.focus_border);
 		plane.setSize(80, 50);
-		flex = new GAPButton("机动区");
-		flex.setBorder(ComponentStyle.focus_border);
-		flex.setSize(80, 50);
+//		flex = new GAPButton("机动区");
+//		flex.setBorder(ComponentStyle.focus_border);
+//		flex.setSize(80, 50);
 
 		JPanel panel1 = new JPanel();
 		panel1.setPreferredSize(new Dimension(200, 50));

@@ -101,12 +101,6 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	@Override
-	public int getOneSectorNum(String sector_id, String ins_id)
-			throws RemoteException {
-		return getOneSector(sector_id, ins_id).size();
-	}
-
 	public List<GoodsPO> getListByResultSet(ResultSet re) {
 		List<GoodsPO> goodsPOs = new ArrayList<GoodsPO>();
 		try {
@@ -203,10 +197,10 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public ResultMessage delete(List<String> expressorders_id)
+	public ResultMessage delete(List<String> ids)
 			throws RemoteException {
 		// TODO Auto-generated method stub
-		for (String id : expressorders_id) {
+		for (String id : ids ) {
 			return delete(id);
 		}
 		return ResultMessage.SUCCEED;
@@ -374,6 +368,32 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 
+	}
+	
+	@Override
+	public ResultMessage setExisted(String id){
+		try {
+			sectorUpdate.clear();
+			sectorUpdate.add(existed_f, true);
+			sectorUpdate.setKey(expressorder_id_f, id);
+			String sql = sectorUpdate.createSQL();
+			NetModule.excutor.excute(sql);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
+		return ResultMessage.SUCCEED;
+		
+		
+	}
+	
+	@Override
+	public ResultMessage setlistExisted(List<GoodsPO> list){
+		for(GoodsPO po:list){
+			return setExisted(po.getExpressorder_id());
+		}
+		return ResultMessage.SUCCEED;
 	}
 
 	

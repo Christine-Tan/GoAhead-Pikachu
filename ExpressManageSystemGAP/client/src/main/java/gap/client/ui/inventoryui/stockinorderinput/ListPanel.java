@@ -21,6 +21,8 @@ public class ListPanel extends JPanel {
 	List<ListItem> items;
 	List<ExpressOrderVO> expressorders;
 	List<GoodsVO> goods;
+	GridBagLayout gb;
+	GridBagConstraints gcons;
 
 	public ListPanel(List<ExpressOrderVO> orders) {
 		setBackground(Color.white);
@@ -32,8 +34,8 @@ public class ListPanel extends JPanel {
 			items.add(item);
 		}
 
-		GridBagLayout gb = new GridBagLayout();
-		GridBagConstraints gcons = new GridBagConstraints();
+		gb = new GridBagLayout();
+		gcons = new GridBagConstraints();
 		setLayout(gb);
 
 		gcons.insets = new Insets(0, 10, 0, 10);
@@ -45,12 +47,19 @@ public class ListPanel extends JPanel {
 	
 	public List<GoodsVO> getGoodsVOs(){
 		goods = new ArrayList<GoodsVO>();
-		for(ListItem item : items){
-			GoodsVO vo = item.getGoodVO();
+		for(int i = 0;i<items.size();i++){
+			GoodsVO vo = items.get(i).getGoodVO();
 			if(vo!=null){
 				goods.add(vo);
 			}
 		}
 		return goods;
+	}
+	
+	public void reLayout(){
+		for(int i = 0;i<items.size();i++){
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
+					1, 1, 0);
+		}
 	}
 }

@@ -85,6 +85,7 @@ public class StockinOrderInputPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				StockinOrderVO vo = getStockinOrderVO();
+				list.reLayout();
 				StockinOrderController.save(vo);
 			}
 		});
@@ -101,9 +102,8 @@ public class StockinOrderInputPanel extends MainPanel {
 	public StockinOrderVO getStockinOrderVO(){
 		
 		List<GoodsVO> goods = list.getGoodsVOs();
-		System.out.println(goods.size());
-		String inDate = stockinInfo.date_text.getText();
-		String id = stockinInfo.id_text.getText();
+		String inDate = stockinInfo.getInDate();
+		String id = stockinInfo.getId();
 		String ins_id = LocalInfo.ins_id;
 		
 		StockinOrderVO vo = new StockinOrderVO(goods, inDate, id, ins_id);

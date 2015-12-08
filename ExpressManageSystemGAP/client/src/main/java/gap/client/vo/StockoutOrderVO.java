@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StockoutOrderVO implements Serializable {
+public class StockoutOrderVO {
 	// 快递编号
 	private List<String> expressorder_ids;
 	// 出库日期，目标机构编号,中转单编号（单据编号）

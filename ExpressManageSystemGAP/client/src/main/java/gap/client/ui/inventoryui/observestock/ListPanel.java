@@ -14,15 +14,14 @@ import javax.swing.JPanel;
 
 public class ListPanel extends JPanel {
 	List<ListItem> items;
-	List<StockinOrderVO> list;
+	List<InventoryOrder> list;
 	
-	public ListPanel(){
+	public ListPanel(List<InventoryOrder> list){
 		setBackground(Color.white);
-
 		items = new ArrayList<ListItem>();
-		int size = 10;
-		for(int i = 1;i<=size;i++){
-			ListItem item = new ListItem(i);
+		
+		for(int i = 1;i<=list.size();i++){
+			ListItem item = new ListItem(i,list.get(i-1));
 			items.add(item);
 		}
 

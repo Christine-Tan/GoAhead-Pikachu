@@ -15,7 +15,7 @@ public interface InventoryDataService extends Remote {
 
 	public ResultMessage delete(String expressorder_id) throws RemoteException;
 
-	public ResultMessage delete(List<String> expressorders_id)
+	public ResultMessage delete(List<String> ids)
 			throws RemoteException;
 
 	public ResultMessage modify(GoodsPO expressorder) throws RemoteException;
@@ -37,11 +37,12 @@ public interface InventoryDataService extends Remote {
 
 	public double getAlarm(String ins_id) throws RemoteException;
 
-	public int getOneSectorNum(String sector_id, String ins_id)
-			throws RemoteException;
-
 	// 从机动区获得某一货运方式的快递
 	public List<GoodsPO> getOneTypeInFlex(String ins_id, String belong_sec_id)
 			throws RemoteException;
+
+	public ResultMessage setExisted(String id) throws RemoteException;
+
+	public ResultMessage setlistExisted(List<GoodsPO> list) throws RemoteException;
 
 }

@@ -156,7 +156,6 @@ public class ListItem extends JPanel {
 		String ins_id = LocalInfo.getIns_ID();
 		SectorType sec = SectorType.getSectorTypeByChinese(sector.getText());
 		String sector_id = SectorType.getSectorId(ins_id, sec);
-		System.out.println(sector_id);
 		String location = InventoryController.getNextLocation(sector_id, ins_id);
 		return sector.getText()+location;
 	}

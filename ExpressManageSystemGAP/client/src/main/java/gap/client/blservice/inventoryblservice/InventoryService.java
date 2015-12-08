@@ -15,7 +15,7 @@ public interface InventoryService {
 	
 	public List<GoodsVO> getOneSectorExisted(String ins_id, String sector_id);
 
-	public int getOneSectorNum(String ins_id, String sector_id);
+	public int getTotalNum(String ins_id);
 
 	public ResultMessage setAlarm(double alarmValue, String ins_id);
 
@@ -39,8 +39,6 @@ public interface InventoryService {
 	public String getNextLocation(String ins_id,String sector_id);
 
 	public ResultMessage stockOut(String id);
-
-	
 
 	
 

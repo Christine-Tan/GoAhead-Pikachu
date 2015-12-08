@@ -164,13 +164,17 @@ public class ListItemPanel extends JPanel {
 			});
 			order_id = new GAPTextField(8);
 			order_id.setText("0000000001");
+			order_id.setCenter();
 			destination = new GAPTextField(9);
 			destination.setText("南京市栖霞区");
+			destination.setCenter();
 			inDate = new GAPTextField(8);
 			inDate.setText("2015-12-04");
+			inDate.setCenter();
 			// receiver_date.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
 			location = new GAPTextField(7);
 			location.setText("A排A架1位");
+			location.setCenter();
 
 			GridBagLayout gb = new GridBagLayout();
 			GridBagConstraints gcons = new GridBagConstraints();

@@ -40,8 +40,39 @@ public class Inventory implements InventoryService {
 	// }
 
 	@Override
-	public int getOneSectorNum(String ins_id, String sector_id) {
-		return inventoryData.getOneSectorNum(sector_id, ins_id);
+	public int getTotalNum(String ins_id){
+		int num = 0;
+		List<GoodsPO> list = inventoryData.getOneSector(ins_id+"0", ins_id);
+		if(list!=null){
+			num += list.size();
+		}else{
+			num += 0;
+		}
+		
+		list = inventoryData.getOneSector(ins_id+"1", ins_id);
+		if(list!=null){
+			num += list.size();
+		}else{
+			num += 0;
+		}
+		
+		list = inventoryData.getOneSector(ins_id+"2", ins_id);
+		
+		if(list!=null){
+			num += list.size();
+		}else{
+			num += 0;
+		}
+		
+		list = inventoryData.getOneSector(ins_id+"3", ins_id);
+		
+		if(list!=null){
+			num += list.size();
+		}else{
+			num += 0;
+		}
+		
+		return num;
 	}
 
 	@Override

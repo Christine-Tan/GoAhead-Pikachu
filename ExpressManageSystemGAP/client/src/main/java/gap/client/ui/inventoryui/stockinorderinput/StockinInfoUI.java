@@ -89,5 +89,13 @@ public class StockinInfoUI extends JPanel {
 		return StockinOrderController.getNextId(cons);
 		
 	}
+	
+	public String getInDate(){
+		return this.date_text.getText();
+	}
+	
+	public String getId(){
+		return this.id_text.getText();
+	}
 
 }

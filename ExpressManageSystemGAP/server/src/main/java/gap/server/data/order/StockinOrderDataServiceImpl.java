@@ -1,9 +1,11 @@
 package gap.server.data.order;
 
+import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.dataservice.orderdataservice.StockinOrderDataService;
 import gap.common.po.GoodsPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
+import gap.server.data.inventorydata.InventoryDataServiceImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SQLBuilder;
 import gap.server.data.util.UpdateSQL;
@@ -251,7 +253,13 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.add(passed_f, true);
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
-			return ResultMessage.SUCCEED;
+			
+			List<GoodsPO> POs = getPOsByOrderId(order_id);
+			if(POs!=null){
+				InventoryDataService inventoryData = InventoryDataServiceImpl.getInstance();
+				inventoryData.setlistExited(POs);
+			}
+//			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -259,7 +267,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ResultMessage.FAILED;
+		return ResultMessage.SUCCEED;
 	}
 
 	@Override

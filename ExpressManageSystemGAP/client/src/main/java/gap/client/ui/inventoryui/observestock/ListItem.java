@@ -6,6 +6,7 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.vo.StockinOrderVO;
+import gap.client.vo.StockoutOrderVO;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,15 +15,15 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.sql.Date;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ListItem extends JPanel {
 	JLabel id,order_id,inDate,amount;
-//	StockinOrderVO vo;
-	
-	public ListItem(int num){
+//	InventoryOrderVO
+	public ListItem(int num,InventoryOrder vo){
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 
@@ -33,14 +34,13 @@ public class ListItem extends JPanel {
 		id.setText(num + "");
 
 		inDate = new GAPLabel();
-		inDate.setText("2015-12-03");
-//		inDate.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
+		inDate.setText(vo.getDate());
 		
 		order_id = new GAPLabel();
-		order_id.setText("00000000000000000001");
+		order_id.setText(vo.getId());
 		
 		amount = new GAPLabel();
-		amount.setText("30");
+		amount.setText(vo.getNum()+"");
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();

@@ -18,16 +18,14 @@ public class ListPanel extends JPanel {
 	List<ListItem> items;
 	List<String> ids;
 
-	public ListPanel() {
+	public ListPanel(List<GoodsVO> list) {
 		setBackground(Color.white);
 
-		GoodsVO vo = new GoodsVO("0000000001", "汽运区A排A架1位",
-				SectorType.CAR, "2015-12-07", LocalInfo.ins_id + "1",
-				LocalInfo.ins_id + "1", "江苏省南京市栖霞区");
+		
 		items = new ArrayList<ListItem>();
 		int size = 5;
 		for (int i = 0; i < size; i++) {
-			ListItem item = new ListItem(vo);
+			ListItem item = new ListItem(list.get(i));
 			items.add(item);
 		}
 

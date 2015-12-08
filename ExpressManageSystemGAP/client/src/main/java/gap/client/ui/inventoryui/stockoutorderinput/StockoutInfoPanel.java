@@ -135,5 +135,21 @@ public class StockoutInfoPanel extends JPanel {
 		
 	}
 	
+	public String getTargetIns(){
+		return (String)targetIns_list.getSelectedItem();
+	}
+	
+	public String getTransport(){
+		return (String)transport_list.getSelectedItem();
+	}
+	
+	public String getOutDate(){
+		return this.outDate_text.getText();
+	}
+	
+	public String getId(){
+		return this.id_text.getText();
+	}
+	
 	
 }

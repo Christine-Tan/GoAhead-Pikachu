@@ -103,16 +103,6 @@ public class InventoryDataController {
 		return null;
 	}
 
-	public int getOneSectorNum(String sector_id, String ins_id) {
-		try {
-			return inventorydataservice.getOneSectorNum(sector_id, ins_id);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return -1;
-	}
-
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
 		try {
