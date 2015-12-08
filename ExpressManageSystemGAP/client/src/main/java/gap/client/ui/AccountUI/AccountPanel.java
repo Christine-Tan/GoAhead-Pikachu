@@ -23,6 +23,8 @@ public class AccountPanel extends MainPanel{
 		itrToList(itr);
 		
 		
+		
+		
 	}
 	
 	//迭代器内容存入accounts

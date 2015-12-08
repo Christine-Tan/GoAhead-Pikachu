@@ -52,8 +52,8 @@ public class GAPButton extends JButton {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setForeground(Color.white);
-				setBackground(ColorAndFonts.blue);
+				setForeground(ColorAndFonts.darkBlue.darker());
+				//setBackground(ColorAndFonts.blue);
 			}
 
 			@Override
@@ -72,7 +72,6 @@ public class GAPButton extends JButton {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO 自动生成的方法存根
-
 			}
 		});
 	}

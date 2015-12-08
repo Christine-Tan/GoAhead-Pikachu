@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  */
 public class ButtonArea extends JPanel {
 	public JButton submit;
-	private int buttonIndex = 10;
+	private int buttonIndex = 0;
 	GridBagLayout gb = new GridBagLayout();
 	GridBagConstraints gcons = new GridBagConstraints();
 	
@@ -49,6 +49,7 @@ public class ButtonArea extends JPanel {
 		gb.setConstraints(component, gcons);
 		super.add(component);
 		
+		buttonIndex++;
 		return component;
 	}
 	
