@@ -33,6 +33,7 @@ import java.util.List;
 public class ApprovalDataController {
 
 	protected ApprovalDataController() {
+		
 	}
 
 	public List<ExpressOrderPO> getUnpassedExpressOrder() {
