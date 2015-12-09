@@ -54,15 +54,15 @@ public class ExpressorderInputPanel extends MainPanel {
 					@Override
 					public void run() {
 						// TODO 自动生成的方法存根
-						ExpressOrderVO vo = getExpressOrderVO();
-						vo = ExpressorderController.createOrder(vo);
-						ExpressorderController.save(vo);
-						// try {
-						// Thread.sleep(5000);
-						// } catch (InterruptedException e) {
-						// // TODO 自动生成的 catch 块
-						// e.printStackTrace();
-						// }
+//						ExpressOrderVO vo = getExpressOrderVO();
+//						vo = ExpressorderController.createOrder(vo);
+//						ExpressorderController.save(vo);
+						 try {
+						 Thread.sleep(5000);
+						 } catch (InterruptedException e) {
+						 // TODO 自动生成的 catch 块
+						 e.printStackTrace();
+						 }
 						// TODO 自动生成的方法存根
 					}
 				});

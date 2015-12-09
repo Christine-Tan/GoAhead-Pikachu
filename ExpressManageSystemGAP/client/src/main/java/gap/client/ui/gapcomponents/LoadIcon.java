@@ -1,11 +1,9 @@
 package gap.client.ui.gapcomponents;
 
 import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentAdapter;
@@ -17,7 +15,6 @@ import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 
 public class LoadIcon extends JComponent {
 	private int ball_r = 5, center_x, center_y, distance = 20;
@@ -79,7 +76,7 @@ public class LoadIcon extends JComponent {
 			Area area = new Area(new Ellipse2D.Double(x, y, ball_r, ball_r));
 			g.fill(area);
 		}
-
+		
 		void move() {
 			if (num * nums < current && 2 * num * nums > current)
 				current += 2;

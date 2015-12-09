@@ -38,7 +38,17 @@ public class LoadPanel extends JComponent {
 		jframe.setGlassPane(this);
 		setVisible(true);
 		// repaint();
-		runnable.run();
+		Future<?> future = excutor.submit(runnable);
+		try {
+			future.get();
+		} catch (InterruptedException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		excutor.shutdown();
 		setVisible(false);
 	}
 	//

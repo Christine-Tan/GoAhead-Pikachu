@@ -111,7 +111,7 @@ public class MainFrame extends JFrame {
 				loadPanel.load(runnable);
 			}
 		});
-		loadThread.setDaemon(true);
+//		loadThread.setDaemon(true);
 		loadThread.start();
 	}
 
