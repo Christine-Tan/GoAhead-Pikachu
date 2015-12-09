@@ -4,6 +4,7 @@ import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.managerui.institutionui.InstitutionPanel;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.util.User;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
@@ -24,6 +25,8 @@ public class Tester {
 			NetModule.connect();
 			UserPanel panel = new UserPanel(mainFrame,UserType.ADMINISTRATOR);
 			mainFrame.setMainPanel(panel);
+			
+			mainFrame.setMessage("成功", MessageType.succeed, 3000);
 		
 	}
 
