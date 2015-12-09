@@ -72,7 +72,9 @@ public class GAPDialog extends JDialog {
 		int value = jsbar.getMaximum() - jsbar.getVisibleAmount();
 		jsbar.setValue(value);
 		repaint();
-		setVisible(true);
+		if(!isVisible()){
+			setVisible(true);
+		}
 	}
 
 	// public static void main(String[] args) {

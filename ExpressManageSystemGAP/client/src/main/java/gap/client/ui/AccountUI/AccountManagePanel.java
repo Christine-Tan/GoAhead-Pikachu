@@ -56,13 +56,13 @@ public class AccountManagePanel extends MainPanelWithGird{
 		//两边的占位Panel
 		JPanel leftPanel = new JPanel();
 		JPanel rightPanel = new JPanel();
-		SwingConsole.addComponent(gb, gcons, this, leftPanel, 0, 1, 1, 1, 0.1, 1);
-		SwingConsole.addComponent(gb, gcons, this, rightPanel, 2, 1, 1, 1, 0.1, 1);
+		SwingConsole.addComponent(gb, gcons, this, leftPanel, 0, 1, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, rightPanel, 2, 1, 1, 1, 1, 1);
 		
 		//主面板
 		accountDisplayPanel = new AccountDisplayPanel(this, accounts);
-		gcons.fill = GridBagConstraints.BOTH;
-		SwingConsole.addComponent(gb, gcons, this, accountDisplayPanel, 1, 1, 1, 1, 1, 1);
+		gcons.fill = GridBagConstraints.VERTICAL;
+		SwingConsole.addComponent(gb, gcons, this, accountDisplayPanel, 1, 1, 1, 1, 0.5, 1);
 		
 		area = new ButtonArea();
 		area.removeAll();
