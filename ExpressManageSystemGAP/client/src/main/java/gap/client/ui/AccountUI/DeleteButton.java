@@ -25,7 +25,6 @@ public class DeleteButton extends JLabel{
 		this.box = box;
 		setBounds(box.width-15,0,15,15);
 		addMouseListener(new Listener());
-		
 	}
 	
 	@Override
@@ -56,6 +55,7 @@ public class DeleteButton extends JLabel{
 			// TODO Auto-generated method stub
 			isEnter = false;
 			currentImage = image;
+			box.mouseExit();
 			repaint();
 		}
 

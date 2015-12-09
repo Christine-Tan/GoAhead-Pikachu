@@ -34,8 +34,8 @@ public class AccountBox extends JPanel{
 	private JLabel balanceLabel = new JLabel();
 
 	private DeleteButton deleteButton;
-	final int width = 175;
-	final int height = 220;
+	protected static int width = 175;
+	protected static int height = 220;
 	Color background = Color.white;
 	
 	MyListener listener = new MyListener();
@@ -90,6 +90,10 @@ public class AccountBox extends JPanel{
 		(accountIcon, 0, -this.getWidth()/10, this.getWidth(), this.getWidth(), null);
 	}
 	
+	public void mouseExit(){
+		listener.mouseExited(null);
+	}
+	
 	
 	class MyListener implements MouseListener{
 
@@ -121,7 +125,7 @@ public class AccountBox extends JPanel{
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			if(!rectangle.contains(e.getPoint())){
+			if(e==null || !rectangle.contains(e.getPoint())){
 				background = white;
 				deleteButton.setVisible(false);
 				repaint();

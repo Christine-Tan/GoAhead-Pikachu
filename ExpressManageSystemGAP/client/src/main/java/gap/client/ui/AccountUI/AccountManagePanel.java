@@ -2,11 +2,15 @@ package gap.client.ui.AccountUI;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 
 import gap.client.bl.account.AccountBlController;
 import gap.client.ui.BaseComponents.MainFrame;
@@ -29,12 +33,12 @@ public class AccountManagePanel extends MainPanelWithGird{
 	
 	ButtonArea area;
 	AccountDisplayPanel accountDisplayPanel;
+	JScrollPane jScrollPane;
 	
 	private int column = 4;
 	
 	public AccountManagePanel(MainFrame frame) {
 		super(frame);
-
 		initial();
 	}
 	
@@ -51,24 +55,30 @@ public class AccountManagePanel extends MainPanelWithGird{
 		confirmButton.addActionListener(confirmListener);
 		
 		queryPanel.setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
-		SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 3, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
 		
 		//两边的占位Panel
-		JPanel leftPanel = new JPanel();
-		JPanel rightPanel = new JPanel();
-		SwingConsole.addComponent(gb, gcons, this, leftPanel, 0, 1, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, rightPanel, 2, 1, 1, 1, 1, 1);
+//		JPanel leftPanel = new JPanel();
+//		JPanel rightPanel = new JPanel();
+//		SwingConsole.addComponent(gb, gcons, this, leftPanel, 0, 1, 1, 1, 0.5, 1);
+//		SwingConsole.addComponent(gb, gcons, this, rightPanel, 2, 1, 1, 1, 0.5, 1);
+		
+		jScrollPane = getJsPanel();
+		JViewport viewport = jScrollPane.getViewport();
+		
 		
 		//主面板
-		accountDisplayPanel = new AccountDisplayPanel(this, accounts);
+		accountDisplayPanel = new AccountDisplayPanel(this, accounts,viewport);
 		gcons.fill = GridBagConstraints.VERTICAL;
-		SwingConsole.addComponent(gb, gcons, this, accountDisplayPanel, 1, 1, 1, 1, 0.5, 1);
+		SwingConsole.addComponent(gb, gcons, this, accountDisplayPanel, 0, 1, 1, 1, 1, 1);
 		
 		area = new ButtonArea();
 		area.removeAll();
 		area.add(confirmButton);
 		gcons.anchor = GridBagConstraints.EAST;
-		SwingConsole.addComponent(gb, gcons, this, area, 0, 2, 3, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, area, 0, 2, 1, 1, 1, 0);
+		
+		
 	}
 	
 	
