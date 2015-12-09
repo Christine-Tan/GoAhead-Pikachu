@@ -1,6 +1,8 @@
 package gap.client.datacontroller;
 
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.gapcomponents.GAPDialog;
+import gap.client.util.MessageType;
 import gap.common.dataservice.Contactor;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
@@ -239,7 +241,8 @@ public class NetModule {
 		if (dialogShowed)
 			dialog.showMessage(message);
 		else
-			System.out.println(message);
+			// System.out.println(message);
+			MainFrame.setMessage(message, MessageType.alram, 2000);
 	}
 
 	/**
@@ -270,12 +273,12 @@ public class NetModule {
 	}
 
 	public static void main(String[] args) {
-		JFrame jf = new JFrame();
-		jf.setSize(200, 200);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setLocationRelativeTo(null);
-		jf.setVisible(true);
-		initial(jf);
-		connect();
+		// JFrame jf = new JFrame();
+		// jf.setSize(200, 200);
+		// jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// jf.setLocationRelativeTo(null);
+		// jf.setVisible(true);
+		// initial(jf);.
+		// connect();
 	}
 }

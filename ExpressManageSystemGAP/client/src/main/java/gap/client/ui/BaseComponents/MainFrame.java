@@ -5,6 +5,7 @@ import gap.client.ui.BaseListener.ResizeListener;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.LoadPanel;
 import gap.client.util.MessageType;
 
 import java.awt.Color;
@@ -20,6 +21,7 @@ public class MainFrame extends JFrame {
 	TitlePanel titlePanel;
 	NavigateBar navigateBar;
 	MainPanel mainPanel;
+	LoadPanel loadPanel;
 	static MessagePanel messagePanel;
 
 	MoveListener moveListener;
@@ -52,6 +54,8 @@ public class MainFrame extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		loadPanel = new LoadPanel(this);
 
 		setSize(Default.WIDTH, Default.HEIGHT);
 		setUndecorated(true);
@@ -98,6 +102,18 @@ public class MainFrame extends JFrame {
 
 	}
 
+	public void load(final Runnable runnable) {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO 自动生成的方法存根
+				loadPanel.load(runnable);
+			}
+		}).start();
+		;
+	}
+
 	public void setMainPanel(MainPanel panel) {
 		if (mainPanel != null)
 			remove(mainPanel.getJsPanel());
@@ -106,9 +122,9 @@ public class MainFrame extends JFrame {
 				mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
 		validate();
 	}
-	
-	public static void setMessage(String message,MessageType type,long time){
+
+	public static void setMessage(String message, MessageType type, long time) {
 		messagePanel.setMessage(message, type, time);
-	} 
+	}
 
 }

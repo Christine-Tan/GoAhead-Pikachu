@@ -2,8 +2,11 @@ package gap.client.ui.deliveryui.expressorderinput;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
 import gap.common.util.ExpressType;
 
 import java.awt.Color;
@@ -12,12 +15,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class ExpressInfoUI extends JPanel {
-	JLabel title, type;
+	JLabel title, type, price_la;
+	GAPTextField price;
+	JButton price_get;
 	JComboBox<String> type_list;
 
 	public ExpressInfoUI() {
@@ -28,6 +35,17 @@ public class ExpressInfoUI extends JPanel {
 		title = new GAPLabel("快件信息：");
 
 		type = new GAPLabel("快递类型：");
+
+		price_la = new GAPLabel("价格：");
+
+		price_get = new GAPButton("计算");
+		price_get.setFont(ComponentStyle.defaultFont);
+
+		price = new GAPTextField(5);
+		price.setEditable(false);
+		price.setFocusable(false);
+		// price.closeEdit();
+		price.setCenter();
 
 		type_list = new GAPComboBox<String>();
 		type_list.addItem("特快");
@@ -43,8 +61,11 @@ public class ExpressInfoUI extends JPanel {
 		setLayout(gb);
 		SwingConsole.addComponent(gb, gcons, this, title, 0, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, type, 1, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 10, 10, 540);
 		SwingConsole.addComponent(gb, gcons, this, type_list, 2, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, price_la, 3, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, price, 4, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 10, 10, 300);
+		SwingConsole.addComponent(gb, gcons, this, price_get, 5, 0, 1, 1, 0, 0);
 	}
 
 	// 获得快递类型
@@ -60,6 +81,10 @@ public class ExpressInfoUI extends JPanel {
 			break;
 		}
 		return null;
+	}
+
+	public void setPrice(double price) {
+		this.price.setText(String.format("%.2f", price));
 	}
 
 }

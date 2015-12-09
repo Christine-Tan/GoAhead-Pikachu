@@ -1,8 +1,10 @@
 package gap.client.ui.LoginUI;
 
+import gap.client.blcontroller.LoginController;
 import gap.client.ui.BaseComponents.WhiteExitButton;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
+import gap.client.vo.LogVO;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -48,6 +50,41 @@ public class LoginPanel extends JPanel {
 		layer.add(logoPanel, Integer.valueOf(15));
 		logoPanel.startAnimation();
 
+		signInButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				String username_text = userName.getText();
+				String password_text = new String(passwordField.getPassword());
+				LogVO log = LoginController.login(username_text, password_text);
+			}
+		});
+
 		int signInX = getWidth() / 2 - 200 / 2;
 		signInButton.setBounds(signInX, 280, 200, 35);
 		// goBackButton.setBounds(20, 225, 100, 40);
@@ -55,7 +92,7 @@ public class LoginPanel extends JPanel {
 
 		layer.add(signInButton);
 		layer.add(exitButton, new Integer(20));
-		
+
 	}
 
 	public void paintComponent(Graphics g) {

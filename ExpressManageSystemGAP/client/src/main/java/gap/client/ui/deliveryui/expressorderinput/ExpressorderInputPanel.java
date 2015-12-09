@@ -1,6 +1,7 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
 import gap.client.blcontroller.ExpressorderController;
+import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
@@ -32,14 +33,33 @@ public class ExpressorderInputPanel extends MainPanel {
 		express = new ExpressInfoUI();
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交订单");
-		buttonArea.submit.addActionListener(new ActionListener() {
+		express.price_get.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				ExpressOrderVO vo = getExpressOrderVO();
 				vo = ExpressorderController.createOrder(vo);
-				ExpressorderController.save(vo);
+				express.setPrice(vo.price);
+			}
+		});
+		buttonArea.submit.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						ExpressOrderVO vo = getExpressOrderVO();
+						vo = ExpressorderController.createOrder(vo);
+						ExpressorderController.save(vo);
+						// TODO 自动生成的方法存根
+					}
+				});
+
 			}
 		});
 
