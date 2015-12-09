@@ -43,6 +43,16 @@ public class LoadOrderPanel extends MainPanel {
 			}
 		});
 
+		mainFrame.load(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO 自动生成的方法存根
+				carAndDriver.flush();
+				orderPanel.flush();
+			}
+		});
+
 		flushButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -60,8 +70,8 @@ public class LoadOrderPanel extends MainPanel {
 
 		JPanel jp = new JPanel();
 		jp.setOpaque(false);
-		gcons.anchor = GridBagConstraints.EAST;
-		gcons.insets = new Insets(10, 0, 0, 30);
+		// gcons.anchor = GridBagConstraints.EAST;
+		gcons.insets = new Insets(10, 700, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, flushButton, 0, 0, 1, 1, 0,
 				0);
 		gcons.insets = new Insets(0, 0, 0, 0);

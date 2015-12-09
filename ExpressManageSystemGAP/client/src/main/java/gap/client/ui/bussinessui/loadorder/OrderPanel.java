@@ -101,7 +101,6 @@ public class OrderPanel extends JPanel {
 			}
 		});
 
-		flush();
 	}
 
 	void setSelected(boolean bool) {

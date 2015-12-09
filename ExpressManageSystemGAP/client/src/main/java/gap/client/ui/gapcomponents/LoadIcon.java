@@ -50,6 +50,7 @@ public class LoadIcon extends JComponent {
 		});
 
 		changeThead = new Thread(new MoveRunnable());
+		changeThead.setDaemon(true);
 		changeThead.start();
 	}
 
@@ -71,8 +72,10 @@ public class LoadIcon extends JComponent {
 
 		void draw(Graphics2D g) {
 			g.setColor(darkColor);
-			int x = (int) (center_x + distance * Math.sin(unit * current / num));
-			int y = (int) (center_y + distance * Math.cos(unit * current / num));
+			int x = (int) (center_x + distance
+					* Math.sin(-unit * current / num));
+			int y = (int) (center_y + distance
+					* Math.cos(-unit * current / num));
 			Area area = new Area(new Ellipse2D.Double(x, y, ball_r, ball_r));
 			g.fill(area);
 		}
@@ -115,11 +118,11 @@ public class LoadIcon extends JComponent {
 
 	}
 
-//	public static void main(String[] args) {
-//		JFrame jf = new JFrame();
-//		jf.setLayout(new FlowLayout());
-//		jf.add(new LoadIcon());
-//		SwingConsole.run(jf, 400, 300);
-//	}
+	// public static void main(String[] args) {
+	// JFrame jf = new JFrame();
+	// jf.setLayout(new FlowLayout());
+	// jf.add(new LoadIcon());
+	// SwingConsole.run(jf, 400, 300);
+	// }
 
 }

@@ -46,7 +46,7 @@ public class CarAndDriverPanel extends JPanel {
 		add(Box.createHorizontalGlue());
 		add(car);
 
-		flush();
+
 
 	}
 

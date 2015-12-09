@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class ExpressorderInputPanel extends MainPanel {
 	PeopleInfoUI sender, receiver;
@@ -56,6 +57,12 @@ public class ExpressorderInputPanel extends MainPanel {
 						ExpressOrderVO vo = getExpressOrderVO();
 						vo = ExpressorderController.createOrder(vo);
 						ExpressorderController.save(vo);
+						// try {
+						// Thread.sleep(5000);
+						// } catch (InterruptedException e) {
+						// // TODO 自动生成的 catch 块
+						// e.printStackTrace();
+						// }
 						// TODO 自动生成的方法存根
 					}
 				});

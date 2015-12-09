@@ -103,15 +103,16 @@ public class MainFrame extends JFrame {
 	}
 
 	public void load(final Runnable runnable) {
-		new Thread(new Runnable() {
+		Thread loadThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				// TODO 自动生成的方法存根
+				// // TODO 自动生成的方法存根
 				loadPanel.load(runnable);
 			}
-		}).start();
-		;
+		});
+		loadThread.setDaemon(true);
+		loadThread.start();
 	}
 
 	public void setMainPanel(MainPanel panel) {

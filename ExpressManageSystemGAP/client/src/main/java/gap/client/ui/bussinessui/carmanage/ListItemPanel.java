@@ -158,7 +158,7 @@ public class ListItemPanel extends JPanel {
 				}
 			});
 
-			delete = new GAPButton("E");
+			delete = new GAPButton("x");
 			delete.setFont(ComponentStyle.defaultFont);
 			delete.addActionListener(new ActionListener() {
 
