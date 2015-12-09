@@ -16,7 +16,20 @@ import javax.swing.JLabel;
 import gap.client.ui.AccountUI.AddBox;
 import gap.client.ui.UITools.RenderSetter;
 
+/**
+ * 
+ * 假如某一个地方需要这个动画效果，
+ * 就在自己的组件上添加ConfirmLabel，<br/>
+ * 鼠标进入时调用他的mouseEnter方法，退出时调用mouseExit方法<br/>
+ * 他的大小没有预先设定，记得设定一下
+ * @author 申彬
+ *
+ */
 public class ConfirmLabel extends JLabel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static String URL = "images/sureAnimation/sure";
 	static Image[] confirmAnimation = new Image[12];
 	
