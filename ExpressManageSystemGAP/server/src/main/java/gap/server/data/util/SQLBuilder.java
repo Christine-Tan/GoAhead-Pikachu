@@ -9,9 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * 
+ *
  * 一个SQL生成器，有执行方法，用法示例如下:<p/>
- * 
+ *
  *	SQLBuilder sqlBuilder = new SQLBuilder();	<br/>
  *	sqlBuilder.Select("Name","Balance","Income").From("account").Where("Balance > 10000");<br/>
  *	sqlBuilder.excuteQuery();<p/>
@@ -177,7 +177,7 @@ public class SQLBuilder {
 	}
 
 	/**
-	 * 
+	 *
 	 * 删除方法，假如后边不调用where，则删除表中所有行
 	 * @param table
 	 * @return
@@ -237,43 +237,43 @@ public class SQLBuilder {
 	}
 
 	private void makeList(Object[] objects, boolean isColumnName) {
-		if (objects.length == 0) {
-			return;
-		} else {
-			boolean hasBra = false;
-			if (objects[0] instanceof String) {
-				String s = (String) objects[0];
-				hasBra = s.contains("(");
-			}
-
-			if (!hasBra && !isColumnName) {
-				leftBra();
-			}
-
-			for (int i = 0; i < objects.length; i++) {
-				if (i > 0) {
-					builder.append(",");
-				}
-				// 在不是列名的情况下，string是特殊情况，需要加单引号。
-				// 同时也允许用户直接传(150,20,'aa')这样的形式进来，所以假如没有括号才特殊处理
-				if (!isColumnName && (objects[i] instanceof String) && !hasBra) {
-					String value = objects[i].toString();
-					handleString(value);
-				} else if (objects[i] instanceof Calendar) {
-					String time = convertDate((Calendar) objects[i], dateType);
-					handleString(time);
-				} else if (objects[i] instanceof Enum) {
-					handleEnum((Enum) objects[i]);
-				} else {
-					builder.append(objects[i].toString());
-				}
-			}
-
-			if (!hasBra && !isColumnName) {
-				rightBra();
-			}
-			builder.append(" ");
-		}
+//		if (objects.length == 0) {
+//			return;
+//		} else {
+//			boolean hasBra = false;
+//			if (objects[0] instanceof String) {
+//				String s = (String) objects[0];
+//				hasBra = s.contains("(");
+//			}
+//
+//			if (!hasBra && !isColumnName) {
+//				leftBra();
+//			}
+//
+//			for (int i = 0; i < objects.length; i++) {
+//				if (i > 0) {
+//					builder.append(",");
+//				}
+//				// 在不是列名的情况下，string是特殊情况，需要加单引号。
+//				// 同时也允许用户直接传(150,20,'aa')这样的形式进来，所以假如没有括号才特殊处理
+//				if (!isColumnName && (objects[i] instanceof String) && !hasBra) {
+//					String value = objects[i].toString();
+//					handleString(value);
+//				} else if (objects[i] instanceof Calendar) {
+//					String time = convertDate((Calendar) objects[i], dateType);
+//					handleString(time);
+//				} else if (objects[i] instanceof Enum) {
+//					handleEnum((Enum) objects[i]);
+//				} else {
+//					builder.append(objects[i].toString());
+//				}
+//			}
+//
+//			if (!hasBra && !isColumnName) {
+//				rightBra();
+//			}
+//			builder.append(" ");
+//		}
 	}
 
 	private void handleEnum(Enum e) {
@@ -330,7 +330,7 @@ public class SQLBuilder {
 	}
 
 	/**
-	 * 
+	 *
 	 * 若传入列名，记得调用 EQUALS，或者 AND，或者OR，EQUALS相当于 = <br/>
 	 * 直接传入表达式也行
 	 * @param col_Or_express

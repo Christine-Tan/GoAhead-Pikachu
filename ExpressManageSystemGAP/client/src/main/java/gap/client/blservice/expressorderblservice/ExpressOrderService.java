@@ -20,18 +20,12 @@ public interface ExpressOrderService {
 	public ExpressOrderVO getOrder(String order_id)
 			throws InvalidInputException;
 
-	public ResultMessage modify(ExpressOrderVO vo);
 
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id)
 			throws InvalidInputException;
 
 	public List<ExpressOrderVO> getCurrentOrders(String ins_id,
 			CurrentOrderType type) throws InvalidInputException;
-
-	public ResultMessage setArrivedOrders(List<ExpressOrderVO> orders,
-			String ins_id);
-
-	public ResultMessage setOffOders(List<ExpressOrderVO> orders, String ins_id);
 
 	public ExpressOrderVO createOrder(ExpressOrderVO order_info);
 

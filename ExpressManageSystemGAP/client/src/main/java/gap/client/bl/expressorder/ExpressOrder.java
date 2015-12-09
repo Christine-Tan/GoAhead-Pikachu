@@ -54,11 +54,6 @@ public class ExpressOrder implements ExpressOrderService {
 		return null;
 	}
 
-	@Override
-	public ResultMessage modify(ExpressOrderVO vo) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id) {
@@ -87,18 +82,6 @@ public class ExpressOrder implements ExpressOrderService {
 		return ordersVO;
 	}
 
-	@Override
-	public ResultMessage setArrivedOrders(List<ExpressOrderVO> orders,
-			String ins_id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	@Override
-	public ResultMessage setOffOders(List<ExpressOrderVO> orders, String ins_id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public ExpressOrderVO createOrder(ExpressOrderVO order_info) {

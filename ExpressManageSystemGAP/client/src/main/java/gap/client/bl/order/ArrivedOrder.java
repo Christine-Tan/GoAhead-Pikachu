@@ -18,12 +18,6 @@ public class ArrivedOrder implements ArrivedOrderService {
 		arrivedOrderData = ControllerFactory.getArrivedOrderDataController();
 	}
 
-	@Override
-	public ArrivedOrderVO create(List<ExpressOrderVO> orders,
-			ArrivedOrderVO orderinfo) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public ResultMessage save(ArrivedOrderVO order) {
@@ -37,10 +31,5 @@ public class ArrivedOrder implements ArrivedOrderService {
 		return arrivedOrderData.add(order.toPO());
 	}
 
-	@Override
-	public ArrivedOrderVO find(String id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 }
