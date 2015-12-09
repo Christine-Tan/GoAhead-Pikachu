@@ -70,9 +70,7 @@ public class AccountDisplayPanel extends JPanel{
 		int numberInRow = containerWidth/(boxWidth +  hGarp);
 		//有多少行
 		int rowNumber = accounts.size()/numberInRow;
-		
-		System.out.println(numberInRow);
-		System.out.println(rowNumber);
+
 		
 		
 		if(accounts.size()%numberInRow>0){
@@ -114,9 +112,6 @@ public class AccountDisplayPanel extends JPanel{
 		@Override
 		public void componentResized(ComponentEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("size change.");
-			System.out.println(viewport.getWidth());
-			System.out.println(viewport.getHeight());
 			reSize();
 		}
 
