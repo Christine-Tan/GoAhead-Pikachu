@@ -12,8 +12,10 @@ import javax.swing.JPanel;
 
 public class InitialStockPanel extends MainPanel {
 	ButtonArea confirm;
-	ListItemPanel list;
+	ListItemPanelRaw list;
 	TitlePanel title;
+	ChoosePanel choose;
+	ListItemPanel newList;
 
 	public InitialStockPanel(MainFrame frame) {
 		super(frame);
@@ -21,17 +23,20 @@ public class InitialStockPanel extends MainPanel {
 
 		confirm = new ButtonArea();
 		confirm.submit.setText("确认初始化");
-		list = new ListItemPanel(frame);
+		list = new ListItemPanelRaw(frame);
 		title = new TitlePanel();
+		choose = new ChoosePanel();
+		newList = new ListItemPanel(frame);
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 
 		JPanel panel = new JPanel();
-		// 还差一个选项卡
+		SwingConsole.addComponent(gb, gcons, this, choose, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, list, 0, 2, 1, 1, 1, 0);
+//		SwingConsole.addComponent(gb, gcons, this, list, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, newList, 0, 2, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
 	}

@@ -40,6 +40,7 @@ public interface InventoryService {
 
 	public ResultMessage stockOut(String id);
 
-	
+	public double getOneShelfRatio(String position, String sector_id);
 
+	
 }

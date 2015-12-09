@@ -1,5 +1,7 @@
 package gap.client.blcontroller;
 
+import java.util.List;
+
 import gap.client.bl.inventory.Inventory;
 import gap.client.vo.GoodsVO;
 import gap.common.util.ResultMessage;
@@ -24,11 +26,34 @@ public class InventoryController {
 		return inventory.getNextLocation(ins_id, sector_id);
 	}
 	
+	public static List<GoodsVO> getOneSectorExisted(String sector_id,String ins_id){
+		return inventory.getOneSectorExisted(ins_id, sector_id);
+	}
 	public static ResultMessage Stockin(GoodsVO vo){
 		return inventory.stockIn(vo);
 	}
 	
 	public static ResultMessage Stockout(GoodsVO vo){
 		return inventory.stockOut(vo.getExpressorder_id());
+	}
+	
+	public static void InitialModify(GoodsVO vo){
+		inventory.initialmodify(vo);
+	}
+	
+	public static void InitialAdd(GoodsVO vo){
+		inventory.initialadd(vo);
+	}
+	
+	public static void InitialDelete(String id){
+		inventory.initialdelete(id);
+	}
+	
+	public static ResultMessage InitialFlush(){
+		return inventory.initialflush();
+	}
+	
+	public static double getOneShelfRatio(String position, String sector_id){
+		return inventory.getOneShelfRatio(position,sector_id);
 	}
 }

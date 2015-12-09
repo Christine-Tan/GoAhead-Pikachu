@@ -102,6 +102,16 @@ public class InventoryDataController {
 		}
 		return null;
 	}
+	
+	public int getOneShelfNum(String position, String sector_id){
+		try {
+			return inventorydataservice.getOneShelfNum(position, sector_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub

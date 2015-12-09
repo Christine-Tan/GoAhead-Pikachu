@@ -105,6 +105,11 @@ public class InventoryDataServiceImplTest {
 		}
 	}
 	
+	@Test
+	
+	public void testgetOneShelfNum(){
+		System.out.println(inventory.getOneShelfNum("A,B", "00110011"));
+	}
 
 	@Test
 	public void testAddGoodsPO() {

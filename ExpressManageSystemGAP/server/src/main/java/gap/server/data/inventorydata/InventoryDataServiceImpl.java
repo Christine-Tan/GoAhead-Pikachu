@@ -80,6 +80,24 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	}
 	
 	@Override
+	public int getOneShelfNum(String position,String sector_id){
+		String sql1 = "SELECT * FROM "+sectorItemTable+" WHERE LEFT(location,3) = '"+position+"';";
+		int num = 0;
+		try {
+			ResultSet re = NetModule.excutor.excuteQuery(sql1);
+			while(re.next()){
+				num++;
+			}
+			
+			return num;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	@Override
 	public List<GoodsPO> getOneSectorExisted(String sector_id, String ins_id)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -395,6 +413,8 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return ResultMessage.SUCCEED;
 	}
+	
+	
 
 	
 

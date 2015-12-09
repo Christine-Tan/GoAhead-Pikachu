@@ -89,11 +89,19 @@ public class Inventory implements InventoryService {
 				ins_id);
 		return GoodsVO.toVOList(list);
 	}
+	
+	@Override
+	public double getOneShelfRatio(String position, String sector_id) {
+		// TODO Auto-generated method stub
+		int num = inventoryData.getOneShelfNum(position, sector_id);
+		int units = WareHouseSize.UNIT.getSize();
+		return num*1.0/units*100;
+	} 
 
 	@Override
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
-		System.out.println(alarmValue);
+//		System.out.println(alarmValue);
 		return inventoryData.setAlarm(alarmValue, ins_id);
 	}
 
@@ -242,5 +250,9 @@ public class Inventory implements InventoryService {
 			super(inventoryData, MODIFY, args);
 		}
 	}
+
+	
+
+	
 
 }
