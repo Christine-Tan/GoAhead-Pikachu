@@ -16,12 +16,6 @@ public class DeliveryOrder implements DeliveryOrderService {
 		deliveryOrderData = ControllerFactory.getDeliveryOrderDataController();
 	}
 
-	@Override
-	public DeliveryOrderVO create(List<ExpressOrderVO> orders,
-			DeliveryOrderVO orderinfo) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 	@Override
 	public ResultMessage save(DeliveryOrderVO order) {
@@ -29,10 +23,5 @@ public class DeliveryOrder implements DeliveryOrderService {
 		return deliveryOrderData.add(order.toPO());
 	}
 
-	@Override
-	public DeliveryOrderVO find(String id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 }

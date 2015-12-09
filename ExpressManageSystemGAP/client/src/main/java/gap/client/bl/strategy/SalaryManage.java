@@ -53,7 +53,7 @@ public class SalaryManage implements SalaryService {
 
 	/**
 	 * 将操作缓存起来，按序处理缓存队列
-	 * 
+	 *
 	 * @return
 	 */
 	public ResultMessage flush() {

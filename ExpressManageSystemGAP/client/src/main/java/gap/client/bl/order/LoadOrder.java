@@ -43,16 +43,5 @@ public class LoadOrder implements LoadOrderService {
 		return vo_orders;
 	}
 
-	@Override
-	public LoadOrderVO create(List<String> orders, LoadOrderVO orderinfo) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	@Override
-	public LoadOrderVO find(String id) {
-		// TODO 自动生成的方法存根
-		return null;
-	}
 
 }

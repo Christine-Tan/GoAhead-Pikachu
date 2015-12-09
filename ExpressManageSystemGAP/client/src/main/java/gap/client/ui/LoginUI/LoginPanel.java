@@ -1,9 +1,14 @@
 package gap.client.ui.LoginUI;
 
 import gap.client.blcontroller.LoginController;
+import gap.client.datacontroller.NetModule;
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.WhiteExitButton;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.deliveryui.expressorderinput.ExpressorderInputPanel;
+import gap.client.util.LocalInfo;
+import gap.client.util.User;
 import gap.client.vo.LogVO;
 
 import java.awt.Color;
@@ -79,9 +84,20 @@ public class LoginPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO 自动生成的方法存根
+				LocalInfo.ins_id = "0010001";
+				User user = new User("000000005", UserType.DELIVERY,
+						"xiaoming", "123456", "0010001", "小明", Gender.MALE);
+				LocalInfo.localuser = user;
+				MainFrame mainFrame = new MainFrame();
+				NetModule.connect();
 				String username_text = userName.getText();
 				String password_text = new String(passwordField.getPassword());
 				LogVO log = LoginController.login(username_text, password_text);
+				if (log.isSucceed()) {
+					ExpressorderInputPanel panel = new ExpressorderInputPanel(
+							mainFrame);
+					mainFrame.setMainPanel(panel);
+				}
 			}
 		});
 

@@ -55,12 +55,12 @@ public class MessagePanel extends JPanel {
 		
 		
 		//保证已经回复正常状态
-		synchronized (lockObject) {
+		synchronized (this) {
 			System.out.println("get");
 			try {
-				if(!enable){
+				while(!enable){
 					System.out.println("wait");
-					lockObject.wait();
+					this.wait();
 				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
@@ -77,7 +77,9 @@ public class MessagePanel extends JPanel {
 	
 
 	protected void paintComponent(Graphics g) {
-		Graphics2D graphics2d = RenderSetter.OpenRender(g);
+		Graphics2D graphics2d = RenderSetter.OpenRender(g.create());
+		
+		
 		AlphaComposite composite = AlphaComposite.getInstance
 									(AlphaComposite.SRC_OVER, alpha);
 		graphics2d.setComposite(composite);
@@ -109,13 +111,13 @@ public class MessagePanel extends JPanel {
 		
 		public void run() {
 			
-			synchronized (lockObject) {
+			synchronized (MessagePanel.this) {
 				
 			
 				for(long currentTime = 0; currentTime<time && !isStop ; currentTime+=step){
 				
 					repaint();
-				
+					mainFrame.validate();
 					try {
 						Thread.sleep(step);
 					} catch (InterruptedException e) {
@@ -129,7 +131,7 @@ public class MessagePanel extends JPanel {
 				for(long currentTime = 0; currentTime<500 && !isStop; currentTime+=step){
 					
 					repaint();
-				
+					mainFrame.validate();
 					try {
 						Thread.sleep(step);
 					} catch (InterruptedException e) {
@@ -137,8 +139,10 @@ public class MessagePanel extends JPanel {
 					}	
 					
 				}
+				
+				alpha = 1.0f;
+				MessagePanel.this.notifyAll();
 				enable = true;
-				lockObject.notifyAll();
 			}
 		}
 		
