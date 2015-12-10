@@ -1,4 +1,4 @@
-package gap.client.ui.bussinessui.carmanage;
+package gap.client.ui.AccountUI;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
@@ -16,11 +16,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class QueryPanel extends JPanel {
+public class AccountQueryPanel extends JPanel {
 	GAPTextField id;
 	JButton search;
 
-	public QueryPanel() {
+	public AccountQueryPanel() {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
 

@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
 import gap.client.bl.account.AccountBlController;
+import gap.client.bl.account.AccountSearchResult;
+import gap.client.bl.account.AccountSearcher;
 import gap.client.ui.AccountUI.Listener.AccountConfirmListener;
 import gap.client.ui.BaseComponents.CancelLabel;
 import gap.client.ui.BaseComponents.ConfirmLabel;
@@ -124,6 +126,11 @@ public class AccountManagePanel extends MainPanelWithGird{
 		}else{
 			MainFrame.setMessage("网络异常", MessageType.alram, 2000);
 		}
+	}
+	
+	public void searchAccount(String key){
+		ArrayList<AccountSearchResult> results
+			=accountBlController.searchAccount(key);
 	}
 	
 	//迭代器内容存入accounts

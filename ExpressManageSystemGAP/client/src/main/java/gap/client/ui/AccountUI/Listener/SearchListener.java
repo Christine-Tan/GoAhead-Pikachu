@@ -6,7 +6,8 @@ import java.awt.event.MouseListener;
 import javax.print.attribute.standard.MediaSize.NA;
 
 import gap.client.ui.AccountUI.AccountManagePanel;
-import gap.client.ui.bussinessui.drivermanage.QueryPanel;
+import gap.client.ui.bussinessui.carmanage.QueryPanel;
+
 
 public class SearchListener implements MouseListener{
 
@@ -16,13 +17,14 @@ public class SearchListener implements MouseListener{
 	public SearchListener(AccountManagePanel managePanel,QueryPanel queryPanel){
 		this.managePanel = managePanel;
 		this.queryPanel = queryPanel;
+		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		String key = queryPanel.get
-		
+		String key = queryPanel.getKey();
+		managePanel.searchAccount(key);
 	}
 
 	@Override
