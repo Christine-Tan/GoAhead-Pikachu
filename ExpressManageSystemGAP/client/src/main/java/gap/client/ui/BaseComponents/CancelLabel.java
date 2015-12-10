@@ -17,17 +17,17 @@ import gap.client.ui.UITools.RenderSetter;
 
 public class CancelLabel extends JLabel{
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	static String URL = "images/cancelAnimation/cancel";
 	static Image[] confirmAnimation = new Image[12];
-	
+
 	boolean isExit = true;
 	private int gap = 10;
-	
+
 	Object lockObject = new Object();
-	
+
 	//0号是正常图，之后1到12是选中动画
 	private int index = 0;
 	static{
@@ -36,7 +36,7 @@ public class CancelLabel extends JLabel{
 			confirmAnimation[i-1] = new ImageIcon(oneURL).getImage();
 		}
 	}
-	
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
@@ -44,7 +44,7 @@ public class CancelLabel extends JLabel{
 		graphics2d.drawImage(confirmAnimation[index], 0, 0,
 				this.getWidth(), this.getHeight(), null);
 	}
-	
+
 	public void mouseExited(){
 		isExit = true;
 		//System.out.println();
@@ -53,7 +53,7 @@ public class CancelLabel extends JLabel{
 				synchronized (lockObject) {
 					for(;index>=0;index--){
 						repaint();
-						
+
 						try {
 							Thread.sleep(gap);
 						} catch (InterruptedException e) {
@@ -67,7 +67,7 @@ public class CancelLabel extends JLabel{
 		}.start();
 
 	}
-	
+
 	public void mouseEntered(){
 		isExit = false;
 		new Thread(){
@@ -79,7 +79,7 @@ public class CancelLabel extends JLabel{
 					for(index = 0;index<confirmAnimation.length
 							&& !isExit;index++){
 						repaint();
-						
+
 						try {
 							Thread.sleep(gap);
 						} catch (InterruptedException e) {
@@ -93,20 +93,20 @@ public class CancelLabel extends JLabel{
 				}
 			}
 		}.start();
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 	JFrame frame = new JFrame("test");
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setSize(300, 300);
-	
-	CancelLabel label = new CancelLabel();
+
+	final CancelLabel label = new CancelLabel();
 	label.setPreferredSize(new Dimension(100, 100));
 
 	//frame.add(new AddBox());
-	
-	
+
+
 	JButton button = new JButton("");
 	button.addActionListener(new ActionListener() {
 		int time = 0;
@@ -121,10 +121,10 @@ public class CancelLabel extends JLabel{
 			}
 		}
 	});
-	
+
 	frame.add(label,BorderLayout.CENTER);
 	frame.add(button,BorderLayout.SOUTH);
 	frame.setVisible(true);
-}	
-	
+}
+
 }

@@ -28,7 +28,6 @@ public class MessagePanel extends JPanel {
 
 	Object lockObject = new Object();
 
-
 	//为了防止并发的变量，enable是false的时候,新来的消息不能播放
 	boolean enable = true;
 
@@ -52,7 +51,6 @@ public class MessagePanel extends JPanel {
 		if(thread!=null){
 			thread.setStop();
 		}
-
 
 		//保证已经回复正常状态
 		synchronized (this) {
@@ -111,7 +109,7 @@ public class MessagePanel extends JPanel {
 		}
 
 		public void run() {
-			
+
 			synchronized (MessagePanel.this) {
 
 

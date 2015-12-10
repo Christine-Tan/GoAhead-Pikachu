@@ -9,14 +9,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 
-import org.junit.validator.PublicClassValidator;
 
 public class GAPButton extends JButton {
-	
+
 	public MouseListener listener;
 	public GAPButton() {
 		super();
@@ -45,7 +42,7 @@ public class GAPButton extends JButton {
 		setBorder(BorderFactory.createEmptyBorder());
 		setFocusable(false);
 		setUI(new GAPButtonUI());
-		
+
 		listener = new MouseListener() {
 
 			@Override
