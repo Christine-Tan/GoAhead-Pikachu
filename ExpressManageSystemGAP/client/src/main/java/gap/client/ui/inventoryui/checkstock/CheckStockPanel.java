@@ -44,6 +44,7 @@ public class CheckStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "1");
 				reLayout();
 			}
@@ -55,7 +56,6 @@ public class CheckStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println("CAR!!!!!!!!!!!!!!");
 				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "2");
 //				list.setVisible(true);
@@ -68,7 +68,19 @@ public class CheckStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "3");
+				reLayout();
+			}
+		});
+		
+		choose.flex.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				list.removeAll();
+				list = new ListPanel(shelves, LocalInfo.ins_id + "0");
 				reLayout();
 			}
 		});
@@ -76,6 +88,7 @@ public class CheckStockPanel extends MainPanel {
 	}
 	
 	public void reLayout(){
+		removeAll();
 		JPanel panel = new JPanel();
 		SwingConsole.addComponent(gb, gcons, this, choose, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, list, 0, 1, 1, 1, 1, 0);

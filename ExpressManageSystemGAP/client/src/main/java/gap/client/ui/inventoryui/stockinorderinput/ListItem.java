@@ -122,7 +122,8 @@ public class ListItem extends JPanel {
 				loc = location.getText(),
 				sector_id = SectorType.getSectorId(LocalInfo.getIns_ID(), sec),
 				belong_sec = sector_id;
-		loc = loc.substring(loc.length()-5, loc.length());
+		
+		loc = loc.split(" ")[1];
 				
 		this.goods = new GoodsVO(expressorder_id, loc, sec, date, sector_id, belong_sec, des);	
 	}
@@ -157,7 +158,7 @@ public class ListItem extends JPanel {
 		SectorType sec = SectorType.getSectorTypeByChinese(sector.getText());
 		String sector_id = SectorType.getSectorId(ins_id, sec);
 		String location = InventoryController.getNextLocation(sector_id, ins_id);
-		return sector.getText()+location;
+		return sector.getText()+" "+location;
 	}
 	
 

@@ -26,6 +26,8 @@ public class Inventory implements InventoryService {
 			MODIFY = "modifyGoods";
 	List<Operation> operations;
 	InventoryDataController inventoryData;
+	int shelf = WareHouseSize.SHELF.getSize();
+	int unit = WareHouseSize.UNIT.getSize();
 
 	public Inventory() {
 		inventoryData = ControllerFactory.getInventoryDataController();
@@ -42,35 +44,35 @@ public class Inventory implements InventoryService {
 	@Override
 	public int getTotalNum(String ins_id){
 		int num = 0;
-		List<GoodsPO> list = inventoryData.getOneSector(ins_id+"0", ins_id);
+		List<GoodsPO> list = new ArrayList<GoodsPO>();
+		list = inventoryData.getOneSector(ins_id+"0", ins_id);
 		if(list!=null){
 			num += list.size();
 		}else{
-			num += 0;
+			return num;
 		}
 		
 		list = inventoryData.getOneSector(ins_id+"1", ins_id);
 		if(list!=null){
 			num += list.size();
 		}else{
-			num += 0;
+			return num;
 		}
 		
 		list = inventoryData.getOneSector(ins_id+"2", ins_id);
-		
 		if(list!=null){
 			num += list.size();
 		}else{
-			num += 0;
+			return num;
 		}
 		
 		list = inventoryData.getOneSector(ins_id+"3", ins_id);
-		
 		if(list!=null){
 			num += list.size();
 		}else{
-			num += 0;
+			return num;
 		}
+		
 		
 		return num;
 	}
@@ -78,14 +80,16 @@ public class Inventory implements InventoryService {
 	@Override
 	public List<GoodsVO> getOneSector(String ins_id, String sector_id) {
 		// TODO Auto-generated method stub
-		List<GoodsPO> list = inventoryData.getOneSector(sector_id, ins_id);
+		List<GoodsPO> list = new ArrayList<GoodsPO>();
+		list = inventoryData.getOneSector(sector_id, ins_id);
 		return GoodsVO.toVOList(list);
 	}
 
 	@Override
 	public List<GoodsVO> getOneSectorExisted(String ins_id, String sector_id) {
 		// TODO Auto-generated method stub
-		List<GoodsPO> list = inventoryData.getOneSectorExisted(sector_id,
+		List<GoodsPO> list = new ArrayList<GoodsPO>();
+		list = inventoryData.getOneSectorExisted(sector_id,
 				ins_id);
 		return GoodsVO.toVOList(list);
 	}
@@ -177,8 +181,8 @@ public class Inventory implements InventoryService {
 				isUsed[i - 1] = true;
 			}
 			int i;
-			for (i = 0; isUsed[i] == true; i++)
-				;
+			for (i = 0; isUsed[i] == true; i++);
+			
 			return getLocation(i + 1);
 		} else {
 			return getLocation(1);
@@ -190,8 +194,6 @@ public class Inventory implements InventoryService {
 		String[] detail = location.split(",");
 		int num = 0;
 		if (detail.length == 3) {
-			int shelf = WareHouseSize.SHELF.getSize();
-			int unit = WareHouseSize.UNIT.getSize();
 			num += (detail[0].charAt(0) - 'A') * shelf * unit;
 			num += (detail[1].charAt(0) - 'A') * unit;
 			num += Integer.parseInt(detail[2]);
@@ -202,12 +204,11 @@ public class Inventory implements InventoryService {
 
 	public String getLocation(int num) {
 		if (num > 0 && num <= WareHouseSize.TOTAL.getSize()) {
-			int shelf = WareHouseSize.SHELF.getSize();
-			int unit = WareHouseSize.UNIT.getSize();
-
 			int[] size = new int[3];
-			size[0] = num / unit * shelf;
+			size[0] = num/(unit * shelf);
+			System.out.println(size[0]);
 			num -= size[0] * unit * shelf;
+			System.out.println(num);
 			size[1] = num / unit;
 			num -= size[1] * unit;
 			if (num == 0) {
@@ -216,9 +217,11 @@ public class Inventory implements InventoryService {
 			} else {
 				size[2] = num;
 			}
+			String temp = size[2]+"";
+			
 
 			String l = (char) (size[0] + 'A') + "," + (char) (size[1] + 'A')
-					+ "," + size[2];
+					+ "," + temp;
 
 			return l;
 		}

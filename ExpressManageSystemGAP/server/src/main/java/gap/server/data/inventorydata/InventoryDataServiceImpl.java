@@ -81,7 +81,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	
 	@Override
 	public int getOneShelfNum(String position,String sector_id){
-		String sql1 = "SELECT * FROM "+sectorItemTable+" WHERE LEFT(location,3) = '"+position+"';";
+		String sql1 = "SELECT * FROM "+sectorItemTable+" WHERE LEFT(location,3) = '"+position+"' AND "+sectorId_f+" = '"+sector_id+"';";
 		int num = 0;
 		try {
 			ResultSet re = NetModule.excutor.excuteQuery(sql1);

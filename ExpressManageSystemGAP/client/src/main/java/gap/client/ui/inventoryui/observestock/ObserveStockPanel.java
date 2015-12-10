@@ -90,14 +90,22 @@ public class ObserveStockPanel extends MainPanel {
 	}
 	
 	void initialListPanel(){
+//		frame.removeAll();
 		beginDate = period.getBeginDate();
 		endDate = period.getEndDate();
 		List<StockinOrderVO> inList = StockinOrderController
 				.getRequired(beginDate, endDate, LocalInfo.getIns_ID());
 		List<StockoutOrderVO> outList = StockoutOrderController
 				.getRequired(beginDate, endDate, LocalInfo.getIns_ID());
+		
+		if(inList==null){
+			inList = new ArrayList<StockinOrderVO>();
+		}
 		List<InventoryOrder> InList = InventoryOrder
 				.transformInOrder(inList);
+		if(outList==null){
+			outList = new ArrayList<StockoutOrderVO>();
+		}
 		List<InventoryOrder> OutList = InventoryOrder
 				.transformOutOrder(outList);
 		stockinList = new ListPanel(InList);
@@ -114,7 +122,7 @@ public class ObserveStockPanel extends MainPanel {
 	}
 
 	void reLayout() {
-		
+		removeAll();
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.white);
 		JPanel panel1 = new JPanel();

@@ -137,10 +137,13 @@ public class GoodsVO {
 	public static List<GoodsVO> toVOList(List<GoodsPO> list) {
 		// TODO Auto-generated method stub
 		List<GoodsVO> voList = new ArrayList<GoodsVO>();
-		for(GoodsPO po:list){
-			GoodsVO vo = new GoodsVO(po);
-			voList.add(vo);
+		if(list!=null){
+			for(int i = 0;i<list.size();i++){
+				GoodsVO vo = new GoodsVO(list.get(i));
+				voList.add(vo);
+			}
 		}
+		
 		return voList;
 	}
 }

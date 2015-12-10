@@ -4,6 +4,7 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 
@@ -15,15 +16,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class TitlePanel extends JPanel {
 	GAPTextField id, order_id, destination, inDate, location;
-
+	
 	public TitlePanel() {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 70));
 
 		id = new GAPTextField("编号",3);
 		id.setCenter();
@@ -44,36 +46,27 @@ public class TitlePanel extends JPanel {
 		location = new GAPTextField("存放位置",7);
 		location.setCenter();
 		location.closeEdit();
+
 		
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.white);
-		panel.setPreferredSize(new Dimension(35,10));
 		
-		JPanel panel1 = new JPanel();
-		panel1.setBackground(Color.white);
-		panel1.setPreferredSize(new Dimension(5,10));
-		
-		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, -30, 0, 20);
-		SwingConsole.addComponent(gb, gcons, this, this.id, 1, 0, 1, 1, 1,
-				0);
-		gcons.insets = new Insets(0, -12, 0, 12);
-		SwingConsole.addComponent(gb, gcons, this, order_id, 2, 0, 1, 1, 1,
-				0);
-		gcons.insets = new Insets(0, 8, 0, 16);
-		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1,
-				1, 0);
-		gcons.insets = new Insets(0, 4, 0, 12);
+		gcons.insets = new Insets(10, 10, 0, 10);
+		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(10, -30, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(10, 2, 0, 18);
 		SwingConsole
-				.addComponent(gb, gcons, this, inDate, 4, 0, 1, 1, 1, 0);
-		gcons.insets = new Insets(0, 8, 0, 2);
-		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1,
+				.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(10, -20, 0, 40);
+		SwingConsole.addComponent(gb, gcons, this, location, 3, 0, 1, 1, 1,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, panel, 6, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(10, -33, 0, 103);
+		SwingConsole.addComponent(gb, gcons, this, destination, 4, 0, 1, 1,
+				1, 0);
+		
 
 	}
 

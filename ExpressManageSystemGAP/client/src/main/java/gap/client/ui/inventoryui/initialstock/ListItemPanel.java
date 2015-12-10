@@ -1,6 +1,5 @@
 package gap.client.ui.inventoryui.initialstock;
 
-import gap.client.blcontroller.DriverManageController;
 import gap.client.blcontroller.InventoryController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -25,7 +24,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -39,9 +37,11 @@ public class ListItemPanel extends JPanel {
 	// 添加button
 	JButton addButton;
 	JFrame frame;
+	String sector_id;
 
-	public ListItemPanel(JFrame frame) {
+	public ListItemPanel(JFrame frame,String sector_id) {
 		this.frame = frame;
+		this.sector_id = sector_id;
 		setBackground(Color.white);
 
 		addButton = new GAPButton("+");
@@ -58,12 +58,18 @@ public class ListItemPanel extends JPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		items = new ArrayList<>();
+		items = new ArrayList<ItemPanel>();
 
-		List<GoodsVO> VOs = InventoryController.getOneSectorExisted("00110011", "0011001");
-		for (int i = 1;i<=VOs.size();i++) {
-			addItem(VOs.get(i-1),i);
+		List<GoodsVO> VOs = new ArrayList<GoodsVO>();
+		VOs = InventoryController.getOneSectorExisted(sector_id, LocalInfo.getIns_ID());
+		if(VOs.size()!=0){
+			for (int i = 0;i<VOs.size();i++) {
+				addItem(VOs.get(i));
+			}
+		}else{
+			addNewItem();
 		}
+		
 	}
 
 	/**
@@ -71,8 +77,8 @@ public class ListItemPanel extends JPanel {
 	 * 
 	 * @param driver
 	 */
-	private void addItem(GoodsVO goods,int i) {
-		items.add(new ItemPanel(goods,i));
+	private void addItem(GoodsVO goods) {
+		items.add(new ItemPanel(goods));
 		reLayout();
 		frame.validate();
 	}
@@ -81,7 +87,7 @@ public class ListItemPanel extends JPanel {
 	 * 添加一个新项目
 	 */
 	private void addNewItem() {
-		ItemPanel item = new ItemPanel(items.size()+1);
+		ItemPanel item = new ItemPanel();
 		item.original = true;
 		item.openEdit();
 		items.add(item);
@@ -97,8 +103,10 @@ public class ListItemPanel extends JPanel {
 	private void removeItem(ItemPanel item) {
 		items.remove(item);
 		remove(item);
-		InventoryController.InitialDelete(item.goods.getExpressorder_id());
-//		DriverManageController.delete(item.driver.getId());
+		if(item.goods!=null){
+			InventoryController.InitialDelete(item.goods.getExpressorder_id());
+		}
+		
 		reLayout();
 		frame.validate();
 	}
@@ -108,6 +116,7 @@ public class ListItemPanel extends JPanel {
 	 */
 	private void reLayout() {
 		for (int i = 0; i < items.size(); i++) {
+			items.get(i).id.setText((i+1)+"");;
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
 					1, 1, 0);
 		}
@@ -127,7 +136,8 @@ public class ListItemPanel extends JPanel {
 		boolean original;
 		boolean edited, showed;
 
-		public ItemPanel(int i) {
+		public ItemPanel() {
+//			original = true;
 			setBackground(Color.white);
 			setFocusable(true);
 			setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
@@ -169,7 +179,7 @@ public class ListItemPanel extends JPanel {
 				}
 			});
 			
-			id = new GAPLabel(i+"");
+			id = new GAPLabel();
 			id.setPreferredSize(new Dimension(40, 25));
 			id.setHorizontalAlignment(JLabel.RIGHT);
 			
@@ -179,36 +189,39 @@ public class ListItemPanel extends JPanel {
 			destination.setCenter();
 			inDate = new GAPTextField(7);
 			inDate.setCenter();
-			location = new GAPTextField(10);
+			location = new GAPTextField(8);
 			location.setCenter();
 			setLayout(gb);
 			gcons.insets = new Insets(0, 10, 0, 10);
-			SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1,1, 0);
 			SwingConsole
-					.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 0, 0);
-			SwingConsole.addComponent(gb, gcons, this, location, 3, 0, 1, 1, 0,
+					.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, location, 3, 0, 1, 1, 1,
 					0);
 			// gcons.insets = new Insets(10, 80, 10, 0);
 			SwingConsole.addComponent(gb, gcons, this, destination, 4, 0, 1, 1,
-					0, 0);
+					1, 0);
 			// gcons.insets = new Insets(10, 40, 10, 10);
-			SwingConsole.addComponent(gb, gcons, this, edit_la, 5, 0, 1, 1, 0,
+			SwingConsole.addComponent(gb, gcons, this, edit_la, 5, 0, 1, 1, 1,
 					0);
 			// gcons.insets = new Insets(10, 10, 10, 10);
 			SwingConsole.addComponent(gb, gcons, this, delete_la, 6, 0, 1, 1,
-					0, 0);
+					1, 0);
 
-			closeEdit();
 		}
 
-		public ItemPanel(GoodsVO goods,int i) {
-			this(i);
+		public ItemPanel(GoodsVO goods) {
+			this();
 			this.goods = goods;
 			order_id.setText(goods.getExpressorder_id());
 			destination.setText(goods.getDestination());
-			location.setText(goods.getLocation());
+			String sec = SectorType.getName(sector_id.charAt(sector_id.length()-1));
+			String loc = sec+" "+goods.getLocation();
+			location.setText(loc);
 			inDate.setText(goods.getDate());
+			
+			closeEdit();
 		}
 
 		public void paintComponent(Graphics g) {

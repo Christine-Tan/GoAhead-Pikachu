@@ -16,7 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class ChoosePanel extends JPanel {
-	JButton car, train, plane;
+	JButton car, train, plane,flex;
 
 	public ChoosePanel() {
 		setBackground(Color.white);
@@ -33,6 +33,9 @@ public class ChoosePanel extends JPanel {
 		plane = new GAPButton("航运区");
 		plane.setBorder(ComponentStyle.focus_border);
 		plane.setSize(80, 50);
+		flex = new GAPButton("机动区");
+		flex.setBorder(ComponentStyle.focus_border);
+		flex.setSize(80, 50);
 
 
 		JPanel panel1 = new JPanel();
@@ -56,6 +59,7 @@ public class ChoosePanel extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, car, 1, 0, 1, 1, 0.5, 1);
 		SwingConsole.addComponent(gb, gcons, this, train, 2, 0, 1, 1, 0.5, 1);
 		SwingConsole.addComponent(gb, gcons, this, plane, 3, 0, 1, 1, 0.5, 1);
+		SwingConsole.addComponent(gb, gcons, this, flex, 4, 0, 1, 1, 0.5, 1);
 		SwingConsole.addComponent(gb, gcons, this, panel2, 5, 0, 1, 1, 1, 1);
 
 	}
