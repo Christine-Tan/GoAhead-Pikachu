@@ -17,10 +17,10 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TitlePanel extends JPanel {
+public class InsTitlePanel extends JPanel {
 	JLabel ins_id, ins_type, ins_name, ins_city, ins_member;
 
-	public TitlePanel() {
+	public InsTitlePanel() {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 		setBackground(Color.WHITE);
 		ins_id = new GAPLabel("机构编号");
@@ -42,8 +42,7 @@ public class TitlePanel extends JPanel {
 		gcons.insets = new Insets(10, 110, 10, 8);
 		SwingConsole.addComponent(gb, gcons, this, ins_city, 3, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 45, 10, 25);
-		SwingConsole
-				.addComponent(gb, gcons, this, ins_member, 4, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, ins_member, 4, 0, 1, 1, 0, 0);
 	}
 
 	public void paintComponent(Graphics g) {

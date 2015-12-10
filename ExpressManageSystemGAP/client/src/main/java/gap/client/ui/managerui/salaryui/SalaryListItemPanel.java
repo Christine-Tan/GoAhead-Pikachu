@@ -22,7 +22,7 @@ import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.SalaryVO;
 import gap.common.util.UserType;
 
-public class ListItemPanel extends JPanel {
+public class SalaryListItemPanel extends JPanel {
 	// 列表中所有的项
 	List<ItemPanel> items;
 	// 布局
@@ -32,7 +32,7 @@ public class ListItemPanel extends JPanel {
 	JButton addButton;
 	JFrame frame;
 
-	public ListItemPanel(JFrame frame) {
+	public SalaryListItemPanel(JFrame frame) {
 		this.frame = frame;
 		setBackground(Color.WHITE);
 		addButton = new GAPButton("+");

@@ -15,12 +15,12 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 
-public class TitlePanel extends JPanel {
+public class SalaryTitlePanel extends JPanel {
 	JLabel usertype, money;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
-	public TitlePanel() {
+	public SalaryTitlePanel() {
 		usertype = new GAPLabel("人员类型");
 		usertype.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 		money = new GAPLabel("薪水价格");

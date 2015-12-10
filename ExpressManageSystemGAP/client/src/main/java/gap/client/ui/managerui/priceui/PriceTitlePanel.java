@@ -17,12 +17,12 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TitlePanel extends JPanel {
+public class PriceTitlePanel extends JPanel {
 	JLabel city, express, standard, economic, colon1, colon2, base;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
-	public TitlePanel() {
+	public PriceTitlePanel() {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
 		setBackground(Color.WHITE);
 

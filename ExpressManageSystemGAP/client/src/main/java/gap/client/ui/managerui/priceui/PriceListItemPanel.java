@@ -26,7 +26,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ListItemPanel extends JPanel {
+public class PriceListItemPanel extends JPanel {
 	// 列表中所有的项
 	List<ItemPanel> items;
 	// 布局
@@ -36,7 +36,7 @@ public class ListItemPanel extends JPanel {
 	JButton addButton;
 	JFrame frame;
 
-	public ListItemPanel(JFrame frame) {
+	public PriceListItemPanel(JFrame frame) {
 		this.frame = frame;
 		setBackground(Color.WHITE);
 		addButton = new GAPButton("+");

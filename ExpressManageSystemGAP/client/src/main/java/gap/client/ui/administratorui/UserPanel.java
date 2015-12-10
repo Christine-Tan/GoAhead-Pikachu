@@ -22,9 +22,9 @@ import gap.common.util.UserType;
 
 public class UserPanel extends MainPanel {
 	UserVO searchUser = null;
-	TitlePanel titlePanel;
-	QueryPanel queryPanel;
-	ListItemPanel listItemPanel;
+	AdminTitlePanel titlePanel;
+	AdminQueryPanel queryPanel;
+	AdminListItemPanel listItemPanel;
 	ButtonArea buttonArea;
 	final GridBagLayout gb;
 	final GridBagConstraints gcons;
@@ -32,10 +32,10 @@ public class UserPanel extends MainPanel {
 	public UserPanel(final MainFrame frame, final UserType userType) {
 		// TODO Auto-generated constructor stub
 		super(frame);
-		titlePanel = new TitlePanel();
-		queryPanel = new QueryPanel(userType);
+		titlePanel = new AdminTitlePanel();
+		queryPanel = new AdminQueryPanel(userType);
 
-		listItemPanel = new ListItemPanel(frame, userType, searchUser);
+		listItemPanel = new AdminListItemPanel(frame, userType, searchUser);
 		buttonArea = new ButtonArea();
 
 		buttonArea.submit.setText("提交修改");
@@ -50,16 +50,16 @@ public class UserPanel extends MainPanel {
 
 		});
 		// 搜索按钮添加监听
-		QueryPanel.search.addActionListener(new ActionListener() {
+		AdminQueryPanel.search.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				int resultNum = 1;
-				QueryPanel.total.setText("一共有" + resultNum + "条结果");
-				searchUser = UserController.findById(QueryPanel.userid_jt.getText());
+				AdminQueryPanel.total.setText("一共有" + resultNum + "条结果");
+				searchUser = UserController.findById(AdminQueryPanel.userid_jt.getText());
 				UserPanel.this.remove(listItemPanel);
-				listItemPanel = new ListItemPanel(frame, userType, searchUser);
+				listItemPanel = new AdminListItemPanel(frame, userType, searchUser);
 				SwingConsole.addComponent(gb, gcons, UserPanel.this, listItemPanel, 0, 2, 1, 1, 1, 0);
 				frame.validate();
 			}

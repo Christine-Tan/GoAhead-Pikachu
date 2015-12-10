@@ -25,14 +25,14 @@ import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.common.util.UserType;
 
-public class QueryPanel extends JPanel {
+public class AdminQueryPanel extends JPanel {
 	
 	JLabel userid_jl;
 	protected static JTextField userid_jt;
 	protected static JButton search;
 	protected static JLabel total;
 	int resultNum;
-	public QueryPanel(UserType userType) {
+	public AdminQueryPanel(UserType userType) {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
 		setBackground(Color.WHITE);
 		userid_jl = new GAPLabel("用户ID：");

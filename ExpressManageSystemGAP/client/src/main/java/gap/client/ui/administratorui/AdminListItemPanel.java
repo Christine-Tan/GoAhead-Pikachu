@@ -30,7 +30,7 @@ import gap.client.vo.UserVO;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
 
-public class ListItemPanel extends JPanel {
+public class AdminListItemPanel extends JPanel {
 	// 列表中所有的项
 	List<ItemPanel> items;
 	// 布局
@@ -40,7 +40,7 @@ public class ListItemPanel extends JPanel {
 	JButton addButton;
 	JFrame frame;
 
-	public ListItemPanel(JFrame frame, UserType userType, UserVO searchUser) {
+	public AdminListItemPanel(JFrame frame, UserType userType, UserVO searchUser) {
 		// TODO Auto-generated constructor stub
 		this.frame = frame;
 		setBackground(Color.WHITE);

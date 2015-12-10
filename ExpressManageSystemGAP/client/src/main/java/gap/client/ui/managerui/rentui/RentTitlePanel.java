@@ -17,12 +17,12 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TitlePanel extends JPanel {
+public class RentTitlePanel extends JPanel {
 	JLabel institution, money;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
-	public TitlePanel() {
+	public RentTitlePanel() {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 80));
 		setBackground(Color.WHITE);
 		institution = new GAPLabel("机构名称");

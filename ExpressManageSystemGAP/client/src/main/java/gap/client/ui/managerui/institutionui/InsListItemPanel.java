@@ -31,7 +31,7 @@ import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.CityVO;
 import gap.client.vo.InstitutionVO;
 
-public class ListItemPanel extends JPanel {
+public class InsListItemPanel extends JPanel {
 	// 列表中所有的项
 	List<ItemPanel> items;
 	List<InstitutionVO> institutions;
@@ -42,7 +42,7 @@ public class ListItemPanel extends JPanel {
 	JButton addButton;
 	JFrame frame;
 
-	public ListItemPanel(JFrame frame,String city,String id) {
+	public InsListItemPanel(JFrame frame, String city, String id) {
 		this.frame = frame;
 		setBackground(Color.WHITE);
 		addButton = new GAPButton("+");
@@ -62,17 +62,19 @@ public class ListItemPanel extends JPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 		items = new ArrayList<>();
-		
-		if(city!=null){
-		       institutions=InstitutionController.findByCity(city); 
-		       System.out.println("City");
-		}else if(id!=null){
-			  institutions.add(InstitutionController.findById(id));
-			  System.out.println("ID");
-		}else{
-               institutions = InstitutionController.getAll();
+
+		if (city != null) {
+			institutions = InstitutionController.findByCity(city);
+			reLayout();
+			// System.out.println("City");
+		} else if (id != null) {
+			institutions.add(InstitutionController.findById(id));
+			reLayout();
+			// System.out.println("ID");
+		} else {
+			institutions = InstitutionController.getAll();
 		}
-			
+
 		for (InstitutionVO institution : institutions) {
 			addItem(institution);
 		}
@@ -225,10 +227,10 @@ public class ListItemPanel extends JPanel {
 			ins_id.openEdit();
 			ins_name.openEdit();
 			ins_member.openEdit();
-			 ins_type_list.setEnabled(true);
-			 ins_type_list.setFocusable(true);
-			 ins_city_list.setEnabled(true);
-			 ins_city_list.setFocusable(true);
+			ins_type_list.setEnabled(true);
+			ins_type_list.setFocusable(true);
+			ins_city_list.setEnabled(true);
+			ins_city_list.setFocusable(true);
 			edit.setText("√");
 			edited = true;
 		}
@@ -237,10 +239,10 @@ public class ListItemPanel extends JPanel {
 			ins_id.closeEdit();
 			ins_name.closeEdit();
 			ins_member.closeEdit();
-			 ins_type_list.setEnabled(false);
-			 ins_type_list.setFocusable(false);
-			 ins_city_list.setEnabled(false);
-			 ins_city_list.setFocusable(false);
+			ins_type_list.setEnabled(false);
+			ins_type_list.setFocusable(false);
+			ins_city_list.setEnabled(false);
+			ins_city_list.setFocusable(false);
 			edit.setText("E");
 			vo = getInstitutionVO();
 			edited = false;

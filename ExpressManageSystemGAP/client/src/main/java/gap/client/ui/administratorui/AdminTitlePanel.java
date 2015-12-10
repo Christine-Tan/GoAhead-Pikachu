@@ -17,10 +17,10 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 
-public class TitlePanel extends JPanel {
+public class AdminTitlePanel extends JPanel {
 	JLabel user_id, user_name, password, name, user_type, gender, ins_name;
 
-	public TitlePanel() {
+	public AdminTitlePanel() {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
 		setBackground(Color.WHITE);
 		user_id = new GAPLabel("用户ID");

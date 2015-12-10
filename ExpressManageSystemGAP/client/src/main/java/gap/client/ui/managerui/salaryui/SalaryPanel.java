@@ -15,8 +15,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 public class SalaryPanel extends MainPanel {
-	TitlePanel titlePanel;
-	ListItemPanel listItem;
+	SalaryTitlePanel titlePanel;
+	SalaryListItemPanel listItem;
 	ButtonArea buttonArea;
 	// 布局
 	GridBagLayout gb;
@@ -25,8 +25,8 @@ public class SalaryPanel extends MainPanel {
 	public SalaryPanel(MainFrame frame) {
 		super(frame);
 		setBackground(Color.WHITE);
-		titlePanel = new TitlePanel();
-		listItem = new ListItemPanel(frame);
+		titlePanel = new SalaryTitlePanel();
+		listItem = new SalaryListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
 		buttonArea.submit.addActionListener(new ActionListener() {

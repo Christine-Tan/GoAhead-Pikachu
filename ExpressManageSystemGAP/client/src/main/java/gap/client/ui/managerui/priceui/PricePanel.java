@@ -24,16 +24,16 @@ import javax.swing.JScrollPane;
  *
  */
 public class PricePanel extends MainPanel {
-	TitlePanel titlePanel;
-	ListItemPanel listItem;
+	PriceTitlePanel titlePanel;
+	PriceListItemPanel listItem;
 	ButtonArea buttonArea;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
 	public PricePanel(MainFrame frame) {
 		super(frame);
-		titlePanel = new TitlePanel();
-		listItem = new ListItemPanel(frame);
+		titlePanel = new PriceTitlePanel();
+		listItem = new PriceListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
 		buttonArea.submit.addActionListener(new ActionListener() {

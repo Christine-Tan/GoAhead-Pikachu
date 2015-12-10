@@ -1,4 +1,4 @@
-package gap.client.ui.managerui.institutionui;
+package gap.client.ui.managerui.rentui;
 
 import gap.client.blcontroller.CityController;
 import gap.client.ui.UITools.Default;
@@ -20,25 +20,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-/**
- * 
- * @author seven
- *
- */
-public class QueryPanel extends JPanel {
-    JLabel inputId,inputCity;
-	JLabel edit;
-	protected static JButton searchCity, searchID;
-	protected static JTextField id;
-	protected static JComboBox<String> city_list;
+public class RentQueryPanel extends JPanel {
+	JLabel inputId, inputCity, edit;
+	JButton search1, search2;
+	JTextField id;
+	JComboBox<String> city_list;
 
-	public QueryPanel() {
+	public RentQueryPanel() {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 		setBackground(Color.WHITE);
 		inputId = new GAPLabel("请输入机构ID：");
 		inputCity = new GAPLabel("请选择城市：");
-		searchCity = new JButton("搜索");
-		searchID = new JButton("搜索");
+		search1 = new JButton("搜索");
+		search2 = new JButton("搜索");
 		id = new GAPTextField(7);
 		city_list = new GAPComboBox<String>();
 
@@ -58,12 +52,12 @@ public class QueryPanel extends JPanel {
 		gcons.insets = new Insets(20, 10, 10, 10);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(20, 10, 10, 100);
-		SwingConsole.addComponent(gb, gcons, this, searchID, 2, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, search1, 2, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(20, 150, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, inputCity, 3, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(20, 10, 10, 10);
 		SwingConsole.addComponent(gb, gcons, this, city_list, 4, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(20, 10, 10, 25);
-		SwingConsole.addComponent(gb, gcons, this, searchCity, 5, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, search2, 5, 0, 1, 1, 0, 0);
 	}
 }

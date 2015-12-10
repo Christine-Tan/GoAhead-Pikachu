@@ -26,26 +26,26 @@ import gap.client.vo.InstitutionVO;
 public class InstitutionPanel extends MainPanel {
 	String city = null;
 	String id = null;
-	QueryPanel queryPanel;
-	TitlePanel titlePanel;
-	ListItemPanel listItemPanel;
+	InsQueryPanel queryPanel;
+	InsTitlePanel titlePanel;
+	InsListItemPanel listItemPanel;
 	ButtonArea buttonArea;
 	final GridBagLayout gb;
 	final GridBagConstraints gcons;
 
 	public InstitutionPanel(final MainFrame frame) {
 		super(frame);
-		titlePanel = new TitlePanel();
-		queryPanel = new QueryPanel();
+		titlePanel = new InsTitlePanel();
+		queryPanel = new InsQueryPanel();
 		// 城市搜索按钮添加监听
-		QueryPanel.searchCity.addActionListener(new ActionListener() {
+		InsQueryPanel.searchCity.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				city = QueryPanel.city_list.getSelectedItem().toString();
+				city = InsQueryPanel.city_list.getSelectedItem().toString();
 				InstitutionPanel.this.remove(listItemPanel);
-				listItemPanel = new ListItemPanel(frame, city, id);
+				listItemPanel = new InsListItemPanel(frame, city, id);
 				SwingConsole.addComponent(gb, gcons, InstitutionPanel.this, listItemPanel, 0, 2, 1, 1, 1, 0);
 				frame.validate();
 				city=id=null;
@@ -54,21 +54,21 @@ public class InstitutionPanel extends MainPanel {
 		});
 
 		// ID搜索按钮添加监听
-		QueryPanel.searchID.addActionListener(new ActionListener() {
+		InsQueryPanel.searchID.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				id = QueryPanel.id.getText();
+				id = InsQueryPanel.id.getText();
 				InstitutionPanel.this.remove(listItemPanel);
-				listItemPanel = new ListItemPanel(frame, city, id);
+				listItemPanel = new InsListItemPanel(frame, city, id);
 				SwingConsole.addComponent(gb, gcons, InstitutionPanel.this, listItemPanel, 0, 2, 1, 1, 1, 0);
 				frame.validate();
 				city=id=null;
 			}
 		});
 		
-		listItemPanel = new ListItemPanel(frame, city, id);
+		listItemPanel = new InsListItemPanel(frame, city, id);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
 		// 修改按钮添加监听

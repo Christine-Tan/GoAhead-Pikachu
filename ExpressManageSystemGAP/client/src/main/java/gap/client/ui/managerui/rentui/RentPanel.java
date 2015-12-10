@@ -21,9 +21,9 @@ import javax.swing.JPanel;
  * 
  */
 public class RentPanel extends MainPanel {
-	QueryPanel queryPanel;
-	TitlePanel titlePanel;
-	ListItemPanel listItem;
+	RentQueryPanel queryPanel;
+	RentTitlePanel titlePanel;
+	RentListItemPanel listItem;
 	ButtonArea buttonArea;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
@@ -31,9 +31,9 @@ public class RentPanel extends MainPanel {
 	public RentPanel(MainFrame frame) {
 		super(frame);
 		setBackground(Color.WHITE);
-		queryPanel = new QueryPanel();
-		titlePanel = new TitlePanel();
-		listItem = new ListItemPanel(frame);
+		queryPanel = new RentQueryPanel();
+		titlePanel = new RentTitlePanel();
+		listItem = new RentListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
 		buttonArea.submit.addActionListener(new ActionListener() {
