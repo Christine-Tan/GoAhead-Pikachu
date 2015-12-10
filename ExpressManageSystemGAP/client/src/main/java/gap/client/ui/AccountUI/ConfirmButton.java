@@ -27,7 +27,7 @@ public class ConfirmButton extends JPanel{
 		label = new ConfirmLabel();
 		
 		
-		setSize(new Dimension(70, 30));
+		setSize(new Dimension(80, 30));
 		label.setBounds(5, 0, 30, 30);
 		
 		add(label);
@@ -46,7 +46,9 @@ public class ConfirmButton extends JPanel{
 		// TODO Auto-generated method stub
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);
 		graphics2d.setColor(ColorAndFonts.darkBlue);
-		graphics2d.setFont(ColorAndFonts.getChinese(15));
+		
+		graphics2d.setFont(ColorAndFonts.getChinese(18));
+		
 		graphics2d.drawString(text, 40, 20);
 		graphics2d.setColor(Color.white);
 		

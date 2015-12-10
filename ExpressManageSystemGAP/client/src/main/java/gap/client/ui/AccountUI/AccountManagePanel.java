@@ -38,7 +38,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 	ArrayList<AccountVO> accounts;
 	AccountConfirmListener confirmListener;
 	GAPButton confirmButton;
-	QueryPanel queryPanel = new QueryPanel();
+	AccountQueryPanel queryPanel;
 	
 	ButtonArea area;
 	AccountDisplayPanel accountDisplayPanel;
@@ -63,8 +63,6 @@ public class AccountManagePanel extends MainPanelWithGird{
 		
 		confirmButton.addActionListener(confirmListener);
 		
-		queryPanel.setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
-		SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
 		
 		jScrollPane = getJsPanel();
 		JViewport viewport = jScrollPane.getViewport();
@@ -74,6 +72,10 @@ public class AccountManagePanel extends MainPanelWithGird{
 		accountDisplayPanel = new AccountDisplayPanel(this, accounts,viewport);
 		gcons.fill = GridBagConstraints.VERTICAL;
 		SwingConsole.addComponent(gb, gcons, this, accountDisplayPanel, 0, 1, 1, 1, 1, 1);
+		//搜索面板
+		queryPanel = new AccountQueryPanel(this, accountDisplayPanel);
+		queryPanel.setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
+		SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
 		
 		area = new ButtonArea();
 		area.removeAll();
@@ -131,6 +133,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 	public void searchAccount(String key){
 		ArrayList<AccountSearchResult> results
 			=accountBlController.searchAccount(key);
+		accountDisplayPanel.showSearchAccount(results);
 	}
 	
 	//迭代器内容存入accounts

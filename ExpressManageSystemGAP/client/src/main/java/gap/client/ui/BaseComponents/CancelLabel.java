@@ -50,7 +50,7 @@ public class CancelLabel extends JLabel{
 
 //		Image image = confirmAnimation[index]
 //				.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST);
-		System.out.println(confirmAnimation[index]==null);
+
 		
 		graphics2d.drawImage
 		(confirmAnimation[index],0, 0,this.getWidth(), this.getHeight(),null);

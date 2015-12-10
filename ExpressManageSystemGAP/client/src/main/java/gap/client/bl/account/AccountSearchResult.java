@@ -19,4 +19,5 @@ public class AccountSearchResult {
 	public int[] getMatchIndex() {
 		return searchResult.getMatchIndex();
 	}
+	
 }

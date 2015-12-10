@@ -83,7 +83,7 @@ public class AddBox extends JPanel{
 		cancelButton = new CancelButton(this);
 		
 		confirmButton.setLocation(0, 140);
-		cancelButton.setLocation(80, 140);
+		cancelButton.setLocation(100, 140);
 		
 		
 		nameField.setControl("\\.+", 1, 20);

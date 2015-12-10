@@ -11,7 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
+import gap.client.bl.account.AccountSearchResult;
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.BaseComponents.MessagePanel;
 import gap.client.ui.UITools.Default;
+import gap.client.util.MessageType;
 import gap.client.vo.AccountVO;
 
 public class AccountDisplayPanel extends JPanel{
@@ -74,6 +78,43 @@ public class AccountDisplayPanel extends JPanel{
 	}
 	
 	/**
+	 * 用于取消search之后重新显示所有账户
+	 * 
+	 */
+	public void showAllAccount(){
+		removeAll();
+		addAccountBox();
+		reSize();
+		accountManagePanel.validate();
+	}
+	
+	/**
+	 * 
+	 * 显示查找到的账户
+	 * @param results
+	 */
+	public void showSearchAccount(ArrayList<AccountSearchResult> results){
+		removeAll();
+		int resultNum = results.size();
+		for(AccountSearchResult oneResult: results){
+			AccountVO matchVO = oneResult.getAccountVO();
+			AccountBox matchBox = getBoxByVO(matchVO);
+			add(matchBox);
+		}
+		reSizeByNum(resultNum);
+		accountManagePanel.validate();
+		
+		MainFrame.setMessage("共找到"+resultNum+"个账户", MessageType.normal, 2000);
+	}
+	
+	private AccountBox getBoxByVO(AccountVO matchVO){
+		int index = accounts.indexOf(matchVO);
+		AccountVO localVO = accounts.get(index);
+		return accountMap.get(localVO);
+	}
+	
+	
+	/**
 	 * 按数量重新算大小
 	 * @param boxNum
 	 */
@@ -96,6 +137,11 @@ public class AccountDisplayPanel extends JPanel{
 		
 		int width = numberInRow * (boxWidth + 2* hGarp);
 		int height = rowNumber * (boxHeight + 2* vGarp);
+		
+		if(height<200){
+			height = 200;
+		}
+		
 		setPreferredSize(new Dimension(width, height));
 		flow.layoutContainer(this);
 		accountManagePanel.revalidate();
@@ -136,9 +182,9 @@ public class AccountDisplayPanel extends JPanel{
 		//map和list中删除
 		accountMap.remove(vo);
 		accounts.remove(vo);
-		
+		reSize();
 		accountManagePanel.validate();
-		//repaint();
+		
 	}
 	
 	class MyResizeListener implements ComponentListener{

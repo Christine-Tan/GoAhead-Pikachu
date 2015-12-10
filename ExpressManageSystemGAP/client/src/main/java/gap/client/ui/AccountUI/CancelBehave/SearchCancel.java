@@ -1,11 +1,22 @@
 package gap.client.ui.AccountUI.CancelBehave;
 
-public class SearchCancel implements CancelBehave{
+import gap.client.ui.AccountUI.AccountDisplayPanel;
+import gap.client.ui.AccountUI.AccountQueryPanel;
 
-	@Override
-	public void behave() {
+public class SearchCancel implements CancelBehave{
+	AccountQueryPanel queryPanel;
+	AccountDisplayPanel displayPanel;
+	public SearchCancel(AccountQueryPanel queryPanel,
+			AccountDisplayPanel displayPanel) {
 		// TODO Auto-generated method stub
-		
+		this.queryPanel = queryPanel;
+		this.displayPanel = displayPanel;
+	}
+
+	
+	public void behave() {
+		queryPanel.setSearchButton();
+		displayPanel.showAllAccount();
 	}
 
 }
