@@ -7,6 +7,7 @@ import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -16,12 +17,15 @@ import gap.client.bl.account.AccountBlController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
+import gap.client.ui.BaseComponents.MessagePanel;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.bussinessui.carmanage.QueryPanel;
 import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.util.MessageType;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.vo.AccountVO;
+import gap.common.util.ResultMessage;
 
 public class AccountManagePanel extends MainPanelWithGird{
 
@@ -57,12 +61,6 @@ public class AccountManagePanel extends MainPanelWithGird{
 		queryPanel.setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
 		SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);
 		
-		//两边的占位Panel
-//		JPanel leftPanel = new JPanel();
-//		JPanel rightPanel = new JPanel();
-//		SwingConsole.addComponent(gb, gcons, this, leftPanel, 0, 1, 1, 1, 0.5, 1);
-//		SwingConsole.addComponent(gb, gcons, this, rightPanel, 2, 1, 1, 1, 0.5, 1);
-		
 		jScrollPane = getJsPanel();
 		JViewport viewport = jScrollPane.getViewport();
 		
@@ -79,6 +77,20 @@ public class AccountManagePanel extends MainPanelWithGird{
 		SwingConsole.addComponent(gb, gcons, this, area, 0, 2, 1, 1, 1, 0);
 		
 		
+	}
+	
+	public void addAccount(AccountVO vo,AddBox box){
+		ResultMessage message = accountBlController.addAccount(vo);
+		
+		if(message.equals(ResultMessage.SUCCEED)){
+			MainFrame.setMessage("添加成功", MessageType.succeed, 2000);
+		}else if(message.equals(ResultMessage.EXISTED)){
+			MainFrame.setMessage("账户名已存在", MessageType.alram, 2000);
+			box.nameRepeat();
+		}else{
+			MainFrame.setMessage("网络异常", MessageType.alram, 2000);
+		}
+	
 	}
 	
 	

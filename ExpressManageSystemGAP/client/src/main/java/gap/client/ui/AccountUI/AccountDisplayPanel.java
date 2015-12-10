@@ -19,7 +19,7 @@ public class AccountDisplayPanel extends JPanel{
 	ArrayList<AccountVO> accounts;
 	AccountManagePanel accountManagePanel;
 	
-	AddBox addBox = new AddBox();
+	AddBox addBox;
 	JViewport viewport;
 	FlowLayout flow;
 	
@@ -35,10 +35,10 @@ public class AccountDisplayPanel extends JPanel{
 		this.accountManagePanel = accountManagePanel;
 		accountMap = new HashMap<>(accounts.size());
 		
+		addBox = new AddBox(accountManagePanel);
+		
 		this.viewport = viewport;
-		
 		setOpaque(false);
-		
 		viewport.addComponentListener(new MyResizeListener());
 		
 		flow = new FlowLayout(FlowLayout.LEFT, 50, 10);

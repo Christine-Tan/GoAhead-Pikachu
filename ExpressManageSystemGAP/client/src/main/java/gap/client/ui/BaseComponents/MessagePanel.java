@@ -7,6 +7,7 @@ import gap.client.util.MessageType;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,6 +21,7 @@ public class MessagePanel extends JPanel {
 	private MainFrame mainFrame;
 	
 	private MessageType type = MessageType.normal;
+	private MessageType beforeType = MessageType.normal;
 	String message = "";
 	HashMap<MessageType, Color> colorMap;
 	float alpha = 0.95f;
@@ -27,6 +29,8 @@ public class MessagePanel extends JPanel {
 	MessageThread thread;
 	
 	Object lockObject = new Object();
+	
+	
 	
 	
 	//为了防止并发的变量，enable是false的时候,新来的消息不能播放
@@ -39,7 +43,8 @@ public class MessagePanel extends JPanel {
 		colorMap = new HashMap<>();
 		colorMap.put(MessageType.alram, new Color(251, 141, 158));
 		colorMap.put(MessageType.normal,ColorAndFonts.blue);
-		colorMap.put(MessageType.succeed,Color.green.brighter());
+		colorMap.put(MessageType.succeed,new Color(30, 222, 30));
+		
 	}
 	
 	/**
@@ -77,20 +82,23 @@ public class MessagePanel extends JPanel {
 	
 
 	protected void paintComponent(Graphics g) {
-		Graphics2D graphics2d = RenderSetter.OpenRender(g.create());
-		
-		
+		Graphics2D graphics2d = RenderSetter.OpenRender(g);
 		AlphaComposite composite = AlphaComposite.getInstance
+				(AlphaComposite.SRC_OVER, 1.0f);
+		graphics2d.setComposite(composite);
+		
+		//先用原来的颜色把画面涂满
+		g.setColor(colorMap.get(beforeType));
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
+		
+		composite = AlphaComposite.getInstance
 									(AlphaComposite.SRC_OVER, alpha);
 		graphics2d.setComposite(composite);
 		graphics2d.setColor(colorMap.get(type));
 		graphics2d.fillRect(0, 0, this.getWidth(),this.getHeight());
 		
-		float textAlpha = 0.4f;
-		if(alpha>0.5){
-			textAlpha = 1.0f;
-		}
-		composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, textAlpha);
+		
+		composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha);
 		graphics2d.setComposite(composite);
 		graphics2d.setColor(Color.black);
 		graphics2d.setFont(font);
@@ -105,7 +113,7 @@ public class MessagePanel extends JPanel {
 		private int step = 10;
 		public MessageThread(long time){
 			this.time = time;
-			alpha = 0.15f;
+			alpha = 0;
 			enable = false;
 		}
 		
@@ -120,11 +128,13 @@ public class MessagePanel extends JPanel {
 			
 				for(long currentTime = 0; currentTime<time && !isStop ; currentTime+=step){
 				
-					if(currentTime>500){
+					alpha+=0.03f;
+					if(alpha>1.0f){
 						alpha = 1.0f;
 					}
+					
 					repaint();
-					mainFrame.validate();
+					
 					try {
 						Thread.sleep(step);
 					} catch (InterruptedException e) {
@@ -132,15 +142,20 @@ public class MessagePanel extends JPanel {
 						e.printStackTrace();
 					}	
 				}
-	
+				
+				beforeType = type;
 				type = MessageType.normal;
 				message = "";
 				
-				alpha = 0.15f;
+				alpha = 0;
 				for(long currentTime = 0; currentTime<500 && !isStop; currentTime+=step){
 					
+					alpha+=0.03f;
+					if(alpha>1.0f){
+						alpha = 1.0f;
+					}
 					repaint();
-					mainFrame.validate();
+					
 					try {
 						Thread.sleep(step);
 					} catch (InterruptedException e) {
@@ -149,6 +164,7 @@ public class MessagePanel extends JPanel {
 					
 				}
 				
+				beforeType = type;
 				alpha = 1.0f;
 				repaint();
 				MessagePanel.this.notifyAll();

@@ -49,9 +49,12 @@ public class AddBox extends JPanel{
     
     private boolean isClicked = false;
     
+    private AccountManagePanel managePanel;
+    
     int imageSize = 115;
     
-	public AddBox(){
+	public AddBox(AccountManagePanel managePanel){
+		this.managePanel = managePanel;
 		setPreferredSize(new Dimension(width, height));
 		setLayout(null);
 		setOpaque(false);
@@ -87,6 +90,9 @@ public class AddBox extends JPanel{
 		nameField.setBounds(0, height-190, width, 25);
 		balanceField.setBounds(0, height-140, width, 25);
 		
+		nameField.setText("账户名称");
+		balanceField.setText("账户余额");
+		
 		addPanel.setBackground(Color.white);
 		addPanel.setBounds(0, 0, width, height);
 		addPanel.setLayout(null);
@@ -117,10 +123,15 @@ public class AddBox extends JPanel{
 	}
 	
 	public void cancel(){
-		nameField.setText("");
-		balanceField.setText("");
+		nameField.setText("账户名称");
+		balanceField.setText("账户余额");
 		remove(addPanel);
 		repaint();
+	}
+	
+	public void nameRepeat(){
+		nameField.setText("账户名称");
+		balanceField.setText("账户余额");
 	}
 
 //	public static void main(String[] args) {
