@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -31,5 +32,13 @@ public class QueryPanel extends JPanel {
 		gcons.insets = new Insets(10, 10, 0, 10);
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, search, 1, 0, 1, 1, 0, 0);
+	}
+
+	void addActionListener(ActionListener listener) {
+		search.addActionListener(listener);
+	}
+
+	String getId() {
+		return id.getText();
 	}
 }

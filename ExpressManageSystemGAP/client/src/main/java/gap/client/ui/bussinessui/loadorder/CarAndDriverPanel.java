@@ -115,6 +115,7 @@ public class CarAndDriverPanel extends JPanel {
 		}
 
 		public void flush(List<DriverVO> list) {
+//			drivers_list.setFocusable(false);
 			drivers_list.removeAllItems();
 			for (DriverVO driver : list) {
 				drivers_list.addItem(driver);
@@ -128,6 +129,7 @@ public class CarAndDriverPanel extends JPanel {
 					setDriver((DriverVO) e.getItem());
 				}
 			});
+//			drivers_list.setFocusable(true);
 		}
 
 		public void setDriver(DriverVO driver) {
@@ -182,6 +184,7 @@ public class CarAndDriverPanel extends JPanel {
 		}
 
 		public void flush(List<CarVO> cars) {
+//			cars_list.setFocusable(false);
 			cars_list.removeAllItems();
 			for (CarVO car : cars) {
 				cars_list.addItem(car);
@@ -195,6 +198,7 @@ public class CarAndDriverPanel extends JPanel {
 					setCar((CarVO) e.getItem());
 				}
 			});
+//			cars_list.setFocusable(true);
 		}
 
 		void setCar(CarVO car) {

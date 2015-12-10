@@ -10,6 +10,8 @@ import gap.client.ui.deliveryui.expressorderinput.ExpressorderInputPanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.client.vo.LogVO;
+import gap.common.util.Gender;
+import gap.common.util.UserType;
 
 import java.awt.Color;
 import java.awt.Graphics;

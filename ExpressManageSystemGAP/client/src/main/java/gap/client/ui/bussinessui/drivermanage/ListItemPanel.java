@@ -57,9 +57,16 @@ public class ListItemPanel extends JPanel {
 
 		items = new ArrayList<>();
 
+		refresh("");
+	}
+
+	public void refresh(String id) {
+		items.clear();
+		removeAll();
 		List<DriverVO> drivers = DriverManageController.getAll();
 		for (DriverVO driver : drivers) {
-			addItem(driver);
+			if (id == null || id.length() == 0 || driver.getId().contains(id))
+				addItem(driver);
 		}
 	}
 

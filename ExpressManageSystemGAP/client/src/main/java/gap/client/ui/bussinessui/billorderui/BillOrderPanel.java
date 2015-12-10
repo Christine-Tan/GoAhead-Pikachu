@@ -35,8 +35,15 @@ public class BillOrderPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				BillOrderController.saveBill(listItem.getBillOrderVO());
-				listItem.clear();
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						BillOrderController.saveBill(listItem.getBillOrderVO());
+						listItem.clear();
+					}
+				});
 			}
 		});
 

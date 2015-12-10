@@ -18,17 +18,17 @@ import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
 public class MessagePanel extends JPanel {
 	private MainFrame mainFrame;
-	
+
 	private MessageType type = MessageType.normal;
 	String message = "";
 	HashMap<MessageType, Color> colorMap;
 	float alpha = 0.95f;
 	Font font = ColorAndFonts.getChinese(20);
 	MessageThread thread;
-	
+
 	Object lockObject = new Object();
-	
-	
+
+
 	//为了防止并发的变量，enable是false的时候,新来的消息不能播放
 	boolean enable = true;
 
@@ -41,7 +41,7 @@ public class MessagePanel extends JPanel {
 		colorMap.put(MessageType.normal,ColorAndFonts.blue);
 		colorMap.put(MessageType.succeed,Color.green.brighter());
 	}
-	
+
 	/**
 	 * 设置消息，
 	 * @param message 消息内容
@@ -52,8 +52,8 @@ public class MessagePanel extends JPanel {
 		if(thread!=null){
 			thread.setStop();
 		}
-		
-		
+
+
 		//保证已经回复正常状态
 		synchronized (this) {
 			System.out.println("get");
@@ -67,34 +67,35 @@ public class MessagePanel extends JPanel {
 				e.printStackTrace();
 			}
 		}
-		
+
 		thread = new MessageThread(time);
 		this.message = message;
 		this.type = type;
 		thread.start();
-		
+
 	}
-	
+
 
 	protected void paintComponent(Graphics g) {
+//		super.paintComponent(g);
 		Graphics2D graphics2d = RenderSetter.OpenRender(g.create());
-		
-		
+
+
 		AlphaComposite composite = AlphaComposite.getInstance
 									(AlphaComposite.SRC_OVER, alpha);
 		graphics2d.setComposite(composite);
 		graphics2d.setColor(colorMap.get(type));
 		graphics2d.fillRect(0, 0, this.getWidth(),this.getHeight());
-		
-		composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f);
+
+		composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f);
 		graphics2d.setComposite(composite);
 		graphics2d.setColor(Color.black);
 		graphics2d.setFont(font);
-		graphics2d.drawString(message, 5, 23);		
+		graphics2d.drawString(message, 5, 23);
 	}
-	
 
-	
+
+
 	private class MessageThread extends Thread{
 		private boolean isStop = false;
 		private long time = 0;
@@ -104,18 +105,18 @@ public class MessagePanel extends JPanel {
 			alpha = 0.15f;
 			enable = false;
 		}
-		
+
 		public void setStop(){
 			isStop = true;
 		}
-		
+
 		public void run() {
 			
 			synchronized (MessagePanel.this) {
-				
-			
+
+
 				for(long currentTime = 0; currentTime<time && !isStop ; currentTime+=step){
-				
+
 					repaint();
 					mainFrame.validate();
 					try {
@@ -123,30 +124,30 @@ public class MessagePanel extends JPanel {
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}	
+					}
 				}
-	
+
 				type = MessageType.normal;
 				message = "";
 				for(long currentTime = 0; currentTime<500 && !isStop; currentTime+=step){
-					
+
 					repaint();
 					mainFrame.validate();
 					try {
 						Thread.sleep(step);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
-					}	
-					
+					}
+
 				}
-				
+
 				alpha = 1.0f;
 				MessagePanel.this.notifyAll();
 				enable = true;
 			}
 		}
-		
+
 	}
-	
-	
+
+
 }

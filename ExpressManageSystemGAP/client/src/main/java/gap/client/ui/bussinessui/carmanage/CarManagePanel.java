@@ -30,13 +30,37 @@ public class CarManagePanel extends MainPanel {
 		listItem = new ListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
-		buttonArea.submit.setIcon(new ImageIcon("images\\deliveryIcon\\submit.png"));
+		buttonArea.submit.setIcon(new ImageIcon(
+				"images\\deliveryIcon\\submit.png"));
 		buttonArea.submit.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				CarManageController.flush();
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						CarManageController.flush();
+					}
+				});
+			}
+		});
+
+		queryPanel.search.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO 自动生成的方法存根
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						listItem.refresh(queryPanel.id.getText());
+					}
+				});
 			}
 		});
 

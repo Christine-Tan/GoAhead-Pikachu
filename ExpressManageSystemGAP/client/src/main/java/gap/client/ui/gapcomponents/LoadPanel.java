@@ -25,7 +25,7 @@ public class LoadPanel extends JComponent {
 		setLayout(new BorderLayout());
 		icon = new LoadIcon();
 		add(icon);
-		excutor = Executors.newSingleThreadExecutor();
+//		excutor = Executors.newCachedThreadPool();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -37,18 +37,19 @@ public class LoadPanel extends JComponent {
 	public void load(Runnable runnable) {
 		jframe.setGlassPane(this);
 		setVisible(true);
+		runnable.run();
 		// repaint();
-		Future<?> future = excutor.submit(runnable);
-		try {
-			future.get();
-		} catch (InterruptedException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-		excutor.shutdown();
+//		Future<?> future = excutor.submit(runnable);
+//		try {
+//			future.get();
+//		} catch (InterruptedException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		} catch (ExecutionException e) {
+//			// TODO 自动生成的 catch 块
+//			e.printStackTrace();
+//		}
+//		excutor.shutdown();
 		setVisible(false);
 	}
 	//

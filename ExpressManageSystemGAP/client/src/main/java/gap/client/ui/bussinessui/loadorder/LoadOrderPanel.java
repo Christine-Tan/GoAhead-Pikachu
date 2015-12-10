@@ -39,7 +39,15 @@ public class LoadOrderPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				LoadOrderController.save(getLoadOrder());
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						LoadOrderController.save(getLoadOrder());
+					}
+				});
+
 			}
 		});
 
@@ -58,9 +66,16 @@ public class LoadOrderPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				carAndDriver.flush();
-				orderPanel.flush();
-				mainFrame.validate();
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						carAndDriver.flush();
+						orderPanel.flush();
+						mainFrame.validate();
+					}
+				});
 			}
 		});
 

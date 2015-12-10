@@ -37,13 +37,21 @@ public class ArrivedOrderPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				for (ArrivedOrderVO vo : listItem.getArrivedOrders()) {
-					vo.comment = comment.getComment();
-					// System.out.println(vo.id);
-					ArrivedOrderController.save(vo);
-				}
-				listItem.flush();
-				mainFrame.validate();
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						for (ArrivedOrderVO vo : listItem.getArrivedOrders()) {
+							vo.comment = comment.getComment();
+							// System.out.println(vo.id);
+							ArrivedOrderController.save(vo);
+						}
+						listItem.flush();
+						mainFrame.validate();
+					}
+				});
+
 			}
 		});
 
@@ -52,8 +60,16 @@ public class ArrivedOrderPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
-				listItem.flush();
-				mainFrame.validate();
+				mainFrame.load(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						listItem.flush();
+						mainFrame.validate();
+					}
+				});
+
 			}
 		});
 
@@ -62,7 +78,7 @@ public class ArrivedOrderPanel extends MainPanel {
 		setLayout(gb);
 		JPanel jp = new JPanel();
 		jp.setOpaque(false);
-//		gcons.anchor = GridBagConstraints.EAST;
+		// gcons.anchor = GridBagConstraints.EAST;
 		gcons.insets = new Insets(10, 700, 0, 00);
 		SwingConsole.addComponent(gb, gcons, this, flushButton, 0, 0, 1, 1, 0,
 				0);

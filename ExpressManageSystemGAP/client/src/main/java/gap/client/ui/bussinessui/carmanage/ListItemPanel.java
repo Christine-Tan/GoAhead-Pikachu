@@ -55,9 +55,17 @@ public class ListItemPanel extends JPanel {
 
 		items = new ArrayList<>();
 
+		refresh("");
+	}
+
+	public void refresh(String id) {
+		items.clear();
+		removeAll();
 		List<CarVO> cars = CarManageController.getAll();
 		for (CarVO car : cars) {
-			addItem(car);
+			if (id == null || id.length() == 0 || car.getCar_id().contains(id))
+				addItem(car);
+
 		}
 	}
 
