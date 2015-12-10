@@ -7,10 +7,13 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.sql.StatementEventListener;
 import javax.swing.JPanel;
 import javax.xml.soap.Text;
 
 import gap.client.ui.AccountUI.ConfirmButton.ConfirmListener;
+import gap.client.ui.AccountUI.CancelBehave.BoxCancelBehave;
+import gap.client.ui.AccountUI.CancelBehave.CancelBehave;
 import gap.client.ui.BaseComponents.CancelLabel;
 import gap.client.ui.BaseComponents.ConfirmLabel;
 import gap.client.ui.UITools.ColorAndFonts;
@@ -23,21 +26,35 @@ public class CancelButton extends JPanel{
 	private GAPButton button;
 	private AddBox box;		
 	private String text = "取消";
+	private MouseListener lis = new CancelListener();
+	
+	private CancelBehave behave;
 		
 	public CancelButton(AddBox box){
 		this.box = box;
 		setBackground(Color.white);
 		setLayout(null);
 		label = new CancelLabel();
-			
+		
+		behave = new BoxCancelBehave(box);
 			
 		setSize(new Dimension(70, 30));
 		label.setBounds(5, 0, 30, 30);
 			
 		add(label);
-		addMouseListener(new ConfirmListener());
+		addMouseListener(lis);
 			
 	}
+	
+	public void reset() {
+		// TODO Auto-generated method stub
+		label.mouseExited();
+	}
+	
+	public void setBehave(CancelBehave behave){
+		this.behave = behave;
+	}
+	
 		
 		@Override
 	protected void paintComponent(Graphics g) {
@@ -51,12 +68,12 @@ public class CancelButton extends JPanel{
 			
 	}
 		
-	class ConfirmListener implements MouseListener{
+	class CancelListener implements MouseListener{
 
 			@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			box.cancel();
+			behave.behave();
 		}
 
 		@Override

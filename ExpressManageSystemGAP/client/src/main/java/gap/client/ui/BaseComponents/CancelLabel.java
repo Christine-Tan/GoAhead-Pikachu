@@ -32,17 +32,28 @@ public class CancelLabel extends JLabel{
 	private int index = 0;
 	static{
 		for(int i=1;i<=12;i++){
-			String oneURL = URL+i+".png";
-			confirmAnimation[i-1] = new ImageIcon(oneURL).getImage();
+			String oneURL = URL+i+".png";		 
+			Image image = new ImageIcon(oneURL).getImage();
+			confirmAnimation[i-1] = image;
+//			confirmAnimation[i-1] = image
+//					.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+//			System.out.println("OK");
 		}
 	}
+	
+
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);
-		graphics2d.drawImage(confirmAnimation[index], 0, 0,
-				this.getWidth(), this.getHeight(), null);
+
+//		Image image = confirmAnimation[index]
+//				.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST);
+		System.out.println(confirmAnimation[index]==null);
+		
+		graphics2d.drawImage
+		(confirmAnimation[index],0, 0,this.getWidth(), this.getHeight(),null);
 	}
 
 	public void mouseExited(){

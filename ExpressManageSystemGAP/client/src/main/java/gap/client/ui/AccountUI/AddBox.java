@@ -46,16 +46,18 @@ public class AddBox extends JPanel{
     private double rate = 1;
     private AddListener listener = new AddListener();
     
-    private JPanel addPanel = new JPanel();
+    private AddBoxPanel addPanel;
     
     private boolean isClicked = false;
     
     private AccountManagePanel managePanel;
+    private AccountDisplayPanel displayPanel;
     
     int imageSize = 115;
     
-	public AddBox(AccountManagePanel managePanel){
+	public AddBox(AccountManagePanel managePanel,AccountDisplayPanel displayPanel){
 		this.managePanel = managePanel;
+		this.displayPanel = displayPanel;
 		setPreferredSize(new Dimension(width, height));
 		setLayout(null);
 		setOpaque(false);
@@ -94,6 +96,7 @@ public class AddBox extends JPanel{
 		nameField.setText("账户名称");
 		balanceField.setText("账户余额");
 		
+		addPanel = new AddBoxPanel(confirmButton, cancelButton);		
 		addPanel.setBackground(Color.white);
 		addPanel.setBounds(0, 0, width, height);
 		addPanel.setLayout(null);
@@ -136,14 +139,15 @@ public class AddBox extends JPanel{
 	}
 	
 	public void cancel(){
-//		nameField.setText("账户名称");
-//		balanceField.setText("账户余额");
+		//设置失焦状态
 		nameField.setFocused(false);
 		balanceField.setFocused(false);
-	
+		//去掉可能的红色背景
 		nameField.toNormal();
 		balanceField.toNormal();
 		
+		//按钮样式变回正常
+		addPanel.reset();
 		remove(addPanel);
 		repaint();
 	}

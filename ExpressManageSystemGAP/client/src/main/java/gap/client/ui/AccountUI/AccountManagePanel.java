@@ -14,6 +14,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
 import gap.client.bl.account.AccountBlController;
+import gap.client.ui.AccountUI.Listener.AccountConfirmListener;
+import gap.client.ui.BaseComponents.CancelLabel;
+import gap.client.ui.BaseComponents.ConfirmLabel;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
@@ -31,7 +34,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 
 	AccountBlController accountBlController;
 	ArrayList<AccountVO> accounts;
-	ConfirmListener confirmListener;
+	AccountConfirmListener confirmListener;
 	GAPButton confirmButton;
 	QueryPanel queryPanel = new QueryPanel();
 	
@@ -53,7 +56,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 		itrToList(itr);
 		
 		
-		confirmListener = new ConfirmListener(accountBlController);
+		confirmListener = new AccountConfirmListener(this);
 		confirmButton = new GAPButton("确认修改");
 		
 		confirmButton.addActionListener(confirmListener);
@@ -76,6 +79,10 @@ public class AccountManagePanel extends MainPanelWithGird{
 		gcons.anchor = GridBagConstraints.EAST;
 		SwingConsole.addComponent(gb, gcons, this, area, 0, 2, 1, 1, 1, 0);
 		
+		//加载一下两个需要图片的类
+		CancelLabel cancelLabel = new CancelLabel();
+		ConfirmLabel confirmLabel = new ConfirmLabel();
+		
 		
 	}
 	
@@ -83,6 +90,9 @@ public class AccountManagePanel extends MainPanelWithGird{
 		ResultMessage message = accountBlController.addAccount(vo);
 		
 		if(message.equals(ResultMessage.SUCCEED)){
+			//让展示面板添加账户框
+			accountDisplayPanel.addOneAccount(vo);
+			
 			MainFrame.setMessage("添加成功", MessageType.succeed, 2000);
 		}else if(message.equals(ResultMessage.EXISTED)){
 			MainFrame.setMessage("账户名已存在", MessageType.alram, 2000);
@@ -98,7 +108,22 @@ public class AccountManagePanel extends MainPanelWithGird{
 	}
 	
 	public void deleteAccount(AccountVO vo){
+		ResultMessage message = accountBlController.deleteAccount(vo);
+		if(message.equals(ResultMessage.SUCCEED)){
+			MainFrame.setMessage("删除成功", MessageType.succeed, 2000);
+		}else{
+			MainFrame.setMessage("网络异常", MessageType.alram, 2000);
+		}
 		
+	}
+	
+	public void confirmAllChange(){
+		ResultMessage message = accountBlController.confirm();
+		if(message.equals(ResultMessage.SUCCEED)){
+			MainFrame.setMessage("已保存所有修改", MessageType.succeed, 2000);
+		}else{
+			MainFrame.setMessage("网络异常", MessageType.alram, 2000);
+		}
 	}
 	
 	//迭代器内容存入accounts

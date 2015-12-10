@@ -18,6 +18,7 @@ public class ConfirmButton extends JPanel{
 	private ConfirmLabel label;
 	private String text = "确定";
 	private AddBox box;
+	private MouseListener lis = new ConfirmListener();
 	
 	public ConfirmButton(AddBox box){
 		this.box = box;
@@ -30,8 +31,13 @@ public class ConfirmButton extends JPanel{
 		label.setBounds(5, 0, 30, 30);
 		
 		add(label);
-		addMouseListener(new ConfirmListener());
+		addMouseListener(lis);
 		
+	}
+	
+	public void reset() {
+		// TODO Auto-generated method stub
+		label.mouseExited();
 	}
 	
 	@Override
@@ -79,4 +85,6 @@ public class ConfirmButton extends JPanel{
 		}
 		
 	}
+
+	
 }

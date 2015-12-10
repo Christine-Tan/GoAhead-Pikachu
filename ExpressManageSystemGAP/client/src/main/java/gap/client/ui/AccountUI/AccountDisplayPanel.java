@@ -35,7 +35,7 @@ public class AccountDisplayPanel extends JPanel{
 		this.accountManagePanel = accountManagePanel;
 		accountMap = new HashMap<>(accounts.size());
 		
-		addBox = new AddBox(accountManagePanel);
+		addBox = new AddBox(accountManagePanel,this);
 		
 		this.viewport = viewport;
 		setOpaque(false);
@@ -48,6 +48,9 @@ public class AccountDisplayPanel extends JPanel{
 		reSize();
 	}
 	
+	/**
+	 * 根据账户数量重新设定大小
+	 */
 	public void reSize(){
 		
 		if(viewport==null){
@@ -66,16 +69,28 @@ public class AccountDisplayPanel extends JPanel{
 			return;
 		}
 		
+		reSizeByNum(accounts.size()+1);
+		
+	}
+	
+	/**
+	 * 按数量重新算大小
+	 * @param boxNum
+	 */
+	private void reSizeByNum(int boxNum){
+		
+		int containerWidth = viewport.getWidth();
+
+		
 		int boxWidth = AccountBox.width;
 		int boxHeight = AccountBox.height;
 		//一行最多放几个box
 		int numberInRow = containerWidth/(boxWidth +  hGarp);
 		//有多少行
-		int rowNumber = accounts.size()/numberInRow;
-
-		
-		
-		if(accounts.size()%numberInRow>0){
+		//box的数量是账户数加一个添加图标
+		int rowNumber = boxNum/numberInRow;
+	
+		if(boxNum%numberInRow>0){
 			rowNumber++;
 		}
 		
@@ -88,7 +103,7 @@ public class AccountDisplayPanel extends JPanel{
 		
 	}
 	
-	public void addAccountBox(){
+	private void addAccountBox(){
 		for(AccountVO vo : accounts){
 			AccountBox box = new AccountBox(this, vo);
 			accountMap.put(vo,box);
@@ -102,16 +117,28 @@ public class AccountDisplayPanel extends JPanel{
 		addBox.cancel();
 		remove(addBox);
 		AccountBox box = new AccountBox(this, vo);
+		
+		//map中加一个
 		accountMap.put(vo,box);
+		//accountList中加一个
+		accounts.add(vo);
+		//面板中添加
 		add(box);	
 		add(addBox);
-		accountManagePanel.repaint();
+		reSize();
+		accountManagePanel.validate();
 	}
 	
 	public void removeOneAccount(AccountVO vo){
-		//accountManagePanel
+		accountManagePanel.deleteAccount(vo);
 		remove(accountMap.get(vo));
-		accountManagePanel.repaint();
+		
+		//map和list中删除
+		accountMap.remove(vo);
+		accounts.remove(vo);
+		
+		accountManagePanel.validate();
+		//repaint();
 	}
 	
 	class MyResizeListener implements ComponentListener{

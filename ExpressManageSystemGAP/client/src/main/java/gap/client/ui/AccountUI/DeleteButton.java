@@ -39,7 +39,7 @@ public class DeleteButton extends JLabel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+			box.removeThisBox();
 		}
 
 		@Override

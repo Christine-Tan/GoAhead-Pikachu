@@ -61,10 +61,10 @@ public class MessagePanel extends JPanel {
 		
 		//保证已经回复正常状态
 		synchronized (this) {
-			System.out.println("get");
+			
 			try {
 				while(!enable){
-					System.out.println("wait");
+				
 					this.wait();
 				}
 			} catch (InterruptedException e) {

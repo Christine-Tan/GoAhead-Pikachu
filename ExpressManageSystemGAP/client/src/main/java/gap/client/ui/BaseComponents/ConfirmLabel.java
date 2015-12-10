@@ -45,6 +45,8 @@ public class ConfirmLabel extends JLabel{
 			String oneURL = URL+i+".png";
 
 			confirmAnimation[i-1] = new ImageIcon(oneURL).getImage();
+			confirmAnimation[i-1] = confirmAnimation[i-1]
+					.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
 		}
 	}
 	
