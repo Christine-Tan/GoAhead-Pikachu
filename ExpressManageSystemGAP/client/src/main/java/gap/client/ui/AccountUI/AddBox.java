@@ -123,15 +123,24 @@ public class AddBox extends JPanel{
 	}
 	
 	public void cancel(){
-		nameField.setText("账户名称");
-		balanceField.setText("账户余额");
+//		nameField.setText("账户名称");
+//		balanceField.setText("账户余额");
+		nameField.setFocused(false);
+		balanceField.setFocused(false);
+	
+		nameField.toNormal();
+		balanceField.toNormal();
+		
 		remove(addPanel);
 		repaint();
 	}
 	
 	public void nameRepeat(){
-		nameField.setText("账户名称");
-		balanceField.setText("账户余额");
+		nameField.setFocused(false);
+		balanceField.setFocused(false);
+	
+		nameField.toNormal();
+		balanceField.toNormal();
 	}
 
 //	public static void main(String[] args) {

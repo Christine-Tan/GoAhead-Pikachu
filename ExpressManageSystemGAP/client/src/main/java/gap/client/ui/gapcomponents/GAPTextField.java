@@ -79,6 +79,10 @@ public class GAPTextField extends JTextField {
 		// setHorizontalAlignment(JTextField.CENTER);
 		validate();
 	}
+	
+	public void toNormal(){
+		normal();
+	}
 
 	// 关闭编辑样式
 	public void closeEdit() {
