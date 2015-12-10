@@ -26,10 +26,10 @@ public class DefaultText_Field extends GAPTextField implements TextInterface {
 		return hadFocused;
 	}
 	
-	public void setText(String t) {
-		setForeground(Color.gray);
-		super.setText(t);
-	};
+//	public void setText(String t) {
+//		setForeground(Color.gray);
+//		super.setText(t);
+//	};
 
 	@Override
 	public void setFocused(boolean focused) {
