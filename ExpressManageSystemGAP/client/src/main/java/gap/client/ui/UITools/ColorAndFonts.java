@@ -14,6 +14,8 @@ public class ColorAndFonts {
 	final public static Color lightBlue = new Color(0, 223, 248);
 	final public static Color blue = new Color(0, 183, 239);
 	final public static Color darkBlue = new Color(0, 129, 182);
+	
+	final public static Color otherDarkBulue = new Color(63, 70, 128);
 
 	final public static Color gray = new Color(235, 235, 235);
 	final public static Color darkGray = new Color(180, 180, 180);

@@ -18,6 +18,8 @@ public class AccountDisplayPanel extends JPanel{
 
 	ArrayList<AccountVO> accounts;
 	AccountManagePanel accountManagePanel;
+	
+	AddBox addBox;
 	JViewport viewport;
 	FlowLayout flow;
 	
@@ -33,10 +35,10 @@ public class AccountDisplayPanel extends JPanel{
 		this.accountManagePanel = accountManagePanel;
 		accountMap = new HashMap<>(accounts.size());
 		
+		addBox = new AddBox(accountManagePanel);
+		
 		this.viewport = viewport;
-		
 		setOpaque(false);
-		
 		viewport.addComponentListener(new MyResizeListener());
 		
 		flow = new FlowLayout(FlowLayout.LEFT, 50, 10);
@@ -70,9 +72,7 @@ public class AccountDisplayPanel extends JPanel{
 		int numberInRow = containerWidth/(boxWidth +  hGarp);
 		//有多少行
 		int rowNumber = accounts.size()/numberInRow;
-		
-		System.out.println(numberInRow);
-		System.out.println(rowNumber);
+
 		
 		
 		if(accounts.size()%numberInRow>0){
@@ -95,6 +95,7 @@ public class AccountDisplayPanel extends JPanel{
 			add(box);
 		}
 		
+		add(addBox);
 	}
 	
 	class MyResizeListener implements ComponentListener{
@@ -114,9 +115,6 @@ public class AccountDisplayPanel extends JPanel{
 		@Override
 		public void componentResized(ComponentEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("size change.");
-			System.out.println(viewport.getWidth());
-			System.out.println(viewport.getHeight());
 			reSize();
 		}
 

@@ -11,8 +11,13 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import org.junit.validator.PublicClassValidator;
 
 public class GAPButton extends JButton {
+	
+	public MouseListener listener;
 	public GAPButton() {
 		super();
 		initial();
@@ -40,7 +45,8 @@ public class GAPButton extends JButton {
 		setBorder(BorderFactory.createEmptyBorder());
 		setFocusable(false);
 		setUI(new GAPButtonUI());
-		addMouseListener(new MouseListener() {
+		
+		listener = new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -52,7 +58,7 @@ public class GAPButton extends JButton {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setForeground(ColorAndFonts.darkBlue.darker());
+				setForeground(ColorAndFonts.otherDarkBulue);
 				//setBackground(ColorAndFonts.blue);
 			}
 
@@ -73,6 +79,7 @@ public class GAPButton extends JButton {
 			public void mouseClicked(MouseEvent e) {
 				// TODO 自动生成的方法存根
 			}
-		});
+		};
+		addMouseListener(listener);
 	}
 }
