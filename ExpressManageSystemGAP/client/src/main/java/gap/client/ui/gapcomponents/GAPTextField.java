@@ -83,6 +83,10 @@ public class GAPTextField extends JTextField {
 	public void toNormal(){
 		normal();
 	}
+	
+	public void toAlarm(){
+		alarm();
+	}
 
 	// 关闭编辑样式
 	public void closeEdit() {

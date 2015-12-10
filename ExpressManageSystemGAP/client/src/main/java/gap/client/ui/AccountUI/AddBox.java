@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.AccountVO;
 
 /**
  * 
@@ -119,6 +120,18 @@ public class AddBox extends JPanel{
 	}
 	
 	public void confirm(){
+		String name = nameField.getText();
+		double balance = 0;
+		try {
+			balance = Double.parseDouble(balanceField.getText());
+		} catch (Exception e) {
+			balanceField.setText("");
+			balanceField.toAlarm();
+			return;
+		}
+		
+		AccountVO vo = new AccountVO(name, balance);
+		managePanel.addAccount(vo, this);
 		
 	}
 	

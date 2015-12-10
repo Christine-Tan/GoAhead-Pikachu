@@ -93,6 +93,9 @@ public class AccountManagePanel extends MainPanelWithGird{
 	
 	}
 	
+	public void balanceFormatError(){
+		MainFrame.setMessage("金额格式错误", MessageType.alram, 2000);
+	}
 	
 	//迭代器内容存入accounts
 	private void itrToList(Iterator<AccountVO> itr){
