@@ -18,6 +18,12 @@ import javax.swing.JPanel;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.gapcomponents.GAPTextField;
 
+/**
+ * 
+ * 添加账户的按钮
+ * @author 申彬
+ *
+ */
 public class AddBox extends JPanel{
 
     static Image addImage;
@@ -42,6 +48,8 @@ public class AddBox extends JPanel{
     private JPanel addPanel = new JPanel();
     
     private boolean isClicked = false;
+    
+    int imageSize = 115;
     
 	public AddBox(){
 		setPreferredSize(new Dimension(width, height));
@@ -68,14 +76,16 @@ public class AddBox extends JPanel{
 		confirmButton = new ConfirmButton(this);
 		cancelButton = new CancelButton(this);
 		
-		confirmButton.setLocation(0, 100);
-		cancelButton.setLocation(80, 100);
+		confirmButton.setLocation(0, 140);
+		cancelButton.setLocation(80, 140);
 		
 		
 		nameField.setControl("\\.+", 1, 20);
-		balanceField.setControl("\\d+.(\\d+)?", 1, 20);
-		nameField.setBounds(0, height-200, width, 25);
-		balanceField.setBounds(0, height-170, width, 25);
+		
+		//setControl好反人类啊！这里是浮点数的取反
+		balanceField.setControl("[^(\\d+(\\.\\d+)?)]", 1, 20);
+		nameField.setBounds(0, height-190, width, 25);
+		balanceField.setBounds(0, height-140, width, 25);
 		
 		addPanel.setBackground(Color.white);
 		addPanel.setBounds(0, 0, width, height);
@@ -93,25 +103,39 @@ public class AddBox extends JPanel{
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
 		
+		int x = (this.getWidth()-imageSize)/2;
+		int y = (this.getHeight()-imageSize)/2 -30;
+		
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);		
-		graphics2d.drawImage(currentImage, 0, 0, 100, 100, null);
+		graphics2d.drawImage(currentImage, x, y, imageSize, imageSize, null);
 		super.paintComponent(graphics2d);
 		
 	}
+	
+	public void confirm(){
+		
+	}
+	
+	public void cancel(){
+		nameField.setText("");
+		balanceField.setText("");
+		remove(addPanel);
+		repaint();
+	}
 
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("test");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(null);
-		frame.setSize(300, 300);
-		AddBox box = new AddBox();
-		box.setSize(220, 175);
-		
-		frame.add(box);
-		frame.setVisible(true);
-		
-		
-	}	
+//	public static void main(String[] args) {
+//		JFrame frame = new JFrame("test");
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setLayout(null);
+//		frame.setSize(300, 300);
+//		AddBox box = new AddBox();
+//		box.setSize(220, 175);
+//		
+//		frame.add(box);
+//		frame.setVisible(true);
+//		
+//		
+//	}	
 	
 	class AddListener implements MouseListener{
 

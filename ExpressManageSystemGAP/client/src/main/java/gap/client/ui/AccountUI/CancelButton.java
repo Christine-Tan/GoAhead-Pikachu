@@ -44,9 +44,9 @@ public class CancelButton extends JPanel{
 		super.paintComponent(g);
 		// TODO Auto-generated method stub
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);
-		graphics2d.setColor(ColorAndFonts.blue);
+		graphics2d.setColor(ColorAndFonts.darkBlue);
 		graphics2d.setFont(ColorAndFonts.getChinese(15));
-		graphics2d.drawString(text, 35, 20);
+		graphics2d.drawString(text, 40, 20);
 		graphics2d.setColor(Color.white);
 			
 	}
@@ -56,7 +56,7 @@ public class CancelButton extends JPanel{
 			@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-				
+			box.cancel();
 		}
 
 		@Override

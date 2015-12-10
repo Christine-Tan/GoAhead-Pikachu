@@ -237,43 +237,43 @@ public class SQLBuilder {
 	}
 
 	private void makeList(Object[] objects, boolean isColumnName) {
-//		if (objects.length == 0) {
-//			return;
-//		} else {
-//			boolean hasBra = false;
-//			if (objects[0] instanceof String) {
-//				String s = (String) objects[0];
-//				hasBra = s.contains("(");
-//			}
-//
-//			if (!hasBra && !isColumnName) {
-//				leftBra();
-//			}
-//
-//			for (int i = 0; i < objects.length; i++) {
-//				if (i > 0) {
-//					builder.append(",");
-//				}
-//				// 在不是列名的情况下，string是特殊情况，需要加单引号。
-//				// 同时也允许用户直接传(150,20,'aa')这样的形式进来，所以假如没有括号才特殊处理
-//				if (!isColumnName && (objects[i] instanceof String) && !hasBra) {
-//					String value = objects[i].toString();
-//					handleString(value);
-//				} else if (objects[i] instanceof Calendar) {
-//					String time = convertDate((Calendar) objects[i], dateType);
-//					handleString(time);
-//				} else if (objects[i] instanceof Enum) {
-//					handleEnum((Enum) objects[i]);
-//				} else {
-//					builder.append(objects[i].toString());
-//				}
-//			}
-//
-//			if (!hasBra && !isColumnName) {
-//				rightBra();
-//			}
-//			builder.append(" ");
-//		}
+		if (objects.length == 0) {
+			return;
+		} else {
+			boolean hasBra = false;
+			if (objects[0] instanceof String) {
+				String s = (String) objects[0];
+				hasBra = s.contains("(");
+			}
+
+			if (!hasBra && !isColumnName) {
+				leftBra();
+			}
+
+			for (int i = 0; i < objects.length; i++) {
+				if (i > 0) {
+					builder.append(",");
+				}
+				// 在不是列名的情况下，string是特殊情况，需要加单引号。
+				// 同时也允许用户直接传(150,20,'aa')这样的形式进来，所以假如没有括号才特殊处理
+				if (!isColumnName && (objects[i] instanceof String) && !hasBra) {
+					String value = objects[i].toString();
+					handleString(value);
+				} else if (objects[i] instanceof Calendar) {
+					String time = convertDate((Calendar) objects[i], dateType);
+					handleString(time);
+				} else if (objects[i] instanceof Enum) {
+					handleEnum((Enum) objects[i]);
+				} else {
+					builder.append(objects[i].toString());
+				}
+			}
+
+			if (!hasBra && !isColumnName) {
+				rightBra();
+			}
+			builder.append(" ");
+		}
 	}
 
 	private void handleEnum(Enum e) {

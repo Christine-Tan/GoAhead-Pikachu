@@ -86,7 +86,11 @@ public class MessagePanel extends JPanel {
 		graphics2d.setColor(colorMap.get(type));
 		graphics2d.fillRect(0, 0, this.getWidth(),this.getHeight());
 		
-		composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f);
+		float textAlpha = 0.4f;
+		if(alpha>0.5){
+			textAlpha = 1.0f;
+		}
+		composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, textAlpha);
 		graphics2d.setComposite(composite);
 		graphics2d.setColor(Color.black);
 		graphics2d.setFont(font);
@@ -98,7 +102,7 @@ public class MessagePanel extends JPanel {
 	private class MessageThread extends Thread{
 		private boolean isStop = false;
 		private long time = 0;
-		private int step = 30;
+		private int step = 10;
 		public MessageThread(long time){
 			this.time = time;
 			alpha = 0.15f;
@@ -116,6 +120,9 @@ public class MessagePanel extends JPanel {
 			
 				for(long currentTime = 0; currentTime<time && !isStop ; currentTime+=step){
 				
+					if(currentTime>500){
+						alpha = 1.0f;
+					}
 					repaint();
 					mainFrame.validate();
 					try {
@@ -128,6 +135,8 @@ public class MessagePanel extends JPanel {
 	
 				type = MessageType.normal;
 				message = "";
+				
+				alpha = 0.15f;
 				for(long currentTime = 0; currentTime<500 && !isStop; currentTime+=step){
 					
 					repaint();
@@ -141,6 +150,7 @@ public class MessagePanel extends JPanel {
 				}
 				
 				alpha = 1.0f;
+				repaint();
 				MessagePanel.this.notifyAll();
 				enable = true;
 			}

@@ -18,6 +18,8 @@ public class AccountDisplayPanel extends JPanel{
 
 	ArrayList<AccountVO> accounts;
 	AccountManagePanel accountManagePanel;
+	
+	AddBox addBox = new AddBox();
 	JViewport viewport;
 	FlowLayout flow;
 	
@@ -93,6 +95,7 @@ public class AccountDisplayPanel extends JPanel{
 			add(box);
 		}
 		
+		add(addBox);
 	}
 	
 	class MyResizeListener implements ComponentListener{
