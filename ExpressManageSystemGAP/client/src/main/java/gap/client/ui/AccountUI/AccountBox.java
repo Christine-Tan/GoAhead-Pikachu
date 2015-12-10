@@ -94,6 +94,9 @@ public class AccountBox extends JPanel{
 		listener.mouseExited(null);
 	}
 	
+	public void removeThisBox(){
+		accountPanel.removeOneAccount(accountVO);
+	}
 	
 	class MyListener implements MouseListener{
 

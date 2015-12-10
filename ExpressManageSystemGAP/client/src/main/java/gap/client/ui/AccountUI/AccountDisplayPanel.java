@@ -26,7 +26,7 @@ public class AccountDisplayPanel extends JPanel{
 	final int hGarp = 50;//水平间隙
 	final int vGarp = 10;//垂直间隙
 	
-	HashMap<AccountBox, AccountVO> accountMap;
+	HashMap<AccountVO, AccountBox> accountMap;
 	public AccountDisplayPanel
 	(AccountManagePanel accountManagePanel, ArrayList<AccountVO> accountVOs,
 			JViewport viewport){
@@ -91,11 +91,27 @@ public class AccountDisplayPanel extends JPanel{
 	public void addAccountBox(){
 		for(AccountVO vo : accounts){
 			AccountBox box = new AccountBox(this, vo);
-			accountMap.put(box, vo);
+			accountMap.put(vo,box);
 			add(box);
 		}
 		
 		add(addBox);
+	}
+	
+	public void addOneAccount(AccountVO vo){
+		addBox.cancel();
+		remove(addBox);
+		AccountBox box = new AccountBox(this, vo);
+		accountMap.put(vo,box);
+		add(box);	
+		add(addBox);
+		accountManagePanel.repaint();
+	}
+	
+	public void removeOneAccount(AccountVO vo){
+		//accountManagePanel
+		remove(accountMap.get(vo));
+		accountManagePanel.repaint();
 	}
 	
 	class MyResizeListener implements ComponentListener{

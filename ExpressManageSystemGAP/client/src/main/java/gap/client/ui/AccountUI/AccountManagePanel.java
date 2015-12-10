@@ -97,6 +97,10 @@ public class AccountManagePanel extends MainPanelWithGird{
 		MainFrame.setMessage("金额格式错误", MessageType.alram, 2000);
 	}
 	
+	public void deleteAccount(AccountVO vo){
+		
+	}
+	
 	//迭代器内容存入accounts
 	private void itrToList(Iterator<AccountVO> itr){
 		if(accounts==null){
