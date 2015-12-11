@@ -21,6 +21,7 @@ import static gap.server.initial.NetModule.stockinorderdataservice;
 import static gap.server.initial.NetModule.stockoutorderdataservice;
 import static gap.server.initial.NetModule.userdataservice;
 import gap.common.dataservice.ServiceName;
+import gap.common.dataservice.transFareDataService.TransFareDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.server.data.ContactorImpl;
 import gap.server.data.accountdata.AccountDataServiceImpl;
@@ -39,6 +40,7 @@ import gap.server.data.strategydata.CityDataServiceImpl;
 import gap.server.data.strategydata.PriceDataServiceImpl;
 import gap.server.data.strategydata.RentDataServiceImpl;
 import gap.server.data.strategydata.SalaryDataServiceImpl;
+import gap.server.data.transFareData.TransFareDataImpl;
 import gap.server.data.transdata.CarDataServiceImpl;
 import gap.server.data.transdata.DriverDataServiceImpl;
 import gap.server.data.userdata.UserDataServiceImpl;
@@ -77,6 +79,7 @@ public class NetInitial {
 		inventorydataservice = InventoryDataServiceImpl.getInstance();
 		stockinorderdataservice = StockinOrderDataServiceImpl.getInstance();
 		stockoutorderdataservice = StockoutOrderDataServiceImpl.getInstance();
+		NetModule.transFareDataService = TransFareDataImpl.getInstance();
 
 		contactor = new ContactorImpl();
 
@@ -110,6 +113,7 @@ public class NetInitial {
 				stockinorderdataservice);
 		serviceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE,
 				stockoutorderdataservice);
+		serviceMap.put(ServiceName.TRANSFARE_DATA_SERVICE,NetModule.transFareDataService);
 
 	}
 

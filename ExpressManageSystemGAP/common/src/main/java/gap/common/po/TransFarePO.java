@@ -6,7 +6,7 @@ public class TransFarePO {
 	private String orderID;
 	private String carID;
 
-	public TransFarePO(int fare, String orderID, String carID) {
+	public TransFarePO(double fare, String orderID, String carID) {
 		this.fare = fare;
 		this.orderID = orderID;
 		this.carID = carID;

@@ -148,11 +148,11 @@ public class EditableLable extends GAPTextField{
 		
 	}
 	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("test");
-		frame.setSize(100, 100);
-		frame.add(new EditableLable("aaaaaa"));
-		frame.setVisible(true);
-		
-	}
+//	public static void main(String[] args) {
+//		JFrame frame = new JFrame("test");
+//		frame.setSize(100, 100);
+//		frame.add(new EditableLable("aaaaaa"));
+//		frame.setVisible(true);
+//		
+//	}
 }

@@ -17,6 +17,7 @@ import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.dataservice.strategydataservice.PriceDataService;
 import gap.common.dataservice.strategydataservice.RentDataService;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
+import gap.common.dataservice.transFareDataService.TransFareDataService;
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
@@ -43,5 +44,7 @@ public class NetModule {
 	public static InventoryDataService inventorydataservice;
 	public static StockinOrderDataService stockinorderdataservice;
 	public static StockoutOrderDataService stockoutorderdataservice;
+	public static TransFareDataService transFareDataService;
+	
 	public static Contactor contactor;
 }

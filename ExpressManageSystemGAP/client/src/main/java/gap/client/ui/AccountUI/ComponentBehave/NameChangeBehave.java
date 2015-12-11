@@ -22,6 +22,12 @@ public class NameChangeBehave implements ComponentBehave{
 	public void behave() {
 
 		String newName = label.getText();
+		
+		//没有改变名称
+		if(accountVO.getName().equals(newName)){
+			return;
+		}
+		
 		accountVO.setNewName(newName);
 		managePanel.modifyAccount(accountVO, this);
 	}
