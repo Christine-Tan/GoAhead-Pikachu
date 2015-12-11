@@ -11,9 +11,9 @@ import javax.sql.StatementEventListener;
 import javax.swing.JPanel;
 import javax.xml.soap.Text;
 
+import gap.client.ui.AccountUI.ComponentBehave.BoxCancelBehave;
+import gap.client.ui.AccountUI.ComponentBehave.ComponentBehave;
 import gap.client.ui.AccountUI.ConfirmButton.ConfirmListener;
-import gap.client.ui.AccountUI.CancelBehave.BoxCancelBehave;
-import gap.client.ui.AccountUI.CancelBehave.CancelBehave;
 import gap.client.ui.BaseComponents.CancelLabel;
 import gap.client.ui.BaseComponents.ConfirmLabel;
 import gap.client.ui.UITools.ColorAndFonts;
@@ -28,7 +28,7 @@ public class CancelButton extends JPanel{
 	private String text = "取消";
 	private MouseListener lis = new CancelListener();
 	
-	private CancelBehave behave;
+	private ComponentBehave behave;
 		
 	public CancelButton(AddBox box){
 		this.box = box;
@@ -51,7 +51,7 @@ public class CancelButton extends JPanel{
 		label.mouseExited();
 	}
 	
-	public void setBehave(CancelBehave behave){
+	public void setBehave(ComponentBehave behave){
 		this.behave = behave;
 	}
 	

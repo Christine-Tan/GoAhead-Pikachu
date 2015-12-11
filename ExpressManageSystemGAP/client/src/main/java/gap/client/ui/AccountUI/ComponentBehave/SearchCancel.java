@@ -1,9 +1,9 @@
-package gap.client.ui.AccountUI.CancelBehave;
+package gap.client.ui.AccountUI.ComponentBehave;
 
 import gap.client.ui.AccountUI.AccountDisplayPanel;
 import gap.client.ui.AccountUI.AccountQueryPanel;
 
-public class SearchCancel implements CancelBehave{
+public class SearchCancel implements ComponentBehave{
 	AccountQueryPanel queryPanel;
 	AccountDisplayPanel displayPanel;
 	public SearchCancel(AccountQueryPanel queryPanel,

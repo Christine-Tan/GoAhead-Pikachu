@@ -12,7 +12,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import gap.client.ui.AccountUI.ComponentBehave.ComponentBehave;
 import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPTextField;
 import javafx.scene.layout.Border;
 
@@ -24,6 +26,9 @@ import javafx.scene.layout.Border;
  */
 public class EditableLable extends GAPTextField{
 
+	//该组件的行为
+	ComponentBehave behave;
+	
 	public EditableLable(){
 		super();
 		init("");
@@ -50,6 +55,9 @@ public class EditableLable extends GAPTextField{
 		addKeyListener(listener);
 	}
 	
+	public void setBehave(ComponentBehave behave){
+		this.behave = behave;
+	}
 	
 	class MyListener implements MouseListener,KeyListener,FocusListener{
 
@@ -66,6 +74,9 @@ public class EditableLable extends GAPTextField{
 			setForeground(Color.BLACK);
 			setBorder(BorderFactory.createEmptyBorder());
 			getCaret().setVisible(false);
+			
+			//启动行为
+			//behave.behave();
 		}
 
 		@Override
@@ -87,6 +98,9 @@ public class EditableLable extends GAPTextField{
 				setEditable(false);
 				setBorder(BorderFactory.createEmptyBorder());
 				getCaret().setVisible(false);
+				
+				//启动行为
+				behave.behave();
 			}
 			setForeground(Color.BLACK);
 		}
@@ -97,6 +111,8 @@ public class EditableLable extends GAPTextField{
 			if(e.getClickCount()>=1){
 				requestFocusInWindow();
 				setForeground(Color.BLACK);
+				
+				setBorder(ComponentStyle.focus_border);
 				setOpaque(true);
 				setEditable(true);
 				getCaret().setVisible(true);

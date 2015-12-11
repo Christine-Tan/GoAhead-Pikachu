@@ -1,8 +1,8 @@
-package gap.client.ui.AccountUI.CancelBehave;
+package gap.client.ui.AccountUI.ComponentBehave;
 
 import gap.client.ui.AccountUI.AddBox;
 
-public class BoxCancelBehave implements CancelBehave{
+public class BoxCancelBehave implements ComponentBehave{
 	AddBox box;
 	public BoxCancelBehave(AddBox box) {
 		this.box = box;
