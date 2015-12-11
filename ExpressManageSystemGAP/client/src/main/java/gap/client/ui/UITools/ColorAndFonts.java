@@ -31,5 +31,9 @@ public class ColorAndFonts {
 	public static Font getEnglish(int size) {
 		return new Font("Courier New", Font.PLAIN, size);
 	}
+	
+	public static Font getEnglish(int size,int style) {
+		return new Font("Courier New", style, size);
+	}
 
 }
