@@ -46,9 +46,8 @@ public class TitleLable extends JLabel{
 		int height = getHeight();
 		int x = (width-textLength)/2;
 		int y = (height-textHeight)/2;
-		
-
 		y+=(int)(textHeight*3.0/4);
+		
 		graphics2d.setColor(Color.white);
 		graphics2d.fillRect(0, 0, width, height);
 		
