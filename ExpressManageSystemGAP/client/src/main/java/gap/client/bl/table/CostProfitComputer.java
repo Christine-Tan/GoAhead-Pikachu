@@ -26,6 +26,8 @@ public class CostProfitComputer {
 		}
 		
 		Cost_ProfitListVO vo = new Cost_ProfitListVO(sumIncome, sumPayment, rate, netIncome);
+		
+	//	System.out.println(vo.getIncome()+"  "+vo.getPayment());
 		return vo;
 	}
 }

@@ -48,7 +48,7 @@ public class ArcGraphPanel extends JPanel{
 	//展开的程度
 	double extendRate =0;
 	
-	double baseWidth = 700;
+	double baseWidth = 800;
 	double baseHeight = 500;
 	
 	//扇形的基础半径
@@ -109,7 +109,10 @@ public class ArcGraphPanel extends JPanel{
 		
 		double realWidth = getWidth();
 		double realHeight = getHeight();
-		double radio = realWidth/baseWidth;
+		double Wradio = realWidth/baseWidth;
+		double Hradio = realHeight/baseHeight;
+		
+		double radio = Math.min(Wradio, Hradio);
 		
 		translate.setToIdentity();
 		scale.setToIdentity();
@@ -117,7 +120,7 @@ public class ArcGraphPanel extends JPanel{
 		//缩放至相应倍率
 		scale.scale(radio, radio);
 		//平移至中心
-		translate.translate(realWidth/2, realHeight/2);
+		translate.translate(realWidth/2, realHeight/2.2);
 		
 		//不知道对不对
 		//我去,居然是对的23333
@@ -255,7 +258,7 @@ public class ArcGraphPanel extends JPanel{
 		
 		leftTextLength = leftText.length() * Chinese.getSize();
 		leftTextHeight = Chinese.getSize();
-		leftTextX = (int)(-leftTextLength/2 - baseRadius*1.3);
+		leftTextX = (int)(-leftTextLength/2 - baseRadius*1.5);
 		leftTextY = (int)(-leftTextHeight/2 - baseRadius*0.6);
 		leftTextX+=(int)(leftTextLength*1.0/4);
 		leftTextY+=(int)(leftTextHeight*3.0/4);
@@ -264,7 +267,7 @@ public class ArcGraphPanel extends JPanel{
 		rightText = "-"+rightText+"元";
 		rightTextLength = rightText.length() * Chinese.getSize();
 		rightTextHeight = Chinese.getSize();
-		rightTextX = (int)(-rightTextLength/2 + baseRadius*1.2);
+		rightTextX = (int)(-rightTextLength/2 + baseRadius*1.4);
 		rightTextY = (int)(-rightTextHeight/2 + baseRadius*0.6);
 		rightTextX+=(int)(rightTextLength*1.0/4);
 		rightTextY+=(int)(rightTextHeight*3.0/4);

@@ -1,6 +1,8 @@
 package gap.common.po;
 
-public class Cost_profitPO {
+import java.io.Serializable;
+
+public class Cost_profitPO implements Serializable{
 
 	private String accountName;
 	private double income;

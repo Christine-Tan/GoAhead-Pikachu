@@ -84,10 +84,6 @@ public class AccountManagePanel extends MainPanelWithGird{
 		gcons.anchor = GridBagConstraints.EAST;
 		SwingConsole.addComponent(gb, gcons, this, area, 0, 2, 1, 1, 1, 0);
 		
-		//加载一下两个需要图片的类
-		CancelLabel cancelLabel = new CancelLabel();
-		ConfirmLabel confirmLabel = new ConfirmLabel();
-		
 		
 	}
 	

@@ -26,6 +26,8 @@ public class TitleLable extends JLabel{
 	int textLength = 0;
 	int textHeight = 0;
 	
+	boolean isButtom = false;
+	
 	public TitleLable(String text,int fontSize){
 		this.text = text;
 		this.fontSize = fontSize;
@@ -36,6 +38,9 @@ public class TitleLable extends JLabel{
 		setPreferredSize(new Dimension(textLength, textHeight+10));
 	}
 	
+	public void setTextBottom(){
+		isButtom = true;
+	}
 	
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
@@ -47,6 +52,10 @@ public class TitleLable extends JLabel{
 		int x = (width-textLength)/2;
 		int y = (height-textHeight)/2;
 		y+=(int)(textHeight*3.0/4);
+		
+		if(isButtom){
+			y+=(int)(textHeight*1.0/4);
+		}
 		
 		graphics2d.setColor(Color.white);
 		graphics2d.fillRect(0, 0, width, height);
