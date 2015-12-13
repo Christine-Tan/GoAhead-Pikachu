@@ -18,10 +18,12 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.util.MessageType;
 import gap.client.vo.Cost_ProfitListVO;
 
 public class ArcGraphPanel extends JPanel{
@@ -86,7 +88,9 @@ public class ArcGraphPanel extends JPanel{
 		Chinese = ColorAndFonts.getChinese(30);
 		English = ColorAndFonts.getEnglish(50, Font.BOLD);
 		
-		addMouseMotionListener(new SelectListener());
+		SelectListener l = new SelectListener();
+		addMouseMotionListener(l);
+		addMouseListener(l);
 	
 	}
 	
@@ -145,8 +149,10 @@ public class ArcGraphPanel extends JPanel{
 			e.printStackTrace();
 		}
 		Point2D disP = new Point();
-		inverseScale.transform(p, disP);
-		inverseTranslate.transform(disP, p);
+
+		inverseTranslate.transform(p, disP);
+		inverseScale.transform(disP, p);
+		
 		return p;
 	}
 	
@@ -246,6 +252,7 @@ public class ArcGraphPanel extends JPanel{
 		centerText = String.format("%.2f", vo.getRate() * realRate * 100);
 		centerText += "%";
 		
+		
 		centerTextLength = centerText.length() * English.getSize();
 		centerTextHeight = English.getSize();
 		centerTextX = -centerTextLength/2;
@@ -278,7 +285,7 @@ public class ArcGraphPanel extends JPanel{
 		normal,enter,exit;
 	}
 	
-	class SelectListener implements MouseMotionListener{
+	class SelectListener implements MouseMotionListener,MouseListener{
 
 		AffineTransform bigger;
 		AffineTransform smaller;
@@ -286,6 +293,7 @@ public class ArcGraphPanel extends JPanel{
 		
 		boolean incomeBigger = false;
 		boolean paymentBigger = false;
+	
 		public SelectListener() {
 			bigger = new AffineTransform();
 			//放大一点
@@ -342,7 +350,7 @@ public class ArcGraphPanel extends JPanel{
 					break;
 			}
 			
-		
+			
 		}
 		
 	
@@ -360,6 +368,48 @@ public class ArcGraphPanel extends JPanel{
 				
 				return State.normal;
 			}
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(incomeBigger){
+				String s = "共收入"+leftText.substring(1);
+				MainFrame.setMessage(s, MessageType.succeed, 1000);
+			}else if(paymentBigger){
+				String s = "共支出"+rightText.substring(1);
+				MainFrame.setMessage(s, MessageType.alram, 1000);	
+			}
+			
+			Point2D p = transPoint(e.getPoint());
+			if(subEllipse.contains(p)){
+				String s = "净收入"+String.format("%.2f", vo.getNetIncome())+"元";	
+				MainFrame.setMessage(s, MessageType.succeed, 2000);
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 
