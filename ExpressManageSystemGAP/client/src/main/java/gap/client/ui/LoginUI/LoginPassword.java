@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -17,11 +19,17 @@ public class LoginPassword extends JPasswordField implements TextInterface {
 	Image image;
 	Font font = ColorAndFonts.English;
 	boolean hadFoucsed = false;
+	
+	LoginPanel loginPanel;
+	
 	LoginButton loginButton;
-	KeyListener keyListener;
+	MyKeyListener keyListener;
+	
+	
 
-	public LoginPassword(LoginButton loginButton) {
+	public LoginPassword(LoginButton loginButton,LoginPanel loginPanel) {
 		this.loginButton = loginButton;
+		this.loginPanel = loginPanel;
 		image = new ImageIcon("images/login/lock.png").getImage();
 		setEchoChar('\0');
 		setBounds(35, 235, 360, 30);
@@ -29,9 +37,10 @@ public class LoginPassword extends JPasswordField implements TextInterface {
 		setForeground(Color.gray);
 		setText("Password");
 		new LoginTextListener(this);
+		
 		keyListener = new MyKeyListener();
 		addKeyListener(keyListener);
-
+		addFocusListener(keyListener);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -58,7 +67,7 @@ public class LoginPassword extends JPasswordField implements TextInterface {
 		}
 	}
 
-	class MyKeyListener implements KeyListener {
+	class MyKeyListener implements KeyListener,FocusListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
@@ -81,6 +90,18 @@ public class LoginPassword extends JPasswordField implements TextInterface {
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
 
+		}
+
+		@Override
+		public void focusGained(FocusEvent e) {
+			// TODO Auto-generated method stub
+			loginPanel.closeEye();
+		}
+
+		@Override
+		public void focusLost(FocusEvent e) {
+			// TODO Auto-generated method stub
+			loginPanel.openEye();
 		}
 
 	}

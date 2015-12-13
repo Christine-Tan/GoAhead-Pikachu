@@ -1,5 +1,6 @@
 package gap.client.ui.LoginUI;
 
+import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 
@@ -15,11 +16,23 @@ import javax.swing.JPanel;
 public class LogoPanel extends JPanel {
 	float alpha = 0;
 	String bayMax = LoginConfig.bayMax;
+	LoginFrame frame;
+	MoveListener moveListener;
+	Listener listener;
 
-	public LogoPanel() {
+	boolean isEnterPassWord = false;
+	public LogoPanel(LoginFrame frame) {
 		setBounds(0, 0, LoginConfig.width, LoginConfig.animationHeight);
 		setOpaque(false);
-		addMouseListener(new Listener());
+		
+		listener = new Listener();
+		addMouseListener(listener);
+		this.frame = frame;
+		
+		moveListener = new MoveListener(frame);
+		addMouseListener(moveListener);
+		addMouseMotionListener(moveListener);
+		
 		// addMouseListener(new MoveListener(LoginFrame.getFrame()));
 	}
 
@@ -81,7 +94,7 @@ public class LogoPanel extends JPanel {
 	class Listener implements MouseListener {
 
 		int count = 0;
-		int dizzNum = 3;
+		int dizzNum = 8;
 
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
@@ -103,6 +116,10 @@ public class LogoPanel extends JPanel {
 		@Override
 		public void mousePressed(MouseEvent arg0) {
 			// TODO Auto-generated method stub
+			if(isEnterPassWord){
+				return;
+			}
+			
 			if (count <= dizzNum) {
 				bayMax = LoginConfig.bayMaxBlink;
 			}
@@ -113,6 +130,10 @@ public class LogoPanel extends JPanel {
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
 			// TODO Auto-generated method stub
+			if(isEnterPassWord){
+				return;
+			}
+			
 			if (count <= dizzNum) {
 				bayMax = LoginConfig.bayMax;
 			} else {
@@ -121,5 +142,22 @@ public class LogoPanel extends JPanel {
 			repaint();
 		}
 
+	}
+
+	public void closeEye() {
+		// TODO Auto-generated method stub
+		isEnterPassWord = true;
+		bayMax = LoginConfig.bayMaxBlink;
+		repaint();
+	}
+	
+	public void openEye(){
+		isEnterPassWord = true;
+		if (listener.count <= listener.dizzNum) {
+			bayMax = LoginConfig.bayMax;
+		} else {
+			bayMax = LoginConfig.bayMaxDizz;
+		}
+		repaint();
 	}
 }

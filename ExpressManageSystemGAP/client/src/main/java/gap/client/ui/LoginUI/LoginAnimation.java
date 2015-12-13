@@ -1,5 +1,7 @@
 package gap.client.ui.LoginUI;
 
+import gap.client.bl.login.Login;
+import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 
@@ -22,11 +24,16 @@ public class LoginAnimation extends JLabel {
 	ArrayList<MoveShape> shapes;
 	Thread animation;
 	boolean isStarted = false;
-
-	public LoginAnimation() {
+	LoginFrame frame;
+	MoveListener listener;
+	
+	public LoginAnimation(LoginFrame frame) {
 		this.setBounds(0, 0, 430, 180);
 		this.setLayout(null);
+		this.frame = frame;
 		// this.setOpaque(false);
+		listener = new MoveListener(frame);
+		
 
 		int[] height = { -20, 50, 130, 200 };
 		int[] pointNums = { 10, 10, 10, 10 };
