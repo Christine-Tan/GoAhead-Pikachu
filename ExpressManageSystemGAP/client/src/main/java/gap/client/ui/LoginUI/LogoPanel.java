@@ -152,7 +152,7 @@ public class LogoPanel extends JPanel {
 	}
 	
 	public void openEye(){
-		isEnterPassWord = true;
+		isEnterPassWord = false;
 		if (listener.count <= listener.dizzNum) {
 			bayMax = LoginConfig.bayMax;
 		} else {
