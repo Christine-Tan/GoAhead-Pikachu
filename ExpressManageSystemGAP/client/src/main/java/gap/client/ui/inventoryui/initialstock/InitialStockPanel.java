@@ -2,15 +2,22 @@ package gap.client.ui.inventoryui.initialstock;
 
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.ChooseButton;
+import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.util.LocalInfo;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -25,7 +32,7 @@ public class InitialStockPanel extends MainPanel {
 	GridBagConstraints gcons;
 	JFrame frame;
 
-	public InitialStockPanel(MainFrame frame) {
+	public InitialStockPanel(final MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
 		
@@ -35,7 +42,7 @@ public class InitialStockPanel extends MainPanel {
 		confirm.submit.setText("确认初始化");
 		title = new TitlePanel();
 		choose = new ChoosePanel();
-		newList = new ListItemPanel(frame, LocalInfo.ins_id + "1");
+		newList = new ListItemPanel(this.frame, LocalInfo.ins_id + "1");
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -48,7 +55,10 @@ public class InitialStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				newList = new ListItemPanel(frame, LocalInfo.ins_id + "1");
+				setButtonNomal(choose.plane);
+				setButtonNomal(choose.train);
 				reLayout();
 			}
 		});
@@ -59,6 +69,8 @@ public class InitialStockPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				newList = new ListItemPanel(frame, LocalInfo.ins_id + "2");
+				setButtonNomal(choose.car);
+				setButtonNomal(choose.plane);
 				reLayout();
 			}
 		});
@@ -68,10 +80,19 @@ public class InitialStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				newList = new ListItemPanel(frame, LocalInfo.ins_id + "3");
+				newList = new ListItemPanel(frame, LocalInfo.ins_id + "3");	
+				setButtonNomal(choose.car);
+				setButtonNomal(choose.train);
 				reLayout();
 			}
 		});
+	}
+	
+	public void setButtonNomal(ChooseButton button){
+		button.setBackground(Color.white);
+		button.setForeground(ColorAndFonts.blue);
+		button.clicked = false;
+		
 	}
 
 	public void reLayout() {

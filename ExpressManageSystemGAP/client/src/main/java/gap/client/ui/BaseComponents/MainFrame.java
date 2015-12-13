@@ -6,6 +6,9 @@ import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.LoadPanel;
+import gap.client.ui.inventoryui.checkstock.CheckStockPanel;
+import gap.client.ui.inventoryui.checkstock.ListItem;
+import gap.client.ui.inventoryui.checkstock.Unit;
 import gap.client.util.MessageType;
 
 import java.awt.Color;
@@ -125,6 +128,16 @@ public class MainFrame extends JFrame {
 
 	public static void setMessage(String message, MessageType type, long time) {
 		messagePanel.setMessage(message, type, time);
+	}
+	
+	public static void paint(CheckStockPanel panel){
+		for(int i = 0;i<panel.list.items.size();i++){
+			ListItem item = panel.list.items.get(i);
+			for(int j = 0;j<item.shelf.length;j++){
+				Unit unit = item.shelf[j];
+				unit.icon.paint();
+			}
+		}
 	}
 
 }

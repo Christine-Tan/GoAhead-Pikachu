@@ -214,5 +214,25 @@ public class StockoutOrderDataServiceImplTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testGetUnLoadedOrder(){
+		try {
+			List<StockoutOrderPO> list = stockout.getUnLoadedOrders();
+			if(list.isEmpty()){
+				System.out.println("0");
+			}else{
+				System.out.println(list.size());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testSetLoaded(){
+		System.out.println(stockout.setLoaded("00110012015120800001"));
+	}
 
 }

@@ -14,7 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class ListPanel extends JPanel {
-	List<ListItem> list;
+	public List<ListItem> items;
 	String sector_id;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
@@ -25,7 +25,7 @@ public class ListPanel extends JPanel {
 		setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0,
 				ComponentStyle.light_gray));
 
-		list = new ArrayList<ListItem>();
+		items = new ArrayList<ListItem>();
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
@@ -33,17 +33,14 @@ public class ListPanel extends JPanel {
 		gcons.anchor = GridBagConstraints.CENTER;
 
 		gcons.insets = new Insets(10, 0, 0, 0);
-		flush(rowNum, sector_id);
-	}
-	
-	void flush(int rowNum,String sector_id){
-		list.clear();
-		removeAll();
 		for (int i = 0; i < rowNum; i++) {
-			list.add(new ListItem(rowNum, i,sector_id));
-			System.out.println(sector_id);
-			SwingConsole.addComponent(gb, gcons, this, list.get(i), 0, i, 1, 1, 1,
+			items.add(new ListItem(rowNum, i,sector_id));
+//			System.out.println(sector_id);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1,
 					0);
+			
+			
 		}
 	}
+
 }
