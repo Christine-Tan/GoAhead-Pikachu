@@ -13,8 +13,15 @@ import javax.swing.JPanel;
  *
  */
 public class MainContentPanel extends JPanel {
+	OrderSelectPanel orderSelectPanel;
 
-	class UserBar {
+	public void setOrderSelectPanel(OrderSelectPanel orderSelectPanel) {
+		remove(this.orderSelectPanel);
+		this.orderSelectPanel = orderSelectPanel;
+
+	}
+
+	class UserBar extends JPanel {
 		List<UserVO> users;
 
 		public UserBar() {
@@ -23,6 +30,10 @@ public class MainContentPanel extends JPanel {
 	}
 
 	class UserBox {
+		OrderSelectPanel orderSelect;
 
+		UserBox() {
+			orderSelect = new OrderSelectPanel();
+		}
 	}
 }

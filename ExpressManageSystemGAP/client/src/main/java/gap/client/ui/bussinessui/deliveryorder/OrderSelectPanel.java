@@ -104,7 +104,7 @@ public class OrderSelectPanel extends JPanel {
 		if (!initialed) {
 			initialed = true;
 			total_orders = ExpressorderController
-					.getCurrentOrders(CurrentOrderType.ALL);
+					.getCurrentOrders(CurrentOrderType.DELIVERY);
 		}
 	}
 
@@ -193,16 +193,20 @@ public class OrderSelectPanel extends JPanel {
 
 		void selected() {
 			check.setSelected(true);
-			selectItems.add(this);
-			unselectItem.remove(this);
-			total_orders.remove(expressorder);
+			if (!selectItems.contains(this)) {
+				selectItems.add(this);
+				unselectItem.remove(this);
+				total_orders.remove(expressorder);
+			}
 		}
 
 		void deSelected() {
 			check.setSelected(false);
-			selectItems.remove(this);
-			unselectItem.add(this);
-			total_orders.add(expressorder);
+			if (selectItems.contains(this)) {
+				selectItems.remove(this);
+				unselectItem.add(this);
+				total_orders.add(expressorder);
+			}
 		}
 
 		String getOrderId() {
