@@ -20,11 +20,11 @@ import java.util.List;
  */
 public class AccountorReceiptController implements AccountorReceiptService {
 
-	AccountorReceiptDataController receiptDataController = null;
+	static AccountorReceiptDataController receiptDataController = null;
 	private static AccountorReceiptController receiptController = null;
 	PaymentList paymentList;
 
-	public AccountorReceiptController getInstance() {
+	public static AccountorReceiptController getInstance() {
 		if (receiptController == null) {
 			receiptController = new AccountorReceiptController();
 		}

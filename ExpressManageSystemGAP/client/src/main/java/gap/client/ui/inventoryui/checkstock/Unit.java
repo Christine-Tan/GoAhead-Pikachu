@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Unit extends JPanel {
-	Icon icon;
+	public Icon icon;
 	JLabel value;
 
 	public Unit(double ratio) {
@@ -34,15 +34,37 @@ public class Unit extends JPanel {
 		// gcons.fill = GridBagConstraints.HORIZONTAL;
 		SwingConsole.addComponent(gb, gcons, this, icon, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, value, 0, 2, 1, 1, 1, 0);
+//		for(int i = icon.height;i>icon.y;i--){
+//			icon.i = i;
+//			icon.repaint();
+//			try {
+//				Thread.sleep(50);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 	}
 
 	public static void main(String[] args) {
 		JFrame jf = new JFrame();
+		Unit unit = new Unit(50);
+		jf.getContentPane().add(unit);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jf.setSize(500, 500);
-		JPanel panel = new JPanel();
-		panel.add(new Unit(28));
-		jf.add(panel);
 		jf.setVisible(true);
+		
+		for(int i = unit.icon.height;i>unit.icon.y;i--){
+			unit.icon.i = i;
+			unit.icon.repaint();
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
+		
 	}
 }

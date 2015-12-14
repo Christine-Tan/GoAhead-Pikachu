@@ -1,7 +1,9 @@
 package gap.client.ui.inventoryui.initialstock;
 
+import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ChooseButton;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 
@@ -16,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class ChoosePanel extends JPanel {
-	JButton car, train, plane;
+	ChooseButton car, train, plane;
 
 	public ChoosePanel() {
 		setBackground(Color.white);
@@ -24,24 +26,19 @@ public class ChoosePanel extends JPanel {
 		setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0,
 				ComponentStyle.light_gray));
 
-		car = new GAPButton("汽运区");
-		car.setBorder(ComponentStyle.focus_border);
+		car = new ChooseButton("汽运区");
 		car.setSize(80, 50);
-		train = new GAPButton("铁运区");
-		train.setBorder(ComponentStyle.focus_border);
+		train = new ChooseButton("铁运区");
 		train.setSize(80, 50);
-		plane = new GAPButton("航运区");
-		plane.setBorder(ComponentStyle.focus_border);
+		plane = new ChooseButton("航运区");
 		plane.setSize(80, 50);
 
 
 		JPanel panel1 = new JPanel();
-//		panel1.setPreferredSize(new Dimension(200, 50));
 		panel1.setBackground(null);
 		panel1.setOpaque(false);
 
 		JPanel panel2 = new JPanel();
-//		panel2.setPreferredSize(new Dimension(200, 50));
 		panel2.setBackground(null);
 		panel2.setOpaque(false);
 

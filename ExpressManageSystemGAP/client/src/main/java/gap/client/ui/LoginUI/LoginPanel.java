@@ -31,21 +31,26 @@ public class LoginPanel extends JPanel {
 
 	private JTextField userName = new LoginTextField("people");
 	private LoginButton signInButton = new LoginButton("signIn");
-	private JPasswordField passwordField = new LoginPassword(signInButton);
+	private JPasswordField passwordField;
 	// private LoginButton goBackButton = new LoginButton("goBack");
 	private WhiteExitButton exitButton = new WhiteExitButton();
-	private LoginAnimation animation = new LoginAnimation();
-	private LogoPanel logoPanel = new LogoPanel();
-
+	private LoginAnimation animation;
+	private LogoPanel logoPanel;
+	private LoginFrame frame;
 	// 渐变
 	LinearGradientPaint paint;
 
 	Image background = new ImageIcon("images/login/loginForm.png").getImage();
 
-	public LoginPanel() {
+	public LoginPanel(LoginFrame frame) {
 		setLayout(null);
 		setBounds(0, 0, 430, 330);
+		this.frame = frame;
+		animation = new LoginAnimation(frame);
+		logoPanel = new LogoPanel(frame);
 
+		passwordField = new LoginPassword(signInButton,this);
+		
 		JLayeredPane layer = new JLayeredPane();
 		layer.setBounds(0, 0, this.getWidth(), this.getHeight());
 		add(layer);
@@ -124,5 +129,16 @@ public class LoginPanel extends JPanel {
 		g2d.drawString("GAP 快�?�物流系�?", 20, 40);
 
 	}
+
+	public void closeEye() {
+		// TODO Auto-generated method stub
+		logoPanel.closeEye();
+	}
+
+	public void openEye() {
+		// TODO Auto-generated method stub
+		logoPanel.openEye();
+	}
+
 
 }

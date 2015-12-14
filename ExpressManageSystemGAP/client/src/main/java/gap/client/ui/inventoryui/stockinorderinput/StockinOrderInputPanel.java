@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.stockinorderinput;
 
+import gap.client.blcontroller.ArrivedOrderController;
 import gap.client.blcontroller.StockinOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
@@ -34,7 +35,7 @@ public class StockinOrderInputPanel extends MainPanel {
 	public StockinOrderInputPanel(MainFrame frame) {
 		super(frame);
 		orders = new ArrayList<ExpressOrderVO>();
-		
+		//
 		Address add = new Address("江苏省", "南京市", "栖霞区");
 		PeopleInfo receiver = new PeopleInfo("", add, "", "");
 		
@@ -49,6 +50,8 @@ public class StockinOrderInputPanel extends MainPanel {
 		orders.add(vo10);
 		orders.add(vo11);
 		orders.add(vo12);
+		//
+		
 		stockinInfo = new StockinInfoUI();
 		title = new TitlePanel();
 		confirm = new ButtonArea();

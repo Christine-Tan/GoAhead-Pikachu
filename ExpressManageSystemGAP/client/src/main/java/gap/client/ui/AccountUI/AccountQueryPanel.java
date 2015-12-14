@@ -1,6 +1,6 @@
 package gap.client.ui.AccountUI;
 
-import gap.client.ui.AccountUI.CancelBehave.SearchCancel;
+import gap.client.ui.AccountUI.ComponentBehave.SearchCancel;
 import gap.client.ui.AccountUI.Listener.SearchListener;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;

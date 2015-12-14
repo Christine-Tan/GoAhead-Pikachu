@@ -19,5 +19,17 @@ public class Test {
 		NetModule.connect();
 		CheckStockPanel panel = new CheckStockPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.paint(panel);
+		
 	}
+	
+//	public static void paint(CheckStockPanel panel){
+//		for(int i = 0;i<panel.list.items.size();i++){
+//			ListItem item = panel.list.items.get(i);
+//			for(int j = 0;j<item.shelf.length;j++){
+//				Unit unit = item.shelf[j];
+//				unit.icon.paint();
+//			}
+//		}
+//	}
 }

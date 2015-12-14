@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.sun.javafx.property.adapter.PropertyDescriptor.Listener;
+
+import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
 import gap.client.ui.BaseComponents.WhiteExitButton;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
@@ -30,7 +32,10 @@ public class AccountBox extends JPanel{
 	private static Image accountIcon;
 	private AccountVO accountVO;
 	private String imageURL = "images/accountIcon/account.png";
-	private EditableLable nameLabel = new EditableLable();
+
+	private EditableLable nameLabel;
+	NameChangeBehave nameChangeBehave;
+	
 	private JLabel balanceLabel = new JLabel();
 
 	private DeleteButton deleteButton;
@@ -40,9 +45,12 @@ public class AccountBox extends JPanel{
 	
 	MyListener listener = new MyListener();
 	
-	AccountDisplayPanel accountPanel;
-	public AccountBox(AccountDisplayPanel accountDisplayPanel,AccountVO accountVO){
-		accountPanel = accountDisplayPanel;
+	AccountDisplayPanel accountDisplayPanel;
+	AccountManagePanel managePanel;
+	public AccountBox(AccountDisplayPanel accountDisplayPanel,
+				AccountVO accountVO,AccountManagePanel managePanel){
+		this.accountDisplayPanel = accountDisplayPanel;
+		this.managePanel = managePanel;
 		this.accountVO = accountVO;
 		
 		
@@ -59,6 +67,11 @@ public class AccountBox extends JPanel{
 		balanceLabel.setHorizontalAlignment(JLabel.CENTER);
 		balanceLabel.setFont(font);
 		balanceLabel.setOpaque(false);
+		
+		//创建可编辑label和它对应的行为
+		nameLabel = new EditableLable();
+		nameChangeBehave = new NameChangeBehave(managePanel, nameLabel, accountVO);
+		nameLabel.setBehave(nameChangeBehave);
 		
 		nameLabel.setFont(font);
 		
@@ -95,7 +108,7 @@ public class AccountBox extends JPanel{
 	}
 	
 	public void removeThisBox(){
-		accountPanel.removeOneAccount(accountVO);
+		accountDisplayPanel.removeOneAccount(accountVO);
 	}
 	
 	class MyListener implements MouseListener{

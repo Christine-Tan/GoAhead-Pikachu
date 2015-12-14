@@ -27,6 +27,9 @@ public class AccountDisplayPanel extends JPanel{
 	JViewport viewport;
 	FlowLayout flow;
 	
+	//这个变量用来记录现在界面上的box数量，因为要增删改查，所以数量是变动的
+	int currentAccountNum = 0;
+	
 	final int hGarp = 50;//水平间隙
 	final int vGarp = 10;//垂直间隙
 	
@@ -36,6 +39,8 @@ public class AccountDisplayPanel extends JPanel{
 			JViewport viewport){
 		
 		accounts = accountVOs;		
+		currentAccountNum = accounts.size() + 1;
+		
 		this.accountManagePanel = accountManagePanel;
 		accountMap = new HashMap<>(accounts.size());
 		
@@ -82,6 +87,9 @@ public class AccountDisplayPanel extends JPanel{
 	 * 
 	 */
 	public void showAllAccount(){
+		
+		currentAccountNum = accounts.size()+1;
+		
 		removeAll();
 		addAccountBox();
 		reSize();
@@ -101,8 +109,11 @@ public class AccountDisplayPanel extends JPanel{
 			AccountBox matchBox = getBoxByVO(matchVO);
 			add(matchBox);
 		}
-		reSizeByNum(resultNum);
-		accountManagePanel.validate();
+		
+		
+		currentAccountNum = resultNum;
+		
+		reSizeByNum(currentAccountNum);
 		
 		MainFrame.setMessage("共找到"+resultNum+"个账户", MessageType.normal, 2000);
 	}
@@ -143,15 +154,17 @@ public class AccountDisplayPanel extends JPanel{
 		}
 		
 		setPreferredSize(new Dimension(width, height));
+		
 		flow.layoutContainer(this);
 		accountManagePanel.revalidate();
 		accountManagePanel.repaint();
+//		validate();
 		
 	}
 	
 	private void addAccountBox(){
 		for(AccountVO vo : accounts){
-			AccountBox box = new AccountBox(this, vo);
+			AccountBox box = new AccountBox(this, vo,accountManagePanel);
 			accountMap.put(vo,box);
 			add(box);
 		}
@@ -162,7 +175,7 @@ public class AccountDisplayPanel extends JPanel{
 	public void addOneAccount(AccountVO vo){
 		addBox.cancel();
 		remove(addBox);
-		AccountBox box = new AccountBox(this, vo);
+		AccountBox box = new AccountBox(this, vo,accountManagePanel);
 		
 		//map中加一个
 		accountMap.put(vo,box);
@@ -204,7 +217,7 @@ public class AccountDisplayPanel extends JPanel{
 		@Override
 		public void componentResized(ComponentEvent e) {
 			// TODO Auto-generated method stub
-			reSize();
+			reSizeByNum(currentAccountNum);
 		}
 
 		@Override

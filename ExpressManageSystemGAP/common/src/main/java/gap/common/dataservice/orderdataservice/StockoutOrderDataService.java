@@ -25,4 +25,8 @@ public interface StockoutOrderDataService extends Remote {
 	public List<StockoutOrderPO> getUnpassedOrders() throws RemoteException;
 	
 	public int getNextId(String cons) throws RemoteException;
+
+	public ResultMessage setLoaded(String order_id)throws RemoteException;
+
+	public List<StockoutOrderPO> getUnLoadedOrders() throws RemoteException;
 }

@@ -9,7 +9,7 @@ import javax.swing.UIManager;
 
 public class LoginFrame extends JFrame {
 
-	LoginPanel loginPanel = new LoginPanel();
+	LoginPanel loginPanel;
 
 	/**
 	 * Launch the application.
@@ -19,7 +19,8 @@ public class LoginFrame extends JFrame {
 			public void run() {
 				try {
 					UIManager
-							.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+							.setLookAndFeel
+							("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 
 					LoginFrame frame = new LoginFrame();
 
@@ -42,6 +43,8 @@ public class LoginFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 
+		loginPanel = new LoginPanel(this);
+		 
 		getContentPane().setLayout(null);
 		getContentPane().add(loginPanel);
 		MoveListener movelistener = new MoveListener(this);

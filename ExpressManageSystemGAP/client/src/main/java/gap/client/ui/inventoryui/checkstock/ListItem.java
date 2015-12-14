@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ListItem extends JPanel {
-	Unit[] shelf;
+	public Unit[] shelf;
 	JLabel rowName;
 	char r;
 	GridBagLayout gb;
@@ -38,7 +38,19 @@ public class ListItem extends JPanel {
 		setLayout(gb);
 		gcons.insets = new Insets(0, 10, 0, 10);
 		gcons.anchor = GridBagConstraints.CENTER;
-		flush(numOfshf, idOfRow, sector_id);
+		SwingConsole.addComponent(gb, gcons, this, rowName, 0, 0, 1, 1, 1, 0);
+		for (int i = 0; i <numOfshf; i++) {
+//			char s = (char) ('A' + i);
+//			String position = r+","+s;
+//			double ratio = InventoryController.getOneShelfRatio(position, sector_id);
+//			shelf[i] = new Unit(formatDouble(ratio));
+			shelf[i] = new Unit(9.0*(i+1));
+			SwingConsole.addComponent(gb, gcons, this, shelf[i], i+1, 0, 1,
+					1, 1, 0);
+
+		}
+		
+
 		
 		
 	}
@@ -49,17 +61,19 @@ public class ListItem extends JPanel {
 		return ratio;
 	}
 	
-	public void flush(int numOfshf, int idOfRow,String sector_id){
-		removeAll();
-		SwingConsole.addComponent(gb, gcons, this, rowName, 0, 0, 1, 1, 1, 0);
-		for (int i = 0; i <numOfshf; i++) {
-			char s = (char) ('A' + i);
-			String position = r+","+s;
-			double ratio = InventoryController.getOneShelfRatio(position, sector_id);
-			shelf[i] = new Unit(formatDouble(ratio));
-			SwingConsole.addComponent(gb, gcons, this, shelf[i], i+1, 0, 1,
-					1, 1, 0);
-		}
-	}
+//	public void flush(int numOfshf, int idOfRow,String sector_id){
+//		removeAll();
+		
+//			for(int j = shelf[i].icon.height;j>shelf[i].icon.y;j--){
+//				shelf[i].icon.i = j;
+//				shelf[i].icon.repaint();
+//				try {
+//					Thread.sleep(50);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//	}
 
 }

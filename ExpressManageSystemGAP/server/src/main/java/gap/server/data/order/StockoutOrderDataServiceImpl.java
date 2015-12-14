@@ -24,7 +24,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 	// 字段
 	private String order_id_f = "order_id", time_f = "time",
 			transport_f = "transport", target_ins_f = "target_ins",
-			ins_id_f = "ins_id", passed_f = "passed";
+			ins_id_f = "ins_id", passed_f = "passed",loaded_f = "loaded";
 	// 表名
 	private String stockoutItemTable = "stockoutitem";
 	// 字段
@@ -80,6 +80,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(time_f, time);
 			orderInsert.add(ins_id_f, ins_id);
 			orderInsert.add(passed_f, false);
+			orderInsert.add(loaded_f, false);
 			NetModule.excutor.excute(orderInsert.createSQL());
 			for (String str : expressorder_ids) {
 				itemInsert.clear();
@@ -234,9 +235,12 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		// TODO Auto-generated method stub
 		try {
 			update.clear();
-			update.add(passed_f, "true");
+			update.add(passed_f, true);
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
+			
+//			List<String> getidsByOrderId
+			
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -247,6 +251,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return ResultMessage.FAILED;
 	}
+	
 
 	public ResultMessage setUnPassed(String order_id, String state_info)
 			throws RemoteException {
@@ -272,6 +277,34 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return ResultMessage.FAILED;
 	}
+	
+	@Override
+	public ResultMessage setLoaded(String order_id){
+		try {
+			update.clear();
+			update.add(loaded_f, true);
+			update.setKey(order_id_f, order_id);
+			NetModule.excutor.excute(update.createSQL());
+			
+			List<String> ids = getidsByOrderId(order_id);
+			if(ids!=null){
+				InventoryDataService inventoryData = InventoryDataServiceImpl.getInstance();
+				inventoryData.delete(ids);
+				return ResultMessage.SUCCEED;
+			}else{
+				return ResultMessage.NOTFOUND;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
+		
+	}
 
 	@Override
 	public List<StockoutOrderPO> getUnpassedOrders() throws RemoteException {
@@ -291,6 +324,26 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
+	
+	@Override
+	public List<StockoutOrderPO> getUnLoadedOrders() throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "SELECT * FROM " + stockoutTable + " WHERE "
+					+ passed_f + " = "+true+" AND "+loaded_f+" = '"+false+"';";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			List<StockoutOrderPO> orders = new ArrayList<StockoutOrderPO>();
+			while (re.next()) {
+				orders.add(getByResultSet(re));
+			}
+			return orders;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 
 	@Override
 	public int getNextId(String cons) throws RemoteException {

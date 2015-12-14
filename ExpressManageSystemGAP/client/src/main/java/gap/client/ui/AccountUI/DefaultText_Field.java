@@ -8,6 +8,12 @@ import gap.client.ui.LoginUI.LoginTextListener;
 import gap.client.ui.LoginUI.TextInterface;
 import gap.client.ui.gapcomponents.GAPTextField;
 
+/**
+ * 
+ * 带默认文字的textField
+ * @author 申彬
+ *
+ */
 public class DefaultText_Field extends GAPTextField implements TextInterface {
 
 	boolean hadFocused = false;

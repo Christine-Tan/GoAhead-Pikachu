@@ -16,6 +16,7 @@ import javax.swing.JViewport;
 import gap.client.bl.account.AccountBlController;
 import gap.client.bl.account.AccountSearchResult;
 import gap.client.bl.account.AccountSearcher;
+import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
 import gap.client.ui.AccountUI.Listener.AccountConfirmListener;
 import gap.client.ui.BaseComponents.CancelLabel;
 import gap.client.ui.BaseComponents.ConfirmLabel;
@@ -83,10 +84,6 @@ public class AccountManagePanel extends MainPanelWithGird{
 		gcons.anchor = GridBagConstraints.EAST;
 		SwingConsole.addComponent(gb, gcons, this, area, 0, 2, 1, 1, 1, 0);
 		
-		//加载一下两个需要图片的类
-		CancelLabel cancelLabel = new CancelLabel();
-		ConfirmLabel confirmLabel = new ConfirmLabel();
-		
 		
 	}
 	
@@ -128,6 +125,29 @@ public class AccountManagePanel extends MainPanelWithGird{
 		}else{
 			MainFrame.setMessage("网络异常", MessageType.alram, 2000);
 		}
+	}
+	
+	public void modifyAccount(AccountVO vo,NameChangeBehave behave){
+		String newName = vo.getNewName();
+		
+		if(newName.equals("")){
+			MainFrame.setMessage("账户名不能为空", MessageType.alram, 1500);
+			return;
+		}else if(newName.matches("\\s+")){
+			MainFrame.setMessage("账户名不能全为空白", MessageType.alram, 1500);
+			return;
+		}
+		
+		ResultMessage message = accountBlController.modifyAccount(vo);
+		if(message.equals(ResultMessage.SUCCEED)){
+			MainFrame.setMessage("修改成功", MessageType.succeed, 2000);
+			behave.setNewName(newName);
+		}else if(message.equals(ResultMessage.EXISTED)){
+			MainFrame.setMessage("账户名已存在", MessageType.alram, 2000);
+			behave.revertOldName();
+		}
+		
+		
 	}
 	
 	public void searchAccount(String key){

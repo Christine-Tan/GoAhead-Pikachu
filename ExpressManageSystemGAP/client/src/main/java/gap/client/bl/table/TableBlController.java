@@ -5,20 +5,22 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.TableDataController;
 import gap.client.vo.Cost_ProfitListVO;
 import gap.client.vo.OperatingConditionListVO;
+import gap.common.po.Cost_profitPO;
 import gap.common.util.ResultMessage;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class TableBlController implements TableService {
 
-	TableBlController tableBlController;
+	static TableBlController tableBlController;
 	TableDataController dataController;
 
 	private TableBlController() {
 		dataController = ControllerFactory.getTableDataController();
 	}
 
-	public TableBlController getInstance() {
+	public static TableBlController getInstance() {
 		if (tableBlController == null) {
 			tableBlController = new TableBlController();
 		}
@@ -27,8 +29,11 @@ public class TableBlController implements TableService {
 
 	@Override
 	public Cost_ProfitListVO getCost_ProfitList() {
-		// TODO Auto-generated method stub
-		return null;
+
+		ArrayList<Cost_profitPO> list = dataController.getCost_Profit();
+		CostProfitComputer computer = new CostProfitComputer();
+	 	return computer.compute(list);
+		
 	}
 
 	@Override
