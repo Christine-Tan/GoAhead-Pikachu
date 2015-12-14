@@ -18,16 +18,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class CarManagePanel extends MainPanel {
-	QueryPanel queryPanel;
+	CarQueryPanel queryPanel;
 	TitlePanel titlePanel;
-	ListItemPanel listItem;
+	CarListItemPanel listItem;
 	ButtonArea buttonArea;
 
 	public CarManagePanel(MainFrame frame) {
 		super(frame);
-		queryPanel = new QueryPanel();
+		queryPanel = new CarQueryPanel();
 		titlePanel = new TitlePanel();
-		listItem = new ListItemPanel(frame);
+		listItem = new CarListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
 		buttonArea.submit.setIcon(new ImageIcon(

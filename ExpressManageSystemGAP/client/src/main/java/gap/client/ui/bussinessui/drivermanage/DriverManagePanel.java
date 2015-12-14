@@ -17,16 +17,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class DriverManagePanel extends MainPanel {
-	QueryPanel queryPanel;
+	DriverQueryPanel queryPanel;
 	TitlePanel titlePanel;
-	ListItemPanel listItem;
+	DriverListItemPanel listItem;
 	ButtonArea buttonArea;
 
 	public DriverManagePanel(MainFrame frame) {
 		super(frame);
-		queryPanel = new QueryPanel();
+		queryPanel = new DriverQueryPanel();
 		titlePanel = new TitlePanel();
-		listItem = new ListItemPanel(frame);
+		listItem = new DriverListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
 

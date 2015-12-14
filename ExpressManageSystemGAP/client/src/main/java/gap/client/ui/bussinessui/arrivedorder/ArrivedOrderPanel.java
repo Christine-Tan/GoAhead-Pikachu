@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 public class ArrivedOrderPanel extends MainPanel {
 	JButton flushButton;
 	TitlePanel titlePanel;
-	ListItemPanel listItem;
+	ArrivedOrderListItemPanel listItem;
 	CommentPanel comment;
 	ButtonArea buttonArea;
 
@@ -28,7 +28,7 @@ public class ArrivedOrderPanel extends MainPanel {
 		super(frame);
 		flushButton = new FlushButton();
 		titlePanel = new TitlePanel();
-		listItem = new ListItemPanel(frame);
+		listItem = new ArrivedOrderListItemPanel(frame);
 		comment = new CommentPanel();
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("生成到达单");

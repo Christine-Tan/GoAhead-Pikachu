@@ -31,4 +31,8 @@ public class DeliveryOrderVO {
 		this.id = id;
 		this.comment = comment;
 	}
+
+	public boolean equals(Object cob) {
+		return false;
+	}
 }

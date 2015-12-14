@@ -12,6 +12,8 @@ import gap.common.util.ReceiveInfo;
 
 import java.util.List;
 
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,7 +40,6 @@ public class ExpressOrderTest {
 		ExpressOrderVO vo = new ExpressOrderVO(sender, receiver,
 				ExpressType.EXPRESS, 20.5, cargo, false, "0000000003",
 				"0010001", null);
-		expressorder.save(vo);
 	}
 
 	@Test
