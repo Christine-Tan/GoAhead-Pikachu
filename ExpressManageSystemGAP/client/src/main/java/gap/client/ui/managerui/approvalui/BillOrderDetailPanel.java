@@ -4,6 +4,7 @@ public class BillOrderDetailPanel {
 
 	public BillOrderDetailPanel() {
 		// TODO Auto-generated constructor stub
+		
 	}
 
 }
