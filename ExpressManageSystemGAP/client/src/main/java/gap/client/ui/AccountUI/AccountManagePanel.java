@@ -25,7 +25,7 @@ import gap.client.ui.BaseComponents.MainPanelWithGird;
 import gap.client.ui.BaseComponents.MessagePanel;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.bussinessui.carmanage.QueryPanel;
+import gap.client.ui.bussinessui.carmanage.CarQueryPanel;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.util.MessageType;
 import gap.client.ui.gapcomponents.ButtonArea;

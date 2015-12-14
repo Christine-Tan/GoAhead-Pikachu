@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class BillOrderPanel extends MainPanel {
 
 	TitlePanel title;
-	ListItemPanel listItem;
+	BillListItemPanel listItem;
 	ButtonArea buttonArea;
 
 	public BillOrderPanel(MainFrame frame) {
@@ -26,7 +26,7 @@ public class BillOrderPanel extends MainPanel {
 		setBackground(Color.white);
 
 		title = new TitlePanel();
-		listItem = new ListItemPanel(frame);
+		listItem = new BillListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交订单");
 
