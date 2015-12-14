@@ -21,6 +21,7 @@ import gap.common.dataservice.strategydataservice.CityDataService;
 import gap.common.dataservice.strategydataservice.PriceDataService;
 import gap.common.dataservice.strategydataservice.RentDataService;
 import gap.common.dataservice.strategydataservice.SalaryDataService;
+import gap.common.dataservice.transFareDataService.TransFareDataService;
 import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
@@ -56,7 +57,9 @@ public class NetModule {
 	protected static InventoryDataService inventorydataservice;
 	protected static StockinOrderDataService stockinorderdataservice;
 	protected static StockoutOrderDataService stockoutorderdataservice;
-
+	protected static TransFareDataService transFareDataService;
+	
+	
 	private static Contactor contactor;
 	private static boolean dialogShowed = false;
 
@@ -173,6 +176,8 @@ public class NetModule {
 				stockoutorderdataservice = (StockoutOrderDataService) Naming
 						.lookup(RMIConfig.url
 								+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
+				transFareDataService = (TransFareDataService)Naming
+						.lookup(RMIConfig.url+ServiceName.TRANSFARE_DATA_SERVICE);
 
 				showMessage("连接成功");
 				setSucceedConnect();

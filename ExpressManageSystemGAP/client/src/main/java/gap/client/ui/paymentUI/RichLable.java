@@ -12,7 +12,13 @@ import javax.swing.JLabel;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 
-public class TitleLable extends JLabel{
+/**
+ * 
+ * 本来想做一个带阴影效果的label，但是发现不带阴影更好看
+ * @author 申彬
+ *
+ */
+public class RichLable extends JLabel{
 
 	String text;
 	Color textColor = Color.black;
@@ -28,7 +34,7 @@ public class TitleLable extends JLabel{
 	
 	boolean isButtom = false;
 	
-	public TitleLable(String text,int fontSize){
+	public RichLable(String text,int fontSize){
 		this.text = text;
 		this.fontSize = fontSize;
 		

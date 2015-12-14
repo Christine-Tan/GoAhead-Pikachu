@@ -3,15 +3,20 @@ package gap.client.bl.receipt;
 import gap.client.blservice.accountorReceiptblservice.AccountorReceiptService;
 import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ControllerFactory;
+import gap.client.vo.AccountVO;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;
+import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.PaymentListPO;
 import gap.common.util.ResultMessage;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import org.junit.validator.PublicClassValidator;
 
 /**
  * 和财务人员相关的收付款单的逻辑层接口，支持的需求有：制定付款单，处理收款单、付款单，按天按营业厅查收款单。
@@ -55,6 +60,18 @@ public class AccountorReceiptController implements AccountorReceiptService {
 		return null;
 	}
 
+	public ArrayList<AccountVO> getAccoutList(){
+		ArrayList<AccountPO> accoutPOs = receiptDataController.getAccountList();
+		ArrayList<AccountVO> accountVOs = new ArrayList<>(accoutPOs.size());
+		
+		for(AccountPO po:accoutPOs){
+			accountVOs.add(new AccountVO(po));	
+		}
+		
+		return accountVOs;
+		
+	}
+	
 	@Override
 	public ResultMessage addPayee(PayeeVO payeeVO) {
 

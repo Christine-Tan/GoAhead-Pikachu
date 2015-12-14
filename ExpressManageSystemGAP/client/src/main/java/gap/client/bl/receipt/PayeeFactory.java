@@ -38,6 +38,9 @@ public class PayeeFactory {
 
 	public ArrayList<PayeeVO> getPayeeList(List<UserPO> userList,
 			List<TransFarePO> transFareList, List<RentPO> rentList) {
+		
+		System.out.println(transFareList==null);
+		
 		int listSize = userList.size() + transFareList.size() + rentList.size();
 		payeeList = new ArrayList<>(listSize);
 

@@ -1,6 +1,8 @@
 package gap.common.po;
 
-public class TransFarePO {
+import java.io.Serializable;
+
+public class TransFarePO implements Serializable {
 
 	private double fare;
 	private String orderID;

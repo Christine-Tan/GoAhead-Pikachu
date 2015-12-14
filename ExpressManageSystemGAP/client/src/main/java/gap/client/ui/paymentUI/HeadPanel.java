@@ -24,7 +24,7 @@ public class HeadPanel extends JPanel{
 	
 	JLabel timeLabel = new JLabel();
 	JLabel emptyLabel = new JLabel();
-	TitleLable title;
+	RichLable title;
 	
 	public HeadPanel(){
 		setBackground(Color.white);
@@ -42,7 +42,7 @@ public class HeadPanel extends JPanel{
 		}
 		emptyLabel.setText(builder.toString());
 		
-		title = new TitleLable("付款单", 35);
+		title = new RichLable("付款单", 35);
 		
 
 		SwingConsole.addComponent

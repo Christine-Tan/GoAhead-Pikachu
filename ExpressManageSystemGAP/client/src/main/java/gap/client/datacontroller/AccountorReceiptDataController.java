@@ -7,6 +7,7 @@ import static gap.client.datacontroller.NetModule.paymentdataService;
 import static gap.client.datacontroller.NetModule.rentdataservice;
 import static gap.client.datacontroller.NetModule.salarydataservice;
 import static gap.client.datacontroller.NetModule.userdataservice;
+import static gap.client.datacontroller.NetModule.transFareDataService;
 import gap.common.dataservice.transFareDataService.TransFareDataService;
 import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
@@ -32,7 +33,6 @@ import java.util.List;
  */
 public class AccountorReceiptDataController {
 	// 未找到注册
-	TransFareDataService transFareDataService;
 
 	protected AccountorReceiptDataController() {
 
@@ -208,6 +208,11 @@ public class AccountorReceiptDataController {
 
 	// Salary
 	public List<SalaryPO> getAllSalaryPO() {
+		if(salarydataservice==null){
+			System.out.println("salaryDataServoce == null");
+			return null;
+		}
+		
 		try {
 			return salarydataservice.getAll();
 		} catch (RemoteException e) {

@@ -8,14 +8,14 @@ import gap.client.ui.BaseComponents.MainPanelWithGird;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.paymentUI.TitleLable;
+import gap.client.ui.paymentUI.RichLable;
 import gap.client.vo.Cost_ProfitListVO;
 
 public class CostProfitPanel extends MainPanelWithGird{
 	TableBlController controller;
 	Cost_ProfitListVO vo;
 	ArcGraphPanel arcGraphPanel;
-	TitleLable titleLable;
+	RichLable titleLable;
 	ButtonArea buttonArea;
 	GAPButton excelButton;
 	
@@ -27,7 +27,7 @@ public class CostProfitPanel extends MainPanelWithGird{
 		vo = controller.getCost_ProfitList();
 		arcGraphPanel = new ArcGraphPanel(vo);
 		
-		titleLable = new TitleLable("成本收益表", 35);
+		titleLable = new RichLable("成本收益表", 35);
 		titleLable.setTextBottom();
 		
 		buttonArea = new ButtonArea();

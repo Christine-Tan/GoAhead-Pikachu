@@ -63,5 +63,9 @@ public class AccountVO {
 
 		return false;
 	}
+	
+	public String toString(){
+		return name;
+	}
 
 }

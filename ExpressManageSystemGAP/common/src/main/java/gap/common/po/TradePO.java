@@ -1,6 +1,8 @@
 package gap.common.po;
 
-public class TradePO {
+import java.io.Serializable;
+
+public class TradePO  implements Serializable{
 	private String accountName;
 	private double tradeNum = 0;
 
