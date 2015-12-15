@@ -43,14 +43,14 @@ public class StockoutOrder implements StockoutOrderService {
 	public String getLocation(String id) {
 		// TODO Auto-generated method stub
 
-		return inventoryData.find(id).getLocation();
+		return null;
 	}
 
 	@Override
 	public List<StockoutOrderVO> getRequired(String beginDate, String endDate,
 			String ins_id) {
 		// TODO Auto-generated method stub
-		List<StockoutOrderPO> list = new ArrayList<StockoutOrderPO>();
+		List<StockoutOrderPO> list = stockoutData.getRequired(beginDate, endDate, ins_id);
 		return StockoutOrderVO.toVOList(list);
 	}
 

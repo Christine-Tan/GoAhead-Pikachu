@@ -206,9 +206,9 @@ public class Inventory implements InventoryService {
 		if (num > 0 && num <= WareHouseSize.TOTAL.getSize()) {
 			int[] size = new int[3];
 			size[0] = num/(unit * shelf);
-			System.out.println(size[0]);
+//			System.out.println(size[0]);
 			num -= size[0] * unit * shelf;
-			System.out.println(num);
+//			System.out.println(num);
 			size[1] = num / unit;
 			num -= size[1] * unit;
 			if (num == 0) {

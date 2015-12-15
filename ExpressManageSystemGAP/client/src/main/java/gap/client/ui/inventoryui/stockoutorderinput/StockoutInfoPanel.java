@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.stockoutorderinput;
 
+import gap.client.blcontroller.InstitutionController;
 import gap.client.blcontroller.StockoutOrderController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
@@ -9,6 +10,8 @@ import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
+import gap.client.vo.InstitutionVO;
+import gap.common.util.InstitutionType;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,6 +23,8 @@ import java.awt.Insets;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -48,9 +53,7 @@ public class StockoutInfoPanel extends JPanel {
 		outDate_text.closeEdit();
 
 		targetIns = new GAPLabel("目的地：");
-		targetIns_list = new GAPComboBox<String>();
-		targetIns_list.setPreferredSize(new Dimension(185, 25));
-		targetIns_list.addItem("北京市栖霞区中转中心");
+		initialTransList();
 //		targetIns_list.setRenderer(new MyCellRenderer());
 
 		id = new GAPLabel("中转单编号：");
@@ -108,6 +111,43 @@ public class StockoutInfoPanel extends JPanel {
 
 		int width = getWidth(), height = getHeight();
 		g2d.drawLine(10, height - 5, width - 20, height - 5);
+	}
+	
+	public void initialTransList(){
+		targetIns_list = new GAPComboBox<String>();
+		targetIns_list.setPreferredSize(new Dimension(185, 25));
+		InstitutionVO ins = InstitutionController.findById(LocalInfo.ins_id);
+		List<InstitutionVO> insList = new ArrayList<InstitutionVO>();
+		String insName = ins.getInsName();
+		String localCity = ins.getInsCity();
+		
+		insList = InstitutionController.getAll();
+		
+		for(InstitutionVO vo:insList){
+			String ins_id = vo.getInsId();
+			if(!isCenter(ins_id)){
+				if(vo.getInsCity().equals(localCity)){
+					targetIns_list.addItem(vo.getInsName());
+				}
+				
+			}else{
+				if(!vo.getInsName().equals(insName)){
+					targetIns_list.addItem(vo.getInsName());
+				}
+			}
+			
+		}
+		
+		
+		
+	}
+	
+	public boolean isCenter(String ins_id){
+		if(InstitutionType.getInsType(ins_id).equals(InstitutionType.CENTER)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 //	class MyCellRenderer extends JLabel implements ListCellRenderer {     

@@ -211,7 +211,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockoutorder WHERE ins_id = '"
 							+ ins_id + "' AND time >= '" + beginDate
-							+ "'AND time<= '" + endDate + "';");
+							+ "'AND time<= '" + endDate + "' AND "+passed_f+" = "+true+";");
 			ArrayList<StockoutOrderPO> stockoutOrders = new ArrayList<StockoutOrderPO>();
 			while (re.next()) {
 				StockoutOrderPO po = getByResultSet(re);

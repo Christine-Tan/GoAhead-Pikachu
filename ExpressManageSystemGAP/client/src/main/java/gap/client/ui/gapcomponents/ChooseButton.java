@@ -89,4 +89,11 @@ public class ChooseButton extends JButton {
 		};
 		addMouseListener(listener);
 	}
+	
+	public void toNomal(){
+		setBackground(Color.white);
+		setForeground(ColorAndFonts.blue);
+		clicked = false;
+		
+	}
 }

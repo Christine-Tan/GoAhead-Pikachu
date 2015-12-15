@@ -40,11 +40,11 @@ public class ListItem extends JPanel {
 		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, rowName, 0, 0, 1, 1, 1, 0);
 		for (int i = 0; i <numOfshf; i++) {
-//			char s = (char) ('A' + i);
-//			String position = r+","+s;
-//			double ratio = InventoryController.getOneShelfRatio(position, sector_id);
-//			shelf[i] = new Unit(formatDouble(ratio));
-			shelf[i] = new Unit(9.0*(i+1));
+			char s = (char) ('A' + i);
+			String position = r+","+s;
+			double ratio = InventoryController.getOneShelfRatio(position, sector_id);
+			shelf[i] = new Unit(formatDouble(ratio));
+//			shelf[i] = new Unit(9.0*(i+1));
 			SwingConsole.addComponent(gb, gcons, this, shelf[i], i+1, 0, 1,
 					1, 1, 0);
 

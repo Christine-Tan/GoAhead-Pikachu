@@ -31,10 +31,11 @@ public class ObserveStockPanel extends MainPanel {
 	ListPanel stockinList, stockoutList;
 	TotalNumPanel stockinTotal, stockoutTotal, totalNum;
 	PeriodPanel period;
-	String beginDate,endDate;
+	String beginDate, endDate;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 	JFrame frame;
+
 	public ObserveStockPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
@@ -61,7 +62,6 @@ public class ObserveStockPanel extends MainPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.white);
 
@@ -88,22 +88,23 @@ public class ObserveStockPanel extends MainPanel {
 		});
 
 	}
-	
-	void initialListPanel(){
-//		frame.removeAll();
+
+	void initialListPanel() {
+		// frame.removeAll();
 		beginDate = period.getBeginDate();
 		endDate = period.getEndDate();
-		List<StockinOrderVO> inList = StockinOrderController
-				.getRequired(beginDate, endDate, LocalInfo.getIns_ID());
-		List<StockoutOrderVO> outList = StockoutOrderController
-				.getRequired(beginDate, endDate, LocalInfo.getIns_ID());
-		
-		if(inList==null){
+		List<StockinOrderVO> inList = StockinOrderController.getRequired(
+				beginDate, endDate, LocalInfo.getIns_ID());
+		List<StockoutOrderVO> outList = StockoutOrderController.getRequired(
+				beginDate, endDate, LocalInfo.getIns_ID());
+
+		if (inList == null) {
 			inList = new ArrayList<StockinOrderVO>();
 		}
-		List<InventoryOrder> InList = InventoryOrder
-				.transformInOrder(inList);
-		if(outList==null){
+		List<InventoryOrder> InList = InventoryOrder.transformInOrder(inList);
+		
+		if (outList == null) {
+			System.out.println("outList NULL");
 			outList = new ArrayList<StockoutOrderVO>();
 		}
 		List<InventoryOrder> OutList = InventoryOrder
@@ -111,12 +112,10 @@ public class ObserveStockPanel extends MainPanel {
 		stockinList = new ListPanel(InList);
 		stockoutList = new ListPanel(OutList);
 
-		String inTotal = StockinOrderController.getTotalNum(inList)
-				+ "";
+		String inTotal = StockinOrderController.getTotalNum(inList) + "";
 		stockinTotal = new TotalNumPanel("入库", inTotal);
 
-		String outTotal = StockoutOrderController.getTotalNum(outList)
-				+ "";
+		String outTotal = StockoutOrderController.getTotalNum(outList) + "";
 		stockoutTotal = new TotalNumPanel("出库", outTotal);
 		reLayout();
 	}
@@ -128,23 +127,27 @@ public class ObserveStockPanel extends MainPanel {
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.white);
 		panel1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 30));
-		
+
 		SwingConsole.addComponent(gb, gcons, this, period, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, stockinList, 0, 2, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, stockinTotal, 0, 3, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, stockinList, 0, 2, 1, 1, 1,
+				0);
+		SwingConsole.addComponent(gb, gcons, this, stockinTotal, 0, 3, 1, 1, 1,
+				0);
 		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 4, 1, 1,
 				1, 0);
-		SwingConsole.addComponent(gb, gcons, this, stockoutList, 0, 5, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, stockoutTotal, 0, 6, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, stockoutList, 0, 5, 1, 1, 1,
+				0);
+		SwingConsole.addComponent(gb, gcons, this, stockoutTotal, 0, 6, 1, 1,
+				1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 7, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 8, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 10, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);
-		
+
 		frame.validate();
-		
+
 	}
 
 }

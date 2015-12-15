@@ -120,8 +120,8 @@ public class ListItem extends JPanel {
 				date = inDate.getText(),
 				des = destination.getText(),
 				loc = location.getText(),
-				sector_id = SectorType.getSectorId(LocalInfo.getIns_ID(), sec),
-				belong_sec = sector_id;
+				belong_sec = SectorType.getSectorId(LocalInfo.getIns_ID(), sec),
+				sector_id = belong_sec;
 		
 		loc = loc.split(" ")[1];
 				

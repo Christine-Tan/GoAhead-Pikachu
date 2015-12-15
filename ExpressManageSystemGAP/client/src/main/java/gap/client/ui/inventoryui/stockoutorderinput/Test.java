@@ -13,6 +13,7 @@ public class Test {
 				"123456", "0010001", "王小二", Gender.MALE);
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0011001";
+//		LocalInfo.
 		MainFrame mainFrame = new MainFrame();
 		NetModule.initial(mainFrame);
 		NetModule.connect();

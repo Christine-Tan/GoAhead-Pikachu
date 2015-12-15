@@ -57,8 +57,8 @@ public class InitialStockPanel extends MainPanel {
 				// TODO Auto-generated method stub
 				
 				newList = new ListItemPanel(frame, LocalInfo.ins_id + "1");
-				setButtonNomal(choose.plane);
-				setButtonNomal(choose.train);
+				choose.plane.toNomal();
+				choose.train.toNomal();
 				reLayout();
 			}
 		});
@@ -69,8 +69,8 @@ public class InitialStockPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				newList = new ListItemPanel(frame, LocalInfo.ins_id + "2");
-				setButtonNomal(choose.car);
-				setButtonNomal(choose.plane);
+				choose.car.toNomal();
+				choose.plane.toNomal();
 				reLayout();
 			}
 		});
@@ -81,18 +81,11 @@ public class InitialStockPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				newList = new ListItemPanel(frame, LocalInfo.ins_id + "3");	
-				setButtonNomal(choose.car);
-				setButtonNomal(choose.train);
+				choose.car.toNomal();
+				choose.train.toNomal();
 				reLayout();
 			}
 		});
-	}
-	
-	public void setButtonNomal(ChooseButton button){
-		button.setBackground(Color.white);
-		button.setForeground(ColorAndFonts.blue);
-		button.clicked = false;
-		
 	}
 
 	public void reLayout() {

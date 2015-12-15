@@ -1,7 +1,8 @@
-package gap.client.ui.inventoryui.initialstock;
+package gap.client.ui.inventoryui.stockoutorderinput;
 
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
+import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ChooseButton;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -9,6 +10,8 @@ import gap.client.ui.gapcomponents.GAPButton;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -23,8 +26,8 @@ public class ChoosePanel extends JPanel {
 	public ChoosePanel() {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
-		setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0,
-				ComponentStyle.light_gray));
+//		setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0,
+//				ComponentStyle.light_gray));
 
 		car = new ChooseButton("汽运区");
 		car.setSize(80, 50);
@@ -57,6 +60,12 @@ public class ChoosePanel extends JPanel {
 
 	}
 	
-	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		Graphics2D g2d = RenderSetter.OpenRender(g);
+		g2d.setColor(ComponentStyle.light_gray);
+		int width = getWidth(), height = getHeight();
+		g2d.drawLine(20, height - 5, width - 30, height - 5);
+	}
 
 }

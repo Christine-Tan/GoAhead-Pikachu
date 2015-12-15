@@ -17,13 +17,14 @@ import javax.swing.JPanel;
 public class ListPanel extends JPanel {
 	List<ListItem> items;
 	List<String> ids;
+	String sector_id;
 
 	public ListPanel(List<GoodsVO> list) {
 		setBackground(Color.white);
 
 		
 		items = new ArrayList<ListItem>();
-		int size = 5;
+		int size = list.size();
 		for (int i = 0; i < size; i++) {
 			ListItem item = new ListItem(list.get(i));
 			items.add(item);
