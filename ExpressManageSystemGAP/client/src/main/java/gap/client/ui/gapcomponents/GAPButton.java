@@ -11,10 +11,11 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-
 public class GAPButton extends JButton {
+	private Color defautBackGround, defautFont, pressFont, enterFont;
 
 	public MouseListener listener;
+
 	public GAPButton() {
 		super();
 		initial();
@@ -35,10 +36,31 @@ public class GAPButton extends JButton {
 		initial();
 	}
 
+	public void setDefautBackGround(Color color) {
+		defautBackGround = color;
+	}
+
+	public void setDefautFont(Color color) {
+		defautFont = color;
+	}
+
+	public void setEnterFont(Color color) {
+		enterFont = color;
+	}
+
+	public void setPressFont(Color color) {
+		pressFont = color;
+	}
+
 	private void initial() {
+		defautBackGround = Color.white;
+		defautFont = ColorAndFonts.blue;
+		pressFont = ColorAndFonts.otherDarkBulue;
+		enterFont = ColorAndFonts.blue.darker();
+
 		setFont(ComponentStyle.buttonFont);
-		setBackground(Color.white);
-		setForeground(ColorAndFonts.blue);
+		setBackground(defautBackGround);
+		setForeground(defautFont);
 		setBorder(BorderFactory.createEmptyBorder());
 		setFocusable(false);
 		setUI(new GAPButtonUI());
@@ -48,27 +70,27 @@ public class GAPButton extends JButton {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setBackground(Color.white);
-				setForeground(ColorAndFonts.blue);
+				setBackground(defautBackGround);
+				setForeground(defautFont);
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setForeground(ColorAndFonts.otherDarkBulue);
-				//setBackground(ColorAndFonts.blue);
+				setForeground(pressFont);
+				// setBackground(ColorAndFonts.blue);
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setForeground(ColorAndFonts.blue);
+				setForeground(defautFont);
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setForeground(ColorAndFonts.blue.darker());
+				setForeground(enterFont);
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 
