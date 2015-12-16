@@ -109,7 +109,7 @@ public class OrderPanel extends JPanel {
 		}
 	}
 
-	public void flush() {
+	public void refresh() {
 		items.clear();
 		removeAll();
 		SwingConsole.addComponent(gb, gcons, this, searchPanel, 0, 0, 1, 1, 1,

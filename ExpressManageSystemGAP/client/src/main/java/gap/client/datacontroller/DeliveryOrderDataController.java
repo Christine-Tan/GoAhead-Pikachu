@@ -20,4 +20,14 @@ public class DeliveryOrderDataController {
 		}
 		return ResultMessage.FAILED;
 	}
+
+	public int getNextId(String cons) {
+		try {
+			return deliveryorderdataservice.getMaxId(cons);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }

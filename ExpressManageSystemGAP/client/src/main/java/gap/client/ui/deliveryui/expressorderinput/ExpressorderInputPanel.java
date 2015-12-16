@@ -6,7 +6,9 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.util.MessageType;
 import gap.client.vo.ExpressOrderVO;
+import gap.common.util.ResultMessage;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -56,7 +58,12 @@ public class ExpressorderInputPanel extends MainPanel {
 						// TODO 自动生成的方法存根
 						ExpressOrderVO vo = getExpressOrderVO();
 						vo = ExpressorderController.createOrder(vo);
-						ExpressorderController.save(vo);
+						ResultMessage re = ExpressorderController.save(vo);
+						if (re.equals(ResultMessage.SUCCEED)) {
+							MainFrame.setMessage("订单添加成功", MessageType.succeed,
+									2000);
+							reSet();
+						}
 						// TODO 自动生成的方法存根
 					}
 				});
@@ -99,5 +106,12 @@ public class ExpressorderInputPanel extends MainPanel {
 		vo.receiver_info = receiver.getInfo();
 		vo.expressType = express.getType();
 		return vo;
+	}
+
+	void reSet() {
+		cargo.reSet();
+		sender.reSet();
+		receiver.reSet();
+		express.reSet();
 	}
 }

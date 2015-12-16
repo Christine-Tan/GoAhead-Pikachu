@@ -3,6 +3,7 @@ package gap.client.ui.bussinessui.deliveryorder;
 import gap.client.blcontroller.ExpressorderController;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.bussinessui.deliveryorder.DeliverySelectPanel.ItemPanel;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.ui.gapcomponents.GAPTextField;
@@ -27,6 +28,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 public class OrderSelectPanel extends JPanel {
 	static List<ExpressOrderVO> total_orders = new ArrayList<>();
@@ -52,9 +54,11 @@ public class OrderSelectPanel extends JPanel {
 		title_order_id = new GAPTextField("快递单号", 12);
 		title_order_id.setCenter();
 		title_order_id.closeEdit();
+		title_order_id.setOpaque(false);
 		title_add = new GAPTextField("送往地", 20);
 		title_add.setCenter();
 		title_add.closeEdit();
+		title_add.setOpaque(false);
 
 		jp = new JPanel();
 		jp.setOpaque(false);
@@ -87,7 +91,7 @@ public class OrderSelectPanel extends JPanel {
 				Graphics2D g2d = RenderSetter.OpenRender(g);
 				g2d.setColor(ComponentStyle.light_gray);
 				int width = getWidth(), height = getHeight();
-				g2d.drawLine(10, height - 3, width - 20, height - 3);
+				g2d.drawLine(10, height - 1, width - 20, height - 1);
 				// g2d.fillRect(0, 0, width, height);
 			}
 		};
@@ -132,10 +136,17 @@ public class OrderSelectPanel extends JPanel {
 		return order;
 	}
 
+	public void clear() {
+
+		for (OrderItem item : selectItems) {
+			total_orders.add(item.expressorder);
+		}
+		selectItems.clear();
+	}
+
 	public JScrollPane getJsPanel() {
 		if (jspanel == null) {
 			jspanel = new GAPJScrollPane(this);
-			jspanel.setBorder(BorderFactory.createEmptyBorder());
 		}
 		return jspanel;
 	}

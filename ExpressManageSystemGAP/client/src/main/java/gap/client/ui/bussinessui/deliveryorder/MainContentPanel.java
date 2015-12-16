@@ -7,7 +7,6 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.gapcomponents.GAPScrollBarUI;
 import gap.client.vo.UserVO;
 
 import java.awt.Color;
@@ -24,7 +23,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,7 +49,7 @@ public class MainContentPanel extends JPanel {
 		// TODO 自动生成的构造函数存根
 		this.jf = jf;
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH-200, 500));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH - 200, 500));
 		userBar = new UserBar();
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -57,6 +58,8 @@ public class MainContentPanel extends JPanel {
 		emptySelectPanel = new OrderSelectPanel();
 		emptySelectPanel.selectItems.clear();
 		emptySelectPanel.unselectItem.clear();
+
+		orderSelectPanel = emptySelectPanel;
 
 		gcons.ipady = 100;
 		// gcons.ipadx = 850;
@@ -67,8 +70,11 @@ public class MainContentPanel extends JPanel {
 		js.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		js.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		SwingConsole.addComponent(gb, gcons, this, js, 0, 0, 1, 1, 1, 0);
-//		 gcons.ipady = 700;
-//		 gcons.ipadx =0;
+		gcons.fill = GridBagConstraints.BOTH;
+		SwingConsole.addComponent(gb, gcons, this,
+				emptySelectPanel.getJsPanel(), 0, 1, 1, 1, 1, 1);
+		// gcons.ipady = 700;
+		// gcons.ipadx =0;
 
 	}
 
@@ -89,7 +95,7 @@ public class MainContentPanel extends JPanel {
 	 * 添加一个已选用户
 	 * @param user
 	 */
-	public void addUser(UserVO user) {
+	void addUser(UserVO user) {
 		userBar.addUser(user);
 		if (userBar.users.size() == 1) {
 			userBar.users.get(0).select();
@@ -104,13 +110,20 @@ public class MainContentPanel extends JPanel {
 	void deleteUser(UserBox user) {
 		userBar.deleteUser(user);
 		deliveryPanel.addUser(user.getUser());
-		if (user.selected && userBar.users.isEmpty())
-			remove(user.orderSelect.getJsPanel());
-		else if (!userBar.users.isEmpty()) {
+		remove(user.orderSelect.getJsPanel());
+		user.orderSelect.clear();
+		if (user.selected && userBar.users.isEmpty()) {
+			setOrderSelectPanel(emptySelectPanel);
+		} else if (!userBar.users.isEmpty()) {
 			userBar.users.get(0).select();
 			setOrderSelectPanel(userBar.users.get(0).orderSelect);
 		}
+		repaint();
 		jf.validate();
+	}
+
+	public Map<String, List<String>> getDeliveryInfo() {
+		return userBar.getOrders();
 	}
 
 	/**
@@ -123,7 +136,7 @@ public class MainContentPanel extends JPanel {
 
 		public UserBar() {
 			setBackground(Color.white);
-			setPreferredSize(new Dimension(Default.PANEL_WIDTH, 150));
+			setPreferredSize(new Dimension(Default.PANEL_WIDTH - 200, 150));
 			users = new ArrayList<>();
 			setLayout(new FlowLayout(FlowLayout.RIGHT));
 		}
@@ -185,6 +198,21 @@ public class MainContentPanel extends JPanel {
 		void deleteUser(UserBox box) {
 			users.remove(box);
 			remove(box);
+		}
+
+		public Map<String, List<String>> getOrders() {
+			Map<String, List<String>> orders = new HashMap<>();
+			for (UserBox item : users) {
+				List<String> li = item.orderSelect.getOrders();
+				if (li.size() != 0) {
+//					System.out.println(item.user.getUserId() + ":");
+//					for (String str : li) {
+//						System.out.println(str);
+//					}
+					orders.put(item.user.getUserId(), li);
+				}
+			}
+			return orders;
 		}
 
 		// public void paintComponent(Graphics g) {
@@ -288,17 +316,4 @@ public class MainContentPanel extends JPanel {
 		}
 	}
 
-	// public static void main(String[] args) {
-	// JFrame jf = new JFrame();
-	// MainContentPanel main = new MainContentPanel(jf);
-	// UserVO vo = new UserVO();
-	// vo.setName("杨雁飞");
-	// UserBox user = main.new UserBox(vo);
-	//
-	// jf.add(user);
-	// jf.setLayout(new FlowLayout());
-	// jf.setBounds(100, 100, 200, 300);
-	// jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	// jf.setVisible(true);
-	// }
 }

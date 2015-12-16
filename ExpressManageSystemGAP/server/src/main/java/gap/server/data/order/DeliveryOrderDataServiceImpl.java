@@ -60,8 +60,11 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 			NetModule.excutor.excute(orderInsert.createSQL());
 			Map<String, List<String>> orders = po.getDeliveryInfo();
 			Set<String> sets = orders.keySet();
+			ExpressOrderDataService expressorder = ExpressOrderDataServiceImpl
+					.getInstance();
 			for (String str : sets) {
 				for (String str1 : orders.get(str)) {
+					expressorder.setSubmit(str1);
 					itemInsert.clear();
 					itemInsert.add(item_order_id_f, order_id);
 					itemInsert.add(item_id_expressorder_f, str1);

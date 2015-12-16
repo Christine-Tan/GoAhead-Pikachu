@@ -61,11 +61,15 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(comment_f, po.getComment());
 			NetModule.excutor.excute(orderInsert.createSQL());
 			List<String> orders = po.getOrders();
+			ExpressOrderDataService expressOrder = ExpressOrderDataServiceImpl
+					.getInstance();
 			for (String str : orders) {
+				expressOrder.setSubmit(str);
 				itemInsert.clear();
 				itemInsert.add(item_expressorder_id_f, str);
 				itemInsert.add(item_order_id_f, order_id);
 				NetModule.excutor.excute(itemInsert.createSQL());
+
 			}
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {

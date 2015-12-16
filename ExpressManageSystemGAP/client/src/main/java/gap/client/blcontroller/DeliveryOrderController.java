@@ -7,7 +7,7 @@ import gap.common.util.ResultMessage;
 public class DeliveryOrderController {
 	static DeliveryOrder deliveryOrder = new DeliveryOrder();
 
-	static ResultMessage save(DeliveryOrderVO order) {
+	public static ResultMessage save(DeliveryOrderVO order) {
 		return deliveryOrder.save(order);
 	}
 }

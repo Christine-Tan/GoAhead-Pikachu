@@ -53,7 +53,7 @@ public class PeopleInfoUI extends JPanel {
 		phone = new GAPLabel("电话");
 		phone.setFont(ComponentStyle.defaultFont);
 		phone_text = new GAPTextField(15);
-//		phone_text.setControl("\\D" + "", 11, 11);
+		// phone_text.setControl("\\D" + "", 11, 11);
 
 		address = new GAPLabel("住址");
 
@@ -162,6 +162,12 @@ public class PeopleInfoUI extends JPanel {
 		return new Address((String) pro_list.getSelectedItem(),
 				(String) city_list.getSelectedItem(),
 				(String) dis_list.getSelectedItem());
+	}
+
+	public void reSet() {
+		name_text.setText("");
+		phone_text.setText("");
+		depart_text.setText("");
 	}
 
 }

@@ -82,6 +82,10 @@ public class ExpressInfoUI extends JPanel {
 		return null;
 	}
 
+	public void reSet() {
+		price.setText("");
+	}
+
 	public void setPrice(double price) {
 		this.price.setText(String.format("%.2f", price));
 	}

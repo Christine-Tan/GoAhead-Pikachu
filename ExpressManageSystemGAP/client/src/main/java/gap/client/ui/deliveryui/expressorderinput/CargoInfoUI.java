@@ -97,6 +97,13 @@ public class CargoInfoUI extends JPanel {
 				weight_text.getText()), new Double(volunm_text.getText()),
 				name_text.getText());
 	}
+
+	public void reSet() {
+		name_text.setText("");
+		number_text.setText("");
+		weight.setText("");
+		volumn.setText("");
+	}
 	// public static void main(String[] args) {
 	// JFrame jf = new JFrame();
 	// jf.setContentPane(new CargoInfoUI());

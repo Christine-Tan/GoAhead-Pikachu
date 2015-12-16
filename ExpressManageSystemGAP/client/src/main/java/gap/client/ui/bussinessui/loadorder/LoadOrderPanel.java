@@ -7,7 +7,9 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.FlushButton;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.vo.LoadOrderVO;
+import gap.common.util.ResultMessage;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -44,7 +46,19 @@ public class LoadOrderPanel extends MainPanel {
 					@Override
 					public void run() {
 						// TODO 自动生成的方法存根
-						LoadOrderController.save(getLoadOrder());
+						LoadOrderVO vo = getLoadOrder();
+						if (vo.orders.size() == 0) {
+							MainFrame.setMessage("请选择订单", MessageType.alram,
+									2000);
+						} else {
+							ResultMessage re = LoadOrderController
+									.save(getLoadOrder());
+							if (re.equals(ResultMessage.SUCCEED)) {
+								MainFrame.setMessage("生成成功",
+										MessageType.succeed, 2000);
+							}
+							orderPanel.refresh();
+						}
 					}
 				});
 
@@ -57,7 +71,7 @@ public class LoadOrderPanel extends MainPanel {
 			public void run() {
 				// TODO 自动生成的方法存根
 				carAndDriver.flush();
-				orderPanel.flush();
+				orderPanel.refresh();
 			}
 		});
 
@@ -72,7 +86,7 @@ public class LoadOrderPanel extends MainPanel {
 					public void run() {
 						// TODO 自动生成的方法存根
 						carAndDriver.flush();
-						orderPanel.flush();
+						orderPanel.refresh();
 						mainFrame.validate();
 					}
 				});

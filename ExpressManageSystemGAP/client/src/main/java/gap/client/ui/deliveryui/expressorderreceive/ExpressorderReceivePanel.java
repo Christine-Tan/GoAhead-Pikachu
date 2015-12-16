@@ -6,6 +6,7 @@ import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
+import gap.client.util.MessageType;
 import gap.common.util.ReceiveInfo;
 
 import java.awt.Color;
@@ -72,12 +73,13 @@ public class ExpressorderReceivePanel extends MainPanel {
 				public void run() {
 					// TODO 自动生成的方法存根
 					List<ReceiveInfo> infos = listItemPanel.getReceiveInfos();
-					if (infos != null)
+					if (infos != null && infos.size() != 0)
 						for (ReceiveInfo info : infos) {
 							ExpressorderController.receiveOrder(info);
 						}
 					else {
-
+						MainFrame
+								.setMessage("请输入收件信息", MessageType.alram, 2000);
 					}
 				}
 			}).start();

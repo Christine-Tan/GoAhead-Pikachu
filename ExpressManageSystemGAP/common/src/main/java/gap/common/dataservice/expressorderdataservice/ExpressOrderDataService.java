@@ -27,7 +27,7 @@ public interface ExpressOrderDataService extends Remote {
 	public List<ExpressOrderPO> getUnpassedOrder() throws RemoteException;
 
 	/**设置订单审批通过状态
-	 * 
+	 *
 	 * @param order_id
 	 * @return
 	 * @throws RemoteException
@@ -157,8 +157,25 @@ public interface ExpressOrderDataService extends Remote {
 	public double getDeliveryMoney(String date, String delivery_id)
 			throws RemoteException;
 
+	/**
+	 * 返回下一个可用订单id
+	 * @return
+	 * @throws RemoteException
+	 */
 	public int nextId() throws RemoteException;
 
+	/**
+	 * 获得订单可以寄得的所有地址
+	 * @return
+	 * @throws RemoteException
+	 */
 	public AllAddressPO getAllAddress() throws RemoteException;
 
+	/**
+	 * 制定各种订单时提交后设置订单状态为提交未审批状态
+	 * @param order_id
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ResultMessage setSubmit(String order_id) throws RemoteException;
 }

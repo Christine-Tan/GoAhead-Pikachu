@@ -492,6 +492,22 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
+	@Override
+	public ResultMessage setSubmit(String order_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		String sql = "UPDATE " + tableName + " SET " + passed_f
+				+ " = 'submitnotapprove' WHERE " + order_id_f + " = '" + order_id
+				+ "';";
+		try {
+			NetModule.excutor.excute(sql);
+			return ResultMessage.SUCCEED;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
+	}
+
 	/**
 	 * 通过结果集获得订单信息
 	 * @param re
