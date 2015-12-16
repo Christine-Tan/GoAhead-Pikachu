@@ -7,10 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,7 +16,6 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPCheckBox;
 import gap.client.ui.gapcomponents.GAPLabel;
 
 public class ApprovalTitlePanel extends JPanel {
@@ -26,7 +23,7 @@ public class ApprovalTitlePanel extends JPanel {
 	JLabel id, type, date;
 	// 全选
 	JLabel allSelected;
-    GAPCheckBox select;
+    JCheckBox select;
 	boolean isSelected;
 	// 布局
 	GridBagLayout gb;
@@ -39,7 +36,7 @@ public class ApprovalTitlePanel extends JPanel {
 		id = new GAPLabel("单据编号");
 		type = new GAPLabel("单据类型");
 		date = new GAPLabel("生成日期");
-		select = new GAPCheckBox();
+		select = new JCheckBox();
 	
 		allSelected = new GAPLabel("全选");
 		

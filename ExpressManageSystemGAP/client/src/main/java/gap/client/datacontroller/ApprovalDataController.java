@@ -11,13 +11,6 @@ import static gap.client.datacontroller.NetModule.institutiondataservice;
 import static gap.client.datacontroller.NetModule.loadorderdataservice;
 import static gap.client.datacontroller.NetModule.stockinorderdataservice;
 import static gap.client.datacontroller.NetModule.stockoutorderdataservice;
-import gap.client.vo.ArrivedOrderVO;
-import gap.client.vo.BillOrderVO;
-import gap.client.vo.DeliveryOrderVO;
-import gap.client.vo.ExpressOrderVO;
-import gap.client.vo.LoadOrderVO;
-import gap.client.vo.StockinOrderVO;
-import gap.client.vo.StockoutOrderVO;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.DeliveryOrderPO;
@@ -33,7 +26,7 @@ import java.util.List;
 public class ApprovalDataController {
 
 	protected ApprovalDataController() {
-		
+
 	}
 
 	public List<ExpressOrderPO> getUnpassedExpressOrder() {
@@ -112,11 +105,9 @@ public class ApprovalDataController {
 			if (order instanceof ExpressOrderPO) {
 				String targetInsId = ((ExpressOrderPO) order).getTargetins_id();
 				try {
-					String insname = institutiondataservice.findById(
-							targetInsId).getInsName();
+					String insname = institutiondataservice.findById(targetInsId).getInsName();
 					String state = insname + "已收件";
-					rm = expressorderdataservice.setPassed(
-							((ExpressOrderVO) order).order_id, state);
+					rm = expressorderdataservice.setPassed(((ExpressOrderPO) order).getOrder_id(), state);
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -124,21 +115,23 @@ public class ApprovalDataController {
 			} else if (order instanceof ArrivedOrderPO) {
 				String targetInsId = ((ArrivedOrderPO) order).getDes_ins_id();
 				try {
-					String insname = institutiondataservice.findById(
-							targetInsId).getInsName();
+					String insname = institutiondataservice.findById(targetInsId).getInsName();
 					String state = insname + "已收件";
-					rm = arrivedOrderdataservice.setPassed(
-							((ArrivedOrderVO) order).id, state);
+					rm = arrivedOrderdataservice.setPassed(((ArrivedOrderPO) order).getId(), state);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else if (order instanceof BillOrderPO) {
-				// rm=billOrderData.setPassed(, state_info)
+				try {
+					rm = billorderdataservice.setPassed(((BillOrderPO) order).getId(), "");
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} else if (order instanceof DeliveryOrderPO) {
 				try {
-					rm = deliveryorderdataservice.setPassed(
-							((DeliveryOrderPO) order).getId(),"");
+					rm = deliveryorderdataservice.setPassed(((DeliveryOrderPO) order).getId(), "");
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -146,19 +139,27 @@ public class ApprovalDataController {
 			} else if (order instanceof LoadOrderPO) {
 				String targetInsId = ((LoadOrderPO) order).getTargetins_id();
 				try {
-					String insname = institutiondataservice.findById(
-							targetInsId).getInsName();
+					String insname = institutiondataservice.findById(targetInsId).getInsName();
 					String state = "正在发往" + insname;
-					rm = loadorderdataservice.setPassed(
-							insname, state);
+					rm = loadorderdataservice.setPassed(((LoadOrderPO) order).getOrder_id(), state);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if (order instanceof StockinOrderVO) {
-                
-			} else if (order instanceof StockoutOrderVO) {
-
+			} else if (order instanceof StockinOrderPO) {
+				try {
+					rm = stockinorderdataservice.setPassed(((StockinOrderPO) order).getId(), "");
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if (order instanceof StockoutOrderPO) {
+				try {
+					rm = stockoutorderdataservice.setPassed(((StockoutOrderPO) order).getId(), "");
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		return ResultMessage.FAILED;

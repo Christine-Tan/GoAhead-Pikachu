@@ -4,12 +4,11 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -60,7 +59,7 @@ public class OrderItemListPanel extends JPanel {
 	class ItemPanel extends JPanel {
 		GAPTextField order_id, type, date;
 		JButton detail;
-		GAPCheckBox select;
+		JCheckBox select;
 		// 布局
 		GridBagLayout gbl;
 		// 是否被选中
@@ -119,7 +118,7 @@ public class OrderItemListPanel extends JPanel {
 			}
 
 			detail = new GAPButton(">");
-			select = new GAPCheckBox();
+			select = new JCheckBox();
 
 			// 布局
 			gbl = new GridBagLayout();

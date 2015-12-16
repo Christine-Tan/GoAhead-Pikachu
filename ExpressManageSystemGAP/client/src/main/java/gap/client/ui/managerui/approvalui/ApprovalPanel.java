@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JPanel;
 
@@ -28,31 +30,35 @@ public class ApprovalPanel extends MainPanel {
 	ButtonArea buttonArea;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
-
-	public ApprovalPanel(final MainFrame frame) {
+    Timer timer;
+	public ApprovalPanel(MainFrame frame) {
 		// TODO Auto-generated constructor stub
 		super(frame);
+		MyTask task=new MyTask(frame);
+		timer=new Timer(true);
+		timer.schedule(task, 5000,5000);
+	}
+	
+	void refresh(MainFrame frame){
+		ApprovalPanel.this.removeAll();
 		totalPanel = new TotalPanel();
 		titlePanel = new ApprovalTitlePanel();
 		listItemPanel = new OrderItemListPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("确认审批");
-		
+
 		// 给全选按钮添加监听
 		titlePanel.select.addItemListener(new ItemListener() {
 
 			@Override
 			public void itemStateChanged(ItemEvent arg0) {
 				// TODO Auto-generated method stub
-				System.out.println("!!!!!!!!");
 				int state = arg0.getStateChange();
 				if (state == ItemEvent.SELECTED) {
-					System.out.println("all selected");
 					for (ItemPanel item : listItemPanel.items) {
 						item.setSelected(true);
 					}
 				} else {
-					System.out.println("not select");
 					for (ItemPanel item : listItemPanel.items) {
 						item.setSelected(false);
 					}
@@ -81,5 +87,16 @@ public class ApprovalPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, listItemPanel, 0, 2, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
+	}
+	class MyTask extends TimerTask{
+        MainFrame frame;
+        MyTask(MainFrame frame){
+        	this.frame=frame;
+        }
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			ApprovalPanel.this.refresh(frame);
+		}
 	}
 }
