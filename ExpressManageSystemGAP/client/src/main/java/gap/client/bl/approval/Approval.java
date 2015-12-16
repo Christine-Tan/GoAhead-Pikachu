@@ -31,7 +31,7 @@ public class Approval implements ApprovalService {
 	}
 
 	@Override
-	public ResultMessage approve(List<Object> orders) {
+	public ResultMessage approve() {
 		// TODO Auto-generated method stub
 		controller.setPassed(orders);
 		return null;

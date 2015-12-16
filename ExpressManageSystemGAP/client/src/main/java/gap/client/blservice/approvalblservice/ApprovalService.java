@@ -7,5 +7,6 @@ import java.util.List;
 public interface ApprovalService {
 	public List<Object> getUnpassedOrder();
 
-	public ResultMessage approve(List<Object> orders);
+	public ResultMessage approve();
+
 }

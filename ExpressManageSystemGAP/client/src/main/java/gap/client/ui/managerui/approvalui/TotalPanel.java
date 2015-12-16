@@ -33,7 +33,7 @@ public class TotalPanel extends JPanel {
 		setBackground(Color.WHITE);
 		total = new GAPLabel("一共有");
 		result = new GAPLabel("张待审批单据");
-		num_f = new GAPTextField();
+		num_f = new GAPTextField(5);
 		// 这里要自动刷新数据
 		// 获得所有待审批单据
 		List<Object> approvals = ApprovalController.getUnpassedOrder();

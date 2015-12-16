@@ -21,7 +21,7 @@ public class Tester {
 		MainFrame mainFrame = new MainFrame();
 		NetModule.initial(mainFrame);
 		NetModule.connect();
-		InstitutionPanel panel = new InstitutionPanel(mainFrame);
+		ApprovalPanel panel = new ApprovalPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 	}
 }

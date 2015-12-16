@@ -15,7 +15,8 @@ public class ApprovalController {
 		return approvalManage.getUnpassedOrder();
 	}
 	
-	public static  ResultMessage approve(List<Object> orders){
-		return approvalManage.approve(orders);
+	public static  ResultMessage approve(){
+		return approvalManage.approve();
 	}
+	
 }

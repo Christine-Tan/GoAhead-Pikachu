@@ -22,7 +22,7 @@ import gap.client.ui.gapcomponents.GAPTextField;
 
 public class ApprovalTitlePanel extends JPanel {
 	// 单据编号，类型，日期
-	JTextField id, type, date;
+	JLabel id, type, date;
 	// 全选
 	JLabel allSelected;
 	GAPCheckBox select;
@@ -36,28 +36,25 @@ public class ApprovalTitlePanel extends JPanel {
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 40));
 		setBackground(Color.WHITE);
 
-		id = new GAPTextField(20);
-		type = new GAPTextField(13);
-		date = new GAPTextField(10);
+		id = new GAPLabel("单据编号");
+		type = new GAPLabel("单据类型");
+		date = new GAPLabel("生成日期");
 		select = new GAPCheckBox();
+		// 给全选按钮添加监听
 		allSelected = new GAPLabel("全选");
-
-		id.setText("单据编号");
-		type.setText("单据类型");
-		date.setText("生成日期");
-
-		id.setHorizontalAlignment(JTextField.CENTER);
-		type.setHorizontalAlignment(JTextField.CENTER);
-		date.setHorizontalAlignment(JTextField.CENTER);
-
+		
+		gb = new GridBagLayout();
+		gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(10, 50, 10, 150);
+		gcons.insets = new Insets(10, 168, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 173, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, type, 1, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 110, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, date, 2, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 50, 10, 0);
+		gcons.insets = new Insets(10, 64, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, allSelected, 3, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 5, 10, 30);
+		gcons.insets = new Insets(10, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, select, 4, 0, 1, 1, 0, 0);
 	}
 
