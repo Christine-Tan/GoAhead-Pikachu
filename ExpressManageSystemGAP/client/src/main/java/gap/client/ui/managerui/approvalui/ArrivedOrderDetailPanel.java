@@ -74,18 +74,6 @@ public class ArrivedOrderDetailPanel extends JPanel {
 		});
 		orders_jl = new GAPLabel("显示已到达的订单信息");
 
-		gb = new GridBagLayout();
-		gcons = new GridBagConstraints();
-		setLayout(gb);
-		gcons.insets = new Insets(10, 20, 10, 20);
-		SwingConsole.addComponent(gb, gcons, this, fromIns_jl, 0, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, fromIns, 1, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, toIns_jl, 2, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, toIns, 3, 0, 1, 1, 0, 0);
-		SwingConsole.addComponent(gb, gcons, this, detail, 0, 1, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 20, 10, 270);
-		SwingConsole.addComponent(gb, gcons, this, orders_jl, 0, 2, 1, 1, 0, 0);
-
 		// 初始化订单列表
 		detailPanel = new JPanel();
 		detailPanel.setBackground(Color.white);
@@ -100,6 +88,21 @@ public class ArrivedOrderDetailPanel extends JPanel {
 			addItem(new ItemPanel(orders.getKey(), orders.getValue()));
 		}
 		detailPanel.setVisible(false);
+
+		// 布局
+		gb = new GridBagLayout();
+		gcons = new GridBagConstraints();
+		setLayout(gb);
+		gcons.insets = new Insets(10, 20, 10, 20);
+		SwingConsole.addComponent(gb, gcons, this, fromIns_jl, 0, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, fromIns, 1, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, toIns_jl, 2, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, toIns, 3, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, detail, 0, 1, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 20, 10, 270);
+		SwingConsole.addComponent(gb, gcons, this, orders_jl, 1, 1, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, detailPanel, 0, 3, 1, 1, 1, 0);
+
 	}
 
 	private void addItem(ItemPanel item) {
