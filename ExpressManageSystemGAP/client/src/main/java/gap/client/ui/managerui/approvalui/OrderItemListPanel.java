@@ -54,7 +54,7 @@ public class OrderItemListPanel extends JPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 		items = new ArrayList<>();
-		orders = ApprovalController.getUnpassedOrder();
+		orders=ApprovalController.getUnpassedOrder();
 		for (Object order : orders) {
 			items.add(new ItemPanel(order));
 		}	
@@ -128,7 +128,7 @@ public class OrderItemListPanel extends JPanel {
 				ExpressOrderPO expressOrder = (ExpressOrderPO) order;
 				order_id.setText(expressOrder.getOrder_id());
 				type.setText("寄件单");
-				date.setText("0000-00-00");
+				date.setText(expressOrder.getTime());
 			} else if (order instanceof LoadOrderPO) {
 				System.out.println("loadOrder");
 				LoadOrderPO loadOrder = (LoadOrderPO) order;
