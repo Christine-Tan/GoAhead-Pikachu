@@ -172,9 +172,14 @@ public class Inventory implements InventoryService {
 	public String getNextLocation(String ins_id, String sector_id) {
 		// TODO Auto-generated method stub
 		int size = WareHouseSize.TOTAL.getSize();
+		boolean isFull = false;
 		boolean[] isUsed = new boolean[size];
 
 		List<GoodsPO> goods = inventoryData.getOneSector(sector_id, ins_id);
+		if(goods!=null&&goods.size()>=size){
+			isFull = true;
+			goods = inventoryData.getOneSector(ins_id+"0",ins_id);
+		}
 		if (goods != null) {
 			for (GoodsPO po : goods) {
 				int i = locationToInt(po.getLocation());
@@ -183,9 +188,21 @@ public class Inventory implements InventoryService {
 			int i;
 			for (i = 0; isUsed[i] == true; i++);
 			
-			return getLocation(i + 1);
+			String temp = getLocation(i + 1);
+			if(isFull){
+				return "f"+temp;
+			}else{
+				return temp;
+			}
+			
 		} else {
-			return getLocation(1);
+			
+			String temp = getLocation(1);
+			if(isFull){
+				return "f"+temp;
+			}else{
+				return temp;
+			}
 		}
 
 	}

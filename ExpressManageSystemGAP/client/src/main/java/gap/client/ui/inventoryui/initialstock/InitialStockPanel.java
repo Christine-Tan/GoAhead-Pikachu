@@ -30,25 +30,30 @@ public class InitialStockPanel extends MainPanel {
 	String sector_id;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
-	JFrame frame;
+	JFrame tframe;
 
-	public InitialStockPanel(final MainFrame frame) {
+	public InitialStockPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
 		
-		this.frame = frame;
+		this.tframe = frame;
 
 		confirm = new ButtonArea();
 		confirm.submit.setText("确认初始化");
 		title = new TitlePanel();
 		choose = new ChoosePanel();
-		newList = new ListItemPanel(this.frame, LocalInfo.ins_id + "1");
+		newList = new ListItemPanel(frame, LocalInfo.ins_id + "1");
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		reLayout();
+		JPanel panel = new JPanel();
+		SwingConsole.addComponent(gb, gcons, this, choose, 0, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, newList, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
 
 		choose.car.addActionListener(new ActionListener() {
 
@@ -56,7 +61,7 @@ public class InitialStockPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				newList = new ListItemPanel(frame, LocalInfo.ins_id + "1");
+				newList = new ListItemPanel(tframe, LocalInfo.ins_id + "1");
 				choose.plane.toNomal();
 				choose.train.toNomal();
 				reLayout();
@@ -68,7 +73,7 @@ public class InitialStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				newList = new ListItemPanel(frame, LocalInfo.ins_id + "2");
+				newList = new ListItemPanel(tframe, LocalInfo.ins_id + "2");
 				choose.car.toNomal();
 				choose.plane.toNomal();
 				reLayout();
@@ -80,7 +85,7 @@ public class InitialStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				newList = new ListItemPanel(frame, LocalInfo.ins_id + "3");	
+				newList = new ListItemPanel(tframe, LocalInfo.ins_id + "3");	
 				choose.car.toNomal();
 				choose.train.toNomal();
 				reLayout();
@@ -98,7 +103,7 @@ public class InitialStockPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
 		
-		frame.validate();
+		tframe.validate();
 	}
 
 }
