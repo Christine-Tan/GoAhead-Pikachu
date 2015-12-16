@@ -22,6 +22,9 @@ public class ExpressOrderPO implements Serializable {
 	// 快递所在机构编号和即将发往的机构编号
 	private String currentins_id, targetins_id;
 
+	// 创建时间
+	private String time;
+
 	private double price;
 
 	public ExpressOrderPO() {
@@ -30,7 +33,7 @@ public class ExpressOrderPO implements Serializable {
 
 	public ExpressOrderPO(PeopleInfo senderInfo, PeopleInfo receiverInfo,
 			ExpressType expressType, CargoInfo cargoInfo, String order_id,
-			double price, String currentins_id, String targetins_id) {
+			double price, String currentins_id, String targetins_id, String time) {
 		super();
 		this.senderInfo = senderInfo;
 		this.receiverInfo = receiverInfo;
@@ -40,6 +43,7 @@ public class ExpressOrderPO implements Serializable {
 		this.price = price;
 		this.currentins_id = currentins_id;
 		this.targetins_id = targetins_id;
+		this.time = time;
 	}
 
 	public ExpressOrderPO(PeopleInfo senderInfo, PeopleInfo receiverInfo,
@@ -47,7 +51,7 @@ public class ExpressOrderPO implements Serializable {
 			String order_id, String currentins_id, String targetins_id,
 			String clerkLoadOrder_id, String clerkArrivedOrder_id,
 			String centerLoadOrder_id, String centerArrived_id,
-			String deliveryOrder_id) {
+			String deliveryOrder_id, String time) {
 		super();
 		this.senderInfo = senderInfo;
 		this.receiverInfo = receiverInfo;
@@ -57,6 +61,7 @@ public class ExpressOrderPO implements Serializable {
 		this.order_id = order_id;
 		this.currentins_id = currentins_id;
 		this.targetins_id = targetins_id;
+		this.time = time;
 	}
 
 	public boolean isReceived() {
@@ -135,6 +140,14 @@ public class ExpressOrderPO implements Serializable {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 }

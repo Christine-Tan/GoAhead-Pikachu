@@ -21,6 +21,8 @@ public class ExpressOrderVO {
 	// 快递所在机构编号和即将发往的机构编号
 	public String currentins_id, targetins_id;
 
+	public String time;
+
 	public ExpressOrderVO() {
 
 	}
@@ -35,12 +37,13 @@ public class ExpressOrderVO {
 		order_id = po.getOrder_id();
 		currentins_id = po.getCurrentins_id();
 		targetins_id = po.getTargetins_id();
+		time = po.getTime();
 	}
 
 	public ExpressOrderVO(PeopleInfo sender_info, PeopleInfo receiver_info,
 			ExpressType expressType, double price, CargoInfo cargoInfo,
 			boolean received, String order_id, String currentins_id,
-			String targetins_id) {
+			String targetins_id, String time) {
 		super();
 		this.sender_info = sender_info;
 		this.receiver_info = receiver_info;
@@ -51,12 +54,13 @@ public class ExpressOrderVO {
 		this.order_id = order_id;
 		this.currentins_id = currentins_id;
 		this.targetins_id = targetins_id;
+		this.time = time;
 	}
 
 	public ExpressOrderPO toPO() {
 		ExpressOrderPO po = new ExpressOrderPO(sender_info, receiver_info,
 				expressType, cargoInfo, order_id, price, currentins_id,
-				targetins_id);
+				targetins_id, time);
 		return po;
 
 	}

@@ -111,7 +111,8 @@ public class ExpressOrderDataServiceImplTest {
 			ExpressOrderPO po = expressorderdataservice.find("0000000001");
 			System.out.println("Found order!!");
 			System.out.println("sender_Name:" + po.getSenderInfo().getName()
-					+ ",receicerName:" + po.getReceiverInfo().getName());
+					+ ",receicerName:" + po.getReceiverInfo().getName()
+					+ ",time:" + po.getTime());
 			// expre.addState("0000000001", "到达xxx营业厅");
 			// expre.addState("0000000001", "到达xxx中转中心");
 			// for (String str : expre.getState("0000000001"))

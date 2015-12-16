@@ -501,7 +501,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			String order_id = re.getString(order_id_f), currentins_id = re
 					.getString(current_ins_id_f), targetins_id = re
-					.getString(target_ins_id_f);
+					.getString(target_ins_id_f), time = re
+					.getString(create_time_f);
 			ExpressType type = ExpressType.valueOf(re.getString(order_type_f));
 			double price = re.getDouble(price_f);
 			int sender_id = re.getInt(sender_info_f), receiver_id = re
@@ -511,7 +512,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 					receiver_id, receiverTable);
 			CargoInfo cargo = getCargo(cargo_id);
 			ExpressOrderPO order = new ExpressOrderPO(sender, receiver, type,
-					cargo, order_id, price, currentins_id, targetins_id);
+					cargo, order_id, price, currentins_id, targetins_id, time);
 			return order;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
