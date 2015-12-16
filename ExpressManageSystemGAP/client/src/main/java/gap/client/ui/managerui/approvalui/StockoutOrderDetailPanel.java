@@ -1,8 +1,12 @@
 package gap.client.ui.managerui.approvalui;
 
-public class StockoutOrderDetailPanel {
+import javax.swing.JPanel;
 
-	public StockoutOrderDetailPanel() {
+import gap.common.po.StockoutOrderPO;
+
+public class StockoutOrderDetailPanel extends JPanel {
+
+	public StockoutOrderDetailPanel(StockoutOrderPO stockoutOrder) {
 		// TODO Auto-generated constructor stub
 	}
 

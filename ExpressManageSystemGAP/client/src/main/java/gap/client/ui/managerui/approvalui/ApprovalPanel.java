@@ -36,7 +36,7 @@ public class ApprovalPanel extends MainPanel {
 		super(frame);
 		MyTask task=new MyTask(frame);
 		timer=new Timer(true);
-		timer.schedule(task, 5000,5000);
+		timer.schedule(task, 2000,10000);
 	}
 	
 	void refresh(MainFrame frame){
@@ -87,6 +87,7 @@ public class ApprovalPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, listItemPanel, 0, 2, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
+		frame.validate();
 	}
 	class MyTask extends TimerTask{
         MainFrame frame;
@@ -97,6 +98,7 @@ public class ApprovalPanel extends MainPanel {
 		public void run() {
 			// TODO Auto-generated method stub
 			ApprovalPanel.this.refresh(frame);
+			System.gc();
 		}
 	}
 }
