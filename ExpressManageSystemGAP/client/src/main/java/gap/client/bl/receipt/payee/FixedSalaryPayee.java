@@ -31,6 +31,12 @@ public class FixedSalaryPayee extends Payee {
 	PayeeVO makePayeeVO() {
 		SalaryPO salaryPO = getSalaryPO(salaryItr, userPO);
 		PaymentType type = getType(userPO);
+		
+		//类型为空，说明是管理员、总经理或者财务人员
+		if(type==null){
+			return null;
+		}
+		
 		double salary = salaryPO.getSalary();
 
 		String accountName = getRandomAccount();

@@ -46,10 +46,15 @@ public abstract class ListMaker<T> {
 		ArrayList<T> list = new ArrayList<>();
 		try {
 			resultSet = excutor.excuteQuery(sql);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+//		if(resultSet==null){
+//			return new ArrayList<>();
+//		}
 
 		try {
 			while (resultSet.next()) {

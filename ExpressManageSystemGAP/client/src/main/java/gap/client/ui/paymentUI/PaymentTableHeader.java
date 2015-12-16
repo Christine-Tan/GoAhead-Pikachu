@@ -32,11 +32,11 @@ public class PaymentTableHeader extends PanelWithGrid{
 	
 	public static final int leftGap = 100;
 	
-	public static final int height = 50;
+	public static final int height = 40;
 	public static final int payDateWidth = 100;
-	public static final int recevierWidth = 60;
+	public static final int recevierWidth = 120;
 	public static final int accountWidth = 100;
-	public static final int itemWidth = 140;
+	public static final int itemWidth = 100;
 	public static final int moneyWidth = 100;
 	public static final int commentWidth = 100;
 	
@@ -72,8 +72,13 @@ public class PaymentTableHeader extends PanelWithGrid{
 		setBackground(Color.white);
 		
 		for(int i=0;i<components.length;i++){
+			
+//			components[i].setBackground
+//			(new Color((int)(Math.random()*255), (int)(Math.random()*255),(int)(Math.random()*255)));
+//		components[i].setOpaque(true);
+			
 			components[i].setHorizontalAlignment(JLabel.CENTER);
-			components[i].setPreferredSize(new Dimension(widthArgs[i], height));
+			components[i].setPreferredSize(new Dimension(widthArgs[i], 20));
 		}
 		
 		for(int i=0;i<components.length;i++){

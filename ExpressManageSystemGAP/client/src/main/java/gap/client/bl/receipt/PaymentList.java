@@ -36,7 +36,7 @@ public class PaymentList {
 		this.dataController = dataController;
 		salaryPOs = dataController.getAllSalaryPO();
 
-		if (accounts != null) {
+		if (accounts == null) {
 			accounts = dataController.getAccountList();
 		}
 	}

@@ -44,6 +44,7 @@ public class TransFareDataImpl extends UnicastRemoteObject  implements TransFare
 	@Override
 	public List<TransFarePO> getTransFare() throws RemoteException {
 		// TODO Auto-generated method stub
+		builder = new SQLBuilder();
 		builder.Select("*").From(tableName);
 		
 		ListMaker<TransFarePO> transFareListMaker = new ListMaker<TransFarePO>() {
@@ -75,7 +76,7 @@ public class TransFareDataImpl extends UnicastRemoteObject  implements TransFare
 	@Override
 	public boolean deleteTransFare(List<TransFarePO> transFareList) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		builder = new SQLBuilder();
 		
 		for(TransFarePO po: transFareList){
 			String carID = po.getCarID();
@@ -103,7 +104,7 @@ public class TransFareDataImpl extends UnicastRemoteObject  implements TransFare
 		String carID = po.getCarID();
 		String orderID = po.getOrderID();
 		double money = po.getFare();
-		
+		builder = new SQLBuilder();
 		builder.InsertInto(tableName, money_col,orderID_col,driverID_col).Values(money,orderID,carID);
 		
 		try {

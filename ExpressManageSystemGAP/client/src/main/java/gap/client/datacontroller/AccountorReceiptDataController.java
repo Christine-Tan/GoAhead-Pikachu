@@ -8,7 +8,6 @@ import static gap.client.datacontroller.NetModule.rentdataservice;
 import static gap.client.datacontroller.NetModule.salarydataservice;
 import static gap.client.datacontroller.NetModule.userdataservice;
 import static gap.client.datacontroller.NetModule.transFareDataService;
-import gap.common.dataservice.transFareDataService.TransFareDataService;
 import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.PaymentListPO;
@@ -166,6 +165,7 @@ public class AccountorReceiptDataController {
 
 	// transFareData
 	public List<TransFarePO> getTransFare() {
+		System.out.println("get TransFare!");
 		try {
 			return transFareDataService.getTransFare();
 		} catch (RemoteException e) {

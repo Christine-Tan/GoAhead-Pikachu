@@ -23,6 +23,8 @@ public class TransFareTest {
 		NetInitial.initial();
 		transFareDataService = TransFareDataImpl.getInstance();
 		po = new TransFarePO(300, "2233223", "0010001004");
+		
+		
 	}
 
 	@After

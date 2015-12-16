@@ -1,5 +1,6 @@
 package gap.client.ui.paymentUI;
 
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 
 import javax.naming.InitialContext;
@@ -49,10 +50,13 @@ public class PaymentMainPanel extends MainPanelWithGird{
 		
 		buttonArea.submit.addActionListener(submitListener);
 		
-		
+		gcons.fill = GridBagConstraints.BOTH;
 		SwingConsole.addComponent(gb, gcons, this, headPanel	, 0, 0, 1, 1, 1, 0.2);
+		gcons.fill = GridBagConstraints.HORIZONTAL;
+		gcons.anchor = GridBagConstraints.NORTH;
+		
 		SwingConsole.addComponent(gb, gcons, this, displayPanel , 0, 1, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, headPanel	, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, buttonArea	, 0, 2, 1, 1, 1, 0);
 	}
 
 	public void submit() {

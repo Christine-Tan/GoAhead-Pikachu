@@ -2,12 +2,14 @@ package gap.client.ui.paymentUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -83,23 +85,33 @@ public class PayeeItem extends PanelWithGrid{
 				continue;
 			}
 			
+//			components[i].setBackground
+//				(new Color((int)(Math.random()*255), (int)(Math.random()*255),(int)(Math.random()*255)));
+//			components[i].setOpaque(true);
+			if(components[i] instanceof JLabel){
+				JLabel label = (JLabel) components[i];
+				label.setHorizontalAlignment(JLabel.CENTER);
+			}
+			
 			components[i].setPreferredSize
 				(new Dimension(PaymentTableHeader.widthArgs[i], PaymentTableHeader.height));
 		}
 		
+		gridBagConstraints.anchor = GridBagConstraints.CENTER;
+		
 		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, payDate, 0, 0, 1, 1, 1, 1);
+			(gridBagLayout, gridBagConstraints, this, payDate, 0, 0, 1, 1, 0.1, 1);
 		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, recevier, 1, 0, 1, 1, 1, 1);
+			(gridBagLayout, gridBagConstraints, this, recevier, 1, 0, 1, 1, 0.1, 1);
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, accountCombox, 2, 0, 1, 1, 1, 1);
 		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, item, 3, 0, 1, 1, 1, 1);
+			(gridBagLayout, gridBagConstraints, this, item, 3, 0, 1, 1, 0.1, 1);
 		
 		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, money, 4, 0, 1, 1, 1, 1);
+			(gridBagLayout, gridBagConstraints, this, money, 4, 0, 1, 1, 0.1, 1);
 		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, comment, 5, 0, 1, 1, 1, 1);
+			(gridBagLayout, gridBagConstraints, this, comment, 5, 0, 1, 1, 0.8, 1);
 		
 	}
 	

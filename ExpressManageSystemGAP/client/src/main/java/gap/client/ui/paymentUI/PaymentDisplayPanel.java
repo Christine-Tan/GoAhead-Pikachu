@@ -1,5 +1,6 @@
 package gap.client.ui.paymentUI;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -30,6 +31,8 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 	public PaymentDisplayPanel(PaymentMainPanel mainPanel,ArrayList<AccountVO> accountVOs,
 			ArrayList<PayeeVO> payeeVOs){
 		
+		setBackground(Color.white);
+		
 		this.mainPanel = mainPanel;
 		this.accountVOs = accountVOs;
 		this.payeeVOs = payeeVOs;
@@ -46,8 +49,7 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 		typeMap.put(PaymentType.TRANSFARE, transFareVOs);
 		typeMap.put(PaymentType.REWARD, rewardVOs);
 		
-		
-		
+		initial(payeeVOs);
 		
 	}
 	
@@ -63,6 +65,12 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 			ArrayList<PayeeVO> aList = typeMap.get(aPayee.getType());
 			aList.add(aPayee);
 		}
+		
+//		System.out.println(payeeVOs.size());
+//		System.out.println("工资："+salaryVOs.size());
+//		System.out.println("运费："+transFareVOs.size());
+//		System.out.println("租金："+rentVOs.size());
+		
 		
 		if(panels==null){
 			panels = new ArrayList<>();

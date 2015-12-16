@@ -55,7 +55,10 @@ public class PayeeFactory {
 
 		ArrayList<PayeeVO> payeeVOList = new ArrayList<>(payeeList.size());
 		for (Payee payee : payeeList) {
-			payeeVOList.add(payee.getVO());
+			PayeeVO vo = payee.getVO();
+			if(vo!=null){
+				payeeVOList.add(payee.getVO());
+			}
 		}
 
 		return payeeVOList;
