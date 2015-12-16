@@ -76,6 +76,10 @@ public class GAPDialog extends JDialog {
 			setVisible(true);
 		}
 	}
+	
+	public void clear(){
+		textArea.setText("");
+	}
 
 	// public static void main(String[] args) {
 	// JFrame jf = new JFrame();

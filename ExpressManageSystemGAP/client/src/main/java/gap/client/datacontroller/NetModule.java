@@ -64,14 +64,17 @@ public class NetModule {
 	private static boolean dialogShowed = false;
 
 	public static GAPDialog dialog;
+	
+	public static boolean isFirstConnect = true;
 
 	/**
 	 * 根据面板初始化对话框
 	 * @param jf
 	 */
 	public static void initial(JFrame jf) {
-		dialogShowed = true;
+		dialogShowed = false;
 		dialog = new GAPDialog(jf);
+		dialog.setVisible(false);
 
 		// dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
@@ -122,7 +125,6 @@ public class NetModule {
 		while (true) {
 			try {
 				if (!reconnect)
-					showMessage("连接中");
 				// 检测通讯是否成功的类
 				contactor = (Contactor) Naming.lookup(RMIConfig.url
 						+ ServiceName.CONTACTOR);
@@ -179,7 +181,12 @@ public class NetModule {
 				transFareDataService = (TransFareDataService)Naming
 						.lookup(RMIConfig.url+ServiceName.TRANSFARE_DATA_SERVICE);
 
-				showMessage("连接成功");
+				if(isFirstConnect){
+					MainFrame.setMessage("登陆成功", MessageType.succeed, 2000);
+					isFirstConnect = false;
+				}else{
+					MainFrame.setMessage("连接成功", MessageType.succeed, 2000);
+				}
 				setSucceedConnect();
 				// 启动检查线程
 				Thread chechThread = new Thread(new CheckRunnable());
@@ -189,18 +196,20 @@ public class NetModule {
 			} catch (MalformedURLException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
+				showDialog();
 				showMessage("连接错误");
 				return false;
 			} catch (RemoteException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
+				showDialog();
 				reconnect = true;
 				if (connect_time > 5) {
-					showMessage("网络连接错误！！请稍后连接！！");
+					showMessage("网络连接错误,请稍后连接");
 					setFailConnect();
 					return false;
 				} else {
-					showMessage("网络连接错误!!正在尝试重新连接，重连次数：" + (connect_time++)
+					showMessage("网络连接错误,正在尝试重新连接，重连次数：" + (connect_time++)
 							+ "次");
 					try {
 						Thread.sleep(2000);
@@ -212,9 +221,20 @@ public class NetModule {
 			} catch (NotBoundException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
-				showMessage("服务器错误！！！");
+				showDialog();
+				showMessage("服务器错误");
 				return false;
 			}
+		}
+	}
+	
+	private static void showDialog(){
+		if(!dialog.isVisible()){
+			dialogShowed = true;
+			setConnecting();
+			dialog.clear();
+			dialog.setVisible(true);
+			showMessage("连接中");
 		}
 	}
 
@@ -240,6 +260,9 @@ public class NetModule {
 			dialog.reconnect.setVisible(false);
 			dialog.confirm.setVisible(true);
 		}
+		
+		dialog.setVisible(false);
+		dialogShowed = false;
 	}
 
 	private static void showMessage(String message) {
@@ -267,7 +290,7 @@ public class NetModule {
 			} catch (RemoteException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
-				showMessage("网络连接错误！！");
+				showMessage("网络连接错误");
 				connect();
 			} catch (InterruptedException e) {
 				// TODO 自动生成的 catch 块
