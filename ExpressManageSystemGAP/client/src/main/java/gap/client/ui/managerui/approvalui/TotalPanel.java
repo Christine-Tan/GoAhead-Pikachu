@@ -23,7 +23,7 @@ import gap.client.ui.gapcomponents.GAPTextField;
 
 public class TotalPanel extends JPanel {
 	JLabel total, result;
-	protected static JTextField num_f;
+	protected static GAPTextField num_f;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
@@ -33,20 +33,21 @@ public class TotalPanel extends JPanel {
 		setBackground(Color.WHITE);
 		total = new GAPLabel("一共有");
 		result = new GAPLabel("张待审批单据");
-		num_f = new GAPTextField(5);
+		num_f = new GAPTextField(2);
 		// 这里要自动刷新数据
 		// 获得所有待审批单据
-		List<Object> approvals = ApprovalController.getUnpassedOrder();
-		num_f.setText(approvals.size() + "");
-
+		List<Object> orders = ApprovalController.getUnpassedOrder();
+		num_f.setText(String.valueOf(orders.size()));
+		num_f.setHorizontalAlignment(JTextField.CENTER);
+        num_f.closeEdit();
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(30, 10, 20, 0);
+		gcons.insets = new Insets(20, 0, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, total, 0, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(30, 5, 20, 0);
+		gcons.insets = new Insets(20, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, num_f, 1, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(30, 5, 20, 500);
+		gcons.insets = new Insets(20, 5, 10, 500);
 		SwingConsole.addComponent(gb, gcons, this, result, 2, 0, 1, 1, 0, 0);
 	}
 

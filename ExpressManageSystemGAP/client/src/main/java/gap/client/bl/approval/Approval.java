@@ -20,13 +20,13 @@ public class Approval implements ApprovalService {
 	public List<Object> getUnpassedOrder() {
 		// TODO Auto-generated method stub
 		orders = new ArrayList<Object>();
-		orders.add(controller.getUnpassedArrivedOrder());
-		orders.add(controller.getUnpassedBillOrder());
-		orders.add(controller.getUnpassedDeliveryOrder());
-		orders.add(controller.getUnpassedExpressOrder());
-		orders.add(controller.getUnpassedLoadOrder());
-		orders.add(controller.getUnpassedStockinOrder());
-		orders.add(controller.getUnpassedStockoutOrder());
+		orders.addAll(controller.getUnpassedArrivedOrder());
+		orders.addAll(controller.getUnpassedBillOrder());
+		orders.addAll(controller.getUnpassedDeliveryOrder());
+		orders.addAll(controller.getUnpassedExpressOrder());
+		orders.addAll(controller.getUnpassedLoadOrder());
+		orders.addAll(controller.getUnpassedStockinOrder());
+		orders.addAll(controller.getUnpassedStockoutOrder());
 		return orders;
 	}
 

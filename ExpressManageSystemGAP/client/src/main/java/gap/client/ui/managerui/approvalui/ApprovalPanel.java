@@ -4,6 +4,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
@@ -12,6 +14,7 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.managerui.approvalui.OrderItemListPanel.ItemPanel;
 
 /**
  * @author seven
@@ -26,15 +29,37 @@ public class ApprovalPanel extends MainPanel {
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
-	public ApprovalPanel(MainFrame frame) {
+	public ApprovalPanel(final MainFrame frame) {
 		// TODO Auto-generated constructor stub
 		super(frame);
 		totalPanel = new TotalPanel();
 		titlePanel = new ApprovalTitlePanel();
 		listItemPanel = new OrderItemListPanel(frame);
-
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("确认审批");
+		
+		// 给全选按钮添加监听
+		titlePanel.select.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("!!!!!!!!");
+				int state = arg0.getStateChange();
+				if (state == ItemEvent.SELECTED) {
+					System.out.println("all selected");
+					for (ItemPanel item : listItemPanel.items) {
+						item.setSelected(true);
+					}
+				} else {
+					System.out.println("not select");
+					for (ItemPanel item : listItemPanel.items) {
+						item.setSelected(false);
+					}
+				}
+			}
+		});
+
 		// 审批按钮添加监听
 		buttonArea.submit.addActionListener(new ActionListener() {
 
