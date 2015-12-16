@@ -109,8 +109,8 @@ public class ApprovalDataController {
 	public ResultMessage setPassed(List<Object> orders) {
 		ResultMessage rm;
 		for (Object order : orders) {
-			if (order instanceof ExpressOrderVO) {
-				String targetInsId = ((ExpressOrderVO) order).targetins_id;
+			if (order instanceof ExpressOrderPO) {
+				String targetInsId = ((ExpressOrderPO) order).getTargetins_id();
 				try {
 					String insname = institutiondataservice.findById(
 							targetInsId).getInsName();
@@ -121,8 +121,8 @@ public class ApprovalDataController {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			} else if (order instanceof ArrivedOrderVO) {
-				String targetInsId = ((ArrivedOrderVO) order).des_ins_id;
+			} else if (order instanceof ArrivedOrderPO) {
+				String targetInsId = ((ArrivedOrderPO) order).getDes_ins_id();
 				try {
 					String insname = institutiondataservice.findById(
 							targetInsId).getInsName();
@@ -133,29 +133,30 @@ public class ApprovalDataController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if (order instanceof BillOrderVO) {
+			} else if (order instanceof BillOrderPO) {
 				// rm=billOrderData.setPassed(, state_info)
-			} else if (order instanceof DeliveryOrderVO) {
+			} else if (order instanceof DeliveryOrderPO) {
 				try {
 					rm = deliveryorderdataservice.setPassed(
-							((DeliveryOrderVO) order).id, "");
+							((DeliveryOrderPO) order).getId(),"");
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if (order instanceof LoadOrderVO) {
-				String targetInsId = ((LoadOrderVO) order).targetins_id;
+			} else if (order instanceof LoadOrderPO) {
+				String targetInsId = ((LoadOrderPO) order).getTargetins_id();
 				try {
 					String insname = institutiondataservice.findById(
 							targetInsId).getInsName();
 					String state = "正在发往" + insname;
+					rm = loadorderdataservice.setPassed(
+							insname, state);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 			} else if (order instanceof StockinOrderVO) {
-
+                
 			} else if (order instanceof StockoutOrderVO) {
 
 			}

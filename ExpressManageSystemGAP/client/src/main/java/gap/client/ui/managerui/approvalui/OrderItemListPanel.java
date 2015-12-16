@@ -26,6 +26,13 @@ import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.LoadOrderVO;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
+import gap.common.po.ArrivedOrderPO;
+import gap.common.po.BillOrderPO;
+import gap.common.po.DeliveryOrderPO;
+import gap.common.po.ExpressOrderPO;
+import gap.common.po.LoadOrderPO;
+import gap.common.po.StockinOrderPO;
+import gap.common.po.StockoutOrderPO;
 
 public class OrderItemListPanel extends JPanel {
 	// 列表中所有的项
@@ -98,45 +105,45 @@ public class OrderItemListPanel extends JPanel {
 			type.setHorizontalAlignment(JTextField.CENTER);
 			date.setHorizontalAlignment(JTextField.CENTER);
 			
-			if (order instanceof ArrivedOrderVO) {
+			if (order instanceof ArrivedOrderPO) {
 				System.out.println("arrivedOrder");
-				ArrivedOrderVO arrivedOrder = (ArrivedOrderVO) order;
-				order_id.setText(arrivedOrder.id);
+				ArrivedOrderPO arrivedOrder = (ArrivedOrderPO) order;
+				order_id.setText(arrivedOrder.getId());
 				type.setText("到达单");
-				date.setText(arrivedOrder.time);
-			} else if (order instanceof BillOrderVO) {
+				date.setText(arrivedOrder.getTime());
+			} else if (order instanceof BillOrderPO) {
 				System.out.println("billOrder");
-				BillOrderVO billOrder = (BillOrderVO) order;
-				order_id.setText("0000000000000");
+				BillOrderPO billOrder = (BillOrderPO) order;
+				order_id.setText(billOrder.getId());
 				type.setText("收款单");
-				date.setText(billOrder.date.toString());
-			} else if (order instanceof DeliveryOrderVO) {
+				date.setText(billOrder.getBillDate().toString());
+			} else if (order instanceof DeliveryOrderPO) {
 				System.out.println("deliveryOrder");
-				DeliveryOrderVO deliveryOrder = (DeliveryOrderVO) order;
-				order_id.setText(deliveryOrder.id);
+				DeliveryOrderPO deliveryOrder = (DeliveryOrderPO) order;
+				order_id.setText(deliveryOrder.getId());
 				type.setText("派件单");
-				date.setText(deliveryOrder.time);
-			} else if (order instanceof ExpressOrderVO) {
+				date.setText(deliveryOrder.getTime());
+			} else if (order instanceof ExpressOrderPO) {
 				System.out.println("expressOrder");
-				ExpressOrderVO expressOrder = (ExpressOrderVO) order;
-				order_id.setText(expressOrder.order_id);
+				ExpressOrderPO expressOrder = (ExpressOrderPO) order;
+				order_id.setText(expressOrder.getOrder_id());
 				type.setText("寄件单");
 				date.setText("0000-00-00");
-			} else if (order instanceof LoadOrderVO) {
+			} else if (order instanceof LoadOrderPO) {
 				System.out.println("loadOrder");
-				LoadOrderVO loadOrder = (LoadOrderVO) order;
-				order_id.setText(loadOrder.order_id);
+				LoadOrderPO loadOrder = (LoadOrderPO) order;
+				order_id.setText(loadOrder.getOrder_id());
 				type.setText("装车单");
-				date.setText(loadOrder.date);
-			} else if (order instanceof StockinOrderVO) {
+				date.setText(loadOrder.getDate());
+			} else if (order instanceof StockinOrderPO) {
 				System.out.println("stockinOrder");
-				StockinOrderVO stockinOrder = (StockinOrderVO) order;
+				StockinOrderPO stockinOrder = (StockinOrderPO) order;
 				order_id.setText(stockinOrder.getId());
 				type.setText("入库单");
 				date.setText(stockinOrder.getInDate());
-			} else if (order instanceof StockoutOrderVO) {
+			} else if (order instanceof StockoutOrderPO) {
 				System.out.println("stockoutOrder");
-				StockoutOrderVO stockoutOrder = (StockoutOrderVO) order;
+				StockoutOrderPO stockoutOrder = (StockoutOrderPO) order;
 				order_id.setText(stockoutOrder.getId());
 				type.setText("出库单");
 				date.setText(stockoutOrder.getOutDate());
