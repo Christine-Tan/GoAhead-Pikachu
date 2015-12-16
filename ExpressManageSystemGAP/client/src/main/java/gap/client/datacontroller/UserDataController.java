@@ -93,4 +93,14 @@ public class UserDataController {
 		}
 		return ResultMessage.FAILED;
 	}
+
+	public List<UserPO> getAllDelivery(String ins_id) {
+		try {
+			return userdataservice.getDilivery(ins_id);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

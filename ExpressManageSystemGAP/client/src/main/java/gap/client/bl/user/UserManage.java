@@ -111,4 +111,17 @@ public class UserManage implements UserService {
 		String insname = insController.findById(user.getInsId()).getInsName();
 		return user.toUserVO(insname);
 	}
+
+	@Override
+	public List<UserVO> getAllDelivery(String ins_id) {
+		// TODO 自动生成的方法存根
+		List<UserVO> users = new ArrayList<>();
+		for (UserPO po : controller.getAllDelivery(ins_id)) {
+			String insname = insController.findById(po.getIns_id())
+					.getInsName();
+			User user = new User(po);
+			users.add(user.toUserVO(insname));
+		}
+		return users;
+	}
 }

@@ -17,6 +17,10 @@ public class UserController {
 		return userManage.getAll(userType);
 	}
 
+	public static List<UserVO> getAllDelivery(String ins_id) {
+		return userManage.getAllDelivery(ins_id);
+	}
+
 	public static void delete(String id) {
 		userManage.delete(id);
 	}

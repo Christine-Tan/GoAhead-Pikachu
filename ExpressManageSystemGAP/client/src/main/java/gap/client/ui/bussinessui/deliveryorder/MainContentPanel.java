@@ -1,13 +1,17 @@
 package gap.client.ui.bussinessui.deliveryorder;
 
 import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
+import gap.client.ui.gapcomponents.GAPScrollBarUI;
 import gap.client.vo.UserVO;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.FontMetrics;
@@ -15,15 +19,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  * 已选快递员、订单选择panel
@@ -31,8 +37,7 @@ import javax.swing.JPanel;
  *
  */
 public class MainContentPanel extends JPanel {
-	OrderSelectPanel orderSelectPanel;
-	JPanel jp;
+	OrderSelectPanel orderSelectPanel, emptySelectPanel;
 	UserBar userBar;
 	DeliverySelectPanel deliveryPanel;
 	JFrame jf;
@@ -42,15 +47,29 @@ public class MainContentPanel extends JPanel {
 	public MainContentPanel(JFrame jf) {
 		// TODO 自动生成的构造函数存根
 		this.jf = jf;
-		jp = new JPanel();
-		jp.setOpaque(false);
+		setBackground(Color.white);
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH-200, 500));
 		userBar = new UserBar();
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
-		// SwingConsole.addComponent(gb, gcons, this, userBar, 0, 0, 1, 1, 1,
-		// 0);
-		// SwingConsole.addComponent(gb, gcons, this, orderSelectPanel, 0, 1, 1,
-		// 1, 1, 1);
+		setLayout(gb);
+
+		emptySelectPanel = new OrderSelectPanel();
+		emptySelectPanel.selectItems.clear();
+		emptySelectPanel.unselectItem.clear();
+
+		gcons.ipady = 100;
+		// gcons.ipadx = 850;
+		gcons.anchor = GridBagConstraints.NORTH;
+		gcons.fill = GridBagConstraints.BOTH;
+
+		GAPJScrollPane js = new GAPJScrollPane(userBar);
+		js.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		js.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		SwingConsole.addComponent(gb, gcons, this, js, 0, 0, 1, 1, 1, 0);
+//		 gcons.ipady = 700;
+//		 gcons.ipadx =0;
+
 	}
 
 	void setDeleverySelectPanel(DeliverySelectPanel deliveryPanel) {
@@ -58,10 +77,12 @@ public class MainContentPanel extends JPanel {
 	}
 
 	public void setOrderSelectPanel(OrderSelectPanel orderSelectPanel) {
-		remove(this.orderSelectPanel);
+		if (this.orderSelectPanel != null)
+			remove(this.orderSelectPanel.getJsPanel());
 		this.orderSelectPanel = orderSelectPanel;
-		SwingConsole.addComponent(gb, gcons, this, orderSelectPanel, 0, 1, 1,
-				1, 1, 1);
+		gcons.fill = GridBagConstraints.BOTH;
+		SwingConsole.addComponent(gb, gcons, this,
+				orderSelectPanel.getJsPanel(), 0, 1, 1, 1, 1, 1);
 	}
 
 	/**
@@ -70,6 +91,10 @@ public class MainContentPanel extends JPanel {
 	 */
 	public void addUser(UserVO user) {
 		userBar.addUser(user);
+		if (userBar.users.size() == 1) {
+			userBar.users.get(0).select();
+			setOrderSelectPanel(userBar.users.get(0).orderSelect);
+		}
 	}
 
 	/**
@@ -79,6 +104,13 @@ public class MainContentPanel extends JPanel {
 	void deleteUser(UserBox user) {
 		userBar.deleteUser(user);
 		deliveryPanel.addUser(user.getUser());
+		if (user.selected && userBar.users.isEmpty())
+			remove(user.orderSelect.getJsPanel());
+		else if (!userBar.users.isEmpty()) {
+			userBar.users.get(0).select();
+			setOrderSelectPanel(userBar.users.get(0).orderSelect);
+		}
+		jf.validate();
 	}
 
 	/**
@@ -90,6 +122,8 @@ public class MainContentPanel extends JPanel {
 		List<UserBox> users;
 
 		public UserBar() {
+			setBackground(Color.white);
+			setPreferredSize(new Dimension(Default.PANEL_WIDTH, 150));
 			users = new ArrayList<>();
 			setLayout(new FlowLayout(FlowLayout.RIGHT));
 		}
@@ -119,19 +153,26 @@ public class MainContentPanel extends JPanel {
 				@Override
 				public void mouseExited(MouseEvent e) {
 					// TODO 自动生成的方法存根
-
+					setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
 				}
 
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					// TODO 自动生成的方法存根
-
+					setCursor(new Cursor(Cursor.HAND_CURSOR));
 				}
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// TODO 自动生成的方法存根
+					UserBox box = (UserBox) e.getSource();
+					for (UserBox user : users) {
+						if (user == box) {
+							user.select();
 
+						} else
+							user.deSelect();
+					}
 				}
 			});
 
@@ -146,13 +187,13 @@ public class MainContentPanel extends JPanel {
 			remove(box);
 		}
 
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			Graphics2D g2d = RenderSetter.OpenRender(g);
-			g2d.setColor(ComponentStyle.light_gray);
-			int width = getWidth(), height = getHeight();
-			g2d.drawLine(10, height - 3, width - 20, height - 3);
-		}
+		// public void paintComponent(Graphics g) {
+		// super.paintComponent(g);
+		// Graphics2D g2d = RenderSetter.OpenRender(g);
+		// g2d.setColor(ComponentStyle.light_gray);
+		// int width = getWidth(), height = getHeight();
+		// g2d.drawLine(10, height - 3, width - 20, height - 3);
+		// }
 	}
 
 	/**
@@ -163,6 +204,7 @@ public class MainContentPanel extends JPanel {
 	 */
 	class UserBox extends JLabel {
 		private int width = 100, height = 100;
+		Color backColor;
 		OrderSelectPanel orderSelect;
 		UserVO user;
 		boolean selected;
@@ -173,6 +215,7 @@ public class MainContentPanel extends JPanel {
 			setLayout(null);
 			setPreferredSize(new Dimension(width, height));
 			setOpaque(true);
+			backColor = getBackground();
 
 			delete = new GAPButton("x");
 			delete.setOpaque(false);
@@ -181,8 +224,18 @@ public class MainContentPanel extends JPanel {
 			add(delete);
 			delete.setBounds(width - size.width - 3, -5, size.width,
 					size.height);
-			 select();
-			// orderSelect = new OrderSelectPanel();
+
+			delete.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO 自动生成的方法存根
+					deleteUser(UserBox.this);
+				}
+			});
+
+			// select();
+			orderSelect = new OrderSelectPanel();
 		}
 
 		/**
@@ -190,12 +243,15 @@ public class MainContentPanel extends JPanel {
 		 */
 		void select() {
 			selected = true;
-			setOpaque(true);
 			setBackground(ColorAndFonts.blue);
 			delete.setDefautFont(Color.white);
 			delete.setEnterFont(Color.white);
 			delete.setPressFont(Color.white);
 			delete.setForeground(Color.white);
+			orderSelect.transreFresh();
+			setOrderSelectPanel(orderSelect);
+			jf.repaint();
+			jf.validate();
 			repaint();
 		}
 
@@ -204,7 +260,7 @@ public class MainContentPanel extends JPanel {
 		 */
 		void deSelect() {
 			selected = false;
-			setOpaque(false);
+			setBackground(backColor);
 			delete.setDefautFont(ColorAndFonts.blue);
 			delete.setEnterFont(ColorAndFonts.blue.darker());
 			delete.setPressFont(ColorAndFonts.otherDarkBulue);
@@ -232,17 +288,17 @@ public class MainContentPanel extends JPanel {
 		}
 	}
 
-	public static void main(String[] args) {
-		JFrame jf = new JFrame();
-		MainContentPanel main = new MainContentPanel(jf);
-		UserVO vo = new UserVO();
-		vo.setName("杨雁飞");
-		UserBox user = main.new UserBox(vo);
-
-		jf.add(user);
-		jf.setLayout(new FlowLayout());
-		jf.setBounds(100, 100, 200, 300);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
-	}
+	// public static void main(String[] args) {
+	// JFrame jf = new JFrame();
+	// MainContentPanel main = new MainContentPanel(jf);
+	// UserVO vo = new UserVO();
+	// vo.setName("杨雁飞");
+	// UserBox user = main.new UserBox(vo);
+	//
+	// jf.add(user);
+	// jf.setLayout(new FlowLayout());
+	// jf.setBounds(100, 100, 200, 300);
+	// jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// jf.setVisible(true);
+	// }
 }

@@ -4,6 +4,7 @@ import gap.client.blcontroller.ExpressorderController;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.CurrentOrderType;
@@ -17,15 +18,21 @@ import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class OrderSelectPanel extends JPanel {
 	static List<ExpressOrderVO> total_orders = new ArrayList<>();
 	private static boolean initialed;
+	private JScrollPane jspanel;
+	private JPanel jp;
 	List<OrderItem> selectItems;
 	List<OrderItem> unselectItem;
 	JCheckBox checkBox;
@@ -48,6 +55,10 @@ public class OrderSelectPanel extends JPanel {
 		title_add = new GAPTextField("送往地", 20);
 		title_add.setCenter();
 		title_add.closeEdit();
+
+		jp = new JPanel();
+		jp.setOpaque(false);
+		// jp.setBackground(Color.red);
 
 		checkBox.addItemListener(new ItemListener() {
 
@@ -84,13 +95,14 @@ public class OrderSelectPanel extends JPanel {
 		titlePanel.setOpaque(false);
 		titlePanel.setLayout(gb);
 
+		gcons.fill = GridBagConstraints.BOTH;
+
 		SwingConsole.addComponent(gb, gcons, titlePanel, checkBox, 0, 0, 1, 1,
 				0, 0);
 		SwingConsole.addComponent(gb, gcons, titlePanel, title_order_id, 1, 0,
 				1, 1, 0.5, 0);
 		SwingConsole.addComponent(gb, gcons, titlePanel, title_add, 2, 0, 1, 1,
 				0.5, 0);
-
 		initial();
 
 		transreFresh();
@@ -120,6 +132,14 @@ public class OrderSelectPanel extends JPanel {
 		return order;
 	}
 
+	public JScrollPane getJsPanel() {
+		if (jspanel == null) {
+			jspanel = new GAPJScrollPane(this);
+			jspanel.setBorder(BorderFactory.createEmptyBorder());
+		}
+		return jspanel;
+	}
+
 	// 跳转刷新
 	void transreFresh() {
 		removeAll();
@@ -129,6 +149,23 @@ public class OrderSelectPanel extends JPanel {
 		for (ExpressOrderVO vo : total_orders) {
 			unselectItem.add(new OrderItem(vo));
 		}
+
+		// 按单号排序
+		Collections.sort(unselectItem, new Comparator<OrderItem>() {
+
+			@Override
+			public int compare(OrderItem o1, OrderItem o2) {
+				// TODO 自动生成的方法存根
+				int id1 = new Integer(o1.expressorder.order_id);
+				int id2 = new Integer(o2.expressorder.order_id);
+				if (id1 < id2) {
+					return -1;
+				} else if (id1 > id2) {
+					return 1;
+				}
+				return 0;
+			}
+		});
 
 		gcons.insets = new Insets(10, 5, 10, 5);
 
@@ -140,10 +177,16 @@ public class OrderSelectPanel extends JPanel {
 					i + 1, 1, 1, 1, 0);
 		}
 
-		for (int j = 0; j < total_orders.size(); j++) {
+		int j = 0;
+		for (; j < total_orders.size(); j++) {
 			SwingConsole.addComponent(gb, gcons, this, unselectItem.get(j), 0,
 					i + j + 1, 1, 1, 1, 0);
 		}
+
+		SwingConsole
+				.addComponent(gb, gcons, this, jp, 0, i + j + 1, 1, 1, 1, 1);
+		repaint();
+		validate();
 	}
 
 	class OrderItem extends JPanel {
