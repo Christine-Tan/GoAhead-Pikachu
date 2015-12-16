@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import javax.naming.InitialContext;
 
 import gap.client.bl.receipt.AccountorReceiptController;
+import gap.client.exception.MoneyEmptyException;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.paymentUI.Listener.PaymentSubmitListener;
+import gap.client.util.MessageType;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;
@@ -58,8 +60,21 @@ public class PaymentMainPanel extends MainPanelWithGird{
 		SwingConsole.addComponent(gb, gcons, this, displayPanel , 0, 1, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, buttonArea	, 0, 2, 1, 1, 1, 0);
 	}
+	
+	public void moneyEmpty() {
+		// TODO Auto-generated method stub
+		MainFrame.setMessage("奖金金额不能为空", MessageType.alram, 2000);
+	}
 
 	public void submit() {
+		ArrayList<PayeeVO> payeeVOs = paymentListVO.getPayeeList();
+		try{
+			payeeVOs.addAll(displayPanel.getRewardPayees());
+		}catch(MoneyEmptyException e){
+			MainFrame.setMessage("付款金额不能为空", MessageType.alram, 2000);
+			return;
+		}
+		
 		receiptController.submitPaymentList(paymentListVO);
 	}
 	

@@ -42,7 +42,7 @@ public class DefaultText_Field extends GAPTextField implements TextInterface {
 		// TODO Auto-generated method stub
 		hadFocused = focused;
 		if (!focused) {
-			setForeground(Color.gray);
+			setForeground(Color.darkGray);
 			setText(text);
 		}
 	}

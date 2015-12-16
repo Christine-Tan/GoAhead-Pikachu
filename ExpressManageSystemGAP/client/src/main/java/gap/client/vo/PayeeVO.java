@@ -3,6 +3,7 @@ package gap.client.vo;
 import gap.common.po.PayeePO;
 import gap.common.util.PaymentType;
 
+import java.nio.channels.ScatteringByteChannel;
 import java.util.Calendar;
 
 public class PayeeVO {
@@ -84,6 +85,10 @@ public class PayeeVO {
 	public String getAccountName() {
 		return accountName;
 	}
+	
+	public void setAccountName(String accountName){
+		this.accountName = accountName;
+	}
 
 	public boolean equals(Object o) {
 		PayeeVO other = null;
@@ -99,6 +104,10 @@ public class PayeeVO {
 			return false;
 		}
 
+	}
+	
+	public String toString(){
+		return userName;
 	}
 
 }

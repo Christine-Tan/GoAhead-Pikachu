@@ -11,6 +11,7 @@ import gap.common.po.TransFarePO;
 import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -70,12 +71,19 @@ public class PaymentList {
 		payeeList = factory.getPayeeList(userList, transFareList, rentList);
 		double sum = computeTotal(payeeList);
 
-		listVO = new PaymentListVO(LocalInfo.getUserID(), LocalInfo.getName(),
+		listVO = new PaymentListVO(getPaymentID(), LocalInfo.getName(),
 				sum, today);
 		listVO.setPayeeList(payeeList);
 
 		return listVO;
 
+	}
+	
+	//根据当前时间生成付款单ID
+	private String getPaymentID(){
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat format = new SimpleDateFormat("yyMMddHHmmss");
+		return format.format(calendar.getTime());
 	}
 
 	private double computeTotal(ArrayList<PayeeVO> list) {

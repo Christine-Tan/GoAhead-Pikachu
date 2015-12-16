@@ -30,15 +30,15 @@ import gap.common.util.PaymentType;
  *
  */
 public class PayeeClassPanel extends PanelWithGrid{
-	JLabel nameLabel;
-	PaymentMainPanel mainPanel;
-	PaymentDisplayPanel displayPanel;
+	protected JLabel nameLabel;
+	protected PaymentMainPanel mainPanel;
+	protected PaymentDisplayPanel displayPanel;
 	
-	ArrayList<PayeeItem> items;
-	HashMap<PaymentType	, String> nameMap;
+	protected ArrayList<PayeeItem> items;
+	//protected HashMap<PaymentType	, String> nameMap;
 
-	ArrayList<AccountVO> accountVOs;
-	ArrayList<PayeeVO> payees;
+	protected ArrayList<AccountVO> accountVOs;
+	protected ArrayList<PayeeVO> payees;
 	
 	
 	
@@ -49,6 +49,7 @@ public class PayeeClassPanel extends PanelWithGrid{
 		
 		this.mainPanel = mainPanel;
 		this.displayPanel = displayPanel;
+		this.accountVOs = accountVOs;
 		this.payees = payees;
 		
 		setBackground(Color.white);
@@ -60,9 +61,12 @@ public class PayeeClassPanel extends PanelWithGrid{
 		nameLabel.setBackground(Color.white);
 		
 		items = new ArrayList<>();
-		for(PayeeVO payeeVO:payees){
-			PayeeItem anItem = new PayeeItem(payeeVO, accountVOs);
-			items.add(anItem);
+		
+		if(payees!=null){
+			for(PayeeVO payeeVO:payees){
+				PayeeItem anItem = new PayeeItem(payeeVO, accountVOs);
+				items.add(anItem);
+			}
 		}
 		
 		int itemNum = items.size();

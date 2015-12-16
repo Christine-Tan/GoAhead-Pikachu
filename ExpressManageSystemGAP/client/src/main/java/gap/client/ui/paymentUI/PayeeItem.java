@@ -3,6 +3,8 @@ package gap.client.ui.paymentUI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.xml.crypto.Data;
 
 import gap.client.bl.receipt.payee.Payee;
 import gap.client.ui.UITools.SwingConsole;
@@ -34,6 +37,8 @@ public class PayeeItem extends PanelWithGrid{
 	//备注，如12月工资，运单号
 	GAPLabel comment;
 	
+	JLabel empty;
+	
 	ArrayList<AccountVO> accountVOs;
 	
 	JComponent[] components;
@@ -54,6 +59,15 @@ public class PayeeItem extends PanelWithGrid{
 		recevier = new GAPLabel(vo.getUserName());
 		
 		accountCombox = new GAPComboBox<>();
+		accountCombox.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+				AccountVO accountVO = (AccountVO) e.getItem();
+				setPayeeAccount(accountVO.getName());
+			}
+		});
 		
 		for(AccountVO oneAccount:accountVOs){
 			accountCombox.addItem(oneAccount);
@@ -71,47 +85,52 @@ public class PayeeItem extends PanelWithGrid{
 		money = new GAPLabel(moneyString+"元");
 		comment = new GAPLabel(vo.getNote());
 		
-		components = new JComponent[6];
+		empty = new JLabel();
+		
+		components = new JComponent[7];
 		components[0] = payDate;
 		components[1] = recevier;
 		components[2] = accountCombox;
 		components[3] = item;
 		components[4] = money;
 		components[5] = comment;
+		components[6] = empty;
+		
+		gridBagConstraints.anchor = GridBagConstraints.CENTER;
+		gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
 		
 		for(int i=0;i<components.length;i++){
 			
 			if(components[i]==accountCombox){
-				continue;
+				components[i].setPreferredSize
+				(new Dimension(PaymentTableHeader.widthArgs[i], 25));
 			}
-			
-//			components[i].setBackground
-//				(new Color((int)(Math.random()*255), (int)(Math.random()*255),(int)(Math.random()*255)));
-//			components[i].setOpaque(true);
 			if(components[i] instanceof JLabel){
 				JLabel label = (JLabel) components[i];
 				label.setHorizontalAlignment(JLabel.CENTER);
+				components[i].setPreferredSize
+				(new Dimension(PaymentTableHeader.widthArgs[i], PaymentTableHeader.height));
 			}
 			
-			components[i].setPreferredSize
-				(new Dimension(PaymentTableHeader.widthArgs[i], PaymentTableHeader.height));
+			SwingConsole.addComponent
+			(gridBagLayout, gridBagConstraints, this,components[i], i, 0, 1, 1,1, 1);
+			
 		}
 		
-		gridBagConstraints.anchor = GridBagConstraints.CENTER;
 		
-		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, payDate, 0, 0, 1, 1, 0.1, 1);
-		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, recevier, 1, 0, 1, 1, 0.1, 1);
-		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, accountCombox, 2, 0, 1, 1, 1, 1);
-		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, item, 3, 0, 1, 1, 0.1, 1);
-		
-		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, money, 4, 0, 1, 1, 0.1, 1);
-		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, comment, 5, 0, 1, 1, 0.8, 1);
+	}
+	
+	private void setPayeeAccount(String accountName){
+		vo.setAccountName(accountName);
+	}
+	
+	public static String getDateString(){
+		if(dateString==null){
+			Calendar calendar = Calendar.getInstance();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			dateString = format.format(calendar.getTime());
+		}
+		return dateString;
 		
 	}
 	
