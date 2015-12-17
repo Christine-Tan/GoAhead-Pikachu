@@ -35,10 +35,10 @@ public class PaymentMainPanel extends MainPanelWithGird{
 		receiptController = AccountorReceiptController.getInstance();
 		
 		headPanel = new HeadPanel();
-		initial();
+		refresh();
 	}
 	
-	private void initial() {
+	public void refresh() {
 		// TODO Auto-generated method stub
 		accountVOs = receiptController.getAccoutList();
 		paymentListVO = receiptController.getPaymentList();

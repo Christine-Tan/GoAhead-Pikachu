@@ -94,6 +94,10 @@ public class ArcGraphPanel extends JPanel{
 	
 	}
 	
+	public void setVO(Cost_ProfitListVO vo){
+		this.vo = vo;
+	}
+	
 	public void startAnimation(){
 		isStop = true;
 		

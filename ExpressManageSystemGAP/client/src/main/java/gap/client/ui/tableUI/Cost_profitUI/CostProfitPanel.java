@@ -41,6 +41,13 @@ public class CostProfitPanel extends MainPanelWithGird{
 		SwingConsole.addComponent(gb, gcons, this, arcGraphPanel, 0, 1, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 2, 1, 1, 1, 0);
 		
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		vo = controller.getCost_ProfitList();
+		arcGraphPanel.setVO(vo);
 		arcGraphPanel.startAnimation();
 	}
 

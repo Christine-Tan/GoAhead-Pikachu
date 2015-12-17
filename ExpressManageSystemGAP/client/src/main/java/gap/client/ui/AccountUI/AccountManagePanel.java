@@ -49,10 +49,12 @@ public class AccountManagePanel extends MainPanelWithGird{
 	
 	public AccountManagePanel(MainFrame frame) {
 		super(frame);
-		initial();
+		refresh();
 	}
 	
-	public void initial(){
+	public void refresh(){
+		removeAll();
+		
 		accountBlController = AccountBlController.getInstance();
 		
 		Iterator<AccountVO> itr = accountBlController.getAccountManageList();
@@ -167,5 +169,6 @@ public class AccountManagePanel extends MainPanelWithGird{
 		}
 		
 	}
+
 
 }
