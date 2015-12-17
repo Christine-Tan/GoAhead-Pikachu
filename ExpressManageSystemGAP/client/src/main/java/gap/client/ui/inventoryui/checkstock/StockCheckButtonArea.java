@@ -46,7 +46,6 @@ public class StockCheckButtonArea extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, confirm, 1, 0, 1, 1, 1, 0);
 		gcons.insets = new Insets(0, 50, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, export, 2, 0, 1, 1, 1, 0);
-
 	}
 
 	// public void paintComponent(Graphics g) {

@@ -1,11 +1,13 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.util.MessageType;
 import gap.common.util.CargoInfo;
 
 import java.awt.Color;
@@ -27,7 +29,7 @@ import javax.swing.JTextField;
  */
 public class CargoInfoUI extends JPanel {
 	JLabel title, name, number, weight, volumn;
-	JTextField name_text, number_text, weight_text, volunm_text;
+	GAPTextField name_text, number_text, weight_text, volunm_text;
 	final int RIGHT_INSERT = 23;
 
 	public CargoInfoUI() {
@@ -43,11 +45,16 @@ public class CargoInfoUI extends JPanel {
 		number = new GAPLabel("内件数量（单位：个）:");
 		number_text = new GAPTextField(10);
 
+		number_text.setControl("\\D", 0, 2);
+
 		weight = new GAPLabel("货物重量（单位：kg）:");
 		weight_text = new GAPTextField(10);
 
+		weight_text.setControl("[^\\.&&\\D]", 0, 6);
+
 		volumn = new GAPLabel("货物体积（单位：m³）:");
 		volunm_text = new GAPTextField(10);
+		volunm_text.setControl("[^\\.&&\\D]", 0, 6);
 
 		// 布局
 
@@ -93,9 +100,43 @@ public class CargoInfoUI extends JPanel {
 
 	// 获得货物信息
 	public CargoInfo getCargo() {
-		return new CargoInfo(new Integer(number_text.getText()), new Double(
-				weight_text.getText()), new Double(volunm_text.getText()),
-				name_text.getText());
+		String name = name_text.getText();
+		int number;
+		double weight, volumn;
+		if (name.length() == 0) {
+			MainFrame.setMessage("请输入货物名字", MessageType.alram, 2000);
+			name_text.alarm();
+			return null;
+		}
+
+		try {
+			number = new Integer(number_text.getText());
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			MainFrame.setMessage("请输入正确的数字", MessageType.alram, 2000);
+			number_text.alarm();
+			return null;
+		}
+
+		try {
+			weight = new Double(weight_text.getText());
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			MainFrame.setMessage("请输入正确的数字", MessageType.alram, 2000);
+			weight_text.alarm();
+			return null;
+		}
+
+		try {
+			volumn = new Double(volunm_text.getText());
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+			MainFrame.setMessage("请输入正确的数字", MessageType.alram, 2000);
+			volunm_text.alarm();
+			return null;
+		}
+
+		return new CargoInfo(number, weight, volumn, name);
 	}
 
 	public void reSet() {

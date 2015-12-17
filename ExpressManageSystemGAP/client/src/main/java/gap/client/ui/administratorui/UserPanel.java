@@ -75,4 +75,10 @@ public class UserPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
+	}
 }

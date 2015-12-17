@@ -12,7 +12,9 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.util.MessageType;
 import gap.client.vo.DeliveryOrderVO;
+import gap.common.util.ResultMessage;
 
 /**
  * 快递员选择列表
@@ -46,7 +48,21 @@ public class DeliveryOrderPanel extends MainPanel {
 					@Override
 					public void run() {
 						// TODO 自动生成的方法存根
-						DeliveryOrderController.save(getDeliveryOrder());
+						DeliveryOrderVO delivery = getDeliveryOrder();
+						if (delivery.deliveryInfo.isEmpty()) {
+							MainFrame.setMessage("请选择快递员和订单",
+									MessageType.alram, 2000);
+						} else {
+							ResultMessage re = DeliveryOrderController
+									.save(delivery);
+							if (re.equals(ResultMessage.SUCCEED))
+								MainFrame.setMessage("提交派件单成功",
+										MessageType.succeed, 2000);
+							else
+								MainFrame.setMessage("提交派件单失败",
+										MessageType.alram, 2000);
+							refresh();
+						}
 					}
 				});
 			}
@@ -64,6 +80,13 @@ public class DeliveryOrderPanel extends MainPanel {
 				1, 1, 1);
 		SwingConsole
 				.addComponent(gb, gcons, this, buttonArea, 0, 1, 2, 1, 1, 0);
+	}
+
+	public void refresh() {
+		deliverySelect.refresh();
+		mainContentPanel.refresh();
+		mainFrame.validate();
+		
 	}
 
 	DeliveryOrderVO getDeliveryOrder() {

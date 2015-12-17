@@ -90,30 +90,21 @@ public class NetInitial {
 		serviceMap.put(ServiceName.LOG_DATA_SERVICE, logdataservice);
 		serviceMap.put(ServiceName.CAR_DATA_SERVICE, cardataservice);
 		serviceMap.put(ServiceName.DRIVER_DATA_SERVICE, driverdataservice);
-		serviceMap.put(ServiceName.ARRIVEDORDER_DATA_SERVICE,
-				arrivedOrderdataservice);
-		serviceMap.put(ServiceName.EXPRESSORDER_DATA_SERVICE,
-				expressorderdataservice);
-		serviceMap.put(ServiceName.DELIVERYPORDER_DATA_SERVICE,
-				deliveryorderdataservice);
-		serviceMap
-				.put(ServiceName.LOADORDER_DATA_SERVICE, loadorderdataservice);
-		serviceMap
-				.put(ServiceName.BILLORDER_DATA_SERVICE, billorderdataservice);
+		serviceMap.put(ServiceName.ARRIVEDORDER_DATA_SERVICE, arrivedOrderdataservice);
+		serviceMap.put(ServiceName.EXPRESSORDER_DATA_SERVICE, expressorderdataservice);
+		serviceMap.put(ServiceName.DELIVERYPORDER_DATA_SERVICE, deliveryorderdataservice);
+		serviceMap.put(ServiceName.LOADORDER_DATA_SERVICE, loadorderdataservice);
+		serviceMap.put(ServiceName.BILLORDER_DATA_SERVICE, billorderdataservice);
 		serviceMap.put(ServiceName.PRICE_DATA_SERVICE, pricedataservice);
 		serviceMap.put(ServiceName.RENT_DATA_SERVICE, rentdataservice);
 		serviceMap.put(ServiceName.SALARY_DATA_SERVICE, salarydataservice);
 		serviceMap.put(ServiceName.CITY_DATA_SERVICE, citydataservice);
-		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE,
-				institutiondataservice);
+		serviceMap.put(ServiceName.INSTITUTION_DATA_SERVICE, institutiondataservice);
 		serviceMap.put(ServiceName.PAYMENT_DATA_SERVICE, paymentdataService);
-		serviceMap
-				.put(ServiceName.INVENTORY_DATA_SERVICE, inventorydataservice);
-		serviceMap.put(ServiceName.STOCKINORDER_DATA_SERVICE,
-				stockinorderdataservice);
-		serviceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE,
-				stockoutorderdataservice);
-		serviceMap.put(ServiceName.TRANSFARE_DATA_SERVICE,NetModule.transFareDataService);
+		serviceMap.put(ServiceName.INVENTORY_DATA_SERVICE, inventorydataservice);
+		serviceMap.put(ServiceName.STOCKINORDER_DATA_SERVICE, stockinorderdataservice);
+		serviceMap.put(ServiceName.STOCKOUTORDER_DATA_SERVICE, stockoutorderdataservice);
+		serviceMap.put(ServiceName.TRANSFARE_DATA_SERVICE, NetModule.transFareDataService);
 
 	}
 
@@ -123,8 +114,7 @@ public class NetInitial {
 			LocateRegistry.createRegistry(RMIConfig.RMI_port);
 
 			for (Map.Entry<String, Object> entry : serviceMap.entrySet()) {
-				Naming.bind(RMIConfig.url + entry.getKey(),
-						(UnicastRemoteObject) entry.getValue());
+				Naming.bind(RMIConfig.url + entry.getKey(), (UnicastRemoteObject) entry.getValue());
 			}
 
 			Naming.bind(RMIConfig.url + ServiceName.CONTACTOR, contactor);

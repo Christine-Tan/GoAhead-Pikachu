@@ -56,7 +56,7 @@ public class CheckStockPanel extends MainPanel {
 				setButtonNomal(choose.plane);
 				
 				reLayout();
-//				frame.paint(self);
+				MainFrame.paint(self);
 			}
 
 		});
@@ -74,7 +74,7 @@ public class CheckStockPanel extends MainPanel {
 				setButtonNomal(choose.plane);
 				reLayout();
 				
-//				frame.paint(self);
+				MainFrame.paint(self);
 			}
 		});
 
@@ -89,7 +89,7 @@ public class CheckStockPanel extends MainPanel {
 				setButtonNomal(choose.train);
 				setButtonNomal(choose.car);
 				reLayout();
-//				frame.paint(self);
+				MainFrame.paint(self);
 			}
 		});
 		
@@ -104,7 +104,7 @@ public class CheckStockPanel extends MainPanel {
 				setButtonNomal(choose.train);
 				setButtonNomal(choose.plane);
 				reLayout();
-//				frame.paint(self);
+				MainFrame.paint(self);
 			}
 		});
 

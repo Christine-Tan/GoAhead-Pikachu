@@ -1,6 +1,8 @@
 package gap.client.ui.bussinessui.carmanage;
 
 import gap.client.blcontroller.CarManageController;
+import gap.client.exception.EmptyInputException;
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -8,6 +10,7 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.vo.CarVO;
 
 import java.awt.Color;
@@ -151,15 +154,24 @@ public class CarListItemPanel extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					// TODO 自动生成的方法存根
 					if (edited) {
-						closeEdit();
-						if (original) {
-							System.out.println("add");
-							CarManageController.add(getCarVO());
-							original = false;
-						} else {
-							System.out.println("modify");
-							CarManageController.modify(getCarVO());
+						try {
+							closeEdit();
+							if (original) {
+								System.out.println("add");
+								CarManageController.add(getCarVO());
+								original = false;
+							} else {
+								System.out.println("modify");
+								CarManageController.modify(getCarVO());
+							}
+						} catch (EmptyInputException e1) {
+							// TODO 自动生成的 catch 块
+							e1.printStackTrace();
+							MainFrame.setMessage("请填写正确信息", MessageType.alram,
+									2000);
+							openEdit();
 						}
+
 					} else {
 						openEdit();
 					}
@@ -200,7 +212,12 @@ public class CarListItemPanel extends JPanel {
 			car_id.setText(car.getCar_id());
 			car_num.setText(car.getCar_num());
 			serve_time.setText("" + car.getServe_time());
-			closeEdit();
+			try {
+				closeEdit();
+			} catch (EmptyInputException e) {
+				// TODO 自动生成的 catch 块
+				e.printStackTrace();
+			}
 		}
 
 		public void setId(int id) {
@@ -230,19 +247,24 @@ public class CarListItemPanel extends JPanel {
 		}
 
 		// 关闭编辑
-		void closeEdit() {
-
+		void closeEdit() throws EmptyInputException {
 			id.closeEdit();
 			car_id.closeEdit();
 			car_num.closeEdit();
 			serve_time.closeEdit();
+			if ((id.getText().length() == 0)
+					|| (car_id.getText().length() == 0)
+					|| (serve_time.getText().length() == 0))
+				throw new EmptyInputException();
 			edited = false;
+			edit.setText("E");
 			frame.validate();
 		}
 
 		// 启用编辑
 		void openEdit() {
 			edited = true;
+			edit.setText("√");
 			id.closeEdit();
 			car_id.openEdit();
 			car_num.openEdit();

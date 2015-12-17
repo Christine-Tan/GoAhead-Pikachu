@@ -34,13 +34,6 @@ public class Inventory implements InventoryService {
 		operations = new ArrayList<Operation>();
 	}
 
-	// @Override
-	// public List<GoodsVO> getOneSector(String ins_id,String sector_id) {
-	// List<GoodsPO> poList = inventoryData.getOneSector(sector_id, ins_id);
-	// List<GoodsVO> voList = GoodsVO.toVOList(poList);
-	// return voList;
-	// }
-
 	@Override
 	public int getTotalNum(String ins_id){
 		int num = 0;
@@ -48,29 +41,21 @@ public class Inventory implements InventoryService {
 		list = inventoryData.getOneSector(ins_id+"0", ins_id);
 		if(list!=null){
 			num += list.size();
-		}else{
-			return num;
 		}
 		
 		list = inventoryData.getOneSector(ins_id+"1", ins_id);
 		if(list!=null){
 			num += list.size();
-		}else{
-			return num;
 		}
 		
 		list = inventoryData.getOneSector(ins_id+"2", ins_id);
 		if(list!=null){
 			num += list.size();
-		}else{
-			return num;
 		}
 		
 		list = inventoryData.getOneSector(ins_id+"3", ins_id);
 		if(list!=null){
 			num += list.size();
-		}else{
-			return num;
 		}
 		
 		
@@ -105,15 +90,17 @@ public class Inventory implements InventoryService {
 	@Override
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
-//		System.out.println(alarmValue);
-		return inventoryData.setAlarm(alarmValue, ins_id);
+		if(alarmValue<70||alarmValue>100){
+			return ResultMessage.FAILED;
+		}else{
+			return inventoryData.setAlarm(alarmValue, ins_id);
+		}
+		
 	}
 
 	@Override
 	public double getAlarm(String ins_id) {
 		// TODO Auto-generated method stub
-		// System.out.println("Inventory");
-		System.out.println(inventoryData.getAlarm(ins_id));
 		return inventoryData.getAlarm(ins_id);
 	}
 
@@ -133,6 +120,7 @@ public class Inventory implements InventoryService {
 	@Override
 	public void initialdelete(String id) {
 		// TODO Auto-generated method stub
+		
 		operations.add(new DeleteOperation(id));
 	}
 
@@ -144,6 +132,7 @@ public class Inventory implements InventoryService {
 
 	@Override
 	public ResultMessage initialflush() {
+		System.out.println(operations.size());
 		for (Operation ope : operations) {
 			ResultMessage re = ope.excute();
 			if (!re.equals(ResultMessage.SUCCEED)) {

@@ -16,10 +16,10 @@ public class Tester {
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0010001";
 		MainFrame mainFrame = new MainFrame();
-		
+
 		NetModule.initial(mainFrame);
 		NetModule.connect();
-		
+
 		PaymentMainPanel panel = new PaymentMainPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
 //		mainFrame.setMessage("账户名字重复", MessageType.alram, 3000);

@@ -11,7 +11,12 @@ public class StockinOrderController {
 	
 
 	public static ResultMessage save(StockinOrderVO vo) {
-		return stockinOrder.save(vo);
+		if(vo.getGoods()==null||vo.getGoods().size()==0){
+			return ResultMessage.FAILED;
+		}else{
+			return stockinOrder.save(vo);
+		}
+		
 
 	}
 

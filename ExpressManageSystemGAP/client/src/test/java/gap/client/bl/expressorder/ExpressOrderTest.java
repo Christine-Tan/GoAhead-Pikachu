@@ -39,7 +39,7 @@ public class ExpressOrderTest {
 		CargoInfo cargo = new CargoInfo(2, 2.5, 3.5, "测试");
 		ExpressOrderVO vo = new ExpressOrderVO(sender, receiver,
 				ExpressType.EXPRESS, 20.5, cargo, false, "0000000003",
-				"0010001", null);
+				"0010001", null,null);
 	}
 
 	@Test

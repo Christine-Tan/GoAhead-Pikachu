@@ -36,19 +36,19 @@ public class GAPButton extends JButton {
 		initial();
 	}
 
-	public void setDefautBackGround(Color color) {
+	public void setDefautBackGroundColor(Color color) {
 		defautBackGround = color;
 	}
 
-	public void setDefautFont(Color color) {
+	public void setDefautFontColor(Color color) {
 		defautFont = color;
 	}
 
-	public void setEnterFont(Color color) {
+	public void setEnterFontColor(Color color) {
 		enterFont = color;
 	}
 
-	public void setPressFont(Color color) {
+	public void setPressFontColor(Color color) {
 		pressFont = color;
 	}
 

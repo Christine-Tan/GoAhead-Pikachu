@@ -61,7 +61,7 @@ public class ListItemPanel extends JPanel {
 		items = new ArrayList<ItemPanel>();
 
 		List<GoodsVO> VOs = new ArrayList<GoodsVO>();
-		VOs = InventoryController.getOneSectorExisted(sector_id, LocalInfo.getIns_ID());
+		VOs = InventoryController.getOneSector(sector_id, LocalInfo.getIns_ID());
 		if(VOs.size()!=0){
 			for (int i = 0;i<VOs.size();i++) {
 				addItem(VOs.get(i));
@@ -115,7 +115,7 @@ public class ListItemPanel extends JPanel {
 	 * 重新布局
 	 */
 	private void reLayout() {
-		this.removeAll();
+		removeAll();
 		for (int i = 0; i < items.size(); i++) {
 			items.get(i).id.setText((i+1)+"");;
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
@@ -123,7 +123,7 @@ public class ListItemPanel extends JPanel {
 		}
 		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
 				1, 1, 1, 0);
-		this.validate();
+		frame.validate();
 	}
 
 	// 每一项

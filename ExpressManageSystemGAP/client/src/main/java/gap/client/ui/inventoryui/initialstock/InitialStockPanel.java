@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.initialstock;
 
+import gap.client.blcontroller.InventoryController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.ColorAndFonts;
@@ -8,6 +9,8 @@ import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.ChooseButton;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
+import gap.common.util.ResultMessage;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -91,12 +94,25 @@ public class InitialStockPanel extends MainPanel {
 				reLayout();
 			}
 		});
+		
+		confirm.submit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ResultMessage re = InventoryController.InitialFlush();
+				if(re.equals(ResultMessage.SUCCEED)){
+					MainFrame.setMessage("初始化成功", MessageType.succeed, 2000);
+				}
+			}
+		});
 	}
 
 	public void reLayout() {
 		removeAll();
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.white);
 		SwingConsole.addComponent(gb, gcons, this, choose, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, newList, 0, 2, 1, 1, 1, 0);

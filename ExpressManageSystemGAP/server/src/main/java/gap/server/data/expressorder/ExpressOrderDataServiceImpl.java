@@ -107,8 +107,6 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 					+ order_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sele);
 			if (re.next()) {
-				System.out
-						.println("Expressorder Exist!!\nOrder_id:" + order_id);
 				return ResultMessage.EXISTED;
 			}
 
@@ -138,6 +136,24 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
+	}
+
+	@Override
+	public boolean isExisted(String order_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		String sele = "SELECT * FROM expressorder WHERE order_id='" + order_id
+				+ "';";
+		try {
+			ResultSet re = NetModule.excutor.excuteQuery(sele);
+			if (re.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 	/**
@@ -496,8 +512,8 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage setSubmit(String order_id) throws RemoteException {
 		// TODO 自动生成的方法存根
 		String sql = "UPDATE " + tableName + " SET " + passed_f
-				+ " = 'submitnotapprove' WHERE " + order_id_f + " = '" + order_id
-				+ "';";
+				+ " = 'submitnotapprove' WHERE " + order_id_f + " = '"
+				+ order_id + "';";
 		try {
 			NetModule.excutor.excute(sql);
 			return ResultMessage.SUCCEED;

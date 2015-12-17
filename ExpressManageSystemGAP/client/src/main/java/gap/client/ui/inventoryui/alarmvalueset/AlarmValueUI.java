@@ -22,8 +22,6 @@ import javax.swing.JTextField;
 public class AlarmValueUI extends JPanel {
 	public GAPTextField alarmValue;
 
-	// public JScrollPane scroller;
-
 	public AlarmValueUI() {
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 120));
@@ -31,19 +29,9 @@ public class AlarmValueUI extends JPanel {
 		alarmValue = new GAPTextField(10);
 		alarmValue.setBorder(ComponentStyle.text_border);
 		alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
-//		alarmValue.setSize(300, 100);
 		alarmValue.setHorizontalAlignment(JTextField.CENTER);
 		alarmValue.setForeground(ComponentStyle.gray);
 		
-		alarmValue.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
-			}
-		});
-//		System.out.println(LocalInfo.getIns_ID());
 
 		double value = InventoryController.getAlarmValue(LocalInfo.getIns_ID());
 		alarmValue.setText(value + "%");
@@ -58,8 +46,7 @@ public class AlarmValueUI extends JPanel {
 
 	public double getAlarmValue() {
 		String newValue = alarmValue.getText();
-		newValue = newValue.split("%")[0];
-//		System.out.println();
+		newValue = newValue.replace("%", "");
 		return Double.parseDouble(newValue);
 	}
 }

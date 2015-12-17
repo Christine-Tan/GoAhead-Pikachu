@@ -27,11 +27,12 @@ public class Approval implements ApprovalService {
 		orders.addAll(controller.getUnpassedLoadOrder());
 		orders.addAll(controller.getUnpassedStockinOrder());
 		orders.addAll(controller.getUnpassedStockoutOrder());
+		orders.addAll(controller.getUnpassedPaymentListOrder());
 		return orders;
 	}
 
 	@Override
-	public ResultMessage approve() {
+	public ResultMessage approve(List<Object> orders) {
 		// TODO Auto-generated method stub
 		controller.setPassed(orders);
 		return null;

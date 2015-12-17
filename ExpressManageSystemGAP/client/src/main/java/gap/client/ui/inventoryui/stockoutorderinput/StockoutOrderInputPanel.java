@@ -9,9 +9,11 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.inventoryui.initialstock.ListItemPanel;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.util.Transport;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockoutOrderVO;
+import gap.common.util.ResultMessage;
 import gap.common.util.SectorType;
 
 import java.awt.GridBagConstraints;
@@ -43,7 +45,7 @@ public class StockoutOrderInputPanel extends MainPanel {
 		this.frame = frame;
 		voList = new ArrayList<GoodsVO>();
 		
-		voList = InventoryController.getOneSectorExisted(LocalInfo.ins_id+"1", LocalInfo.ins_id);
+		initialList(LocalInfo.ins_id+"1");
 		
 		choose = new ChoosePanel();
 		stockoutInfo = new StockoutInfoPanel();
@@ -77,7 +79,7 @@ public class StockoutOrderInputPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				voList = InventoryController.getOneSectorExisted(LocalInfo.ins_id+"1", LocalInfo.ins_id);
+				initialList(LocalInfo.ins_id+"1");
 				list = new ListPanel(voList);
 				choose.plane.toNomal();
 				choose.train.toNomal();
@@ -90,7 +92,7 @@ public class StockoutOrderInputPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				voList = InventoryController.getOneSectorExisted(LocalInfo.ins_id+"2", LocalInfo.ins_id);
+				initialList(LocalInfo.ins_id+"2");
 				list = new ListPanel(voList);
 				choose.car.toNomal();
 				choose.plane.toNomal();
@@ -103,7 +105,7 @@ public class StockoutOrderInputPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				voList = InventoryController.getOneSectorExisted(LocalInfo.ins_id+"3", LocalInfo.ins_id);
+				initialList(LocalInfo.ins_id+"3");
 				list = new ListPanel(voList);
 				choose.car.toNomal();
 				choose.train.toNomal();
@@ -117,9 +119,21 @@ public class StockoutOrderInputPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				StockoutOrderVO vo = getStockoutOrderVO();
-				StockoutOrderController.save(vo);
+				ResultMessage re = StockoutOrderController.save(vo);
+				if(re.equals(ResultMessage.SUCCEED)){
+					MainFrame.setMessage("出库单生成成功", MessageType.succeed, 2000);
+				}else{
+					MainFrame.setMessage("出库单为空", MessageType.alram, 2000);
+				}
 			}
 		});
+	}
+	
+	public void initialList(String sector_id){
+		voList = InventoryController.getOneSectorExisted(sector_id, LocalInfo.ins_id);
+		if(voList.size()==0){
+			MainFrame.setMessage("该分区快递为空", MessageType.normal, 2000);
+		}
 	}
 	
 	public void reLayout(){

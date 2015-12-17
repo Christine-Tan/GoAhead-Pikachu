@@ -1,6 +1,7 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
 import gap.client.blcontroller.ExpressorderController;
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -8,6 +9,7 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.util.MessageType;
 import gap.common.po.AllAddressPO;
 import gap.common.util.Address;
 import gap.common.util.PeopleInfo;
@@ -154,8 +156,28 @@ public class PeopleInfoUI extends JPanel {
 	}
 
 	public PeopleInfo getInfo() {
-		return new PeopleInfo(name_text.getText(), getAddress(),
-				depart_text.getText(), phone_text.getText());
+		String name = name_text.getText(), depart = depart_text.getText(), phone = phone_text
+				.getText();
+		if (name.length() == 0) {
+			MainFrame.setMessage("请输入姓名", MessageType.alram, 2000);
+			name_text.alarm();
+			return null;
+		}
+
+		if (phone.length() == 0) {
+			MainFrame.setMessage("请输入电话", MessageType.alram, 2000);
+			phone_text.alarm();
+			return null;
+		}
+
+		if (depart.length() < 10) {
+			MainFrame.setMessage("请输入正确单位信息(不得小于10个字符)", MessageType.alram,
+					2000);
+			depart_text.alarm();
+			return null;
+		}
+
+		return new PeopleInfo(name, getAddress(), depart, phone);
 	}
 
 	public Address getAddress() {

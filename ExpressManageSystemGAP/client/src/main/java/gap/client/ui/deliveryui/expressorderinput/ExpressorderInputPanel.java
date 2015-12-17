@@ -42,8 +42,10 @@ public class ExpressorderInputPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				ExpressOrderVO vo = getExpressOrderVO();
-				vo = ExpressorderController.createOrder(vo);
-				express.setPrice(vo.price);
+				if (vo.cargoInfo != null) {
+					vo = ExpressorderController.createOrder(vo);
+					express.setPrice(vo.price);
+				}
 			}
 		});
 		buttonArea.submit.addActionListener(new ActionListener() {
@@ -57,14 +59,18 @@ public class ExpressorderInputPanel extends MainPanel {
 					public void run() {
 						// TODO 自动生成的方法存根
 						ExpressOrderVO vo = getExpressOrderVO();
-						vo = ExpressorderController.createOrder(vo);
-						ResultMessage re = ExpressorderController.save(vo);
-						if (re.equals(ResultMessage.SUCCEED)) {
-							MainFrame.setMessage("订单添加成功", MessageType.succeed,
-									2000);
-							reSet();
+						if (vo != null) {
+							vo = ExpressorderController.createOrder(vo);
+							ResultMessage re = ExpressorderController.save(vo);
+							if (re.equals(ResultMessage.SUCCEED)) {
+								MainFrame.setMessage("订单添加成功",
+										MessageType.succeed, 2000);
+								refresh();
+							} else {
+								MainFrame.setMessage("订单提交失败",
+										MessageType.alram, 2000);
+							}
 						}
-						// TODO 自动生成的方法存根
 					}
 				});
 
@@ -101,14 +107,19 @@ public class ExpressorderInputPanel extends MainPanel {
 	 */
 	public ExpressOrderVO getExpressOrderVO() {
 		ExpressOrderVO vo = new ExpressOrderVO();
-		vo.cargoInfo = cargo.getCargo();
-		vo.sender_info = sender.getInfo();
-		vo.receiver_info = receiver.getInfo();
+		if ((vo.sender_info = sender.getInfo()) == null)
+			return null;
+		if ((vo.receiver_info = receiver.getInfo()) == null)
+			return null;
+		if ((vo.cargoInfo = cargo.getCargo()) == null)
+			return null;
 		vo.expressType = express.getType();
 		return vo;
 	}
 
-	void reSet() {
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
 		cargo.reSet();
 		sender.reSet();
 		receiver.reSet();

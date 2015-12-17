@@ -58,13 +58,12 @@ public class NetModule {
 	protected static StockinOrderDataService stockinorderdataservice;
 	protected static StockoutOrderDataService stockoutorderdataservice;
 	protected static TransFareDataService transFareDataService;
-	
-	
+
 	private static Contactor contactor;
 	private static boolean dialogShowed = false;
 
 	public static GAPDialog dialog;
-	
+
 	public static boolean isFirstConnect = true;
 
 	/**
@@ -125,9 +124,9 @@ public class NetModule {
 		while (true) {
 			try {
 				if (!reconnect)
-				// 检测通讯是否成功的类
-				contactor = (Contactor) Naming.lookup(RMIConfig.url
-						+ ServiceName.CONTACTOR);
+					// 检测通讯是否成功的类
+					contactor = (Contactor) Naming.lookup(RMIConfig.url
+							+ ServiceName.CONTACTOR);
 
 				accountDataService = (AccountDataService) Naming
 						.lookup(RMIConfig.url
@@ -178,13 +177,14 @@ public class NetModule {
 				stockoutorderdataservice = (StockoutOrderDataService) Naming
 						.lookup(RMIConfig.url
 								+ ServiceName.STOCKOUTORDER_DATA_SERVICE);
-				transFareDataService = (TransFareDataService)Naming
-						.lookup(RMIConfig.url+ServiceName.TRANSFARE_DATA_SERVICE);
+				transFareDataService = (TransFareDataService) Naming
+						.lookup(RMIConfig.url
+								+ ServiceName.TRANSFARE_DATA_SERVICE);
 
-				if(isFirstConnect){
+				if (isFirstConnect && MainFrame.messagePanel != null) {
 					MainFrame.setMessage("登陆成功", MessageType.succeed, 2000);
 					isFirstConnect = false;
-				}else{
+				} else if (MainFrame.messagePanel != null) {
 					MainFrame.setMessage("连接成功", MessageType.succeed, 2000);
 				}
 				setSucceedConnect();
@@ -227,9 +227,9 @@ public class NetModule {
 			}
 		}
 	}
-	
-	private static void showDialog(){
-		if(!dialog.isVisible()){
+
+	private static void showDialog() {
+		if (!dialog.isVisible()) {
 			dialogShowed = true;
 			setConnecting();
 			dialog.clear();
@@ -260,9 +260,10 @@ public class NetModule {
 			dialog.reconnect.setVisible(false);
 			dialog.confirm.setVisible(true);
 		}
-		
-		dialog.setVisible(false);
-		dialogShowed = false;
+		if (dialog != null) {
+			dialog.setVisible(false);
+			dialogShowed = false;
+		}
 	}
 
 	private static void showMessage(String message) {

@@ -94,4 +94,12 @@ public class CarManagePanel extends MainPanel {
 
 	}
 
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
+		listItem.refresh("");
+		queryPanel.id.setText("");
+		mainFrame.validate();
+	}
+
 }

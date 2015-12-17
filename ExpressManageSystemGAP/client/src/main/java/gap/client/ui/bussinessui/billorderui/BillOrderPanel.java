@@ -29,7 +29,6 @@ public class BillOrderPanel extends MainPanel {
 		listItem = new BillListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交订单");
-
 		buttonArea.submit.addActionListener(new ActionListener() {
 
 			@Override
@@ -59,6 +58,13 @@ public class BillOrderPanel extends MainPanel {
 		SwingConsole
 				.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
 
+	}
+
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
+		listItem.reFresh();
+		mainFrame.validate();
 	}
 
 }

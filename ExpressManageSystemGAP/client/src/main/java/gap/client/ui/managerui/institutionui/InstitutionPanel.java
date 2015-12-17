@@ -106,4 +106,10 @@ public class InstitutionPanel extends MainPanel {
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
+	}
 }

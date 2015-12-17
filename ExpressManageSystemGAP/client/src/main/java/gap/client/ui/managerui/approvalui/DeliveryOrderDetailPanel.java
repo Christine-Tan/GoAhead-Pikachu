@@ -1,8 +1,12 @@
 package gap.client.ui.managerui.approvalui;
 
-public class DeliveryOrderDetailPanel {
+import javax.swing.JPanel;
 
-	public DeliveryOrderDetailPanel() {
+import gap.common.po.DeliveryOrderPO;
+
+public class DeliveryOrderDetailPanel extends JPanel{
+
+	public DeliveryOrderDetailPanel(DeliveryOrderPO deliveryOrder) {
 		// TODO Auto-generated constructor stub
 	}
 

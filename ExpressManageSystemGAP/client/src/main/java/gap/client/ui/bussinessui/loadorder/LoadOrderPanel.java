@@ -70,8 +70,7 @@ public class LoadOrderPanel extends MainPanel {
 			@Override
 			public void run() {
 				// TODO 自动生成的方法存根
-				carAndDriver.flush();
-				orderPanel.refresh();
+				refresh();
 			}
 		});
 
@@ -85,9 +84,7 @@ public class LoadOrderPanel extends MainPanel {
 					@Override
 					public void run() {
 						// TODO 自动生成的方法存根
-						carAndDriver.flush();
-						orderPanel.refresh();
-						mainFrame.validate();
+						refresh();
 					}
 				});
 			}
@@ -126,6 +123,14 @@ public class LoadOrderPanel extends MainPanel {
 		loadOrder.comment = desAddressPanel.getComment();
 		loadOrder.targetins_id = desAddressPanel.getTargetIns_id();
 		return loadOrder;
+	}
+
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
+		carAndDriver.refresh();
+		orderPanel.refresh();
+		mainFrame.validate();
 	}
 
 }

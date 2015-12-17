@@ -7,7 +7,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class MainPanel extends JPanel {
+public abstract class MainPanel extends JPanel {
 
 	protected MainFrame mainFrame;
 
@@ -24,5 +24,7 @@ public class MainPanel extends JPanel {
 			jspanel = new GAPJScrollPane(this);
 		return jspanel;
 	}
+
+	public abstract void refresh();
 
 }

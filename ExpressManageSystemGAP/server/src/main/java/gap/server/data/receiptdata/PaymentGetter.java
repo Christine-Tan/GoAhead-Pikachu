@@ -28,7 +28,7 @@ public class PaymentGetter {
 			System.out.println("开始时间比结束时间靠前");
 			return null;
 		}
-
+		builder = new SQLBuilder();
 		// 获得这个时间段内已经通过的付款单
 		builder.Select("*").From(PaymentListTable.tableName)
 				.Where(PaymentListTable.passed_col).EQUALS(1)
@@ -39,6 +39,7 @@ public class PaymentGetter {
 
 	public ArrayList<PaymentListPO> getNotPassedPayment() {
 		// 获得所有未审批通过的单据
+		builder = new SQLBuilder();
 		builder.Select("*").From(PaymentListTable.tableName)
 				.Where(PaymentListTable.passed_col).EQUALS(0);
 
@@ -121,8 +122,12 @@ public class PaymentGetter {
 					builder.Select("username").From("user").Where("id")
 							.EQUALS(userID);
 					ResultSet nameSet = builder.excuteQuery();
-					nameSet.next();
-					userName = nameSet.getString("username");
+					
+					if(nameSet.next()){
+						userName = nameSet.getString("username");
+					}else{
+						userName = "未知";
+					}
 				}
 
 				payee = new PayeePO(type, userID, userName, null,

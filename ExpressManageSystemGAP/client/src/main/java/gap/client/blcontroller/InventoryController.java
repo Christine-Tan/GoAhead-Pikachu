@@ -29,6 +29,11 @@ public class InventoryController {
 	public static List<GoodsVO> getOneSectorExisted(String sector_id,String ins_id){
 		return inventory.getOneSectorExisted(ins_id, sector_id);
 	}
+	
+	public static List<GoodsVO> getOneSector(String sector_id,String ins_id){
+		return inventory.getOneSector(ins_id, sector_id);
+	}
+	
 	public static ResultMessage Stockin(GoodsVO vo){
 		return inventory.stockIn(vo);
 	}

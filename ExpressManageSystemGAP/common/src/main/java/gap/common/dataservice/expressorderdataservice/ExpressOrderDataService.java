@@ -21,6 +21,14 @@ public interface ExpressOrderDataService extends Remote {
 			throws RemoteException;
 
 	/**
+	 * 判断一个订单是否存在
+	 * @param order_id
+	 * @return
+	 * @throws RemoteException
+	 */
+	public boolean isExisted(String order_id) throws RemoteException;
+
+	/**
 	 * 获得未审批通过的订单
 	 * @return
 	 */

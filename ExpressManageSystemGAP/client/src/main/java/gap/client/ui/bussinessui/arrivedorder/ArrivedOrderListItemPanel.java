@@ -62,13 +62,13 @@ public class ArrivedOrderListItemPanel extends JPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		flush();
+		refresh();
 	}
 
 	/**
 	 * 刷新
 	 */
-	public void flush() {
+	public void refresh() {
 		removeAll();
 		items.clear();
 		List<LoadOrderVO> orders = LoadOrderController.getArrivingLoadOrder();
@@ -132,7 +132,6 @@ public class ArrivedOrderListItemPanel extends JPanel {
 			comment = new GAPTextField(loadOrder.comment, 20);
 
 			setStyle();
-
 			detailPanel = new DetailPanel(list);
 			detail = new GAPButton(">");
 			detail.setFont(ComponentStyle.defaultFont);
@@ -284,6 +283,7 @@ public class ArrivedOrderListItemPanel extends JPanel {
 			SwingConsole.addComponent(gb, gcons, this, arrived_state_la, 3, 0,
 					1, 1, 0, 0);
 			for (int i = 0; i < expressOrder.size(); i++) {
+//				System.out.println(expressOrder.get(i));
 				addItem(expressOrder.get(i), i + 1);
 			}
 

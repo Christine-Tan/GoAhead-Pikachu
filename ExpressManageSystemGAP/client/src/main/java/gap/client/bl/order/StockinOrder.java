@@ -30,9 +30,13 @@ public class StockinOrder implements StockinOrderService {
 	}
 
 	@Override
-	public ResultMessage save(StockinOrderVO order) {
+	public ResultMessage save(StockinOrderVO vo) {
 		// TODO Auto-generated method stub
-		return stockinData.add(order.toPO());
+		if(vo.getGoods()==null||vo.getGoods().size()==0){
+			return ResultMessage.FAILED;
+		}else{
+			return stockinData.add(vo.toPO());
+		}
 	}
 
 	@Override

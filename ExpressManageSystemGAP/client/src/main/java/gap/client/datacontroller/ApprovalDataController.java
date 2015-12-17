@@ -11,17 +11,19 @@ import static gap.client.datacontroller.NetModule.institutiondataservice;
 import static gap.client.datacontroller.NetModule.loadorderdataservice;
 import static gap.client.datacontroller.NetModule.stockinorderdataservice;
 import static gap.client.datacontroller.NetModule.stockoutorderdataservice;
+import static gap.client.datacontroller.NetModule.paymentdataService;
+import java.rmi.RemoteException;
+import java.util.List;
+
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.DeliveryOrderPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.po.LoadOrderPO;
+import gap.common.po.PaymentListPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
-
-import java.rmi.RemoteException;
-import java.util.List;
 
 public class ApprovalDataController {
 
@@ -98,7 +100,17 @@ public class ApprovalDataController {
 		}
 		return null;
 	}
-
+    
+	public List<PaymentListPO> getUnpassedPaymentListOrder(){
+		try {
+			return paymentdataService.getNotPassedPayment();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public ResultMessage setPassed(List<Object> orders) {
 		ResultMessage rm;
 		for (Object order : orders) {
@@ -156,6 +168,14 @@ public class ApprovalDataController {
 			} else if (order instanceof StockoutOrderPO) {
 				try {
 					rm = stockoutorderdataservice.setPassed(((StockoutOrderPO) order).getId(), "");
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if(order instanceof PaymentListPO){
+				try {
+					System.out.println("Payment!!!!!");
+					rm=paymentdataService.setPassed(((PaymentListPO)order).getPaymentID());
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

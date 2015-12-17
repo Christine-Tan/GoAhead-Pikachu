@@ -115,4 +115,10 @@ public class ExpressOrder implements ExpressOrderService {
 		return allAddress;
 	}
 
+	@Override
+	public boolean isExisted(String order_id) {
+		// TODO 自动生成的方法存根
+		return expressorderData.isExisted(order_id);
+	}
+
 }
