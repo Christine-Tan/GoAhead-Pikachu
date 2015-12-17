@@ -17,7 +17,7 @@ public class Tester {
 		LocalInfo.ins_id = "0010001";
 		MainFrame mainFrame = new MainFrame();
 		
-		//NetModule.initial(mainFrame);
+		NetModule.initial(mainFrame);
 		NetModule.connect();
 		
 		CostProfitPanel panel = new CostProfitPanel(mainFrame);

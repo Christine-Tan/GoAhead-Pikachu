@@ -55,6 +55,10 @@ public class PaymentTableHeader extends PanelWithGrid{
 		widthArgs[6] = emptyWidth;
 	}
 	
+	public void removeItem(){
+		remove(item);
+	}
+	
 	public PaymentTableHeader(){
 		
 		

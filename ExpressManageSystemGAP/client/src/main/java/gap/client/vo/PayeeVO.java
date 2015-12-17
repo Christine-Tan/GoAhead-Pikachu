@@ -36,7 +36,14 @@ public class PayeeVO {
 		this.userID = po.getUserID();
 		this.lastPaydate = po.getLastPaydate();
 		this.userName = po.getUserName();
+		
+		if(po.getAccountName()!=null){
+			accountName = po.getAccountName();
+		}
 
+		if(po.getNote()!=null){
+			note = po.getNote();
+		}
 	}
 
 	public PayeePO toPO() {
