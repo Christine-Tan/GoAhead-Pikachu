@@ -1,6 +1,7 @@
 package gap.client.ui.BaseComponents;
 
 import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 
 import java.awt.Color;
@@ -19,6 +20,7 @@ public class NavigateButton extends GAPButton {
 			NavigateBar bar, String name) {
 		super();
 		setText(name);
+		setFont(ComponentStyle.plainFont);
 		this.mainFrame = mainFrame;
 		this.mainPanel = mainPanel;
 		this.bar = bar;
@@ -65,11 +67,11 @@ public class NavigateButton extends GAPButton {
 	void deSelect() {
 		isSelect = false;
 		setDefautBackGroundColor(Color.white);
-		setDefautFontColor(ColorAndFonts.blue);
+		setDefautFontColor(Color.BLACK);
 		setEnterFontColor(ColorAndFonts.blue.darker());
 		setPressFontColor(ColorAndFonts.otherDarkBulue);
 		setBackground(Color.white);
-		setForeground(ColorAndFonts.blue);
+		setForeground(Color.BLACK);
 		repaint();
 		mainFrame.validate();
 	}

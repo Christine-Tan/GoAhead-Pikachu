@@ -104,6 +104,7 @@ public class LoginPanel extends JPanel {
 				if (log.isSucceed()) {
 					MainFrame mainFrame = new MainFrame();
 					mainFrame.initial(log.getUserType());
+					System.out.println(log.getUserType());
 				}
 				LoginFrame.setVi(false);
 			}

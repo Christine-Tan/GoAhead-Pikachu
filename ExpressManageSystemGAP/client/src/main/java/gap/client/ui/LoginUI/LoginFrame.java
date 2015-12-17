@@ -43,7 +43,7 @@ public class LoginFrame extends JFrame {
 	 */
 	public LoginFrame() {
 		setResizable(false);
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(430, 330);
 		setUndecorated(true);
 		setLocationRelativeTo(null);

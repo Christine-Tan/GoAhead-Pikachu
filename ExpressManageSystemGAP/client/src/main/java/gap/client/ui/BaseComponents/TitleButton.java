@@ -62,7 +62,8 @@ public class TitleButton extends JLabel {
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			if (type == Type.close) {
-				frame.dispose();
+//				frame.dispose();
+				System.exit(1);
 			} else if (type == Type.iconified) {
 				frame.setExtendedState(JFrame.ICONIFIED);
 			}
