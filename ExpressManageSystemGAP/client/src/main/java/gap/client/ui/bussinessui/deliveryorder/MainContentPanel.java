@@ -78,6 +78,16 @@ public class MainContentPanel extends JPanel {
 
 	}
 
+	public void refresh() {
+		userBar.removeAll();
+		OrderSelectPanel.initialed = false;
+		OrderSelectPanel.initial();
+		emptySelectPanel = new OrderSelectPanel();
+		emptySelectPanel.selectItems.clear();
+		emptySelectPanel.unselectItem.clear();
+		setOrderSelectPanel(emptySelectPanel);
+	}
+
 	void setDeleverySelectPanel(DeliverySelectPanel deliveryPanel) {
 		this.deliveryPanel = deliveryPanel;
 	}
@@ -205,10 +215,6 @@ public class MainContentPanel extends JPanel {
 			for (UserBox item : users) {
 				List<String> li = item.orderSelect.getOrders();
 				if (li.size() != 0) {
-//					System.out.println(item.user.getUserId() + ":");
-//					for (String str : li) {
-//						System.out.println(str);
-//					}
 					orders.put(item.user.getUserId(), li);
 				}
 			}
@@ -272,9 +278,9 @@ public class MainContentPanel extends JPanel {
 		void select() {
 			selected = true;
 			setBackground(ColorAndFonts.blue);
-			delete.setDefautFont(Color.white);
-			delete.setEnterFont(Color.white);
-			delete.setPressFont(Color.white);
+			delete.setDefautFontColor(Color.white);
+			delete.setEnterFontColor(Color.white);
+			delete.setPressFontColor(Color.white);
 			delete.setForeground(Color.white);
 			orderSelect.transreFresh();
 			setOrderSelectPanel(orderSelect);
@@ -289,9 +295,9 @@ public class MainContentPanel extends JPanel {
 		void deSelect() {
 			selected = false;
 			setBackground(backColor);
-			delete.setDefautFont(ColorAndFonts.blue);
-			delete.setEnterFont(ColorAndFonts.blue.darker());
-			delete.setPressFont(ColorAndFonts.otherDarkBulue);
+			delete.setDefautFontColor(ColorAndFonts.blue);
+			delete.setEnterFontColor(ColorAndFonts.blue.darker());
+			delete.setPressFontColor(ColorAndFonts.otherDarkBulue);
 			delete.setForeground(ColorAndFonts.blue);
 			repaint();
 		}

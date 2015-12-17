@@ -37,22 +37,6 @@ public class MainFrame extends JFrame {
 		try {
 			UIManager
 					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-			// BasicLookAndFeel metal = new MetalLookAndFeel() {
-			//
-			// public UIDefaults getDefaults() {
-			// UIDefaults defaults = super.getDefaults();
-			// // Object o = defaults.get("ScrollBarUI");
-			// defaults.remove("ScrollBarUI");
-			// defaults.put("ScrollBarUI",
-			// "com.sun.java.swing.plaf.windows.WindowsScrollBarUI");
-			//
-			// defaults.get("ScrollBarUI");
-			// return defaults;
-			// }
-			//
-			// };
-			//
-			// UIManager.setLookAndFeel(metal);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,11 +113,11 @@ public class MainFrame extends JFrame {
 	public static void setMessage(String message, MessageType type, long time) {
 		messagePanel.setMessage(message, type, time);
 	}
-	
-	public static void paint(CheckStockPanel panel){
-		for(int i = 0;i<panel.list.items.size();i++){
+
+	public static void paint(CheckStockPanel panel) {
+		for (int i = 0; i < panel.list.items.size(); i++) {
 			ListItem item = panel.list.items.get(i);
-			for(int j = 0;j<item.shelf.length;j++){
+			for (int j = 0; j < item.shelf.length; j++) {
 				Unit unit = item.shelf[j];
 				unit.icon.paint();
 			}

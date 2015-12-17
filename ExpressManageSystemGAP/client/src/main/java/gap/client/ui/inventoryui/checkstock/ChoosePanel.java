@@ -39,6 +39,7 @@ public class ChoosePanel extends JPanel {
 		panel1.setBackground(null);
 		panel1.setOpaque(false);
 
+	
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(null);
 		panel2.setOpaque(false);

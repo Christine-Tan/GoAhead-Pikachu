@@ -32,7 +32,7 @@ import javax.swing.border.TitledBorder;
 
 public class OrderSelectPanel extends JPanel {
 	static List<ExpressOrderVO> total_orders = new ArrayList<>();
-	private static boolean initialed;
+	static boolean initialed;
 	private JScrollPane jspanel;
 	private JPanel jp;
 	List<OrderItem> selectItems;

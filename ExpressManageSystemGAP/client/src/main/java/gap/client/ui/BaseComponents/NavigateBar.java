@@ -25,6 +25,20 @@ public class NavigateBar extends JPanel {
 		add(userBox);
 	}
 
+	/**
+	 * 选择导航项
+	 * @param navButton
+	 */
+	public void setSelect(NavigateButton navButton) {
+		for (NavigateButton button : buttons) {
+			if (button == navButton) {
+				button.select();
+			} else {
+				button.deSelect();
+			}
+		}
+	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);
