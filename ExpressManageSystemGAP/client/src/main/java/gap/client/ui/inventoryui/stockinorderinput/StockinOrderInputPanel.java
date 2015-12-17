@@ -7,13 +7,16 @@ import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockinOrderVO;
 import gap.common.util.Address;
 import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
+import gap.common.util.ResultMessage;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -31,6 +34,9 @@ public class StockinOrderInputPanel extends MainPanel {
 	ButtonArea confirm;
 	ListPanel list;
 	List<ExpressOrderVO> orders;
+	
+	GridBagLayout gb;
+	GridBagConstraints gcons;
 
 	public StockinOrderInputPanel(MainFrame frame) {
 		super(frame);
@@ -58,11 +64,12 @@ public class StockinOrderInputPanel extends MainPanel {
 		confirm.submit.setText("生成入库单");
 		list = new ListPanel(orders);
 
-		GridBagLayout gb = new GridBagLayout();
-		GridBagConstraints gcons = new GridBagConstraints();
+		gb = new GridBagLayout();
+		gcons = new GridBagConstraints();
 		setLayout(gb);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.white);
 		// gcons.insets = new Insets(0,10,0,10);
 		// gcons.fill = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, stockinInfo, 0, 0, 1, 1, 1,
@@ -94,7 +101,12 @@ public class StockinOrderInputPanel extends MainPanel {
 				// TODO Auto-generated method stub
 				StockinOrderVO vo = getStockinOrderVO();
 				list.reLayout();
-				StockinOrderController.save(vo);
+				ResultMessage re = StockinOrderController.save(vo);
+				if(re.equals(ResultMessage.SUCCEED)){
+					MainFrame.setMessage("入库单生成成功", MessageType.succeed, 2000);
+				}else{
+					MainFrame.setMessage("入库单为空", MessageType.alram, 2000);
+				}
 			}
 		});
 		

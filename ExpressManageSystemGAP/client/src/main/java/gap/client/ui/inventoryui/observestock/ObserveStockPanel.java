@@ -5,10 +5,13 @@ import gap.client.blcontroller.StockinOrderController;
 import gap.client.blcontroller.StockoutOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
 import gap.common.po.StockinOrderPO;
@@ -22,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -62,20 +66,28 @@ public class ObserveStockPanel extends MainPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
+		JPanel panel1 = new JPanel();
+		panel1.setBackground(Color.white);
+//		panel1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ColorAndFonts.blue));
+
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.white);
-
+		
 		JPanel panel3 = new JPanel();
 		panel3.setBackground(Color.white);
+		
+		panel3.setPreferredSize(new Dimension(Default.PANEL_WIDTH,30));
+//		panel2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ColorAndFonts.blue));
 
 		SwingConsole.addComponent(gb, gcons, this, period, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, panel2, 0, 2, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 2, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 4, 1, 1,
 				1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel3, 0, 5, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, panel2, 0, 5, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 8, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, panel3, 0, 9, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);
 
 		period.confirm.addActionListener(new ActionListener() {
@@ -84,6 +96,15 @@ public class ObserveStockPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				initialListPanel();
+			}
+		});
+		
+		confirm.submit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				MainFrame.setMessage("不要走啊，亲，再看一遍嘛~~~~", MessageType.normal, 2000);
 			}
 		});
 
@@ -122,11 +143,17 @@ public class ObserveStockPanel extends MainPanel {
 
 	void reLayout() {
 		removeAll();
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.white);
+		JPanel panel0 = new JPanel();
+		panel0.setBackground(Color.white);
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.white);
-		panel1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 30));
+		panel1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
+//		panel1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ComponentStyle.light_gray));
+		
+		JPanel panel2 = new JPanel();
+		panel2.setBackground(Color.white);
+		panel2.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 30));
+//		panel2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ColorAndFonts.blue));
 
 		SwingConsole.addComponent(gb, gcons, this, period, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
@@ -135,15 +162,16 @@ public class ObserveStockPanel extends MainPanel {
 				0);
 		SwingConsole.addComponent(gb, gcons, this, stockinTotal, 0, 3, 1, 1, 1,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 4, 1, 1,
+		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 4, 1, 1, 1, 0);;
+		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 5, 1, 1,
 				1, 0);
-		SwingConsole.addComponent(gb, gcons, this, stockoutList, 0, 5, 1, 1, 1,
+		SwingConsole.addComponent(gb, gcons, this, stockoutList, 0, 6, 1, 1, 1,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, stockoutTotal, 0, 6, 1, 1,
+		SwingConsole.addComponent(gb, gcons, this, stockoutTotal, 0, 7, 1, 1,
 				1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel, 0, 7, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 8, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 10, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, panel0, 0, 8, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 9, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, panel2, 0, 10, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);
 
 		frame.validate();

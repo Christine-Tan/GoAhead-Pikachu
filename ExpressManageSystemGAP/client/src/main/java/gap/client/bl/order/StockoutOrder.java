@@ -28,9 +28,13 @@ public class StockoutOrder implements StockoutOrderService {
 	}
 
 	@Override
-	public ResultMessage save(StockoutOrderVO order) {
+	public ResultMessage save(StockoutOrderVO vo) {
 		// TODO Auto-generated method stub
-		return stockoutData.add(order.toPO());
+		if(vo.getExpressorder_ids()==null||vo.getExpressorder_ids().size()==0){
+			return ResultMessage.FAILED;
+		}else{
+			return stockoutData.add(vo.toPO());
+		}
 	}
 
 	@Override
