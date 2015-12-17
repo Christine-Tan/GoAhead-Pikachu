@@ -36,7 +36,7 @@ public class PanelInitial {
 		NavigateButton billOrder = new NavigateButton(mainFrame,
 				new BillOrderPanel(mainFrame), navBar, "制定收款单");
 		NavigateButton carManage = new NavigateButton(mainFrame,
-				new CarManagePanel(mainFrame), navBar, "车辆信息管理");
+				new CarManagePanel(mainFrame), navBar, "司机信息管理");
 		NavigateButton driverManage = new NavigateButton(mainFrame,
 				new DriverManagePanel(mainFrame), navBar, "车辆信息管理");
 		NavigateButton loadOrder = new NavigateButton(mainFrame,

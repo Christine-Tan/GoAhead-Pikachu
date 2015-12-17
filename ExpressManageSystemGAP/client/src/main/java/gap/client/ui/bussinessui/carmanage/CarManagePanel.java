@@ -30,8 +30,8 @@ public class CarManagePanel extends MainPanel {
 		listItem = new CarListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
-		buttonArea.submit.setIcon(new ImageIcon(
-				"images\\deliveryIcon\\submit.png"));
+//		buttonArea.submit.setIcon(new ImageIcon(
+//				"images\\deliveryIcon\\submit.png"));
 		buttonArea.submit.addActionListener(new ActionListener() {
 
 			@Override
@@ -82,15 +82,15 @@ public class CarManagePanel extends MainPanel {
 	}
 
 	public static void main(String[] args) {
-		JFrame jf = new JFrame();
-		CarManagePanel pa = new CarManagePanel(null);
-		JScrollPane js = new GAPJScrollPane(pa);
-
-		jf.setContentPane(js);
-		// jf.getContentPane().add(pa);
-		jf.setSize(1024, 768);
-		jf.setVisible(true);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		JFrame jf = new JFrame();
+//		CarManagePanel pa = new CarManagePanel(null);
+//		JScrollPane js = new GAPJScrollPane(pa);
+//
+//		jf.setContentPane(js);
+//		// jf.getContentPane().add(pa);
+//		jf.setSize(1024, 768);
+//		jf.setVisible(true);
+//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
