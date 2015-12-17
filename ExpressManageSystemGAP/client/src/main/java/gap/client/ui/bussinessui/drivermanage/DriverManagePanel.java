@@ -31,7 +31,6 @@ public class DriverManagePanel extends MainPanel {
 		buttonArea.submit.setText("提交修改");
 
 		buttonArea.submit.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根

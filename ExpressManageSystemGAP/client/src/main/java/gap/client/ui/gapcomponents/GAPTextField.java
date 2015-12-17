@@ -1,9 +1,12 @@
 package gap.client.ui.gapcomponents;
 
 import gap.client.ui.UITools.GapTextControll;
+import gap.client.ui.UITools.RenderSetter;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -14,6 +17,7 @@ import javax.swing.JTextField;
 public class GAPTextField extends JTextField {
 	TextListener listener;
 	boolean edited;
+	boolean isOpaque;
 
 	public GAPTextField() {
 		super();
@@ -62,7 +66,7 @@ public class GAPTextField extends JTextField {
 	// 获得焦点样式
 	private void gainFocus() {
 		setBackground(Color.white);
-//		setFont(ComponentStyle.defaultFont);
+		// setFont(ComponentStyle.defaultFont);
 		setFont(this.getFont());
 		setBorder(ComponentStyle.focus_border);
 	}
@@ -81,11 +85,11 @@ public class GAPTextField extends JTextField {
 		validate();
 	}
 
-	public void toNormal(){
+	public void toNormal() {
 		normal();
 	}
 
-	public void toAlarm(){
+	public void toAlarm() {
 		alarm();
 	}
 
@@ -103,6 +107,20 @@ public class GAPTextField extends JTextField {
 		setEditable(true);
 		setFocusable(true);
 		normal();
+	}
+
+	public void setGAPOpaque(boolean isOpaque) {
+		this.isOpaque = isOpaque;
+	}
+
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2d = RenderSetter.OpenRender(g);
+		if (isOpaque) {
+			Color color = new Color(0, 0, 0, 0);
+			g2d.setColor(color);
+			g2d.fillRect(0, 0, getWidth(), getHeight());
+		}
 	}
 
 	class TextListener implements FocusListener {

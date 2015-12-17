@@ -106,6 +106,7 @@ public class MainFrame extends JFrame {
 			PanelInitial.initialDelivery(this);
 			break;
 		case BUSSINESSCLERK:
+			PanelInitial.initialBussinessclerk(this);
 			break;
 		}
 
