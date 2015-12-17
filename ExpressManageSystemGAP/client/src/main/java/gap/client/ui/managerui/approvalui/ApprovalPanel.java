@@ -1,5 +1,6 @@
 package gap.client.ui.managerui.approvalui;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -16,8 +17,10 @@ import javax.swing.JPanel;
 import gap.client.blcontroller.ApprovalController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.ui.managerui.approvalui.OrderItemListPanel.ItemPanel;
 
 /**
@@ -33,16 +36,18 @@ public class ApprovalPanel extends MainPanel {
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 	Timer timer;
-
+    final MainFrame frame;
+    
 	public ApprovalPanel(MainFrame frame) {
 		// TODO Auto-generated constructor stub
 		super(frame);
-		MyTask task = new MyTask(frame);
+		this.frame=frame;
+		MyTask task = new MyTask();
 		timer = new Timer(true);
-		timer.schedule(task, 1000, 10000);
+		timer.schedule(task, 1000, 100000);
 	}
 
-	void refresh(MainFrame frame) {
+	void refresh() {
 		ApprovalPanel.this.removeAll();
 		totalPanel = new TotalPanel();
 		titlePanel = new ApprovalTitlePanel();
@@ -82,6 +87,7 @@ public class ApprovalPanel extends MainPanel {
 					}
 				}
 				ApprovalController.approve(orders);
+				refresh();
 			}
 		});
 
@@ -91,20 +97,17 @@ public class ApprovalPanel extends MainPanel {
 		setLayout(gb);
 		JPanel jp = new JPanel();
 		jp.setOpaque(false);
+		GAPJScrollPane js=new GAPJScrollPane(listItemPanel);
+		js.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 485));
 		SwingConsole.addComponent(gb, gcons, this, totalPanel, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, titlePanel, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, listItemPanel, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, js, 0, 2, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, jp, 0, 3, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 		frame.validate();
 	}
 
 	class MyTask extends TimerTask {
-		MainFrame frame;
-
-		MyTask(MainFrame frame) {
-			this.frame = frame;
-		}
 
 		@Override
 		public void run() {
@@ -114,7 +117,7 @@ public class ApprovalPanel extends MainPanel {
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					ApprovalPanel.this.refresh(frame);
+					ApprovalPanel.this.refresh();
 					System.gc();
 				}
 			});

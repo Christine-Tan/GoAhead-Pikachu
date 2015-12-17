@@ -1,11 +1,13 @@
 package gap.client.ui.managerui.approvalui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import gap.client.blcontroller.ApprovalController;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
@@ -43,6 +46,7 @@ public class OrderItemListPanel extends JPanel {
 		// TODO Auto-generated constructor stub
 		this.frame = frame;
 		setBackground(Color.WHITE);
+//		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 900));
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
@@ -68,12 +72,13 @@ public class OrderItemListPanel extends JPanel {
 		JPanel detailPanel;
 		// 布局
 		GridBagLayout gbl;
-		// 是否被选中,是否显示详细信息
-		boolean selected, detailed;
-         Object order;
+		// 是否显示详细信息
+		boolean detailed;
+		Object order;
+
 		ItemPanel(Object ob) {
 			setBackground(Color.WHITE);
-			this.order=ob;
+			this.order = ob;
 			// 组件初始化
 			order_id = new GAPTextField(20);
 			type = new GAPTextField(13);
@@ -120,15 +125,19 @@ public class OrderItemListPanel extends JPanel {
 				order_id.setText(stockoutOrder.getId());
 				type.setText("出库单");
 				date.setText(stockoutOrder.getOutDate());
-			} else if(order instanceof PaymentListPO){
-				PaymentListPO paymentList=(PaymentListPO)order;
+			} else if (order instanceof PaymentListPO) {
+				PaymentListPO paymentList = (PaymentListPO) order;
 				order_id.setText(paymentList.getPaymentID());
 				type.setText("收款单");
-				date.setText(paymentList.getDate().toString());
-			}else {
+				
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				String dateString = format.format(paymentList.getDate().getTime());
+				
+				date.setText(dateString);
+			} else {
 				System.out.println("no corresponding ordertype");
 			}
-			
+
 			select = new JCheckBox();
 			// 对显示详细信息的按钮添加监听
 			detail = new GAPButton(">");
@@ -145,24 +154,25 @@ public class OrderItemListPanel extends JPanel {
 					}
 				}
 			});
-			//确定订单的类型
-			if(order instanceof ArrivedOrderPO){
-				detailPanel=new ArrivedOrderDetailPanel((ArrivedOrderPO)order);
-			}else if(order instanceof BillOrderPO){
-				 detailPanel=new BillOrderDetailPanel((BillOrderPO)order);
-			}else if(order instanceof DeliveryOrderPO){
-				detailPanel=new DeliveryOrderDetailPanel((DeliveryOrderPO)order);
-			}else if(order instanceof ExpressOrderPO){
-				detailPanel=new ExpressOrderDetailPanel((ExpressOrderPO)order); 
-			}else if(order instanceof LoadOrderPO){
-				detailPanel=new LoadOrderDetailPanel((LoadOrderPO)order);
-			}else if(order instanceof StockinOrderPO ){
-				detailPanel=new StockinOrderDetailPanel((StockinOrderPO)order);
-			}else if(order instanceof StockoutOrderPO){
-				detailPanel=new StockoutOrderDetailPanel((StockoutOrderPO)order);
-			}else if(order instanceof PaymentListPO){
-				
+			// 确定订单的类型
+			if (order instanceof ArrivedOrderPO) {
+				detailPanel = new ArrivedOrderDetailPanel((ArrivedOrderPO) order);
+			} else if (order instanceof BillOrderPO) {
+				detailPanel = new BillOrderDetailPanel((BillOrderPO) order);
+			} else if (order instanceof DeliveryOrderPO) {
+				detailPanel = new DeliveryOrderDetailPanel((DeliveryOrderPO) order);
+			} else if (order instanceof ExpressOrderPO) {
+				detailPanel = new ExpressOrderDetailPanel((ExpressOrderPO) order);
+			} else if (order instanceof LoadOrderPO) {
+				detailPanel = new LoadOrderDetailPanel((LoadOrderPO) order);
+			} else if (order instanceof StockinOrderPO) {
+				detailPanel = new StockinOrderDetailPanel((StockinOrderPO) order);
+			} else if (order instanceof StockoutOrderPO) {
+				detailPanel = new StockoutOrderDetailPanel((StockoutOrderPO) order);
+			} else if (order instanceof PaymentListPO) {
+                detailPanel=new PaymentListDetailPanel((PaymentListPO)order);
 			}
+			
 			detailPanel.setVisible(false);
 			// 布局
 			gbl = new GridBagLayout();
@@ -176,7 +186,7 @@ public class OrderItemListPanel extends JPanel {
 			SwingConsole.addComponent(gbl, gcons, this, date, 3, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(5, 55, 10, 30);
 			SwingConsole.addComponent(gbl, gcons, this, select, 4, 0, 1, 1, 0, 0);
-			gcons.insets=new Insets(5,10,5,10);
+			gcons.insets = new Insets(5, 10, 5, 10);
 			SwingConsole.addComponent(gbl, gcons, this, detailPanel, 0, 1, 6, 1, 0, 0);
 		}
 
@@ -185,15 +195,15 @@ public class OrderItemListPanel extends JPanel {
 		}
 
 		void showDetail() {
-			 detailPanel.setVisible(true);
-             detailed=true;
-             detail.setText("v");
+			detailPanel.setVisible(true);
+			detailed = true;
+			detail.setText("v");
 		}
 
 		void closeDetail() {
 			detailPanel.setVisible(false);
-            detailed=false;
-            detail.setText(">");
+			detailed = false;
+			detail.setText(">");
 		}
 	}
 }

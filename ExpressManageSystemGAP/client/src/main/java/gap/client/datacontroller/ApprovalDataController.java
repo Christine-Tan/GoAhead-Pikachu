@@ -101,15 +101,15 @@ public class ApprovalDataController {
 		return null;
 	}
     
-//	public List<PaymentListPO> getUnpassedPaymentListOrder(){
-//		try {
-//			return paymentdataService.getNotPassedPayment();
-//		} catch (RemoteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return null;
-//	}
+	public List<PaymentListPO> getUnpassedPaymentListOrder(){
+		try {
+			return paymentdataService.getNotPassedPayment();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	public ResultMessage setPassed(List<Object> orders) {
 		ResultMessage rm;
@@ -174,6 +174,7 @@ public class ApprovalDataController {
 				}
 			}else if(order instanceof PaymentListPO){
 				try {
+					System.out.println("Payment!!!!!");
 					rm=paymentdataService.setPassed(((PaymentListPO)order).getPaymentID());
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
