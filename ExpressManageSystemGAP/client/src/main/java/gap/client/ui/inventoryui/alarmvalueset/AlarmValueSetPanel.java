@@ -16,15 +16,20 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class AlarmValueSetPanel extends MainPanel {
 
 	ButtonArea buttonArea;
 	AlarmValueUI alarmValue;
+	JFrame frame;
+	GridBagLayout gb;
+	GridBagConstraints gcons;
 
 	public AlarmValueSetPanel(MainFrame frame) {
 		super(frame);
+		this.frame = frame;
 		// TODO Auto-generated constructor stub
 
 		buttonArea = new ButtonArea();
@@ -36,8 +41,12 @@ public class AlarmValueSetPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ResultMessage re = InventoryController.setAlarmValue(alarmValue.getAlarmValue(),
+				double value = alarmValue.getAlarmValue();
+				ResultMessage re = InventoryController.setAlarmValue(value,
 						LocalInfo.getIns_ID());
+				alarmValue.icon.initial(value);
+				alarmValue.icon.startAnimation();
+//				reLayout();
 				if(re.equals(ResultMessage.SUCCEED)){
 					alarmValue.alarmValue.closeEdit();
 					MainFrame.setMessage("警戒值设置成功", MessageType.succeed, 2000);
@@ -50,21 +59,28 @@ public class AlarmValueSetPanel extends MainPanel {
 
 		});
 
-		GridBagLayout gb = new GridBagLayout();
-		GridBagConstraints gcons = new GridBagConstraints();
+		gb = new GridBagLayout();
+		gcons = new GridBagConstraints();
 		setLayout(gb);
-
+		
+		reLayout();
+		
+	}
+	
+	public void reLayout(){
+		removeAll();
 		gcons.fill = GridBagConstraints.HORIZONTAL;
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.white);
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.white);
-		SwingConsole.addComponent(gb, gcons, this, panel, 0, 0, 1, 1, 1, 1);
 		SwingConsole
 				.addComponent(gb, gcons, this, alarmValue, 0, 1, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 2, 1, 1, 1, 1);
 		SwingConsole
 				.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
+		
+		frame.validate();
 
 	}
 

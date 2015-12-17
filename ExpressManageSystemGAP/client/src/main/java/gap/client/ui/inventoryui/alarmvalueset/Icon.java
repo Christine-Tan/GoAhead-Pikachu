@@ -1,4 +1,4 @@
-package gap.client.ui.inventoryui.checkstock;
+package gap.client.ui.inventoryui.alarmvalueset;
 
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -13,23 +13,25 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Icon extends JPanel {
-	static int height = 60;
-	static int width = 60;
+	static int height = 300;
+	static int width = 200;
 	double usedRatio;
 	int y;
 	int i;
 
 	public Icon(double ratio) {
-		usedRatio = ratio;
+		System.out.println("初始化了");
+		
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(width + 4, height + 4));
 		setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2,
 				ComponentStyle.light_gray));
 		initial(ratio);
-
+		
 	}
 	
 	public void initial(double ratio){
+		usedRatio = ratio;
 		double y1 = height * ((100 - usedRatio) / 100);
 		y = (int) y1;
 		i = height;
@@ -57,6 +59,10 @@ public class Icon extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = RenderSetter.OpenRender(g);
+		
+		g2d.setColor(Color.white);
+		g2d.fillRect(2,2,width,height);
+		
 		g2d.setColor(ComponentStyle.blue);
 
 //			g2d.fillRect(2, y + 2, width, height - y);
@@ -74,30 +80,30 @@ public class Icon extends JPanel {
 	
 	}
 
-	public static void main(String[] args) {
-		JFrame jf = new JFrame();
-		Icon icon = new Icon(50);
-		JPanel p = new JPanel();
-		p.add(icon);
-		jf.getContentPane().add(p);
-		jf.setSize(300, 300);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
-//		for(int i = icon.height;i>icon.y;i--){
-//			icon.i = i;
-//			icon.repaint();
-//			try {
-//				Thread.sleep(50);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		icon.paint();
-		
-
-	}
-	
+//	public static void main(String[] args) {
+//		JFrame jf = new JFrame();
+//		Icon icon = new Icon(50);
+//		JPanel p = new JPanel();
+//		p.add(icon);
+//		jf.getContentPane().add(p);
+//		jf.setSize(1000, 1000);
+//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		jf.setVisible(true);
+////		for(int i = icon.height;i>icon.y;i--){
+////			icon.i = i;
+////			icon.repaint();
+////			try {
+////				Thread.sleep(50);
+////			} catch (InterruptedException e) {
+////				// TODO Auto-generated catch block
+////				e.printStackTrace();
+////			}
+////		}
+//		icon.paint();
+//		
+//
+//	}
+//	
 	
 
 }

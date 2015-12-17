@@ -17,7 +17,6 @@ import javax.swing.JTextField;
 public class GAPTextField extends JTextField {
 	TextListener listener;
 	boolean edited;
-	boolean isOpaque;
 
 	public GAPTextField() {
 		super();
@@ -109,19 +108,6 @@ public class GAPTextField extends JTextField {
 		normal();
 	}
 
-	public void setGAPOpaque(boolean isOpaque) {
-		this.isOpaque = isOpaque;
-	}
-
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Graphics2D g2d = RenderSetter.OpenRender(g);
-		if (isOpaque) {
-			Color color = new Color(0, 0, 0, 0);
-			g2d.setColor(color);
-			g2d.fillRect(0, 0, getWidth(), getHeight());
-		}
-	}
 
 	class TextListener implements FocusListener {
 		boolean controled;

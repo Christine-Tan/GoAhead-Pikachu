@@ -22,6 +22,7 @@ public class Unit extends JPanel {
 		setPreferredSize(new Dimension(icon.width + 4, icon.height + 25));
 
 		icon = new Icon(ratio);
+		icon.startAnimation();
 		String r = String.valueOf(ratio);
 		value = new GAPLabel(r + "%");
 
