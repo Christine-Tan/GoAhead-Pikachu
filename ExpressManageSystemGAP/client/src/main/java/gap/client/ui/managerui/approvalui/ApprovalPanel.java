@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -30,16 +32,17 @@ public class ApprovalPanel extends MainPanel {
 	ButtonArea buttonArea;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
-    Timer timer;
+	Timer timer;
+
 	public ApprovalPanel(MainFrame frame) {
 		// TODO Auto-generated constructor stub
 		super(frame);
-		MyTask task=new MyTask(frame);
-		timer=new Timer(true);
-		timer.schedule(task, 2000,10000);
+		MyTask task = new MyTask(frame);
+		timer = new Timer(true);
+		timer.schedule(task, 1000, 10000);
 	}
-	
-	void refresh(MainFrame frame){
+
+	void refresh(MainFrame frame) {
 		ApprovalPanel.this.removeAll();
 		totalPanel = new TotalPanel();
 		titlePanel = new ApprovalTitlePanel();
@@ -72,7 +75,13 @@ public class ApprovalPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				ApprovalController.approve();
+				List<Object> orders=new ArrayList<>();
+				for(ItemPanel item:listItemPanel.items){
+					if(item.select.isSelected()){
+						orders.add(item.order);
+					}
+				}
+				ApprovalController.approve(orders);
 			}
 		});
 
@@ -89,16 +98,26 @@ public class ApprovalPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 		frame.validate();
 	}
-	class MyTask extends TimerTask{
-        MainFrame frame;
-        MyTask(MainFrame frame){
-        	this.frame=frame;
-        }
+
+	class MyTask extends TimerTask {
+		MainFrame frame;
+
+		MyTask(MainFrame frame) {
+			this.frame = frame;
+		}
+
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			ApprovalPanel.this.refresh(frame);
-			System.gc();
+			frame.load(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					ApprovalPanel.this.refresh(frame);
+					System.gc();
+				}
+			});
 		}
 	}
 }

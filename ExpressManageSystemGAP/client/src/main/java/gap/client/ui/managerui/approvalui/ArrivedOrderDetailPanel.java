@@ -22,7 +22,6 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.ArrivedOrderVO;
 import gap.common.po.ArrivedOrderPO;
 
 public class ArrivedOrderDetailPanel extends JPanel {
@@ -80,15 +79,17 @@ public class ArrivedOrderDetailPanel extends JPanel {
 		// 初始化订单列表
 		detailPanel = new JPanel();
 		detailPanel.setBackground(Color.white);
-		detailPanel.setBorder(BorderFactory.createLineBorder(ComponentStyle.gray));
+//		detailPanel.setBorder(BorderFactory.createLineBorder(ComponentStyle.gray));
 
 		// 表头
 		orderId_jt = new GAPTextField(10);
 		orderId_jt.setText("订单编号");
 		orderId_jt.setHorizontalAlignment(JTextField.CENTER);
+		orderId_jt.closeEdit();
 		state_jt = new GAPTextField(5);
 		state_jt.setText("订单状态");
 		state_jt.setHorizontalAlignment(JTextField.CENTER);
+		state_jt.closeEdit();
 		items = new ArrayList<>();
 		for (Map.Entry<String, String> orders : po.getOrders().entrySet()) {
 			items.add(new ItemPanel(orders.getKey(), orders.getValue()));
@@ -116,10 +117,15 @@ public class ArrivedOrderDetailPanel extends JPanel {
 		// 布局		
 		gb1 = new GridBagLayout();
 		detailPanel.setLayout(gb1);
+		JPanel jp=new JPanel();
+		jp.setBackground(Color.WHITE);
+		jp.setLayout(gb1);
 		gcons.insets = new Insets(5, 10, 5, 0);
-		SwingConsole.addComponent(gb1, gcons, this.detailPanel, orderId_jt, 0, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb1, gcons, jp,  orderId_jt, 1, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(5, 20, 5, 10);
+		SwingConsole.addComponent(gb1, gcons, jp, state_jt, 2, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(5, 0, 5, 10);
-		SwingConsole.addComponent(gb1, gcons, this.detailPanel, state_jt, 1, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb1, gcons, this.detailPanel, jp, 0, 0, 1, 1, 0, 0);
 		for (int i = 1; i <= items.size(); i++) {
 			SwingConsole.addComponent(gb1, gcons, this.detailPanel, items.get(i - 1), 0, i, 1, 1, 1, 0);
 		}
@@ -158,7 +164,7 @@ public class ArrivedOrderDetailPanel extends JPanel {
 			SwingConsole.addComponent(gb2, gcons, this, id_f, 1, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(5, 20, 5, 10);
 			SwingConsole.addComponent(gb2, gcons, this, state_f, 2, 0, 1, 1, 0, 0);
-			// closeEdit();
+			 closeEdit();
 		}
 
 		void closeEdit() {
