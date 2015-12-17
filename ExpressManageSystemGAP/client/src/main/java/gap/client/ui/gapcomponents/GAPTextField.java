@@ -62,7 +62,8 @@ public class GAPTextField extends JTextField {
 	// 获得焦点样式
 	private void gainFocus() {
 		setBackground(Color.white);
-		setFont(ComponentStyle.defaultFont);
+//		setFont(ComponentStyle.defaultFont);
+		setFont(this.getFont());
 		setBorder(ComponentStyle.focus_border);
 	}
 

@@ -8,6 +8,7 @@ import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.util.LocalInfo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -35,6 +36,7 @@ public class AlarmValueSetPanel extends MainPanel {
 				// TODO Auto-generated method stub
 				InventoryController.setAlarmValue(alarmValue.getAlarmValue(),
 						LocalInfo.getIns_ID());
+				alarmValue.alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
 				alarmValue.alarmValue.closeEdit();
 				// InventoryController.setAlarmValue(alarmValue, ins_id);
 			}
