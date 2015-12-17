@@ -109,7 +109,7 @@ public class GAPTextField extends JTextField {
 		normal();
 	}
 
-	public void setOpaque(boolean isOpaque) {
+	public void setGAPOpaque(boolean isOpaque) {
 		this.isOpaque = isOpaque;
 	}
 
