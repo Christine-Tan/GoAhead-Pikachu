@@ -24,5 +24,6 @@ public class Tester {
 		NetModule.connect();
 		ApprovalPanel panel = new ApprovalPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
 	}
 }

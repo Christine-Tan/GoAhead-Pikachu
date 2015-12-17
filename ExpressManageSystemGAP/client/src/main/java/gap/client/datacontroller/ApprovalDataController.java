@@ -174,7 +174,6 @@ public class ApprovalDataController {
 				}
 			}else if(order instanceof PaymentListPO){
 				try {
-					System.out.println("Payment!!!!!");
 					rm=paymentdataService.setPassed(((PaymentListPO)order).getPaymentID());
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block

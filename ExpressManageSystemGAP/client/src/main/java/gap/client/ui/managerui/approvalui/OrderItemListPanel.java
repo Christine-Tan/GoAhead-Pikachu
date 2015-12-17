@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import gap.client.blcontroller.ApprovalController;
+import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -58,47 +59,6 @@ public class OrderItemListPanel extends JPanel {
 			items.add(new ItemPanel(order));
 		}
 		showItems();
-		for(final ItemPanel item:items){
-			item.addMouseListener(new MouseListener() {
-				
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO Auto-generated method stub
-					item.setBackground(Color.WHITE);
-					item.order_id.setForeground(Color.BLACK);
-					item.type.setForeground(Color.BLACK);
-					item.date.setForeground(Color.BLACK);
-				}
-				
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO Auto-generated method stub
-					item.setBackground(Color.BLUE);
-					item.order_id.setForeground(Color.WHITE);
-					item.type.setForeground(Color.WHITE);
-					item.date.setForeground(Color.WHITE);
-				}
-				
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
-			});
-		}
-		
 	}
    
 	private void showItems() {
@@ -171,11 +131,9 @@ public class OrderItemListPanel extends JPanel {
 			} else if (order instanceof PaymentListPO) {
 				PaymentListPO paymentList = (PaymentListPO) order;
 				order_id.setText(paymentList.getPaymentID());
-				type.setText("收款单");
-				
+				type.setText("付款单");
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				String dateString = format.format(paymentList.getDate().getTime());
-				
 				date.setText(dateString);
 			} else {
 				System.out.println("no corresponding ordertype");
@@ -215,7 +173,6 @@ public class OrderItemListPanel extends JPanel {
 			} else if (order instanceof PaymentListPO) {
                 detailPanel=new PaymentListDetailPanel((PaymentListPO)order);
 			}
-			
 			detailPanel.setVisible(false);
 			// 布局
 			gbl = new GridBagLayout();
@@ -238,12 +195,18 @@ public class OrderItemListPanel extends JPanel {
 		}
 
 		void showDetail() {
+			order_id.setForeground(ColorAndFonts.blue);
+			type.setForeground(ColorAndFonts.blue);
+			date.setForeground(ColorAndFonts.blue);
 			detailPanel.setVisible(true);
 			detailed = true;
 			detail.setText("v");
 		}
 
 		void closeDetail() {
+			order_id.setForeground(Color.BLACK);
+			type.setForeground(Color.BLACK);
+			date.setForeground(Color.BLACK);
 			detailPanel.setVisible(false);
 			detailed = false;
 			detail.setText(">");

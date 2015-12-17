@@ -47,12 +47,13 @@ public class ArrivedOrderDetailPanel extends JPanel {
 		setBorder(BorderFactory.createLineBorder(ComponentStyle.gray));
 		fromIns_jl = new GAPLabel("出发机构");
 		toIns_jl = new GAPLabel("到达机构");
-		fromIns = new GAPTextField();
+		
+		fromIns = new GAPTextField(12);
 		fromIns.setHorizontalAlignment(JTextField.CENTER);
 		fromIns.setText(InstitutionController.findById(po.getFrom_ins_id()).getInsName());
 		fromIns.closeEdit();
-
-		toIns = new GAPTextField();
+		
+		toIns = new GAPTextField(12);
 		toIns.setHorizontalAlignment(JTextField.CENTER);
 		toIns.setText(InstitutionController.findById(po.getDes_ins_id()).getInsName());
 		toIns.closeEdit();
@@ -102,11 +103,10 @@ public class ArrivedOrderDetailPanel extends JPanel {
 		gcons.insets = new Insets(5, 10, 5, 0);
 		SwingConsole.addComponent(gb, gcons, this, fromIns_jl, 0, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, fromIns, 1, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(5, 0, 5, 10);
 		SwingConsole.addComponent(gb, gcons, this, toIns_jl, 2, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, toIns, 3, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, detail, 0, 1, 1, 1, 0, 0);
-		gcons.insets = new Insets(5, 10, 10, 170);
+		gcons.insets = new Insets(5, 10, 10, 100);
 		SwingConsole.addComponent(gb, gcons, this, orders_jl, 1, 1, 1, 1, 0, 0);
 		gcons.insets = new Insets(5, 10, 5, 10);
 		SwingConsole.addComponent(gb, gcons, this, detailPanel, 0, 2, 2, 1, 0, 0);
