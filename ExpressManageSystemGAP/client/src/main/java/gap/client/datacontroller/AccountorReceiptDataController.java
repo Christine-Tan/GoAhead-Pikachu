@@ -152,6 +152,16 @@ public class AccountorReceiptDataController {
 		}
 		return null;
 	}
+	
+	public UserPO getUserByID(String id){
+		try {
+			return userdataservice.findById(id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public ResultMessage setUserPaid(String user_id) {
 		try {
