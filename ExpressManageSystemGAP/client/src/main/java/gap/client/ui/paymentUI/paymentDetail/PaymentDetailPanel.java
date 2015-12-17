@@ -39,7 +39,7 @@ public class PaymentDetailPanel extends PanelWithGrid{
 			setBackground(Color.white);
 			setBorder(BorderFactory.createLineBorder(Color.BLACK));
 			this.header = new PaymentTableHeader();
-			header.removeItem();
+			header.removeColumn();
 			this.paymentListPO = paymentListPO;
 			
 			typeMap = new HashMap<>();

@@ -31,7 +31,7 @@ import javax.tools.DocumentationTool.Location;
 public class LoginPanel extends JPanel {
 
 	private JTextField userName = new LoginTextField("people");
-	private LoginButton signInButton = new LoginButton("signIn");
+	private LoginButton signInButton;
 	private JPasswordField passwordField;
 	// private LoginButton goBackButton = new LoginButton("goBack");
 	private WhiteExitButton exitButton = new WhiteExitButton();
@@ -49,7 +49,7 @@ public class LoginPanel extends JPanel {
 		this.frame = frame;
 		animation = new LoginAnimation(frame);
 		logoPanel = new LogoPanel(frame);
-
+		signInButton = new LoginButton("signIn",this);
 		passwordField = new LoginPassword(signInButton, this);
 
 		JLayeredPane layer = new JLayeredPane();
@@ -63,51 +63,6 @@ public class LoginPanel extends JPanel {
 		layer.add(logoPanel, Integer.valueOf(15));
 		logoPanel.startAnimation();
 
-		signInButton.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO 自动生成的方法存根
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO 自动生成的方法存根
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO 自动生成的方法存根
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO 自动生成的方法存根
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO 自动生成的方法存根
-				// LocalInfo.ins_id = "0010001";
-				// User user = new User("000000005", UserType.DELIVERY,
-				// "xiaoming", "123456", "0010001", "小明", Gender.MALE);
-				// LocalInfo.localuser = user;
-
-				// NetModule.connect();
-				String username_text = userName.getText();
-				String password_text = new String(passwordField.getPassword());
-				LogVO log = LoginController.login(username_text, password_text);
-				if (log.isSucceed()) {
-					MainFrame mainFrame = new MainFrame();
-					mainFrame.initial(log.getUserType());
-				}
-				LoginFrame.setVi(false);
-			}
-		});
 
 		int signInX = getWidth() / 2 - 200 / 2;
 		signInButton.setBounds(signInX, 280, 200, 35);
@@ -139,6 +94,18 @@ public class LoginPanel extends JPanel {
 	public void openEye() {
 		// TODO Auto-generated method stub
 		logoPanel.openEye();
+	}
+
+	public void login() {
+		// TODO Auto-generated method stub
+		String username_text = userName.getText();
+		String password_text = new String(passwordField.getPassword());
+		LogVO log = LoginController.login(username_text, password_text);
+		if (log.isSucceed()) {
+			MainFrame mainFrame = new MainFrame();
+			mainFrame.initial(log.getUserType());
+		}
+		LoginFrame.setVi(false);
 	}
 
 }

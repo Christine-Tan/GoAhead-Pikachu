@@ -55,8 +55,16 @@ public class PaymentTableHeader extends PanelWithGrid{
 		widthArgs[6] = emptyWidth;
 	}
 	
-	public void removeItem(){
+	public void removeColumn(){
 		remove(item);
+		remove(comment);
+		remove(payDate);
+		JLabel label = new JLabel();
+		gridBagConstraints.insets = new Insets(20, 50, 20, 0);
+//		label.setPreferredSize
+//		(new Dimension(PaymentTableHeader.leftGap-10,20));
+		SwingConsole.addComponent(gridBagLayout, gridBagConstraints, 
+				this, label, 0, 0, 1, 1, 0.1, 0.5);
 	}
 	
 	public PaymentTableHeader(){

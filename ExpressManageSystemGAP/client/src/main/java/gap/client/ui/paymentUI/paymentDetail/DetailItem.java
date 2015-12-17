@@ -24,14 +24,13 @@ public class DetailItem extends PanelWithGrid{
 	
 	PayeeVO vo;
 	
-	GAPLabel payDate;
+
 	GAPLabel recevier;
 	GAPLabel accountLabel;
 	//条目，如快递员工资，业务员工资
 
 	GAPLabel money;
 	//备注，如12月工资，运单号
-	GAPLabel comment;
 	
 	JLabel empty;
 	
@@ -50,24 +49,21 @@ public class DetailItem extends PanelWithGrid{
 			dateString = format.format(calendar.getTime());
 		}
 		
-		payDate = new GAPLabel(dateString);
+
 		recevier = new GAPLabel(vo.getUserName());
 		
 		accountLabel = new GAPLabel(vo.getAccountName());
 		
 		String moneyString = String.format("%.2f", vo.getMoney());
 		money = new GAPLabel(moneyString+"元");
-		comment = new GAPLabel(vo.getNote());
 		
 		empty = new JLabel();
 		
-		components = new JComponent[6];
-		components[0] = payDate;
-		components[1] = recevier;
-		components[2] = accountLabel;
-		components[3] = money;
-		components[4] = comment;
-		components[5] = empty;
+		components = new JComponent[4];
+		components[0] = recevier;
+		components[1] = accountLabel;
+		components[2] = money;
+		components[3] = empty;
 		
 		gridBagConstraints.anchor = GridBagConstraints.CENTER;
 		gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;

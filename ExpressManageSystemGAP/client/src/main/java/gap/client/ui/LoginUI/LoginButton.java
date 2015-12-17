@@ -23,8 +23,9 @@ public class LoginButton extends JLabel {
 	Area area;
 	String text;
 	Mylistener mylistener;
+	LoginPanel loginPanel;
 
-	public LoginButton(String type) {
+	public LoginButton(String type,LoginPanel loginPanel) {
 		switch (type) {
 		case "signIn":
 			text = "登录";
@@ -41,6 +42,8 @@ public class LoginButton extends JLabel {
 		setFont(font);
 		setText(text);
 
+		this.loginPanel = loginPanel;
+		
 		requestFocusInWindow();
 		area = AreaMaker.getRoundRect(getWidth(), getHeight(), 8);
 		mylistener = new Mylistener();
@@ -71,6 +74,7 @@ public class LoginButton extends JLabel {
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			requestFocusInWindow();
+			loginPanel.login();
 		}
 
 		public void mouseEntered(MouseEvent e) {
