@@ -10,20 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import gap.client.blcontroller.ApprovalController;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPCheckBox;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.DeliveryOrderPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.po.LoadOrderPO;
+import gap.common.po.PaymentListPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
 
@@ -35,6 +37,7 @@ public class OrderItemListPanel extends JPanel {
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 	JFrame frame;
+	JPanel detailPanel;
 
 	public OrderItemListPanel(JFrame frame) {
 		// TODO Auto-generated constructor stub
@@ -60,14 +63,17 @@ public class OrderItemListPanel extends JPanel {
 	class ItemPanel extends JPanel {
 		GAPTextField order_id, type, date;
 		JButton detail;
-		GAPCheckBox select;
+		JCheckBox select;
+		// 详细信息面板
+		JPanel detailPanel;
 		// 布局
 		GridBagLayout gbl;
-		// 是否被选中
-		boolean selected;
-
-		ItemPanel(Object order) {
+		// 是否被选中,是否显示详细信息
+		boolean selected, detailed;
+         Object order;
+		ItemPanel(Object ob) {
 			setBackground(Color.WHITE);
+			this.order=ob;
 			// 组件初始化
 			order_id = new GAPTextField(20);
 			type = new GAPTextField(13);
@@ -114,17 +120,54 @@ public class OrderItemListPanel extends JPanel {
 				order_id.setText(stockoutOrder.getId());
 				type.setText("出库单");
 				date.setText(stockoutOrder.getOutDate());
-			} else {
+			} else if(order instanceof PaymentListPO){
+				PaymentListPO paymentList=(PaymentListPO)order;
+				order_id.setText(paymentList.getPaymentID());
+				type.setText("收款单");
+				date.setText(paymentList.getDate().toString());
+			}else {
 				System.out.println("no corresponding ordertype");
 			}
-
+			
+			select = new JCheckBox();
+			// 对显示详细信息的按钮添加监听
 			detail = new GAPButton(">");
-			select = new GAPCheckBox();
+			detail.setFont(ComponentStyle.defaultFont);
+			detail.addActionListener(new ActionListener() {
 
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					if (detailed) {
+						closeDetail();
+					} else {
+						showDetail();
+					}
+				}
+			});
+			//确定订单的类型
+			if(order instanceof ArrivedOrderPO){
+				detailPanel=new ArrivedOrderDetailPanel((ArrivedOrderPO)order);
+			}else if(order instanceof BillOrderPO){
+				 detailPanel=new BillOrderDetailPanel((BillOrderPO)order);
+			}else if(order instanceof DeliveryOrderPO){
+				detailPanel=new DeliveryOrderDetailPanel((DeliveryOrderPO)order);
+			}else if(order instanceof ExpressOrderPO){
+				detailPanel=new ExpressOrderDetailPanel((ExpressOrderPO)order); 
+			}else if(order instanceof LoadOrderPO){
+				detailPanel=new LoadOrderDetailPanel((LoadOrderPO)order);
+			}else if(order instanceof StockinOrderPO ){
+				detailPanel=new StockinOrderDetailPanel((StockinOrderPO)order);
+			}else if(order instanceof StockoutOrderPO){
+				detailPanel=new StockoutOrderDetailPanel((StockoutOrderPO)order);
+			}else if(order instanceof PaymentListPO){
+				
+			}
+			detailPanel.setVisible(false);
 			// 布局
 			gbl = new GridBagLayout();
 			setLayout(gbl);
-			gcons.insets = new Insets(5, 5, 10, 20);
+			gcons.insets = new Insets(5, 55, 10, 20);
 			SwingConsole.addComponent(gbl, gcons, this, detail, 0, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(5, 0, 10, 0);
 			SwingConsole.addComponent(gbl, gcons, this, order_id, 1, 0, 1, 1, 0, 0);
@@ -133,11 +176,24 @@ public class OrderItemListPanel extends JPanel {
 			SwingConsole.addComponent(gbl, gcons, this, date, 3, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(5, 55, 10, 30);
 			SwingConsole.addComponent(gbl, gcons, this, select, 4, 0, 1, 1, 0, 0);
+			gcons.insets=new Insets(5,10,5,10);
+			SwingConsole.addComponent(gbl, gcons, this, detailPanel, 0, 1, 6, 1, 0, 0);
 		}
 
 		void setSelected(boolean bool) {
 			this.select.setSelected(bool);
 		}
 
+		void showDetail() {
+			 detailPanel.setVisible(true);
+             detailed=true;
+             detail.setText("v");
+		}
+
+		void closeDetail() {
+			detailPanel.setVisible(false);
+            detailed=false;
+            detail.setText(">");
+		}
 	}
 }

@@ -33,7 +33,7 @@ public class HeadPanel extends JPanel{
 		String time = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
 		
 		timeLabel.setFont(labelFont);
-		timeLabel.setText("<html>"+time+"<p/><br/></html>");
+		timeLabel.setText("<html>"+time+"</html>");
 		
 		emptyLabel.setFont(labelFont);
 		StringBuilder builder = new StringBuilder();

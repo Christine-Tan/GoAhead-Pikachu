@@ -120,11 +120,12 @@ public class ListItem extends JPanel {
 				date = inDate.getText(),
 				des = destination.getText(),
 				loc = location.getText(),
-				belong_sec = SectorType.getSectorId(LocalInfo.getIns_ID(), sec),
-				sector_id = belong_sec;
+				belong_sec = SectorType.getSectorId(LocalInfo.getIns_ID(), sec);
+		String[] locations = loc.split(" ");
+		String Chinese = locations[0];
+		loc = locations[1];
+		String sector_id = LocalInfo.ins_id+SectorType.getSectorTypeByChinese(Chinese).getChar();	
 		
-		loc = loc.split(" ")[1];
-				
 		this.goods = new GoodsVO(expressorder_id, loc, sec, date, sector_id, belong_sec, des);	
 	}
 	public GoodsVO getGoodVO(){
@@ -158,7 +159,13 @@ public class ListItem extends JPanel {
 		SectorType sec = SectorType.getSectorTypeByChinese(sector.getText());
 		String sector_id = SectorType.getSectorId(ins_id, sec);
 		String location = InventoryController.getNextLocation(sector_id, ins_id);
-		return sector.getText()+" "+location;
+		
+		if(location.charAt(0)!='f'){
+			return sector.getText()+" "+location;
+		}else{
+			return "机动区"+location.replaceFirst("f", " ");
+		}
+		
 	}
 	
 

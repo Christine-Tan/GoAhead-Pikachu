@@ -40,13 +40,13 @@ public class StockinOrderInputPanel extends MainPanel {
 		PeopleInfo receiver = new PeopleInfo("", add, "", "");
 		
 		for(int i = 1;i<=9;i++){
-			ExpressOrderVO vo = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000001","", "");
+			ExpressOrderVO vo = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000001","", "","");
 			vo.order_id = "000000000"+i;
 			orders.add(vo);
 		}
-		ExpressOrderVO vo10 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000010","", "");
-		ExpressOrderVO vo11 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000011","", "");
-		ExpressOrderVO vo12 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000012","", "");
+		ExpressOrderVO vo10 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000010","", "","");
+		ExpressOrderVO vo11 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000011","", "","");
+		ExpressOrderVO vo12 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000012","", "","");
 		orders.add(vo10);
 		orders.add(vo11);
 		orders.add(vo12);

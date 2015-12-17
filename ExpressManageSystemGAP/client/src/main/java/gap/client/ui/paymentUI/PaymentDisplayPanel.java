@@ -1,12 +1,15 @@
 package gap.client.ui.paymentUI;
 
 import java.awt.Color;
+import java.awt.GridBagConstraints;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JPanel;
 
+import gap.client.exception.MoneyEmptyException;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.paymentUI.RewardPanels.PaymentRewardPanel;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;
 import gap.common.util.PaymentType;
@@ -19,12 +22,14 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 	ArrayList<PayeeClassPanel> panels;
 	PaymentTableHeader header;
 	
+	PaymentRewardPanel rewardPanel;
+	
 	//用来储存不同类型的payee的数组
 	
 	ArrayList<PayeeVO> salaryVOs = new ArrayList<>();
 	ArrayList<PayeeVO> transFareVOs = new ArrayList<>();
 	ArrayList<PayeeVO> rentVOs = new ArrayList<>();
-	ArrayList<PayeeVO> rewardVOs = new ArrayList<>();
+	ArrayList<PayeeVO> rewardVOs;
 	
 	HashMap<PaymentType,ArrayList<PayeeVO> > typeMap;
 	
@@ -47,7 +52,7 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 		typeMap.put(PaymentType.INVENTORY, salaryVOs);
 		typeMap.put(PaymentType.RENT, rentVOs);
 		typeMap.put(PaymentType.TRANSFARE, transFareVOs);
-		typeMap.put(PaymentType.REWARD, rewardVOs);
+	//	typeMap.put(PaymentType.REWARD, rewardVOs);
 		
 		initial(payeeVOs);
 		
@@ -87,20 +92,31 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 		PayeeClassPanel rentPanel = new PayeeClassPanel
 				(mainPanel, this, accountVOs, rentVOs, "租金");
 		
+		rewardPanel = new PaymentRewardPanel(mainPanel, this, accountVOs, salaryVOs);
+		
 		panels.add(salaryPanel);
 		panels.add(transPanel);
 		panels.add(rentPanel);
 		
+		gridBagConstraints.fill = GridBagConstraints.BOTH;
+		
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, header, 0, 0, 1, 1, 1, 0.2);
 		
-		for(int i=0;i<panels.size();i++){
+		int i=0;
+		for(i=0;i<panels.size();i++){
 			PayeeClassPanel aPanel = panels.get(i);
 			SwingConsole.addComponent
 				(gridBagLayout, gridBagConstraints, this, aPanel, 0, i+1, 1, 1, 1, 1);
 		}
 		
+		SwingConsole.addComponent
+			(gridBagLayout, gridBagConstraints, this, rewardPanel, 0, i+1, 1, 1, 1, 1);
 		
+	}
+	
+	public ArrayList<PayeeVO> getRewardPayees() throws MoneyEmptyException{
+		return rewardPanel.getRewardPayees();
 	}
 	
 }

@@ -80,7 +80,7 @@ public class ListItemPanel extends JPanel {
 	private void addItem(GoodsVO goods) {
 		items.add(new ItemPanel(goods));
 		reLayout();
-		frame.validate();
+//		frame.validate();
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class ListItemPanel extends JPanel {
 		item.openEdit();
 		items.add(item);
 		reLayout();
-		frame.validate();
+//		frame.validate();
 	}
 
 	/**
@@ -108,13 +108,14 @@ public class ListItemPanel extends JPanel {
 		}
 		
 		reLayout();
-		frame.validate();
+//		validate();
 	}
 
 	/**
 	 * 重新布局
 	 */
 	private void reLayout() {
+		this.removeAll();
 		for (int i = 0; i < items.size(); i++) {
 			items.get(i).id.setText((i+1)+"");;
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
@@ -122,6 +123,7 @@ public class ListItemPanel extends JPanel {
 		}
 		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
 				1, 1, 1, 0);
+		this.validate();
 	}
 
 	// 每一项

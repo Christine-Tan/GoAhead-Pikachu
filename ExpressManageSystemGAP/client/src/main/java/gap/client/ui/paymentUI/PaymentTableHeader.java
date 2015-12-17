@@ -28,6 +28,8 @@ public class PaymentTableHeader extends PanelWithGrid{
 	GAPLabel money;
 	//备注，如12月工资，运单号
 	GAPLabel comment;
+	//放在最后的占位label
+	JLabel empty;
 	JLabel[] components;
 	
 	public static final int leftGap = 100;
@@ -39,16 +41,18 @@ public class PaymentTableHeader extends PanelWithGrid{
 	public static final int itemWidth = 100;
 	public static final int moneyWidth = 100;
 	public static final int commentWidth = 100;
+	public static final int emptyWidth = 40;
 	
 	public static int[] widthArgs;
 	static{
-		widthArgs = new int[6];
+		widthArgs = new int[7];
 		widthArgs[0] = payDateWidth;
 		widthArgs[1] = recevierWidth;
 		widthArgs[2] = accountWidth;
 		widthArgs[3] = itemWidth;
 		widthArgs[4] = moneyWidth;
 		widthArgs[5] = commentWidth;
+		widthArgs[6] = emptyWidth;
 	}
 	
 	public PaymentTableHeader(){
@@ -60,14 +64,16 @@ public class PaymentTableHeader extends PanelWithGrid{
 		item = new GAPLabel("条目");
 		money = new GAPLabel("付款金额");
 		comment = new GAPLabel("备注");
+		empty = new JLabel();
 		
-		components = new JLabel[6];
+		components = new JLabel[7];
 		components[0] = payDate;
 		components[1] = recevier;
 		components[2] = account;
 		components[3] = item;
 		components[4] = money;
 		components[5] = comment;
+		components[6] = empty;
 		
 		setBackground(Color.white);
 		
