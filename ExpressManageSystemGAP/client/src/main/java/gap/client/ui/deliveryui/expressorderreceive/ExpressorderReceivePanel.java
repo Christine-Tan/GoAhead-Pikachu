@@ -8,6 +8,7 @@ import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.util.MessageType;
 import gap.common.util.ReceiveInfo;
+import gap.common.util.ResultMessage;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -73,11 +74,21 @@ public class ExpressorderReceivePanel extends MainPanel {
 				public void run() {
 					// TODO 自动生成的方法存根
 					List<ReceiveInfo> infos = listItemPanel.getReceiveInfos();
-					if (infos != null && infos.size() != 0)
+					if (infos != null && infos.size() != 0) {
+						ResultMessage re;
 						for (ReceiveInfo info : infos) {
-							ExpressorderController.receiveOrder(info);
+							re = ExpressorderController.receiveOrder(info);
+							System.out.println(re.getMessage());
+							if (!re.equals(ResultMessage.SUCCEED)) {
+								MainFrame.setMessage("订单提交失败",
+										MessageType.alram, 2000);
+							}
 						}
-					else {
+						listItemPanel.clear();
+						MainFrame.setMessage("订单提交成功", MessageType.succeed,
+								2000);
+						mainFrame.validate();
+					} else if (infos != null && infos.size() == 0) {
 						MainFrame
 								.setMessage("请输入收件信息", MessageType.alram, 2000);
 					}

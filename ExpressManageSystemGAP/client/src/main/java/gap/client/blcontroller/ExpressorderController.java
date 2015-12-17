@@ -42,6 +42,7 @@ public class ExpressorderController {
 		List<ExpressOrderVO> orders = new ArrayList<ExpressOrderVO>();
 		for (String str : orderIds) {
 			try {
+				System.out.println(str);
 				orders.add(expressorder.getOrder(str));
 			} catch (InvalidInputException e) {
 				// TODO 自动生成的 catch 块
@@ -49,6 +50,10 @@ public class ExpressorderController {
 			}
 		}
 		return orders;
+	}
+
+	public static boolean isExisted(String order_id) {
+		return expressorder.isExisted(order_id);
 	}
 
 }

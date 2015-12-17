@@ -15,7 +15,7 @@ public class Tester {
 				"123456", "0010001", "小明", Gender.MALE);
 		LocalInfo.localuser = user;
 		MainFrame mainFrame = new MainFrame();
-		// NetModule.initial(mainFrame);
+		 NetModule.initial(mainFrame);
 		// mainFrame.load(new Runnable() {
 		//
 		// @Override

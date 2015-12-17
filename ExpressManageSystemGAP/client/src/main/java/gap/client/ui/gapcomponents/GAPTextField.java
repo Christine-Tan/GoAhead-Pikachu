@@ -47,7 +47,7 @@ public class GAPTextField extends JTextField {
 	}
 
 	// 警告样式
-	private void alarm() {
+	public void alarm() {
 		setBackground(ComponentStyle.red);
 		setFont(ComponentStyle.defaultFont);
 		setBorder(ComponentStyle.text_border);
@@ -79,11 +79,11 @@ public class GAPTextField extends JTextField {
 		// setHorizontalAlignment(JTextField.CENTER);
 		validate();
 	}
-	
+
 	public void toNormal(){
 		normal();
 	}
-	
+
 	public void toAlarm(){
 		alarm();
 	}

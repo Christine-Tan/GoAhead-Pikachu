@@ -20,7 +20,6 @@ public interface ExpressOrderService {
 	public ExpressOrderVO getOrder(String order_id)
 			throws InvalidInputException;
 
-
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id)
 			throws InvalidInputException;
 
@@ -34,4 +33,7 @@ public interface ExpressOrderService {
 	public ResultMessage receiveOrder(ReceiveInfo receiveInfo);
 
 	public AllAddressPO getAllAddress();
+
+	public boolean isExisted(String order_id);
+
 }

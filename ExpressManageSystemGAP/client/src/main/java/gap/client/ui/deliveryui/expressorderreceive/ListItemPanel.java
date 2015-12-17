@@ -1,5 +1,7 @@
 package gap.client.ui.deliveryui.expressorderreceive;
 
+import gap.client.blcontroller.ExpressorderController;
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -7,6 +9,7 @@ import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.common.util.ReceiveInfo;
 
 import java.awt.Color;
@@ -19,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,9 +78,17 @@ public class ListItemPanel extends JPanel {
 		reLayout();
 	}
 
+	public void clear() {
+		removeAll();
+		items.clear();
+		reLayout();
+	}
+
 	public List<ReceiveInfo> getReceiveInfos() {
 		List<ReceiveInfo> infos = new ArrayList<ReceiveInfo>();
 		for (ItemPanel item : items) {
+			if (item.getReceiveInfo() == null)
+				return null;
 			infos.add(item.getReceiveInfo());
 		}
 		return infos;
@@ -159,7 +171,8 @@ public class ListItemPanel extends JPanel {
 			order_id = new GAPTextField(8);
 			receiver = new GAPTextField(6);
 			receiver_date = new GAPTextField(8);
-			receiver_date.setControl("\\d\\d\\d\\d-\\d\\d-\\d\\d", 10, 10);
+			receiver_date.setText((new Date(System.currentTimeMillis()))
+					.toString());
 			comment = new GAPTextField(22);
 
 			GridBagLayout gb = new GridBagLayout();
@@ -200,6 +213,27 @@ public class ListItemPanel extends JPanel {
 			String order = order_id.getText(), receiver_name = receiver
 					.getText(), date = receiver_date.getText(), com = comment
 					.getText();
+			if (order.length() == 0) {
+				MainFrame.setMessage("请输入订单号", MessageType.alram, 2000);
+				order_id.alarm();
+				return null;
+			}
+			if (!ExpressorderController.isExisted(order)) {
+				MainFrame.setMessage("对应订单号不存在", MessageType.alram, 2000);
+				order_id.alarm();
+				return null;
+			}
+
+			if (receiver_name.length() == 0) {
+				MainFrame.setMessage("请输入收件人姓名", MessageType.alram, 2000);
+				receiver.alarm();
+				return null;
+			}
+			if (!date.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d")) {
+				MainFrame.setMessage("请输入正确的日期", MessageType.alram, 2000);
+				receiver_date.alarm();
+				return null;
+			}
 			return new ReceiveInfo(order, receiver_name, date,
 					LocalInfo.getUserID(), com);
 		}

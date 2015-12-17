@@ -31,6 +31,16 @@ public class ExpressOrderDataController {
 		return ResultMessage.FAILED;
 	}
 
+	public boolean isExisted(String order_id) {
+		try {
+			return expressorderdataservice.isExisted(order_id);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	public PricePO findPrice(String city) {
 		try {
 			return pricedataservice.find(city);
