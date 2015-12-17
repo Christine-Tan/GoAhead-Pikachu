@@ -10,6 +10,7 @@ import gap.client.ui.inventoryui.checkstock.CheckStockPanel;
 import gap.client.ui.inventoryui.checkstock.ListItem;
 import gap.client.ui.inventoryui.checkstock.Unit;
 import gap.client.util.MessageType;
+import gap.common.util.UserType;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -25,7 +26,7 @@ public class MainFrame extends JFrame {
 	NavigateBar navigateBar;
 	MainPanel mainPanel;
 	LoadPanel loadPanel;
-	static MessagePanel messagePanel;
+	public static MessagePanel messagePanel;
 
 	MoveListener moveListener;
 	ResizeListener resizeListener;
@@ -65,7 +66,15 @@ public class MainFrame extends JFrame {
 
 		titlePanel = new TitlePanel(this);
 		navigateBar = new NavigateBar(this);
-		mainPanel = new MainPanel(this);
+		mainPanel = new MainPanel(this) {
+
+			@Override
+			public void refresh() {
+				// TODO 自动生成的方法存根
+
+			}
+
+		};
 		messagePanel = new MessagePanel(this);
 
 		moveListener = new MoveListener(this);
@@ -85,7 +94,20 @@ public class MainFrame extends JFrame {
 				2, 1, 1, 1, 0);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		// setVisible(true);
+
+	}
+
+	public void initial(UserType user) {
+		UserBox userBox = new UserBox();
+		navigateBar.add(userBox);
+		switch (user) {
+		case DELIVERY:
+			PanelInitial.initialDelivery(this);
+			break;
+		case BUSSINESSCLERK:
+			break;
+		}
 
 	}
 

@@ -62,13 +62,13 @@ public class ArrivedOrderListItemPanel extends JPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		flush();
+		refresh();
 	}
 
 	/**
 	 * 刷新
 	 */
-	public void flush() {
+	public void refresh() {
 		removeAll();
 		items.clear();
 		List<LoadOrderVO> orders = LoadOrderController.getArrivingLoadOrder();

@@ -15,6 +15,7 @@ public class Tester {
 		LocalInfo.localuser = user;
 		LocalInfo.ins_id = "0010001";
 		MainFrame mainFrame = new MainFrame();
+		mainFrame.setVisible(true);
 		NetModule.initial(mainFrame);
 		NetModule.connect();
 		DeliveryOrderPanel panel = new DeliveryOrderPanel(mainFrame);

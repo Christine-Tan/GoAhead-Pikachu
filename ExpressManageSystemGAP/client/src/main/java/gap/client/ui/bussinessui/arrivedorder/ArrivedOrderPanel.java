@@ -47,7 +47,7 @@ public class ArrivedOrderPanel extends MainPanel {
 							// System.out.println(vo.id);
 							ArrivedOrderController.save(vo);
 						}
-						listItem.flush();
+						listItem.refresh();
 						mainFrame.validate();
 					}
 				});
@@ -65,8 +65,7 @@ public class ArrivedOrderPanel extends MainPanel {
 					@Override
 					public void run() {
 						// TODO 自动生成的方法存根
-						listItem.flush();
-						mainFrame.validate();
+						refresh();
 					}
 				});
 
@@ -91,5 +90,12 @@ public class ArrivedOrderPanel extends MainPanel {
 		SwingConsole
 				.addComponent(gb, gcons, this, buttonArea, 0, 5, 1, 1, 1, 0);
 
+	}
+
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
+		listItem.refresh();
+		mainFrame.validate();
 	}
 }

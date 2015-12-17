@@ -21,13 +21,15 @@ public class Login implements LoginService {
 			return log;
 		}
 		log.setSucceed(true);
+		log.setUserType(user.getType());
+
 		setLocalInfo(user);
 		return log;
 	}
 
 	/**
 	 * 登录后设置本地信息
-	 * 
+	 *
 	 * @param user
 	 */
 	private void setLocalInfo(UserPO user) {

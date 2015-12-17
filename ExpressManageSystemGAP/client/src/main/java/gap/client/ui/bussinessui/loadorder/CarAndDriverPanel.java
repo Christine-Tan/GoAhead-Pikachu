@@ -50,11 +50,11 @@ public class CarAndDriverPanel extends JPanel {
 
 	}
 
-	public void flush() {
+	public void refresh() {
 		List<DriverVO> drivers = DriverManageController.getAll();
 		List<CarVO> cars = CarManageController.getAll();
-		driver.flush(drivers);
-		car.flush(cars);
+		driver.refresh(drivers);
+		car.refresh(cars);
 	}
 
 	public DriverVO getDriver() {
@@ -114,7 +114,7 @@ public class CarAndDriverPanel extends JPanel {
 					1, 1, 0, 0);
 		}
 
-		public void flush(List<DriverVO> list) {
+		public void refresh(List<DriverVO> list) {
 //			drivers_list.setFocusable(false);
 			drivers_list.removeAllItems();
 			for (DriverVO driver : list) {
@@ -183,7 +183,7 @@ public class CarAndDriverPanel extends JPanel {
 					1, 1, 0, 0);
 		}
 
-		public void flush(List<CarVO> cars) {
+		public void refresh(List<CarVO> cars) {
 //			cars_list.setFocusable(false);
 			cars_list.removeAllItems();
 			for (CarVO car : cars) {

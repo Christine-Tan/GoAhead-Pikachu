@@ -35,6 +35,7 @@ public class OrderPanel extends JPanel {
 	GridBagConstraints gcons;
 	JFrame frame;
 
+
 	public OrderPanel(JFrame frame) {
 		this.frame = frame;
 		setBackground(Color.WHITE);

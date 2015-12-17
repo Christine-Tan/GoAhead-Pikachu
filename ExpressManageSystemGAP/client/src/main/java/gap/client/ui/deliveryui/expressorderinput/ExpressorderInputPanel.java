@@ -65,7 +65,7 @@ public class ExpressorderInputPanel extends MainPanel {
 							if (re.equals(ResultMessage.SUCCEED)) {
 								MainFrame.setMessage("订单添加成功",
 										MessageType.succeed, 2000);
-								reSet();
+								refresh();
 							} else {
 								MainFrame.setMessage("订单提交失败",
 										MessageType.alram, 2000);
@@ -117,7 +117,9 @@ public class ExpressorderInputPanel extends MainPanel {
 		return vo;
 	}
 
-	void reSet() {
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
 		cargo.reSet();
 		sender.reSet();
 		receiver.reSet();

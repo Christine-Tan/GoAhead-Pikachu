@@ -90,4 +90,11 @@ public class DriverManagePanel extends MainPanel {
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
+
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
+		listItem.refresh("");
+		queryPanel.id.setText("");
+	}
 }

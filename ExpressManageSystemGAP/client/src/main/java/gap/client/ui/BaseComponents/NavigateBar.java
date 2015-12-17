@@ -21,8 +21,6 @@ public class NavigateBar extends JPanel {
 		setLayout(null);
 		setBounds(0, 40, 220, 610);
 		setBackground(Color.white);
-		userBox = new UserBox();
-		add(userBox);
 	}
 
 	/**
@@ -49,10 +47,10 @@ public class NavigateBar extends JPanel {
 	}
 
 	public void addButton(NavigateButton button) {
+		int size = buttons.size();
+		add(button);
 		buttons.add(button);
-
-		// if(button.getHeight()>=this.)
-
+		button.setBounds(0, 135 + 70 * size, 220, 60);
 	}
 
 }

@@ -26,6 +26,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.tools.DocumentationTool.Location;
 
 public class LoginPanel extends JPanel {
 
@@ -49,8 +50,8 @@ public class LoginPanel extends JPanel {
 		animation = new LoginAnimation(frame);
 		logoPanel = new LogoPanel(frame);
 
-		passwordField = new LoginPassword(signInButton,this);
-		
+		passwordField = new LoginPassword(signInButton, this);
+
 		JLayeredPane layer = new JLayeredPane();
 		layer.setBounds(0, 0, this.getWidth(), this.getHeight());
 		add(layer);
@@ -91,20 +92,20 @@ public class LoginPanel extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				LocalInfo.ins_id = "0010001";
-				User user = new User("000000005", UserType.DELIVERY,
-						"xiaoming", "123456", "0010001", "小明", Gender.MALE);
-				LocalInfo.localuser = user;
-				MainFrame mainFrame = new MainFrame();
-				NetModule.connect();
+				// LocalInfo.ins_id = "0010001";
+				// User user = new User("000000005", UserType.DELIVERY,
+				// "xiaoming", "123456", "0010001", "小明", Gender.MALE);
+				// LocalInfo.localuser = user;
+
+				// NetModule.connect();
 				String username_text = userName.getText();
 				String password_text = new String(passwordField.getPassword());
 				LogVO log = LoginController.login(username_text, password_text);
 				if (log.isSucceed()) {
-					ExpressorderInputPanel panel = new ExpressorderInputPanel(
-							mainFrame);
-					mainFrame.setMainPanel(panel);
+					MainFrame mainFrame = new MainFrame();
+					mainFrame.initial(log.getUserType());
 				}
+				LoginFrame.setVi(false);
 			}
 		});
 
@@ -139,6 +140,5 @@ public class LoginPanel extends JPanel {
 		// TODO Auto-generated method stub
 		logoPanel.openEye();
 	}
-
 
 }

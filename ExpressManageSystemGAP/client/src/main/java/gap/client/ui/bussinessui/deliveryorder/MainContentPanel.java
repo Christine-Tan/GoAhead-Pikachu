@@ -201,6 +201,7 @@ public class MainContentPanel extends JPanel {
 
 		}
 
+
 		/**
 		 * 面板删除用户
 		 * @param box

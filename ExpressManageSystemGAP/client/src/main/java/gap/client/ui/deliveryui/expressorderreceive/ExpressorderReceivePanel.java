@@ -98,4 +98,12 @@ public class ExpressorderReceivePanel extends MainPanel {
 
 	}
 
+	@Override
+	public void refresh() {
+		// TODO 自动生成的方法存根
+		listItemPanel.clear();
+		listItemPanel.addItemPanel();
+		mainFrame.validate();
+	}
+
 }
