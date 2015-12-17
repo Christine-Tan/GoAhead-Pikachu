@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +58,49 @@ public class OrderItemListPanel extends JPanel {
 			items.add(new ItemPanel(order));
 		}
 		showItems();
+		for(final ItemPanel item:items){
+			item.addMouseListener(new MouseListener() {
+				
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					item.setBackground(Color.WHITE);
+					item.order_id.setForeground(Color.BLACK);
+					item.type.setForeground(Color.BLACK);
+					item.date.setForeground(Color.BLACK);
+				}
+				
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					item.setBackground(Color.BLUE);
+					item.order_id.setForeground(Color.WHITE);
+					item.type.setForeground(Color.WHITE);
+					item.date.setForeground(Color.WHITE);
+				}
+				
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}
+		
 	}
-
+   
 	private void showItems() {
 		for (int i = 0; i < items.size(); i++) {
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);

@@ -47,7 +47,7 @@ public class ApprovalPanel extends MainPanel {
 		timer.schedule(task, 1000, 100000);
 	}
 
-	void refresh() {
+	public void refresh() {
 		ApprovalPanel.this.removeAll();
 		totalPanel = new TotalPanel();
 		titlePanel = new ApprovalTitlePanel();
