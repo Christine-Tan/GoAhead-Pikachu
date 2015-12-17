@@ -66,15 +66,15 @@ public class MainFrame extends JFrame {
 
 		titlePanel = new TitlePanel(this);
 		navigateBar = new NavigateBar(this);
-		mainPanel = new MainPanel(this) {
-
-			@Override
-			public void refresh() {
-				// TODO 自动生成的方法存根
-
-			}
-
-		};
+		// mainPanel = new MainPanel(this) {
+		//
+		// @Override
+		// public void refresh() {
+		// // TODO 自动生成的方法存根
+		//
+		// }
+		//
+		// };
 		messagePanel = new MessagePanel(this);
 
 		moveListener = new MoveListener(this);
@@ -88,13 +88,12 @@ public class MainFrame extends JFrame {
 				2, 1, 1, 0);
 		SwingConsole.addComponent(grid, gcons, contentPanel, navigateBar, 0, 1,
 				1, 2, 0, 1);
-		SwingConsole.addComponent(grid, gcons, contentPanel,
-				mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
+		// SwingConsole.addComponent(grid, gcons, contentPanel,
+		// mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
 		SwingConsole.addComponent(grid, gcons, contentPanel, messagePanel, 1,
 				2, 1, 1, 1, 0);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// setVisible(true);
 
 	}
 
@@ -107,6 +106,23 @@ public class MainFrame extends JFrame {
 			break;
 		case BUSSINESSCLERK:
 			PanelInitial.initialBussinessclerk(this);
+			break;
+		case CENTERCLERK:
+			PanelInitial.initialCenterClerk(this);
+			break;
+		case MANAGER:
+			PanelInitial.initialManager(this);
+			break;
+		case INVENTORY:
+			PanelInitial.initialInventory(this);
+			break;
+		case ACCOUNTER:
+			PanelInitial.initialManager(this);
+			break;
+		case ADMINISTRATOR:
+			PanelInitial.initialAdministrator(this);
+			break;
+		default:
 			break;
 		}
 

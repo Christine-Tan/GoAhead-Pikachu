@@ -12,6 +12,10 @@ import gap.client.ui.deliveryui.expressorderreceive.ExpressorderReceivePanel;
 import gap.client.util.MessageType;
 
 public class PanelInitial {
+	/**
+	 * 初始化快递员界面
+	 * @param mainFrame
+	 */
 	public static void initialDelivery(MainFrame mainFrame) {
 		NavigateBar navBar = mainFrame.navigateBar;
 		ExpressorderInputPanel expressorderInput = new ExpressorderInputPanel(
@@ -29,6 +33,10 @@ public class PanelInitial {
 		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
 	}
 
+	/**
+	 * 初始化营业厅业务员界面
+	 * @param mainFrame
+	 */
 	public static void initialBussinessclerk(MainFrame mainFrame) {
 		NavigateBar navBar = mainFrame.navigateBar;
 		NavigateButton arrivedOrder = new NavigateButton(mainFrame,
@@ -52,5 +60,45 @@ public class PanelInitial {
 		navBar.setSelect(loadOrder);
 		mainFrame.setVisible(true);
 		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
+	}
+
+	/**
+	 * 初始化中转中心业务员界面
+	 * @param mainFrame
+	 */
+	public static void initialCenterClerk(MainFrame mainFrame) {
+
+	}
+
+	/**
+	 * 初始化仓库管理人员界面
+	 * @param mainFrame
+	 */
+	public static void initialInventory(MainFrame mainFrame) {
+
+	}
+
+	/**
+	 * 初始化财务人员界面
+	 * @param mainFrame
+	 */
+	public static void initialAccounter(MainFrame mainFrame) {
+
+	}
+
+	/**
+	 * 初始化总经理界面
+	 * @param mainFrame
+	 */
+	public static void initialManager(MainFrame mainFrame) {
+
+	}
+
+	/**
+	 * 初始化管理员界面
+	 * @param mainFrame
+	 */
+	public static void initialAdministrator(MainFrame mainFrame) {
+
 	}
 }
