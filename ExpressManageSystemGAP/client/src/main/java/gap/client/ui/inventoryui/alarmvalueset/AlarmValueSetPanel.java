@@ -73,6 +73,7 @@ public class AlarmValueSetPanel extends MainPanel {
 	public void initial(){
 		alarmValue = new AlarmValueUI();
 	}
+	
 	public void reLayout(){
 		removeAll();
 		gcons.fill = GridBagConstraints.HORIZONTAL;

@@ -32,7 +32,7 @@ public class CheckStockPanel extends MainPanel {
 		// TODO Auto-generated constructor stub
 		this.frame = frame;
 		this.self = this;
-
+		shelves = WareHouseSize.SHELF.getSize();
 		choose = new ChoosePanel();
 		buttonArea = new StockCheckButtonArea();
 		shelves = WareHouseSize.SHELF.getSize();
@@ -51,9 +51,9 @@ public class CheckStockPanel extends MainPanel {
 				// TODO Auto-generated method stub
 //				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "1");
-				setButtonNomal(choose.flex);
-				setButtonNomal(choose.train);
-				setButtonNomal(choose.plane);
+				choose.flex.toNomal();
+				choose.train.toNomal();
+				choose.plane.toNomal();
 				
 				reLayout();
 //				MainFrame.paint(self);
@@ -69,9 +69,9 @@ public class CheckStockPanel extends MainPanel {
 //				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "2");
 //				list.setVisible(true);
-				setButtonNomal(choose.flex);
-				setButtonNomal(choose.car);
-				setButtonNomal(choose.plane);
+				choose.flex.toNomal();
+				choose.car.toNomal();
+				choose.plane.toNomal();
 				reLayout();
 				
 //				MainFrame.paint(self);
@@ -85,9 +85,9 @@ public class CheckStockPanel extends MainPanel {
 				// TODO Auto-generated method stub
 //				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "3");
-				setButtonNomal(choose.flex);
-				setButtonNomal(choose.train);
-				setButtonNomal(choose.car);
+				choose.flex.toNomal();
+				choose.train.toNomal();
+				choose.car.toNomal();
 				reLayout();
 //				MainFrame.paint(self);
 			}
@@ -100,9 +100,9 @@ public class CheckStockPanel extends MainPanel {
 				// TODO Auto-generated method stub
 //				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "0");
-				setButtonNomal(choose.car);
-				setButtonNomal(choose.train);
-				setButtonNomal(choose.plane);
+				choose.car.toNomal();
+				choose.train.toNomal();
+				choose.plane.toNomal();
 				reLayout();
 //				MainFrame.paint(self);
 			}
@@ -140,9 +140,6 @@ public class CheckStockPanel extends MainPanel {
 	}
 	
 	public void initial(){
-		//choose = new ChoosePanel();
-		//buttonArea = new StockCheckButtonArea();
-		shelves = WareHouseSize.SHELF.getSize();
 		list = new ListPanel(shelves, LocalInfo.ins_id + "1");
 	}
 
@@ -150,6 +147,10 @@ public class CheckStockPanel extends MainPanel {
 	public void refresh() {
 		// TODO Auto-generated method stub
 		initial();
+		choose.car.toNomal();
+		choose.flex.toNomal();
+		choose.train.toNomal();
+		choose.plane.toNomal();
 		reLayout();
 	}
 

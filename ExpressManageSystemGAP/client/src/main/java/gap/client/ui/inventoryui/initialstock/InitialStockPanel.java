@@ -41,7 +41,11 @@ public class InitialStockPanel extends MainPanel {
 		
 		this.tframe = frame;
 
-		initial();
+		confirm = new ButtonArea();
+		confirm.submit.setText("确认初始化");
+		title = new TitlePanel();
+		choose = new ChoosePanel();
+		newList = new ListItemPanel(tframe, LocalInfo.ins_id + "1");
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -93,7 +97,9 @@ public class InitialStockPanel extends MainPanel {
 				// TODO Auto-generated method stub
 				ResultMessage re = InventoryController.InitialFlush();
 				if(re.equals(ResultMessage.SUCCEED)){
-					MainFrame.setMessage("初始化成功", MessageType.succeed, 2000);
+					MainFrame.setMessage("初始化成功", MessageType.succeed, 3000);
+				}else{
+					MainFrame.setMessage("初始化失败，原因嘛··············你猜！", MessageType.alram, 3000);
 				}
 			}
 		});
@@ -114,10 +120,6 @@ public class InitialStockPanel extends MainPanel {
 	}
 	
 	public void initial(){
-		confirm = new ButtonArea();
-		confirm.submit.setText("确认初始化");
-		title = new TitlePanel();
-		choose = new ChoosePanel();
 		newList = new ListItemPanel(tframe, LocalInfo.ins_id + "1");
 	}
 

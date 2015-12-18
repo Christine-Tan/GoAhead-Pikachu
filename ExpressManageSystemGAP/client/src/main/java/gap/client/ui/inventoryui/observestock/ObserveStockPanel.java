@@ -53,7 +53,14 @@ public class ObserveStockPanel extends MainPanel {
 		// stockoutList = new ListPanel(OutList);
 		this.frame = frame;
 
-		initial();
+		confirm = new ButtonArea();
+		confirm.submit.setText("确认");
+		stockinTitle = new TitlePanel("入库");
+		stockoutTitle = new TitlePanel("出库");
+		String total = InventoryController.getTotalNum(LocalInfo.getIns_ID())
+				+ "";
+		totalNum = new TotalNumPanel("库存", total);
+		period = new PeriodPanel();
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -67,7 +74,7 @@ public class ObserveStockPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				initialListPanel();
-				MainFrame.setMessage("出入库数量统计结束", MessageType.succeed, 2000);
+				MainFrame.setMessage("出入库数量统计结束", MessageType.succeed, 3000);
 			}
 		});
 		
@@ -76,7 +83,7 @@ public class ObserveStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				MainFrame.setMessage("不要走啊，亲，再看一遍呀~~~~", MessageType.normal, 2000);
+				MainFrame.setMessage("不要走啊，亲，再看一遍呀~~~~", MessageType.succeed, 3000);
 			}
 		});
 
@@ -149,14 +156,8 @@ public class ObserveStockPanel extends MainPanel {
 	}
 	
 	public void initial(){
-		confirm = new ButtonArea();
-		confirm.submit.setText("确认");
-		stockinTitle = new TitlePanel("入库");
-		stockoutTitle = new TitlePanel("出库");
-		String total = InventoryController.getTotalNum(LocalInfo.getIns_ID())
-				+ "";
-		totalNum = new TotalNumPanel("库存", total);
-		period = new PeriodPanel();
+		period.beginDate.setText(null);
+		period.endDate.setText(null);
 	}
 	
 	public void firstLayout(){

@@ -43,6 +43,12 @@ public class StockoutOrderInputPanel extends MainPanel {
 		super(frame);
 		// TODO Auto-generated constructor stub
 		this.frame = frame;
+		
+		choose = new ChoosePanel();
+		stockoutInfo = new StockoutInfoPanel();
+		confirm = new ButtonArea();
+		confirm.submit.setText("生成出库单");
+		title = new TitlePanel();
 		initial();
 
 		gb = new GridBagLayout();
@@ -164,12 +170,9 @@ public class StockoutOrderInputPanel extends MainPanel {
 		
 		initialList(LocalInfo.ins_id+"1");
 		
-		choose = new ChoosePanel();
-		stockoutInfo = new StockoutInfoPanel();
-		confirm = new ButtonArea();
-		confirm.submit.setText("生成出库单");
+		
 		list = new ListPanel(voList);
-		title = new TitlePanel();
+		
 	}
 
 	@Override

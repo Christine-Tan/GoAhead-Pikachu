@@ -40,6 +40,11 @@ public class StockinOrderInputPanel extends MainPanel {
 
 	public StockinOrderInputPanel(MainFrame frame) {
 		super(frame);
+		
+		stockinInfo = new StockinInfoUI();
+		title = new TitlePanel();
+		confirm = new ButtonArea();
+		confirm.submit.setText("生成入库单");
 		initial();
 
 		gb = new GridBagLayout();
@@ -118,10 +123,7 @@ public class StockinOrderInputPanel extends MainPanel {
 		orders.add(vo12);
 		//
 		
-		stockinInfo = new StockinInfoUI();
-		title = new TitlePanel();
-		confirm = new ButtonArea();
-		confirm.submit.setText("生成入库单");
+		
 		list = new ListPanel(orders);
 	}
 	
@@ -139,6 +141,7 @@ public class StockinOrderInputPanel extends MainPanel {
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
-		
+		initial();
+		reLayout();
 	}
 }
