@@ -1,5 +1,8 @@
 package gap.client.ui.BaseComponents;
 
+import gap.client.ui.BaseComponents.FrameInitialler.AccountorInitialler;
+import gap.client.ui.BaseComponents.FrameInitialler.CenterClerkInitaller;
+import gap.client.ui.BaseComponents.FrameInitialler.InventoryInitailler;
 import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.BaseListener.ResizeListener;
 import gap.client.ui.UITools.ColorAndFonts;
@@ -96,6 +99,10 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
+	
+	public NavigateBar getNavigateBar(){
+		return navigateBar;
+	}
 
 	public void initial(UserType user) {
 		UserBox userBox = new UserBox();
@@ -108,16 +115,16 @@ public class MainFrame extends JFrame {
 			PanelInitial.initialBussinessclerk(this);
 			break;
 		case CENTERCLERK:
-			PanelInitial.initialCenterClerk(this);
+			CenterClerkInitaller.initialCenterClerk(this);
 			break;
 		case MANAGER:
 			PanelInitial.initialManager(this);
 			break;
 		case INVENTORY:
-			PanelInitial.initialInventory(this);
+			InventoryInitailler.initialInventory(this);
 			break;
 		case ACCOUNTER:
-			PanelInitial.initialManager(this);
+			AccountorInitialler.initialAccountor(this);
 			break;
 		case ADMINISTRATOR:
 			PanelInitial.initialAdministrator(this);

@@ -22,6 +22,7 @@ public class Tester {
 		
 		AccountManagePanel panel = new AccountManagePanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
 //		mainFrame.setMessage("账户名字重复", MessageType.alram, 3000);
 
 	//	mainFrame.setMessage("账户名字重复", MessageType.alram, 3000);

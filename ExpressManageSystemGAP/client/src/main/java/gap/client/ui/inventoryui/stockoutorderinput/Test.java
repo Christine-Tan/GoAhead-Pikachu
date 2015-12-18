@@ -19,5 +19,6 @@ public class Test {
 		NetModule.connect();
 		StockoutOrderInputPanel panel = new StockoutOrderInputPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
 	}
 }

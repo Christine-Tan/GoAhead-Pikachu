@@ -22,6 +22,8 @@ public class Tester {
 		
 		CostProfitPanel panel = new CostProfitPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
+		
 
 	}
 }

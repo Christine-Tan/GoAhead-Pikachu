@@ -138,5 +138,19 @@ public class CheckStockPanel extends MainPanel {
 		frame.validate();
 
 	}
+	
+	public void initial(){
+		//choose = new ChoosePanel();
+		//buttonArea = new StockCheckButtonArea();
+		shelves = WareHouseSize.SHELF.getSize();
+		list = new ListPanel(shelves, LocalInfo.ins_id + "1");
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		initial();
+		reLayout();
+	}
 
 }

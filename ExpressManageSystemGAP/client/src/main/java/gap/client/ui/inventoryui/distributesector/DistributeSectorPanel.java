@@ -37,4 +37,10 @@ public class DistributeSectorPanel extends MainPanel {
 				.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
 	}
 
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

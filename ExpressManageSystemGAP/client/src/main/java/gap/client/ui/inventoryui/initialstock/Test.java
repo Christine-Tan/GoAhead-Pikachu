@@ -19,5 +19,6 @@ public class Test {
 		NetModule.connect();
 		InitialStockPanel panel = new InitialStockPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
 	}
 }

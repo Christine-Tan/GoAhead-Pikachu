@@ -19,6 +19,7 @@ public class Tester {
 		NetModule.connect();
 		LoadOrderPanel panel = new LoadOrderPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
 	}
 
 }

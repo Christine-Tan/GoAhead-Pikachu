@@ -41,7 +41,7 @@ public class Icon extends JPanel {
 			i = j;
 			repaint();
 			try {
-				Thread.sleep(10);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -74,15 +74,15 @@ public class Icon extends JPanel {
 	
 	}
 
-	public static void main(String[] args) {
-		JFrame jf = new JFrame();
-		Icon icon = new Icon(50);
-		JPanel p = new JPanel();
-		p.add(icon);
-		jf.getContentPane().add(p);
-		jf.setSize(300, 300);
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jf.setVisible(true);
+//	public static void main(String[] args) {
+//		JFrame jf = new JFrame();
+//		Icon icon = new Icon(50);
+//		JPanel p = new JPanel();
+//		p.add(icon);
+//		jf.getContentPane().add(p);
+//		jf.setSize(300, 300);
+//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		jf.setVisible(true);
 //		for(int i = icon.height;i>icon.y;i--){
 //			icon.i = i;
 //			icon.repaint();
@@ -92,11 +92,11 @@ public class Icon extends JPanel {
 //				// TODO Auto-generated catch block
 //				e.printStackTrace();
 //			}
-//		}
-		icon.paint();
-		
-
-	}
+////		}
+//		icon.paint();
+//		
+//
+//	}
 	
 	
 

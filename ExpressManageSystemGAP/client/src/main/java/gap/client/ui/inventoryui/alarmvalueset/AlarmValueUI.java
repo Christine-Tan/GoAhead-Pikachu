@@ -1,6 +1,7 @@
 package gap.client.ui.inventoryui.alarmvalueset;
 
 import gap.client.blcontroller.InventoryController;
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -8,6 +9,7 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.ui.inventoryui.alarmvalueset.Icon.PaintThread;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -35,9 +37,10 @@ public class AlarmValueUI extends JPanel {
 		double value = InventoryController.getAlarmValue(LocalInfo.getIns_ID());
 		
 		
-		alarmValue = new GAPTextField(10);
+		alarmValue = new GAPTextField(8);
 		alarmValue.setBorder(ComponentStyle.text_border);
 		alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
+		
 		alarmValue.setHorizontalAlignment(JTextField.CENTER);
 		alarmValue.setForeground(ComponentStyle.gray);
 		alarmValue.setText(value + "%");
@@ -57,7 +60,13 @@ public class AlarmValueUI extends JPanel {
 	public double getAlarmValue() {
 		String newValue = alarmValue.getText();
 		newValue = newValue.replace("%", "");
-		return Double.parseDouble(newValue);
+		double value = 0;
+		try{
+			value = Double.parseDouble(newValue);
+		}catch(Exception e){
+			MainFrame.setMessage("非数字输入", MessageType.alram, 2000);
+		}
+		return value;
 	}
 	
 //	class ValueUI extends JPanel{

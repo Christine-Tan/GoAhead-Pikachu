@@ -40,44 +40,13 @@ public class StockinOrderInputPanel extends MainPanel {
 
 	public StockinOrderInputPanel(MainFrame frame) {
 		super(frame);
-		orders = new ArrayList<ExpressOrderVO>();
-		//
-		Address add = new Address("江苏省", "南京市", "栖霞区");
-		PeopleInfo receiver = new PeopleInfo("", add, "", "");
-		
-		for(int i = 1;i<=9;i++){
-			ExpressOrderVO vo = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000001","", "","");
-			vo.order_id = "000000000"+i;
-			orders.add(vo);
-		}
-		ExpressOrderVO vo10 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000010","", "","");
-		ExpressOrderVO vo11 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000011","", "","");
-		ExpressOrderVO vo12 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000012","", "","");
-		orders.add(vo10);
-		orders.add(vo11);
-		orders.add(vo12);
-		//
-		
-		stockinInfo = new StockinInfoUI();
-		title = new TitlePanel();
-		confirm = new ButtonArea();
-		confirm.submit.setText("生成入库单");
-		list = new ListPanel(orders);
+		initial();
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.white);
-		// gcons.insets = new Insets(0,10,0,10);
-		// gcons.fill = GridBagConstraints.CENTER;
-		SwingConsole.addComponent(gb, gcons, this, stockinInfo, 0, 0, 1, 1, 1,
-				0);
-		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, list, 0, 2, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
+		reLayout();
 		
 		title.box.addItemListener(new ItemListener() {
 			
@@ -128,5 +97,48 @@ public class StockinOrderInputPanel extends MainPanel {
 		
 		StockinOrderVO vo = new StockinOrderVO(goods, inDate, id, ins_id);
 		return vo;
+	}
+	
+	public void initial(){
+		orders = new ArrayList<ExpressOrderVO>();
+		//
+		Address add = new Address("江苏省", "南京市", "栖霞区");
+		PeopleInfo receiver = new PeopleInfo("", add, "", "");
+		
+		for(int i = 1;i<=9;i++){
+			ExpressOrderVO vo = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000001","", "","");
+			vo.order_id = "000000000"+i;
+			orders.add(vo);
+		}
+		ExpressOrderVO vo10 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000010","", "","");
+		ExpressOrderVO vo11 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000011","", "","");
+		ExpressOrderVO vo12 = new ExpressOrderVO(null, receiver, ExpressType.ECONOMIC, 0, null,true, "0000000012","", "","");
+		orders.add(vo10);
+		orders.add(vo11);
+		orders.add(vo12);
+		//
+		
+		stockinInfo = new StockinInfoUI();
+		title = new TitlePanel();
+		confirm = new ButtonArea();
+		confirm.submit.setText("生成入库单");
+		list = new ListPanel(orders);
+	}
+	
+	public void reLayout(){
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.white);
+		SwingConsole.addComponent(gb, gcons, this, stockinInfo, 0, 0, 1, 1, 1,
+				0);
+		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, list, 0, 2, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		
 	}
 }

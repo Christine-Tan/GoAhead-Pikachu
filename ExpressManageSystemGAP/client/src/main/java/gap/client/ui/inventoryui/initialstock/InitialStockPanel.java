@@ -41,22 +41,13 @@ public class InitialStockPanel extends MainPanel {
 		
 		this.tframe = frame;
 
-		confirm = new ButtonArea();
-		confirm.submit.setText("确认初始化");
-		title = new TitlePanel();
-		choose = new ChoosePanel();
-		newList = new ListItemPanel(frame, LocalInfo.ins_id + "1");
+		initial();
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		JPanel panel = new JPanel();
-		SwingConsole.addComponent(gb, gcons, this, choose, 0, 0, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, newList, 0, 2, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
+		reLayout();
 
 		choose.car.addActionListener(new ActionListener() {
 
@@ -120,6 +111,21 @@ public class InitialStockPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
 		
 		tframe.validate();
+	}
+	
+	public void initial(){
+		confirm = new ButtonArea();
+		confirm.submit.setText("确认初始化");
+		title = new TitlePanel();
+		choose = new ChoosePanel();
+		newList = new ListItemPanel(tframe, LocalInfo.ins_id + "1");
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		initial();
+		reLayout();
 	}
 
 }

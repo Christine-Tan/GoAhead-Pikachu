@@ -20,8 +20,6 @@ public class Icon extends JPanel {
 	int i;
 
 	public Icon(double ratio) {
-		System.out.println("初始化了");
-		
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(width + 4, height + 4));
 		setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2,

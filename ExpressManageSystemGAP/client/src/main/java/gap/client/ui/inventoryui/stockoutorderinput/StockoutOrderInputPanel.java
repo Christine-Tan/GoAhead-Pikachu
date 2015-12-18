@@ -43,16 +43,7 @@ public class StockoutOrderInputPanel extends MainPanel {
 		super(frame);
 		// TODO Auto-generated constructor stub
 		this.frame = frame;
-		voList = new ArrayList<GoodsVO>();
-		
-		initialList(LocalInfo.ins_id+"1");
-		
-		choose = new ChoosePanel();
-		stockoutInfo = new StockoutInfoPanel();
-		confirm = new ButtonArea();
-		confirm.submit.setText("生成出库单");
-		list = new ListPanel(voList);
-		title = new TitlePanel();
+		initial();
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -166,6 +157,26 @@ public class StockoutOrderInputPanel extends MainPanel {
 		StockoutOrderVO vo = new StockoutOrderVO(ids, date, target_ins, id, transport, LocalInfo.ins_id);
 		return vo;
 		
+	}
+	
+	public void initial(){
+		voList = new ArrayList<GoodsVO>();
+		
+		initialList(LocalInfo.ins_id+"1");
+		
+		choose = new ChoosePanel();
+		stockoutInfo = new StockoutInfoPanel();
+		confirm = new ButtonArea();
+		confirm.submit.setText("生成出库单");
+		list = new ListPanel(voList);
+		title = new TitlePanel();
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		initial();
+		reLayout();
 	}
 
 }

@@ -53,42 +53,13 @@ public class ObserveStockPanel extends MainPanel {
 		// stockoutList = new ListPanel(OutList);
 		this.frame = frame;
 
-		confirm = new ButtonArea();
-		confirm.submit.setText("确认");
-		stockinTitle = new TitlePanel("入库");
-		stockoutTitle = new TitlePanel("出库");
-		String total = InventoryController.getTotalNum(LocalInfo.getIns_ID())
-				+ "";
-		totalNum = new TotalNumPanel("库存", total);
-		period = new PeriodPanel();
+		initial();
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		JPanel panel1 = new JPanel();
-		panel1.setBackground(Color.white);
-//		panel1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ColorAndFonts.blue));
-
-		JPanel panel2 = new JPanel();
-		panel2.setBackground(Color.white);
-		
-		JPanel panel3 = new JPanel();
-		panel3.setBackground(Color.white);
-		
-		panel3.setPreferredSize(new Dimension(Default.PANEL_WIDTH,30));
-//		panel2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ColorAndFonts.blue));
-
-		SwingConsole.addComponent(gb, gcons, this, period, 0, 0, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
-				0);
-		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 2, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 4, 1, 1,
-				1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel2, 0, 5, 1, 1, 1, 1);
-		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 8, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel3, 0, 9, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);
+		firstLayout();
 
 		period.confirm.addActionListener(new ActionListener() {
 
@@ -96,6 +67,7 @@ public class ObserveStockPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				initialListPanel();
+				MainFrame.setMessage("出入库数量统计结束", MessageType.succeed, 2000);
 			}
 		});
 		
@@ -104,7 +76,7 @@ public class ObserveStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				MainFrame.setMessage("不要走啊，亲，再看一遍嘛~~~~", MessageType.normal, 2000);
+				MainFrame.setMessage("不要走啊，亲，再看一遍呀~~~~", MessageType.normal, 2000);
 			}
 		});
 
@@ -148,12 +120,10 @@ public class ObserveStockPanel extends MainPanel {
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.white);
 		panel1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
-//		panel1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ComponentStyle.light_gray));
 		
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.white);
 		panel2.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 30));
-//		panel2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, ColorAndFonts.blue));
 
 		SwingConsole.addComponent(gb, gcons, this, period, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
@@ -176,6 +146,51 @@ public class ObserveStockPanel extends MainPanel {
 
 		frame.validate();
 
+	}
+	
+	public void initial(){
+		confirm = new ButtonArea();
+		confirm.submit.setText("确认");
+		stockinTitle = new TitlePanel("入库");
+		stockoutTitle = new TitlePanel("出库");
+		String total = InventoryController.getTotalNum(LocalInfo.getIns_ID())
+				+ "";
+		totalNum = new TotalNumPanel("库存", total);
+		period = new PeriodPanel();
+	}
+	
+	public void firstLayout(){
+		removeAll();
+		JPanel panel1 = new JPanel();
+		panel1.setBackground(Color.white);
+
+		JPanel panel2 = new JPanel();
+		panel2.setBackground(Color.white);
+		
+		JPanel panel3 = new JPanel();
+		panel3.setBackground(Color.white);
+		
+		panel3.setPreferredSize(new Dimension(Default.PANEL_WIDTH,30));
+
+		SwingConsole.addComponent(gb, gcons, this, period, 0, 0, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
+				0);
+		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 2, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 4, 1, 1,
+				1, 0);
+		SwingConsole.addComponent(gb, gcons, this, panel2, 0, 5, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 8, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, panel3, 0, 9, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);
+		frame.validate();
+	}
+
+	@Override
+	public void refresh() {
+		// TODO Auto-generated method stub
+		initial();
+		firstLayout();
+		
 	}
 
 }

@@ -19,5 +19,7 @@ public class Test {
 		NetModule.connect();
 		AlarmValueSetPanel panel = new AlarmValueSetPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
+		
 	}
 }
