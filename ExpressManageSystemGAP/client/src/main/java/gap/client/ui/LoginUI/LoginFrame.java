@@ -16,7 +16,6 @@ public class LoginFrame extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		NetModule.connect();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -24,6 +23,7 @@ public class LoginFrame extends JFrame {
 							.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 
 					LoginFrame frame = new LoginFrame();
+					NetModule.connect();
 					loginFrame = frame;
 
 				} catch (Exception e) {
@@ -43,7 +43,7 @@ public class LoginFrame extends JFrame {
 	 */
 	public LoginFrame() {
 		setResizable(false);
-//		 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(430, 330);
 		setUndecorated(true);
 		setLocationRelativeTo(null);

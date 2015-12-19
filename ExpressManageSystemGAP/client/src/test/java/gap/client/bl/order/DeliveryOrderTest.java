@@ -1,24 +1,29 @@
 package gap.client.bl.order;
 
 import static org.junit.Assert.*;
+import gap.client.datacontroller.NetModule;
+import gap.client.vo.DeliveryOrderVO;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class DeliveryOrderTest {
+	DeliveryOrder delivery;
 
 	@Before
 	public void setUp() throws Exception {
+		NetModule.connect();
+		delivery=new DeliveryOrder();
 	}
 
 	@Test
 	public void testDeliveryOrder() {
-		fail("尚未实现");
 	}
 
 	@Test
 	public void testSave() {
-		fail("尚未实现");
+		DeliveryOrderVO vo=new DeliveryOrderVO();
+		delivery.save(vo);
 	}
 
 }

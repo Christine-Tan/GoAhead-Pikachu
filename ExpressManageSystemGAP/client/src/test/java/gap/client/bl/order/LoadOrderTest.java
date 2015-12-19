@@ -1,29 +1,31 @@
 package gap.client.bl.order;
 
 import static org.junit.Assert.*;
+import gap.client.datacontroller.NetModule;
+import gap.client.vo.LoadOrderVO;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class LoadOrderTest {
+	LoadOrder load;
 
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	@Test
-	public void testLoadOrder() {
-		fail("尚未实现");
+		NetModule.connect();
+		load = new LoadOrder();
 	}
 
 	@Test
 	public void testSave() {
-		fail("尚未实现");
+		LoadOrderVO vo = new LoadOrderVO();
+		vo.date = "2015-03-01";
+		load.save(vo);
 	}
 
 	@Test
 	public void testGetArrivingLoadOrder() {
-		fail("尚未实现");
+		load.getArrivingLoadOrder("0010001");
 	}
 
 }

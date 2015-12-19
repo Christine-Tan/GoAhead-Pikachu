@@ -35,6 +35,7 @@ public class LoginButton extends JLabel {
 			break;
 		}
 
+	
 		setSize(200, 35);
 		setForeground(Color.white);
 		setOpaque(false);

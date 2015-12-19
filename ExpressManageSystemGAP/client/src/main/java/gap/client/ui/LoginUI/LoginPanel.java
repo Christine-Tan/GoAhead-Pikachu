@@ -49,7 +49,7 @@ public class LoginPanel extends JPanel {
 		this.frame = frame;
 		animation = new LoginAnimation(frame);
 		logoPanel = new LogoPanel(frame);
-		signInButton = new LoginButton("signIn",this);
+		signInButton = new LoginButton("signIn", this);
 		passwordField = new LoginPassword(signInButton, this);
 
 		JLayeredPane layer = new JLayeredPane();
@@ -62,7 +62,6 @@ public class LoginPanel extends JPanel {
 
 		layer.add(logoPanel, Integer.valueOf(15));
 		logoPanel.startAnimation();
-
 
 		int signInX = getWidth() / 2 - 200 / 2;
 		signInButton.setBounds(signInX, 280, 200, 35);
@@ -104,8 +103,9 @@ public class LoginPanel extends JPanel {
 		if (log.isSucceed()) {
 			MainFrame mainFrame = new MainFrame();
 			mainFrame.initial(log.getUserType());
+			LoginFrame.setVi(false);
 		}
-		LoginFrame.setVi(false);
+
 	}
 
 }
