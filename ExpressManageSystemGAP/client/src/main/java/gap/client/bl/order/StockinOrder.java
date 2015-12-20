@@ -9,9 +9,11 @@ import gap.client.vo.ArrivedOrderVO;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockinOrderVO;
+import gap.common.po.ArrivedOrderPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StockinOrder implements StockinOrderService {
@@ -20,6 +22,7 @@ public class StockinOrder implements StockinOrderService {
 
 	public StockinOrder() {
 		stockinData = ControllerFactory.getStockinOrderDataController();
+		arrivedData = ControllerFactory.getArrivedOrderDataController();
 	}
 
 	@Override
@@ -45,9 +48,11 @@ public class StockinOrder implements StockinOrderService {
 //	}
 
 	@Override
-	public List<ArrivedOrderVO> getArrivedOrderVO(String ins_id) {
+	public List<ArrivedOrderPO> getArrivedOrderPO(String ins_id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<ArrivedOrderPO> orders = new ArrayList<ArrivedOrderPO>();
+		orders = arrivedData.getStockinginArrivedOrder(ins_id);
+		return orders;
 	}
 
 	@Override
@@ -78,6 +83,11 @@ public class StockinOrder implements StockinOrderService {
 			num = "0" + num;
 		}
 		return cons+num;
+	}
+	
+	@Override
+	public ResultMessage setOrderStockin(String order_id){
+		return arrivedData.setOrderStockin(order_id);
 	}
 
 }

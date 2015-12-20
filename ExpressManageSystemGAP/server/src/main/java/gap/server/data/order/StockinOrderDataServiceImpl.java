@@ -1,6 +1,7 @@
 package gap.server.data.order;
 
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
+import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
 import gap.common.dataservice.orderdataservice.StockinOrderDataService;
 import gap.common.po.GoodsPO;
 import gap.common.po.StockinOrderPO;
@@ -89,6 +90,8 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 				itemInsert.add(location_f, goods.getLocation());
 				NetModule.excutor.excute(itemInsert.createSQL());
 			}
+//			ArrivedOrderDataService arrivedData = ArrivedOrderDataServiceImpl.getInstance();
+//			arrivedData.setStockIn(order_id);
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

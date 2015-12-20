@@ -191,7 +191,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			throws RemoteException {
 		// TODO 自动生成的方法存根
 		String sql = "SELECT * FROM " + tableName + " WHERE " + des_insid_f
-				+ " = '" + ins_id + "' AND " + isStock_in_f + " = 'false'";
+				+ " = '" + ins_id + "' AND " + isStock_in_f + " = "+false+" AND "+passed_f+" = "+true+";";
 		try {
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<ArrivedOrderPO> arrived = new ArrayList<ArrivedOrderPO>();

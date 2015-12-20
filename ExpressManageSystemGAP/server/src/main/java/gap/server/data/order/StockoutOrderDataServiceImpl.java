@@ -239,7 +239,13 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
 			
-//			List<String> getidsByOrderId
+			List<String> ids = getidsByOrderId(order_id);
+			InventoryDataService inventory  = InventoryDataServiceImpl.getInstance();
+			if(ids!=null&&ids.size()>0){
+				for(String id: ids){
+					inventory.setExisted(id);
+				}
+			}
 			
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {

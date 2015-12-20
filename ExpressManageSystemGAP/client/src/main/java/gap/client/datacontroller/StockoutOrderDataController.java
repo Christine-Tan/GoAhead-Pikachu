@@ -5,6 +5,7 @@ import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StockoutOrderDataController {
@@ -70,11 +71,28 @@ public class StockoutOrderDataController {
 
 	public ResultMessage setPassed(String order_id, String state_info) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			return stockoutorderdataservice.setPassed(order_id, state_info);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
-	public List<StockoutOrderPO> getUnpassedOrders() {
-		// TODO Auto-generated method stub
-		return null;
+//	public List<StockoutOrderPO> getUnpassedOrders() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+	
+	public List<StockoutOrderPO> getUnLoadedOrders(){
+		List<StockoutOrderPO> orders = new ArrayList<StockoutOrderPO>();
+		try {
+			orders = stockoutorderdataservice.getUnLoadedOrders();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return orders;
 	}
 }

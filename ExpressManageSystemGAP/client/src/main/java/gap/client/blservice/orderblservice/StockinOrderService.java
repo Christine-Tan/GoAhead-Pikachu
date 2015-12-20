@@ -4,6 +4,7 @@ import gap.client.vo.ArrivedOrderVO;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockinOrderVO;
+import gap.common.po.ArrivedOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface StockinOrderService {
 
 //	public StockinOrderVO find(String id, String ins_id);
 
-	public List<ArrivedOrderVO> getArrivedOrderVO(String ins_id);
+//	public List<ArrivedOrderVO> getArrivedOrderVO(String ins_id);
 
 //	public String getLocation(GoodsVO vo);
 
@@ -23,5 +24,9 @@ public interface StockinOrderService {
 	public int getTotalNum(List<StockinOrderVO> list);
 
 	public String getNextId(String cons);
+
+	public List<ArrivedOrderPO> getArrivedOrderPO(String ins_id);
+
+	public ResultMessage setOrderStockin(String order_id);
 
 }

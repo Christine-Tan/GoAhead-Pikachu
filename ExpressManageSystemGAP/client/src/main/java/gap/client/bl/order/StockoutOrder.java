@@ -71,5 +71,10 @@ public class StockoutOrder implements StockoutOrderService {
 		}
 		return cons+num;
 	}
+	
+//	public List<StockoutOrderVO> getUnLoadedOrders(String ins_id){
+//		List<StockoutOrderVO> orders = new ArrayList<StockoutOrderVO>();
+//		orders = stockoutData.get
+//	}
 
 }

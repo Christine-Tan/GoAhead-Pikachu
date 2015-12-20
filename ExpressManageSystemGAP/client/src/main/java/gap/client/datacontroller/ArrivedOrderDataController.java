@@ -5,6 +5,7 @@ import gap.common.po.ArrivedOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 public class ArrivedOrderDataController {
 
@@ -20,6 +21,16 @@ public class ArrivedOrderDataController {
 		}
 		return ResultMessage.FAILED;
 	}
+	
+	public List<ArrivedOrderPO> getStockinginArrivedOrder(String ins_id){
+		try {
+			return arrivedOrderdataservice.getStockinginArrivedOrder(ins_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public int nextId(String cons) {
 		try {
@@ -29,6 +40,16 @@ public class ArrivedOrderDataController {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public ResultMessage setOrderStockin(String order_id){
+		try {
+			return arrivedOrderdataservice.setStockIn(order_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
 }

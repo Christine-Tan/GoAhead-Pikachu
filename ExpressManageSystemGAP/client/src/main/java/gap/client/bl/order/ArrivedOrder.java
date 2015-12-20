@@ -30,6 +30,8 @@ public class ArrivedOrder implements ArrivedOrderService {
 		order.id = pre + id;
 		return arrivedOrderData.add(order.toPO());
 	}
+	
+//	public 
 
 
 }

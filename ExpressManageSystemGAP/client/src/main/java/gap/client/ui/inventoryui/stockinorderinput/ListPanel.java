@@ -18,7 +18,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 public class ListPanel extends JPanel {
-	List<ListItem> items;
+	List<ListItem> items; 
 	List<ExpressOrderVO> expressorders;
 	List<GoodsVO> goods;
 	GridBagLayout gb;
