@@ -1,5 +1,6 @@
 package gap.client.ui.paymentUI;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -13,5 +14,6 @@ public class PanelWithGrid extends JPanel{
 		gridBagConstraints = new GridBagConstraints();
 		gridBagLayout = new GridBagLayout();
 		setLayout(gridBagLayout);
+		setBackground(Color.white);
 	}
 }

@@ -105,6 +105,11 @@ public abstract class Payee {
 		UserType userType = userPO.getType();
 		while (salaryItr.hasNext()) {
 			SalaryPO aPO = salaryItr.next();
+			
+			if(aPO.getType() == null){
+				continue;
+			}
+			
 			if (aPO.getType().equals(userType)) {
 				salaryPO = aPO;
 				break;

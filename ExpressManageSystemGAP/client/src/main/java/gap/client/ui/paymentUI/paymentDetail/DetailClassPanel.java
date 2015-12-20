@@ -71,7 +71,6 @@ public class DetailClassPanel extends PanelWithGrid{
 		for(int i=0;i<itemNum;i++){	
 			SwingConsole.addComponent(gridBagLayout, gridBagConstraints, this, 
 					items.get(i), 1, i, 1, 1, 1, 0.1);
-			
 		}
 		
 	}

@@ -32,7 +32,7 @@ public class AccountBlController implements AccountService {
 
 	public void initial() {
 		buffer.clear();
-		getAccountManageList();
+		//getAccountManageList();
 	}
 
 	@Override

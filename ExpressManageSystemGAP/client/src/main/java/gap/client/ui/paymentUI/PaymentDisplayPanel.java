@@ -24,6 +24,8 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 	
 	PaymentRewardPanel rewardPanel;
 	
+	PaymentTotalPanel totalPanel;
+	
 	//用来储存不同类型的payee的数组
 	
 	ArrayList<PayeeVO> salaryVOs = new ArrayList<>();
@@ -112,6 +114,10 @@ public class PaymentDisplayPanel extends PanelWithGrid{
 		
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, rewardPanel, 0, i+1, 1, 1, 1, 1);
+		
+		totalPanel = new PaymentTotalPanel(payeeVOs, "");
+		SwingConsole.addComponent
+		(gridBagLayout, gridBagConstraints, this, totalPanel, 0, i+2, 1, 1, 1, 1);
 		
 	}
 	

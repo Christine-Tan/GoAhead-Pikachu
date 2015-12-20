@@ -40,6 +40,7 @@ public class PaymentMainPanel extends MainPanelWithGird{
 	
 	public void refresh() {
 		// TODO Auto-generated method stub
+		removeAll();
 		accountVOs = receiptController.getAccoutList();
 		paymentListVO = receiptController.getPaymentList();
 		
@@ -75,7 +76,21 @@ public class PaymentMainPanel extends MainPanelWithGird{
 			return;
 		}
 		
+		double sum = calculateTotal(payeeVOs);
+		paymentListVO.setTotal(sum);
 		receiptController.submitPaymentList(paymentListVO);
+	}
+	
+	private double calculateTotal(ArrayList<PayeeVO> payeeVOs){
+		double sum=0;
+		if(payeeVOs==null){
+			return 0;
+		}
+		
+		for(PayeeVO vo:payeeVOs){
+			sum+=vo.getMoney();
+		}
+		return sum;
 	}
 	
 }

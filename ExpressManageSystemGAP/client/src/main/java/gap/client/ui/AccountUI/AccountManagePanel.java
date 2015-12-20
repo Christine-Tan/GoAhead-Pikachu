@@ -56,6 +56,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 		removeAll();
 		
 		accountBlController = AccountBlController.getInstance();
+		accountBlController.initial();
 		
 		Iterator<AccountVO> itr = accountBlController.getAccountManageList();
 		itrToList(itr);

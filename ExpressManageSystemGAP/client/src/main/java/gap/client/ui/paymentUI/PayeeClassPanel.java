@@ -3,6 +3,7 @@ package gap.client.ui.paymentUI;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.inventoryui.observestock.TotalNumPanel;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;
 
@@ -33,7 +34,8 @@ public class PayeeClassPanel extends PanelWithGrid{
 
 	protected ArrayList<AccountVO> accountVOs;
 	protected ArrayList<PayeeVO> payees;
-
+	
+	private PaymentTotalPanel totalNumPanel;
 
 
 	public PayeeClassPanel
@@ -74,13 +76,17 @@ public class PayeeClassPanel extends PanelWithGrid{
 		(gridBagLayout, gridBagConstraints, this, nameLabel, 0, 0, 1, itemNum, 0, 1);
 
 
-
-		for(int i=0;i<itemNum;i++){
+		int i=0;
+		for(i=0;i<items.size();i++){
 			SwingConsole.addComponent(gridBagLayout, gridBagConstraints, this,
 					items.get(i), 1, i, 1, 1, 1, 0.1);
-
 		}
-
+		
+		if(items.size()>0){
+			totalNumPanel = new PaymentTotalPanel(payees, name);
+			SwingConsole.addComponent(gridBagLayout, gridBagConstraints, this,
+					totalNumPanel, 1, i, 1, 1, 1, 0.1);
+		}
 	}
 
 	@Override
