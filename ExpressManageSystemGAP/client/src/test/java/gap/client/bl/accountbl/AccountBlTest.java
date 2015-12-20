@@ -1,16 +1,21 @@
 package gap.client.bl.accountbl;
 
 import static org.junit.Assert.fail;
+import gap.client.bl.account.AccountBlController;
+import gap.client.datacontroller.NetModule;
+import gap.client.vo.AccountVO;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class AccountBlTest {
+	AccountBlController account;
 
 	@Before
 	public void setUp() throws Exception {
-
+		NetModule.connect();
+		account = AccountBlController.getInstance();
 	}
 
 	@After
@@ -18,43 +23,38 @@ public class AccountBlTest {
 	}
 
 	@Test
-	public void testGetInstance() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testInitial() {
-		fail("Not yet implemented");
+		account.initial();
 	}
 
 	@Test
 	public void testGetAccountManageList() {
-		fail("Not yet implemented");
+		account.getAccountManageList();
 	}
 
 	@Test
 	public void testAddAccount() {
-		fail("Not yet implemented");
+		account.addAccount(new AccountVO("账户1", 100));
 	}
 
 	@Test
 	public void testDeleteAccount() {
-		fail("Not yet implemented");
+		account.deleteAccount(new AccountVO("账户1", 100));
 	}
 
 	@Test
 	public void testModifyAccount() {
-		fail("Not yet implemented");
+		account.modifyAccount(new AccountVO("账户1", 100));
 	}
 
 	@Test
 	public void testSearchAccount() {
-		fail("Not yet implemented");
+		account.searchAccount("daw");
 	}
 
 	@Test
 	public void testConfirm() {
-		fail("Not yet implemented");
+		account.confirm();
 	}
 
 }

@@ -2,43 +2,43 @@ package gap.client.bl.receipt;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+
+import gap.client.datacontroller.NetModule;
+import gap.client.vo.PayeeVO;
+import gap.common.po.PaymentListPO;
+import gap.common.util.PaymentType;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class ReceiptTest {
+	AccountorReceiptController receipt;
 
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void testGetInstance() {
-		fail("Not yet implemented");
+		NetModule.connect();
+		receipt = AccountorReceiptController.getInstance();
 	}
 
 	@Test
 	public void testGetPaymentList() {
-		fail("Not yet implemented");
+		receipt.getPaymentList();
 	}
 
 	@Test
 	public void testSubmitPaymentList() {
-		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testHandlePaymentList() {
-		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testAddPayee() {
-		fail("Not yet implemented");
+		receipt.addPayee(new PayeeVO(PaymentType.CENTERCLERK, "000000001",
+				"yyf", Calendar.getInstance(), 100.0, "账户1", "", ""));
 	}
 
 	@Test

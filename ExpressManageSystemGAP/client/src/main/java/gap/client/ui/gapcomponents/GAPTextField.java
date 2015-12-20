@@ -60,6 +60,7 @@ public class GAPTextField extends JTextField {
 		}
 		con.validate();
 		con.repaint();
+
 	}
 
 	// 获得焦点样式
@@ -107,7 +108,6 @@ public class GAPTextField extends JTextField {
 		setFocusable(true);
 		normal();
 	}
-
 
 	class TextListener implements FocusListener {
 		boolean controled;

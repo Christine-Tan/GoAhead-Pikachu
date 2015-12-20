@@ -32,7 +32,7 @@ public class CarQueryPanel extends JPanel {
 		search = new GAPButton("搜索", new ImageIcon(
 				"images\\deliveryIcon\\search.png"));
 		search.setFont(ComponentStyle.plainFont);
-		search.setForeground(Color.black);
+//		search.setForeground(Color.black);
 		gcons.insets = new Insets(10, 0, 0, 2);
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, search, 1, 0, 1, 1, 0, 0);

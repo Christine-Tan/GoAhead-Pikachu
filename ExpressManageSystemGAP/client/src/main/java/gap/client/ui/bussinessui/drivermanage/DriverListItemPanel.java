@@ -1,6 +1,8 @@
 package gap.client.ui.bussinessui.drivermanage;
 
 import gap.client.blcontroller.DriverManageController;
+import gap.client.exception.InvalidInputException;
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
@@ -8,6 +10,7 @@ import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.vo.DriverVO;
 import gap.common.util.Gender;
 
@@ -107,7 +110,8 @@ public class DriverListItemPanel extends JPanel {
 	private void removeItem(ItemPanel item) {
 		items.remove(item);
 		remove(item);
-		DriverManageController.delete(item.driver.getId());
+		if (!item.original)
+			DriverManageController.delete(item.driver.getId());
 		reLayout();
 		frame.validate();
 	}
@@ -168,15 +172,23 @@ public class DriverListItemPanel extends JPanel {
 					if (!edited) {
 						openEdit();
 					} else {
-						closeEdit();
-						if (original) {
-							original = false;
-							DriverManageController.add(driver);
-							System.out.println("add");
-						} else {
-							DriverManageController.modify(driver);
-							System.out.println("modify");
+						try {
+							closeEdit();
+							if (original) {
+								original = false;
+								DriverManageController.add(driver);
+								System.out.println("add");
+							} else {
+								DriverManageController.modify(driver);
+								System.out.println("modify");
+							}
+						} catch (InvalidInputException e1) {
+							// TODO 自动生成的 catch 块
+							e1.printStackTrace();
+							MainFrame.setMessage("请输入正确的信息", MessageType.alram,
+									2000);
 						}
+
 					}
 				}
 			});
@@ -251,7 +263,6 @@ public class DriverListItemPanel extends JPanel {
 					0, 0);
 			detailPanel.setVisible(false);
 
-			closeEdit();
 		}
 
 		public ItemPanel(DriverVO driver) {
@@ -270,6 +281,12 @@ public class DriverListItemPanel extends JPanel {
 			case FEMALE:
 				gender.setText("女");
 				break;
+			}
+			try {
+				closeEdit();
+			} catch (InvalidInputException e1) {
+				// TODO 自动生成的 catch 块
+				e1.printStackTrace();
 			}
 		}
 
@@ -311,7 +328,38 @@ public class DriverListItemPanel extends JPanel {
 		}
 
 		// 关闭编辑
-		void closeEdit() {
+		void closeEdit() throws InvalidInputException {
+
+			if (id.getText().length() == 0) {
+				id.alarm();
+				throw new InvalidInputException();
+			}
+			if (name.getText().length() == 0) {
+				name.alarm();
+				throw new InvalidInputException();
+			}
+			if (gender.getText().length() == 0
+					|| (!gender.getText().equals("男") && !gender.getText()
+							.equals("女"))) {
+				gender.alarm();
+				throw new InvalidInputException();
+			}
+			if (id_card.getText().length() == 0) {
+				id_card.alarm();
+				throw new InvalidInputException();
+			}
+			if (!birth.getText().matches("\\d\\d\\d\\d-\\d\\d-\\d\\d")) {
+				id_card.alarm();
+				throw new InvalidInputException();
+			}
+			if (phone.getText().length() == 0) {
+				phone.alarm();
+				throw new InvalidInputException();
+			}
+			if (driverLi_due.getText().length() == 0) {
+				driverLi_due.alarm();
+				throw new InvalidInputException();
+			}
 			id.closeEdit();
 			name.closeEdit();
 			gender.closeEdit();
@@ -319,7 +367,6 @@ public class DriverListItemPanel extends JPanel {
 			birth.closeEdit();
 			phone.closeEdit();
 			driverLi_due.closeEdit();
-
 			edit_la.setText("E");
 			driver = getDriverVO();
 			edited = false;

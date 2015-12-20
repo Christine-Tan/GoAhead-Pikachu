@@ -168,7 +168,6 @@ public class CarListItemPanel extends JPanel {
 							e1.printStackTrace();
 							MainFrame.setMessage("请填写正确信息", MessageType.alram,
 									2000);
-							openEdit();
 						}
 
 					} else {
@@ -247,15 +246,16 @@ public class CarListItemPanel extends JPanel {
 
 		// 关闭编辑
 		void closeEdit() throws EmptyInputException {
+
+			if ((car_id.getText().length() == 0)
+					|| (car_num.getText().length() == 0)
+					|| (serve_time.getText().length() == 0))
+				throw new EmptyInputException();
+			edited = false;
 			id.closeEdit();
 			car_id.closeEdit();
 			car_num.closeEdit();
 			serve_time.closeEdit();
-			if ((id.getText().length() == 0)
-					|| (car_id.getText().length() == 0)
-					|| (serve_time.getText().length() == 0))
-				throw new EmptyInputException();
-			edited = false;
 			edit.setText("E");
 			frame.validate();
 		}
