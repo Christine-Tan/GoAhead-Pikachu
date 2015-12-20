@@ -3,6 +3,7 @@ package gap.server.data.order;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
 import gap.common.netconfig.RMIConfig;
+import gap.common.po.ArrivedOrderPO;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -30,13 +31,18 @@ public class ArrivedOrderDataServiceImplTest {
 			// ArrivedOrderPO po = new ArrivedOrderPO(orders, "2015-03-01",
 			// "00100011996030100002", "0010001", "001002", "测试");
 			// arrivedOrderDataService.add(po);
-			arrivedOrderDataService.setPassed("00100012015112500001",
-					"南京玄武营业厅已收件");
+			// arrivedOrderDataService.setPassed("00100012015112500001",
+			// "南京玄武营业厅已收件");
 			// ArrivedOrderPO po = arrivedOrderDataService
 			// .find("00100011996030100001");
 			// System.out.println(po.getId() + "," + po.getDes_ins_id() + ","
 			// + po.getFrom_ins_id() + "," + po.getComment() + ","
 			// + po.getTime());
+			for (ArrivedOrderPO po : arrivedOrderDataService
+					.getStockinginArrivedOrder("0011001")) {
+				System.out.println(po.getId());
+				arrivedOrderDataService.setStockIn(po.getId());
+			}
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

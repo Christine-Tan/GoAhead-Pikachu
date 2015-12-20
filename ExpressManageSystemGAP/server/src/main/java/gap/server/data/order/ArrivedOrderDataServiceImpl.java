@@ -26,7 +26,7 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 	private String order_id_f = "order_id", des_insid_f = "des_ins_id",
 			from_ins_id_f = "from_ins_id", comment_f = "comment",
 			time_f = "time", passed_f = "passed",
-			load_order_id_f = "load_order_id";
+			load_order_id_f = "load_order_id", isStock_in_f = "is_stockin";
 	private String item_id_expressorder_f = "expressorder_id",
 			item_order_id_f = "order_id", item_arrivedstate_f = "arrivedstate";
 	private InsertSQL orderInsert, itemInsert;
@@ -184,6 +184,44 @@ public class ArrivedOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public List<ArrivedOrderPO> getStockinginArrivedOrder(String ins_id)
+			throws RemoteException {
+		// TODO 自动生成的方法存根
+		String sql = "SELECT * FROM " + tableName + " WHERE " + des_insid_f
+				+ " = '" + ins_id + "' AND " + isStock_in_f + " = 'false'";
+		try {
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			List<ArrivedOrderPO> arrived = new ArrayList<ArrivedOrderPO>();
+			while (re.next()) {
+				arrived.add(getByResultSet(re));
+			}
+			return arrived;
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public ResultMessage setStockIn(String order_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		update.clear();
+		update.add(isStock_in_f, true);
+		update.setKey(order_id_f, order_id);
+		String sql;
+		try {
+			sql = update.createSQL();
+			NetModule.excutor.excute(sql);
+			return ResultMessage.SUCCEED;
+		} catch (Exception e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return ResultMessage.FAILED;
 	}
 
 	@Override

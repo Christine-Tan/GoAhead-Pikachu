@@ -19,4 +19,10 @@ public interface ArrivedOrderDataService extends Remote {
 
 	public int getMaxId(String cons) throws RemoteException;
 
+	public List<ArrivedOrderPO> getStockinginArrivedOrder(String ins_id) throws RemoteException;
+
+	public ResultMessage setStockIn(String order_id) throws RemoteException;
+
+
+
 }

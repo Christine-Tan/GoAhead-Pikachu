@@ -115,7 +115,6 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 					.getInstance();
 			re = NetModule.excutor.excuteQuery(sql);
 			while (re.next()) {
-				// System.out.println(re.getString(item_expressorder_id_f));
 				orderData.setLoad(re.getString(item_expressorder_id_f),
 						target_ins_id, state_info);
 			}
