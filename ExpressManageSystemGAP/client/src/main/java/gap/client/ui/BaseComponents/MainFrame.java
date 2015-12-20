@@ -1,8 +1,19 @@
 package gap.client.ui.BaseComponents;
 
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+
 import gap.client.ui.BaseComponents.FrameInitialler.AccountorInitialler;
+import gap.client.ui.BaseComponents.FrameInitialler.AdminInitialler;
 import gap.client.ui.BaseComponents.FrameInitialler.CenterClerkInitaller;
 import gap.client.ui.BaseComponents.FrameInitialler.InventoryInitailler;
+import gap.client.ui.BaseComponents.FrameInitialler.ManagerInitialler;
 import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.BaseListener.ResizeListener;
 import gap.client.ui.UITools.ColorAndFonts;
@@ -14,15 +25,6 @@ import gap.client.ui.inventoryui.checkstock.ListItem;
 import gap.client.ui.inventoryui.checkstock.Unit;
 import gap.client.util.MessageType;
 import gap.common.util.UserType;
-
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
 
 public class MainFrame extends JFrame {
 	TitlePanel titlePanel;
@@ -118,7 +120,7 @@ public class MainFrame extends JFrame {
 			CenterClerkInitaller.initialCenterClerk(this);
 			break;
 		case MANAGER:
-			PanelInitial.initialManager(this);
+			ManagerInitialler.initialManager(this);
 			break;
 		case INVENTORY:
 			InventoryInitailler.initialInventory(this);
@@ -127,7 +129,7 @@ public class MainFrame extends JFrame {
 			AccountorInitialler.initialAccountor(this);
 			break;
 		case ADMINISTRATOR:
-			PanelInitial.initialAdministrator(this);
+			AdminInitialler.initialAdmin(this);
 			break;
 		default:
 			break;
