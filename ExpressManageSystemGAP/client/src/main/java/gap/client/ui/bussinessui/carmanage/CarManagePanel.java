@@ -6,6 +6,8 @@ import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
+import gap.client.util.MessageType;
+import gap.common.util.ResultMessage;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -30,8 +32,8 @@ public class CarManagePanel extends MainPanel {
 		listItem = new CarListItemPanel(frame);
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("提交修改");
-//		buttonArea.submit.setIcon(new ImageIcon(
-//				"images\\deliveryIcon\\submit.png"));
+		// buttonArea.submit.setIcon(new ImageIcon(
+		// "images\\deliveryIcon\\submit.png"));
 		buttonArea.submit.addActionListener(new ActionListener() {
 
 			@Override
@@ -42,7 +44,15 @@ public class CarManagePanel extends MainPanel {
 					@Override
 					public void run() {
 						// TODO 自动生成的方法存根
-						CarManageController.flush();
+						ResultMessage re = CarManageController.flush();
+						if (re.equals(ResultMessage.SUCCEED)) {
+							MainFrame.setMessage("修改成功", MessageType.succeed,
+									2000);
+							refresh();
+						} else {
+							MainFrame.setMessage("修改失败", MessageType.alram,
+									2000);
+						}
 					}
 				});
 			}
@@ -59,6 +69,7 @@ public class CarManagePanel extends MainPanel {
 					public void run() {
 						// TODO 自动生成的方法存根
 						listItem.refresh(queryPanel.id.getText());
+
 					}
 				});
 			}
@@ -82,15 +93,15 @@ public class CarManagePanel extends MainPanel {
 	}
 
 	public static void main(String[] args) {
-//		JFrame jf = new JFrame();
-//		CarManagePanel pa = new CarManagePanel(null);
-//		JScrollPane js = new GAPJScrollPane(pa);
-//
-//		jf.setContentPane(js);
-//		// jf.getContentPane().add(pa);
-//		jf.setSize(1024, 768);
-//		jf.setVisible(true);
-//		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// JFrame jf = new JFrame();
+		// CarManagePanel pa = new CarManagePanel(null);
+		// JScrollPane js = new GAPJScrollPane(pa);
+		//
+		// jf.setContentPane(js);
+		// // jf.getContentPane().add(pa);
+		// jf.setSize(1024, 768);
+		// jf.setVisible(true);
+		// jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
