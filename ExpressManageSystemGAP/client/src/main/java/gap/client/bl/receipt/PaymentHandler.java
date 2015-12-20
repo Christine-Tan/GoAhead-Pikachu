@@ -54,12 +54,37 @@ public class PaymentHandler {
 			tradePOs.add(tradePO);
 		}
 		
+		
 		trade(tradePOs);
 		setUserPaid(payeePOs);
+		setRentPaid(payeePOs);
+		deleteTransfare(payeePOs);
+		
 		
 		return ResultMessage.SUCCEED;
 	}
 	
+	private void setRentPaid(ArrayList<PayeePO> payeePOs) {
+
+		for(PayeePO payeePO:payeePOs){
+			if(isRent(payeePO)){
+				dataController.setInstitePaid(payeePO.getUserID());
+			}
+		}
+	}
+	
+	private boolean isRent(PayeePO payeePO){
+		if(payeePO.getType()==null){
+			return false;
+		}
+		if(payeePO.getType().equals(PaymentType.RENT)){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
+
 	private void setUserPaid(ArrayList<PayeePO> payeePOs){
 		for(PayeePO payeePO:payeePOs){
 			if(isUser(payeePO)){

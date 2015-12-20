@@ -189,6 +189,10 @@ public class AccountDisplayPanel extends JPanel{
 	}
 	
 	public void removeOneAccount(AccountVO vo){
+		if(accounts.size()==1){
+			MainFrame.setMessage("至少需要一个账户", MessageType.alram, 2000);
+			return;
+		}
 		accountManagePanel.deleteAccount(vo);
 		remove(accountMap.get(vo));
 		

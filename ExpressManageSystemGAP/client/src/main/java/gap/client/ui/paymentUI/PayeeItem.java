@@ -47,6 +47,7 @@ public class PayeeItem extends PanelWithGrid{
 	
 	public PayeeItem(PayeeVO vo,ArrayList<AccountVO> accountVOs){
 		this.vo = vo;
+		
 		this.accountVOs = accountVOs;
 		setBackground(Color.white);
 		if(dateString==null){
@@ -59,6 +60,21 @@ public class PayeeItem extends PanelWithGrid{
 		recevier = new GAPLabel(vo.getUserName());
 		
 		accountCombox = new GAPComboBox<>();
+		
+		for(AccountVO oneAccount:accountVOs){
+			accountCombox.addItem(oneAccount);
+		}
+		
+		for(int i=0;i<accountVOs.size();i++){
+			//把payee中的账户名设为默认选择项
+			if(accountVOs.get(i).getName().equals(vo.getAccountName())){
+				accountCombox.setSelectedIndex(i);
+			}
+		}
+		
+		
+		//(微笑脸)这个地方差点坑死我，这个itemchange第一次加进去就会调用，以后用的时候要记得，
+		//组件加完了再加监听
 		accountCombox.addItemListener(new ItemListener() {
 			
 			@Override
@@ -68,15 +84,6 @@ public class PayeeItem extends PanelWithGrid{
 				setPayeeAccount(accountVO.getName());
 			}
 		});
-		
-		for(AccountVO oneAccount:accountVOs){
-			accountCombox.addItem(oneAccount);
-			
-			//把payee中的账户名设为默认选择项
-			if(oneAccount.getName().equals(vo.getAccountName())){
-				accountCombox.setSelectedItem(oneAccount);
-			}
-		}
 		
 		
 		item = new GAPLabel(vo.getEntry());

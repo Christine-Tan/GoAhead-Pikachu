@@ -38,6 +38,7 @@ public abstract class Payee {
 		if (payeeVO == null) {
 			payeeVO = makePayeeVO();
 		}
+		
 		return payeeVO;
 	}
 
