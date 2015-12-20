@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import gap.client.bl.receipt.AccountorReceiptController;
 import gap.client.datacontroller.AccountorReceiptDataController;
+import gap.client.datacontroller.ApprovalDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
@@ -17,12 +18,14 @@ import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;
+import gap.common.po.PaymentListPO;
 import gap.common.po.TransFarePO;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
 
 public class PaymentTest {
 	AccountorReceiptController receiptController;
+	ApprovalDataController controller;
 	@Before
 	public void setUp() throws Exception {
 		User user = new User("000000005", UserType.ACCOUNTER, "xiaoming",
@@ -34,6 +37,7 @@ public class PaymentTest {
 		NetModule.connect();
 		
 		receiptController = AccountorReceiptController.getInstance();
+		controller = ControllerFactory.getApprovalDataController();
 	}
 
 	@After
@@ -72,7 +76,19 @@ public class PaymentTest {
 
 	@Test
 	public void testHandlePaymentList() {
-		fail("Not yet implemented");
+		List<PaymentListPO> paymentLists= controller.getUnpassedPaymentListOrder();
+		System.out.println(paymentLists.size());
+		
+		PaymentListPO testPO = null;
+		for(PaymentListPO aPO:paymentLists){
+			if(aPO.getPaymentID().equals("151220121025")){
+				testPO = aPO;
+				break;
+			}
+		}
+		
+		assertNotEquals(testPO, null);
+		System.out.println( receiptController.handlePaymentList(testPO));
 	}
 
 	@Test

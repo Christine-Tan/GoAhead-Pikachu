@@ -56,7 +56,8 @@ public class AccountorReceiptController implements AccountorReceiptService {
 	@Override
 	public ResultMessage handlePaymentList(PaymentListPO paymentListPO) {
 		// TODO Auto-generated method stub
-		return null;
+		PaymentHandler paymentHandler = new PaymentHandler(paymentListPO);
+		return paymentHandler.handle();
 	}
 
 	public ArrayList<AccountVO> getAccoutList(){
