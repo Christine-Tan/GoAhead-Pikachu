@@ -29,10 +29,10 @@ public class ListPanel extends JPanel {
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(0, 10, 0, 10);
+//		gcons.insets = new Insets(0, 10, 0, 10);
 		gcons.anchor = GridBagConstraints.CENTER;
-
-		gcons.insets = new Insets(10, 0, 0, 0);
+		gcons.fill = GridBagConstraints.BOTH;
+//		gcons.insets = new Insets(10, 0, 0, 0);
 		for (int i = 0; i < rowNum; i++) {
 			items.add(new ListItem(rowNum, i,sector_id));
 //			System.out.println(sector_id);

@@ -41,7 +41,7 @@ public class Icon extends JPanel {
 			i = j;
 			repaint();
 			try {
-				Thread.sleep(20);
+				Thread.sleep(25);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -37,7 +37,7 @@ public class ListItem extends JPanel {
 	public ListItem(ExpressOrderVO vo) {
 		
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH-10, 50));
 
 		box = new JCheckBox();
 		box.setBackground(Color.white);

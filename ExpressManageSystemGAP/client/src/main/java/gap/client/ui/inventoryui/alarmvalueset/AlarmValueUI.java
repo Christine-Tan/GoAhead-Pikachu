@@ -37,9 +37,8 @@ public class AlarmValueUI extends JPanel {
 		double value = InventoryController.getAlarmValue(LocalInfo.getIns_ID());
 		
 		
-		alarmValue = new GAPTextField(8);
+		alarmValue = new GAPTextField(8,new Font("微软雅黑", Font.PLAIN, 60));
 		alarmValue.setBorder(ComponentStyle.text_border);
-		alarmValue.setFont(new Font("微软雅黑", Font.PLAIN, 60));
 		
 		alarmValue.setHorizontalAlignment(JTextField.CENTER);
 		alarmValue.setForeground(ComponentStyle.gray);

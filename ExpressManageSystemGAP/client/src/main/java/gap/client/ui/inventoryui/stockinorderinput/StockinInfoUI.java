@@ -30,7 +30,7 @@ public class StockinInfoUI extends JPanel {
 
 	public StockinInfoUI() {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 90));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 
 		title = new GAPLabel("入库单信息：");
 		title.setFont(ComponentStyle.defaultFont);

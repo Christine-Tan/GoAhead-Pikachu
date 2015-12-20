@@ -39,7 +39,7 @@ public class ObserveStockPanel extends MainPanel {
 	String beginDate, endDate;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
-	JFrame frame;
+	MainFrame mainFrame;
 
 	public ObserveStockPanel(MainFrame frame) {
 		super(frame);
@@ -52,7 +52,7 @@ public class ObserveStockPanel extends MainPanel {
 		// InventoryOrder.transformOutOrder(outList);
 		// stockinList = new ListPanel(InList);
 		// stockoutList = new ListPanel(OutList);
-		this.frame = frame;
+		this.mainFrame = frame;
 
 		confirm = new ButtonArea();
 		confirm.submit.setText("确认");
@@ -75,7 +75,17 @@ public class ObserveStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				initialListPanel();
+				
+				mainFrame.load(new Runnable(){
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						initialListPanel();
+					}
+					
+				});
+				
 				MainFrame.setMessage("出入库数量统计结束", MessageType.succeed, 3000);
 			}
 		});
@@ -101,6 +111,7 @@ public class ObserveStockPanel extends MainPanel {
 				beginDate, endDate, LocalInfo.getIns_ID());
 
 		if (inList == null) {
+			System.out.println("inList NULL");
 			inList = new ArrayList<StockinOrderVO>();
 		}
 		List<InventoryOrder> InList = InventoryOrder.transformInOrder(inList);
@@ -158,7 +169,7 @@ public class ObserveStockPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, panel2, 0, 10, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);
 
-		frame.validate();
+		mainFrame.validate();
 
 	}
 	
@@ -190,7 +201,7 @@ public class ObserveStockPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 8, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel3, 0, 9, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);
-		frame.validate();
+		mainFrame.validate();
 	}
 
 	@Override

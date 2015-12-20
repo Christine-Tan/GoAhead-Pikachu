@@ -5,6 +5,7 @@ import gap.client.ui.UITools.RenderSetter;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.FocusEvent;
@@ -17,6 +18,7 @@ import javax.swing.JTextField;
 public class GAPTextField extends JTextField {
 	TextListener listener;
 	boolean edited;
+	Font font = ComponentStyle.defaultFont;
 
 	public GAPTextField() {
 		super();
@@ -31,6 +33,12 @@ public class GAPTextField extends JTextField {
 	public GAPTextField(String str, int columns) {
 		super(str);
 		setColumns(columns);
+		normal();
+	}
+	
+	public GAPTextField(int column,Font font){
+		super(column);
+		this.font = font;
 		normal();
 	}
 
@@ -52,7 +60,7 @@ public class GAPTextField extends JTextField {
 	// 警告样式
 	public void alarm() {
 		setBackground(ComponentStyle.red);
-		setFont(ComponentStyle.defaultFont);
+		setFont(font);
 		setBorder(ComponentStyle.text_border);
 		Container con = getParent();
 		while (!(con instanceof JFrame)) {
@@ -67,7 +75,7 @@ public class GAPTextField extends JTextField {
 	private void gainFocus() {
 		setBackground(Color.white);
 		// setFont(ComponentStyle.defaultFont);
-		setFont(this.getFont());
+		setFont(font);
 		setBorder(ComponentStyle.focus_border);
 	}
 
@@ -80,7 +88,7 @@ public class GAPTextField extends JTextField {
 		edited = true;
 		setBackground(Color.white);
 		setBorder(ComponentStyle.text_border);
-		setFont(ComponentStyle.defaultFont);
+		setFont(font);
 		// setHorizontalAlignment(JTextField.CENTER);
 		validate();
 	}

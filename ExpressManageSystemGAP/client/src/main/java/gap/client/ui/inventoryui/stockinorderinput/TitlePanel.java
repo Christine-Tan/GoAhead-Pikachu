@@ -28,7 +28,7 @@ public class TitlePanel extends JPanel {
 
 	public TitlePanel() {
 		setBackground(Color.white);
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 50));
+		setPreferredSize(new Dimension(Default.PANEL_WIDTH, 40));
 
 		box = new JCheckBox();
 		box.setBackground(Color.white);
