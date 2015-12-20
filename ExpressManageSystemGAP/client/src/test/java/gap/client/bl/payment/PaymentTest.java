@@ -28,13 +28,6 @@ public class PaymentTest {
 	ApprovalDataController controller;
 	@Before
 	public void setUp() throws Exception {
-		User user = new User("000000005", UserType.ACCOUNTER, "xiaoming",
-				"123456", "0010001", "小明", Gender.MALE);
-		LocalInfo.localuser = user;
-		LocalInfo.ins_id = "0010001";
-		MainFrame frame = new MainFrame();
-		NetModule.initial(frame);
-		NetModule.connect();
 		
 		receiptController = AccountorReceiptController.getInstance();
 		controller = ControllerFactory.getApprovalDataController();

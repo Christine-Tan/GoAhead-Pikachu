@@ -104,6 +104,7 @@ public class LoginPanel extends JPanel {
 			MainFrame mainFrame = new MainFrame();
 			mainFrame.initial(log.getUserType());
 			LoginFrame.setVi(false);
+			NetModule.initial(mainFrame);
 		}
 
 	}

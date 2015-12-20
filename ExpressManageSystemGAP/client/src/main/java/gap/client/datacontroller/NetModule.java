@@ -123,10 +123,9 @@ public class NetModule {
 		boolean reconnect = false;
 		while (true) {
 			try {
-				if (!reconnect)
-					// 检测通讯是否成功的类
-					contactor = (Contactor) Naming.lookup(RMIConfig.url
-							+ ServiceName.CONTACTOR);
+				// 检测通讯是否成功的类
+				contactor = (Contactor) Naming.lookup(RMIConfig.url
+						+ ServiceName.CONTACTOR);
 
 				accountDataService = (AccountDataService) Naming
 						.lookup(RMIConfig.url
@@ -182,7 +181,7 @@ public class NetModule {
 								+ ServiceName.TRANSFARE_DATA_SERVICE);
 
 				if (isFirstConnect && MainFrame.messagePanel != null) {
-					MainFrame.setMessage("登陆成功", MessageType.succeed, 2000);
+					MainFrame.setMessage("连接成功", MessageType.succeed, 2000);
 					isFirstConnect = false;
 				} else if (MainFrame.messagePanel != null) {
 					MainFrame.setMessage("连接成功", MessageType.succeed, 2000);

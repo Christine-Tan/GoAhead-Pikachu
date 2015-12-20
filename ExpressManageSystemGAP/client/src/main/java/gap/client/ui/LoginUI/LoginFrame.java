@@ -21,10 +21,10 @@ public class LoginFrame extends JFrame {
 				try {
 					UIManager
 							.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-
 					LoginFrame frame = new LoginFrame();
 					NetModule.connect();
 					loginFrame = frame;
+
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class LoginFrame extends JFrame {
 	 */
 	public LoginFrame() {
 		setResizable(false);
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(430, 330);
 		setUndecorated(true);
 		setLocationRelativeTo(null);

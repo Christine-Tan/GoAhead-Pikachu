@@ -16,7 +16,8 @@ public class Login implements LoginService {
 		// TODO 自动生成的方法存根
 		LogVO log = new LogVO();
 		UserPO user = loginData.findByUsername(username);
-		if (!user.getPassword().equals(password)) {
+		System.out.println(user);
+		if (user==null||!user.getPassword().equals(password)) {
 			log.setSucceed(false);
 			return log;
 		}
