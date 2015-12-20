@@ -11,13 +11,7 @@ public class StockinOrderController {
 	
 
 	public static ResultMessage save(StockinOrderVO vo) {
-		if(vo.getGoods()==null||vo.getGoods().size()==0){
-			return ResultMessage.FAILED;
-		}else{
-			return stockinOrder.save(vo);
-		}
-		
-
+		return stockinOrder.save(vo);
 	}
 
 	public static List<StockinOrderVO> getRequired(String beginDate,

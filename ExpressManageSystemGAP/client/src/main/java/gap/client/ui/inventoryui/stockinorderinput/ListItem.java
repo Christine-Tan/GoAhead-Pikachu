@@ -66,8 +66,6 @@ public class ListItem extends JPanel {
 
 		location = new GAPTextField(10);
 		location.setHorizontalAlignment(JTextField.CENTER);
-//		location.setText("汽运区A排A架1位");
-		
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
@@ -111,7 +109,7 @@ public class ListItem extends JPanel {
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 		g2d.setColor(ComponentStyle.light_gray);
 		int width = getWidth(), height = getHeight();
-		g2d.drawLine(20, height - 5, width - 30, height - 5);
+		g2d.drawLine(10, height - 5, width - 20, height - 5);
 	}
 	
 	public void setGoodsVO(){

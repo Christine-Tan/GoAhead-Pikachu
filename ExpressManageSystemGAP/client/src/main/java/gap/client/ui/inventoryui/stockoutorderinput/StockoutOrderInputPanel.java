@@ -5,8 +5,10 @@ import gap.client.blcontroller.InventoryController;
 import gap.client.blcontroller.StockoutOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.ui.inventoryui.initialstock.ListItemPanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.MessageType;
@@ -16,6 +18,7 @@ import gap.client.vo.StockoutOrderVO;
 import gap.common.util.ResultMessage;
 import gap.common.util.SectorType;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -35,14 +38,14 @@ public class StockoutOrderInputPanel extends MainPanel {
 	TitlePanel title;
 	List<GoodsVO> voList;
 	ChoosePanel choose;
-	JFrame frame;
+	JFrame mainFrame;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
 	public StockoutOrderInputPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
-		this.frame = frame;
+		this.mainFrame = frame;
 		
 		choose = new ChoosePanel();
 		stockoutInfo = new StockoutInfoPanel();
@@ -127,6 +130,7 @@ public class StockoutOrderInputPanel extends MainPanel {
 	}
 	
 	public void initialList(String sector_id){
+		stockoutInfo = new StockoutInfoPanel();
 		voList = InventoryController.getOneSectorExisted(sector_id, LocalInfo.ins_id);
 		if(voList.size()==0){
 			MainFrame.setMessage("该分区快递为空", MessageType.normal, 2000);
@@ -136,15 +140,20 @@ public class StockoutOrderInputPanel extends MainPanel {
 	public void reLayout(){
 		removeAll();
 		JPanel panel = new JPanel();
+		gcons.fill = GridBagConstraints.BOTH;
 		SwingConsole.addComponent(gb, gcons, this, stockoutInfo, 0, 0, 1, 1, 1,
 				0);
-		// 还差一个选项卡
 		SwingConsole.addComponent(gb, gcons, this, choose, 0, 1, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, title, 0, 2, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, list, 0, 3, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel, 0, 4, 1, 1, 1, 1);
+		
+		GAPJScrollPane js = new GAPJScrollPane(list);
+		js.setPreferredSize(new Dimension(Default.PANEL_WIDTH,350));
+		
+		
+		SwingConsole.addComponent(gb, gcons, this, js, 0, 3, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, panel, 0, 4, 1, 1, 1, 0.1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 5, 1, 1, 1, 0);
-		frame.validate();
+		mainFrame.validate();
 	}
 	
 	public void setSelected(boolean bool){

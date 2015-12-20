@@ -90,7 +90,7 @@ public class Inventory implements InventoryService {
 	@Override
 	public ResultMessage setAlarm(double alarmValue, String ins_id) {
 		// TODO Auto-generated method stub
-		if(alarmValue<70||alarmValue>100){
+		if(alarmValue<75||alarmValue>100){
 			return ResultMessage.FAILED;
 		}else{
 			return inventoryData.setAlarm(alarmValue, ins_id);

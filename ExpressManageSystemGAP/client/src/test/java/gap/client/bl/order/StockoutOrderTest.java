@@ -1,54 +1,50 @@
 package gap.client.bl.order;
 
 import static org.junit.Assert.*;
+import gap.client.datacontroller.NetModule;
+import gap.client.vo.StockoutOrderVO;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class StockoutOrderTest {
+	StockoutOrder stockoutOrder;
 
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	@Test
-	public void testStockoutOrder() {
-		fail("尚未实现");
-	}
-
-	@Test
-	public void testCreate() {
-		fail("尚未实现");
+		NetModule.connect();
+		stockoutOrder = new StockoutOrder();
 	}
 
 	@Test
 	public void testSave() {
-		fail("尚未实现");
+		StockoutOrderVO vo = new StockoutOrderVO(null, "2015-12-20", "北京市栖霞区中转中心", "0011001201512200001", "plane", "0011001");
+		stockoutOrder.save(vo);
 	}
 
-	@Test
-	public void testFind() {
-		fail("尚未实现");
-	}
-
-	@Test
-	public void testGetLocation() {
-		fail("尚未实现");
-	}
+//	@Test
+//	public void testFind() {
+//		fail("尚未实现");
+//	}
+//
+//	@Test
+//	public void testGetLocation() {
+//		fail("尚未实现");
+//	}
 
 	@Test
 	public void testGetRequired() {
-		fail("尚未实现");
+		stockoutOrder.getRequired("2015-12-08", "2015-12-20", "0011001");
 	}
 
 	@Test
 	public void testGetTotalNum() {
-		fail("尚未实现");
+		stockoutOrder.getTotalNum(stockoutOrder.getRequired("2015-12-08", "2015-12-20", "0011001"));
 	}
 
 	@Test
 	public void testGetNextId() {
-		fail("尚未实现");
+		stockoutOrder.getNextId("001100120151220");
 	}
 
 }

@@ -10,6 +10,7 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.util.LocalInfo;
 import gap.client.util.MessageType;
 import gap.client.vo.StockinOrderVO;
@@ -64,6 +65,7 @@ public class ObserveStockPanel extends MainPanel {
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
+		gcons.fill = GridBagConstraints.BOTH;
 		setLayout(gb);
 
 		firstLayout();
@@ -126,27 +128,32 @@ public class ObserveStockPanel extends MainPanel {
 		panel0.setBackground(Color.white);
 		JPanel panel1 = new JPanel();
 		panel1.setBackground(Color.white);
-		panel1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
+//		panel1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 60));
 		
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.white);
 		panel2.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 30));
-
+		
 		SwingConsole.addComponent(gb, gcons, this, period, 0, 0, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, stockinList, 0, 2, 1, 1, 1,
-				0);
+		GAPJScrollPane js1 = new GAPJScrollPane(stockinList);
+		js1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 100));
+		
+		SwingConsole.addComponent(gb, gcons, this, js1, 0, 2, 1, 1, 1,
+				1);
 		SwingConsole.addComponent(gb, gcons, this, stockinTotal, 0, 3, 1, 1, 1,
 				0);
-		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 4, 1, 1, 1, 0);;
+		SwingConsole.addComponent(gb, gcons, this, panel1, 0, 4, 1, 1, 1, 0.1);;
 		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 5, 1, 1,
 				1, 0);
-		SwingConsole.addComponent(gb, gcons, this, stockoutList, 0, 6, 1, 1, 1,
+		GAPJScrollPane js2 = new GAPJScrollPane(stockoutList);
+		js2.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 100));
+		SwingConsole.addComponent(gb, gcons, this, js2, 0, 6, 1, 1, 1,
 				0);
 		SwingConsole.addComponent(gb, gcons, this, stockoutTotal, 0, 7, 1, 1,
 				1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel0, 0, 8, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, panel0, 0, 8, 1, 1, 1, 0.1);
 		SwingConsole.addComponent(gb, gcons, this, totalNum, 0, 9, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel2, 0, 10, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 11, 1, 1, 1, 0);

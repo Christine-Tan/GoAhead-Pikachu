@@ -58,6 +58,7 @@ public class TitlePanel extends JPanel {
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
+		
 
 		gcons.anchor = GridBagConstraints.CENTER;
 		gcons.insets = new Insets(0, 5, 0, 5);
@@ -65,21 +66,25 @@ public class TitlePanel extends JPanel {
 		gcons.anchor = GridBagConstraints.WEST;
 		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, id, 1, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, inDate, 2, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, destination, 3, 0, 1, 1, 1,
 				0);
+		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, sector, 4, 0, 1, 1, 1, 0);
+		gcons.insets = new Insets(0, 5, 0, 5);
 		SwingConsole.addComponent(gb, gcons, this, location, 5, 0, 1, 1, 1, 0);
 
 	}
 
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-
-		Graphics2D g2d = RenderSetter.OpenRender(g);
-		g2d.setColor(ComponentStyle.light_gray);
-		int width = getWidth(), height = getHeight();
-		g2d.drawLine(20, height - 5, width - 30, height - 5);
-	}
+//	public void paintComponent(Graphics g) {
+//		super.paintComponent(g);
+//
+//		Graphics2D g2d = RenderSetter.OpenRender(g);
+//		g2d.setColor(ComponentStyle.light_gray);
+//		int width = getWidth(), height = getHeight();
+//		g2d.drawLine(20, height - 5, width - 30, height - 5);
+//	}
 
 }

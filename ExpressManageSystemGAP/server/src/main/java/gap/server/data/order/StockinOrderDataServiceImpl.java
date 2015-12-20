@@ -78,7 +78,6 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(order_id_f, order_id);
 			orderInsert.add(time_f, time);
 			orderInsert.add(ins_id_f, ins_id);
-			// boolean passed = false;
 			orderInsert.add(passed_f, false);
 			NetModule.excutor.excute(orderInsert.createSQL());
 			for (GoodsPO goods : goodPOs) {

@@ -23,13 +23,6 @@ public class StockinOrder implements StockinOrderService {
 	}
 
 	@Override
-	public StockinOrderVO create(List<ExpressOrderVO> orders,
-			StockinOrderVO orderinfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage save(StockinOrderVO vo) {
 		// TODO Auto-generated method stub
 		if(vo.getGoods()==null||vo.getGoods().size()==0){
@@ -39,17 +32,17 @@ public class StockinOrder implements StockinOrderService {
 		}
 	}
 
-	@Override
-	public StockinOrderVO find(String id, String ins_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public StockinOrderVO find(String id, String ins_id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
-	@Override
-	public String getLocation(GoodsVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public String getLocation(GoodsVO vo) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public List<ArrivedOrderVO> getArrivedOrderVO(String ins_id) {

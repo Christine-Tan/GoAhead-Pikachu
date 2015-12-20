@@ -21,13 +21,6 @@ public class StockoutOrder implements StockoutOrderService {
 	}
 
 	@Override
-	public StockoutOrderVO create(List<ExpressOrderVO> orders,
-			StockoutOrderVO orderinfo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public ResultMessage save(StockoutOrderVO vo) {
 		// TODO Auto-generated method stub
 		if(vo.getExpressorder_ids()==null||vo.getExpressorder_ids().size()==0){
@@ -37,18 +30,18 @@ public class StockoutOrder implements StockoutOrderService {
 		}
 	}
 
-	@Override
-	public StockoutOrderVO find(String id, String ins_id) {
-		// TODO Auto-generated method stub
-		return new StockoutOrderVO(stockoutData.find(id, ins_id));
-	}
+//	@Override
+//	public StockoutOrderVO find(String id, String ins_id) {
+//		// TODO Auto-generated method stub
+//		return new StockoutOrderVO(stockoutData.find(id, ins_id));
+//	}
 
-	@Override
-	public String getLocation(String id) {
-		// TODO Auto-generated method stub
-
-		return null;
-	}
+//	@Override
+//	public String getLocation(String id) {
+//		// TODO Auto-generated method stub
+//
+//		return null;
+//	}
 
 	@Override
 	public List<StockoutOrderVO> getRequired(String beginDate, String endDate,

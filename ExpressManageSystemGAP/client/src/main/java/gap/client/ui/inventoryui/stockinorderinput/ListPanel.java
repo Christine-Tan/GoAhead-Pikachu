@@ -37,12 +37,15 @@ public class ListPanel extends JPanel {
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
+		gcons.fill = GridBagConstraints.BOTH;
 
-		gcons.insets = new Insets(0, 10, 0, 10);
+//		gcons.insets = new Insets(0, 10, 0, 10);
 		for (int i = 0; i < size; i++) {
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
 					1, 1, 0);
 		}
+		
+		
 	}
 	
 	public List<GoodsVO> getGoodsVOs(){

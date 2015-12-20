@@ -16,6 +16,7 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class TotalNumPanel extends JPanel {
 	JLabel total, Num;
@@ -26,6 +27,8 @@ public class TotalNumPanel extends JPanel {
 
 		total = new GAPLabel(totalName + "合计");
 		Num = new GAPLabel(num);
+		Num.setPreferredSize(new Dimension(150,35));
+		Num.setHorizontalAlignment(JTextField.RIGHT);
 
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
@@ -35,7 +38,7 @@ public class TotalNumPanel extends JPanel {
 		gcons.anchor = GridBagConstraints.WEST;
 		SwingConsole.addComponent(gb, gcons, this, total, 0, 0, 1, 1, 1, 0);
 		gcons.anchor = GridBagConstraints.EAST;
-		gcons.insets = new Insets(10, 70, 10, 75);
+		gcons.insets = new Insets(10, 67, 10, 78);
 		SwingConsole.addComponent(gb, gcons, this, Num, 1, 0, 1, 1, 1, 0);
 	}
 

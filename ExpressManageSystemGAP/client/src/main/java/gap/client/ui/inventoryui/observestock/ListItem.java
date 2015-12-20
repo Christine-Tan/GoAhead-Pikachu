@@ -40,6 +40,8 @@ public class ListItem extends JPanel {
 		order_id.setText(vo.getId());
 		
 		amount = new GAPLabel();
+		amount.setPreferredSize(new Dimension(80, 30));
+		amount.setHorizontalAlignment(JLabel.RIGHT);
 		amount.setText(vo.getNum()+"");
 
 		GridBagLayout gb = new GridBagLayout();

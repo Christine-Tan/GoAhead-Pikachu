@@ -4,8 +4,11 @@ import gap.client.blcontroller.ArrivedOrderController;
 import gap.client.blcontroller.StockinOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
+import gap.client.ui.gapcomponents.GAPScrollBarUI;
 import gap.client.util.LocalInfo;
 import gap.client.util.MessageType;
 import gap.client.vo.ExpressOrderVO;
@@ -17,6 +20,7 @@ import gap.common.util.PeopleInfo;
 import gap.common.util.ResultMessage;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -26,7 +30,9 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class StockinOrderInputPanel extends MainPanel {
 	StockinInfoUI stockinInfo;
@@ -34,15 +40,16 @@ public class StockinOrderInputPanel extends MainPanel {
 	ButtonArea confirm;
 	ListPanel list;
 	List<ExpressOrderVO> orders;
-	
+	JFrame mainFrame;
+	GAPScrollBarUI scrollBar;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
 	public StockinOrderInputPanel(MainFrame frame) {
 		super(frame);
+		mainFrame = frame;
 		
-		stockinInfo = new StockinInfoUI();
-		title = new TitlePanel();
+		
 		confirm = new ButtonArea();
 		confirm.submit.setText("生成入库单");
 		initial();
@@ -74,7 +81,7 @@ public class StockinOrderInputPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				StockinOrderVO vo = getStockinOrderVO();
-				list.reLayout();
+//				list.reLayout();
 				ResultMessage re = StockinOrderController.save(vo);
 				if(re.equals(ResultMessage.SUCCEED)){
 					MainFrame.setMessage("入库单生成成功", MessageType.succeed, 2000);
@@ -105,6 +112,9 @@ public class StockinOrderInputPanel extends MainPanel {
 	}
 	
 	public void initial(){
+		stockinInfo = new StockinInfoUI();
+		title = new TitlePanel();
+		
 		orders = new ArrayList<ExpressOrderVO>();
 		//
 		Address add = new Address("江苏省", "南京市", "栖霞区");
@@ -125,17 +135,28 @@ public class StockinOrderInputPanel extends MainPanel {
 		
 		
 		list = new ListPanel(orders);
+		scrollBar = new GAPScrollBarUI();
+//		scrollBar.
 	}
 	
 	public void reLayout(){
+		removeAll();
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.white);
+		
+		gcons.fill = GridBagConstraints.BOTH;
 		SwingConsole.addComponent(gb, gcons, this, stockinInfo, 0, 0, 1, 1, 1,
 				0);
 		SwingConsole.addComponent(gb, gcons, this, title, 0, 1, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, list, 0, 2, 1, 1, 1, 0);
-		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 1);
+		
+		GAPJScrollPane js = new GAPJScrollPane(list);
+		js.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 300));
+		
+		
+		SwingConsole.addComponent(gb, gcons, this, js, 0, 2, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, panel, 0, 3, 1, 1, 1, 0.1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 4, 1, 1, 1, 0);
+		mainFrame.validate();
 	}
 
 	@Override

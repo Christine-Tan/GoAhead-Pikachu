@@ -28,8 +28,8 @@ public class ListPanel extends JPanel {
 		GridBagLayout gb = new GridBagLayout();
 		GridBagConstraints gcons = new GridBagConstraints();
 		setLayout(gb);
-
-		gcons.insets = new Insets(0, 10, 0, 10);
+		gcons.fill = GridBagConstraints.BOTH;
+//		gcons.insets = new Insets(0, 10, 0, 10);
 		for (int i = 0; i < items.size(); i++) {
 			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
 					1, 1, 0);
