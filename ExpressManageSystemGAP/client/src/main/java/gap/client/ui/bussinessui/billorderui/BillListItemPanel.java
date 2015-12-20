@@ -44,7 +44,8 @@ public class BillListItemPanel extends JPanel {
 
 	public void reFresh() {
 		clear();
-		List<BillVO> billVO = BillOrderController.getBills("2015-11-23");
+		List<BillVO> billVO = BillOrderController.getBills(new Date(System
+				.currentTimeMillis()).toString());
 		for (BillVO bi : billVO) {
 			addItem(bi);
 		}

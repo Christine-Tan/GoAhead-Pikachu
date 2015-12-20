@@ -13,7 +13,7 @@ public class Tester {
 		User user = new User("000000005", UserType.BUSSINESSCLERK, "xiaoming",
 				"123456", "0010001", "小红", Gender.FEMALE);
 		LocalInfo.localuser = user;
-		LocalInfo.ins_id = "0010001";
+		LocalInfo.ins_id = "0021001";
 		MainFrame mainFrame = new MainFrame();
 		NetModule.initial(mainFrame);
 		NetModule.connect();

@@ -19,7 +19,7 @@ import gap.client.util.MessageType;
 public class PanelInitial {
 	/**
 	 * 初始化快递员界面
-	 * 
+	 *
 	 * @param mainFrame
 	 */
 	public static void initialDelivery(MainFrame mainFrame) {
@@ -41,7 +41,7 @@ public class PanelInitial {
 
 	/**
 	 * 初始化营业厅业务员界面
-	 * 
+	 *
 	 * @param mainFrame
 	 */
 	public static void initialBussinessclerk(MainFrame mainFrame) {
@@ -64,14 +64,14 @@ public class PanelInitial {
 		navBar.addButton(billOrder);
 		navBar.addButton(carManage);
 		navBar.addButton(driverManage);
-		navBar.setSelect(loadOrder);
+		navBar.setSelect(carManage);
 		mainFrame.setVisible(true);
 		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
 	}
 
 	/**
 	 * 初始化中转中心业务员界面
-	 * 
+	 *
 	 * @param mainFrame
 	 */
 	public static void initialCenterClerk(MainFrame mainFrame) {
@@ -90,7 +90,7 @@ public class PanelInitial {
 
 	/**
 	 * 初始化仓库管理人员界面
-	 * 
+	 *
 	 * @param mainFrame
 	 */
 	public static void initialInventory(MainFrame mainFrame) {
@@ -119,7 +119,7 @@ public class PanelInitial {
 
 	/**
 	 * 初始化财务人员界面
-	 * 
+	 *
 	 * @param mainFrame
 	 */
 	public static void initialAccounter(MainFrame mainFrame) {
@@ -128,7 +128,7 @@ public class PanelInitial {
 
 	/**
 	 * 初始化总经理界面
-	 * 
+	 *
 	 * @param mainFrame
 	 */
 	public static void initialManager(MainFrame mainFrame) {
@@ -137,7 +137,7 @@ public class PanelInitial {
 
 	/**
 	 * 初始化管理员界面
-	 * 
+	 *
 	 * @param mainFrame
 	 */
 	public static void initialAdministrator(MainFrame mainFrame) {

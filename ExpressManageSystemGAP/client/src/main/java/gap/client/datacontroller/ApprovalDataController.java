@@ -100,7 +100,7 @@ public class ApprovalDataController {
 		}
 		return null;
 	}
-    
+
 	public List<PaymentListPO> getUnpassedPaymentListOrder(){
 		try {
 			return paymentdataService.getNotPassedPayment();
@@ -110,12 +110,12 @@ public class ApprovalDataController {
 		}
 		return null;
 	}
-	
+
 	public ResultMessage setPassed(List<Object> orders) {
 		ResultMessage rm;
 		for (Object order : orders) {
 			if (order instanceof ExpressOrderPO) {
-				String targetInsId = ((ExpressOrderPO) order).getTargetins_id();
+				String targetInsId = ((ExpressOrderPO) order).getCurrentins_id();
 				try {
 					String insname = institutiondataservice.findById(targetInsId).getInsName();
 					String state = insname + "已收件";

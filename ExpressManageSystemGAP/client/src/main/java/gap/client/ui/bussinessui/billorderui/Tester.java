@@ -13,11 +13,12 @@ public class Tester {
 		User user = new User("000000005", UserType.BUSSINESSCLERK, "xiaoming",
 				"123456", "0010001", "小明", Gender.MALE);
 		LocalInfo.localuser = user;
-		LocalInfo.ins_id = "0010001";
+		LocalInfo.ins_id = "0010002";
 		MainFrame mainFrame = new MainFrame();
 		NetModule.initial(mainFrame);
 		NetModule.connect();
 		BillOrderPanel panel = new BillOrderPanel(mainFrame);
 		mainFrame.setMainPanel(panel);
+		mainFrame.setVisible(true);
 	}
 }

@@ -5,6 +5,7 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.CurrentOrderType;
 
@@ -34,7 +35,6 @@ public class OrderPanel extends JPanel {
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 	JFrame frame;
-
 
 	public OrderPanel(JFrame frame) {
 		this.frame = frame;
@@ -117,9 +117,14 @@ public class OrderPanel extends JPanel {
 				0);
 		SwingConsole
 				.addComponent(gb, gcons, this, titlePanel, 0, 1, 1, 1, 1, 0);
-
-		List<ExpressOrderVO> orders = ExpressorderController
-				.getCurrentOrders(CurrentOrderType.LOAD);
+		List<ExpressOrderVO> orders;
+		if (LocalInfo.ins_id.charAt(3) != '1') {
+			orders = ExpressorderController
+					.getCurrentOrders(CurrentOrderType.LOAD);
+		} else {
+			orders = ExpressorderController
+					.getCurrentOrders(CurrentOrderType.ALL);
+		}
 		for (ExpressOrderVO vo : orders) {
 			addItem(vo);
 		}

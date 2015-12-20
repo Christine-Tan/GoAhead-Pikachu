@@ -68,14 +68,12 @@ public class CarListItemPanel extends JPanel {
 		for (CarVO car : cars) {
 			if (id == null || id.length() == 0 || car.getCar_id().contains(id))
 				addItem(car);
-
 		}
+		reLayout();
 	}
 
 	private void addItem(CarVO car) {
 		items.add(new ItemPanel(car));
-		reLayout();
-		frame.validate();
 	}
 
 	private void addNewItem() {
@@ -113,6 +111,7 @@ public class CarListItemPanel extends JPanel {
 		}
 		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
 				1, 1, 1, 0);
+		frame.validate();
 	}
 
 	// 每一项

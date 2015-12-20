@@ -68,6 +68,7 @@ public class DriverListItemPanel extends JPanel {
 			if (id == null || id.length() == 0 || driver.getId().contains(id))
 				addItem(driver);
 		}
+		reLayout();
 	}
 
 	/**
@@ -76,8 +77,7 @@ public class DriverListItemPanel extends JPanel {
 	 */
 	private void addItem(DriverVO driver) {
 		items.add(new ItemPanel(driver));
-		reLayout();
-		frame.validate();
+
 	}
 
 	/**
@@ -122,6 +122,7 @@ public class DriverListItemPanel extends JPanel {
 		}
 		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
 				1, 1, 1, 0);
+		frame.validate();
 	}
 
 	// 每一项

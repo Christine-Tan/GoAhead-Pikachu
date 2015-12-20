@@ -46,8 +46,6 @@ public class CarAndDriverPanel extends JPanel {
 		add(Box.createHorizontalGlue());
 		add(car);
 
-
-
 	}
 
 	public void refresh() {
@@ -115,12 +113,13 @@ public class CarAndDriverPanel extends JPanel {
 		}
 
 		public void refresh(List<DriverVO> list) {
-//			drivers_list.setFocusable(false);
+			// drivers_list.setFocusable(false);
 			drivers_list.removeAllItems();
 			for (DriverVO driver : list) {
 				drivers_list.addItem(driver);
 			}
-			setDriver((DriverVO) drivers_list.getSelectedItem());
+			if (drivers_list.getItemCount() != 0)
+				setDriver((DriverVO) drivers_list.getSelectedItem());
 			drivers_list.addItemListener(new ItemListener() {
 
 				@Override
@@ -129,7 +128,7 @@ public class CarAndDriverPanel extends JPanel {
 					setDriver((DriverVO) e.getItem());
 				}
 			});
-//			drivers_list.setFocusable(true);
+			// drivers_list.setFocusable(true);
 		}
 
 		public void setDriver(DriverVO driver) {
@@ -184,12 +183,13 @@ public class CarAndDriverPanel extends JPanel {
 		}
 
 		public void refresh(List<CarVO> cars) {
-//			cars_list.setFocusable(false);
+			// cars_list.setFocusable(false);
 			cars_list.removeAllItems();
 			for (CarVO car : cars) {
 				cars_list.addItem(car);
 			}
-			setCar((CarVO) cars_list.getSelectedItem());
+			if (cars_list.getItemCount() != 0)
+				setCar((CarVO) cars_list.getSelectedItem());
 			cars_list.addItemListener(new ItemListener() {
 
 				@Override
@@ -198,7 +198,7 @@ public class CarAndDriverPanel extends JPanel {
 					setCar((CarVO) e.getItem());
 				}
 			});
-//			cars_list.setFocusable(true);
+			// cars_list.setFocusable(true);
 		}
 
 		void setCar(CarVO car) {

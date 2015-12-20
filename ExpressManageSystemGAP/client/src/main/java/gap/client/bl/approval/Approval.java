@@ -27,7 +27,7 @@ public class Approval implements ApprovalService {
 		orders.addAll(controller.getUnpassedLoadOrder());
 		orders.addAll(controller.getUnpassedStockinOrder());
 		orders.addAll(controller.getUnpassedStockoutOrder());
-		orders.addAll(controller.getUnpassedPaymentListOrder());
+//		orders.addAll(controller.getUnpassedPaymentListOrder());
 		return orders;
 	}
 
