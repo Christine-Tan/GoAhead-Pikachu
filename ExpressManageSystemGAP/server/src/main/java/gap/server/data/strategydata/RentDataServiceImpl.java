@@ -142,7 +142,7 @@ public class RentDataServiceImpl extends UnicastRemoteObject implements
 				return ResultMessage.NOTFOUND;
 			String ins_id = re.getString("ins_id");
 			updateSQL.clear();
-			updateSQL.add(lastPaid_f, new Date(System.currentTimeMillis()));
+			updateSQL.add(lastPaid_f, new Date(System.currentTimeMillis()).toString());
 			updateSQL.add(insti_f, ins_id);
 			NetModule.excutor.excute(updateSQL.createSQL());
 		} catch (SQLException e) {

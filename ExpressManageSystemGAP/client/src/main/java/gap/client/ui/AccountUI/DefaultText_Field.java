@@ -17,13 +17,13 @@ import gap.client.ui.gapcomponents.GAPTextField;
 public class DefaultText_Field extends GAPTextField implements TextInterface {
 
 	boolean hadFocused = false;
-	String text;
+	String defaultText;
 	
-	public DefaultText_Field(String text) {
+	public DefaultText_Field(String defaultText) {
 		super();
-		this.text = text;
+		this.defaultText = defaultText;
 		setForeground(Color.gray);
-		setText(text);
+		setText(defaultText);
 		new LoginTextListener(this);
 	}
 	@Override
@@ -43,7 +43,18 @@ public class DefaultText_Field extends GAPTextField implements TextInterface {
 		hadFocused = focused;
 		if (!focused) {
 			setForeground(Color.darkGray);
-			setText(text);
+			setText(defaultText);
+		}
+	}
+	
+	public String getText(){
+		String realText = super.getText();
+		
+		//排除用户未输入的情况
+		if(defaultText==null || realText.equals(defaultText)){
+			return "";
+		}else{
+			return realText;
 		}
 	}
 

@@ -12,6 +12,7 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.common.po.PayeePO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.TradePO;
+import gap.common.po.TransFarePO;
 import gap.common.po.UserPO;
 import gap.common.util.OrderState;
 import gap.common.util.PaymentType;
@@ -64,6 +65,30 @@ public class PaymentHandler {
 			if(isUser(payeePO)){
 				dataController.setUserPaid(payeePO.getUserID());
 			}
+		}
+	}
+	
+	private void deleteTransfare(ArrayList<PayeePO> payeePOs){
+		ArrayList<TransFarePO> transFareList = new ArrayList<>();
+		for(PayeePO payeePO:payeePOs){
+			if(isTransfare(payeePO)){
+				String orderID = payeePO.getUserID();
+				double fare = payeePO.getMoney();
+				String carID = payeePO.getUserName();
+				TransFarePO transFarePO = new TransFarePO(fare, orderID, carID);
+				transFareList.add(transFarePO);
+			}
+		}
+		
+		dataController.deleteTransFare(transFareList);
+		
+	}
+	
+	private boolean isTransfare(PayeePO payeePO){
+		if(payeePO.getType().equals(PaymentType.TRANSFARE)){
+			return true;
+		}else{
+			return false;
 		}
 	}
 	

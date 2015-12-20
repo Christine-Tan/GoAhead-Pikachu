@@ -225,6 +225,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			updateSQL.clear();
+		//	updateSQL.add(lastpaid_f, new Date(System.currentTimeMillis()).toString());
 			updateSQL.add(lastpaid_f, new Date(System.currentTimeMillis()));
 			updateSQL.setKey(id_f, user_id);
 			NetModule.excutor.excute(updateSQL.createSQL());
