@@ -26,6 +26,7 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.ui.paymentUI.paymentDetail.PaymentDetailPanel;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.DeliveryOrderPO;
@@ -171,7 +172,7 @@ public class OrderItemListPanel extends JPanel {
 			} else if (order instanceof StockoutOrderPO) {
 				detailPanel = new StockoutOrderDetailPanel((StockoutOrderPO) order);
 			} else if (order instanceof PaymentListPO) {
-                detailPanel=new PaymentListDetailPanel((PaymentListPO)order);
+                detailPanel=new PaymentDetailPanel((PaymentListPO)order);
 			}
 			detailPanel.setVisible(false);
 			// 布局
