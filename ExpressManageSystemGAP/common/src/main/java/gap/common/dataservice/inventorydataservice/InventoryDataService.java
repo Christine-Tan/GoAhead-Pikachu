@@ -47,4 +47,8 @@ public interface InventoryDataService extends Remote {
 
 	public int getOneShelfNum(String position, String sector_id) throws RemoteException;
 
+	public ResultMessage setUnexisted(String id) throws RemoteException;
+
+	public ResultMessage setlistUnexisted(List<String> list) throws RemoteException;
+
 }

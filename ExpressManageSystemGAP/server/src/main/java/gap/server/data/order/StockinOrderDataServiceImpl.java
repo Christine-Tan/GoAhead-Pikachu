@@ -261,7 +261,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 				InventoryDataService inventoryData = InventoryDataServiceImpl.getInstance();
 				inventoryData.setlistExisted(POs);
 			}
-//			return ResultMessage.SUCCEED;
+			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -269,17 +269,18 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ResultMessage.SUCCEED;
+		return ResultMessage.FAILED;
 	}
 
 	@Override
 	public List<StockinOrderPO> getUnpassedOrders() throws RemoteException {
 		// TODO Auto-generated method stub
+		List<StockinOrderPO> orders = new ArrayList<StockinOrderPO>();
 		try {
 			String sql = "SELECT * FROM " + stockinTable + " WHERE " + passed_f
 					+ " = 'false' ;";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
-			List<StockinOrderPO> orders = new ArrayList<StockinOrderPO>();
+			
 			while (re.next()) {
 				orders.add(getByResultSet(re));
 			}
@@ -288,7 +289,7 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		return null;
+		return orders;
 	}
 
 	@Override

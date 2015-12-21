@@ -67,8 +67,14 @@ public class ObserveStockPanel extends MainPanel {
 		gcons = new GridBagConstraints();
 		gcons.fill = GridBagConstraints.BOTH;
 		setLayout(gb);
-
 		firstLayout();
+		
+//		mainFrame.load(new Runnable(){
+//			public void run(){
+//				refresh();
+//			}
+//		});
+		
 
 		period.confirm.addActionListener(new ActionListener() {
 

@@ -56,6 +56,7 @@ public class ListItemPanel extends JPanel {
 
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
+		gcons.fill = GridBagConstraints.BOTH;
 		setLayout(gb);
 
 		items = new ArrayList<ItemPanel>();
@@ -142,7 +143,7 @@ public class ListItemPanel extends JPanel {
 //			original = true;
 			setBackground(Color.white);
 			setFocusable(true);
-			setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));
+			setPreferredSize(new Dimension(Default.PANEL_WIDTH-10,50));
 			gb = new GridBagLayout();
 			gcons = new GridBagConstraints();
 
@@ -159,11 +160,11 @@ public class ListItemPanel extends JPanel {
 						closeEdit();
 						if (original) {
 							original = false;
-							InventoryController.InitialAdd(goods);
+							InventoryController.InitialAdd(getGoodsVO());
 							// DriverManageController.add(driver);
 							System.out.println("add");
 						} else {
-							InventoryController.InitialModify(goods);
+							InventoryController.InitialModify(getGoodsVO());
 							// DriverManageController.modify(driver);
 							System.out.println("modify");
 						}
@@ -194,6 +195,7 @@ public class ListItemPanel extends JPanel {
 			location = new GAPTextField(8);
 			location.setCenter();
 			setLayout(gb);
+			
 			gcons.insets = new Insets(0, 10, 0, 10);
 			SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 1, 0);
 			SwingConsole.addComponent(gb, gcons, this, order_id, 1, 0, 1, 1,1, 0);
@@ -234,11 +236,16 @@ public class ListItemPanel extends JPanel {
 			g2d.drawLine(10, height - 5, width - 20, height - 5);
 		}
 
-		GoodsVO getGoodsVO() {
-
-			return new GoodsVO(order_id.getText(), location.getText(),
-					SectorType.CAR, inDate.getText(), "sector_id",
-					"belong_sector_id", destination.getText());
+		public GoodsVO getGoodsVO() {
+			
+			String id = order_id.getText(),loc = location.getText(),date = inDate.getText(),
+					des = destination.getText();
+			String[] details = loc.split(" ");
+			SectorType sectorType = SectorType.getSectorTypeByChinese(details[0]);
+			String sec_id = SectorType.getSectorId(LocalInfo.ins_id, sectorType);
+			String bel_id = sector_id;
+			
+			return new GoodsVO(id, details[1], sectorType, date, sec_id, bel_id, des);
 
 		}
 

@@ -5,6 +5,7 @@ import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.inventorydata.InventoryDataServiceImpl;
+import gap.server.data.inventorydata.InventoryDataServiceImplTest;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SQLBuilder;
 import gap.server.data.util.UpdateSQL;
@@ -24,7 +25,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 	// 字段
 	private String order_id_f = "order_id", time_f = "time",
 			transport_f = "transport", target_ins_f = "target_ins",
-			ins_id_f = "ins_id", passed_f = "passed",loaded_f = "loaded";
+			ins_id_f = "ins_id", passed_f = "passed", loaded_f = "loaded";
 	// 表名
 	private String stockoutItemTable = "stockoutitem";
 	// 字段
@@ -56,7 +57,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		String order_id = po.getId(), target_ins = po.getTarget_ins(), time = po
 				.getOutDate(), transport = po.getTransport(), ins_id = po
 				.getIns_id();
-		List<String> expressorder_ids = po.getExpressorder_ids();
+		List<String> ids = po.getExpressorder_ids();
 
 		try {
 			ResultSet re = NetModule.excutor
@@ -82,11 +83,14 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(passed_f, false);
 			orderInsert.add(loaded_f, false);
 			NetModule.excutor.excute(orderInsert.createSQL());
-			for (String str : expressorder_ids) {
+			InventoryDataService inventory = InventoryDataServiceImpl
+					.getInstance();
+			for (String id : ids) {
 				itemInsert.clear();
-				itemInsert.add(expressorder_id_f, str);
+				itemInsert.add(expressorder_id_f, id);
 				itemInsert.add(orderId_f, order_id);
 				NetModule.excutor.excute(itemInsert.createSQL());
+				inventory.setUnexisted(id);
 			}
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
@@ -115,14 +119,9 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
-			ResultSet re = NetModule.excutor
-					.excuteQuery("SELECT *FROM stockoutorder WHERE order_id = '"
-							+ order_id
-							+ "' AND "
-							+ ins_id_f
-							+ " ='"
-							+ ins_id
-							+ "';");
+			String sql = "SELECT *FROM stockoutorder WHERE order_id = '"
+					+ order_id + "' AND " + ins_id_f + " ='" + ins_id + "';";
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			if (re.next()) {
 				return getByResultSet(re);
 			} else {
@@ -211,7 +210,8 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM stockoutorder WHERE ins_id = '"
 							+ ins_id + "' AND time >= '" + beginDate
-							+ "'AND time<= '" + endDate + "' AND "+passed_f+" = "+true+";");
+							+ "'AND time<= '" + endDate + "' AND " + passed_f
+							+ " = " + true + ";");
 			ArrayList<StockoutOrderPO> stockoutOrders = new ArrayList<StockoutOrderPO>();
 			while (re.next()) {
 				StockoutOrderPO po = getByResultSet(re);
@@ -238,15 +238,16 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.add(passed_f, true);
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
-			
+
 			List<String> ids = getidsByOrderId(order_id);
-			InventoryDataService inventory  = InventoryDataServiceImpl.getInstance();
-			if(ids!=null&&ids.size()>0){
-				for(String id: ids){
+			InventoryDataService inventory = InventoryDataServiceImpl
+					.getInstance();
+			if (ids != null && ids.size() > 0) {
+				for (String id : ids) {
 					inventory.setExisted(id);
 				}
 			}
-			
+
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -257,7 +258,6 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return ResultMessage.FAILED;
 	}
-	
 
 	public ResultMessage setUnPassed(String order_id, String state_info)
 			throws RemoteException {
@@ -267,10 +267,11 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			update.add(passed_f, "false");
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
-			
+
 			List<String> ids = getidsByOrderId(order_id);
-			if(ids!=null){
-				InventoryDataService inventoryData = InventoryDataServiceImpl.getInstance();
+			if (ids != null) {
+				InventoryDataService inventoryData = InventoryDataServiceImpl
+						.getInstance();
 				inventoryData.delete(ids);
 			}
 			return ResultMessage.SUCCEED;
@@ -283,24 +284,25 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return ResultMessage.FAILED;
 	}
-	
+
 	@Override
-	public ResultMessage setLoaded(String order_id){
+	public ResultMessage setLoaded(String order_id) {
 		try {
 			update.clear();
 			update.add(loaded_f, true);
 			update.setKey(order_id_f, order_id);
 			NetModule.excutor.excute(update.createSQL());
-			
+
 			List<String> ids = getidsByOrderId(order_id);
-			if(ids!=null){
-				InventoryDataService inventoryData = InventoryDataServiceImpl.getInstance();
+			if (ids != null) {
+				InventoryDataService inventoryData = InventoryDataServiceImpl
+						.getInstance();
 				inventoryData.delete(ids);
 				return ResultMessage.SUCCEED;
-			}else{
+			} else {
 				return ResultMessage.NOTFOUND;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -309,7 +311,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
-		
+
 	}
 
 	@Override
@@ -330,13 +332,14 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<StockoutOrderPO> getUnLoadedOrders() throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
 			String sql = "SELECT * FROM " + stockoutTable + " WHERE "
-					+ passed_f + " = "+true+" AND "+loaded_f+" = '"+false+"';";
+					+ passed_f + " = " + true + " AND " + loaded_f + " = '"
+					+ false + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			List<StockoutOrderPO> orders = new ArrayList<StockoutOrderPO>();
 			while (re.next()) {
@@ -349,7 +352,6 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
-
 
 	@Override
 	public int getNextId(String cons) throws RemoteException {

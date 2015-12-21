@@ -30,7 +30,7 @@ public class CheckStockPanel extends MainPanel {
 	MainFrame mainFrame;
 	CheckStockPanel self;
 
-	public CheckStockPanel(final MainFrame frame) {
+	public CheckStockPanel(MainFrame frame) {
 		super(frame);
 		// TODO Auto-generated constructor stub
 		mainFrame = frame;

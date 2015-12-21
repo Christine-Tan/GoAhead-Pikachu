@@ -22,10 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory implements InventoryService {
-	private static final String ADD = "addGoods", DELETE = "deleteGoods",
-			MODIFY = "modifyGoods";
-	List<Operation> operations;
+	private static final String ADD = "add", DELETE = "delete",
+			MODIFY = "modify";
 	InventoryDataController inventoryData;
+	List<Operation> operations;
+	
 	int shelf = WareHouseSize.SHELF.getSize();
 	int unit = WareHouseSize.UNIT.getSize();
 
@@ -38,10 +39,10 @@ public class Inventory implements InventoryService {
 	public int getTotalNum(String ins_id){
 		int num = 0;
 		List<GoodsPO> list = new ArrayList<GoodsPO>();
-		list = inventoryData.getOneSector(ins_id+"0", ins_id);
-		if(list!=null){
-			num += list.size();
-		}
+//		list = inventoryData.getOneSector(ins_id+"0", ins_id);
+//		if(list!=null){
+//			num += list.size();
+//		}
 		
 		list = inventoryData.getOneSector(ins_id+"1", ins_id);
 		if(list!=null){
@@ -57,7 +58,6 @@ public class Inventory implements InventoryService {
 		if(list!=null){
 			num += list.size();
 		}
-		
 		
 		return num;
 	}
@@ -114,19 +114,21 @@ public class Inventory implements InventoryService {
 	@Override
 	public void initialadd(GoodsVO vo) {
 		// TODO Auto-generated method stub
+		System.out.println("add:add");
 		operations.add(new AddOperation(vo.toPO()));
 	}
 
 	@Override
 	public void initialdelete(String id) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("add:delete");
 		operations.add(new DeleteOperation(id));
 	}
 
 	@Override
 	public void initialmodify(GoodsVO vo) {
 		// TODO Auto-generated method stub
+		System.out.println("add:modify");
 		operations.add(new ModifyOperation(vo.toPO()));
 	}
 

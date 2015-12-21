@@ -36,7 +36,7 @@ public class InventoryInitailler {
 		navBar.addButton(stockout);
 		navBar.addButton(setAlarmValue);
 		navBar.addButton(initialStock);
-		navBar.setSelect(setAlarmValue);
+		navBar.setSelect(checkStock);
 		mainFrame.setVisible(true);
 		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
 	}

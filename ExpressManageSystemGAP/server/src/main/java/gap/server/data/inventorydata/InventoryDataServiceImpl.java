@@ -64,7 +64,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	public List<GoodsPO> getOneSector(String sector_id, String ins_id)
 			throws RemoteException {
 		try {
-			String sql1 = "SELECT * FROM sector_item WHERE sector_id = '"
+			String sql1 = "SELECT * FROM sector_item WHERE "+belong_sec_f+" = '"
 					+ sector_id + "';";
 			ResultSet re = NetModule.excutor.excuteQuery(sql1);
 			if (!re.next()) {
@@ -406,11 +406,37 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		return ResultMessage.SUCCEED;
 
 	}
+	
+	@Override
+	public ResultMessage setUnexisted(String id){
+		try{
+			sectorUpdate.clear();
+			sectorUpdate.add(existed_f, false);
+			sectorUpdate.setKey(expressorder_id_f, id);
+			String sql = sectorUpdate.createSQL();
+			NetModule.excutor.excute(sql);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	@Override
 	public ResultMessage setlistExisted(List<GoodsPO> list) {
-		for (GoodsPO po : list) {
-			return setExisted(po.getExpressorder_id());
+		if(list!=null&&list.size()>0){
+			for (GoodsPO po : list) {
+				return setExisted(po.getExpressorder_id());
+			}
+		}
+		return ResultMessage.SUCCEED;
+	}
+	
+	@Override
+	public ResultMessage setlistUnexisted(List<String> list){
+		if(list!=null&&list.size()>0){
+			for (String id : list) {
+				return setUnexisted(id);
+			}
 		}
 		return ResultMessage.SUCCEED;
 	}
