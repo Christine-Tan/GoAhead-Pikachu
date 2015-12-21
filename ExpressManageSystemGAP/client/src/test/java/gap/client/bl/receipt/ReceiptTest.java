@@ -3,9 +3,13 @@ package gap.client.bl.receipt;
 import static org.junit.Assert.*;
 
 import java.util.Calendar;
+import java.util.List;
 
+import gap.client.datacontroller.ApprovalDataController;
+import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.NetModule;
 import gap.client.vo.PayeeVO;
+import gap.common.po.BillOrderPO;
 import gap.common.po.PaymentListPO;
 import gap.common.util.PaymentType;
 
@@ -14,17 +18,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class ReceiptTest {
-	AccountorReceiptController receipt;
+	AccountorReceiptController receiptController;
+	ApprovalDataController approvalController;
 
 	@Before
 	public void setUp() throws Exception {
 		NetModule.connect();
-		receipt = AccountorReceiptController.getInstance();
+		receiptController = AccountorReceiptController.getInstance();
+		approvalController = ControllerFactory.getApprovalDataController();
 	}
 
 	@Test
 	public void testGetPaymentList() {
-		receipt.getPaymentList();
+		receiptController.getPaymentList();
 	}
 
 	@Test
@@ -37,7 +43,7 @@ public class ReceiptTest {
 
 	@Test
 	public void testAddPayee() {
-		receipt.addPayee(new PayeeVO(PaymentType.CENTERCLERK, "000000001",
+		receiptController.addPayee(new PayeeVO(PaymentType.CENTERCLERK, "000000001",
 				"yyf", Calendar.getInstance(), 100.0, "账户1", "", ""));
 	}
 
@@ -63,7 +69,13 @@ public class ReceiptTest {
 
 	@Test
 	public void testHandleBillOrder() {
-		fail("Not yet implemented");
+		List<BillOrderPO> billOrderPOs = approvalController.getUnpassedBillOrder();
+		for(BillOrderPO aOrder:billOrderPOs){
+			System.out.println(aOrder.getId());
+		}
+		
+		receiptController.handleBillOrder(billOrderPOs.get(0));
+		
 	}
 
 }

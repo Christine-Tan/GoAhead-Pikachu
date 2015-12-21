@@ -106,7 +106,8 @@ public class AccountorReceiptController implements AccountorReceiptService {
 	@Override
 	public ResultMessage handleBillOrder(BillOrderPO billOrderPO) {
 		// TODO Auto-generated method stub
-		return null;
+		BillOrderHandler handler = new BillOrderHandler(billOrderPO);
+		return handler.handle();
 	}
 
 }

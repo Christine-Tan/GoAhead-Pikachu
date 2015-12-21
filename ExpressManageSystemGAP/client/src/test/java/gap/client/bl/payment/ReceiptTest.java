@@ -23,7 +23,7 @@ import gap.common.po.TransFarePO;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
 
-public class PaymentTest {
+public class ReceiptTest {
 	AccountorReceiptController receiptController;
 	ApprovalDataController controller;
 	@Before
