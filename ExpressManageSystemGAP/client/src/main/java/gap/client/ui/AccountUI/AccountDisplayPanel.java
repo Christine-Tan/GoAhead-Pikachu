@@ -1,5 +1,6 @@
 package gap.client.ui.AccountUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ComponentEvent;
@@ -38,6 +39,7 @@ public class AccountDisplayPanel extends JPanel{
 	(AccountManagePanel accountManagePanel, ArrayList<AccountVO> accountVOs,
 			JViewport viewport){
 		
+		setBackground(Color.white);
 		accounts = accountVOs;		
 		currentAccountNum = accounts.size() + 1;
 		

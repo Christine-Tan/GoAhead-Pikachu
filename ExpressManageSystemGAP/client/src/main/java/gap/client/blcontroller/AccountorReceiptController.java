@@ -103,17 +103,12 @@ public class AccountorReceiptController implements AccountorReceiptService {
 	}
 
 	@Override
-	public List<BillOrderVO> getBillOrderByDateOrIns(Calendar oneDay,
+	public List<BillOrderPO> getBillOrderByDateOrIns(Calendar oneDay,
 			String instituteID) {
 		List<BillOrderPO> billOrderPOs = 
 				receiptDataController.getPassedBill(oneDay, instituteID);
 		
-		ArrayList<BillOrderVO> VOs = new ArrayList<>(billOrderPOs.size());
-		for(BillOrderPO po:billOrderPOs){
-			BillOrderVO vo = BillOrderConvert.orderPO_to_VO(po);
-			VOs.add(vo);
-		}
-		return VOs;	
+		return billOrderPOs;	
 	}
 
 	@Override

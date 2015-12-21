@@ -69,7 +69,7 @@ public interface AccountorReceiptService {
 	 * 按天、按营业厅获得收款单
 	 * @return
 	 */
-	public List<BillOrderVO> getBillOrderByDateOrIns(Calendar oneDay,
+	public List<BillOrderPO> getBillOrderByDateOrIns(Calendar oneDay,
 			String insitituteID);
 
 	/**

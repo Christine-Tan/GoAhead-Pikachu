@@ -1,5 +1,6 @@
 package gap.client.ui.AccountUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.event.ComponentEvent;
@@ -28,6 +29,8 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.bussinessui.carmanage.CarQueryPanel;
 import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
+import gap.client.ui.gapcomponents.GAPScrollBarUI;
 import gap.client.util.MessageType;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.vo.AccountVO;
@@ -74,8 +77,12 @@ public class AccountManagePanel extends MainPanelWithGird{
 		
 		//主面板
 		accountDisplayPanel = new AccountDisplayPanel(this, accounts,viewport);
-		gcons.fill = GridBagConstraints.VERTICAL;
-		SwingConsole.addComponent(gb, gcons, this, accountDisplayPanel, 0, 1, 1, 1, 1, 1);
+		GAPJScrollPane gapjScrollPane = new GAPJScrollPane(accountDisplayPanel);
+		gapjScrollPane.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 300));
+		gapjScrollPane.getViewport().setBackground(Color.white);
+		
+		gcons.fill = GridBagConstraints.BOTH;
+		SwingConsole.addComponent(gb, gcons, this, gapjScrollPane, 0, 1, 1, 1, 1, 1);
 		//搜索面板
 		queryPanel = new AccountQueryPanel(this, accountDisplayPanel);
 		queryPanel.setPreferredSize(new Dimension(Default.PANEL_WIDTH,50));

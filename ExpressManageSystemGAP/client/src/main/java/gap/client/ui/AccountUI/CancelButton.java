@@ -74,7 +74,9 @@ public class CancelButton extends JPanel{
 			@Override
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
-			behave.behave();
+			if(behave!=null){
+				behave.behave();
+			}
 		}
 
 		@Override

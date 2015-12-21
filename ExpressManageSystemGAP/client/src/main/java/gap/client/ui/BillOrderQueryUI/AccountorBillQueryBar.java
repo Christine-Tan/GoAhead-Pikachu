@@ -6,6 +6,7 @@ import gap.client.ui.AccountUI.CancelButton;
 import gap.client.ui.AccountUI.DefaultText_Field;
 import gap.client.ui.AccountUI.ComponentBehave.SearchCancel;
 import gap.client.ui.AccountUI.Listener.SearchListener;
+import gap.client.ui.BillOrderQueryUI.Listener.BillCancelListener;
 import gap.client.ui.BillOrderQueryUI.Listener.BillSearchListener;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
@@ -38,12 +39,13 @@ public class AccountorBillQueryBar extends JPanel {
 	GAPComboBox<InstitutionVO> instituteBox;
 	DefaultText_Field dateField;
 	JButton search;
-	CancelButton cancel;
+	//CancelButton cancel;
 	Component currentComponent;
 	GridBagLayout gb = new GridBagLayout();
 	GridBagConstraints gcons = new GridBagConstraints();
 	
 	BillSearchListener searchListener;
+	BillCancelListener cancelListener;
 	
 
 	public AccountorBillQueryBar
@@ -67,10 +69,14 @@ public class AccountorBillQueryBar extends JPanel {
 				"images\\deliveryIcon\\search.png"));
 		search.setFont(ComponentStyle.plainFont);
 		
-		cancel = new CancelButton(null);		
-		
+	//	cancel = new CancelButton(null);		
 
+		
+		//加监听
+		searchListener = new BillSearchListener(this, mainPanel);
+		cancelListener = new BillCancelListener(this, mainPanel);
 		search.addMouseListener(searchListener);
+		//cancel.addMouseListener(cancelListener);
 		
 		currentComponent = search;
 		
@@ -89,12 +95,12 @@ public class AccountorBillQueryBar extends JPanel {
 	/**
 	 * 把界面上的button设为Cancelbutton
 	 */
-	public void setCancelButton(){
-		remove(currentComponent);
-		currentComponent = cancel;
-		cancel.setPreferredSize(new Dimension(80, 30));
-		SwingConsole.addComponent(gb, gcons, this, currentComponent, 1, 0, 1, 1, 0, 0);
-	}
+//	public void setCancelButton(){
+//		remove(currentComponent);
+//		currentComponent = cancel;
+//		cancel.setPreferredSize(new Dimension(80, 30));
+//		SwingConsole.addComponent(gb, gcons, this, currentComponent, 1, 0, 1, 1, 0, 0);
+//	}
 	
 	/**
 	 * 把界面上的button设为SearchButton
