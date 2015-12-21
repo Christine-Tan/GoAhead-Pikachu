@@ -1,14 +1,20 @@
-package gap.client.bl.receipt;
+package gap.client.blcontroller;
 
+import gap.client.bl.receipt.BillOrderConvert;
+import gap.client.bl.receipt.BillOrderHandler;
+import gap.client.bl.receipt.PaymentHandler;
+import gap.client.bl.receipt.PaymentList;
 import gap.client.blservice.accountorReceiptblservice.AccountorReceiptService;
 import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.vo.AccountVO;
 import gap.client.vo.BillOrderVO;
+import gap.client.vo.InstitutionVO;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;
 import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
+import gap.common.po.InstitutionPO;
 import gap.common.po.PaymentListPO;
 import gap.common.util.ResultMessage;
 
@@ -98,16 +104,34 @@ public class AccountorReceiptController implements AccountorReceiptService {
 
 	@Override
 	public List<BillOrderVO> getBillOrderByDateOrIns(Calendar oneDay,
-			String insitituteID) {
-		// TODO Auto-generated method stub
-		return null;
+			String instituteID) {
+		List<BillOrderPO> billOrderPOs = 
+				receiptDataController.getPassedBill(oneDay, instituteID);
+		
+		ArrayList<BillOrderVO> VOs = new ArrayList<>(billOrderPOs.size());
+		for(BillOrderPO po:billOrderPOs){
+			BillOrderVO vo = BillOrderConvert.orderPO_to_VO(po);
+			VOs.add(vo);
+		}
+		return VOs;	
 	}
 
 	@Override
 	public ResultMessage handleBillOrder(BillOrderPO billOrderPO) {
-		// TODO Auto-generated method stub
+	
 		BillOrderHandler handler = new BillOrderHandler(billOrderPO);
 		return handler.handle();
 	}
 
+	public ArrayList<InstitutionVO> getAllInstitution(){
+		List<InstitutionPO> POs = receiptDataController.getAllInstitute();
+		ArrayList<InstitutionVO> VOs = new ArrayList<>(POs.size());
+		
+		for(InstitutionPO po:POs){
+			InstitutionVO aVO = new InstitutionVO(po);
+			VOs.add(aVO);
+		}
+		
+		return VOs;
+	}
 }

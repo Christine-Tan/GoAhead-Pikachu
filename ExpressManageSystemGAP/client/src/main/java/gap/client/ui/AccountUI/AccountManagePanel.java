@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
-import gap.client.bl.account.AccountBlController;
 import gap.client.bl.account.AccountSearchResult;
 import gap.client.bl.account.AccountSearcher;
+import gap.client.blcontroller.AccountBlController;
 import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
 import gap.client.ui.AccountUI.Listener.AccountConfirmListener;
 import gap.client.ui.BaseComponents.CancelLabel;

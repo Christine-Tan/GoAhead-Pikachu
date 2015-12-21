@@ -61,7 +61,7 @@ public class RewardEditItem extends PanelWithGrid{
 		this.payees = payees;
 		this.rewardPanel = rewardPanel;
 		
-		setBackground(Color.red);
+		setBackground(Color.white);
 		
 		nameLabel = new JLabel("奖金");
 		nameLabel.setOpaque(true);

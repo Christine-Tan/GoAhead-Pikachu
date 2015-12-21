@@ -1,5 +1,11 @@
-package gap.client.bl.account;
+package gap.client.blcontroller;
 
+import gap.client.bl.account.AccountCmdBuffer;
+import gap.client.bl.account.AccountSearchResult;
+import gap.client.bl.account.AccountSearcher;
+import gap.client.bl.account.AddAccountCmd;
+import gap.client.bl.account.DeleteAccountCmd;
+import gap.client.bl.account.ModifyAccountCmd;
 import gap.client.blservice.accountblservice.AccountService;
 import gap.client.datacontroller.AccountDateController;
 import gap.client.datacontroller.ControllerFactory;

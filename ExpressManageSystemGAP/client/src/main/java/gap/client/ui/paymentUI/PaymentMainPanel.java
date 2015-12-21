@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.naming.InitialContext;
 
-import gap.client.bl.receipt.AccountorReceiptController;
+import gap.client.blcontroller.AccountorReceiptController;
 import gap.client.exception.MoneyEmptyException;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanelWithGird;

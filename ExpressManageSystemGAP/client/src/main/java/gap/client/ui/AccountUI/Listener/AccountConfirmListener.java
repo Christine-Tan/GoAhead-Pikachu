@@ -3,7 +3,7 @@ package gap.client.ui.AccountUI.Listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import gap.client.bl.account.AccountBlController;
+import gap.client.blcontroller.AccountBlController;
 import gap.client.ui.AccountUI.AccountManagePanel;
 import gap.common.util.ResultMessage;
 

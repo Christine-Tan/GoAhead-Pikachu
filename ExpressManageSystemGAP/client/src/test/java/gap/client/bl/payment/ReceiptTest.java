@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import gap.client.bl.receipt.AccountorReceiptController;
+import gap.client.blcontroller.AccountorReceiptController;
 import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ApprovalDataController;
 import gap.client.datacontroller.ControllerFactory;

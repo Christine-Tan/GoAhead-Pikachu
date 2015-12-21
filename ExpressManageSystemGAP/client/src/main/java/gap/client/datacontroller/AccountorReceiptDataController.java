@@ -8,8 +8,10 @@ import static gap.client.datacontroller.NetModule.rentdataservice;
 import static gap.client.datacontroller.NetModule.salarydataservice;
 import static gap.client.datacontroller.NetModule.userdataservice;
 import static gap.client.datacontroller.NetModule.transFareDataService;
+import static gap.client.datacontroller.NetModule.institutiondataservice;
 import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
+import gap.common.po.InstitutionPO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.RentPO;
 import gap.common.po.SalaryPO;
@@ -31,7 +33,6 @@ import java.util.List;
  *
  */
 public class AccountorReceiptDataController {
-	// 未找到注册
 
 	protected AccountorReceiptDataController() {
 
@@ -232,4 +233,14 @@ public class AccountorReceiptDataController {
 		return null;
 	}
 
+	// Institution
+	public List<InstitutionPO> getAllInstitute(){
+		try {
+			return institutiondataservice.getAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 }
