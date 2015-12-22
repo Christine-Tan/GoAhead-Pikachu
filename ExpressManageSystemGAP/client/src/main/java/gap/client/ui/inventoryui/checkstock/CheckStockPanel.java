@@ -38,13 +38,14 @@ public class CheckStockPanel extends MainPanel {
 		choose = new ChoosePanel();
 		buttonArea = new StockCheckButtonArea();
 		shelves = WareHouseSize.SHELF.getSize();
-		list = new ListPanel(shelves, LocalInfo.ins_id + "1");
-
+		
+		initial();
+		
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		gcons.fill = GridBagConstraints.BOTH;
 		setLayout(gb);
-
+		
 		reLayout();
 		
 		choose.car.addActionListener(new ActionListener() {
@@ -147,6 +148,10 @@ public class CheckStockPanel extends MainPanel {
 	}
 	
 	public void initial(){
+		choose.car.setSelected();
+		choose.flex.toNomal();
+		choose.train.toNomal();
+		choose.plane.toNomal();
 		list = new ListPanel(shelves, LocalInfo.ins_id + "1");
 	}
 
@@ -154,10 +159,6 @@ public class CheckStockPanel extends MainPanel {
 	public void refresh() {
 		// TODO Auto-generated method stub
 		initial();
-		choose.car.toNomal();
-		choose.flex.toNomal();
-		choose.train.toNomal();
-		choose.plane.toNomal();
 		reLayout();
 	}
 

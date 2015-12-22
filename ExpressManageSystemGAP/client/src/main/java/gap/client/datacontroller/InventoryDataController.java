@@ -93,6 +93,16 @@ public class InventoryDataController {
 		return null;
 	}
 	
+	public List<GoodsPO> getOneTypeSector(String sector_id){
+		try {
+			return inventorydataservice.getOneTypeSector(sector_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public List<GoodsPO> getOneSectorExisted(String sector_id,String ins_id){
 		try {
 			return inventorydataservice.getOneSectorExisted(sector_id, ins_id);

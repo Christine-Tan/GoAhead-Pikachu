@@ -219,8 +219,10 @@ public class StockoutOrderInputPanel extends MainPanel {
 	}
 	
 	public void initial(){
+		choose.car.setSelected();
+		choose.train.toNomal();
+		choose.plane.toNomal();
 		voList = new ArrayList<GoodsVO>();
-		
 		initialList(LocalInfo.ins_id+"1");
 		
 		

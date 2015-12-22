@@ -1,6 +1,7 @@
 package gap.client.ui.inventoryui.stockinorderinput;
 
 import gap.client.blcontroller.ExpressorderController;
+import gap.client.blcontroller.InventoryController;
 import gap.client.blcontroller.StockinOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
@@ -100,8 +101,13 @@ public class StockinOrderInputPanel extends MainPanel {
 						if (re.equals(ResultMessage.SUCCEED)) {
 							MainFrame.setMessage("入库单生成成功",
 									MessageType.succeed, 3000);
-							System.out.println("设置入库" + id);
+//							System.out.println("设置入库" + id);
 							StockinOrderController.setOrderStockin(id);
+							String ins_id = LocalInfo.getIns_ID();
+//							checkAlarm(InventoryController.alarm(ins_id+"1",ins_id));
+//							checkAlarm(InventoryController.alarm(ins_id+"2",ins_id));
+//							checkAlarm(InventoryController.alarm(ins_id+"3",ins_id));
+//							checkAlarm(InventoryController.alarm(ins_id+"0",ins_id));
 							refresh();
 						} else {
 							MainFrame.setMessage("入库单为空", MessageType.alram,
@@ -113,6 +119,15 @@ public class StockinOrderInputPanel extends MainPanel {
 			}
 		});
 
+	}
+	
+	public void checkAlarm(String s){
+		
+		if(s!=null){
+			MainFrame.setMessage(s+"报警！！！超出警戒值啦！！！", MessageType.alram, 3000);
+		}
+		
+		
 	}
 
 	public void setSelected(Boolean bool) {
@@ -156,7 +171,7 @@ public class StockinOrderInputPanel extends MainPanel {
 				.getIns_ID());
 		if (arrivedOrders != null && arrivedOrders.size() > 0) {
 			id = arrivedOrders.get(0).getId();
-			System.out.println("初始化：" + id);
+//			System.out.println("初始化：" + id);
 			Set<String> ids = arrivedOrders.get(0).getOrders().keySet();
 			if (ids != null && ids.size() > 0) {
 				orders = ExpressorderController

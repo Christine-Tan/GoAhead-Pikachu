@@ -17,6 +17,7 @@ import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
 import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
+import gap.common.util.SectorType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -239,9 +240,23 @@ public class Inventory implements InventoryService {
 	}
 
 	@Override
-	public String Alarm() {
+	public String Alarm(String sector_id,String ins_id) {
 		// TODO Auto-generated method stub
-		return null;
+		int size = WareHouseSize.TOTAL.getSize();
+		double alarm = getAlarm(ins_id);
+		double used = 0;
+		List<GoodsPO> pos = inventoryData.getOneTypeSector(sector_id);
+		if(pos!=null&&pos.size()>0){
+			used = pos.size();
+			used = 100*used/size;
+		}
+		
+		if(used>alarm){
+			return SectorType.getName(sector_id.charAt(7));
+		}else{
+			return null;
+		}
+		
 	}
 
 	class AddOperation extends AbstractOperation {

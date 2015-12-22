@@ -1,6 +1,7 @@
 package gap.client.ui.inventoryui.initialstock;
 
 import gap.client.blcontroller.InventoryController;
+import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -38,10 +39,12 @@ public class ListItemPanel extends JPanel {
 	JButton addButton;
 	JFrame frame;
 	String sector_id;
+	InitialStockPanel initialPanel;
 
-	public ListItemPanel(JFrame frame,String sector_id) {
+	public ListItemPanel(JFrame frame,String sector_id,InitialStockPanel panel) {
 		this.frame = frame;
 		this.sector_id = sector_id;
+		this.initialPanel = panel;
 		setBackground(Color.white);
 
 		addButton = new GAPButton("+");
@@ -103,13 +106,8 @@ public class ListItemPanel extends JPanel {
 	 */
 	private void removeItem(ItemPanel item) {
 		items.remove(item);
-		remove(item);
-		if(item.goods!=null){
-			InventoryController.InitialDelete(item.goods.getExpressorder_id());
-		}
-		
+		initialPanel.reLayout();
 		reLayout();
-//		validate();
 	}
 
 	/**
@@ -124,6 +122,7 @@ public class ListItemPanel extends JPanel {
 		}
 		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
 				1, 1, 1, 0);
+		repaint();
 		frame.validate();
 	}
 
@@ -178,6 +177,12 @@ public class ListItemPanel extends JPanel {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO 自动生成的方法存根
+					GoodsVO vo = getGoodsVO();
+					if(vo!=null){
+						InventoryController.InitialDelete(vo.getExpressorder_id());
+						System.out.println("delete");
+						reLayout();
+					}
 					removeItem(ItemPanel.this);
 				}
 			});
@@ -220,7 +225,7 @@ public class ListItemPanel extends JPanel {
 			this.goods = goods;
 			order_id.setText(goods.getExpressorder_id());
 			destination.setText(goods.getDestination());
-			String sec = SectorType.getName(sector_id.charAt(sector_id.length()-1));
+			String sec = SectorType.getName(goods.getSector_id().charAt(7));
 			String loc = sec+" "+goods.getLocation();
 			location.setText(loc);
 			inDate.setText(goods.getDate());
@@ -237,16 +242,22 @@ public class ListItemPanel extends JPanel {
 		}
 
 		public GoodsVO getGoodsVO() {
-			
-			String id = order_id.getText(),loc = location.getText(),date = inDate.getText(),
-					des = destination.getText();
-			String[] details = loc.split(" ");
-			SectorType sectorType = SectorType.getSectorTypeByChinese(details[0]);
-			String sec_id = SectorType.getSectorId(LocalInfo.ins_id, sectorType);
-			String bel_id = sector_id;
-			
-			return new GoodsVO(id, details[1], sectorType, date, sec_id, bel_id, des);
+			try{
+				String id = order_id.getText(),loc = location.getText(),date = inDate.getText(),
+						des = destination.getText();
+				String[] details = loc.split(" ");
+				SectorType sectorType = SectorType.getSectorTypeByChinese(details[0]);
+				String sec_id = SectorType.getSectorId(LocalInfo.ins_id, sectorType);
+				String bel_id = sector_id;
+				return new GoodsVO(id, details[1], sectorType, date, sec_id, bel_id, des);
 
+			}catch(Exception e){
+				System.out.println("有未填写的文本框");
+			}
+			return null;
+			
+			
+			
 		}
 
 		// 关闭编辑

@@ -61,4 +61,8 @@ public class InventoryController {
 	public static double getOneShelfRatio(String position, String sector_id){
 		return inventory.getOneShelfRatio(position,sector_id);
 	}
+	
+	public static String alarm(String sector_id,String ins_id){
+		return inventory.Alarm(sector_id, ins_id);
+	}
 }

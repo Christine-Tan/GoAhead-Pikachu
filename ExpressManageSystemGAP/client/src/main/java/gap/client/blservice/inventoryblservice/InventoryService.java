@@ -21,7 +21,7 @@ public interface InventoryService {
 
 	public double getAlarm(String ins_id);
 	
-	public String Alarm();
+	public String Alarm(String sector_id,String ins_id);
 
 	public ResultMessage distributeSector(String beginColumn, String endColumn,
 			String toSector);

@@ -155,7 +155,7 @@ public class ObserveStockPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, stockinTitle, 0, 1, 1, 1, 1,
 				0);
 		GAPJScrollPane js1 = new GAPJScrollPane(stockinList);
-		js1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 100));
+		js1.setPreferredSize(new Dimension(Default.PANEL_WIDTH, Math.min(stockinList.items.size(),5)*50+20));
 		
 		SwingConsole.addComponent(gb, gcons, this, js1, 0, 2, 1, 1, 1,
 				1);
@@ -165,9 +165,9 @@ public class ObserveStockPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, stockoutTitle, 0, 5, 1, 1,
 				1, 0);
 		GAPJScrollPane js2 = new GAPJScrollPane(stockoutList);
-		js2.setPreferredSize(new Dimension(Default.PANEL_WIDTH, 100));
+		js2.setPreferredSize(new Dimension(Default.PANEL_WIDTH, Math.min(stockoutList.items.size(),5)*50+20));
 		SwingConsole.addComponent(gb, gcons, this, js2, 0, 6, 1, 1, 1,
-				0);
+				1);
 		SwingConsole.addComponent(gb, gcons, this, stockoutTotal, 0, 7, 1, 1,
 				1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel0, 0, 8, 1, 1, 1, 0.1);

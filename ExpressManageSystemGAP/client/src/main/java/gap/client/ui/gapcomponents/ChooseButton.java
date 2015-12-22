@@ -96,4 +96,10 @@ public class ChooseButton extends JButton {
 		clicked = false;
 		
 	}
+	
+	public void setSelected(){
+		setBackground(ColorAndFonts.blue);
+		setForeground(Color.white);
+		clicked = true;
+	}
 }
