@@ -29,6 +29,7 @@ public class AccountorBillQueryMainPanel extends MainPanelWithGird{
 	
 	BillOrderTableHeader tableHeader;
 	AccountOrderItemListPanel listPanel;
+	TotalMoneyPanel totalMoneyPanel;
 	ButtonArea buttonArea;
 	
 	public AccountorBillQueryMainPanel(MainFrame frame) {
@@ -58,9 +59,14 @@ public class AccountorBillQueryMainPanel extends MainPanelWithGird{
 		gcons.fill = GridBagConstraints.BOTH;
 		SwingConsole.addComponent(gb, gcons, this, billScrollePanel, 0, 2, 1, 1, 1, 1);
 		
+		
+		totalMoneyPanel = new TotalMoneyPanel(0, "收款");
+		totalMoneyPanel.setVisible(false);
+		SwingConsole.addComponent(gb, gcons, this, totalMoneyPanel, 0, 3, 1, 1, 1, 0);
+		
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("导出excel");
-		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 	}
 
 	public void search(String institutionID,String dateString){
@@ -106,8 +112,18 @@ public class AccountorBillQueryMainPanel extends MainPanelWithGird{
 		}
 		
 		listPanel.refresh(orders);
-	//	queryBar.setCancelButton();
-		
+		double total = computeTotal(billOrderPOs);
+		totalMoneyPanel.setMoney(total);
+		totalMoneyPanel.setVisible(true);
+		validate();
+	}
+	
+	private double computeTotal(List<BillOrderPO> billOrderPOs){
+		double total = 0;
+		for(BillOrderPO po:billOrderPOs){
+			total+=po.getTotal();
+		}
+		return total;
 	}
 	
 	public AccountOrderItemListPanel getListPanel(){

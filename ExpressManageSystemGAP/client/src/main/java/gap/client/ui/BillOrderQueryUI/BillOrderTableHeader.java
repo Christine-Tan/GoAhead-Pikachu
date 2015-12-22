@@ -19,8 +19,8 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 
 public class BillOrderTableHeader extends JPanel {
-	// 单据编号，类型，日期
-	JLabel id, type, date;
+	// 单据编号，类型，日期,金额
+	JLabel id, type, date,money;
 	// 全选
 
 
@@ -36,18 +36,20 @@ public class BillOrderTableHeader extends JPanel {
 		id = new GAPLabel("单据编号");
 		type = new GAPLabel("单据类型");
 		date = new GAPLabel("生成日期");
+		money = new GAPLabel("金额");
 
 		
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(10, 168, 10, 0);
+		gcons.insets = new Insets(10, 100, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, id, 0, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 173, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, type, 1, 0, 1, 1, 0, 0);
 		gcons.insets = new Insets(10, 110, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, date, 2, 0, 1, 1, 0, 0);
-
+		gcons.insets = new Insets(10, 110, 10, 0);
+		SwingConsole.addComponent(gb, gcons, this, money, 3, 0, 1, 1, 0, 0);
 
 	}
 

@@ -11,6 +11,7 @@ import gap.client.ui.bussinessui.arrivedorder.ArrivedOrderPanel;
 import gap.client.ui.bussinessui.loadorder.LoadOrderPanel;
 import gap.client.ui.paymentUI.PaymentMainPanel;
 import gap.client.ui.tableUI.Cost_profitUI.CostProfitPanel;
+import gap.client.ui.tableUI.OperationUI.OperationMainPanel;
 import gap.client.util.MessageType;
 
 public class AccountorInitialler {
@@ -25,9 +26,12 @@ public class AccountorInitialler {
 				new CostProfitPanel(mainFrame), navBar, "成本收益");
 		NavigateButton billOrderQuery = new NavigateButton(mainFrame,
 				new AccountorBillQueryMainPanel(mainFrame), navBar, "查询收款单");
+		NavigateButton operationCondition = new NavigateButton(mainFrame,
+				new OperationMainPanel(mainFrame), navBar, "经营状况");
 		
 
 		navBar.addButton(costProfit);
+		navBar.addButton(operationCondition);
 		navBar.addButton(accountManage);
 		navBar.addButton(payment);
 		navBar.addButton(billOrderQuery);

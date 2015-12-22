@@ -2,6 +2,7 @@ package gap.client.ui.BillOrderQueryUI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -27,6 +28,7 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.ui.paymentUI.paymentDetail.PaymentDetailPanel;
 import gap.common.po.ArrivedOrderPO;
@@ -37,6 +39,7 @@ import gap.common.po.LoadOrderPO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
+import gap.common.util.ReceiptType;
 
 public class AccountOrderItemListPanel extends JPanel {
 	// 列表中所有的项
@@ -74,6 +77,11 @@ public class AccountOrderItemListPanel extends JPanel {
 
 	}
 	
+	public void setDefualtText(String text){
+		textLabel.setText(text);
+	}
+	
+	
 	public void refresh(ArrayList<Object> orderPOs){
 		removeAll();
 		items.clear();
@@ -89,7 +97,7 @@ public class AccountOrderItemListPanel extends JPanel {
 		}
 		
 		showItems();
-		queryMainPanel.validate();
+		//queryMainPanel.validate();
 	}
 	
 	public void cancel(){
@@ -109,6 +117,7 @@ public class AccountOrderItemListPanel extends JPanel {
 
 	class ItemPanel extends JPanel {
 		GAPTextField order_id, type, date;
+		GAPLabel money;
 		JButton detail;
 
 		// 详细信息面板
@@ -118,12 +127,15 @@ public class AccountOrderItemListPanel extends JPanel {
 		// 是否显示详细信息
 		boolean detailed;
 		Object order;
+		
+		ReceiptType receiptType;
+		
 
 		ItemPanel(Object ob) {
-			setBackground(Color.WHITE);
+			setBackground(Color.white);
 			this.order = ob;
 			// 组件初始化
-			order_id = new GAPTextField(20);
+			order_id = new GAPTextField(15);
 			type = new GAPTextField(13);
 			date = new GAPTextField(10);
 			this.setLayout(gbl);
@@ -133,11 +145,23 @@ public class AccountOrderItemListPanel extends JPanel {
 			order_id.closeEdit();
 			type.closeEdit();
 			date.closeEdit();
+			
+			order_id.setOpaque(false);
+			type.setOpaque(false);
+			date.setOpaque(false);
+			
+		
+			money = new GAPLabel();
+			money.setForeground(Color.black);
+			double total = 0;
+			
 			if (order instanceof BillOrderPO) {
 				BillOrderPO billOrder = (BillOrderPO) order;
 				order_id.setText(billOrder.getId());
 				type.setText("收款单");
 				date.setText(billOrder.getBillDate().toString());
+				total = billOrder.getTotal();
+				receiptType = ReceiptType.BILL;
 			} else if (order instanceof PaymentListPO) {
 				PaymentListPO paymentList = (PaymentListPO) order;
 				order_id.setText(paymentList.getPaymentID());
@@ -145,10 +169,15 @@ public class AccountOrderItemListPanel extends JPanel {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				String dateString = format.format(paymentList.getDate().getTime());
 				date.setText(dateString);
+				total = paymentList.getTotal();
+				receiptType = ReceiptType.PAYMENT;
 			} else {
 				System.out.println("no corresponding ordertype");
 			}
-
+			
+			String moneyString = String.format("%.2f", total) + "元";
+			money.setText(moneyString);
+			
 
 			// 对显示详细信息的按钮添加监听
 			detail = new GAPButton(">");
@@ -177,17 +206,45 @@ public class AccountOrderItemListPanel extends JPanel {
 			// 布局
 			gbl = new GridBagLayout();
 			setLayout(gbl);
-			gcons.insets = new Insets(5, 55, 10, 20);
+			gcons.insets = new Insets(5, 20, 20, 10);
 			SwingConsole.addComponent(gbl, gcons, this, detail, 0, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(5, 0, 10, 0);
-			SwingConsole.addComponent(gbl, gcons, this, order_id, 1, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(5, 10, 10, 0);
+			SwingConsole.addComponent(gbl, gcons, this, order_id, 1, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(5, 35, 10, 7);
+			gcons.anchor = GridBagConstraints.CENTER;
 			SwingConsole.addComponent(gbl, gcons, this, type, 2, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(5, 5, 10, 15);
 			SwingConsole.addComponent(gbl, gcons, this, date, 3, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(5, 40, 10, 5);
+			SwingConsole.addComponent(gbl, gcons, this, money, 4, 0, 1, 1, 0, 0);
 
-
-			gcons.insets = new Insets(5, 10, 5, 10);
-			SwingConsole.addComponent(gbl, gcons, this, detailPanel, 0, 1, 6, 1, 0, 0);
+			gcons.insets = new Insets(0, 0, 0, 0);
+			gcons.anchor = GridBagConstraints.CENTER;
+			SwingConsole.addComponent(gbl, gcons, this, detailPanel, 0, 1, 5, 1, 0, 0);
+		}
+		
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			int width = 30;
+			int widthGarp = 20;
+			int height = getHeight();
+			int garp = 10;
+			if(receiptType==null){
+				return;
+			}
+			
+			switch (receiptType) {
+			case BILL:
+				g.setColor(new Color(189, 252, 167));
+				break;
+			case PAYMENT:
+				g.setColor(new Color(247,133,138));
+				break;
+			}
+			
+			g.fillRect(widthGarp, garp/2, width, height-garp*2);
+			
 		}
 
 
@@ -196,6 +253,7 @@ public class AccountOrderItemListPanel extends JPanel {
 			order_id.setForeground(ColorAndFonts.blue);
 			type.setForeground(ColorAndFonts.blue);
 			date.setForeground(ColorAndFonts.blue);
+			money.setForeground(ColorAndFonts.blue);
 			detailPanel.setVisible(true);
 			detailed = true;
 			detail.setText("v");
@@ -205,6 +263,7 @@ public class AccountOrderItemListPanel extends JPanel {
 			order_id.setForeground(Color.BLACK);
 			type.setForeground(Color.BLACK);
 			date.setForeground(Color.BLACK);
+			money.setForeground(Color.BLACK);
 			detailPanel.setVisible(false);
 			detailed = false;
 			detail.setText(">");
