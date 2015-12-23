@@ -9,9 +9,12 @@ import static gap.client.datacontroller.NetModule.salarydataservice;
 import static gap.client.datacontroller.NetModule.userdataservice;
 import static gap.client.datacontroller.NetModule.transFareDataService;
 import static gap.client.datacontroller.NetModule.institutiondataservice;
+import static gap.client.datacontroller.NetModule.logdataservice;
+
 import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.InstitutionPO;
+import gap.common.po.LogPO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.RentPO;
 import gap.common.po.SalaryPO;
@@ -243,4 +246,24 @@ public class AccountorReceiptDataController {
 			return null;
 		}
 	}
+	
+	//Log
+	public ResultMessage addLog(LogPO logPO){
+		boolean isSucceed = false;
+		try {
+			isSucceed = logdataservice.addLog(logPO);
+			
+			if(isSucceed){
+				return ResultMessage.SUCCEED;
+			}else{
+				return ResultMessage.FAILED;
+			}
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
+		
+	}
+	
 }

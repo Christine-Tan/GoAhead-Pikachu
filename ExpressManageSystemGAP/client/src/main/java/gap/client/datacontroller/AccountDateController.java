@@ -1,11 +1,13 @@
 package gap.client.datacontroller;
 
 import static gap.client.datacontroller.NetModule.accountDataService;
+import static gap.client.datacontroller.NetModule.logdataservice;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.common.po.AccountPO;
 import gap.common.po.Cost_profitPO;
+import gap.common.po.LogPO;
 import gap.common.util.ResultMessage;
 
 import java.net.MalformedURLException;
@@ -89,6 +91,25 @@ public class AccountDateController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	//log service
+	public ResultMessage addLog(LogPO logPO){
+		boolean isSucceed = false;
+		try {
+			isSucceed = logdataservice.addLog(logPO);
+			
+			if(isSucceed){
+				return ResultMessage.SUCCEED;
+			}else{
+				return ResultMessage.FAILED;
+			}
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
+		
 	}
 
 }
