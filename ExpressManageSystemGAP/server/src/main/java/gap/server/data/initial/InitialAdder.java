@@ -25,6 +25,7 @@ public class InitialAdder {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		maxID++;
 		
 		builder.InsertInto(historyTableName).Values(
@@ -61,7 +62,7 @@ public class InitialAdder {
 						center_col,
 						courier_col,
 						busClerk_col,
-						centerClerk,
+						centerClerk_col,
 						stockMan_col,
 						initialHistory_col
 					).Values(

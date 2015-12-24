@@ -23,7 +23,8 @@ public class InitialPeoplePO {
 		setCenterNum(numbers[1]);
 		setCourierNum(numbers[2]);
 		setBusinessClerkNum(numbers[3]);
-		setStockmanNum(numbers[4]);
+		setCenterNum(numbers[4]);
+		setStockmanNum(numbers[5]);
 		
 	}
 

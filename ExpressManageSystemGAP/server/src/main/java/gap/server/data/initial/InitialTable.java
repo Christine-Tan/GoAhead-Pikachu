@@ -22,7 +22,7 @@ public class InitialTable {
 		center_col			= "Center",
 		courier_col 		= "Courier",
 		busClerk_col		= "BusinessClerk",
-		centerClerk			= "CenterClerk",
+		centerClerk_col		= "CenterClerk",
 		stockMan_col		= "StockMan",
 		
 		stockTableName		= "initialstockinfo",
