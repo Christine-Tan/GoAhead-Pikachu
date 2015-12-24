@@ -24,8 +24,6 @@ public class LoginFrame extends JFrame {
 					LoginFrame frame = new LoginFrame();
 					NetModule.connect();
 					loginFrame = frame;
-
-
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
