@@ -32,10 +32,9 @@ public class RentTitlePanel extends JPanel {
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
-		gcons.insets = new Insets(40, 50, 10, 0);
-		SwingConsole.addComponent(gb, gcons, this, institution, 0, 0, 1, 1, 0,
-				0);
-		gcons.insets = new Insets(40, 180, 10, 450);
+		gcons.insets = new Insets(40, 80, 10, 0);
+		SwingConsole.addComponent(gb, gcons, this, institution, 0, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(40, 150, 10, 430);
 		SwingConsole.addComponent(gb, gcons, this, money, 1, 0, 1, 1, 0, 0);
 
 	}
