@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class InitialAdder {
 	
-	public void addInitial(InitialHistoryPO po){
+	public static void addInitial(InitialHistoryPO po){
 		SQLBuilder builder = new SQLBuilder();
 		
 		builder.Select("MAX(ID)").From(historyTableName);
