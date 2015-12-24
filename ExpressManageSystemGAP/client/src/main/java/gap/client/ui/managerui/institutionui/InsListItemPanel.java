@@ -223,9 +223,7 @@ public class InsListItemPanel extends JPanel {
 			ins_id.openEdit();
 			ins_name.openEdit();
 			ins_member.openEdit();
-			ins_type_list.setEnabled(true);
 			ins_type_list.setFocusable(true);
-			ins_city_list.setEnabled(true);
 			ins_city_list.setFocusable(true);
 			edit.setText("√");
 			edited = true;
@@ -235,9 +233,7 @@ public class InsListItemPanel extends JPanel {
 			ins_id.closeEdit();
 			ins_name.closeEdit();
 			ins_member.closeEdit();
-			ins_type_list.setEnabled(false);
 			ins_type_list.setFocusable(false);
-			ins_city_list.setEnabled(false);
 			ins_city_list.setFocusable(false);
 			edit.setText("E");
 			vo = getInstitutionVO();

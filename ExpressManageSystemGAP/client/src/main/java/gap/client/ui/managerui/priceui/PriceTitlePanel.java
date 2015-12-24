@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class PriceTitlePanel extends JPanel {
-	JLabel city, express, standard, economic, colon1, colon2, base;
+	GAPLabel city, express, standard, economic, colon1, colon2, base;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
 
@@ -38,19 +38,19 @@ public class PriceTitlePanel extends JPanel {
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 
-		gcons.insets = new Insets(10, 50, 10, 0);
+		gcons.insets = new Insets(30, 40, 10, 10);
 		SwingConsole.addComponent(gb, gcons, this, city, 0, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 100, 10, 0);
+		gcons.insets = new Insets(30, 100, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, express, 1, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 5, 10, 0);
+		gcons.insets = new Insets(30, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, colon1, 2, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 5, 10, 0);
+		gcons.insets = new Insets(30, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, standard, 3, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 5, 10, 0);
+		gcons.insets = new Insets(30, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, colon2, 4, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 5, 10, 0);
+		gcons.insets = new Insets(30, 5, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, economic, 5, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 100, 10, 300);
+		gcons.insets = new Insets(30, 100, 10, 300);
 		SwingConsole.addComponent(gb, gcons, this, base, 6, 0, 1, 1, 0, 0);
 	}
 

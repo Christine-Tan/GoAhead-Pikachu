@@ -22,7 +22,7 @@ public class LogoPanel extends JPanel {
 
 	boolean isEnterPassWord = false;
 	public LogoPanel(LoginFrame frame) {
-		setBounds(0, 0, LoginConfig.width, LoginConfig.animationHeight);
+		setBounds(4, 4, LoginConfig.width-8, LoginConfig.animationHeight-4);
 		setOpaque(false);
 		
 		listener = new Listener();
@@ -43,6 +43,7 @@ public class LogoPanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		// TODO Auto-generated method stub
+		super.paintComponent(g);
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);
 		if (alpha < 1f) {
 			AlphaComposite composite = AlphaComposite.getInstance(

@@ -75,11 +75,9 @@ public class RentListItemPanel extends JPanel {
 
 	private void reLayout() {
 		for (int i = 0; i < items.size(); i++) {
-			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
-					1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
 		}
-		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
-				1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(), 1, 1, 1, 0);
 	}
 
 	class ItemPanel extends JPanel {
@@ -95,7 +93,7 @@ public class RentListItemPanel extends JPanel {
 		public ItemPanel() {
 			setBackground(Color.WHITE);
 			setFocusable(true);
-			institution = new GAPTextField(10);
+			institution = new GAPTextField(15);
 			money = new GAPTextField(7);
 			institution.setHorizontalAlignment(JTextField.CENTER);
 			money.setHorizontalAlignment(JTextField.CENTER);
@@ -127,11 +125,9 @@ public class RentListItemPanel extends JPanel {
 			gbl = new GridBagLayout();
 			this.setLayout(gbl);
 			gcons.insets = new Insets(10, 10, 10, 0);
-			SwingConsole.addComponent(gbl, gcons, this, institution, 0, 0, 1,
-					1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, institution, 0, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 50, 10, 300);
-			SwingConsole
-					.addComponent(gbl, gcons, this, money, 1, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, money, 1, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 50, 10, 50);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 2, 0, 1, 1, 0, 0);
 		}
@@ -145,8 +141,7 @@ public class RentListItemPanel extends JPanel {
 		}
 
 		RentVO getRentVO() {
-			return new RentVO(institution.getText(), Double.valueOf(money
-					.getText()));
+			return new RentVO(institution.getText(), Double.valueOf(money.getText()));
 		}
 
 		void openEdit() {

@@ -82,11 +82,9 @@ public class PriceListItemPanel extends JPanel {
 	// 重新布局
 	private void reLayout() {
 		for (int i = 0; i < items.size(); i++) {
-			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
-					1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
 		}
-		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(),
-				1, 1, 1, 0);
+		SwingConsole.addComponent(gb, gcons, this, addButton, 0, items.size(), 1, 1, 1, 0);
 	}
 
 	class ItemPanel extends JPanel {
@@ -149,27 +147,20 @@ public class PriceListItemPanel extends JPanel {
 			// 列表项布局
 			gbl = new GridBagLayout();
 			this.setLayout(gbl);
-			gcons.insets = new Insets(10, 80, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, city_list, 0, 0, 1, 1,
-					0, 0);
+			gcons.insets = new Insets(10, 100, 0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, city_list, 0, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 90, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, express_f, 1, 0, 1, 1,
-					0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, express_f, 1, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, colon1, 2, 0, 1, 1, 0,
-					0);
+			SwingConsole.addComponent(gbl, gcons, this, colon1, 2, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, standard_f, 3, 0, 1, 1,
-					0, 0);
+			SwingConsole.addComponent(gbl, gcons, this, standard_f, 3, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, colon2, 4, 0, 1, 1, 0,
-					0);
+			SwingConsole.addComponent(gbl, gcons, this, colon2, 4, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 0, 0, 0);
-			SwingConsole.addComponent(gbl, gcons, this, economic_f, 5, 0, 1, 1,
-					0, 0);
-			gcons.insets = new Insets(10, 100, 0, 225);
-			SwingConsole.addComponent(gbl, gcons, this, base_f, 6, 0, 1, 1, 0,
-					0);
+			SwingConsole.addComponent(gbl, gcons, this, economic_f, 5, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(10, 90, 0, 255);
+			SwingConsole.addComponent(gbl, gcons, this, base_f, 6, 0, 1, 1, 0, 0);
 			gcons.insets = new Insets(10, 10, 0, 50);
 			SwingConsole.addComponent(gbl, gcons, this, edit, 7, 0, 1, 1, 0, 0);
 
@@ -195,10 +186,8 @@ public class PriceListItemPanel extends JPanel {
 		}
 
 		PriceVO getPriceVO() {
-			return new PriceVO(city_list.getSelectedItem().toString(),
-					Integer.valueOf(express_f.getText()),
-					Integer.valueOf(standard_f.getText()),
-					Integer.valueOf(economic_f.getText()),
+			return new PriceVO(city_list.getSelectedItem().toString(), Integer.valueOf(express_f.getText()),
+					Integer.valueOf(standard_f.getText()), Integer.valueOf(economic_f.getText()),
 					Double.valueOf(base_f.getText()));
 		}
 

@@ -41,23 +41,31 @@ public class NavigateButton extends GAPButton {
 	 */
 	void select() {
 		isSelect = true;
+		// mainFrame.load(new Runnable() {
+
+		// @Override
+		// public void run() {
+		// TODO 自动生成的方法存根
+		setDefautBackGroundColor(ColorAndFonts.blue);
+		setDefautFontColor(Color.white);
+		setEnterFontColor(Color.white);
+		setPressFontColor(Color.white);
+		setBackground(ColorAndFonts.blue);
+		setForeground(Color.white);
+		repaint();
 		mainFrame.load(new Runnable() {
 
 			@Override
 			public void run() {
 				// TODO 自动生成的方法存根
-				setDefautBackGroundColor(ColorAndFonts.blue);
-				setDefautFontColor(Color.white);
-				setEnterFontColor(Color.white);
-				setPressFontColor(Color.white);
-				setBackground(ColorAndFonts.blue);
-				setForeground(Color.white);
-				repaint();
 				mainPanel.refresh();
 				mainFrame.setMainPanel(mainPanel);
 				mainFrame.repaint();
 			}
 		});
+
+		// }
+		// });
 
 	}
 
