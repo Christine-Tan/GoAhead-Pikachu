@@ -71,15 +71,6 @@ public class MainFrame extends JFrame {
 
 		titlePanel = new TitlePanel(this);
 		navigateBar = new NavigateBar(this);
-		// mainPanel = new MainPanel(this) {
-		//
-		// @Override
-		// public void refresh() {
-		// // TODO 自动生成的方法存根
-		//
-		// }
-		//
-		// };
 		messagePanel = new MessagePanel(this);
 
 		moveListener = new MoveListener(this);
@@ -101,8 +92,8 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
-	
-	public NavigateBar getNavigateBar(){
+
+	public NavigateBar getNavigateBar() {
 		return navigateBar;
 	}
 
