@@ -1,5 +1,6 @@
 package gap.common.po;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class InitialHistoryPO {
@@ -12,8 +13,41 @@ public class InitialHistoryPO {
 	private int totalStockman;
 	private int totalWarehouse;
 	private int totalStock;
-	private int totalAccount;
+	private int totalAccount;  
 	private double totalBalance;
+	
+	public ArrayList<AccountPO> accountPOs;
+	public ArrayList<InitialPeoplePO> initialPeoplePOs;
+	public ArrayList<InitialStockPO> initialStockPOs;
+	
+	public InitialHistoryPO(ArrayList<AccountPO> accountPOs,
+			ArrayList<InitialPeoplePO> initialPeoplePOs,
+			ArrayList<InitialStockPO> initialStockPOs)
+	{
+		
+		date = Calendar.getInstance();
+		
+		for(InitialPeoplePO peoplePO:initialPeoplePOs){
+			totalBusinessHall += peoplePO.getBusinessHallNum();
+			totalCenter 	  += peoplePO.getCenterNum();
+			totalCourier	  += peoplePO.getCourierNum();
+			totalBusinessClerk+= peoplePO.getBusinessClerkNum();
+			totalCenterClerk  += peoplePO.getCenterClerkNum();
+			totalStockman	  += peoplePO.getStockmanNum();
+		}
+		
+		totalWarehouse = initialStockPOs.size();
+		totalAccount = accountPOs.size();
+		
+		for(InitialStockPO stockPO:initialStockPOs){
+			totalStock += stockPO.getGoodsNum();
+		}
+		
+		for(AccountPO accountPO:accountPOs){
+			totalBalance += accountPO.getBalance();
+		}
+		
+	}
 	
 	public Calendar getDate() {
 		return date;

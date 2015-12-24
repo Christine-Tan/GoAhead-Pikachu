@@ -4,20 +4,31 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import gap.common.dataservice.initialdata.InitialDataService;
-import gap.common.po.InitialPO;
+import gap.common.po.InitialHistoryPO;
+
 
 public class InitialDataServiceImpl implements InitialDataService{
 
+	private static InitialDataServiceImpl initialDataServiceImpl;
+	
+	public InitialDataService getInstance(){
+		if(initialDataServiceImpl==null){
+			initialDataServiceImpl = new InitialDataServiceImpl();
+		}
+		return initialDataServiceImpl;
+	}
+	
 	@Override
-	public boolean addInitial(InitialPO initialPO) throws RemoteException {
-		// TODO Auto-generated method stub
+	public boolean addInitial(InitialHistoryPO initialPO) throws RemoteException {
+		
 		return false;
 	}
 
 	@Override
-	public List<InitialPO> getHistory() throws RemoteException {
-		// TODO Auto-generated method stub
+	public List<InitialHistoryPO> getHistory() throws RemoteException {
+	
 		return null;
 	}
+
 
 }
