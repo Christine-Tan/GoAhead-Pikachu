@@ -4,6 +4,7 @@ import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.LogPO;
 import gap.common.po.UserPO;
+import gap.common.util.ResultMessage;
 import gap.server.data.userdata.UserDataServiceImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.initial.NetModule;
@@ -57,7 +58,7 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 
-	public Boolean addLog(LogPO logPO) throws RemoteException {
+	public boolean addLog(LogPO logPO) throws RemoteException {
 		// TODO 自动生成的方法存根
 
 		try {
@@ -66,14 +67,15 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 			insertSQL.add(operatef, logPO.getOperate());
 			String sql = insertSQL.createSQL();
 			NetModule.excutor.excute(sql);
+			return true;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
-			return false;
+
 		} catch (Exception e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		return true;
+		return false;
 	}
 }

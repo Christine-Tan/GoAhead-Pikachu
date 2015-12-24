@@ -6,12 +6,13 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import gap.common.po.LogPO;
+import gap.common.util.ResultMessage;
 
 public class LogDataController {
-	protected LogDataController(){
+	protected LogDataController() {
 	}
-	
-	public List<LogPO> getLogList(){
+
+	public List<LogPO> getLogList() {
 		try {
 			List<LogPO> logPOs = logdataservice.getLogList();
 			return logPOs;
@@ -19,5 +20,15 @@ public class LogDataController {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public boolean addLog(LogPO logPO) {
+		try {
+			return logdataservice.addLog(logPO);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

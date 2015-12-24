@@ -45,6 +45,6 @@ public class NetModule {
 	public static StockinOrderDataService stockinorderdataservice;
 	public static StockoutOrderDataService stockoutorderdataservice;
 	public static TransFareDataService transFareDataService;
-	
+
 	public static Contactor contactor;
 }
