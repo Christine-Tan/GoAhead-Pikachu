@@ -3,7 +3,7 @@ package gap.stub_driver.blservice.login;
 import java.rmi.RemoteException;
 
 import gap.client.blservice.loginblservice.LoginService;
-import gap.client.vo.LogVO;
+import gap.client.vo.LoginVO;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.UserPO;
 import gap.common.util.Gender;
@@ -21,9 +21,9 @@ public class LoginService_stub implements LoginService {
 	}
 
 	@Override
-	public LogVO login(String username, String password) {
+	public LoginVO login(String username, String password) {
 		// TODO 自动生成的方法存根
-		LogVO log = new LogVO();
+		LoginVO log = new LoginVO();
 		log.setSucceed(false);
 		try {
 			for (UserPO po : user.getAll()) {

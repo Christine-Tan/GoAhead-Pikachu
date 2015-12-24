@@ -1,7 +1,7 @@
 package gap.client.blservice.loginblservice;
 
-import gap.client.vo.LogVO;
+import gap.client.vo.LoginVO;
 
 public interface LoginService {
-	public LogVO login(String username, String password);
+	public LoginVO login(String username, String password);
 }

@@ -2,7 +2,7 @@ package gap.client.vo;
 
 import gap.common.util.UserType;
 
-public class LogVO {
+public class LoginVO {
 	private UserType userType;
 	private boolean succeed;
 

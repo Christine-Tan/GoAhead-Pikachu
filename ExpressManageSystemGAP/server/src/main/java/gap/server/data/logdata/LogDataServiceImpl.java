@@ -16,8 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogDataServiceImpl extends UnicastRemoteObject implements
-		LogDataService {
+public class LogDataServiceImpl extends UnicastRemoteObject implements LogDataService {
 
 	private String tableName = "log";
 	private String timef = "time", user_idf = "user_id", operatef = "operate";
@@ -40,8 +39,8 @@ public class LogDataServiceImpl extends UnicastRemoteObject implements
 		// TODO 自动生成的方法存根
 		try {
 			List<LogPO> logs = new ArrayList<LogPO>();
-			ResultSet re = NetModule.excutor.excuteQuery("SELECT * FROM "
-					+ tableName + " ORDER BY " + timef + " DESC ;");
+			ResultSet re = NetModule.excutor
+					.excuteQuery("SELECT * FROM " + tableName + " ORDER BY " + timef + " DESC ;");
 			UserDataService userdata = UserDataServiceImpl.getInstance();
 			while (re.next()) {
 				UserPO user = userdata.findById(re.getString(user_idf));

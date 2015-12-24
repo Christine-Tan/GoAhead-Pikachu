@@ -3,11 +3,11 @@ package gap.stub_driver.blservice.login;
 import java.rmi.RemoteException;
 
 import gap.client.blservice.loginblservice.LoginService;
-import gap.client.vo.LogVO;
+import gap.client.vo.LoginVO;
 
 public class LoginService_driver {
 	public void driver(LoginService log) {
-		LogVO result;
+		LoginVO result;
 		result = log.login("txy", "0000000");
 		if (!result.isSucceed())
 			System.out.println("login failed");

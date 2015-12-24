@@ -9,7 +9,7 @@ import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.deliveryui.expressorderinput.ExpressorderInputPanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
-import gap.client.vo.LogVO;
+import gap.client.vo.LoginVO;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
 
@@ -115,7 +115,7 @@ public class LoginPanel extends JPanel {
 		// TODO Auto-generated method stub
 		String username_text = userName.getText();
 		String password_text = new String(passwordField.getPassword());
-		LogVO log = LoginController.login(username_text, password_text);
+		LoginVO log = LoginController.login(username_text, password_text);
 		if (log.isSucceed()) {
 			MainFrame mainFrame = new MainFrame();
 			mainFrame.initial(log.getUserType());

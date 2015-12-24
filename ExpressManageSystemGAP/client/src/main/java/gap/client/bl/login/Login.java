@@ -5,16 +5,16 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.LoginDataController;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
-import gap.client.vo.LogVO;
+import gap.client.vo.LoginVO;
 import gap.common.po.UserPO;
 
 public class Login implements LoginService {
 	LoginDataController loginData = ControllerFactory.getLoginDataController();
 
 	@Override
-	public LogVO login(String username, String password) {
+	public LoginVO login(String username, String password) {
 		// TODO 自动生成的方法存根
-		LogVO log = new LogVO();
+		LoginVO log = new LoginVO();
 		UserPO user = loginData.findByUsername(username);
 		System.out.println(user);
 		if (user==null||!user.getPassword().equals(password)) {
