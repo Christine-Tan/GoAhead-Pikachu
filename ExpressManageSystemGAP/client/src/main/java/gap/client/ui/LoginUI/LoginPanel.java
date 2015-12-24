@@ -29,6 +29,8 @@ import javax.swing.JTextField;
 import javax.tools.DocumentationTool.Location;
 
 public class LoginPanel extends JPanel {
+	private int border_width = 4;
+	private int low = 0, high = 40;
 
 	private JTextField userName = new LoginTextField("people");
 	private LoginButton signInButton;
@@ -41,11 +43,13 @@ public class LoginPanel extends JPanel {
 	// 渐变
 	LinearGradientPaint paint;
 
-	Image background = new ImageIcon("images/login/loginForm.png").getImage();
+	// Image background = new
+	// ImageIcon("images/login/loginForm.png").getImage();
 
 	public LoginPanel(LoginFrame frame) {
 		setLayout(null);
 		setBounds(0, 0, 430, 330);
+		// setOpaque(false);
 		this.frame = frame;
 		animation = new LoginAnimation(frame);
 		logoPanel = new LogoPanel(frame);
@@ -77,11 +81,23 @@ public class LoginPanel extends JPanel {
 		// TODO Auto-generated method stub
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 
+		g2d.clearRect(0, 0, getWidth(), getHeight());
+		g2d.setColor(Color.white);
+		g2d.fillRoundRect(4, 4, getWidth() - 8, getHeight() - 8, 4, 4);
+
 		g2d.setColor(ColorAndFonts.darkBlue);
-		g2d.fillRect(0, 0, this.getWidth(), 60);
+		g2d.fillRect(4, 4, this.getWidth() - 8, 56);
 		g2d.setColor(Color.white);
 		g2d.setFont(ColorAndFonts.Chinese);
 		g2d.drawString("GAP 快�?�物流系�?", 20, 40);
+
+		int step = (high - low) / (border_width - 1);
+		for (int i = 0; i < border_width; i++) {
+			Color co = new Color(0, 0, 0, low + i * step);
+			g2d.setColor(co);
+			g2d.drawRoundRect(i, i, getWidth() - 2 * i, getHeight() - 2 * i, 4,
+					4);
+		}
 
 	}
 

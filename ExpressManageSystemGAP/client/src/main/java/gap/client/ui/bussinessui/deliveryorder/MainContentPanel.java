@@ -71,9 +71,10 @@ public class MainContentPanel extends JPanel {
 		js.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		SwingConsole.addComponent(gb, gcons, this, js, 0, 0, 1, 1, 1, 0);
 		gcons.fill = GridBagConstraints.BOTH;
+		gcons.ipady = 700;
 		SwingConsole.addComponent(gb, gcons, this,
 				emptySelectPanel.getJsPanel(), 0, 1, 1, 1, 1, 1);
-		// gcons.ipady = 700;
+
 		// gcons.ipadx =0;
 
 	}
@@ -200,7 +201,6 @@ public class MainContentPanel extends JPanel {
 			});
 
 		}
-
 
 		/**
 		 * 面板删除用户

@@ -2,10 +2,15 @@ package gap.client.ui.LoginUI;
 
 import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseListener.MoveListener;
+import gap.client.ui.UITools.RenderSetter;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 public class LoginFrame extends JFrame {
@@ -41,16 +46,20 @@ public class LoginFrame extends JFrame {
 	 */
 	public LoginFrame() {
 		setResizable(false);
+//		JFrame.setDefaultLookAndFeelDecorated(true);
+		setUndecorated(true);
+		setBackground(new Color(0, 0, 0, 0));
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(430, 330);
-		setUndecorated(true);
+
 		setLocationRelativeTo(null);
 		setVisible(true);
 
 		loginPanel = new LoginPanel(this);
-
-		getContentPane().setLayout(null);
-		getContentPane().add(loginPanel);
+		setContentPane(loginPanel);
+		// getContentPane().setLayout(null);
+		// getContentPane().add(loginPanel);
 		MoveListener movelistener = new MoveListener(this);
 		addMouseListener(movelistener);
 		addMouseMotionListener(movelistener);

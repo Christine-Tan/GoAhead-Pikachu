@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 
 public class LoginButton extends JLabel {
 
-	Color currentColor = ColorAndFonts.darkBlue;
+	Color currentColor = ColorAndFonts.blue;
 	Font font = ColorAndFonts.Chinese;
 	Area area;
 	String text;

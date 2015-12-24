@@ -28,7 +28,7 @@ public class LoginAnimation extends JLabel {
 	MoveListener listener;
 	
 	public LoginAnimation(LoginFrame frame) {
-		this.setBounds(0, 0, 430, 180);
+		this.setBounds(4, 4, 423, 172);
 		this.setLayout(null);
 		this.frame = frame;
 		// this.setOpaque(false);
@@ -203,8 +203,8 @@ public class LoginAnimation extends JLabel {
 				// double diffX = 20*(Math.random()-0.5);
 				double diffX = 0;
 				double diffY = 20 * (Math.random() - 0.5);
-				double x = (i + 0.5) * (lineLength / pointNum) + diffX - 200;
-				double y = lineHeight + diffY;
+				double x = 4+(i + 0.5) * (lineLength / pointNum) + diffX - 200;
+				double y = 4+lineHeight + diffY;
 
 				points.add(new MovePoint(x, y));
 			}
@@ -237,8 +237,8 @@ public class LoginAnimation extends JLabel {
 			// sign = -1;
 			// }
 
-			Color startColor = ColorAndFonts.darkBlue.darker();
-			Color endColor = ColorAndFonts.lightBlue.darker();
+			Color startColor = ColorAndFonts.darkBlue;
+			Color endColor = ColorAndFonts.lightBlue;
 
 			double[] upBounds = { endColor.getRed(), endColor.getGreen(),
 					endColor.getBlue() };

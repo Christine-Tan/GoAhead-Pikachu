@@ -53,9 +53,17 @@ public class NavigateButton extends GAPButton {
 		setBackground(ColorAndFonts.blue);
 		setForeground(Color.white);
 		repaint();
-		mainPanel.refresh();
-		mainFrame.setMainPanel(mainPanel);
-		mainFrame.repaint();
+		mainFrame.load(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO 自动生成的方法存根
+				mainPanel.refresh();
+				mainFrame.setMainPanel(mainPanel);
+				mainFrame.repaint();
+			}
+		});
+
 		// }
 		// });
 
