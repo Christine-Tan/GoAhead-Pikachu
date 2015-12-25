@@ -52,5 +52,21 @@ public class NavigateBar extends JPanel {
 		buttons.add(button);
 		button.setBounds(0, 135 + 70 * size, 220, 60);
 	}
+	
+	public boolean isUpper(MainPanel panelA,MainPanel panelB){
+		
+		for(NavigateButton button : buttons){
+			//先遇到panelA
+			if(button.getMainPanel() == panelA){
+				return true;
+			}
+			//先遇到panelB
+			else if(button.getMainPanel() == panelB){
+				return false;
+			}
+		}
+		
+		return false;
+	}
 
 }

@@ -7,8 +7,10 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
+import gap.client.ui.BaseComponents.SliderPanel.Direction;
 import gap.client.ui.BaseComponents.FrameInitialler.AccountorInitialler;
 import gap.client.ui.BaseComponents.FrameInitialler.AdminInitialler;
 import gap.client.ui.BaseComponents.FrameInitialler.CenterClerkInitaller;
@@ -31,6 +33,9 @@ public class MainFrame extends JFrame {
 	NavigateBar navigateBar;
 	MainPanel mainPanel;
 	LoadPanel loadPanel;
+	
+	SliderPanel sliderPanel;
+	
 	public static MessagePanel messagePanel;
 
 	MoveListener moveListener;
@@ -49,7 +54,7 @@ public class MainFrame extends JFrame {
 		}
 
 		loadPanel = new LoadPanel(this);
-
+		
 		setSize(Default.WIDTH, Default.HEIGHT);
 		setUndecorated(true);
 
@@ -60,6 +65,8 @@ public class MainFrame extends JFrame {
 
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
+		
+		sliderPanel = new SliderPanel(contentPanel);
 
 		grid = new GridBagLayout();
 		gcons = new GridBagConstraints();
@@ -84,8 +91,9 @@ public class MainFrame extends JFrame {
 				2, 1, 1, 0);
 		SwingConsole.addComponent(grid, gcons, contentPanel, navigateBar, 0, 1,
 				1, 2, 0, 1);
-		// SwingConsole.addComponent(grid, gcons, contentPanel,
-		// mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
+	
+		 SwingConsole.addComponent(grid, gcons, contentPanel,
+				 sliderPanel, 1, 1, 1, 1, 1, 1);
 		SwingConsole.addComponent(grid, gcons, contentPanel, messagePanel, 1,
 				2, 1, 1, 1, 0);
 
@@ -141,14 +149,40 @@ public class MainFrame extends JFrame {
 	}
 
 	public void setMainPanel(MainPanel panel) {
-		if (mainPanel != null)
-			remove(mainPanel.getJsPanel());
-		this.mainPanel = panel;
-		SwingConsole.addComponent(grid, gcons, (JPanel) getContentPane(),
-				mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
-		validate();
+//		if (mainPanel != null){
+//			remove(mainPanel.getJsPanel());
+//		}
+//		this.mainPanel = panel;
+//		SwingConsole.addComponent(grid, gcons, (JPanel) getContentPane(),
+//				mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
+//		validate();
+		
+		if(mainPanel == null){
+			mainPanel = panel;
+			sliderPanel.setBeginPanel(panel.getJsPanel());
+			validate();
+		}
+		else{
+			
+			
+			Direction direction = null;
+			if(navigateBar.isUpper(mainPanel, panel)){
+				direction = Direction.UP;
+			}else{
+				direction = Direction.DOWN;
+			}
+			
+			this.mainPanel = panel;
+			
+			sliderPanel.slide(panel.getJsPanel(), direction);
+			
+		}
 	}
 
+	public JScrollPane getMainJsPanel(){
+		return mainPanel.getJsPanel();
+	}
+	
 	public static void setMessage(String message, MessageType type, long time) {
 		messagePanel.setMessage(message, type, time);
 	}

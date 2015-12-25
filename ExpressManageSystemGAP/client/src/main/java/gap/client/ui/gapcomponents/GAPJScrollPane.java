@@ -28,5 +28,11 @@ public class GAPJScrollPane extends JScrollPane {
 		getHorizontalScrollBar().setPreferredSize(new Dimension(0, 12));
 		setBorder(BorderFactory.createLineBorder(ColorAndFonts.gray));
 	}
+	
+	@Override
+	public void setBounds(int x, int y, int width, int height) {
+		// TODO Auto-generated method stub
+		super.setBounds(x, y, width, height);
+	}
 
 }

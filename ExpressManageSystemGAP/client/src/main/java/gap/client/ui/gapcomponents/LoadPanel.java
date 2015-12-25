@@ -1,5 +1,6 @@
 package gap.client.ui.gapcomponents;
 
+import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.RenderSetter;
 
 import java.awt.BorderLayout;
