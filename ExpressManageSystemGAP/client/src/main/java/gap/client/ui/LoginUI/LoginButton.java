@@ -80,13 +80,13 @@ public class LoginButton extends JLabel {
 
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			currentColor = ColorAndFonts.blue;
+			currentColor = ColorAndFonts.darkBlue;
 			repaint();
 		}
 
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			currentColor = ColorAndFonts.darkBlue;
+			currentColor = ColorAndFonts.blue;
 			repaint();
 		}
 

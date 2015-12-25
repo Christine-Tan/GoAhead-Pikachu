@@ -24,7 +24,8 @@ public class ComponentStyle {
 	public final static Color blue = new Color(Integer.parseInt("3399CC", 16)),
 			dark_blue = new Color(0, 156, 244), light_gray = new Color(
 					Integer.parseInt("DDDDDD", 16)), gray = new Color(
-					Integer.parseInt("888888", 16)), red = new Color(255, 111, 111), dark_gray = new Color(Integer.parseInt("333333", 16));
+					Integer.parseInt("888888", 16)), red = new Color(255, 102,
+					102), dark_gray = new Color(Integer.parseInt("333333", 16));
 
 	public final static Border text_border = BorderFactory
 			.createBevelBorder(BevelBorder.LOWERED, ComponentStyle.light_gray,

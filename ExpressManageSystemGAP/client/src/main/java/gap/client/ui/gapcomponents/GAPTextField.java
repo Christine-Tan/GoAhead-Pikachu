@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -35,8 +37,8 @@ public class GAPTextField extends JTextField {
 		setColumns(columns);
 		normal();
 	}
-	
-	public GAPTextField(int column,Font font){
+
+	public GAPTextField(int column, Font font) {
 		super(column);
 		this.font = font;
 		normal();
@@ -84,6 +86,7 @@ public class GAPTextField extends JTextField {
 		if (listener == null) {
 			listener = new TextListener();
 			addFocusListener(listener);
+			addMouseListener(listener);
 		}
 		edited = true;
 		setBackground(Color.white);
@@ -117,7 +120,7 @@ public class GAPTextField extends JTextField {
 		normal();
 	}
 
-	class TextListener implements FocusListener {
+	class TextListener implements FocusListener, MouseListener {
 		boolean controled;
 		String regex;
 		int maxLen, minLen;
@@ -160,6 +163,39 @@ public class GAPTextField extends JTextField {
 				closeEdit();
 			}
 
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO 自动生成的方法存根
+
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO 自动生成的方法存根
+
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO 自动生成的方法存根
+
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO 自动生成的方法存根
+			if (edited && !isFocusOwner()) {
+				gainFocus();
+			}
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO 自动生成的方法存根
+			if (edited && !isFocusOwner())
+				normal();
 		}
 	}
 }
