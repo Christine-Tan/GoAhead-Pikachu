@@ -1,9 +1,11 @@
 package gap.client.blservice.logblservice;
 
-import gap.client.vo.LogListVO;
+import java.util.List;
+
+import gap.client.vo.LogVO;
 
 public interface LogService {
 
-	public LogListVO getLog();
+	public List<LogVO> getLogList();
 
 }

@@ -23,7 +23,15 @@ public class ControllerFactory {
 	private static FlexSectorDataController flexSectorDataController;
 	private static AccountorReceiptDataController receiptDataController;
 	private static TableDataController tableDataController;
+	private static LogDataController logDataController;
 
+	public static LogDataController getLogDataController(){
+		if(logDataController==null){
+			logDataController=new LogDataController();
+		}
+		return logDataController;
+	}
+	
 	public static AccountDateController getAccountDataController() {
 		if (accountDateController == null) {
 			accountDateController = new AccountDateController();
