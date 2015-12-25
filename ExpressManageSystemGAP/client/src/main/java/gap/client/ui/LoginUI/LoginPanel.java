@@ -82,7 +82,8 @@ public class LoginPanel extends JPanel {
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 
 		g2d.clearRect(0, 0, getWidth(), getHeight());
-		g2d.setColor(Color.white);
+		Color backColor=new Color(248, 248, 248);
+		g2d.setColor(backColor);
 		g2d.fillRoundRect(4, 4, getWidth() - 8, getHeight() - 8, 4, 4);
 
 		g2d.setColor(ColorAndFonts.darkBlue);
