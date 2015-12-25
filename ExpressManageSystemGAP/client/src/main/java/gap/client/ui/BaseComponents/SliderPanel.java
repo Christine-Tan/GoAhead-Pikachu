@@ -19,6 +19,8 @@ public class SliderPanel extends JPanel{
 	JComponent container;
 	ResizeListener listener;
 
+	// 两面板之间间隔
+	int idle = 50;
 	
 	public SliderPanel(JComponent container){
 		setBackground(Color.white);
@@ -73,9 +75,9 @@ public class SliderPanel extends JPanel{
 			
 			//向上滑就加到下边，向下滑就加到上边
 			if(direction.equals(Direction.UP)){
-				afterPanel.setBounds(0, height, width, height);
+				afterPanel.setBounds(0, height+idle, width, height);
 			}else{
-				afterPanel.setBounds(0,-height, width, height);
+				afterPanel.setBounds(0,-height-idle, width, height);
 			}
 			
 			
