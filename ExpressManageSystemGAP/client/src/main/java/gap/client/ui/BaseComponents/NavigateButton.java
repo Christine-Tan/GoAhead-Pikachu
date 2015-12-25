@@ -1,6 +1,7 @@
 package gap.client.ui.BaseComponents;
 
 import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.ColorChanger;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 
@@ -8,6 +9,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import org.w3c.dom.css.RGBColor;
 
 public class NavigateButton extends GAPButton {
 	MainFrame mainFrame;
@@ -41,18 +44,22 @@ public class NavigateButton extends GAPButton {
 	 */
 	void select() {
 		isSelect = true;
-		// mainFrame.load(new Runnable() {
-
-		// @Override
-		// public void run() {
-		// TODO 自动生成的方法存根
+		
 		setDefautBackGroundColor(ColorAndFonts.blue);
 		setDefautFontColor(Color.white);
 		setEnterFontColor(Color.white);
 		setPressFontColor(Color.white);
-		setBackground(ColorAndFonts.blue);
-		setForeground(Color.white);
-		repaint();
+//		setBackground(ColorAndFonts.blue);
+//		setForeground(Color.white);
+		
+		AnimationThread backThread =
+				new AnimationThread(getBackground(), ColorAndFonts.blue, Type.BACK);
+		AnimationThread foreThread = 
+				new AnimationThread(getForeground(), Color.white, Type.FORE);
+		backThread.start();
+		foreThread.start();
+		
+		//repaint();
 		mainFrame.load(new Runnable() {
 
 			@Override
@@ -78,9 +85,61 @@ public class NavigateButton extends GAPButton {
 		setDefautFontColor(Color.BLACK);
 		setEnterFontColor(ColorAndFonts.blue.darker());
 		setPressFontColor(ColorAndFonts.otherDarkBulue);
-		setBackground(Color.white);
-		setForeground(Color.BLACK);
+//		setBackground(Color.white);
+//		setForeground(Color.BLACK);
+		
+		AnimationThread backThread =
+				new AnimationThread(getBackground(), Color.white, Type.BACK);
+		AnimationThread foreThread = 
+				new AnimationThread(getForeground(), Color.black, Type.FORE);
+		backThread.start();
+		foreThread.start();
+		
 		repaint();
 		mainFrame.validate();
+	}
+	
+	private enum Type{
+		BACK,FORE
+	}
+	
+	class AnimationThread extends Thread{
+	
+		ColorChanger changer;
+		Type type;
+		
+		public AnimationThread(Color formerColor,Color targetColor,Type type){
+			this.type = type; 
+			changer = new ColorChanger(formerColor, targetColor, 0.15);
+		}
+		
+	
+
+		public void run() {
+			while (!changer.isFinish()) {
+				Color currentColor = changer.change();
+				
+				switch (type) {
+				case BACK:
+					setBackground(currentColor);
+					break;
+
+				case FORE:
+					setForeground(currentColor);
+					break;
+				}
+				
+				repaint();
+				
+				try{
+					Thread.sleep(50);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				
+			}
+		
+		}
+	
 	}
 }

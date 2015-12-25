@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.UIManager;
 
 import gap.client.ui.BaseComponents.FrameInitialler.AccountorInitialler;
@@ -149,6 +150,10 @@ public class MainFrame extends JFrame {
 		validate();
 	}
 
+	public JScrollPane getMainJsPanel(){
+		return mainPanel.getJsPanel();
+	}
+	
 	public static void setMessage(String message, MessageType type, long time) {
 		messagePanel.setMessage(message, type, time);
 	}
