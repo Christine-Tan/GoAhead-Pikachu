@@ -99,6 +99,10 @@ public class NavigateButton extends GAPButton {
 		mainFrame.validate();
 	}
 	
+	public MainPanel getMainPanel(){
+		return mainPanel;
+	}
+	
 	private enum Type{
 		BACK,FORE
 	}
