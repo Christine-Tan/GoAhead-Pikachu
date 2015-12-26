@@ -84,6 +84,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 		gapjScrollPane.getViewport().setBackground(Color.white);
 		
 		gcons.fill = GridBagConstraints.BOTH;
+		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, gapjScrollPane, 0, 1, 1, 1, 1, 1);
 		//搜索面板
 		queryPanel = new AccountQueryPanel(this, accountDisplayPanel);

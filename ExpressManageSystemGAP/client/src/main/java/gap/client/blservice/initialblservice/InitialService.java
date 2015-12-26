@@ -1,15 +1,18 @@
 package gap.client.blservice.initialblservice;
 
+import java.util.List;
+
 import gap.client.vo.InitialHistoryVO;
 import gap.client.vo.InitialVO;
+import gap.common.po.InitialHistoryPO;
 import gap.common.util.ResultMessage;
 
 public interface InitialService {
 
-	public InitialVO getInitialList();
+	public InitialHistoryPO getCurrentInitial();
 
-	public ResultMessage submitInitialList(InitialVO initialVO);
+	public ResultMessage submitInitialList(InitialHistoryPO initialVO);
 
-	public InitialHistoryVO getInitialHistory();
+	public List<InitialHistoryPO> getInitialHistory();
 
 }

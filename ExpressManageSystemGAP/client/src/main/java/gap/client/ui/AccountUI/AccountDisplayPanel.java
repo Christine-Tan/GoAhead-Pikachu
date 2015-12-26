@@ -149,8 +149,8 @@ public class AccountDisplayPanel extends JPanel{
 			rowNumber++;
 		}
 		
-		int width = numberInRow * (boxWidth + 2* hGarp);
-		int height = rowNumber * (boxHeight + 2* vGarp);
+		int width = numberInRow * (boxWidth +  hGarp);
+		int height = rowNumber * (boxHeight +  vGarp);
 		
 		if(height<200){
 			height = 200;

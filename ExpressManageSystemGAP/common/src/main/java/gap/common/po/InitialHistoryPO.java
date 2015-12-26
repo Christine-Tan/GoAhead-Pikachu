@@ -47,6 +47,10 @@ public class InitialHistoryPO {
 			totalBalance += accountPO.getBalance();
 		}
 		
+		this.accountPOs = accountPOs;
+		this.initialPeoplePOs = initialPeoplePOs;
+		this.initialStockPOs = initialStockPOs;
+		
 	}
 	
 	public Calendar getDate() {

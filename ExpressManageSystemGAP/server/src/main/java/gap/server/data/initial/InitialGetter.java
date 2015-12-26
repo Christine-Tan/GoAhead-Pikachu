@@ -32,15 +32,11 @@ public class InitialGetter {
 
 		@Override
 		public InitialHistoryPO getPO(ResultSet resultSet) {
-			// TODO Auto-generated method stub
 			SQLBuilder builder = new SQLBuilder();
-			builder.Select("ID").From(historyTableName);
-			ResultSet set = builder.excuteQuery();
-			
 			int ID = 100;
 			
 			try {
-				ID = set.getInt("ID");
+				ID = resultSet.getInt("ID");
 			} catch (SQLException e) {
 				return null;
 			}
@@ -59,7 +55,7 @@ public class InitialGetter {
 			
 			AccountMaker accountMaker = new AccountMaker();
 			builder.clear();
-			builder.Select("*").From(accountName_col).
+			builder.Select("*").From(accountTableName).
 				Where(initialHistory_col).EQUALS(ID);
 			ArrayList<AccountPO> accountPOs = accountMaker.getList(builder);
 			
