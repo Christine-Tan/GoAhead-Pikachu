@@ -82,6 +82,21 @@ public class InventoryDataServiceImplTest {
 		}
 	}
 	
+	@Test
+	public void testGetTotalNum(){
+		try {
+			int num = inventory.getTotalNum("0011001");
+			System.out.println(num);
+			
+			num = inventory.getTotalNum("0011004");
+			System.out.println(num);
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	@Test 
 	public void test(){
 		try {

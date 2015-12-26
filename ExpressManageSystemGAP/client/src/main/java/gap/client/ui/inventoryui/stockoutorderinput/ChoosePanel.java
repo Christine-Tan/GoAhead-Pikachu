@@ -29,11 +29,11 @@ public class ChoosePanel extends JPanel {
 //		setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0,
 //				ComponentStyle.light_gray));
 
-		car = new ChooseButton("汽运区");
+		car = new ChooseButton("汽运");
 		car.setSize(80, 50);
-		train = new ChooseButton("铁运区");
+		train = new ChooseButton("铁运");
 		train.setSize(80, 50);
-		plane = new ChooseButton("航运区");
+		plane = new ChooseButton("航运");
 		plane.setSize(80, 50);
 
 

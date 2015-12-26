@@ -7,6 +7,7 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.GoodsVO;
+import gap.common.util.SectorType;
 
 import java.awt.Checkbox;
 import java.awt.Color;
@@ -55,7 +56,7 @@ public class ListItem extends JPanel {
 		
 		location = new GAPTextField(10);
 		location.setCenter();
-		location.setText(vo.getLocation());
+		location.setText(getLocation(vo));
 		location.closeEdit();
 
 		GridBagLayout gb = new GridBagLayout();
@@ -85,6 +86,14 @@ public class ListItem extends JPanel {
 			}
 		});
 
+	}
+	
+	public String getLocation(GoodsVO vo){
+		String sec = vo.getSector_id();
+		String location = vo.getLocation();
+		location = SectorType.getName(sec.charAt(7))+" "+location;
+		return location;
+		
 	}
 
 	void setSelected(boolean bool){
