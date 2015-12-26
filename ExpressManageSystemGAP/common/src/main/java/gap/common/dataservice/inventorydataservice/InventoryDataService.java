@@ -52,4 +52,6 @@ public interface InventoryDataService extends Remote {
 	public ResultMessage setUnexisted(String id) throws RemoteException;
 
 	public ResultMessage setlistUnexisted(List<String> list) throws RemoteException;
+
+	public int getTotalNum(String ins_id) throws RemoteException;
 }

@@ -53,7 +53,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 	public AccountManagePanel(MainFrame frame) {
 		super(frame);
 		refresh();
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, Default.HEIGHT));
+		//setPreferredSize(new Dimension(Default.PANEL_WIDTH, Default.HEIGHT));
 		
 	}
 	
@@ -84,6 +84,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 		gapjScrollPane.getViewport().setBackground(Color.white);
 		
 		gcons.fill = GridBagConstraints.BOTH;
+		gcons.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent(gb, gcons, this, gapjScrollPane, 0, 1, 1, 1, 1, 1);
 		//搜索面板
 		queryPanel = new AccountQueryPanel(this, accountDisplayPanel);

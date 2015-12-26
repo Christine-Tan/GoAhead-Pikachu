@@ -119,6 +119,10 @@ public class GAPTextField extends JTextField {
 		setFocusable(true);
 		normal();
 	}
+	
+	protected TextListener getTextListener(){
+		return listener;
+	}
 
 	class TextListener implements FocusListener, MouseListener {
 		boolean controled;

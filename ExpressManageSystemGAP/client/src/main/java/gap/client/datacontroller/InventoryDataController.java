@@ -153,5 +153,15 @@ public class InventoryDataController {
 		}
 		return null;
 	}
+	
+	public int getTotalNum(String ins_id){
+		try {
+			return inventorydataservice.getTotalNum(ins_id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 }

@@ -3,6 +3,7 @@ package gap.server.initial;
 import gap.common.dataservice.Contactor;
 import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
+import gap.common.dataservice.initialdata.InitialDataService;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
@@ -45,6 +46,7 @@ public class NetModule {
 	public static StockinOrderDataService stockinorderdataservice;
 	public static StockoutOrderDataService stockoutorderdataservice;
 	public static TransFareDataService transFareDataService;
+	public static InitialDataService initialDataService;
 
 	public static Contactor contactor;
 }

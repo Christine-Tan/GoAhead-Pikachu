@@ -1,31 +1,12 @@
 package gap.server.initial;
 
-import static gap.server.initial.NetModule.accountDataService;
-import static gap.server.initial.NetModule.arrivedOrderdataservice;
-import static gap.server.initial.NetModule.billorderdataservice;
-import static gap.server.initial.NetModule.cardataservice;
-import static gap.server.initial.NetModule.citydataservice;
-import static gap.server.initial.NetModule.contactor;
-import static gap.server.initial.NetModule.deliveryorderdataservice;
-import static gap.server.initial.NetModule.driverdataservice;
-import static gap.server.initial.NetModule.expressorderdataservice;
-import static gap.server.initial.NetModule.institutiondataservice;
-import static gap.server.initial.NetModule.inventorydataservice;
-import static gap.server.initial.NetModule.loadorderdataservice;
-import static gap.server.initial.NetModule.logdataservice;
-import static gap.server.initial.NetModule.paymentdataService;
-import static gap.server.initial.NetModule.pricedataservice;
-import static gap.server.initial.NetModule.rentdataservice;
-import static gap.server.initial.NetModule.salarydataservice;
-import static gap.server.initial.NetModule.stockinorderdataservice;
-import static gap.server.initial.NetModule.stockoutorderdataservice;
-import static gap.server.initial.NetModule.userdataservice;
+import static gap.server.initial.NetModule.*;
 import gap.common.dataservice.ServiceName;
-import gap.common.dataservice.transFareDataService.TransFareDataService;
 import gap.common.netconfig.RMIConfig;
 import gap.server.data.ContactorImpl;
 import gap.server.data.accountdata.AccountDataServiceImpl;
 import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
+import gap.server.data.initial.InitialDataServiceImpl;
 import gap.server.data.inventorydata.InventoryDataServiceImpl;
 import gap.server.data.logdata.LogDataServiceImpl;
 import gap.server.data.managedata.InstitutionDataServiceImpl;
@@ -79,7 +60,8 @@ public class NetInitial {
 		inventorydataservice = InventoryDataServiceImpl.getInstance();
 		stockinorderdataservice = StockinOrderDataServiceImpl.getInstance();
 		stockoutorderdataservice = StockoutOrderDataServiceImpl.getInstance();
-		NetModule.transFareDataService = TransFareDataImpl.getInstance();
+		transFareDataService = TransFareDataImpl.getInstance();
+		initialDataService = InitialDataServiceImpl.getInstance();
 
 		contactor = new ContactorImpl();
 
@@ -115,7 +97,7 @@ public class NetInitial {
 				stockoutorderdataservice);
 		serviceMap.put(ServiceName.TRANSFARE_DATA_SERVICE,
 				NetModule.transFareDataService);
-
+		serviceMap.put(ServiceName.INITIAL_DATA_SERVICE, initialDataService);
 	}
 
 	public static void main(String[] args) {

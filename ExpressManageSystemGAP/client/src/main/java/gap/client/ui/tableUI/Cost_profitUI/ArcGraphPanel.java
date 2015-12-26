@@ -428,7 +428,7 @@ public class ArcGraphPanel extends JPanel{
 			synchronized (lockObject) {
 				while (extendRate<0.97 && !isStop) {
 					
-					extendRate+=0.05;
+					extendRate+=0.03;
 					
 					if(extendRate>1){
 						extendRate = 0.97;

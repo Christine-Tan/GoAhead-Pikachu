@@ -36,8 +36,8 @@ public class PaymentTableHeader extends PanelWithGrid{
 	
 	public static final int height = 40;
 	public static final int payDateWidth = 100;
-	public static final int recevierWidth = 120;
-	public static final int accountWidth = 100;
+	public static final int recevierWidth = 140;
+	public static final int accountWidth = 120;
 	public static final int itemWidth = 100;
 	public static final int moneyWidth = 100;
 	public static final int commentWidth = 100;

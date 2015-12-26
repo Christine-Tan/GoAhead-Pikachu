@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class InitialAdder {
 	
-	public static void addInitial(InitialHistoryPO po){
+	public void addInitial(InitialHistoryPO po){
 		SQLBuilder builder = new SQLBuilder();
 		
 		builder.Select("MAX(ID)").From(historyTableName);
@@ -21,7 +21,8 @@ public class InitialAdder {
 		int maxID = 100;
 		
 		try {
-			maxID = set.getInt("ID");
+			set.next();
+			maxID = set.getInt("MAX(ID)");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,8 +50,10 @@ public class InitialAdder {
 		
 		for(AccountPO accountPO:po.accountPOs){
 			builder = new SQLBuilder();
+			
 			builder.InsertInto(accountTableName, accountName_col,balance_col,initialHistory_col).
 				Values(accountPO.getName(),accountPO.getBalance(),maxID);
+			builder.excute();
 		}
 		
 		for(InitialPeoplePO peoplePO:po.initialPeoplePOs){

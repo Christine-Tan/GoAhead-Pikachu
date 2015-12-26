@@ -1,17 +1,24 @@
 package gap.server.data.initial;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 import gap.common.dataservice.initialdata.InitialDataService;
 import gap.common.po.InitialHistoryPO;
+import gap.common.util.ResultMessage;
 
 
-public class InitialDataServiceImpl implements InitialDataService{
+public class InitialDataServiceImpl extends UnicastRemoteObject implements InitialDataService{
+
+	protected InitialDataServiceImpl() throws RemoteException {
+		super();
+	}
 
 	private static InitialDataServiceImpl initialDataServiceImpl;
 	
-	public InitialDataService getInstance(){
+	public static InitialDataService getInstance() throws RemoteException{
 		if(initialDataServiceImpl==null){
 			initialDataServiceImpl = new InitialDataServiceImpl();
 		}
@@ -19,15 +26,22 @@ public class InitialDataServiceImpl implements InitialDataService{
 	}
 	
 	@Override
-	public boolean addInitial(InitialHistoryPO initialPO) throws RemoteException {
-		
-		return false;
+	public ResultMessage addInitial(InitialHistoryPO initialPO) throws RemoteException {
+		InitialAdder adder = new InitialAdder();
+		try{
+			adder.addInitial(initialPO);
+			return ResultMessage.SUCCEED;
+		}catch(Exception e){
+			e.printStackTrace();
+			return ResultMessage.FAILED;
+		}
 	}
 
 	@Override
 	public List<InitialHistoryPO> getHistory() throws RemoteException {
-	
-		return null;
+		InitialGetter getter = new InitialGetter();
+		ArrayList<InitialHistoryPO> pos = getter.getHistoryList();
+		return pos;
 	}
 
 

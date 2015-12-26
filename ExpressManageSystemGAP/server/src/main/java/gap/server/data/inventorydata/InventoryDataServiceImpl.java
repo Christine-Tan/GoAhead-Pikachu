@@ -80,6 +80,35 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		}
 		return null;
 	}
+	
+	
+	public int getTotalNum(String ins_id) throws RemoteException{
+		SQLBuilder builder = new SQLBuilder();
+		builder.Select(sectorId_f).From(sectorTable).Where(ins_id_f).EQUALS(ins_id);
+		try {
+			ResultSet re = builder.excuteQuery();
+//			ArrayList<String> sectors = new ArrayList<String>();
+//			while(re.next()){
+//				sectors.add(re.getString(sectorId_f))
+//			}
+			int num = 0;
+			
+			while(re.next()){
+				String sectorID = re.getString(sectorId_f);
+				builder.Select("COUNT("+sectorId_f+")").From(sectorItemTable).Where(sectorId_f).EQUALS(sectorID);
+				ResultSet aSet = builder.excuteQuery();
+				aSet.next();
+				int aSectorCount = aSet.getInt("COUNT("+sectorId_f+")");
+				num+=aSectorCount;
+			}
+			
+			return num;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+	}
 
 	@Override
 	public List<GoodsPO> getOneTypeSector(String sector_id)

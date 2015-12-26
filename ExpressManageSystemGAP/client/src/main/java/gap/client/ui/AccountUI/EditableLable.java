@@ -40,6 +40,10 @@ public class EditableLable extends GAPTextField{
 	}
 	
 	private void init(String text){
+		
+		//移除父类的mouseListener
+		removeMouseListener(getTextListener());
+		
 		setEditable(false);
 		setForeground(Color.BLACK);
 		setHorizontalAlignment(JTextField.CENTER);
