@@ -7,6 +7,7 @@ import gap.common.dataservice.Contactor;
 import gap.common.dataservice.ServiceName;
 import gap.common.dataservice.accountdataservice.AccountDataService;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
+import gap.common.dataservice.initialdata.InitialDataService;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
@@ -58,6 +59,7 @@ public class NetModule {
 	protected static StockinOrderDataService stockinorderdataservice;
 	protected static StockoutOrderDataService stockoutorderdataservice;
 	protected static TransFareDataService transFareDataService;
+	protected static InitialDataService initialDataService;
 
 	private static Contactor contactor;
 	private static boolean dialogShowed = false;
@@ -179,6 +181,10 @@ public class NetModule {
 				transFareDataService = (TransFareDataService) Naming
 						.lookup(RMIConfig.url
 								+ ServiceName.TRANSFARE_DATA_SERVICE);
+				
+				initialDataService = (InitialDataService)Naming
+						.lookup(RMIConfig.url
+								+ServiceName.INITIAL_DATA_SERVICE);
 
 				if (isFirstConnect && MainFrame.messagePanel != null) {
 					MainFrame.setMessage("连接成功", MessageType.succeed, 2000);
