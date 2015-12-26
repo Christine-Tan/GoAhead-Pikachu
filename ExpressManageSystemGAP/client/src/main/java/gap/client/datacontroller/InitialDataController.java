@@ -22,6 +22,7 @@ public class InitialDataController {
 	
 	protected InitialDataController(){}
 	
+	//initialData interface
 	public ResultMessage addInitial(InitialHistoryPO initialPO){
 		
 		try{
@@ -42,6 +43,7 @@ public class InitialDataController {
 		}	
 	}
 	
+	//city interface
 	public List<CityPO> getAllCity(){
 		
 		try{
@@ -52,6 +54,7 @@ public class InitialDataController {
 		}
 	}
 	
+	//user interface
 	public List<UserPO> getAllUser(UserType userType){
 		try{
 			return userdataservice.getAll(userType);
@@ -61,6 +64,7 @@ public class InitialDataController {
 		}
 	}
 	
+	//account interface
 	public List<AccountPO> getAllAccount(){
 		try{
 			return accountDataService.getAccountList();
@@ -68,7 +72,15 @@ public class InitialDataController {
 			e.printStackTrace();
 			return null;
 		}
-		
 	}
+	
+//	public int getGoodsNum(String ins_id){
+//		try{
+//			//return inventorydataservice.
+//		}catch(RemoteException e){
+//			e.printStackTrace();
+//			return 0;
+//		}
+//	}
 	
 }
