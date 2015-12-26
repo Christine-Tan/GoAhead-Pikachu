@@ -44,22 +44,21 @@ public class NavigateButton extends GAPButton {
 	 */
 	void select() {
 		isSelect = true;
-		
-		setDefautBackGroundColor(ColorAndFonts.blue);
+
 		setDefautFontColor(Color.white);
 		setEnterFontColor(Color.white);
 		setPressFontColor(Color.white);
-//		setBackground(ColorAndFonts.blue);
-//		setForeground(Color.white);
-		
-		AnimationThread backThread =
-				new AnimationThread(getBackground(), ColorAndFonts.blue, Type.BACK);
-		AnimationThread foreThread = 
-				new AnimationThread(getForeground(), Color.white, Type.FORE);
+		// setBackground(ColorAndFonts.blue);
+		// setForeground(Color.white);
+
+		AnimationThread backThread = new AnimationThread(getBackground(),
+				ColorAndFonts.blue, Type.BACK);
+		AnimationThread foreThread = new AnimationThread(getForeground(),
+				Color.white, Type.FORE);
 		backThread.start();
 		foreThread.start();
-		
-		//repaint();
+		setDefautBackGroundColor(ColorAndFonts.blue);
+		// repaint();
 		mainFrame.load(new Runnable() {
 
 			@Override
@@ -85,44 +84,42 @@ public class NavigateButton extends GAPButton {
 		setDefautFontColor(Color.BLACK);
 		setEnterFontColor(ColorAndFonts.blue.darker());
 		setPressFontColor(ColorAndFonts.otherDarkBulue);
-//		setBackground(Color.white);
-//		setForeground(Color.BLACK);
-		
-		AnimationThread backThread =
-				new AnimationThread(getBackground(), Color.white, Type.BACK);
-		AnimationThread foreThread = 
-				new AnimationThread(getForeground(), Color.black, Type.FORE);
+		// setBackground(Color.white);
+		// setForeground(Color.BLACK);
+
+		AnimationThread backThread = new AnimationThread(getBackground(),
+				Color.white, Type.BACK);
+		AnimationThread foreThread = new AnimationThread(getForeground(),
+				Color.black, Type.FORE);
 		backThread.start();
 		foreThread.start();
-		
+
 		repaint();
 		mainFrame.validate();
 	}
-	
-	public MainPanel getMainPanel(){
+
+	public MainPanel getMainPanel() {
 		return mainPanel;
 	}
-	
-	private enum Type{
-		BACK,FORE
+
+	private enum Type {
+		BACK, FORE
 	}
-	
-	class AnimationThread extends Thread{
-	
+
+	class AnimationThread extends Thread {
+
 		ColorChanger changer;
 		Type type;
-		
-		public AnimationThread(Color formerColor,Color targetColor,Type type){
-			this.type = type; 
+
+		public AnimationThread(Color formerColor, Color targetColor, Type type) {
+			this.type = type;
 			changer = new ColorChanger(formerColor, targetColor, 0.15);
 		}
-		
-	
 
 		public void run() {
 			while (!changer.isFinish()) {
 				Color currentColor = changer.change();
-				
+
 				switch (type) {
 				case BACK:
 					setBackground(currentColor);
@@ -132,18 +129,18 @@ public class NavigateButton extends GAPButton {
 					setForeground(currentColor);
 					break;
 				}
-				
+
 				repaint();
-				
-				try{
+
+				try {
 					Thread.sleep(50);
-				}catch(Exception e){
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 			}
-		
+
 		}
-	
+
 	}
 }
