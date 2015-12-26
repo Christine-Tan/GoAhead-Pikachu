@@ -53,7 +53,7 @@ public class AccountManagePanel extends MainPanelWithGird{
 	public AccountManagePanel(MainFrame frame) {
 		super(frame);
 		refresh();
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, Default.HEIGHT));
+		//setPreferredSize(new Dimension(Default.PANEL_WIDTH, Default.HEIGHT));
 		
 	}
 	

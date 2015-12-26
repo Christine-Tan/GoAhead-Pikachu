@@ -19,6 +19,8 @@ public class CostProfitPanel extends MainPanelWithGird{
 	ButtonArea buttonArea;
 	GAPButton excelButton;
 	
+	boolean isFirstShow = true;
+	
 	public CostProfitPanel(MainFrame frame){
 		
 		super(frame);
@@ -47,7 +49,8 @@ public class CostProfitPanel extends MainPanelWithGird{
 
 	@Override
 	public void refresh() {
-		// TODO Auto-generated method stub
+		
+		
 		vo = controller.getCost_ProfitList();
 		arcGraphPanel.setVO(vo);
 		arcGraphPanel.startAnimation();

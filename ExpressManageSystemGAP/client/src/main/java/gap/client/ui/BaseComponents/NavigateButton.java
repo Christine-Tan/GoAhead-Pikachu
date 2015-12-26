@@ -114,7 +114,7 @@ public class NavigateButton extends GAPButton {
 		
 		public AnimationThread(Color formerColor,Color targetColor,Type type){
 			this.type = type; 
-			changer = new ColorChanger(formerColor, targetColor, 0.15);
+			changer = new ColorChanger(formerColor, targetColor, 0.05);
 		}
 		
 	

@@ -57,7 +57,7 @@ public class AccountDisplayPanel extends JPanel{
 		repaint();
 		addAccountBox();
 		reSize();
-		setPreferredSize(new Dimension(Default.PANEL_WIDTH, Default.HEIGHT));
+
 	}
 	
 	/**
