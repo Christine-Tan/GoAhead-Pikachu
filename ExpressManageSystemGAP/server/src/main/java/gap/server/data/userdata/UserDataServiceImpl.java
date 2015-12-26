@@ -6,6 +6,7 @@ import gap.common.util.Gender;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 import gap.server.data.util.InsertSQL;
+import gap.server.data.util.SQLBuilder;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
 
@@ -285,6 +286,25 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public int getPeopleNum(String ins_id, UserType type) throws RemoteException {
+		SQLBuilder builder = new SQLBuilder();
+		
+		builder.Select("COUNT(*)").From(tableName).Where(institution_f).EQUALS(ins_id)
+			.AND(userType_f).EQUALS(type);
+		ResultSet resultSet = builder.excuteQuery();
+		try {
+			resultSet.next();
+			int num = resultSet.getInt("COUNT(*)");
+			return num;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+		
 	}
 
 }

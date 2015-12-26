@@ -27,5 +27,7 @@ public interface UserDataService extends Remote {
 	public ResultMessage setPaid(String user_id) throws RemoteException;
 
 	public List<UserPO> getDilivery(String ins_id) throws RemoteException;
+	
+	public int getPeopleNum(String ins_id,UserType type) throws RemoteException;
 
 }

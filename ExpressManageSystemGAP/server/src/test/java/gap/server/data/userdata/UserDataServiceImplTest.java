@@ -20,6 +20,30 @@ public class UserDataServiceImplTest {
 	@Before
 	public void setUp() throws Exception {
 	}
+	@Test
+	public void testGetNum(){
+		UserDataService userdata = null;
+		try {
+			userdata = (UserDataService) Naming
+					.lookup(RMIConfig.url + ServiceName.USER_DATA_SERVICE);
+		} catch (MalformedURLException | RemoteException | NotBoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		try {
+			int num = userdata.getPeopleNum("0010001", UserType.DELIVERY);
+			System.out.println(num);
+			num = userdata.getPeopleNum("0010001", UserType.BUSSINESSCLERK);
+			System.out.println(num);
+			num = userdata.getPeopleNum("0010001", UserType.ACCOUNTER);
+			System.out.println(num);
+			
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Test
 	public void test() throws RemoteException, MalformedURLException,

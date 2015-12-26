@@ -2,12 +2,12 @@ package gap.common.po;
 
 public class InitialPeoplePO {
 	private String cityName;
-	private int businessHallNum;
-	private int centerNum;
-	private int courierNum;
-	private int businessClerkNum;
-	private int centerClerkNum;
-	private int stockmanNum;
+	public int businessHallNum;
+	public int centerNum;
+	public int courierNum;
+	public int businessClerkNum;
+	public int centerClerkNum;
+	public int stockmanNum;
 	
 	
 
@@ -19,6 +19,10 @@ public class InitialPeoplePO {
 	public InitialPeoplePO(String cityName,int[] numbers){
 		this.setCityName(cityName);
 		
+		if(numbers==null){
+			numbers = new int[6];
+		}
+		
 		setBusinessHallNum(numbers[0]);
 		setCenterNum(numbers[1]);
 		setCourierNum(numbers[2]);
@@ -28,6 +32,9 @@ public class InitialPeoplePO {
 		
 	}
 
+	public InitialPeoplePO(String cityName){
+		this(cityName,null);
+	}
 
 
 	public String getCityName() {

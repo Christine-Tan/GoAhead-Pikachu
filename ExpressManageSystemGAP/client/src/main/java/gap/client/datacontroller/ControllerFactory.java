@@ -24,6 +24,14 @@ public class ControllerFactory {
 	private static AccountorReceiptDataController receiptDataController;
 	private static TableDataController tableDataController;
 	private static LogDataController logDataController;
+	private static InitialDataController initialDataController;
+	
+	public static InitialDataController getInitialDataController(){
+		if(initialDataController == null){
+			initialDataController = new InitialDataController();
+		}
+		return initialDataController;
+	}
 
 	public static LogDataController getLogDataController(){
 		if(logDataController==null){
