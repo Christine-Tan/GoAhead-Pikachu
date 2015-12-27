@@ -117,7 +117,6 @@ public class ResultShowPanel extends JPanel {
 			g2d.setFont(font);
 			g2d.setColor(Colors.red);
 			int fontWidth = fontM.stringWidth(message);
-			System.out.println(message + "," + fontWidth + "," + messageY);
 			g2d.drawString(message, (830 - fontWidth) / 2, messageY);
 		}
 	}

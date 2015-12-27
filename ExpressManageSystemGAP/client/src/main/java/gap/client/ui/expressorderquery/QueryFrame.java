@@ -74,7 +74,6 @@ public class QueryFrame extends JFrame {
 				beforeFrameX = getX();
 				beforeFrameY = getY();
 			}
-			System.out.println(isPressed);
 		}
 
 		@Override
