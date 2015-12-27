@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.naming.ldap.ControlFactory;
 
+import gap.client.bl.initial.InitialPOCreater;
 import gap.client.blservice.initialblservice.InitialBlService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.InitialDataController;
@@ -29,8 +30,9 @@ public class InitialController implements InitialBlService{
 	
 	@Override
 	public InitialHistoryPO getCurrentInitial() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		InitialPOCreater creater = new InitialPOCreater(dataController);
+		return creater.creatPO();
 	}
 
 	@Override
