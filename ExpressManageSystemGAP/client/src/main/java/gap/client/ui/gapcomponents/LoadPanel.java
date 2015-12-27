@@ -7,6 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,45 +38,26 @@ public class LoadPanel extends JComponent {
 	}
 
 	public void load(Runnable runnable) {
-		jframe.setGlassPane(this);
-		setVisible(true);
+		//假如0.1秒没有load好，就开启load画面
+		Timer loadTimer = new Timer();
+		loadTimer.schedule(new LoadTask(), 100);
+		
 		runnable.run();
-		// repaint();
-//		Future<?> future = excutor.submit(runnable);
-//		try {
-//			future.get();
-//		} catch (InterruptedException e) {
-//			// TODO 自动生成的 catch 块
-//			e.printStackTrace();
-//		} catch (ExecutionException e) {
-//			// TODO 自动生成的 catch 块
-//			e.printStackTrace();
-//		}
-//		excutor.shutdown();
+		System.out.println("finish");
+		loadTimer.cancel();
 		setVisible(false);
+		jframe.repaint();
+		jframe.validate();
+		
 	}
-	//
-	// public static void main(String[] args) {
-	// JFrame jf = new JFrame();
-	// Runnable runnable = new Runnable() {
-	//
-	// @Override
-	// public void run() {
-	// // TODO 自动生成的方法存根
-	// for (int i = 0; i < 100; i++) {
-	// System.out.println(i);
-	// try {
-	// Thread.sleep(50);
-	// } catch (InterruptedException e) {
-	// // TODO 自动生成的 catch 块
-	// e.printStackTrace();
-	// }
-	// }
-	// }
-	// };
-	// SwingConsole.run(jf, 1024, 768);
-	// jf.add(new JButton("test"));
-	// LoadPanel load = new LoadPanel();
-	// load.load(jf, runnable);
-	// }
+	
+	private class LoadTask extends TimerTask{
+		@Override
+		public void run() {
+			setVisible(true);
+			jframe.setGlassPane(LoadPanel.this);
+		}
+		
+	}
+
 }

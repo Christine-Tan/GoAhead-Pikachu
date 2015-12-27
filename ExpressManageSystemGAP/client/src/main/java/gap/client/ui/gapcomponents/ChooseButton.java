@@ -39,10 +39,12 @@ public class ChooseButton extends JButton {
 
 	private void initial() {
 //		clicked = false;
-		setFont(ComponentStyle.buttonFont);
+//		setFont(ComponentStyle.buttonFont);
+		setFont(ColorAndFonts.getChinese(22));
+		
 		setBackground(Color.white);
 		setForeground(ColorAndFonts.blue);
-		setBorder(BorderFactory.createLineBorder(ColorAndFonts.blue));
+		setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		setFocusable(false);
 		setUI(new GAPButtonUI());
 

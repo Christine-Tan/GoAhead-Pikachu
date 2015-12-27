@@ -45,6 +45,7 @@ public class ApprovalPanel extends MainPanel {
 		MyTask task = new MyTask();
 		timer = new Timer(true);
 		timer.schedule(task, 1000, 100000);
+
 	}
 
 	public void refresh() {
