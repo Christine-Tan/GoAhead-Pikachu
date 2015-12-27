@@ -6,6 +6,7 @@ import gap.client.ui.BaseComponents.NavigateBar;
 import gap.client.ui.BaseComponents.NavigateButton;
 import gap.client.ui.managerui.approvalui.ApprovalPanel;
 import gap.client.ui.managerui.institutionui.InstitutionPanel;
+import gap.client.ui.managerui.logui.LogPanel;
 import gap.client.ui.managerui.priceui.PricePanel;
 import gap.client.ui.managerui.rentui.RentPanel;
 import gap.client.ui.managerui.salaryui.SalaryPanel;
@@ -31,7 +32,8 @@ public class ManagerInitialler {
 		NavigateButton salary=new NavigateButton(mainFrame, new SalaryPanel(mainFrame), navBar, "制定薪水策略");
 		NavigateButton account=new NavigateButton(mainFrame, new AccountManagePanel(mainFrame), navBar, "查看银行账户");
 		NavigateButton table=new NavigateButton(mainFrame, new CostProfitPanel(mainFrame), navBar, "查看成本收益表");
-		
+		NavigateButton log=new NavigateButton(mainFrame, new LogPanel(mainFrame), navBar, "查看日志记录");
+		navBar.setHeight(50);
 		navBar.addButton(approval);
 		navBar.addButton(institution);
 		navBar.addButton(rent);
@@ -39,6 +41,7 @@ public class ManagerInitialler {
 		navBar.addButton(salary);
 		navBar.addButton(account);
 		navBar.addButton(table);
+		navBar.addButton(log);
 		navBar.setSelect(approval);
 		mainFrame.setVisible(true);
 		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);

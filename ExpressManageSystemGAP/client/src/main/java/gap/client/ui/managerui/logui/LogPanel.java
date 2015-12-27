@@ -25,7 +25,7 @@ public class LogPanel extends MainPanel {
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		JPanel jp = new JPanel();
-		jp.setOpaque(true);
+		jp.setOpaque(false);
 		setLayout(gb);
 		gcons.insets = new Insets(5, 0, 5, 0);
 		SwingConsole.addComponent(gb, gcons, this, queryPanel, 0, 0, 1, 1, 1, 0);

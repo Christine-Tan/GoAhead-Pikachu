@@ -34,15 +34,17 @@ public class Log implements LogService {
 	public HashMap<String, List<LogVO>> getLogByDate(){
 		logByDate=new HashMap<String,List<LogVO>>();
 		logs=this.getLogList();
-		for(int i=0;i<logs.size();i++){
-			String date=logs.get(i).getDate().substring(0, 10);
+		for(int i=logs.size()-1;i>=0;i--){
+			String date=logs.get(i).getDate().substring(0, 11);
 			if(logByDate.containsKey(date)){
 				logByDate.get(date).add(logs.get(i));
 			}else{
-				List<LogVO> logs=new ArrayList<>();
-				logByDate.put(date, logs);
+				List<LogVO> log=new ArrayList<>();
+				logByDate.put(date, log);
+				logByDate.get(date).add(logs.get(i));
 			}			
 		}
+		
 		return logByDate;		
 	}
 
