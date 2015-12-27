@@ -9,7 +9,7 @@ public interface InitialBlService {
 
 	public InitialHistoryPO getCurrentInitial();
 
-	public ResultMessage submitInitialList(InitialHistoryPO initialVO);
+	public ResultMessage submitInitial(InitialHistoryPO initialPO);
 
 	public List<InitialHistoryPO> getInitialHistory();
 

@@ -12,11 +12,20 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class ChooseButton extends JButton {
 
 	public MouseListener listener;
 	public boolean clicked;
+	
+	private JPanel panel;
+	public ChooseButton(String text,JPanel panel){
+		super(text);
+		this.setPanel(panel);
+		initial();
+	}
+	
 	public ChooseButton() {
 		super();
 		initial();
@@ -40,7 +49,7 @@ public class ChooseButton extends JButton {
 	private void initial() {
 //		clicked = false;
 //		setFont(ComponentStyle.buttonFont);
-		setFont(ColorAndFonts.getChinese(22));
+		setFont(ColorAndFonts.getChinese(20));
 		
 		setBackground(Color.white);
 		setForeground(ColorAndFonts.blue);
@@ -53,8 +62,7 @@ public class ChooseButton extends JButton {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setBackground(ColorAndFonts.blue);
-				setForeground(Color.white);
+				setSelected();
 				clicked = true;
 				
 			}
@@ -62,7 +70,9 @@ public class ChooseButton extends JButton {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setForeground(ColorAndFonts.otherDarkBulue);
+				if(!clicked){
+					setForeground(ColorAndFonts.otherDarkBulue);
+				}
 				//setBackground(ColorAndFonts.blue);
 			}
 
@@ -80,8 +90,10 @@ public class ChooseButton extends JButton {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO 自动生成的方法存根
-				setForeground(ColorAndFonts.blue.darker());
-				setCursor(new Cursor(Cursor.HAND_CURSOR));
+				if(!clicked){
+					setForeground(ColorAndFonts.blue.darker());
+					setCursor(new Cursor(Cursor.HAND_CURSOR));
+				}
 			}
 
 			@Override
@@ -95,6 +107,7 @@ public class ChooseButton extends JButton {
 	public void toNomal(){
 		setBackground(Color.white);
 		setForeground(ColorAndFonts.blue);
+		setBorder(BorderFactory.createLineBorder(Color.lightGray));
 		clicked = false;
 		
 	}
@@ -102,6 +115,15 @@ public class ChooseButton extends JButton {
 	public void setSelected(){
 		setBackground(ColorAndFonts.blue);
 		setForeground(Color.white);
+		setBorder(BorderFactory.createEmptyBorder());
 		clicked = true;
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void setPanel(JPanel panel) {
+		this.panel = panel;
 	}
 }

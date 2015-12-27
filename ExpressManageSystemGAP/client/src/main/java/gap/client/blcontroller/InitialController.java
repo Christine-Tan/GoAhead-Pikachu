@@ -13,11 +13,11 @@ import gap.common.util.ResultMessage;
 
 public class InitialController implements InitialBlService{
 
-	static InitialController initialController;
+	private static InitialController initialController;
 	
 	private InitialDataController dataController;
 	
-	public InitialController getInstance(){
+	public static InitialController getInstance(){
 		if(initialController == null){
 			initialController = new InitialController();
 		}
@@ -36,7 +36,7 @@ public class InitialController implements InitialBlService{
 	}
 
 	@Override
-	public ResultMessage submitInitialList(InitialHistoryPO initialPO) {
+	public ResultMessage submitInitial(InitialHistoryPO initialPO) {
 		return dataController.addInitial(initialPO);
 	}
 

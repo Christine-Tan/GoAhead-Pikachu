@@ -1,6 +1,8 @@
 package gap.common.po;
 
-public class InitialStockPO {
+import java.io.Serializable;
+
+public class InitialStockPO implements Serializable {
 	private String stockName;
 	private int goodsNum;
 	private double occupiedRate;

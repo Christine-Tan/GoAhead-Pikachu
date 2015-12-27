@@ -31,7 +31,7 @@ public class PayeeClassPanel extends PanelWithGrid{
 
 	protected ArrayList<PayeeItem> items;
 	//protected HashMap<PaymentType	, String> nameMap;
-
+	
 	protected ArrayList<AccountVO> accountVOs;
 	protected ArrayList<PayeeVO> payees;
 	

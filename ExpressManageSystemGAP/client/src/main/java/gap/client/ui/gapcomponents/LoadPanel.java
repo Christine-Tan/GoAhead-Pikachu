@@ -43,7 +43,6 @@ public class LoadPanel extends JComponent {
 		loadTimer.schedule(new LoadTask(), 100);
 		
 		runnable.run();
-		System.out.println("finish");
 		loadTimer.cancel();
 		setVisible(false);
 		jframe.repaint();

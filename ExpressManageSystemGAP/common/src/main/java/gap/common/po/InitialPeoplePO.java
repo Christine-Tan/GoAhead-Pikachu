@@ -1,6 +1,8 @@
 package gap.common.po;
 
-public class InitialPeoplePO {
+import java.io.Serializable;
+
+public class InitialPeoplePO implements Serializable {
 	private String cityName;
 	public int businessHallNum;
 	public int centerNum;
@@ -117,6 +119,20 @@ public class InitialPeoplePO {
 
 	public void setStockmanNum(int stockmanNum) {
 		this.stockmanNum = stockmanNum;
+	}
+	
+	public int[] getNums(){
+		int[] nums = new int[6];
+		
+		nums[0] = businessHallNum;
+		nums[1] = centerNum;
+		nums[2] = courierNum;
+		nums[3] = businessClerkNum;
+		nums[4] = centerClerkNum;
+		nums[5] = stockmanNum;
+		
+		return nums;
+		
 	}
 	
 }

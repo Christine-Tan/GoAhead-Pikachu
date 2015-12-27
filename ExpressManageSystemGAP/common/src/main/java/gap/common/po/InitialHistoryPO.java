@@ -1,9 +1,10 @@
 package gap.common.po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class InitialHistoryPO {
+public class InitialHistoryPO implements Serializable{
 	private Calendar date;
 	private int totalBusinessHall;
 	private int totalCenter;

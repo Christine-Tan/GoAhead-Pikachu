@@ -9,7 +9,7 @@ public class Initial_driver {
 		InitialVO vo = stub.getInitialList();
 		System.out.println("get initial list");
 		
-		stub.submitInitialList(vo);
+		stub.submitInitial(vo);
 		System.out.println("set initialVO");
 		
 		stub.getInitialHistory();

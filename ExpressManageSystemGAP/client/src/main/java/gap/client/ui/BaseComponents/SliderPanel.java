@@ -41,7 +41,7 @@ public class SliderPanel extends JPanel{
 	}
 	
 	public enum Direction{
-		UP,DOWN
+		UP,DOWN,LEFT,RIGHT
 	}
 	
 	public void slide(JComponent afterPanel,Direction direction){
