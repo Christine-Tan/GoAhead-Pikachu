@@ -31,33 +31,33 @@ public class QueryArc {
 	public QueryArc(int x, int y, int type, JPanel jp) {
 		// TODO 自动生成的构造函数存根
 		size = 20;
-		changeTime = 1;
+		changeTime = 500;
 		changeRate = 500;
 		this.jp = jp;
 		this.type = type;
 		if (type == 0) {
-			fx = x - size;
-			fy = y;
+			fx = x - 2 * size;
+			fy = y - size;
 			fstart = 0;
 			fextent = 90;
-			sx = x - size;
-			sy = y - 2 * size;
+			sx = x - 2 * size;
+			sy = y - 3 * size;
 			sstart = 270;
 			sextent = -90;
 		} else {
-			fx = x - size;
-			fy = y;
+			fx = x - 2 * size;
+			fy = y - size;
 			fstart = 0;
 			fextent = -90;
-			sx = x - size;
-			sy = y + 2 * size;
+			sx = x - 2 * size;
+			sy = y + size;
 			sstart = 90;
 			sextent = 90;
 		}
 
-		firstArc = new Arc2D.Double(fx, fy, 2 * size, 2 * size, fstart,
-				fextent, Arc2D.Double.OPEN);
-		secArc = new Arc2D.Double(sx, sy, 2 * size, 2 * size, sstart, sextent,
+		firstArc = new Arc2D.Double(fx, fy, 2 * size, 2 * size, fstart, 0,
+				Arc2D.Double.OPEN);
+		secArc = new Arc2D.Double(sx, sy, 2 * size, 2 * size, sstart, 0,
 				Arc2D.Double.OPEN);
 	}
 
@@ -82,7 +82,7 @@ public class QueryArc {
 		Stroke newStrock = new BasicStroke(3);
 		g2d.setStroke(newStrock);
 
-		g2d.setColor(Color.red);
+		g2d.setColor(Colors.red);
 
 		g2d.draw(firstArc);
 		g2d.draw(secArc);
@@ -98,7 +98,7 @@ public class QueryArc {
 		double fdeltaEx, sdeltaEx;
 
 		public changeRunnable() {
-			tempTime = (int) (changeTime * 1000 / changeRate);
+			tempTime = (int) (changeTime / changeRate);
 			fdeltaEx = 2 * fextent / changeRate;
 			sdeltaEx = 2 * sextent / changeRate;
 		}

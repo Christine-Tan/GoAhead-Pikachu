@@ -35,10 +35,8 @@ public class ExpressOrder implements ExpressOrderService {
 	}
 
 	@Override
-	public List<String> getState(String order_id) throws InvalidInputException {
+	public List<String> getState(String order_id){
 		// TODO 自动生成的方法存根
-		if (order_id.length() != 10)
-			throw new InvalidInputException("快件单号位数错误");
 		return expressorderData.getState(order_id);
 	}
 
@@ -53,7 +51,6 @@ public class ExpressOrder implements ExpressOrderService {
 			return new ExpressOrderVO(po);
 		return null;
 	}
-
 
 	@Override
 	public List<ExpressOrderVO> getArrivingOrders(String ins_id) {
@@ -81,7 +78,6 @@ public class ExpressOrder implements ExpressOrderService {
 			ordersVO.add(new ExpressOrderVO(po));
 		return ordersVO;
 	}
-
 
 	@Override
 	public ExpressOrderVO createOrder(ExpressOrderVO order_info) {

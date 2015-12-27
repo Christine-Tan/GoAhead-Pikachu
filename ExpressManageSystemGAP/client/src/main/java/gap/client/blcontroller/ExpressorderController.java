@@ -52,6 +52,15 @@ public class ExpressorderController {
 		return orders;
 	}
 
+	public static String[] getStates(String order_id)
+			{
+		List<String> states = expressorder.getState(order_id);
+		String[] str = new String[states.size()];
+		for (int i = 0; i < states.size(); i++)
+			str[i] = states.get(i);
+		return str;
+	}
+
 	public static boolean isExisted(String order_id) {
 		return expressorder.isExisted(order_id);
 	}
