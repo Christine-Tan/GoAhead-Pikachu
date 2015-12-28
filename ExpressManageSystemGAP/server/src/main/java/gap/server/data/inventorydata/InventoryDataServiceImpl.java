@@ -81,7 +81,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		return null;
 	}
 	
-	
+	@Override
 	public int getTotalNum(String ins_id) throws RemoteException{
 		SQLBuilder builder = new SQLBuilder();
 		builder.Select(sectorId_f).From(sectorTable).Where(ins_id_f).EQUALS(ins_id);

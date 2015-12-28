@@ -25,7 +25,7 @@ public class CenterClerkInitaller {
 		NavigateButton carManage = new NavigateButton(mainFrame,
 				new CarManagePanel(mainFrame), navBar, "车辆管理");
 		NavigateButton driverManage = new NavigateButton(mainFrame,
-				new DriverManagePanel(mainFrame), navBar, "车辆管理");
+				new DriverManagePanel(mainFrame), navBar, "司机管理");
 
 		navBar.addButton(arrivedOrder);
 		navBar.addButton(loadOrder);
