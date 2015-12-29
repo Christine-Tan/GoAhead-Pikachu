@@ -42,7 +42,6 @@ public class ExpressorderController {
 		List<ExpressOrderVO> orders = new ArrayList<ExpressOrderVO>();
 		for (String str : orderIds) {
 			try {
-				System.out.println(str);
 				orders.add(expressorder.getOrder(str));
 			} catch (InvalidInputException e) {
 				// TODO 自动生成的 catch 块

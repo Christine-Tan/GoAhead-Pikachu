@@ -23,31 +23,33 @@ public class StockoutOrder implements StockoutOrderService {
 	@Override
 	public ResultMessage save(StockoutOrderVO vo) {
 		// TODO Auto-generated method stub
-		if(vo.getExpressorder_ids()==null||vo.getExpressorder_ids().size()==0){
+		if (vo.getExpressorder_ids() == null
+				|| vo.getExpressorder_ids().size() == 0) {
 			return ResultMessage.FAILED;
-		}else{
+		} else {
 			return stockoutData.add(vo.toPO());
 		}
 	}
 
-//	@Override
-//	public StockoutOrderVO find(String id, String ins_id) {
-//		// TODO Auto-generated method stub
-//		return new StockoutOrderVO(stockoutData.find(id, ins_id));
-//	}
+	// @Override
+	// public StockoutOrderVO find(String id, String ins_id) {
+	// // TODO Auto-generated method stub
+	// return new StockoutOrderVO(stockoutData.find(id, ins_id));
+	// }
 
-//	@Override
-//	public String getLocation(String id) {
-//		// TODO Auto-generated method stub
-//
-//		return null;
-//	}
+	// @Override
+	// public String getLocation(String id) {
+	// // TODO Auto-generated method stub
+	//
+	// return null;
+	// }
 
 	@Override
 	public List<StockoutOrderVO> getRequired(String beginDate, String endDate,
 			String ins_id) {
 		// TODO Auto-generated method stub
-		List<StockoutOrderPO> list = stockoutData.getRequired(beginDate, endDate, ins_id);
+		List<StockoutOrderPO> list = stockoutData.getRequired(beginDate,
+				endDate, ins_id);
 		return StockoutOrderVO.toVOList(list);
 	}
 
@@ -65,16 +67,27 @@ public class StockoutOrder implements StockoutOrderService {
 	public String getNextId(String cons) {
 		// TODO Auto-generated method stub
 		int n = stockoutData.getNextId(cons);
-		String num = n+"";
-		while(num.length()<5){
+		String num = n + "";
+		while (num.length() < 5) {
 			num = "0" + num;
 		}
-		return cons+num;
+		return cons + num;
 	}
-	
-//	public List<StockoutOrderVO> getUnLoadedOrders(String ins_id){
-//		List<StockoutOrderVO> orders = new ArrayList<StockoutOrderVO>();
-//		orders = stockoutData.get
-//	}
+
+	@Override
+	public List<StockoutOrderVO> getUnloadStockOrders() {
+		// TODO 自动生成的方法存根
+		List<StockoutOrderVO> orders = new ArrayList<StockoutOrderVO>();
+		List<StockoutOrderPO> poorders = stockoutData.getUnLoadedOrders();
+		if (poorders == null)
+			return null;
+		orders = StockoutOrderVO.toVOList(poorders);
+		return orders;
+	}
+
+	// public List<StockoutOrderVO> getUnLoadedOrders(String ins_id){
+	// List<StockoutOrderVO> orders = new ArrayList<StockoutOrderVO>();
+	// orders = stockoutData.get
+	// }
 
 }

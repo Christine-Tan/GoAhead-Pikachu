@@ -1,6 +1,7 @@
 package gap.client.ui.bussinessui.loadorder;
 
 import gap.client.blcontroller.ExpressorderController;
+import gap.client.blcontroller.StockoutOrderController;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
@@ -122,8 +123,7 @@ public class OrderPanel extends JPanel {
 			orders = ExpressorderController
 					.getCurrentOrders(CurrentOrderType.LOAD);
 		} else {
-			orders = ExpressorderController
-					.getCurrentOrders(CurrentOrderType.ALL);
+			orders = StockoutOrderController.getUnloadStockOutOrder();
 		}
 		for (ExpressOrderVO vo : orders) {
 			addItem(vo);

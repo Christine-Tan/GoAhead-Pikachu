@@ -20,4 +20,7 @@ public interface StockoutOrderService {
 
 	public String getNextId(String cons);
 
+	public List<StockoutOrderVO> getUnloadStockOrders();
+
+
 }
