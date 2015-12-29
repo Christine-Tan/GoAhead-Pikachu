@@ -10,6 +10,8 @@ public interface InstitutionService {
 	public InstitutionVO findById(String id);
 
 	public List<InstitutionVO> findByCity(String city);
+	
+	public InstitutionVO findByName(String ins_name);
 
 	public void modifyInstitution(InstitutionVO vo);
 

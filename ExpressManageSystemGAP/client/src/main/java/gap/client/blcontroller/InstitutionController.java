@@ -21,6 +21,9 @@ public class InstitutionController {
 		return institutionManage.findByCity(city);
 	}
 
+	public static InstitutionVO findByName(String ins_name){
+		return institutionManage.findByName(ins_name);
+	}
 	public static void modifyInstitution(InstitutionVO vo) {
 		institutionManage.modifyInstitution(vo);
 	}

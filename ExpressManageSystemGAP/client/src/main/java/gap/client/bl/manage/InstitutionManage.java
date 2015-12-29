@@ -22,7 +22,7 @@ public class InstitutionManage implements InstitutionService {
 		controller = ControllerFactory.getInstitutionDataController();
 		operations = new ArrayList<Operation>();
 	}
-
+    
 	@Override
 	public List<InstitutionVO> getAll() {
 		// TODO Auto-generated method stub
@@ -49,6 +49,12 @@ public class InstitutionManage implements InstitutionService {
 		return institutions;
 	}
 
+	@Override
+	public InstitutionVO findByName(String ins_name) {
+		// TODO Auto-generated method stub
+		return new InstitutionVO(controller.findByName(ins_name));
+	}
+	
 	@Override
 	public void modifyInstitution(InstitutionVO vo) {
 		// TODO Auto-generated method stub
@@ -101,5 +107,7 @@ public class InstitutionManage implements InstitutionService {
 			super(controller, MODIFY, args);
 		}
 	}
+
+
 
 }
