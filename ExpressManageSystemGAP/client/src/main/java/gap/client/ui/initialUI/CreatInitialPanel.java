@@ -14,7 +14,6 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.initialUI.InitialTable.InitialTablePanel;
 import gap.client.ui.paymentUI.PanelWithGrid;
 import gap.common.po.InitialHistoryPO;
 

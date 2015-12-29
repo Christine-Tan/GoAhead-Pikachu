@@ -56,6 +56,7 @@ public class ColorChanger {
 		}
 	}
 	
+	
 	public boolean isFinish(){
 		boolean result = true;
 		for(boolean isOneFinish:isFinish){

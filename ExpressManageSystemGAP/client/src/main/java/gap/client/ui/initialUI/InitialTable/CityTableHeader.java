@@ -38,7 +38,7 @@ public class CityTableHeader extends PanelWithGrid{
 	private GAPLabel totalLable;
 	
 	public CityTableHeader(String[] cityNames){
-		Font font = ColorAndFonts.getChinese(18);
+		Font font = ColorAndFonts.getChinese(17);
 		
 		JLabel leftLabel = new JLabel();
 		leftLabel.setPreferredSize(new Dimension(classIdle+itemIdle, height));

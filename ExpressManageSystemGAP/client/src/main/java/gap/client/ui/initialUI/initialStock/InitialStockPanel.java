@@ -1,4 +1,4 @@
-package gap.client.ui.initialUI.initialAccount;
+package gap.client.ui.initialUI.initialStock;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,31 +18,32 @@ import gap.client.ui.initialUI.InitialTable.CityTableContant;
 import gap.client.ui.initialUI.InitialTable.CityTableHeader;
 import gap.client.ui.paymentUI.PanelWithGrid;
 import gap.common.po.AccountPO;
+import gap.common.po.InitialStockPO;
 
-public class InitialAccountPanel extends PanelWithGrid{
+public class InitialStockPanel extends PanelWithGrid{
 
 	InitialMainPanel tablePanel;
-	ArrayList<AccountPO> accountPOs;
+	ArrayList<InitialStockPO> stockPOs;
 	
 	GAPLabel information;
-	AccountDisplayPanel displayPanel;
+	StockDisplayPanel displayPanel;
 	JViewport viewport;
 	
-	public  InitialAccountPanel
-		(InitialMainPanel tablePanel,ArrayList<AccountPO> accountPOs,JViewport viewport){
+	public  InitialStockPanel
+		(InitialMainPanel tablePanel,ArrayList<InitialStockPO> stockPOs,JViewport viewport){
 
 		this.tablePanel = tablePanel;
-		this.accountPOs = accountPOs;
+		this.stockPOs = stockPOs;
 		this.viewport =viewport;
 		
-		information = new GAPLabel("账户信息");
+		information = new GAPLabel("库存信息");
 		information.setFont(CityTableContant.bigFont);
 		information.setPreferredSize(new Dimension(CityTableHeader.classIdle, 100));
 		information.setHorizontalAlignment(JLabel.CENTER);
 		
 	
 		
-		displayPanel = new AccountDisplayPanel(tablePanel, accountPOs, viewport);
+		displayPanel = new StockDisplayPanel(tablePanel, stockPOs, viewport);
 		gridBagConstraints.fill = GridBagConstraints.BOTH;
 		gridBagConstraints.anchor = GridBagConstraints.CENTER;
 		gridBagConstraints.insets = new Insets(5, 0, 5, 0);

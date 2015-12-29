@@ -27,7 +27,7 @@ public class CityTableContant extends PanelWithGrid{
 	GAPLabel peopleInformation;
 	JLabel rightLabel;
 	
-	public static Font bigFont = ColorAndFonts.getChinese(22);
+	public static Font bigFont = ColorAndFonts.getChinese(20);
 	
 	
 	public CityTableContant(List<InitialPeoplePO> peoplePOs){
@@ -61,7 +61,7 @@ public class CityTableContant extends PanelWithGrid{
 		
 		gridBagConstraints.insets = new Insets(0,0,5,0);
 				
-		Font normalFont = ColorAndFonts.getChinese(17);
+		Font normalFont = ColorAndFonts.getChinese(16);
 		
 		String[] itemNames = {"营业厅","中转中心","快递员","营业厅业务员","中心业务员","仓库管理员"}; 
 		GAPLabel[] itemLabels = new GAPLabel[6];

@@ -1,4 +1,4 @@
-package gap.client.ui.initialUI.InitialTable;
+package gap.client.ui.initialUI;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -7,12 +7,15 @@ import java.util.List;
 import javax.swing.JViewport;
 
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.initialUI.InitialMainPanel;
+import gap.client.ui.initialUI.InitialTable.CityTableContant;
+import gap.client.ui.initialUI.InitialTable.CityTableHeader;
 import gap.client.ui.initialUI.initialAccount.AccountDisplayPanel;
 import gap.client.ui.initialUI.initialAccount.InitialAccountPanel;
+import gap.client.ui.initialUI.initialStock.InitialStockPanel;
 import gap.client.ui.paymentUI.PanelWithGrid;
 import gap.common.po.InitialHistoryPO;
 import gap.common.po.InitialPeoplePO;
+import gap.common.po.InitialStockPO;
 
 public class InitialTablePanel extends PanelWithGrid{
 	
@@ -21,6 +24,7 @@ public class InitialTablePanel extends PanelWithGrid{
 	CityTableHeader tableHeader;
 	CityTableContant tableContant;
 	InitialAccountPanel accountPanel;
+	InitialStockPanel stockPanel;
 	
 	public InitialTablePanel(InitialMainPanel mainPanel,InitialHistoryPO historyPO){
 
@@ -38,6 +42,8 @@ public class InitialTablePanel extends PanelWithGrid{
 		
 		accountPanel = new InitialAccountPanel(mainPanel, historyPO.accountPOs,viewport);
 		
+		stockPanel = new InitialStockPanel(mainPanel, historyPO.initialStockPOs, viewport);
+		
 		gridBagConstraints.fill = GridBagConstraints.NONE;
 		
 		SwingConsole.addComponent
@@ -47,6 +53,8 @@ public class InitialTablePanel extends PanelWithGrid{
 		gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, accountPanel, 0, 2, 1, 1, 1, 1);
+		SwingConsole.addComponent
+		(gridBagLayout, gridBagConstraints, this, stockPanel, 0, 3, 1, 1, 1, 1);
 		
 	}
 }

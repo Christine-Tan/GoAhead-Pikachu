@@ -1,4 +1,4 @@
-package gap.client.ui.initialUI.initialAccount;
+package gap.client.ui.initialUI.initialStock;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,10 +15,11 @@ import gap.client.ui.initialUI.InitialMainPanel;
 import gap.client.ui.initialUI.InitialTablePanel;
 import gap.client.ui.initialUI.InitialTable.CityTableHeader;
 import gap.common.po.AccountPO;
+import gap.common.po.InitialStockPO;
 
-public class AccountDisplayPanel extends JPanel{
+public class StockDisplayPanel extends JPanel{
 
-	ArrayList<AccountPO> accounts;
+	ArrayList<InitialStockPO> stockPOs;
 
 	JComponent viewport;
 	FlowLayout flow;
@@ -29,17 +30,17 @@ public class AccountDisplayPanel extends JPanel{
 	final int hGarp = 50;//水平间隙
 	final int vGarp = 10;//垂直间隙
 	
-	HashMap<AccountPO, AccountBox> accountMap;
-	public AccountDisplayPanel
-	(InitialMainPanel mainPanel,ArrayList<AccountPO> accountPOs,JComponent viewport){
+	HashMap<InitialStockPO, StockBox> stockMap;
+	public StockDisplayPanel
+	(InitialMainPanel mainPanel,ArrayList<InitialStockPO> stockPOs,JComponent viewport){
 	
 		this.panel = mainPanel;
 		
 		setBackground(Color.white);
-		accounts = accountPOs;		
-		currentAccountNum = accounts.size();
+		this.stockPOs = stockPOs;		
+		currentAccountNum = stockPOs.size();
 
-		accountMap = new HashMap<>(accounts.size());
+		stockMap = new HashMap<>(stockPOs.size());
 		
 		this.viewport = viewport;
 		setOpaque(false);
@@ -48,7 +49,7 @@ public class AccountDisplayPanel extends JPanel{
 		flow = new FlowLayout(FlowLayout.LEFT, 50, 10);
 		setLayout(flow);
 		repaint();
-		addAccountBox();
+		addStockBox();
 		reSize();
 
 	}
@@ -66,7 +67,7 @@ public class AccountDisplayPanel extends JPanel{
 
 
 		
-		if(accountMap.keySet().isEmpty()){
+		if(stockMap.keySet().isEmpty()){
 			return;
 		}
 		//面板格式不对，还没有被完全new出来
@@ -74,7 +75,7 @@ public class AccountDisplayPanel extends JPanel{
 			return;
 		}
 		
-		reSizeByNum(accounts.size());
+		reSizeByNum(stockPOs.size());
 		
 	}
 	
@@ -89,8 +90,8 @@ public class AccountDisplayPanel extends JPanel{
 		int containerWidth = viewport.getWidth() - CityTableHeader.classIdle;
 
 		
-		int boxWidth = AccountBox.width;
-		int boxHeight = AccountBox.height;
+		int boxWidth = StockBox.width;
+		int boxHeight = StockBox.height;
 		//一行最多放几个box
 		int numberInRow = containerWidth/(boxWidth +  hGarp);
 		//有多少行
@@ -117,10 +118,10 @@ public class AccountDisplayPanel extends JPanel{
 		
 	}
 	
-	private void addAccountBox(){
-		for(AccountPO po : accounts){
-			AccountBox box = new AccountBox(po);
-			accountMap.put(po,box);
+	private void addStockBox(){
+		for(InitialStockPO po : stockPOs){
+			StockBox box = new StockBox(po);
+			stockMap.put(po,box);
 			add(box);
 		}
 	}
