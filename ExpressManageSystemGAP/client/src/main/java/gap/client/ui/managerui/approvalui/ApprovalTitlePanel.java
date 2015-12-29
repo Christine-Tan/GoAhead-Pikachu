@@ -37,7 +37,7 @@ public class ApprovalTitlePanel extends JPanel {
 		type = new GAPLabel("单据类型");
 		date = new GAPLabel("生成日期");
 		select = new JCheckBox();
-	
+	    select.setBackground(Color.WHITE);
 		allSelected = new GAPLabel("全选");
 		
 		gb = new GridBagLayout();

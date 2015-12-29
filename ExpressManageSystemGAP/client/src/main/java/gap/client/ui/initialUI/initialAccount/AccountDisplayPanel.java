@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JViewport;
 
 import gap.client.ui.initialUI.InitialMainPanel;
 import gap.client.ui.initialUI.InitialTablePanel;
@@ -24,6 +25,7 @@ public class AccountDisplayPanel extends JPanel{
 	FlowLayout flow;
 
 	InitialMainPanel panel;
+	
 	int currentAccountNum = 0;
 	
 	final int hGarp = 50;//水平间隙
@@ -64,7 +66,6 @@ public class AccountDisplayPanel extends JPanel{
 		int containerWidth = viewport.getWidth() - CityTableHeader.classIdle;
 		int containerHeight = viewport.getHeight();
 
-
 		
 		if(accountMap.keySet().isEmpty()){
 			return;
@@ -104,6 +105,10 @@ public class AccountDisplayPanel extends JPanel{
 		int width = numberInRow * (boxWidth +  hGarp);
 		int height = rowNumber * (boxHeight +  vGarp);
 		
+		System.out.println("width should be "+width);
+		System.out.println("height should be "+ height);
+		
+		
 		if(height<100){
 			height = 100;
 		}
@@ -114,6 +119,7 @@ public class AccountDisplayPanel extends JPanel{
 
 		panel.validate();
 		panel.repaint();
+		viewport.validate();
 		
 	}
 	
@@ -142,7 +148,14 @@ public class AccountDisplayPanel extends JPanel{
 
 		@Override
 		public void componentResized(ComponentEvent e) {
-			reSizeByNum(currentAccountNum);
+			reSize();
+			
+			JViewport viewport = (JViewport)e.getSource();
+			
+			System.out.println(viewport == AccountDisplayPanel.this.viewport);
+			
+			System.out.println(viewport.getWidth()+"  "+viewport.getHeight());
+			System.out.println("size change in accountBox");
 		}
 
 		@Override

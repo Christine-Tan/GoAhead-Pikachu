@@ -18,11 +18,14 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.FlushButton;
+import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 
 public class TotalPanel extends JPanel {
 	JLabel total, result;
+	FlushButton refresh_b;
 	protected static GAPTextField num_f;
 	GridBagLayout gb;
 	GridBagConstraints gcons;
@@ -40,15 +43,20 @@ public class TotalPanel extends JPanel {
 		num_f.setText(String.valueOf(orders.size()));
 		num_f.setHorizontalAlignment(JTextField.CENTER);
         num_f.closeEdit();
+        
+        refresh_b=new FlushButton();
+        
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
 		setLayout(gb);
 		gcons.insets = new Insets(20, 0, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, total, 0, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(20, 5, 10, 0);
+		gcons.insets = new Insets(20, 0, 10, 0);
 		SwingConsole.addComponent(gb, gcons, this, num_f, 1, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(20, 5, 10, 500);
+		gcons.insets = new Insets(20, 5, 10, 400);
 		SwingConsole.addComponent(gb, gcons, this, result, 2, 0, 1, 1, 0, 0);
+		gcons.insets=new Insets(20, 100, 10, 0);
+		SwingConsole.addComponent(gb, gcons, this, refresh_b, 3, 0, 1, 1, 0, 0);
 	}
 
 	public void paintComponent(Graphics g) {

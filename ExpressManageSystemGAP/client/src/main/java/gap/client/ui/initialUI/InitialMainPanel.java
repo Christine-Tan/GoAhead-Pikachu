@@ -35,20 +35,9 @@ public class InitialMainPanel extends MainPanelWithGird{
 	public void refresh() {
 		
 		InitialHistoryPO historyPO = initialBl.getCurrentInitial();
-		
-//		for(AccountPO accountPO:historyPO.accountPOs){
-//			System.out.println(accountPO.getName());
-//		}
-//		
-//		for(InitialPeoplePO peoplePO:historyPO.initialPeoplePOs){
-//			System.out.println(peoplePO.getCityName());
-//			System.out.println(peoplePO.businessClerkNum);
-//			System.out.println(peoplePO.businessHallNum);
-//		}
+		List<InitialHistoryPO> historyPOs = initialBl.getInitialHistory();
 		
 		creatInitialPanel = new CreatInitialPanel(this, historyPO);
-		
-		List<InitialHistoryPO> historyPOs = initialBl.getInitialHistory();
 		historyPanel = new InitialHistoryPanel(this, historyPOs);
 		horizontalNavi = new HorizontalNavi(this, historyPanel, creatInitialPanel);
 		
@@ -58,6 +47,7 @@ public class InitialMainPanel extends MainPanelWithGird{
 		
 		gcons.fill = GridBagConstraints.BOTH;
 		SwingConsole.addComponent(gb, gcons, this, creatInitialPanel, 0, 1, 1, 1, 1, 1);
+		validate();
 		
 	}
 

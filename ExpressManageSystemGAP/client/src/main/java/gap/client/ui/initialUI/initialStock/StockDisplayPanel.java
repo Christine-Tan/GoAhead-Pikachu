@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JViewport;
 
 import gap.client.ui.initialUI.InitialMainPanel;
 import gap.client.ui.initialUI.InitialTablePanel;
