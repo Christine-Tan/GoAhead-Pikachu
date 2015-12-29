@@ -1,9 +1,11 @@
 package gap.server.data.order;
 
+import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
+import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
 import gap.server.data.inventorydata.InventoryDataServiceImpl;
 import gap.server.data.inventorydata.InventoryDataServiceImplTest;
 import gap.server.data.util.InsertSQL;
@@ -242,9 +244,11 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			List<String> ids = getidsByOrderId(order_id);
 			InventoryDataService inventory = InventoryDataServiceImpl
 					.getInstance();
+			ExpressOrderDataService expressorderData = ExpressOrderDataServiceImpl.getInstance();
 			if (ids != null && ids.size() > 0) {
 				for (String id : ids) {
 					inventory.setExisted(id);
+					expressorderData.setStockout(id, order_id.substring(0, 7));
 				}
 			}
 
@@ -298,6 +302,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 				InventoryDataService inventoryData = InventoryDataServiceImpl
 						.getInstance();
 				inventoryData.delete(ids);
+
 				return ResultMessage.SUCCEED;
 			} else {
 				return ResultMessage.NOTFOUND;

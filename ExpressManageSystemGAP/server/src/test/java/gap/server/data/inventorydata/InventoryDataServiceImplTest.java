@@ -21,10 +21,10 @@ public class InventoryDataServiceImplTest {
 		NetInitial.initial();
 		inventory = new InventoryDataServiceImpl();
 		po[0] = null;
-		po[1] = new GoodsPO("0000000001", "A,A,1", SectorType.FLEX,
-				"2015-11-25", "00110010", "00110011", "nanjing");
-		po[2] = new GoodsPO("0000000002", "A,A,2", SectorType.CAR,
-				"2015-11-25", "00110011", "00000011", "nanjing");
+		po[1] = new GoodsPO("0000000001", "A,A,1", SectorType.CAR,
+				"2015-11-25", "00110011", "00110011", "nanjing");
+		po[2] = new GoodsPO("0000000001", "A,A,1", SectorType.CAR,
+				"2015-11-25", "00210011", "00210011", "nanjing");
 		po[3] = new GoodsPO("0000000003", "A,A,3", SectorType.TRAIN,
 				"2015-11-25", "00110012", "00000012", "nanjing");
 		po[4] = new GoodsPO("0000000004", "A,A,4", SectorType.PLANE,
@@ -97,6 +97,11 @@ public class InventoryDataServiceImplTest {
 		}
 	}
 	
+	@Test
+	public void testSetExisted(){
+		inventory.setExisted("0000000001");
+	}
+	
 	@Test 
 	public void test(){
 		try {
@@ -130,8 +135,8 @@ public class InventoryDataServiceImplTest {
 	public void testAddGoodsPO() {
 
 		try {
-			
-				System.out.println(inventory.add(po[1]).toString());
+			inventory.add(po[1]);
+			inventory.add(po[2]);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

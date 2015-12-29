@@ -1,11 +1,13 @@
 package gap.server.data.order;
 
+import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
 import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
 import gap.common.dataservice.orderdataservice.StockinOrderDataService;
 import gap.common.po.GoodsPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.util.ResultMessage;
+import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
 import gap.server.data.inventorydata.InventoryDataServiceImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SQLBuilder;
@@ -260,6 +262,10 @@ public class StockinOrderDataServiceImpl extends UnicastRemoteObject implements
 			if(POs!=null){
 				InventoryDataService inventoryData = InventoryDataServiceImpl.getInstance();
 				inventoryData.setlistExisted(POs);
+				ExpressOrderDataService expressorderData = ExpressOrderDataServiceImpl.getInstance();
+				for(GoodsPO po: POs){
+					expressorderData.setStockin(po.getExpressorder_id());
+				}
 			}
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {

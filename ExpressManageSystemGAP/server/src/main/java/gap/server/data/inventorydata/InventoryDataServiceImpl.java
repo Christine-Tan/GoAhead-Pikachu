@@ -209,7 +209,7 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			ResultSet re = NetModule.excutor
 					.excuteQuery("SELECT * FROM sector_item WHERE expressorder_id='"
-							+ expressorder_id + "';");
+							+ expressorder_id + "AND "+sectorId_f+" = "+sector_id+ "';");
 			if (re.next()) {
 				System.out.println("订单号为" + expressorder_id + "的订单已经存在");
 				return ResultMessage.EXISTED;
@@ -445,10 +445,10 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public ResultMessage setExisted(String id) {
 		try {
-			sectorUpdate.clear();
-			sectorUpdate.add(existed_f, true);
-			sectorUpdate.setKey(expressorder_id_f, id);
-			String sql = sectorUpdate.createSQL();
+			sectorItemUpdate.clear();
+			sectorItemUpdate.add(existed_f, true);
+			sectorItemUpdate.setKey(expressorder_id_f, id);
+			String sql = sectorItemUpdate.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -462,10 +462,10 @@ public class InventoryDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public ResultMessage setUnexisted(String id) {
 		try {
-			sectorUpdate.clear();
-			sectorUpdate.add(existed_f, false);
-			sectorUpdate.setKey(expressorder_id_f, id);
-			String sql = sectorUpdate.createSQL();
+			sectorItemUpdate.clear();
+			sectorItemUpdate.add(existed_f, false);
+			sectorItemUpdate.setKey(expressorder_id_f, id);
+			String sql = sectorItemUpdate.createSQL();
 			NetModule.excutor.excute(sql);
 		} catch (Exception e) {
 			e.printStackTrace();
