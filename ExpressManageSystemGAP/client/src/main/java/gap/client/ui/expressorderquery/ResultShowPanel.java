@@ -59,7 +59,7 @@ public class ResultShowPanel extends JPanel {
 		add(id_Input);
 		id_Input.submit_bu.addMouseListener(new QueryListener());
 
-		id_Input.setBounds(200, 120, 520, 70);
+		id_Input.setBounds(240, 120, 520, 70);
 		close.setBounds(960, 10, 25, 25);
 	}
 
@@ -117,7 +117,7 @@ public class ResultShowPanel extends JPanel {
 			g2d.setFont(font);
 			g2d.setColor(Colors.red);
 			int fontWidth = fontM.stringWidth(message);
-			g2d.drawString(message, (830 - fontWidth) / 2, messageY);
+			g2d.drawString(message, (900 - fontWidth) / 2, messageY);
 		}
 	}
 
