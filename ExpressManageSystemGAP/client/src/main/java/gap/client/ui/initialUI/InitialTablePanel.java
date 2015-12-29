@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.JViewport;
 
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.initialUI.InitialTable.CityTableContant;
 import gap.client.ui.initialUI.InitialTable.CityTableHeader;
@@ -41,8 +42,8 @@ public class InitialTablePanel extends PanelWithGrid{
 		JViewport viewport = mainPanel.getJsPanel().getViewport();
 		
 		accountPanel = new InitialAccountPanel(mainPanel, historyPO.accountPOs,viewport);
-		
 		stockPanel = new InitialStockPanel(mainPanel, historyPO.initialStockPOs, viewport);
+		
 		
 		gridBagConstraints.fill = GridBagConstraints.NONE;
 		
@@ -51,8 +52,10 @@ public class InitialTablePanel extends PanelWithGrid{
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, tableContant, 0, 1, 1, 1, 1, 1);
 		gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+		
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, accountPanel, 0, 2, 1, 1, 1, 1);
+		
 		SwingConsole.addComponent
 		(gridBagLayout, gridBagConstraints, this, stockPanel, 0, 3, 1, 1, 1, 1);
 		
