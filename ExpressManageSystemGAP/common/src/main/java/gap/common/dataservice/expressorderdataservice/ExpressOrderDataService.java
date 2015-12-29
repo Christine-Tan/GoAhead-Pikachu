@@ -155,6 +155,11 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public ResultMessage setRecieved(ReceiveInfo info) throws RemoteException;
 
+	public ResultMessage setStockin(String order_id) throws RemoteException;
+
+	public ResultMessage setStockout(String order_id, String ins_id)
+			throws RemoteException;
+
 	/**
 	 * 获得某个快递员某天所收运费
 	 * @param date
@@ -186,4 +191,5 @@ public interface ExpressOrderDataService extends Remote {
 	 * @throws RemoteException
 	 */
 	public ResultMessage setSubmit(String order_id) throws RemoteException;
+
 }

@@ -32,7 +32,8 @@ public class QueryFrame extends JFrame {
 
 	public static void main(String[] args) {
 		NetModule.connect();
-		new QueryFrame();
+		QueryFrame queriFrame=new QueryFrame();
+		NetModule.initial(queriFrame);
 	}
 
 	class FrameListener implements MouseListener, MouseMotionListener {

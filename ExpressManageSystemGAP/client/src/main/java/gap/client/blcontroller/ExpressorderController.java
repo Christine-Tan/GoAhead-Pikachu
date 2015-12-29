@@ -51,9 +51,10 @@ public class ExpressorderController {
 		return orders;
 	}
 
-	public static String[] getStates(String order_id)
-			{
+	public static String[] getStates(String order_id) {
 		List<String> states = expressorder.getState(order_id);
+		if (states == null)
+			return null;
 		String[] str = new String[states.size()];
 		for (int i = 0; i < states.size(); i++)
 			str[i] = states.get(i);

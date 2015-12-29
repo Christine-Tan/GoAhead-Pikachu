@@ -181,10 +181,10 @@ public class NetModule {
 				transFareDataService = (TransFareDataService) Naming
 						.lookup(RMIConfig.url
 								+ ServiceName.TRANSFARE_DATA_SERVICE);
-				
-				initialDataService = (InitialDataService)Naming
+
+				initialDataService = (InitialDataService) Naming
 						.lookup(RMIConfig.url
-								+ServiceName.INITIAL_DATA_SERVICE);
+								+ ServiceName.INITIAL_DATA_SERVICE);
 
 				if (isFirstConnect && MainFrame.messagePanel != null) {
 					MainFrame.setMessage("连接成功", MessageType.succeed, 2000);
@@ -274,7 +274,7 @@ public class NetModule {
 	private static void showMessage(String message) {
 		if (dialogShowed)
 			dialog.showMessage(message);
-		else
+		else if (MainFrame.messagePanel != null)
 			// System.out.println(message);
 			MainFrame.setMessage(message, MessageType.alram, 2000);
 	}

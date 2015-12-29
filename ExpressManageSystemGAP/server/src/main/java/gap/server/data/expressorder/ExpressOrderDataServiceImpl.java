@@ -422,6 +422,23 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
+	public ResultMessage setStockin(String order_id) throws RemoteException {
+		// TODO 自动生成的方法存根
+		ExpressOrderModifyPO modify = new ExpressOrderModifyPO(order_id, null,
+				null, false, true, true);
+		return modify(modify);
+	}
+
+	@Override
+	public ResultMessage setStockout(String order_id, String ins_id)
+			throws RemoteException {
+		// TODO 自动生成的方法存根
+		ExpressOrderModifyPO modify = new ExpressOrderModifyPO(order_id,
+				ins_id, null, false, true, true);
+		return modify(modify);
+	}
+
+	@Override
 	public double getDeliveryMoney(String date, String delivery_id)
 			throws RemoteException {
 		// TODO 自动生成的方法存根
