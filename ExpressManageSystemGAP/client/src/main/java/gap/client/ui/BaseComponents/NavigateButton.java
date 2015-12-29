@@ -57,7 +57,7 @@ public class NavigateButton extends GAPButton {
 				Color.white, Type.FORE);
 		backThread.start();
 		foreThread.start();
-		setDefautBackGroundColor(ColorAndFonts.blue);
+	//	setDefautBackGroundColor(ColorAndFonts.blue);
 		// repaint();
 		mainFrame.load(new Runnable() {
 
@@ -66,6 +66,7 @@ public class NavigateButton extends GAPButton {
 				// TODO 自动生成的方法存根
 				mainPanel.refresh();
 				mainFrame.setMainPanel(mainPanel);
+				mainFrame.validate();
 				mainFrame.repaint();
 			}
 		});

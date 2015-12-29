@@ -18,6 +18,7 @@ public class SliderPanel extends JPanel{
 	JComponent afterPanel;
 	JComponent container;
 	ResizeListener listener;
+	SlideThread slideThread;
 
 	// 两面板之间间隔
 	int idle = 50;
@@ -46,8 +47,16 @@ public class SliderPanel extends JPanel{
 	
 	public void slide(JComponent afterPanel,Direction direction){
 		
-		this.afterPanel = afterPanel;
-		Thread slideThread = new SlideThread(direction);
+		
+		if(slideThread==null){
+			this.afterPanel = afterPanel;
+			slideThread = new SlideThread(direction);
+		}else{
+			synchronized (slideThread) {
+				this.afterPanel = afterPanel;
+				slideThread = new SlideThread(direction);
+			}	
+		}
 		slideThread.start();
 		
 	}
@@ -64,6 +73,7 @@ public class SliderPanel extends JPanel{
 		
 		public SlideThread(Direction direction){
 
+			System.out.println("creat slide thread");
 			this.direction = direction;
 			
 			if(direction.equals(Direction.UP)){
@@ -83,7 +93,7 @@ public class SliderPanel extends JPanel{
 			
 		}
 		
-		public void run() {
+		public synchronized void run() {
 			double middle = height*(0.4);
 			//目前移动的距离
 			boolean hasSlowed = false;

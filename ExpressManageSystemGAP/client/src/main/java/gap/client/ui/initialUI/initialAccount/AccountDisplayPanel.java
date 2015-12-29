@@ -105,8 +105,6 @@ public class AccountDisplayPanel extends JPanel{
 		int width = numberInRow * (boxWidth +  hGarp);
 		int height = rowNumber * (boxHeight +  vGarp);
 		
-		System.out.println("width should be "+width);
-		System.out.println("height should be "+ height);
 		
 		
 		if(height<100){
@@ -149,13 +147,6 @@ public class AccountDisplayPanel extends JPanel{
 		@Override
 		public void componentResized(ComponentEvent e) {
 			reSize();
-			
-			JViewport viewport = (JViewport)e.getSource();
-			
-			System.out.println(viewport == AccountDisplayPanel.this.viewport);
-			
-			System.out.println(viewport.getWidth()+"  "+viewport.getHeight());
-			System.out.println("size change in accountBox");
 		}
 
 		@Override
