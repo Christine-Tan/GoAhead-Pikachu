@@ -141,6 +141,7 @@ public class OrderItemListPanel extends JPanel {
 			}
 
 			select = new JCheckBox();
+			select.setBackground(Color.WHITE);
 			// 对显示详细信息的按钮添加监听
 			detail = new GAPButton(">");
 			detail.setFont(ComponentStyle.defaultFont);

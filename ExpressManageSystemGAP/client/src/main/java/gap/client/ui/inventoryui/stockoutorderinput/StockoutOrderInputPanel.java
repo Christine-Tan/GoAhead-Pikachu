@@ -210,7 +210,8 @@ public class StockoutOrderInputPanel extends MainPanel {
 		
 		List<String> ids = list.getOrderIds();
 		String date = stockoutInfo.getOutDate();
-		String target_ins = stockoutInfo.getTargetIns();
+		String target_insName = stockoutInfo.getTargetIns();
+		String target_ins = InstitutionController.findByName(target_insName).getInsId();
 		String id = stockoutInfo.getId();
 		String transport = Transport.getTransportByName(stockoutInfo.getTransport()).toString();
 		StockoutOrderVO vo = new StockoutOrderVO(ids, date, target_ins, id, transport, LocalInfo.ins_id);

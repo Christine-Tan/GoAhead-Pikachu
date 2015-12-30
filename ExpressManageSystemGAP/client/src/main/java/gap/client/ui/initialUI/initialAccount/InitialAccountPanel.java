@@ -46,6 +46,7 @@ public class InitialAccountPanel extends PanelWithGrid{
 		gridBagConstraints.fill = GridBagConstraints.BOTH;
 		gridBagConstraints.anchor = GridBagConstraints.CENTER;
 		gridBagConstraints.insets = new Insets(5, 0, 5, 0);
+		
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, information, 0, 0, 1, 1, 0, 1);
 		

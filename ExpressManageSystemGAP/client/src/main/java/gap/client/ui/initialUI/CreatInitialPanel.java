@@ -35,11 +35,9 @@ public class CreatInitialPanel extends PanelWithGrid{
 		
 		gridBagConstraints.fill = GridBagConstraints.BOTH;
 		gridBagConstraints.insets = new Insets(3, 0, 3, 0);
-		JScrollPane jScrollPane = new GAPJScrollPane(tablePanel);
-		jScrollPane.setPreferredSize(new Dimension(Default.PANEL_WIDTH-20, 200));
 		
 		SwingConsole.addComponent
-			(gridBagLayout, gridBagConstraints, this, jScrollPane, 0, 0, 1, 1, 1, 1);
+			(gridBagLayout, gridBagConstraints, this, tablePanel, 0, 0, 1, 1, 1, 1);
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, buttonArea, 0, 1, 1, 1, 1, 0);
 		

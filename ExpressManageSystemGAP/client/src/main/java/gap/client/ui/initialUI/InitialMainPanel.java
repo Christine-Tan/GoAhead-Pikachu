@@ -1,9 +1,12 @@
 package gap.client.ui.initialUI;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.util.List;
 
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
@@ -12,6 +15,7 @@ import gap.client.blcontroller.InitialController;
 import gap.client.blservice.initialblservice.InitialBlService;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.util.MessageType;
 import gap.common.po.AccountPO;
@@ -26,6 +30,8 @@ public class InitialMainPanel extends MainPanelWithGird{
 	InitialHistoryPanel historyPanel;
 	HorizontalNavi horizontalNavi;
 	
+	JPanel currentPanel;
+	
 	public InitialMainPanel(MainFrame frame) {
 		super(frame);
 		initialBl = InitialController.getInstance();
@@ -34,35 +40,41 @@ public class InitialMainPanel extends MainPanelWithGird{
 
 	public void refresh() {
 		
-		InitialHistoryPO historyPO = initialBl.getCurrentInitial();
+		removeAll();
 		
-//		for(AccountPO accountPO:historyPO.accountPOs){
-//			System.out.println(accountPO.getName());
-//		}
-//		
-//		for(InitialPeoplePO peoplePO:historyPO.initialPeoplePOs){
-//			System.out.println(peoplePO.getCityName());
-//			System.out.println(peoplePO.businessClerkNum);
-//			System.out.println(peoplePO.businessHallNum);
-//		}
+		InitialHistoryPO historyPO = initialBl.getCurrentInitial();
+		List<InitialHistoryPO> historyPOs = initialBl.getInitialHistory();
 		
 		creatInitialPanel = new CreatInitialPanel(this, historyPO);
-		
-		List<InitialHistoryPO> historyPOs = initialBl.getInitialHistory();
 		historyPanel = new InitialHistoryPanel(this, historyPOs);
 		horizontalNavi = new HorizontalNavi(this, historyPanel, creatInitialPanel);
 		
 		horizontalNavi.setPreferredSize(new Dimension(500, 50));
 		
-		SwingConsole.addComponent(gb, gcons, this, horizontalNavi, 0, 0, 1, 1, 1, 0);
+		currentPanel = historyPanel;
 		
 		gcons.fill = GridBagConstraints.BOTH;
-		SwingConsole.addComponent(gb, gcons, this, creatInitialPanel, 0, 1, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, horizontalNavi, 0, 0, 1, 1, 1, 0);
+		
+		SwingConsole.addComponent(gb, gcons, this, currentPanel, 0, 1, 1, 1, 1, 1);
 		
 	}
 
 	public void jumpTo(JPanel panel) {
-		//dsa
+		
+		if(currentPanel == panel){
+			return;
+		}
+		else{
+			gb.removeLayoutComponent(currentPanel);
+			remove(currentPanel);
+			currentPanel = panel;
+			SwingConsole.addComponent(gb, gcons, this, panel, 0, 1, 1, 1, 1, 1);
+			
+			validate();
+			repaint();
+		}
+	
 	}
 
 	public void confirm(InitialHistoryPO historyPO) {
