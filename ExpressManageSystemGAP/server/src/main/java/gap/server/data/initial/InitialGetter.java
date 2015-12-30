@@ -5,6 +5,7 @@ import static gap.server.data.initial.InitialTable.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.mysql.fabric.xmlrpc.base.Array;
 
@@ -21,7 +22,7 @@ public class InitialGetter {
 		
 		HistoryMaker maker = new HistoryMaker();
 		SQLBuilder builder = new SQLBuilder();
-		builder.Select("ID").From(historyTableName);
+		builder.Select("ID","Date").From(historyTableName);
 		
 		ArrayList<InitialHistoryPO> pos = maker.getList(builder);
 		return pos;
@@ -34,9 +35,11 @@ public class InitialGetter {
 		public InitialHistoryPO getPO(ResultSet resultSet) {
 			SQLBuilder builder = new SQLBuilder();
 			int ID = 100;
+			Date date = null;
 			
 			try {
 				ID = resultSet.getInt("ID");
+				date = resultSet.getDate("Date");
 			} catch (SQLException e) {
 				return null;
 			}
@@ -60,7 +63,7 @@ public class InitialGetter {
 			ArrayList<AccountPO> accountPOs = accountMaker.getList(builder);
 			
 			InitialHistoryPO historyPO = 
-					new InitialHistoryPO(accountPOs, peoplePOs, stockPOs);
+					new InitialHistoryPO(date,accountPOs, peoplePOs, stockPOs);
 			return historyPO;
 		}
 		

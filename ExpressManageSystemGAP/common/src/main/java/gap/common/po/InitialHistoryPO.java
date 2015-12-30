@@ -3,6 +3,7 @@ package gap.common.po;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class InitialHistoryPO implements Serializable{
 	private Calendar date;
@@ -51,6 +52,15 @@ public class InitialHistoryPO implements Serializable{
 		this.accountPOs = accountPOs;
 		this.initialPeoplePOs = initialPeoplePOs;
 		this.initialStockPOs = initialStockPOs;
+		
+	}
+	
+	public InitialHistoryPO(Date date,ArrayList<AccountPO> accountPOs,
+			ArrayList<InitialPeoplePO> initialPeoplePOs,
+			ArrayList<InitialStockPO> initialStockPOs)
+	{
+		this(accountPOs, initialPeoplePOs, initialStockPOs);
+		this.date.setTime(date);
 		
 	}
 	

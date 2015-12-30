@@ -26,7 +26,7 @@ public class HistoryItem extends PanelWithGrid{
 	GAPLabel[] labels;
 	GAPLabel detailButton;
 	
-	Font font = ColorAndFonts.getEnglish(18);
+	Font font = ColorAndFonts.getEnglish(17);
 	
 	DetailListener listener;
 	
@@ -114,12 +114,23 @@ public class HistoryItem extends PanelWithGrid{
 		public void mouseReleased(MouseEvent arg0) {
 			if(detailButton.getText().equals(">")){
 				tablePanel.setVisible(true);
-				detailButton.setText("v");
-				mainPanel.validate();
-			}else if(detailButton.getText().equals("v")){
+				detailButton.setText("V");
+				
+				for(int i=1;i<labels.length;i++){
+					labels[i].setForeground(ColorAndFonts.blue);
+				}
+				
+				mainPanel.revalidate();
+				mainPanel.repaint();
+			}else if(detailButton.getText().equals("V")){
 				tablePanel.setVisible(false);
 				detailButton.setText(">");
-				mainPanel.validate();
+				for(int i=1;i<labels.length;i++){
+					labels[i].setForeground(Color.BLACK);
+				}
+				
+				mainPanel.revalidate();
+				mainPanel.repaint();
 			}
 			
 		}

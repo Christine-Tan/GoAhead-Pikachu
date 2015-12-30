@@ -23,7 +23,7 @@ public class HistoryTableHeader extends PanelWithGrid{
 	public static Font font;
 	
 	static{
-		font = ColorAndFonts.getChinese(20);
+		font = ColorAndFonts.getChinese(18);
 		
 		String[] temStrings = {
 				"",   //空出一个位置给下拉按钮

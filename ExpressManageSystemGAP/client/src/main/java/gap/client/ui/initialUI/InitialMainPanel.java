@@ -1,9 +1,12 @@
 package gap.client.ui.initialUI;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.util.List;
 
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
@@ -12,6 +15,7 @@ import gap.client.blcontroller.InitialController;
 import gap.client.blservice.initialblservice.InitialBlService;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.util.MessageType;
 import gap.common.po.AccountPO;
@@ -36,6 +40,8 @@ public class InitialMainPanel extends MainPanelWithGird{
 
 	public void refresh() {
 		
+		removeAll();
+		
 		InitialHistoryPO historyPO = initialBl.getCurrentInitial();
 		List<InitialHistoryPO> historyPOs = initialBl.getInitialHistory();
 		
@@ -47,11 +53,10 @@ public class InitialMainPanel extends MainPanelWithGird{
 		
 		currentPanel = historyPanel;
 		
+		gcons.fill = GridBagConstraints.BOTH;
 		SwingConsole.addComponent(gb, gcons, this, horizontalNavi, 0, 0, 1, 1, 1, 0);
 		
-		gcons.fill = GridBagConstraints.BOTH;
 		SwingConsole.addComponent(gb, gcons, this, currentPanel, 0, 1, 1, 1, 1, 1);
-		validate();
 		
 	}
 
@@ -61,9 +66,11 @@ public class InitialMainPanel extends MainPanelWithGird{
 			return;
 		}
 		else{
+			gb.removeLayoutComponent(currentPanel);
 			remove(currentPanel);
 			currentPanel = panel;
 			SwingConsole.addComponent(gb, gcons, this, panel, 0, 1, 1, 1, 1, 1);
+			
 			validate();
 			repaint();
 		}

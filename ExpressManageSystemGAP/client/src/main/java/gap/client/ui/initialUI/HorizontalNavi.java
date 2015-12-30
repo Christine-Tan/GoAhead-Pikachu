@@ -39,6 +39,8 @@ public class HorizontalNavi extends PanelWithGrid{
 		historyButton.addMouseListener(listener);
 		initialButton.addMouseListener(listener);
 		
+		historyButton.setSelected();
+		
 		gridBagConstraints.anchor = GridBagConstraints.CENTER;
 		SwingConsole.addComponent
 			(gridBagLayout, gridBagConstraints, this, historyButton, 0, 0, 1, 1, 0, 1);
