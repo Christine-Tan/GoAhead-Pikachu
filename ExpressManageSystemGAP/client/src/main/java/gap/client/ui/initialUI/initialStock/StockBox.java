@@ -1,5 +1,6 @@
 package gap.client.ui.initialUI.initialStock;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -33,6 +34,7 @@ import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.AccountVO;
 import gap.common.po.AccountPO;
 import gap.common.po.InitialStockPO;
+import javafx.scene.control.Tab;
 
 
 public class StockBox extends JPanel{
@@ -46,11 +48,11 @@ public class StockBox extends JPanel{
 	protected static int height = 180;
 	
 	Color background = Color.white;
-	Color occupiedColor;
+
 	
 	MyListener listener = new MyListener();
 	
-	ColorChanger changer;
+	double rate;
 	
 	public StockBox(InitialStockPO stockPO){
 
@@ -62,9 +64,8 @@ public class StockBox extends JPanel{
 			
 		setOpaque(false);
 		
-		double rate = stockPO.getOccupiedRate();
-		changer = new ColorChanger(ColorAndFonts.blue, ColorAndFonts.redOrange, rate);
-		occupiedColor = changer.change();
+		this.rate = stockPO.getOccupiedRate();
+
 		
 		Font font = ColorAndFonts.getChinese(16);
 		goodsNumLabel = new JLabel();
@@ -106,11 +107,21 @@ public class StockBox extends JPanel{
 		
 		int occupiedHeight = (int)(rectWidth*stockPO.getOccupiedRate());
 		
-		if(occupiedColor!=null){
-			graphics2d.setColor(occupiedColor);
-			int fillY = (rectWidth-occupiedHeight)+yloc;
-			graphics2d.fillRect(xloc, fillY, rectWidth, occupiedHeight);
-		}
+		
+		graphics2d.setColor(ColorAndFonts.lightBlue);
+		int fillY = (rectWidth-occupiedHeight)+yloc;
+		graphics2d.fillRect(xloc, fillY, rectWidth, occupiedHeight);
+		
+		AlphaComposite composite = AlphaComposite.getInstance
+										(AlphaComposite.SRC_OVER, (float)rate);
+		graphics2d.setComposite(composite);
+		graphics2d.setColor(Color.red);
+		graphics2d.fillRect(xloc, fillY, rectWidth, occupiedHeight);
+		
+		composite = AlphaComposite.getInstance
+						(AlphaComposite.SRC_OVER, 1f);
+		graphics2d.setComposite(composite);
+		
 		
 	}
 	

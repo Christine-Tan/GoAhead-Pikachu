@@ -5,6 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JPanel;
+
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ChooseButton;
 import gap.client.ui.paymentUI.PanelWithGrid;
@@ -49,7 +51,15 @@ public class HorizontalNavi extends PanelWithGrid{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChooseButton button = (ChooseButton)e.getSource();
-			mainPanel.jumpTo(button.getPanel());
+			JPanel panel = button.getPanel();
+			mainPanel.jumpTo(panel);
+			
+			if(panel == historyPanel){
+				initialButton.toNomal();
+			}else{
+				historyButton.toNomal();
+			}
+			repaint();
 		}
 
 		@Override

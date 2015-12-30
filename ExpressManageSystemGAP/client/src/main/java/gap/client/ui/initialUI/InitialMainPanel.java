@@ -26,6 +26,8 @@ public class InitialMainPanel extends MainPanelWithGird{
 	InitialHistoryPanel historyPanel;
 	HorizontalNavi horizontalNavi;
 	
+	JPanel currentPanel;
+	
 	public InitialMainPanel(MainFrame frame) {
 		super(frame);
 		initialBl = InitialController.getInstance();
@@ -43,16 +45,29 @@ public class InitialMainPanel extends MainPanelWithGird{
 		
 		horizontalNavi.setPreferredSize(new Dimension(500, 50));
 		
+		currentPanel = historyPanel;
+		
 		SwingConsole.addComponent(gb, gcons, this, horizontalNavi, 0, 0, 1, 1, 1, 0);
 		
 		gcons.fill = GridBagConstraints.BOTH;
-		SwingConsole.addComponent(gb, gcons, this, creatInitialPanel, 0, 1, 1, 1, 1, 1);
+		SwingConsole.addComponent(gb, gcons, this, currentPanel, 0, 1, 1, 1, 1, 1);
 		validate();
 		
 	}
 
 	public void jumpTo(JPanel panel) {
-		//dsa
+		
+		if(currentPanel == panel){
+			return;
+		}
+		else{
+			remove(currentPanel);
+			currentPanel = panel;
+			SwingConsole.addComponent(gb, gcons, this, panel, 0, 1, 1, 1, 1, 1);
+			validate();
+			repaint();
+		}
+	
 	}
 
 	public void confirm(InitialHistoryPO historyPO) {
