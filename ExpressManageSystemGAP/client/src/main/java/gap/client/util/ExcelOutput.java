@@ -17,6 +17,8 @@ public class ExcelOutput {
 	// xls的默认字符集
 	private String charSet = "gb2312";
 
+	private String numberRegex = "\\d+";
+
 	// 表头
 	String[] titles;
 
@@ -61,8 +63,11 @@ public class ExcelOutput {
 		if (items.length != column)
 			throw new Exception("所传数据小于列数");
 		String[] row = new String[items.length];
-		for (int i = 0; i < row.length; i++)
+		for (int i = 0; i < row.length; i++) {
 			row[i] = items[i].toString();
+			if (row[i].matches(numberRegex))
+				row[i] = "'" + row[i];
+		}
 		datas.add(row);
 	}
 
@@ -110,9 +115,9 @@ public class ExcelOutput {
 	public static void main(String[] args) {
 		try {
 			ExcelOutput excel = new ExcelOutput("表头1", "表头2", "表头3");
-			excel.appendRow("yangyanfei", 2, "test1");
+			excel.appendRow("0000000001", 2, "test1");
 			excel.appendRow("txy", 5, "test2");
-			excel.export("D:\\", "test1.xls");
+			excel.export("D:\\", "test1.xlsx");
 		} catch (UnsupportedEncodingException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
