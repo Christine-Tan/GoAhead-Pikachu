@@ -123,7 +123,8 @@ public class OrderPanel extends JPanel {
 			orders = ExpressorderController
 					.getCurrentOrders(CurrentOrderType.LOAD);
 		} else {
-			orders = StockoutOrderController.getUnloadStockOutOrder();
+			orders = ExpressorderController
+					.getCurrentOrders(CurrentOrderType.ALL);
 		}
 		for (ExpressOrderVO vo : orders) {
 			addItem(vo);
