@@ -19,9 +19,21 @@ public class AdminInitialler {
    
 	public static void initialAdmin(MainFrame mainFrame){
 		NavigateBar navBar=new NavigateBar(mainFrame);
-		NavigateButton user=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.ADMINISTRATOR),navBar, "用户管理");
-		navBar.addButton(user);
-		navBar.setSelect(user);
+		NavigateButton admin=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.ADMINISTRATOR),navBar, "管理员");
+		NavigateButton accounter=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.ACCOUNTER),navBar, "财务人员");
+		NavigateButton busclerk=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.BUSSINESSCLERK),navBar, "营业厅业务员");
+		NavigateButton cenclerk=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.CENTERCLERK),navBar, "中转中心业务员");
+		NavigateButton delivery=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.DELIVERY),navBar, "快递员");
+		NavigateButton inventory=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.INVENTORY),navBar, "仓库管理人员");
+		NavigateButton manager=new NavigateButton(mainFrame, new UserPanel(mainFrame,UserType.MANAGER),navBar, "总经理");
+		navBar.addButton(admin);
+		navBar.addButton(accounter);
+		navBar.addButton(busclerk);
+		navBar.addButton(cenclerk);
+		navBar.addButton(delivery);
+		navBar.addButton(inventory);
+		navBar.addButton(manager);
+		navBar.setSelect(admin);
 		mainFrame.setVisible(true);
 		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
 	} 
