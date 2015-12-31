@@ -1,15 +1,15 @@
 package gap.client.bl.log;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import gap.client.blservice.logblservice.LogService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.LogDataController;
 import gap.client.vo.LogVO;
 import gap.common.po.LogPO;
+import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Log implements LogService {
 	LogDataController controller;
@@ -31,21 +31,25 @@ public class Log implements LogService {
 		return logs;
 	}
 
-	public HashMap<String, List<LogVO>> getLogByDate(){
-		logByDate=new HashMap<String,List<LogVO>>();
-		logs=this.getLogList();
-		for(int i=logs.size()-1;i>=0;i--){
-			String date=logs.get(i).getDate().substring(0, 11);
-			if(logByDate.containsKey(date)){
+	public HashMap<String, List<LogVO>> getLogByDate() {
+		logByDate = new HashMap<String, List<LogVO>>();
+		logs = this.getLogList();
+		for (int i = logs.size() - 1; i >= 0; i--) {
+			String date = logs.get(i).getDate().substring(0, 11);
+			if (logByDate.containsKey(date)) {
 				logByDate.get(date).add(logs.get(i));
-			}else{
-				List<LogVO> log=new ArrayList<>();
+			} else {
+				List<LogVO> log = new ArrayList<>();
 				logByDate.put(date, log);
 				logByDate.get(date).add(logs.get(i));
-			}			
+			}
 		}
-		
-		return logByDate;		
+
+		return logByDate;
+	}
+
+	public boolean addLog(LogPO logPO) {
+		return controller.addLog(logPO);
 	}
 
 }
