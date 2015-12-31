@@ -45,11 +45,12 @@ public class NavigateButton extends GAPButton {
 	void select() {
 		isSelect = true;
 
-		setDefautFontColor(Color.white);
+//		setDefautFontColor(Color.white);
 		setEnterFontColor(Color.white);
 		setPressFontColor(Color.white);
-		// setBackground(ColorAndFonts.blue);
-		// setForeground(Color.white);
+//		setDefautBackGroundColor(ColorAndFonts.blue);
+//		setBackground(ColorAndFonts.blue);
+//		setForeground(Color.white);
 
 		AnimationThread backThread = new AnimationThread(getBackground(),
 				ColorAndFonts.blue, Type.BACK);
@@ -57,8 +58,10 @@ public class NavigateButton extends GAPButton {
 				Color.white, Type.FORE);
 		backThread.start();
 		foreThread.start();
-	//	setDefautBackGroundColor(ColorAndFonts.blue);
-		// repaint();
+//	
+//		setBackground(ColorAndFonts.blue);
+//		setForeground(Color.white);
+		
 		mainFrame.load(new Runnable() {
 
 			@Override
@@ -81,8 +84,8 @@ public class NavigateButton extends GAPButton {
 	 */
 	void deSelect() {
 		isSelect = false;
-		setDefautBackGroundColor(Color.white);
-		setDefautFontColor(Color.BLACK);
+	//	setDefautBackGroundColor(Color.white);
+	//	setDefautFontColor(Color.BLACK);
 		setEnterFontColor(ColorAndFonts.blue.darker());
 		setPressFontColor(ColorAndFonts.otherDarkBulue);
 		// setBackground(Color.white);
@@ -124,10 +127,12 @@ public class NavigateButton extends GAPButton {
 				switch (type) {
 				case BACK:
 					setBackground(currentColor);
+					setDefautBackGroundColor(currentColor);
 					break;
 
 				case FORE:
 					setForeground(currentColor);
+					setDefautFontColor(currentColor);
 					break;
 				}
 

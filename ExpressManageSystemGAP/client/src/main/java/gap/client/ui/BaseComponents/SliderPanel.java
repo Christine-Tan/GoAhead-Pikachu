@@ -73,7 +73,6 @@ public class SliderPanel extends JPanel{
 		
 		public SlideThread(Direction direction){
 
-			System.out.println("creat slide thread");
 			this.direction = direction;
 			
 			if(direction.equals(Direction.UP)){

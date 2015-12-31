@@ -162,6 +162,9 @@ public class MainFrame extends JFrame {
 			sliderPanel.setBeginPanel(panel.getJsPanel());
 			validate();
 		}
+		else if(mainPanel == panel){
+			return;
+		}
 		else{
 			
 			
