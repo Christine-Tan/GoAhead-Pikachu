@@ -37,7 +37,7 @@ public class LogPanel extends MainPanel {
 	@Override
 	public void refresh() {
 		// TODO Auto-generated method stub
-
+		listItemPanel.refresh();
 	}
 
 }

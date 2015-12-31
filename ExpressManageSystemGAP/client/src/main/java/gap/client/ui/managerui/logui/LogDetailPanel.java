@@ -1,6 +1,7 @@
 package gap.client.ui.managerui.logui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,6 +11,7 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.vo.LogVO;
@@ -36,7 +38,8 @@ public class LogDetailPanel extends JPanel {
 		setLayout(gbd);
 		gcons.insets = new Insets(5, 100, 5, 100);
 		for (int i = 0; i < detailItems.size(); i++) {
-			SwingConsole.addComponent(gbd, gcons, this, detailItems.get(i), 0, i, 1, 1, 3, 0);
+			SwingConsole.addComponent(gbd, gcons, this, detailItems.get(i), 0,
+					i, 1, 1, 3, 0);
 		}
 	}
 
@@ -47,11 +50,14 @@ public class LogDetailPanel extends JPanel {
 		GridBagLayout gbdi;
 
 		public DetailItem(LogVO log) {
-			setBackground(Color.WHITE);
-			time = log.getDate().substring(10, log.getDate().length()-1);
+			setBackground(Color.red);
+			
+			setPreferredSize(new Dimension(Default.PANEL_WIDTH - 100, 40));
+			time = log.getDate().substring(10, log.getDate().length() - 1);
 			user = log.getUser().getUserName();
 			operation = log.getOperate();
-			System.out.println("time=" + time + "user=" + user + "operate=" + operation);
+			System.out.println("time=" + time + "user=" + user + "operate="
+					+ operation);
 			time_jl = new GAPLabel(time);
 			user_jl = new GAPLabel(user);
 			operation_jl = new GAPLabel(operation);
@@ -60,11 +66,14 @@ public class LogDetailPanel extends JPanel {
 			gcons = new GridBagConstraints();
 			setLayout(gbdi);
 			gcons.insets = new Insets(5, 20, 5, 50);
-			SwingConsole.addComponent(gbdi, gcons, this, time_jl, 0, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbdi, gcons, this, time_jl, 0, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(5, 30, 5, 30);
-			SwingConsole.addComponent(gbdi, gcons, this, user_jl, 1, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbdi, gcons, this, user_jl, 1, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(5, 30, 5, 0);
-			SwingConsole.addComponent(gbdi, gcons, this, operation_jl, 2, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbdi, gcons, this, operation_jl, 2, 0, 1,
+					1, 0, 0);
 		}
 
 	}

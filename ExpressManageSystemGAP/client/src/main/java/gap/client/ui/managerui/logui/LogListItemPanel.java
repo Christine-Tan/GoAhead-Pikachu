@@ -32,12 +32,20 @@ public class LogListItemPanel extends JPanel {
 		setBackground(Color.WHITE);
 		gb = new GridBagLayout();
 		gcons = new GridBagConstraints();
-
 		items = new ArrayList<>();
+
+		refresh();
+
+	}
+
+	public void refresh() {
+		removeAll();
+		items.clear();
 		logMap = LogController.getLogByDate();
-		Iterator it = logMap.entrySet().iterator();
+		Iterator<?> it = logMap.entrySet().iterator();
 		while (it.hasNext()) {
-			Map.Entry<String, List<LogVO>> entry = (Map.Entry<String, List<LogVO>>) it.next();
+			Map.Entry<String, List<LogVO>> entry = (Map.Entry<String, List<LogVO>>) it
+					.next();
 			String date = entry.getKey();
 			List<LogVO> logs = entry.getValue();
 			items.add(new ItemPanel(date, logs));
@@ -49,7 +57,8 @@ public class LogListItemPanel extends JPanel {
 		setLayout(gb);
 		gcons.insets = new Insets(10, 50, 5, 300);
 		for (int i = 0; i < items.size(); i++) {
-			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
+					1, 1, 0);
 		}
 	}
 
@@ -85,11 +94,14 @@ public class LogListItemPanel extends JPanel {
 			gcons = new GridBagConstraints();
 			setLayout(gbi);
 			gcons.insets = new Insets(5, 10, 5, 10);
-			SwingConsole.addComponent(gbi, gcons, this, detail_b, 0, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbi, gcons, this, detail_b, 0, 0, 1, 1,
+					0, 0);
 			gcons.insets = new Insets(5, 10, 5, 400);
-			SwingConsole.addComponent(gbi, gcons, this, date_jl, 1, 0, 1, 1, 0, 0);
+			SwingConsole.addComponent(gbi, gcons, this, date_jl, 1, 0, 1, 1, 0,
+					0);
 			gcons.insets = new Insets(5, 10, 5, 10);
-			SwingConsole.addComponent(gbi, gcons, this, detailPanel, 0, 1, 2, 1, 0, 0);
+			SwingConsole.addComponent(gbi, gcons, this, detailPanel, 0, 1, 2,
+					1, 0, 0);
 
 			closeDetail();
 		}
