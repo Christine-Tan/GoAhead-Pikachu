@@ -6,6 +6,7 @@ import java.util.Map;
 
 import gap.client.bl.log.Log;
 import gap.client.vo.LogVO;
+import gap.common.po.LogPO;
 
 public class LogController {
 	private static Log logManage = new Log();
@@ -20,5 +21,10 @@ public class LogController {
 	
 	public static HashMap<String, List<LogVO>> getLogByDate(){
 		return logManage.getLogByDate();
+	}
+	
+	public static boolean addLog(LogPO logPO){
+		return logManage.addLog(logPO);
+		
 	}
 }

@@ -5,8 +5,6 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.LogDataController;
 import gap.client.vo.LogVO;
 import gap.common.po.LogPO;
-import gap.common.util.ResultMessage;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +46,9 @@ public class Log implements LogService {
 		return logByDate;
 	}
 
+	@Override
 	public boolean addLog(LogPO logPO) {
+		// TODO Auto-generated method stub
 		return controller.addLog(logPO);
 	}
 

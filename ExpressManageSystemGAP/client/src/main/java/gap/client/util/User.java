@@ -47,6 +47,12 @@ public class User {
 		this.gender = gender;
 	}
 
+	public UserPO toUserPO(){
+		UserPO po=new UserPO(userId, userName, password, name, type, gender,
+				insId);
+		return po;
+	}
+	
 	public UserVO toUserVO(String insname) {
 		return new UserVO(userId, userName, password, name, type, gender,
 				insname);
