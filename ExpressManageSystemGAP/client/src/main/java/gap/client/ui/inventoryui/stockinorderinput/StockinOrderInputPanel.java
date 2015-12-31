@@ -103,19 +103,20 @@ public class StockinOrderInputPanel extends MainPanel {
 									MessageType.succeed, 3000);
 //							System.out.println("设置入库" + id);
 							StockinOrderController.setOrderStockin(id);
-							String ins_id = LocalInfo.getIns_ID();
-//							checkAlarm(InventoryController.alarm(ins_id+"1",ins_id));
-//							checkAlarm(InventoryController.alarm(ins_id+"2",ins_id));
-//							checkAlarm(InventoryController.alarm(ins_id+"3",ins_id));
-//							checkAlarm(InventoryController.alarm(ins_id+"0",ins_id));
 							refresh();
+							String ins_id = LocalInfo.getIns_ID();
+							checkAlarm(InventoryController.alarm(ins_id+"1",ins_id));
+							checkAlarm(InventoryController.alarm(ins_id+"2",ins_id));
+							checkAlarm(InventoryController.alarm(ins_id+"3",ins_id));
+							checkAlarm(InventoryController.alarm(ins_id+"0",ins_id));
+
 						} else {
 							MainFrame.setMessage("入库单为空", MessageType.alram,
 									3000);
 						}
 					}
 				});
-
+				
 			}
 		});
 
@@ -124,7 +125,8 @@ public class StockinOrderInputPanel extends MainPanel {
 	public void checkAlarm(String s){
 		
 		if(s!=null){
-			MainFrame.setMessage(s+"报警！！！超出警戒值啦！！！", MessageType.alram, 3000);
+			String[] splits = s.split(" ");
+			AlarmDialog alarm = new AlarmDialog(mainFrame, splits[0], Double.parseDouble(splits[1]));
 		}
 		
 		

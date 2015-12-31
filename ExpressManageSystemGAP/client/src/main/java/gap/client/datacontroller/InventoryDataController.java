@@ -93,7 +93,7 @@ public class InventoryDataController {
 		return null;
 	}
 	
-	public List<GoodsPO> getOneTypeSector(String sector_id){
+	public List<GoodsPO> getOneTypeSector(String sector_id,String ins_id){
 		try {
 			return inventorydataservice.getOneTypeSector(sector_id);
 		} catch (RemoteException e) {

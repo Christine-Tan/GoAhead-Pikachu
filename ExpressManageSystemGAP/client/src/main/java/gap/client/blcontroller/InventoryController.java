@@ -34,6 +34,10 @@ public class InventoryController {
 		return inventory.getOneSector(ins_id, sector_id);
 	}
 	
+	public static List<GoodsVO> getOneTypeSector(String sector_id,String ins_id){
+		return inventory.getOneTypeSector(sector_id,ins_id);
+	}
+	
 	public static ResultMessage Stockin(GoodsVO vo){
 		return inventory.stockIn(vo);
 	}
@@ -64,5 +68,9 @@ public class InventoryController {
 	
 	public static String alarm(String sector_id,String ins_id){
 		return inventory.Alarm(sector_id, ins_id);
+	}
+	
+	public static ResultMessage exportExcel(String path){
+		return inventory.exportExcel(path);
 	}
 }

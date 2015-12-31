@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.checkstock;
 
+import gap.client.blcontroller.InventoryController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.ColorAndFonts;
@@ -8,6 +9,7 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ChooseButton;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.util.LocalInfo;
+import gap.client.util.MessageType;
 import gap.client.util.WareHouseSize;
 
 import java.awt.Color;
@@ -16,9 +18,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JFileChooser;
 
 public class CheckStockPanel extends MainPanel {
 	StockCheckButtonArea buttonArea;
@@ -69,15 +71,12 @@ public class CheckStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "2");
-//				list.setVisible(true);
+
 				choose.flex.toNomal();
 				choose.car.toNomal();
 				choose.plane.toNomal();
 				reLayout();
-				
-//				MainFrame.paint(self);
 			}
 		});
 
@@ -86,13 +85,13 @@ public class CheckStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				list.removeAll();
+
 				list = new ListPanel(shelves, LocalInfo.ins_id + "3");
 				choose.flex.toNomal();
 				choose.train.toNomal();
 				choose.car.toNomal();
 				reLayout();
-//				MainFrame.paint(self);
+
 			}
 		});
 		
@@ -101,27 +100,61 @@ public class CheckStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				list.removeAll();
 				list = new ListPanel(shelves, LocalInfo.ins_id + "0");
 				choose.car.toNomal();
 				choose.train.toNomal();
 				choose.plane.toNomal();
 				reLayout();
-//				MainFrame.paint(self);
+
+			}
+		});
+		
+		buttonArea.confirm.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				mainFrame.load(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						refresh();
+						MainFrame.setMessage("统计成功", MessageType.succeed, 2000);
+					}
+				});
+			}
+		});
+		
+		buttonArea.export.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				JFileChooser jfilech = new JFileChooser();
+				jfilech.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				jfilech.showOpenDialog(null);
+				File f = jfilech.getSelectedFile();
+				if(f!=null){
+					final String path = f.getAbsolutePath();
+					System.out.println(path);
+					mainFrame.load(new Runnable() {
+						public void run() {
+							InventoryController.exportExcel(path);
+						}
+					});
+					
+					MainFrame.setMessage("报表导出成功", MessageType.succeed, 3000);
+				}
+				
+				
 			}
 		});
 
 	}
 	
-	public void paint(CheckStockPanel panel){
-		for(int i = 0;i<panel.list.items.size();i++){
-			ListItem item = panel.list.items.get(i);
-			for(int j = 0;j<item.shelf.length;j++){
-				Unit unit = item.shelf[j];
-				unit.icon.paint();
-			}
-		}
-	}
+
 	
 	public void setButtonNomal(ChooseButton button){
 		button.setBackground(Color.white);
@@ -132,15 +165,12 @@ public class CheckStockPanel extends MainPanel {
 	
 	public void reLayout(){
 		removeAll();
-//		JPanel panel = new JPanel();
-//		panel.setBackground(Color.white);
 		SwingConsole.addComponent(gb, gcons, this, choose, 0, 0, 1, 1, 1, 0);
 		
 		GAPJScrollPane js = new GAPJScrollPane(list);
 		js.setPreferredSize(new Dimension(Default.PANEL_WIDTH,400));
 		
 		SwingConsole.addComponent(gb, gcons, this, js, 0, 1, 1, 1, 1, 1);
-//		SwingConsole.addComponent(gb, gcons, this, panel, 0, 2, 1, 1, 1, 0.1);
 		SwingConsole
 				.addComponent(gb, gcons, this, buttonArea, 0, 3, 1, 1, 1, 0);
 		mainFrame.validate();

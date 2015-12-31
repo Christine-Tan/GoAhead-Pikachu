@@ -58,7 +58,23 @@ public class InventoryDataServiceImplTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
+	@Test 
+	public void testGetOneTypeSector(){
+		try {
+			List<GoodsPO> list = inventory.getOneTypeSector("00110011");
+			if(list==null){
+				System.out.println("gg");
+			}else{
+				for(GoodsPO po:list){
+					System.out.println(po.getExpressorder_id());
+				}
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	@Test
 	public void testGetOneSector() {
 		try {
