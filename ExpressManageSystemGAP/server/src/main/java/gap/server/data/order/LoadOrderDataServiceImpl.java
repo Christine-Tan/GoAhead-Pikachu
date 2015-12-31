@@ -2,9 +2,12 @@ package gap.server.data.order;
 
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.orderdataservice.LoadOrderDataService;
+import gap.common.dataservice.transFareDataService.TransFareDataService;
 import gap.common.po.LoadOrderPO;
+import gap.common.po.TransFarePO;
 import gap.common.util.ResultMessage;
 import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
+import gap.server.data.transFareData.TransFareDataImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.UpdateSQL;
 import gap.server.initial.NetModule;
@@ -23,7 +26,7 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			guard_id_f = "guard_id", car_num_f = "car_num", time_f = "time",
 			passed_f = "passed", target_ins_f = "target_ins_id",
 			departure_ins_f = "departure_ins_id", comment_f = "comment",
-			isSetArrived_f = "isSetArrived";
+			isSetArrived_f = "isSetArrived", price_f = "price";
 	private String item_expressorder_id_f = "expressorder_id",
 			item_order_id_f = "order_id";
 	private InsertSQL orderInsert, itemInsert;
@@ -59,6 +62,7 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			orderInsert.add(target_ins_f, po.getTargetins_id());
 			orderInsert.add(departure_ins_f, po.getDepartureins_id());
 			orderInsert.add(comment_f, po.getComment());
+			orderInsert.add(price_f, po.getPrice());
 			NetModule.excutor.excute(orderInsert.createSQL());
 			List<String> orders = po.getOrders();
 			ExpressOrderDataService expressOrder = ExpressOrderDataServiceImpl
@@ -109,6 +113,14 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			re.next();
 			String target_ins_id = re.getString(target_ins_f);
+
+			String driver_id = re.getString(driver_id_f);
+			double price = re.getDouble(price_f);
+			TransFarePO transFare = new TransFarePO(price, order_id, driver_id);
+			TransFareDataService transFareData = TransFareDataImpl
+					.getInstance();
+			transFareData.addTransFare(transFare);
+
 			sql = "SELECT * FROM " + itemTable + " WHERE " + item_order_id_f
 					+ " = '" + order_id + "';";
 			ExpressOrderDataService orderData = ExpressOrderDataServiceImpl
@@ -221,10 +233,12 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 					.getString(time_f), target_ins = re.getString(target_ins_f), departure_ins = re
 					.getString(departure_ins_f), comment = re
 					.getString(comment_f);
+			double price = re.getDouble(price_f);
 			List<String> orders = getByOrder_id(order_id);
 			LoadOrderPO loadOrder = new LoadOrderPO(order_id, time, car_num,
 					departure_ins, target_ins, driver_id, guard_id, orders,
 					comment);
+			loadOrder.setPrice(price);
 			return loadOrder;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块

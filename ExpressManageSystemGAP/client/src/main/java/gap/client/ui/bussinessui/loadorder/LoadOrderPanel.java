@@ -51,8 +51,9 @@ public class LoadOrderPanel extends MainPanel {
 							MainFrame.setMessage("请选择订单", MessageType.alram,
 									2000);
 						} else {
-							ResultMessage re = LoadOrderController
-									.save(getLoadOrder());
+							LoadOrderController.setPrice(vo);
+							ResultMessage re = LoadOrderController.save(vo);
+							System.out.println("装车单的价格为：" + vo.price);
 							if (re.equals(ResultMessage.SUCCEED)) {
 								MainFrame.setMessage("生成成功",
 										MessageType.succeed, 2000);

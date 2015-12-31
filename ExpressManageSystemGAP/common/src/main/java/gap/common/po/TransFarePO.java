@@ -6,12 +6,12 @@ public class TransFarePO implements Serializable {
 
 	private double fare;
 	private String orderID;
-	private String carID;
+	private String driverID;
 
 	public TransFarePO(double fare, String orderID, String carID) {
 		this.fare = fare;
 		this.orderID = orderID;
-		this.carID = carID;
+		this.driverID = carID;
 
 	}
 
@@ -23,12 +23,12 @@ public class TransFarePO implements Serializable {
 		this.fare = fare;
 	}
 
-	public String getCarID() {
-		return carID;
+	public String getDriverID() {
+		return driverID;
 	}
 
-	public void setCarID(String carID) {
-		this.carID = carID;
+	public void setDriverID(String carID) {
+		this.driverID = carID;
 	}
 
 	public String getOrderID() {

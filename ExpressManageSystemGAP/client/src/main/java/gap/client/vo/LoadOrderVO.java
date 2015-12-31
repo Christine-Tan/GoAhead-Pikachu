@@ -9,6 +9,8 @@ public class LoadOrderVO {
 			driver_id, guard_id, comment;
 	public List<String> orders;
 
+	public double price;
+
 	public LoadOrderVO(String order_id, String date, String car_number,
 			String departureins_id, String targetins_id, String driver_id,
 			String guard_id, List<String> orders) {
@@ -37,12 +39,14 @@ public class LoadOrderVO {
 		this.guard_id = po.getGuard_id();
 		this.orders = po.getOrders();
 		this.comment = po.getComment();
+		this.price = po.getPrice();
 	}
 
 	public LoadOrderPO toPO() {
 		LoadOrderPO po = new LoadOrderPO(order_id, date, car_id,
 				departureins_id, targetins_id, driver_id, guard_id, orders,
 				comment);
+		po.setPrice(price);
 		return po;
 	}
 

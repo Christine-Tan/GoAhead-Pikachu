@@ -9,6 +9,8 @@ public class LoadOrderPO implements Serializable {
 			driver_id, guard_id, comment;
 	private List<String> orders;
 
+	private double price;
+
 	public LoadOrderPO(String order_id, String date, String car_number,
 			String departureins_id, String targetins_id, String driver_id,
 			String guard_id, List<String> orders, String comment) {
@@ -22,6 +24,14 @@ public class LoadOrderPO implements Serializable {
 		this.guard_id = guard_id;
 		this.orders = orders;
 		this.comment = comment;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public String getDate() {

@@ -28,7 +28,7 @@ public class TransFarePayee extends Payee {
 		double money = transFarePO.getFare();
 
 		PayeeVO vo = new PayeeVO(type, transFarePO.getOrderID(),
-				transFarePO.getCarID(), null, money, accountName, entry, note);
+				transFarePO.getDriverID(), null, money, accountName, entry, note);
 
 		return vo;
 	}
