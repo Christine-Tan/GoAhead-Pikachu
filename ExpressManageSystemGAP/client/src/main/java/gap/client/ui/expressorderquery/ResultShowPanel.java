@@ -1,7 +1,6 @@
 package gap.client.ui.expressorderquery;
 
 import gap.client.blcontroller.ExpressorderController;
-import gap.client.exception.InvalidInputException;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.expressorderquery.components.ArcAndString;
 import gap.client.ui.expressorderquery.components.Colors;
@@ -18,7 +17,11 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Line2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,8 +34,11 @@ import javax.swing.JPanel;
 public class ResultShowPanel extends JPanel {
 	int defautinterval = 90, defautstart = 150, defautY = 370, messageY = 220;
 	double currentEnd = defautstart;
-	static boolean show;
 
+	private String imagePath = "images\\expressorderquery\\back.png";
+	private BufferedImage backImage;
+
+	static boolean show;
 	static String message = "";
 
 	ArcAndString[] arcAndStrings;
@@ -48,8 +54,15 @@ public class ResultShowPanel extends JPanel {
 
 	public ResultShowPanel() {
 		setLayout(null);
-		setOpaque(false);
+//		setOpaque(false);
 		setBorder(new GAPBorder());
+
+		try {
+			backImage = ImageIO.read(new File(imagePath));
+		} catch (IOException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
 
 		id_Input = new IdInputCompo(this);
 
@@ -96,8 +109,13 @@ public class ResultShowPanel extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = RenderSetter.OpenRender(g);
+
+
+
 		g2d.setColor(Color.white);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
+
+//		g2d.drawImage(backImage, 0, 0, getWidth(), getHeight(), null);
 
 		g2d.setColor(Colors.blue);
 		g2d.setStroke(new BasicStroke(5));
