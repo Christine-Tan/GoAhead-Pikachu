@@ -32,12 +32,12 @@ public class InventoryService_driver {
 		StockCountVO stockCheck =  inventory.countStock();
 		StockObVO stockOb = inventory.observeStock("20151025","20151026");
 		ArrayList<String> list = new ArrayList<String>();
-		list.add(order1.getOrder_id());
-		list.add(order2.getOrder_id());
+		list.add(order1.getID());
+		list.add(order2.getID());
 		StockinOrderVO stockinOrder = inventory.createStockinOrder(list);
 		
-		GoodsVO goods1 = new GoodsVO(order1.getOrder_id(), "A区甲排1位", "car", "20151026");
-		ExpressOrderVO goods3 = inventory.getSingleExpressOrder(order1.getOrder_id());
+		GoodsVO goods1 = new GoodsVO(order1.getID(), "A区甲排1位", "car", "20151026");
+		ExpressOrderVO goods3 = inventory.getSingleExpressOrder(order1.getID());
 		if(inventory.initialadd(goods1).equals(ResultMessage.SUCCEED))
 			System.out.println("add succeed");
 		goods1.setSector("plane");
@@ -56,8 +56,8 @@ public class InventoryService_driver {
 		
 		
 		ArrayList<ExpressOrderVO> orderlist = new ArrayList<ExpressOrderVO>();
-		inventory.stockOut("上海", "car", order1.getOrder_id(), null);
-		inventory.stockOut("上海", "car", order2.getOrder_id(), null);
+		inventory.stockOut("上海", "car", order1.getID(), null);
+		inventory.stockOut("上海", "car", order2.getID(), null);
 		StockoutOrderVO stockoutOrder = inventory.createStockoutOrder(orderlist);
 		
 		System.out.println(inventory.Alarm());

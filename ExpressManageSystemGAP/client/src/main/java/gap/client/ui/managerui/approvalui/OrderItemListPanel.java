@@ -96,42 +96,42 @@ public class OrderItemListPanel extends JPanel {
 			date.closeEdit();
 			if (order instanceof ArrivedOrderPO) {
 				ArrivedOrderPO arrivedOrder = (ArrivedOrderPO) order;
-				order_id.setText(arrivedOrder.getId());
+				order_id.setText(arrivedOrder.getID());
 				type.setText("到达单");
 				date.setText(arrivedOrder.getTime());
 			} else if (order instanceof BillOrderPO) {
 				BillOrderPO billOrder = (BillOrderPO) order;
-				order_id.setText(billOrder.getId());
+				order_id.setText(billOrder.getID());
 				type.setText("收款单");
 				date.setText(billOrder.getBillDate().toString());
 			} else if (order instanceof DeliveryOrderPO) {
 				DeliveryOrderPO deliveryOrder = (DeliveryOrderPO) order;
-				order_id.setText(deliveryOrder.getId());
+				order_id.setText(deliveryOrder.getID());
 				type.setText("派件单");
 				date.setText(deliveryOrder.getTime());
 			} else if (order instanceof ExpressOrderPO) {
 				ExpressOrderPO expressOrder = (ExpressOrderPO) order;
-				order_id.setText(expressOrder.getOrder_id());
+				order_id.setText(expressOrder.getID());
 				type.setText("寄件单");
 				date.setText(expressOrder.getTime());
 			} else if (order instanceof LoadOrderPO) {
 				LoadOrderPO loadOrder = (LoadOrderPO) order;
-				order_id.setText(loadOrder.getOrder_id());
+				order_id.setText(loadOrder.getID());
 				type.setText("装车单");
 				date.setText(loadOrder.getDate());
 			} else if (order instanceof StockinOrderPO) {
 				StockinOrderPO stockinOrder = (StockinOrderPO) order;
-				order_id.setText(stockinOrder.getId());
+				order_id.setText(stockinOrder.getID());
 				type.setText("入库单");
 				date.setText(stockinOrder.getInDate());
 			} else if (order instanceof StockoutOrderPO) {
 				StockoutOrderPO stockoutOrder = (StockoutOrderPO) order;
-				order_id.setText(stockoutOrder.getId());
+				order_id.setText(stockoutOrder.getID());
 				type.setText("出库单");
 				date.setText(stockoutOrder.getOutDate());
 			} else if (order instanceof PaymentListPO) {
 				PaymentListPO paymentList = (PaymentListPO) order;
-				order_id.setText(paymentList.getPaymentID());
+				order_id.setText(paymentList.getID());
 				type.setText("付款单");
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				String dateString = format.format(paymentList.getDate().getTime());

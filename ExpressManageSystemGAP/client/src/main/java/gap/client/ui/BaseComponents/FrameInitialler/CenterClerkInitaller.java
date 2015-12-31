@@ -9,14 +9,14 @@ import gap.client.ui.bussinessui.drivermanage.DriverManagePanel;
 import gap.client.ui.bussinessui.loadorder.LoadOrderPanel;
 import gap.client.util.MessageType;
 
-public class CenterClerkInitaller {
+public class CenterClerkInitaller extends FrameInitialler{
 
 	/**
 	 * 初始化中转中心业务员界面
 	 *
 	 * @param mainFrame
 	 */
-	public static void initialCenterClerk(MainFrame mainFrame) {
+	protected void specificInitial(MainFrame mainFrame) {
 		NavigateBar navBar = mainFrame.getNavigateBar();
 		NavigateButton arrivedOrder = new NavigateButton(mainFrame,
 				new ArrivedOrderPanel(mainFrame), navBar, "制定到达单");
@@ -33,6 +33,6 @@ public class CenterClerkInitaller {
 		navBar.addButton(carManage);
 		navBar.setSelect(arrivedOrder);
 		mainFrame.setVisible(true);
-		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
+
 	}
 }

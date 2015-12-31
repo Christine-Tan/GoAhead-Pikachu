@@ -29,7 +29,7 @@ public class PaymentListPO implements Receipt {
 		this.payDate = payDate;
 	}
 
-	public String getPaymentID() {
+	public String getID() {
 		return paymentID;
 	}
 

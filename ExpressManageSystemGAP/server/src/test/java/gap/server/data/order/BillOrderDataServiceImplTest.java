@@ -50,7 +50,7 @@ public class BillOrderDataServiceImplTest {
 		BillOrderPO bill;
 		try {
 			bill = billorder.find("00100012015112600001");
-			System.out.println(bill.getId() + "," + bill.getTotal());
+			System.out.println(bill.getID() + "," + bill.getTotal());
 			for (BillPO po : bill.getBills()) {
 				System.out.println(po.getCourierID() + "," + po.getMoney());
 			}
@@ -77,7 +77,7 @@ public class BillOrderDataServiceImplTest {
 		try {
 			orders = billorder.getUnpassedOrders();
 			for (BillOrderPO bill : orders) {
-				System.out.println(bill.getId() + "," + bill.getTotal());
+				System.out.println(bill.getID() + "," + bill.getTotal());
 				for (BillPO po : bill.getBills()) {
 					System.out.println(po.getCourierID() + "," + po.getMoney());
 				}

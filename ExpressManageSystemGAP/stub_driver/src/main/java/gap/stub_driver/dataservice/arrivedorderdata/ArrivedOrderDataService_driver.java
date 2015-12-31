@@ -19,7 +19,7 @@ public class ArrivedOrderDataService_driver {
 		}
 		ArrivedOrderPO get = arrivedOrder.find("00100011970010100001");
 		if (get != null)
-			System.out.println("find:id=" + get.getId() + ",date="
+			System.out.println("find:id=" + get.getID() + ",date="
 					+ get.getTime());
 		get = arrivedOrder.find("001100119700101000001");
 		if (get == null)

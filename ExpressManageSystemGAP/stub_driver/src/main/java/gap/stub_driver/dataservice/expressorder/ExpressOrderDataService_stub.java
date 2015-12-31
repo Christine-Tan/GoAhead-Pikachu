@@ -18,7 +18,7 @@ public class ExpressOrderDataService_stub implements ExpressOrderDataService {
 	public ResultMessage add(ExpressOrderPO po) {
 		// TODO 自动生成的方法存根
 		for (ExpressOrderPO order : list)
-			if (order.getOrder_id().equals(po.getOrder_id()))
+			if (order.getID().equals(po.getID()))
 				return ResultMessage.EXITED;
 		list.add(po);
 		return ResultMessage.SUCCEED;
@@ -28,7 +28,7 @@ public class ExpressOrderDataService_stub implements ExpressOrderDataService {
 	public ExpressOrderPO find(String order_id) {
 		// TODO 自动生成的方法存根
 		for (ExpressOrderPO order : list)
-			if (order.getOrder_id().equals(order_id))
+			if (order.getID().equals(order_id))
 				return order;
 		return null;
 
@@ -38,7 +38,7 @@ public class ExpressOrderDataService_stub implements ExpressOrderDataService {
 	public ResultMessage modify(ExpressOrderPO po) {
 		// TODO 自动生成的方法存根
 		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getOrder_id().equals(po.getOrder_id())) {
+			if (list.get(i).getID().equals(po.getID())) {
 				list.remove(i);
 				list.add(po);
 				return ResultMessage.SUCCEED;

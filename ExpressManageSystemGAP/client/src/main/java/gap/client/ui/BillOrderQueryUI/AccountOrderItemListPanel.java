@@ -157,14 +157,14 @@ public class AccountOrderItemListPanel extends JPanel {
 			
 			if (order instanceof BillOrderPO) {
 				BillOrderPO billOrder = (BillOrderPO) order;
-				order_id.setText(billOrder.getId());
+				order_id.setText(billOrder.getID());
 				type.setText("收款单");
 				date.setText(billOrder.getBillDate().toString());
 				total = billOrder.getTotal();
 				receiptType = ReceiptType.BILL;
 			} else if (order instanceof PaymentListPO) {
 				PaymentListPO paymentList = (PaymentListPO) order;
-				order_id.setText(paymentList.getPaymentID());
+				order_id.setText(paymentList.getID());
 				type.setText("付款单");
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				String dateString = format.format(paymentList.getDate().getTime());

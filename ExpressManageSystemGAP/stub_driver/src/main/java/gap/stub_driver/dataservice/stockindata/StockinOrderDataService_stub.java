@@ -14,7 +14,7 @@ public class StockinOrderDataService_stub implements StockinOrderDataService{
 	public ResultMessage add(StockinOrderPO po) {
 		// TODO 自动生成的方法存根
 		for (StockinOrderPO order : list)
-			if (order.getId().equals(po.getId()))
+			if (order.getID().equals(po.getID()))
 				return ResultMessage.EXITED;
 		list.add(po);
 		return ResultMessage.SUCCEED;
@@ -24,7 +24,7 @@ public class StockinOrderDataService_stub implements StockinOrderDataService{
 	public StockinOrderPO find(String order_id) {
 		// TODO 自动生成的方法存根
 		for(StockinOrderPO order:list){
-			if(order.getId().equals(order_id))
+			if(order.getID().equals(order_id))
 				return order;
 		}
 		return null;

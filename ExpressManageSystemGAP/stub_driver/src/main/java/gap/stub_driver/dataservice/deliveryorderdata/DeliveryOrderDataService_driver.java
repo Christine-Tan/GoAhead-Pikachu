@@ -19,7 +19,7 @@ public class DeliveryOrderDataService_driver {
 		}
 		DeliveryOrderPO get = deliveryOrder.find("00100011970010100001");
 		if (get != null)
-			System.out.println("find:id=" + get.getId() + ",date="
+			System.out.println("find:id=" + get.getID() + ",date="
 					+ get.getTime());
 		get = deliveryOrder.find("001100119700101000001");
 		if (get == null)

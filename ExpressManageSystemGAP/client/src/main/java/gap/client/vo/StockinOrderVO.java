@@ -25,7 +25,7 @@ public class StockinOrderVO {
 		}
 		this.goods = goods;
 		this.inDate = po.getInDate();
-		this.id = po.getId();
+		this.id = po.getID();
 		this.ins_id = po.getIns_id();
 	}
 

@@ -30,7 +30,7 @@ public class LoadOrderVO {
 	}
 
 	public LoadOrderVO(LoadOrderPO po) {
-		this.order_id = po.getOrder_id();
+		this.order_id = po.getID();
 		this.date = po.getDate();
 		this.car_id = po.getCar_number();
 		this.departureins_id = po.getDepartureins_id();

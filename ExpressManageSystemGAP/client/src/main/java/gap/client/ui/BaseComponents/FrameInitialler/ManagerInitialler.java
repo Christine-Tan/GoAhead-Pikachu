@@ -13,17 +13,14 @@ import gap.client.ui.managerui.salaryui.SalaryPanel;
 import gap.client.ui.tableUI.Cost_profitUI.CostProfitPanel;
 import gap.client.util.MessageType;
 
-public class ManagerInitialler {
+public class ManagerInitialler extends FrameInitialler{
 	/**
 	 * 初始化总经理界面
 	 * 
 	 * @param mainFrame
 	 */
-	public ManagerInitialler() {
-		// TODO Auto-generated constructor stub
-	}
    
-	public static void initialManager(MainFrame mainFrame){
+	protected void specificInitial(MainFrame mainFrame){
 		NavigateBar navBar=mainFrame.getNavigateBar();
 		NavigateButton approval=new NavigateButton(mainFrame, new ApprovalPanel(mainFrame), navBar, "审批单据");
 		NavigateButton institution=new NavigateButton(mainFrame, new InstitutionPanel(mainFrame), navBar, "机构管理");
@@ -44,6 +41,5 @@ public class ManagerInitialler {
 		navBar.addButton(log);
 		navBar.setSelect(approval);
 		mainFrame.setVisible(true);
-		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
 	}
 }

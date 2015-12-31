@@ -19,7 +19,7 @@ public class ArrivedOrderDataService_stub implements ArrivedOrderDataService {
 	public ResultMessage add(ArrivedOrderPO po) {
 		// TODO 自动生成的方法存根
 		for (ArrivedOrderPO order : list)
-			if (po.getId().equals(order.getId()))
+			if (po.getID().equals(order.getID()))
 				return ResultMessage.EXITED;
 		list.add(po);
 		return ResultMessage.SUCCEED;
@@ -29,7 +29,7 @@ public class ArrivedOrderDataService_stub implements ArrivedOrderDataService {
 	public ArrivedOrderPO find(String order_id) {
 		// TODO 自动生成的方法存根
 		for (ArrivedOrderPO order : list)
-			if (order_id.equals(order.getId()))
+			if (order_id.equals(order.getID()))
 				return order;
 		return null;
 	}

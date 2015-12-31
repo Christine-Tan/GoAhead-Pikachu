@@ -34,7 +34,7 @@ public class LoadOrderDataServiceImplTest {
 			// loadorder.setPassed("00100012015120500001", "南京中转中心发出");
 			List<LoadOrderPO> order = loadorder.getArrivingLoadOrder("0010001");
 			for (LoadOrderPO or : order) {
-				System.out.println(or.getOrder_id());
+				System.out.println(or.getID());
 			}
 			// LoadOrderPO po = loadorder.find("00100011996030100001");
 			// System.out.println(po.getOrder_id() + "," + po.getDriver_id() +

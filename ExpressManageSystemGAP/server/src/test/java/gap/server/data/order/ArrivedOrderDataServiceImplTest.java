@@ -40,8 +40,8 @@ public class ArrivedOrderDataServiceImplTest {
 			// + po.getTime());
 			for (ArrivedOrderPO po : arrivedOrderDataService
 					.getStockinginArrivedOrder("0011001")) {
-				System.out.println(po.getId());
-				arrivedOrderDataService.setStockIn(po.getId());
+				System.out.println(po.getID());
+				arrivedOrderDataService.setStockIn(po.getID());
 			}
 		} catch (MalformedURLException e) {
 			// TODO 自动生成的 catch 块

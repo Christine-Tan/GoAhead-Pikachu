@@ -3,7 +3,9 @@ package gap.common.po;
 import java.io.Serializable;
 import java.util.List;
 
-public class StockinOrderPO implements Serializable {
+import gap.common.ListInterface.Order;
+
+public class StockinOrderPO implements Order{
 	// 快递编号
 	private List<GoodsPO> goods;
 	private String inDate, id, ins_id;
@@ -42,7 +44,7 @@ public class StockinOrderPO implements Serializable {
 		this.inDate = inDate;
 	}
 
-	public String getId() {
+	public String getID() {
 		return id;
 	}
 

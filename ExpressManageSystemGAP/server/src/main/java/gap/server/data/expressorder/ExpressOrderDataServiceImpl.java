@@ -97,7 +97,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			PeopleInfo sender = po.getSenderInfo(), receiver = po
 					.getReceiverInfo();
 			CargoInfo cargo = po.getCargoInfo();
-			String order_id = po.getOrder_id(), current_ins_id = po
+			String order_id = po.getID(), current_ins_id = po
 					.getCurrentins_id();
 			ExpressType type = po.getExpressType();
 			double price = po.getPrice();

@@ -26,7 +26,7 @@ public class ExpressOrderDataService_driver {
 		// test find
 		ExpressOrderPO get = expressOrder.find("0000000001");
 		if (get != null)
-			System.out.println("find:id=" + get.getOrder_id() + ",sender_name="
+			System.out.println("find:id=" + get.getID() + ",sender_name="
 					+ get.getSenderInfo().getName() + ",receiver_name="
 					+ get.getReceiverInfo().getName());
 		get = expressOrder.find("0000000003");
@@ -42,7 +42,7 @@ public class ExpressOrderDataService_driver {
 		if (!listGet.isEmpty()) {
 			System.out.println("find succeed:");
 			for (ExpressOrderPO po : listGet) {
-				System.out.println("id=" + po.getOrder_id() + ",sender_name="
+				System.out.println("id=" + po.getID() + ",sender_name="
 						+ po.getSenderInfo().getName() + ",receiver_name="
 						+ po.getReceiverInfo().getName());
 			}
@@ -52,7 +52,7 @@ public class ExpressOrderDataService_driver {
 		if (!listGet.isEmpty()) {
 			System.out.println("find succeed:");
 			for (ExpressOrderPO po : listGet) {
-				System.out.println("id=" + po.getOrder_id() + ",sender_name="
+				System.out.println("id=" + po.getID() + ",sender_name="
 						+ po.getSenderInfo().getName() + ",receiver_name="
 						+ po.getReceiverInfo().getName());
 			}

@@ -172,7 +172,7 @@ public class StockinOrderInputPanel extends MainPanel {
 		arrivedOrders = StockinOrderController.getArrivedOrderPO(LocalInfo
 				.getIns_ID());
 		if (arrivedOrders != null && arrivedOrders.size() > 0) {
-			id = arrivedOrders.get(0).getId();
+			id = arrivedOrders.get(0).getID();
 //			System.out.println("初始化：" + id);
 			Set<String> ids = arrivedOrders.get(0).getOrders().keySet();
 			if (ids != null && ids.size() > 0) {

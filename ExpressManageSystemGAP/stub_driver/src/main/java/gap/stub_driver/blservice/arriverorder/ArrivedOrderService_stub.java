@@ -39,13 +39,13 @@ public class ArrivedOrderService_stub implements ArrivedOrderService {
 	private ArrivedOrderVO getVO(ArrivedOrderPO po) {
 		if (po == null)
 			return null;
-		return new ArrivedOrderVO(po.getOrders(), po.getTime(), po.getId());
+		return new ArrivedOrderVO(po.getOrders(), po.getTime(), po.getID());
 	}
 
 	private ArrivedOrderPO toPO(ArrivedOrderVO vo) {
 		if (vo == null)
 			return null;
-		return new ArrivedOrderPO(vo.getOrders(), vo.getTime(), vo.getId());
+		return new ArrivedOrderPO(vo.getOrders(), vo.getTime(), vo.getID());
 	}
 
 }

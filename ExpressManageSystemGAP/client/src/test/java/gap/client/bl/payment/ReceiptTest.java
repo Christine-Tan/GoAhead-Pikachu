@@ -74,7 +74,7 @@ public class ReceiptTest {
 		
 		PaymentListPO testPO = null;
 		for(PaymentListPO aPO:paymentLists){
-			if(aPO.getPaymentID().equals("151220121025")){
+			if(aPO.getID().equals("151220121025")){
 				testPO = aPO;
 				break;
 			}

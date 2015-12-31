@@ -116,7 +116,7 @@ public class StockoutOrderDataServiceImplTest {
 	// @Test
 	public void testDelete() {
 		for (int i = 0; i <= 5; i++) {
-			stockout.delete(or[i].getId());
+			stockout.delete(or[i].getID());
 		}
 	}
 
@@ -125,7 +125,7 @@ public class StockoutOrderDataServiceImplTest {
 		try {
 			StockoutOrderPO po = stockout.find("00000000000000000005",
 					"0000002");
-			System.out.println(po.getId());
+			System.out.println(po.getID());
 			System.out.println(po.getOutDate() + "   "
 					+ po.getExpressorder_ids().size());
 		} catch (RemoteException e) {
@@ -142,7 +142,7 @@ public class StockoutOrderDataServiceImplTest {
 			System.out.println(list.isEmpty());
 			if (!list.isEmpty()) {
 				for (StockoutOrderPO po : list) {
-					System.out.println(po.getId());
+					System.out.println(po.getID());
 					System.out.println(po.getIns_id() + "     "
 							+ po.getOutDate() + "   "
 							+ po.getExpressorder_ids().size());
@@ -163,7 +163,7 @@ public class StockoutOrderDataServiceImplTest {
 			System.out.println(list.isEmpty());
 			if (!list.isEmpty()) {
 				for (StockoutOrderPO po : list) {
-					System.out.println(po.getId());
+					System.out.println(po.getID());
 					System.out.println(po.getIns_id() + "     "
 							+ po.getOutDate() + "   "
 							+ po.getExpressorder_ids().size());
@@ -180,7 +180,7 @@ public class StockoutOrderDataServiceImplTest {
 	public void testSetPassed() {
 		for (int i = 0; i < 6; i++) {
 			try {
-				stockout.setPassed(or[i].getId(), "lalala并没有什么用");
+				stockout.setPassed(or[i].getID(), "lalala并没有什么用");
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -202,7 +202,7 @@ public class StockoutOrderDataServiceImplTest {
 			System.out.println(list.isEmpty());
 			if (!list.isEmpty()) {
 				for (StockoutOrderPO po : list) {
-					System.out.println(po.getId());
+					System.out.println(po.getID());
 					System.out.println(po.getIns_id() + "     "
 							+ po.getOutDate() + "   "
 							+ po.getExpressorder_ids().size());

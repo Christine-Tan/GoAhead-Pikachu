@@ -152,7 +152,7 @@ public class ExpressOrderDataServiceImplTest {
 			List<ExpressOrderPO> order = expressorderdataservice
 					.findArrivingOrders("0010002");
 			for (ExpressOrderPO po : order) {
-				System.out.println(po.getOrder_id());
+				System.out.println(po.getID());
 			}
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
@@ -166,7 +166,7 @@ public class ExpressOrderDataServiceImplTest {
 			List<ExpressOrderPO> order = expressorderdataservice
 					.findCurrentOrders("0010001", CurrentOrderType.LOAD);
 			for (ExpressOrderPO po : order) {
-				System.out.println(po.getOrder_id());
+				System.out.println(po.getID());
 			}
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

@@ -34,7 +34,7 @@ public class ExpressOrderVO {
 		expressType = po.getExpressType();
 		cargoInfo = po.getCargoInfo();
 		received = po.isReceived();
-		order_id = po.getOrder_id();
+		order_id = po.getID();
 		currentins_id = po.getCurrentins_id();
 		targetins_id = po.getTargetins_id();
 		time = po.getTime();

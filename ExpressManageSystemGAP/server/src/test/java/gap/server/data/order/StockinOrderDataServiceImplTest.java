@@ -125,7 +125,7 @@ public class StockinOrderDataServiceImplTest {
 	@Test
 	public void testDelete() {
 		for (int i = 0; i < 6; i++) {
-			stockin.delete(or[i].getId());
+			stockin.delete(or[i].getID());
 		}
 	}
 
@@ -137,7 +137,7 @@ public class StockinOrderDataServiceImplTest {
 					"0000002");
 			if (!list.isEmpty()) {
 				for (StockinOrderPO po : list) {
-					System.out.println(po.getId());
+					System.out.println(po.getID());
 					System.out.println(po.getIns_id() + "     "
 							+ po.getInDate() + "   " + po.getGoods().size());
 					System.out.println();
@@ -157,7 +157,7 @@ public class StockinOrderDataServiceImplTest {
 			System.out.println(list.isEmpty());
 			if (!list.isEmpty()) {
 				for (StockinOrderPO po : list) {
-					System.out.println(po.getId());
+					System.out.println(po.getID());
 					System.out.println(po.getIns_id() + "     "
 							+ po.getInDate() + "   " + po.getGoods().size());
 					System.out.println();
@@ -173,7 +173,7 @@ public class StockinOrderDataServiceImplTest {
 	public void testSetPassed() {
 		for (int i = 0; i < 6; i++) {
 			try {
-				stockin.setPassed(or[i].getId(), "lalala并没有什么用");
+				stockin.setPassed(or[i].getID(), "lalala并没有什么用");
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -188,7 +188,7 @@ public class StockinOrderDataServiceImplTest {
 			System.out.println(list.isEmpty());
 			if (!list.isEmpty()) {
 				for (StockinOrderPO po : list) {
-					System.out.println(po.getId());
+					System.out.println(po.getID());
 					System.out.println(po.getIns_id() + "     "
 							+ po.getInDate() + "   " + po.getGoods().size());
 					System.out.println();

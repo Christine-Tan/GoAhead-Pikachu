@@ -20,7 +20,7 @@ public class PaymentListVO {
 	}
 
 	public PaymentListVO(PaymentListPO po) {
-		initial(po.getPaymentID(), po.getPayer(), po.getTotal(), po.getDate(),
+		initial(po.getID(), po.getPayer(), po.getTotal(), po.getDate(),
 				po.paymentList);
 	}
 

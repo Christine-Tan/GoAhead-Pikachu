@@ -15,7 +15,7 @@ public class DeliveryOrderService_driver {
 			System.out.println("save failed,order exited");
 		DeliveryOrderVO get = arrivedOrder.find("00110011970010100001");
 		if (get != null)
-			System.out.println("find:id=" + get.getId() + ",date="
+			System.out.println("find:id=" + get.getID() + ",date="
 					+ get.getTime());
 		get = arrivedOrder.find("001100119700101000001");
 		if (get == null)

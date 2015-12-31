@@ -33,13 +33,13 @@ public class PaymentHandler {
 			return ResultMessage.FAILED;
 		}
 		
-		OrderState state = dataController.isPaymentPassed(paymentListPO.getPaymentID());
+		OrderState state = dataController.isPaymentPassed(paymentListPO.getID());
 		
 		//如果单据已经被审批通过，就不执行
 		if(state.equals(OrderState.PASSED)){
 			return ResultMessage.EXISTED;
 		}else{
-			dataController.setPaymentPassed(paymentListPO.getPaymentID());
+			dataController.setPaymentPassed(paymentListPO.getID());
 		}
 		
 		ArrayList<PayeePO> payeePOs = paymentListPO.paymentList;

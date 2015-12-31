@@ -50,7 +50,7 @@ public class LoadOrderDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage add(LoadOrderPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			String order_id = po.getOrder_id(), driver_id = po.getDriver_id(), guard_id = po
+			String order_id = po.getID(), driver_id = po.getDriver_id(), guard_id = po
 					.getGuard_id(), car_num = po.getCar_number();
 			String time = po.getDate();
 			orderInsert.clear();

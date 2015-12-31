@@ -1,6 +1,8 @@
 package gap.common.ListInterface;
 
-public interface Receipt extends OrderOrReceipt {
+import java.util.Calendar;
 
+public interface Receipt extends Order {
+	public Calendar getDate();
 	public double getTotal();
 }

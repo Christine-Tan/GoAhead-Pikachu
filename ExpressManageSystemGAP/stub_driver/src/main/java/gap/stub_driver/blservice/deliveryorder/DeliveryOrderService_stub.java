@@ -40,14 +40,14 @@ public class DeliveryOrderService_stub implements DeliveryOrderService {
 		if (po == null)
 			return null;
 		return new DeliveryOrderVO(po.getDeliveryInfo(), po.getTime(),
-				po.getId());
+				po.getID());
 	}
 
 	private DeliveryOrderPO getPO(DeliveryOrderVO vo) {
 		if(vo==null)
 			return null;
 		return new DeliveryOrderPO(vo.getDeliveryInfo(), vo.getTime(),
-				vo.getId());
+				vo.getID());
 	}
 
 }

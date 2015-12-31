@@ -25,11 +25,11 @@ public class StockinOrderDataService_driver {
 		}
 		StockinOrderPO get = stockinData.find("00100011970010100002");
 		if (get != null)
-			System.out.println("find:StockoutOrder" + get.getId());
+			System.out.println("find:StockoutOrder" + get.getID());
 
 		StockinOrderPO get1 = stockinData.find("00100011970010100001");
 		if (get1 != null)
-			System.out.println("find:StockoutOrder" + get.getId());
+			System.out.println("find:StockoutOrder" + get.getID());
 		get1 = stockinData.find("00100011970010100003");
 		if (get == null)
 			System.out.println("find failed,not found");

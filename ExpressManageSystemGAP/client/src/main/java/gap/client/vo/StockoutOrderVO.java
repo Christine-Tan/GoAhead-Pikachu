@@ -37,7 +37,7 @@ public class StockoutOrderVO {
 		this.expressorder_ids = po.getExpressorder_ids();
 		this.outDate = po.getOutDate();
 		this.target_ins = po.getTarget_ins();
-		this.id = po.getId();
+		this.id = po.getID();
 		this.transport = po.getTransport();
 		this.ins_id = po.getIns_id();
 	}

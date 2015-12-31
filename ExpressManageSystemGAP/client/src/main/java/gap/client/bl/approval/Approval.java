@@ -61,35 +61,35 @@ public class Approval implements ApprovalService {
 			LogPO log;
 			if (order instanceof ArrivedOrderPO) {
 				ArrivedOrderPO arrivedOrder = (ArrivedOrderPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"到达单"+arrivedOrder.getId()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"到达单"+arrivedOrder.getID()+"审批通过");
 				LogController.addLog(log);
 			} else if (order instanceof BillOrderPO) {
 				BillOrderPO billOrder = (BillOrderPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"付款单"+billOrder.getId()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"付款单"+billOrder.getID()+"审批通过");
 				LogController.addLog(log);
 			} else if (order instanceof DeliveryOrderPO) {
 				DeliveryOrderPO deliveryOrder = (DeliveryOrderPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"派件单"+deliveryOrder.getId()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"派件单"+deliveryOrder.getID()+"审批通过");
 				LogController.addLog(log);
 			} else if (order instanceof ExpressOrderPO) {
 				ExpressOrderPO expressOrder = (ExpressOrderPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"寄件单"+expressOrder.getOrder_id()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"寄件单"+expressOrder.getID()+"审批通过");
 				LogController.addLog(log);
 			} else if (order instanceof LoadOrderPO) {
 				LoadOrderPO loadOrder = (LoadOrderPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"装车单"+loadOrder.getOrder_id()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"装车单"+loadOrder.getID()+"审批通过");
 				LogController.addLog(log);
 			} else if (order instanceof StockinOrderPO) {
 				StockinOrderPO stockinOrder = (StockinOrderPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"入库单"+stockinOrder.getId()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"入库单"+stockinOrder.getID()+"审批通过");
 				LogController.addLog(log);
 			} else if (order instanceof StockoutOrderPO) {
 				StockoutOrderPO stockoutOrder = (StockoutOrderPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"出库单"+stockoutOrder.getId()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"出库单"+stockoutOrder.getID()+"审批通过");
 				LogController.addLog(log);
 			} else if (order instanceof PaymentListPO) {
 				PaymentListPO paymentList = (PaymentListPO) order;
-				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"付款单"+paymentList.getPaymentID()+"审批通过");
+				log=new LogPO(LocalInfo.localuser.toUserPO(),time,"付款单"+paymentList.getID()+"审批通过");
 				LogController.addLog(log);
 			} else {
 				System.out.println("no corresponding ordertype");

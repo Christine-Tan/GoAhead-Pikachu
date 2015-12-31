@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public class DeliveryOrderPO implements Serializable {
+import gap.common.ListInterface.Order;
+
+public class DeliveryOrderPO implements Order {
 	// 派件信息，记录派件快递员和对应派件快递
 	private Map<String, List<String>> deliveryInfo;
 	// 派件单生成时间
@@ -27,11 +29,11 @@ public class DeliveryOrderPO implements Serializable {
 		this.comment = comment;
 	}
 
-	public String getId() {
+	public String getID() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setID(String id) {
 		this.id = id;
 	}
 
@@ -58,5 +60,7 @@ public class DeliveryOrderPO implements Serializable {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
+
 
 }

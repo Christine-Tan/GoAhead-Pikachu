@@ -3,7 +3,9 @@ package gap.common.po;
 import java.io.Serializable;
 import java.util.List;
 
-public class StockoutOrderPO implements Serializable {
+import gap.common.ListInterface.Order;
+
+public class StockoutOrderPO implements Order {
 	// 快递编号
 	private List<String> expressorder_ids;
 	// 出库日期，目标机构编号,中转单编号（单据编号）
@@ -67,7 +69,7 @@ public class StockoutOrderPO implements Serializable {
 		this.transport = transport;
 	}
 
-	public String getId() {
+	public String getID() {
 		return id;
 	}
 

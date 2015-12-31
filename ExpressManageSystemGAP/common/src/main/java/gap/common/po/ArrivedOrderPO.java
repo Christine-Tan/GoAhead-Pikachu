@@ -3,7 +3,9 @@ package gap.common.po;
 import java.io.Serializable;
 import java.util.Map;
 
-public class ArrivedOrderPO implements Serializable {
+import gap.common.ListInterface.Order;
+
+public class ArrivedOrderPO implements Order {
 	// 到达单订单
 	private Map<String, String> orders;
 	// 生成时间
@@ -52,7 +54,7 @@ public class ArrivedOrderPO implements Serializable {
 		this.time = time;
 	}
 
-	public final String getId() {
+	public final String getID() {
 		return id;
 	}
 

@@ -60,7 +60,7 @@ public class ExpressOrderService_stub implements ExpressOrderService {
 			String ins_id) {
 		// TODO 自动生成的方法存根
 		for (ExpressOrderVO vo : orders) {
-			ExpressOrderPO po = datastub.find(vo.getOrder_id());
+			ExpressOrderPO po = datastub.find(vo.getID());
 			if (po == null)
 				return ResultMessage.NOTFOUND;
 			po.setCurrentins_id(ins_id);
@@ -72,7 +72,7 @@ public class ExpressOrderService_stub implements ExpressOrderService {
 	public ResultMessage setOffOders(List<ExpressOrderVO> orders, String ins_id) {
 		// TODO 自动生成的方法存根
 		for (ExpressOrderVO vo : orders) {
-			ExpressOrderPO po = datastub.find(vo.getOrder_id());
+			ExpressOrderPO po = datastub.find(vo.getID());
 			if (po == null)
 				return ResultMessage.NOTFOUND;
 			po.setTargetins_id(ins_id);

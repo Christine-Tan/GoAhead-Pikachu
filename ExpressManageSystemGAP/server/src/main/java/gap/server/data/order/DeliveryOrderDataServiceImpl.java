@@ -51,7 +51,7 @@ public class DeliveryOrderDataServiceImpl extends UnicastRemoteObject implements
 	public ResultMessage add(DeliveryOrderPO po) throws RemoteException {
 		// TODO 自动生成的方法存根
 		try {
-			String order_id = po.getId(), comment = po.getComment(), time = po
+			String order_id = po.getID(), comment = po.getComment(), time = po
 					.getTime();
 			orderInsert.clear();
 			orderInsert.add(order_id_f, order_id);

@@ -25,7 +25,7 @@ public class BillOrderHandler {
 			return ResultMessage.FAILED;
 		}
 		
-		String orderID = billOrderPO.getId();
+		String orderID = billOrderPO.getID();
 		OrderState state = controller.isBillPassed(orderID);
 		
 		if(state==null || state.equals(OrderState.PASSED)){

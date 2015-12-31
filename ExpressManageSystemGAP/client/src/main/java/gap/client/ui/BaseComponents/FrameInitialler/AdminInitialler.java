@@ -7,7 +7,7 @@ import gap.client.ui.administratorui.UserPanel;
 import gap.client.util.MessageType;
 import gap.common.util.UserType;
 
-public class AdminInitialler {
+public class AdminInitialler extends AccountorInitialler{
 	/**
 	 * 初始化管理员界面
 	 *
@@ -17,7 +17,7 @@ public class AdminInitialler {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void initialAdmin(MainFrame mainFrame) {
+	protected void specificInitial(MainFrame mainFrame) {
 		NavigateBar navBar = mainFrame.getNavigateBar();
 		NavigateButton admin = new NavigateButton(mainFrame, new UserPanel(
 				mainFrame, UserType.ADMINISTRATOR), navBar, "管理员");
@@ -42,6 +42,6 @@ public class AdminInitialler {
 		navBar.addButton(manager);
 		navBar.setSelect(admin);
 		mainFrame.setVisible(true);
-		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
+	
 	}
 }

@@ -14,7 +14,7 @@ public class PaymentSubmitter {
 		builder.InsertInto(PaymentListTable.tableName,
 				PaymentListTable.paymentListID_col, PaymentListTable.total_col,
 				PaymentListTable.payer_col, PaymentListTable.date_col,
-				PaymentListTable.passed_col).Values(list.getPaymentID(),
+				PaymentListTable.passed_col).Values(list.getID(),
 				list.getTotal(), list.getPayer(), list.getDate(), 0);
 
 		boolean pass = builder.excute();
@@ -28,7 +28,7 @@ public class PaymentSubmitter {
 					PayeeTable.type_col, PayeeTable.comment_col,
 					PayeeTable.paymentList_col).Values(payee.getUserID(),
 					payee.getAccountName(), payee.getMoney(), payee.getType(),
-					payee.getNote(), list.getPaymentID());
+					payee.getNote(), list.getID());
 
 			System.out.println(builder.toString());
 

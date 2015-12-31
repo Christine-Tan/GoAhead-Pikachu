@@ -1,12 +1,13 @@
 package gap.common.po;
 
+import gap.common.ListInterface.Order;
 import gap.common.util.CargoInfo;
 import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
 
 import java.io.Serializable;
 
-public class ExpressOrderPO implements Serializable {
+public class ExpressOrderPO implements Order {
 	// 寄件人姓名、地址、单位、电话
 	private PeopleInfo senderInfo;
 	// 收件人姓名、地址、单位、电话
@@ -126,11 +127,11 @@ public class ExpressOrderPO implements Serializable {
 		this.receiverInfo = receiverInfo;
 	}
 
-	public String getOrder_id() {
+	public String getID() {
 		return order_id;
 	}
 
-	public void setOrder_id(String order_id) {
+	public void setID(String order_id) {
 		this.order_id = order_id;
 	}
 

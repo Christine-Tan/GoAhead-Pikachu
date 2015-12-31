@@ -56,7 +56,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 	@Override
 	public ResultMessage add(StockoutOrderPO po) throws RemoteException {
 		// TODO Auto-generated method stub
-		String order_id = po.getId(), target_ins = po.getTarget_ins(), time = po
+		String order_id = po.getID(), target_ins = po.getTarget_ins(), time = po
 				.getOutDate(), transport = po.getTransport(), ins_id = po
 				.getIns_id();
 		List<String> ids = po.getExpressorder_ids();

@@ -11,13 +11,13 @@ import gap.client.ui.inventoryui.stockinorderinput.StockinOrderInputPanel;
 import gap.client.ui.inventoryui.stockoutorderinput.StockoutOrderInputPanel;
 import gap.client.util.MessageType;
 
-public class InventoryInitailler {
+public class InventoryInitailler extends FrameInitialler{
 	/**
 	 * 初始化仓库管理人员界面
 	 * 
 	 * @param mainFrame
 	 */
-	public static void initialInventory(MainFrame mainFrame) {
+	protected void specificInitial(MainFrame mainFrame) {
 		NavigateBar navBar = mainFrame.getNavigateBar();
 		NavigateButton checkStock = new NavigateButton(mainFrame,
 				new CheckStockPanel(mainFrame), navBar, "库存盘点");
@@ -38,7 +38,6 @@ public class InventoryInitailler {
 		navBar.addButton(initialStock);
 		navBar.setSelect(checkStock);
 		mainFrame.setVisible(true);
-		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);
 	}
 
 }

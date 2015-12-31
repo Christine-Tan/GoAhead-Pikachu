@@ -72,7 +72,7 @@ public class ReceiptTest {
 	public void testHandleBillOrder() {
 		List<BillOrderPO> billOrderPOs = approvalController.getUnpassedBillOrder();
 		for(BillOrderPO aOrder:billOrderPOs){
-			System.out.println(aOrder.getId());
+			System.out.println(aOrder.getID());
 		}
 		
 		receiptController.handleBillOrder(billOrderPOs.get(0));

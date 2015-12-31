@@ -16,6 +16,8 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import gap.client.blcontroller.AccountorReceiptController;
+import gap.client.datacontroller.ApprovalDataStrategy.AppStrategy;
+import gap.common.ListInterface.Order;
 import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.DeliveryOrderPO;
@@ -115,71 +117,82 @@ public class ApprovalDataController {
 	}
 
 	public ResultMessage setPassed(List<Object> orders) {
-		ResultMessage rm;
-		for (Object order : orders) {
-			if (order instanceof ExpressOrderPO) {
-				String targetInsId = ((ExpressOrderPO) order).getCurrentins_id();
-				try {
-					String insname = institutiondataservice.findById(targetInsId).getInsName();
-					String state = insname + "已收件";
-					rm = expressorderdataservice.setPassed(((ExpressOrderPO) order).getOrder_id(), state);
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			} else if (order instanceof ArrivedOrderPO) {
-				String targetInsId = ((ArrivedOrderPO) order).getDes_ins_id();
-				try {
-					String insname = institutiondataservice.findById(targetInsId).getInsName();
-					String state = insname + "已收件";
-					rm = arrivedOrderdataservice.setPassed(((ArrivedOrderPO) order).getId(), state);
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (order instanceof BillOrderPO) {
-				
-				BillOrderPO aBillOrderPO = (BillOrderPO)order;
-				rm = accountorReceiptController.handleBillOrder(aBillOrderPO);
-				
-			} else if (order instanceof DeliveryOrderPO) {
-				try {
-					rm = deliveryorderdataservice.setPassed(((DeliveryOrderPO) order).getId(), "");
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (order instanceof LoadOrderPO) {
-				String targetInsId = ((LoadOrderPO) order).getTargetins_id();
-				try {
-					String insname = institutiondataservice.findById(targetInsId).getInsName();
-					String state = "正在发往" + insname;
-					rm = loadorderdataservice.setPassed(((LoadOrderPO) order).getOrder_id(), state);
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (order instanceof StockinOrderPO) {
-				try {
-					rm = stockinorderdataservice.setPassed(((StockinOrderPO) order).getId(), "");
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (order instanceof StockoutOrderPO) {
-				try {
-					rm = stockoutorderdataservice.setPassed(((StockoutOrderPO) order).getId(), "");
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}else if(order instanceof PaymentListPO){
-				
-				PaymentListPO paymentListPO = (PaymentListPO)order;
-				rm = accountorReceiptController.handlePaymentList(paymentListPO);
-				
+//		ResultMessage rm;
+//		for (Object order : orders) {
+//			if (order instanceof ExpressOrderPO) {
+//				String targetInsId = ((ExpressOrderPO) order).getCurrentins_id();
+//				try {
+//					String insname = institutiondataservice.findById(targetInsId).getInsName();
+//					String state = insname + "已收件";
+//					rm = expressorderdataservice.setPassed(((ExpressOrderPO) order).getID(), state);
+//				} catch (RemoteException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//			} else if (order instanceof ArrivedOrderPO) {
+//				String targetInsId = ((ArrivedOrderPO) order).getDes_ins_id();
+//				try {
+//					String insname = institutiondataservice.findById(targetInsId).getInsName();
+//					String state = insname + "已收件";
+//					rm = arrivedOrderdataservice.setPassed(((ArrivedOrderPO) order).getID(), state);
+//				} catch (RemoteException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			} else if (order instanceof BillOrderPO) {
+//				
+//				BillOrderPO aBillOrderPO = (BillOrderPO)order;
+//				rm = accountorReceiptController.handleBillOrder(aBillOrderPO);
+//				
+//			} else if (order instanceof DeliveryOrderPO) {
+//				try {
+//					rm = deliveryorderdataservice.setPassed(((DeliveryOrderPO) order).getID(), "");
+//				} catch (RemoteException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			} else if (order instanceof LoadOrderPO) {
+//				String targetInsId = ((LoadOrderPO) order).getTargetins_id();
+//				try {
+//					String insname = institutiondataservice.findById(targetInsId).getInsName();
+//					String state = "正在发往" + insname;
+//					rm = loadorderdataservice.setPassed(((LoadOrderPO) order).getID(), state);
+//				} catch (RemoteException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			} else if (order instanceof StockinOrderPO) {
+//				try {
+//					rm = stockinorderdataservice.setPassed(((StockinOrderPO) order).getID(), "");
+//				} catch (RemoteException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			} else if (order instanceof StockoutOrderPO) {
+//				try {
+//					rm = stockoutorderdataservice.setPassed(((StockoutOrderPO) order).getID(), "");
+//				} catch (RemoteException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}else if(order instanceof PaymentListPO){
+//				
+//				PaymentListPO paymentListPO = (PaymentListPO)order;
+//				rm = accountorReceiptController.handlePaymentList(paymentListPO);
+//				
+//			}
+//		}
+//		return ResultMessage.FAILED;
+		AppDataStrategyFactory factory = AppDataStrategyFactory.getInstance();
+		for (Object obj : orders) {
+			Order order = (Order)obj;
+			AppStrategy strategy = factory.getStrategy(order);
+			ResultMessage rm = strategy.setPassed(order);
+			if(rm != ResultMessage.SUCCEED){
+				System.out.println(strategy.getClass().getName()+"处理"+order.getID()+"出错");
+				System.out.println(rm);
 			}
 		}
-		return ResultMessage.FAILED;
+		 return ResultMessage.SUCCEED;
 	}
 }

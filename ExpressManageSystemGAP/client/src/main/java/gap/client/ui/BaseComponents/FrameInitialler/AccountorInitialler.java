@@ -15,8 +15,8 @@ import gap.client.ui.tableUI.Cost_profitUI.CostProfitPanel;
 import gap.client.ui.tableUI.OperationUI.OperationMainPanel;
 import gap.client.util.MessageType;
 
-public class AccountorInitialler {
-	public static void initialAccountor(MainFrame mainFrame){
+public class AccountorInitialler extends FrameInitialler{
+	protected void specificInitial(MainFrame mainFrame){
 		NavigateBar navBar = mainFrame.getNavigateBar();
 		
 		NavigateButton accountManage = new NavigateButton(mainFrame,
@@ -42,7 +42,6 @@ public class AccountorInitialler {
 		
 		navBar.setSelect(costProfit);
 		mainFrame.setVisible(true);
-		MainFrame.setMessage("登录成功", MessageType.succeed, 3000);	
 		
 	}
 }

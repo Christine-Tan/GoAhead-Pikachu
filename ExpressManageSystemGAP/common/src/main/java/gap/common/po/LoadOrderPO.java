@@ -3,7 +3,9 @@ package gap.common.po;
 import java.io.Serializable;
 import java.util.List;
 
-public class LoadOrderPO implements Serializable {
+import gap.common.ListInterface.Order;
+
+public class LoadOrderPO implements Order{
 	//
 	private String order_id, date, car_number, departureins_id, targetins_id,
 			driver_id, guard_id, comment;
@@ -82,11 +84,11 @@ public class LoadOrderPO implements Serializable {
 		this.guard_id = guard_id;
 	}
 
-	public String getOrder_id() {
+	public String getID() {
 		return order_id;
 	}
 
-	public void setOrder_id(String order_id) {
+	public void setID(String order_id) {
 		this.order_id = order_id;
 	}
 
