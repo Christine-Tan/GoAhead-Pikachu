@@ -3,6 +3,8 @@ package gap.client.ui.tableUI.OperationUI;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import gap.client.ui.BillOrderQueryUI.AccountorBillQueryBar;
 import gap.client.ui.BillOrderQueryUI.BillOrderTableHeader;
 import gap.client.ui.BillOrderQueryUI.TotalMoneyPanel;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.excelUI.FileChooser;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.util.MessageType;
@@ -26,6 +29,7 @@ import gap.client.vo.InstitutionVO;
 import gap.client.vo.OperatingConditionListVO;
 import gap.common.ListInterface.Receipt;
 import gap.common.po.BillOrderPO;
+import gap.common.util.ResultMessage;
 
 public class OperationMainPanel extends MainPanelWithGird{
 
@@ -36,6 +40,8 @@ public class OperationMainPanel extends MainPanelWithGird{
 	AccountOrderItemListPanel listPanel;
 	TableTotalMoneyPanel totalMoneyPanel;
 	ButtonArea buttonArea;
+	
+	OperatingConditionListVO operatingConditionListVO;
 	
 	public OperationMainPanel(MainFrame frame) {
 		super(frame);
@@ -74,6 +80,7 @@ public class OperationMainPanel extends MainPanelWithGird{
 		
 		buttonArea = new ButtonArea();
 		buttonArea.submit.setText("导出excel");
+		buttonArea.submit.addActionListener(new ExcelListener());
 		SwingConsole.addComponent(gb, gcons, this, buttonArea, 0, 4, 1, 1, 1, 0);
 	}
 
@@ -117,7 +124,7 @@ public class OperationMainPanel extends MainPanelWithGird{
 		}
 		
 		
-		OperatingConditionListVO operatingConditionListVO = 
+		operatingConditionListVO = 
 				tableController.getOperatingConditionList(begin, end);
 		List<Receipt> receipts = operatingConditionListVO.getReceipts();
 		
@@ -151,5 +158,24 @@ public class OperationMainPanel extends MainPanelWithGird{
 		return listPanel;
 	}
 	
+	public class ExcelListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String filePath = FileChooser.chooseFile(mainFrame);
+			System.out.println(filePath);
+			ResultMessage resultMessage = 
+					tableController.OperatingConditionExcel
+						(operatingConditionListVO, filePath);
+			if(resultMessage == ResultMessage.NOTFOUND){
+				MainFrame.setMessage("列表为空", MessageType.alram, 2000);
+			}else if(resultMessage == ResultMessage.FAILED){
+				MainFrame.setMessage("导出失败", MessageType.alram, 2000);
+			}else if (resultMessage == ResultMessage.SUCCEED) {
+				MainFrame.setMessage("导出成功", MessageType.succeed, 2000);
+			}
+		}
+		
+	}
 	
 }

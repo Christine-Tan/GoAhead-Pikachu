@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class ExcelOutput {
 	 * @param titles 表头
 	 * @throws UnsupportedEncodingException
 	 */
-	public ExcelOutput(String... titles) throws UnsupportedEncodingException {
+	public ExcelOutput(String... titles){
 		this.titles = titles;
 		column = titles.length;
 		datas = new ArrayList<>();
@@ -59,9 +60,7 @@ public class ExcelOutput {
 	 * @param items 一列的数据
 	 * @throws Exception
 	 */
-	public void appendRow(Object... items) throws Exception {
-		if (items.length != column)
-			throw new Exception("所传数据小于列数");
+	public void appendRow(Object... items) {
 		String[] row = new String[items.length];
 		for (int i = 0; i < row.length; i++) {
 			row[i] = items[i].toString();
@@ -78,23 +77,37 @@ public class ExcelOutput {
 	 * @throws UnsupportedEncodingException
 	 */
 	public void export(String filePath, String fileName) {
+		String wholePath = null;
+		if(filePath.charAt(filePath.length()-1) == '\\'){
+			wholePath = filePath + fileName;
+		}else{
+			wholePath = filePath+ "\\" + fileName;
+		}
+		export(wholePath);
+	}
+	
+	/**
+	 * 
+	 * @param wholePath 完整路径名，带文件名和扩展名
+	 */
+	public void export(String wholePath){
 		try {
 			// 换行符
-			byte[] newLine = "\n".getBytes(charSet);
+			String newLine = "\n";
 			// 制表符
-			byte[] tableChar = "\t".getBytes(charSet);
-
-			FileOutputStream fileout = new FileOutputStream(new File(filePath
-					+ "\\" + fileName));
+			String tableChar = "\t";
+			System.out.println(wholePath);
+			OutputStreamWriter fileout = new OutputStreamWriter
+					(new FileOutputStream(new File(wholePath)), "gb2312") ;
 			for (String str : titles) {
-				fileout.write(str.getBytes(charSet));
+				fileout.write(str);
 				fileout.write(tableChar);
 			}
 			fileout.write(newLine);
 
 			for (String[] row : datas) {
 				for (String item : row) {
-					fileout.write(item.getBytes(charSet));
+					fileout.write(item);
 					fileout.write(tableChar);
 				}
 				fileout.write(newLine);
@@ -113,19 +126,11 @@ public class ExcelOutput {
 	}
 
 	public static void main(String[] args) {
-		try {
+	
 			ExcelOutput excel = new ExcelOutput("表头1", "表头2", "表头3");
 			excel.appendRow("0000000001", 2, "test1");
 			excel.appendRow("txy", 5, "test2");
-			excel.export("D:\\", "test1.xlsx");
-		} catch (UnsupportedEncodingException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-		}
-
+			excel.export("E:\\", "test1.xlsx");
 	}
 
 }

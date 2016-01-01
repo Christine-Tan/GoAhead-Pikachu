@@ -293,30 +293,23 @@ public class Inventory implements InventoryService {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
 		String version= df.format(new Date());// new Date()为获取当前系统时间
 		String fileName = "库存盘点"+version+".xls";
-				
-		try {
-			ExcelOutput output = new ExcelOutput(order_id, sec, loc, intime,
-					belong_sec, destin);
-			if (list != null && list.size() > 0) {
-				for (int i = 0; i < list.size(); i++) {
-					GoodsVO vo = list.get(i);
-					System.out.println(vo.getExpressorder_id());
-					output.appendRow(vo.getExpressorder_id(),
-							vo.getSector_id(), vo.getLocation(), vo.getDate(),
-							vo.getBelong_sector_id(), vo.getDestination());
-				}
-				
+
+		ExcelOutput output = new ExcelOutput
+				(order_id, sec, loc, intime, belong_sec, destin);
+		if (list != null && list.size() > 0) {
+			for (int i = 0; i < list.size(); i++) {
+				GoodsVO vo = list.get(i);
+				System.out.println(vo.getExpressorder_id());
+				output.appendRow
+				(vo.getExpressorder_id(), vo.getSector_id(), vo.getLocation(), vo.getDate(),
+						vo.getBelong_sector_id(), vo.getDestination());
 			}
+
+		}
 			
 			output.export(path, fileName);
 			
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 

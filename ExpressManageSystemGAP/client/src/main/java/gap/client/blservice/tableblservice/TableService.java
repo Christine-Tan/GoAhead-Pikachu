@@ -13,9 +13,9 @@ public interface TableService {
 	public OperatingConditionListVO getOperatingConditionList(Date begin,
 			Date end);
 
-	public ResultMessage Cost_ProfitExcel(Cost_ProfitListVO costProfitListVO);
+	public ResultMessage Cost_ProfitExcel(Cost_ProfitListVO costProfitListVO,String path);
 
 	public ResultMessage OperatingConditionExcel(
-			OperatingConditionListVO operatingConditionListVO);
+			OperatingConditionListVO operatingConditionListVO,String path);
 
 }
