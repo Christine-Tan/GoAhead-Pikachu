@@ -19,7 +19,7 @@ public class HistoryTableHeader extends PanelWithGrid{
 	private GAPLabel[] labels;
 	public static int[] widths;
 	public static String[] texts;
-	public static int height = 60;
+	public static int height = 50;
 	public static Font font;
 	
 	static{

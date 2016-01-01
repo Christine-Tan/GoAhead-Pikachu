@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.naming.ldap.ControlFactory;
 
+import gap.client.bl.initial.InitialCmd;
 import gap.client.bl.initial.InitialPOCreater;
 import gap.client.blservice.initialblservice.InitialBlService;
 import gap.client.datacontroller.ControllerFactory;
@@ -37,7 +38,8 @@ public class InitialController implements InitialBlService{
 
 	@Override
 	public ResultMessage submitInitial(InitialHistoryPO initialPO) {
-		return dataController.addInitial(initialPO);
+		InitialCmd initialCmd = new InitialCmd();
+		return initialCmd.excute(initialPO);
 	}
 
 	@Override

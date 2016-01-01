@@ -1,6 +1,9 @@
 package gap.common.po;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LogPO implements Serializable {
 
@@ -15,6 +18,21 @@ public class LogPO implements Serializable {
 		this.setOperate(operate);
 	}
 
+	
+	/**
+	 * 不带日期的构造方法，日期默认为当前日期
+	 * @param userPO
+	 * @param operate
+	 */
+	public LogPO(UserPO userPO, String operate) {
+		this.setUserPO(userPO);
+		Date date=new Date();
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String time=format.format(date);
+		this.setDate(time);
+		this.setOperate(operate);
+	}
+	
 	public UserPO getUserPO() {
 		return userPO;
 	}

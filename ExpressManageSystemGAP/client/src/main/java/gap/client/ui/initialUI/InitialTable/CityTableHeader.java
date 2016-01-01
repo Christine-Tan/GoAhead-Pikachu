@@ -28,7 +28,7 @@ public class CityTableHeader extends PanelWithGrid {
 	public static int vGap = 50;
 	public static int hGap = 50;
 
-	public static final int height = 50;
+	public static final int height = 30;
 
 	private GAPLabel[] labels;
 	private GAPLabel totalLable;

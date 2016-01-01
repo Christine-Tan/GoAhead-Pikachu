@@ -7,6 +7,7 @@ import gap.client.bl.receipt.PaymentList;
 import gap.client.blservice.accountorReceiptblservice.AccountorReceiptService;
 import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ControllerFactory;
+import gap.client.util.LocalInfo;
 import gap.client.vo.AccountVO;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.InstitutionVO;
@@ -15,6 +16,7 @@ import gap.client.vo.PaymentListVO;
 import gap.common.po.AccountPO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.InstitutionPO;
+import gap.common.po.LogPO;
 import gap.common.po.PaymentListPO;
 import gap.common.util.ResultMessage;
 
@@ -54,7 +56,12 @@ public class AccountorReceiptController implements AccountorReceiptService {
 
 	@Override
 	public ResultMessage submitPaymentList(PaymentListVO paymentListVO) {
-
+		
+		LogPO logPO = new LogPO
+				(LocalInfo.localuser.toUserPO(), "创建付款单"+paymentListVO.getPaymentID());
+		LogController.addLog(logPO);
+		
+		
 		PaymentListPO po = paymentListVO.toPO();
 		return receiptDataController.submitPayment(po);
 	}
