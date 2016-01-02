@@ -36,6 +36,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JFrame;
+
 public class NetInitial {
 	private static HashMap<String, Object> serviceMap;
 
@@ -109,9 +111,7 @@ public class NetInitial {
 				Naming.bind(RMIConfig.url + entry.getKey(),
 						(UnicastRemoteObject) entry.getValue());
 			}
-
 			Naming.bind(RMIConfig.url + ServiceName.CONTACTOR, contactor);
-
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

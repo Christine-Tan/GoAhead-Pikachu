@@ -43,9 +43,6 @@ public class LoginPanel extends JPanel {
 	// 渐变
 	LinearGradientPaint paint;
 
-	// Image background = new
-	// ImageIcon("images/login/loginForm.png").getImage();
-
 	public LoginPanel(LoginFrame frame) {
 		setLayout(null);
 		setBounds(0, 0, 430, 330);
@@ -69,12 +66,10 @@ public class LoginPanel extends JPanel {
 
 		int signInX = getWidth() / 2 - 200 / 2;
 		signInButton.setBounds(signInX, 280, 200, 35);
-		// goBackButton.setBounds(20, 225, 100, 40);
 		exitButton.setBounds(400, 15, 15, 15);
 
 		layer.add(signInButton);
 		layer.add(exitButton, new Integer(20));
-
 	}
 
 	public void paintComponent(Graphics g) {
