@@ -19,7 +19,7 @@ public class ConvertString {
 	}
 	
 	public static String getString(double aNum){
-		String result = String.format("%.2f", aNum);
+		String result = String.format("%9.2f", aNum);
 		return result;
 	}
 }

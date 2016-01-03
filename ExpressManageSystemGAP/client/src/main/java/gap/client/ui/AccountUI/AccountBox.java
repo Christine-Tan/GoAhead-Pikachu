@@ -23,6 +23,7 @@ import com.sun.javafx.property.adapter.PropertyDescriptor.Listener;
 import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
 import gap.client.ui.BaseComponents.WhiteExitButton;
 import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.ConvertString;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.AccountVO;
@@ -79,7 +80,8 @@ public class AccountBox extends JPanel{
 		balanceLabel.setBounds(0, height-60, width, 25);
 		
 		nameLabel.setText(accountVO.getName());
-		balanceLabel.setText("余额： "+accountVO.getBalance());
+		String moneyString = ConvertString.getString(accountVO.getBalance());
+		balanceLabel.setText("余额： "+moneyString);
 		
 		deleteButton = new DeleteButton(this);
 		deleteButton.setVisible(false);
