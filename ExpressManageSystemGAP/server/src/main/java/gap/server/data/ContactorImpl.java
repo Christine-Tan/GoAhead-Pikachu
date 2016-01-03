@@ -1,6 +1,7 @@
 package gap.server.data;
 
 import gap.common.dataservice.Contactor;
+import gap.common.po.UserPO;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -18,7 +19,7 @@ public class ContactorImpl extends UnicastRemoteObject implements Contactor {
 	}
 
 	@Override
-	public boolean getInfo() throws RemoteException {
+	public boolean getInfo(String IP,UserPO userPO) throws RemoteException {
 		// TODO 自动生成的方法存根
 		return true;
 	}

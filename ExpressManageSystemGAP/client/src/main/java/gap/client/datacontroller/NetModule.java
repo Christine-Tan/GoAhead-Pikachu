@@ -2,6 +2,7 @@ package gap.client.datacontroller;
 
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.gapcomponents.GAPDialog;
+import gap.client.util.LocalInfo;
 import gap.client.util.MessageType;
 import gap.common.dataservice.Contactor;
 import gap.common.dataservice.ServiceName;
@@ -27,6 +28,7 @@ import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
+import gap.common.po.UserPO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,7 +69,11 @@ public class NetModule {
 	public static GAPDialog dialog;
 
 	public static boolean isFirstConnect = true;
+	
+	//后台检查连接线程的间隔
+	private static long checkIdle = 1000;
 
+	
 	/**
 	 * 根据面板初始化对话框
 	 * @param jf
@@ -291,8 +297,13 @@ public class NetModule {
 		public void run() {
 			// TODO 自动生成的方法存根
 			try {
-				while (contactor.getInfo())
-					Thread.sleep(5000);
+				while (true){
+					UserPO userPO = LocalInfo.localuser.toUserPO();
+					String IP = LocalInfo.localIP;
+					contactor.getInfo(IP, userPO);
+					Thread.sleep(checkIdle);
+				}
+					
 			} catch (RemoteException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
