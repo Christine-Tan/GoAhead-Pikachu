@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ChooseButton;
-import gap.client.ui.paymentUI.PanelWithGrid;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.common.po.InitialPeoplePO;
 
 public class HorizontalNavi extends PanelWithGrid{

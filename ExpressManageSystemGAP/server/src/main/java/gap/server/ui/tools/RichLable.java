@@ -1,4 +1,4 @@
-package gap.client.ui.paymentUI;
+package gap.server.ui.tools;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,8 +9,6 @@ import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.RenderSetter;
 
 /**
  * 
@@ -21,7 +19,7 @@ import gap.client.ui.UITools.RenderSetter;
 public class RichLable extends JLabel{
 
 	String text;
-	Color textColor = Color.black;
+	Color textColor = Color.white;
 	Color shadowColor = Color.gray;
 	Color backGround = new Color(232, 255, 232);
 	int fontSize = 0;
@@ -42,6 +40,7 @@ public class RichLable extends JLabel{
 		textLength = this.text.length()*fontSize;
 		textHeight = fontSize;
 		setPreferredSize(new Dimension(textLength, textHeight+10));
+		setOpaque(false);
 	}
 	
 	public void setTextBottom(){
@@ -63,13 +62,13 @@ public class RichLable extends JLabel{
 			y+=(int)(textHeight*1.0/4);
 		}
 		
-		graphics2d.setColor(Color.white);
-		graphics2d.fillRect(0, 0, width, height);
+//		graphics2d.setColor(Color.white);
+//		graphics2d.fillRect(0, 0, width, height);
 		
 		graphics2d.setFont(font);
 		
-//		graphics2d.setColor(shadowColor);
-//		graphics2d.drawString(text, x+shadowDistance, y+shadowDistance);
+		graphics2d.setColor(shadowColor);
+		graphics2d.drawString(text, x+shadowDistance, y+shadowDistance);
 		
 		graphics2d.setColor(textColor);
 		graphics2d.drawString(text, x, y);

@@ -22,12 +22,18 @@ public class LoginAnimation extends JLabel {
 	Thread animation;
 	boolean isStarted = false;
 	
+	int[] height = 	  {-50,50,130,200,270,340,410,430};
+	int[] pointNums = { 10,10, 10, 10, 10, 10, 10, 10};
+	double lineLength = 900;
+	
+	Color startColor = ColorAndFonts.darkBlue;
+	Color endColor = ColorAndFonts.blue;
+	
 	public LoginAnimation() {
-		this.setBounds(4, 4, 423, 172);
+		this.setBounds(0, 0, 200, 400);
 		this.setLayout(null);
 
-		int[] height = { -20, 50, 130, 200 };
-		int[] pointNums = { 10, 10, 10, 10 };
+		this.setBackground(endColor);
 
 		lines = new ArrayList<>();
 		shapes = new ArrayList<>();
@@ -127,7 +133,9 @@ public class LoginAnimation extends JLabel {
 		// TODO Auto-generated method stub
 
 		Graphics2D graphics2d = RenderSetter.OpenRender(g);
-
+		graphics2d.setColor(startColor);
+		graphics2d.fillRect(0, 0, getWidth(), getHeight());
+		
 		for (int i = 0; i < shapes.size(); i++) {
 			MoveShape moveShape = shapes.get(i);
 			graphics2d.setColor(moveShape.getColor());
@@ -180,7 +188,7 @@ public class LoginAnimation extends JLabel {
 	 * @author 申彬
 	 */
 	class BaseLine {
-		double lineLength = 800;
+
 		int lineHeight;
 		int pointNum;
 		ArrayList<MovePoint> points;
@@ -228,8 +236,7 @@ public class LoginAnimation extends JLabel {
 			// sign = -1;
 			// }
 
-			Color startColor = ColorAndFonts.darkBlue;
-			Color endColor = ColorAndFonts.lightBlue;
+
 
 			double[] upBounds = { endColor.getRed(), endColor.getGreen(),
 					endColor.getBlue() };
@@ -255,6 +262,10 @@ public class LoginAnimation extends JLabel {
 
 			double[] diffs = { rDiff, gDiff, bDiff };
 			this.diffs = diffs;
+			
+			for(int i=0;i<50;i++){
+				getColor();
+			}
 
 		}
 

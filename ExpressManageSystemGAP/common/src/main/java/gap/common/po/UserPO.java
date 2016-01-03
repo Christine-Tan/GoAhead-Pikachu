@@ -106,4 +106,17 @@ public class UserPO implements Serializable {
 		this.lastPayDate = lastPayDate;
 	}
 
+	public boolean equals(Object other){
+		if(!(other instanceof UserPO)){
+			return false;
+		}
+		
+		UserPO po = (UserPO)other;
+		if(po.userName.equals(userName) && po.userId.equals(userId)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 }

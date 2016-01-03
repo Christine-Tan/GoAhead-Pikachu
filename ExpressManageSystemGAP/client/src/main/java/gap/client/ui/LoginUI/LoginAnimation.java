@@ -34,7 +34,7 @@ public class LoginAnimation extends JLabel {
 		// this.setOpaque(false);
 		listener = new MoveListener(frame);
 		
-
+		setBackground(ColorAndFonts.lightBlue);
 		int[] height = { -20, 50, 130, 200 };
 		int[] pointNums = { 10, 10, 10, 10 };
 

@@ -12,11 +12,11 @@ import javax.swing.JViewport;
 
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.initialUI.InitialMainPanel;
 import gap.client.ui.initialUI.InitialTablePanel;
 import gap.client.ui.initialUI.InitialTable.CityTableContant;
 import gap.client.ui.initialUI.InitialTable.CityTableHeader;
-import gap.client.ui.paymentUI.PanelWithGrid;
 import gap.common.po.AccountPO;
 
 public class InitialAccountPanel extends PanelWithGrid{

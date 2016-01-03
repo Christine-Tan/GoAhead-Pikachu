@@ -15,7 +15,7 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.paymentUI.PanelWithGrid;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.paymentUI.PaymentTableHeader;
 import gap.client.vo.PayeeVO;
 

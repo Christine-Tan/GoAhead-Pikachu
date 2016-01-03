@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.RichLable;
 
 public class HeadPanel extends JPanel{
 	GridBagLayout gridBagLayout = new GridBagLayout();
