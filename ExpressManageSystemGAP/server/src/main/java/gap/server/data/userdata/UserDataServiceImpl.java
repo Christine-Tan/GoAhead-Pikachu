@@ -15,7 +15,9 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -203,8 +205,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 
 		// 把日期的天改成1，这样能获得上个月的未付款人
 		@SuppressWarnings("deprecation")
-		Date dateForCompute = new Date(date.getYear(), date.getMonth(), 1);
-
+		Date dateForCompute = new Date(date.getYear()-1900, date.getMonth(), 1);
+		System.out.println(dateForCompute.toString());
 		try {
 			List<UserPO> users = new ArrayList<UserPO>();
 			ResultSet re = NetModule.excutor
@@ -227,7 +229,9 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements
 		try {
 			updateSQL.clear();
 		//	updateSQL.add(lastpaid_f, new Date(System.currentTimeMillis()).toString());
-			updateSQL.add(lastpaid_f, new Date(System.currentTimeMillis()));
+			Calendar calendar = Calendar.getInstance();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			updateSQL.add(lastpaid_f, format.format(calendar.getTime()));
 			updateSQL.setKey(id_f, user_id);
 			NetModule.excutor.excute(updateSQL.createSQL());
 			return ResultMessage.SUCCEED;

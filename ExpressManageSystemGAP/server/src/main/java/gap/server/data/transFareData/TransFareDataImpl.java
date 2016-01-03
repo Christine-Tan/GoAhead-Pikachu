@@ -83,9 +83,10 @@ public class TransFareDataImpl extends UnicastRemoteObject implements
 			String driverID = po.getDriverID();
 			String orderID = po.getOrderID();
 
-			builder.DeleteFrom(tableName).Where(driverID_col).EQUALS(driverID)
-					.AND(orderID_col).EQUALS(orderID);
-
+			builder.DeleteFrom(tableName).Where(orderID_col).EQUALS(orderID);
+			
+			System.out.println(builder);
+			
 			try {
 				builder.excute();
 			} catch (Exception e) {
