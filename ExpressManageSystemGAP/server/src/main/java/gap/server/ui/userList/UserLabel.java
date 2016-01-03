@@ -40,7 +40,7 @@ public class UserLabel extends JLabel{
 	private static int height = 60;
 	
 	private Color selectedColor = new Color(250, 200, 213);
-	private Color normalColor = Color.white;
+	private Color normalColor = new Color(235, 235, 235);
 	private Color currentColor = normalColor;
 	
 	static{

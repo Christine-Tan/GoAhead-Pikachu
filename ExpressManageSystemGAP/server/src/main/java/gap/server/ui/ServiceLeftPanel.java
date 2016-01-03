@@ -19,7 +19,7 @@ public class ServiceLeftPanel extends PanelWithGrid{
 	JLabel titleLabel;
 	JScrollPane scrollPane;
 	
-	public static Color grayColor = new Color(230,230,230);
+	public static Color grayColor = Color.white;
 	
 	private static UserPanel userPanel;
 	
@@ -33,11 +33,11 @@ public class ServiceLeftPanel extends PanelWithGrid{
 		titleLabel.setPreferredSize(new Dimension(150, 20));
 		
 		scrollPane = new JScrollPane(userPanel);
-		setBackground(grayColor);
+		setBackground(new Color(230, 230, 230));
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		//scrollPane.getViewport()
+		scrollPane.getViewport().setBackground(Color.white);
 		
 		gridBagConstraints.fill = GridBagConstraints.BOTH;
 		gridBagConstraints.insets = new Insets(10, 10, 10, 5);
@@ -45,7 +45,7 @@ public class ServiceLeftPanel extends PanelWithGrid{
 		SwingConsole.addComponent
 		(gridBagLayout, gridBagConstraints, this, titleLabel, 0, 0, 1, 1, 1, 0);
 		
-		gridBagConstraints.insets = new Insets(0, 10, 10, 10);
+		gridBagConstraints.insets = new Insets(0, 2, 2, 2);
 		SwingConsole.addComponent
 		(gridBagLayout, gridBagConstraints, this, scrollPane, 0, 1, 1, 1, 1, 1);
 		
