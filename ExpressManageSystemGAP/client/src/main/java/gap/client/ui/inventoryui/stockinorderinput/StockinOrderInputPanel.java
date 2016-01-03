@@ -207,6 +207,7 @@ public class StockinOrderInputPanel extends MainPanel {
 		SwingConsole.addComponent(gb, gcons, this, js, 0, 3, 1, 1, 1, 0);
 		SwingConsole.addComponent(gb, gcons, this, panel, 0, 4, 1, 1, 1, 1);
 		SwingConsole.addComponent(gb, gcons, this, confirm, 0, 5, 1, 1, 1, 0);
+		title.box.setSelected(true);
 		mainFrame.validate();
 	}
 

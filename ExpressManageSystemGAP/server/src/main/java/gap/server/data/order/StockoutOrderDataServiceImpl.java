@@ -247,7 +247,7 @@ public class StockoutOrderDataServiceImpl extends UnicastRemoteObject implements
 			ExpressOrderDataService expressorderData = ExpressOrderDataServiceImpl.getInstance();
 			if (ids != null && ids.size() > 0) {
 				for (String id : ids) {
-					inventory.setExisted(id);
+					inventory.delete(id);
 					expressorderData.setStockout(id, order_id.substring(0, 7));
 				}
 			}

@@ -40,6 +40,7 @@ public class StockoutInfoPanel extends JPanel {
 	JLabel title, outDate, targetIns, id, transport;
 	GAPTextField outDate_text, id_text;
 	JComboBox<String> transport_list, targetIns_list;
+	String managerins = "0000000";
 
 	public StockoutInfoPanel() {
 		setBackground(Color.white);
@@ -125,16 +126,29 @@ public class StockoutInfoPanel extends JPanel {
 		
 		for(InstitutionVO vo:insList){
 			String ins_id = vo.getInsId();
-			if(!isCenter(ins_id)){
+			if(!ins_id.equals(managerins)){
 				if(vo.getInsCity().equals(localCity)){
-					targetIns_list.addItem(vo.getInsName());
-				}
-				
-			}else{
-				if(!vo.getInsName().equals(insName)){
-					targetIns_list.addItem(vo.getInsName());
+					if(!vo.getInsName().equals(insName)){
+						targetIns_list.addItem(vo.getInsName());
+					}
+				}else{
+					if(isCenter(ins_id)){
+						targetIns_list.addItem(vo.getInsName());
+					}
+					
 				}
 			}
+			
+//			if(!isCenter(ins_id)){
+//				if(!vo.getInsCity().equals(localCity)){
+//					targetIns_list.addItem(vo.getInsName());
+//				}
+//				
+//			}else{
+//				if(!vo.getInsName().equals(insName)){
+//					targetIns_list.addItem(vo.getInsName());
+//				}
+//			}
 			
 		}
 		
