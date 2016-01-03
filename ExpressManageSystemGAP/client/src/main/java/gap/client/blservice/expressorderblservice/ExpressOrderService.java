@@ -36,4 +36,6 @@ public interface ExpressOrderService {
 
 	public boolean isExisted(String order_id);
 
+	public double getDeliveryTime(String departure_city, String target_city);
+
 }

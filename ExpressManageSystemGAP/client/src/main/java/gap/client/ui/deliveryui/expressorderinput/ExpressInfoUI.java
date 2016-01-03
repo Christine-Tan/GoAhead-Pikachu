@@ -21,8 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ExpressInfoUI extends JPanel {
-	JLabel title, type, price_la;
-	GAPTextField price;
+	JLabel title, type, price_la, time_la;
+	GAPTextField price, time;
 	JButton price_get;
 	JComboBox<String> type_list;
 
@@ -35,7 +35,9 @@ public class ExpressInfoUI extends JPanel {
 
 		type = new GAPLabel("快递类型：");
 
-		price_la = new GAPLabel("价格：");
+		price_la = new GAPLabel("价格（元）：");
+
+		time_la = new GAPLabel("预估时间（小时）：");
 
 		price_get = new GAPButton("计算");
 		price_get.setFont(ComponentStyle.defaultFont);
@@ -45,6 +47,12 @@ public class ExpressInfoUI extends JPanel {
 		price.setFocusable(false);
 		// price.closeEdit();
 		price.setCenter();
+
+		time = new GAPTextField(5);
+		time.setEditable(false);
+		time.setFocusable(false);
+		// time.closeEdit();
+		time.setCenter();
 
 		type_list = new GAPComboBox<String>();
 		type_list.addItem("特快");
@@ -63,8 +71,10 @@ public class ExpressInfoUI extends JPanel {
 		SwingConsole.addComponent(gb, gcons, this, type_list, 2, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, price_la, 3, 0, 1, 1, 0, 0);
 		SwingConsole.addComponent(gb, gcons, this, price, 4, 0, 1, 1, 0, 0);
-		gcons.insets = new Insets(10, 10, 10, 300);
-		SwingConsole.addComponent(gb, gcons, this, price_get, 5, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, time_la, 5, 0, 1, 1, 0, 0);
+		SwingConsole.addComponent(gb, gcons, this, time, 6, 0, 1, 1, 0, 0);
+		gcons.insets = new Insets(10, 10, 10, 40);
+		SwingConsole.addComponent(gb, gcons, this, price_get, 7, 0, 1, 1, 0, 0);
 	}
 
 	// 获得快递类型
@@ -88,6 +98,10 @@ public class ExpressInfoUI extends JPanel {
 
 	public void setPrice(double price) {
 		this.price.setText(String.format("%.2f", price));
+	}
+
+	public void setTime(double time) {
+		this.time.setText(String.format("%.1f", time));
 	}
 
 }

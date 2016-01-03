@@ -136,4 +136,15 @@ public class ExpressOrderDataController {
 		return null;
 	}
 
+	public double getDeliveryTime(String departure_city, String target_city) {
+		try {
+			return expressorderdataservice.getDeliveryTime(departure_city,
+					target_city);
+		} catch (RemoteException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return -1;
+	}
+
 }

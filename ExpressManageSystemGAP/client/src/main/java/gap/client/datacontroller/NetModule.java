@@ -1,7 +1,7 @@
 package gap.client.datacontroller;
 
 import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.gapcomponents.GAPDialog;
+import gap.client.ui.gapcomponents.GAPConnectDialog;
 import gap.client.util.MessageType;
 import gap.common.dataservice.Contactor;
 import gap.common.dataservice.ServiceName;
@@ -64,7 +64,7 @@ public class NetModule {
 	private static Contactor contactor;
 	private static boolean dialogShowed = false;
 
-	public static GAPDialog dialog;
+	public static GAPConnectDialog dialog;
 
 	public static boolean isFirstConnect = true;
 
@@ -74,7 +74,7 @@ public class NetModule {
 	 */
 	public static void initial(JFrame jf) {
 		dialogShowed = false;
-		dialog = new GAPDialog(jf);
+		dialog = new GAPConnectDialog(jf);
 		dialog.setVisible(false);
 
 		// dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -272,9 +272,10 @@ public class NetModule {
 	}
 
 	private static void showMessage(String message) {
-		if (dialogShowed)
+		if (dialogShowed) {
 			dialog.showMessage(message);
-		else if (MainFrame.messagePanel != null)
+			System.out.println("1111");
+		} else if (MainFrame.messagePanel != null)
 			// System.out.println(message);
 			MainFrame.setMessage(message, MessageType.alram, 2000);
 	}
@@ -306,13 +307,13 @@ public class NetModule {
 
 	}
 
-	public static void main(String[] args) {
-		// JFrame jf = new JFrame();
-		// jf.setSize(200, 200);
-		// jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// jf.setLocationRelativeTo(null);
-		// jf.setVisible(true);
-		// initial(jf);.
-		// connect();
-	}
+	// public static void main(String[] args) {
+	// // JFrame jf = new JFrame();
+	// // jf.setSize(200, 200);
+	// // jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	// // jf.setLocationRelativeTo(null);
+	// // jf.setVisible(true);
+	// // initial(jf);.
+	// // connect();
+	// }
 }

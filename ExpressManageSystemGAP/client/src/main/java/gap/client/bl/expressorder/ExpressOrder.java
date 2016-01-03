@@ -35,7 +35,7 @@ public class ExpressOrder implements ExpressOrderService {
 	}
 
 	@Override
-	public List<String> getState(String order_id){
+	public List<String> getState(String order_id) {
 		// TODO 自动生成的方法存根
 		return expressorderData.getState(order_id);
 	}
@@ -115,6 +115,12 @@ public class ExpressOrder implements ExpressOrderService {
 	public boolean isExisted(String order_id) {
 		// TODO 自动生成的方法存根
 		return expressorderData.isExisted(order_id);
+	}
+
+	@Override
+	public double getDeliveryTime(String departure_city, String target_city) {
+		// TODO 自动生成的方法存根
+		return expressorderData.getDeliveryTime(departure_city, target_city);
 	}
 
 }

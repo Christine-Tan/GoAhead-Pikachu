@@ -192,4 +192,7 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public ResultMessage setSubmit(String order_id) throws RemoteException;
 
+	public double getDeliveryTime(String departure_city, String target_city)
+			throws RemoteException;
+
 }

@@ -26,9 +26,19 @@ public class LoginFrame extends JFrame {
 				try {
 					UIManager
 							.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-					LoginFrame frame = new LoginFrame();
-					NetModule.connect();
-					loginFrame = frame;
+					final LoginFrame frame = new LoginFrame();
+					NetModule.initial(frame);
+					new Thread(new Runnable() {
+
+						@Override
+						public void run() {
+							// TODO 自动生成的方法存根
+							NetModule.connect();
+							loginFrame = frame;
+							setVi(true);
+						}
+					}).start();
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,7 +64,7 @@ public class LoginFrame extends JFrame {
 		setSize(430, 330);
 
 		setLocationRelativeTo(null);
-		setVisible(true);
+//		setVisible(true);
 
 		loginPanel = new LoginPanel(this);
 		setContentPane(loginPanel);

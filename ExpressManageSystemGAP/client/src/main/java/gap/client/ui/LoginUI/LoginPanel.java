@@ -112,6 +112,7 @@ public class LoginPanel extends JPanel {
 		String username_text = userName.getText();
 		String password_text = new String(passwordField.getPassword());
 		LoginVO log = LoginController.login(username_text, password_text);
+		System.out.println(log.isSucceed());
 		if (log.isSucceed()) {
 			MainFrame mainFrame = new MainFrame();
 			mainFrame.initial(log.getUserType());

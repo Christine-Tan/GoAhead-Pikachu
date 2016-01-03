@@ -65,4 +65,9 @@ public class ExpressorderController {
 		return expressorder.isExisted(order_id);
 	}
 
+	public static double getDeliveryTime(String departure_city,
+			String target_city) {
+		return expressorder.getDeliveryTime(departure_city, target_city);
+	}
+
 }

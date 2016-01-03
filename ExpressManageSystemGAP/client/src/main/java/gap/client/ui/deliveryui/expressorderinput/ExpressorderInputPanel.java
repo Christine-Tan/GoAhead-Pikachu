@@ -42,12 +42,16 @@ public class ExpressorderInputPanel extends MainPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO 自动生成的方法存根
 				ExpressOrderVO vo = getExpressOrderVO();
-				if (vo.cargoInfo != null) {
+				if (vo != null && vo.cargoInfo != null) {
 					vo = ExpressorderController.createOrder(vo);
 					express.setPrice(vo.price);
+					express.setTime(ExpressorderController.getDeliveryTime(
+							vo.sender_info.getAddress().getCity_name(),
+							vo.receiver_info.getAddress().getCity_name()));
 				}
 			}
 		});
+
 		buttonArea.submit.addActionListener(new ActionListener() {
 
 			@Override

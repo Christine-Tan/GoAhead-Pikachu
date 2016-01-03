@@ -33,14 +33,15 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		ExpressOrderDataService {
 	// 插入语句生成器
 	private InsertSQL senderInsert, receiverInsert, orderInsert, cargoInsert,
-			addressInsert, stateInsert, receivedInsert;
+			addressInsert, stateInsert, receivedInsert, deliveryTimeInsert;
 
 	private UpdateSQL update;
 	// 表名
 	private String senderTable = "sender_info",
 			receivedTable = "received_info", receiverTable = "receiver_info",
 			cargoTable = "cargo_info", addressTable = "address",
-			stateTable = "expressorderstate", tableName = "expressorder";
+			stateTable = "expressorderstate",
+			deliveryTimeTable = "deliverytime", tableName = "expressorder";
 	// expressorder表字段名
 	private String order_id_f = "order_id", current_ins_id_f = "currentIns_id",
 			target_ins_id_f = "targetIns_id", received_f = "received",
@@ -65,6 +66,10 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	// state 表字段名
 	private String state_id_f = "order_id", state_time_f = "state_time",
 			state_state_f = "state";
+	// deliverytime 表字段名
+	private String departure_city_id_f = "departure_city_id",
+			target_city_id_f = "target_city_id", cost_time_f = "cost_time",
+			order_num_f = "order_num";
 
 	private static ExpressOrderDataService instance;
 
@@ -82,6 +87,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		addressInsert = new InsertSQL(addressTable);
 		stateInsert = new InsertSQL(stateTable);
 		receivedInsert = new InsertSQL(receivedTable);
+		deliveryTimeInsert = new InsertSQL(deliveryTimeTable);
 		update = new UpdateSQL(tableName);
 	}
 
@@ -411,8 +417,51 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 		receivedInsert.add(rece_time_f, info.getReceive_time());
 		receivedInsert.add(rece_comment_f, info.getComment());
 
+		String sql = "SELECT * FROM " + tableName + " WHERE " + order_id_f
+				+ "='" + order_id + "';";
+
 		try {
 			NetModule.excutor.excute(receivedInsert.createSQL());
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			re.next();
+			long createTime, tempTime;
+			double costTime;
+			createTime = re.getDate(create_time_f).getTime();
+			tempTime = Date.valueOf(info.getReceive_time()).getTime();
+			costTime = ((double) (tempTime - createTime)) / (3600L * 1000);
+			String depar = getPeopleInfo(re.getInt(sender_info_f), senderTable)
+					.getAddress().getCity_name();
+			String targ = getPeopleInfo(re.getInt(receiver_info_f),
+					receiverTable).getAddress().getCity_name();
+
+			String sql1 = "SELECT * FROM " + deliveryTimeTable + " WHERE "
+					+ departure_city_id_f + " = '" + depar + "' AND "
+					+ target_city_id_f + " = '" + targ + "';";
+			ResultSet re1 = NetModule.excutor.excuteQuery(sql1);
+			if (re1.next()) {
+				String id = re1.getString("id");
+
+				int total_order_num = re1.getInt(order_num_f);
+
+				double ave_costTime = re1.getDouble(cost_time_f);
+
+				double ave_time = (ave_costTime * total_order_num + costTime)
+						/ (total_order_num + 1);
+
+				total_order_num++;
+
+				String sql2 = "UPDATE " + deliveryTimeTable + " SET "
+						+ cost_time_f + " = " + ave_time + "," + order_num_f
+						+ " = " + total_order_num + " WHERE id = " + id + ";";
+
+				NetModule.excutor.excute(sql2);
+			} else {
+				deliveryTimeInsert.add(departure_city_id_f, depar);
+				deliveryTimeInsert.add(target_city_id_f, targ);
+				deliveryTimeInsert.add(cost_time_f, costTime);
+				deliveryTimeInsert.add(order_num_f, 1);
+				NetModule.excutor.excute(deliveryTimeInsert.createSQL());
+			}
 			return ResultMessage.SUCCEED;
 		} catch (SQLException e) {
 			// TODO 自动生成的 catch 块
@@ -539,6 +588,25 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return ResultMessage.FAILED;
+	}
+
+	@Override
+	public double getDeliveryTime(String departure_city, String target_city)
+			throws RemoteException {
+		// TODO 自动生成的方法存根
+		String sql = "SELECT * FROM " + deliveryTimeTable + " WHERE "
+				+ departure_city_id_f + " = '" + departure_city + "' AND "
+				+ target_city_id_f + " = '" + target_city + "';";
+		try {
+			ResultSet re = NetModule.excutor.excuteQuery(sql);
+			if (re.next()) {
+				return re.getDouble(cost_time_f);
+			}
+		} catch (SQLException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	/**
