@@ -127,12 +127,13 @@ public class NetModule {
 	 * 创建连接的方法
 	 */
 	public static boolean connect() {
+		System.out.println("正在创建连接");
 		setConnecting();
 		int connect_time = 0;
 		boolean reconnect = false;
 		while (true) {
 			try {
-				// 检测通讯是否成功的类
+				
 				contactor = (Contactor) Naming.lookup(RMIConfig.url
 						+ ServiceName.CONTACTOR);
 
@@ -204,6 +205,7 @@ public class NetModule {
 				Thread chechThread = new Thread(new CheckRunnable());
 				chechThread.setDaemon(true);
 				chechThread.start();
+				System.out.println("连接创建成功！");
 				return true;
 			} catch (MalformedURLException e) {
 				// TODO 自动生成的 catch 块
@@ -211,7 +213,7 @@ public class NetModule {
 				showDialog();
 				showMessage("连接错误");
 				return false;
-			} catch (RemoteException e) {
+			} catch (RemoteException | NotBoundException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();
 				showDialog();
@@ -230,13 +232,7 @@ public class NetModule {
 						e1.printStackTrace();
 					}
 				}
-			} catch (NotBoundException e) {
-				// TODO 自动生成的 catch 块
-				e.printStackTrace();
-				showDialog();
-				showMessage("服务器错误");
-				return false;
-			}
+			} 
 		}
 	}
 

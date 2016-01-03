@@ -10,6 +10,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.sun.xml.internal.ws.api.addressing.AddressingPropertySet;
+
 import gap.client.blcontroller.AccountorReceiptController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
@@ -20,6 +22,7 @@ import gap.client.util.MessageType;
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.InstitutionVO;
 import gap.common.po.BillOrderPO;
+import gap.common.util.InstitutionType;
 
 public class AccountorBillQueryMainPanel extends MainPanelWithGird{
 
@@ -45,7 +48,16 @@ public class AccountorBillQueryMainPanel extends MainPanelWithGird{
 	@Override
 	public void refresh() {
 		removeAll();
-		institutionVOs = receiptController.getAllInstitution();
+		List<InstitutionVO> allInstitution = receiptController.getAllInstitution();
+		institutionVOs = new ArrayList<>();
+		
+		for(InstitutionVO institutionVO: allInstitution){
+			InstitutionType type = InstitutionType.getInsType(institutionVO.getInsId());
+			if(type == InstitutionType.BUSSINESS){
+				institutionVOs.add(institutionVO);
+			}
+		}
+		
 		queryBar = new AccountorBillQueryBar(this, institutionVOs);
 		SwingConsole.addComponent(gb, gcons, this, queryBar, 0, 0, 1, 1, 1, 0);
 		

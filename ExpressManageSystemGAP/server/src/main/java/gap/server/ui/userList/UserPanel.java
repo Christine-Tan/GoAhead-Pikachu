@@ -49,8 +49,10 @@ public class UserPanel extends PanelWithGrid{
 		(gridBagLayout, gridBagConstraints, this, empty, 0, userPOList.size(), 1, 1, 1, 1);
 		
 		Container container = getParent();
-		container.validate();
-		container.repaint();
+		if(container!=null){
+			container.validate();
+			container.repaint();
+		}
 	} 
 
 }
