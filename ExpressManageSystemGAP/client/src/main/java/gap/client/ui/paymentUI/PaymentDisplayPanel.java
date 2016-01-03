@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import gap.client.exception.MoneyEmptyException;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.paymentUI.RewardPanels.PaymentRewardPanel;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;

@@ -26,6 +26,7 @@ import gap.server.data.transdata.CarDataServiceImpl;
 import gap.server.data.transdata.DriverDataServiceImpl;
 import gap.server.data.userdata.UserDataServiceImpl;
 import gap.server.databaseutility.DataBaseLancher;
+import gap.server.ui.ServerMainFrame;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -40,7 +41,7 @@ import javax.swing.JFrame;
 
 public class NetInitial {
 	private static HashMap<String, Object> serviceMap;
-
+	private static ServerMainFrame serverMainFrame;
 	public static void initial() throws RemoteException {
 		NetModule.excutor = DataBaseLancher.lanch();
 		accountDataService = AccountDataServiceImpl.getInstance();
@@ -112,6 +113,8 @@ public class NetInitial {
 						(UnicastRemoteObject) entry.getValue());
 			}
 			Naming.bind(RMIConfig.url + ServiceName.CONTACTOR, contactor);
+			
+			serverMainFrame = new ServerMainFrame();
 			System.out.println("Service started");
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

@@ -12,7 +12,7 @@ import javax.swing.border.Border;
 
 import gap.client.bl.receipt.payee.Payee;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.paymentUI.PanelWithGrid;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.paymentUI.PayeeClassPanel;
 import gap.client.ui.paymentUI.PaymentTableHeader;
 import gap.client.vo.PayeeVO;

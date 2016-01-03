@@ -2,6 +2,7 @@ package gap.client.datacontroller;
 
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.gapcomponents.GAPConnectDialog;
+import gap.client.util.LocalInfo;
 import gap.client.util.MessageType;
 import gap.common.dataservice.Contactor;
 import gap.common.dataservice.ServiceName;
@@ -27,6 +28,7 @@ import gap.common.dataservice.transdataservice.CarDataService;
 import gap.common.dataservice.transdataservice.DriverDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.netconfig.RMIConfig;
+import gap.common.po.UserPO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,6 +69,12 @@ public class NetModule {
 	public static GAPConnectDialog dialog;
 
 	public static boolean isFirstConnect = true;
+
+	//后台检查连接线程的间隔
+	private static long checkIdle = 1000;
+	//断网后尝试连接次数
+	private static int checkTimes = 20;
+
 
 	/**
 	 * 根据面板初始化对话框
@@ -209,7 +217,7 @@ public class NetModule {
 				e.printStackTrace();
 				showDialog();
 				reconnect = true;
-				if (connect_time > 5) {
+				if (connect_time > checkTimes) {
 					showMessage("网络连接错误,请稍后连接");
 					setFailConnect();
 					return false;
@@ -282,7 +290,7 @@ public class NetModule {
 
 	/**
 	 * 后台检查线程
-	 * 每5秒检查一次网络连接是否正常
+	 * 每checkIdel毫秒检查一次网络连接是否正常
 	 * @author YangYanfei
 	 *
 	 */
@@ -292,8 +300,16 @@ public class NetModule {
 		public void run() {
 			// TODO 自动生成的方法存根
 			try {
-				while (contactor.getInfo())
-					Thread.sleep(5000);
+				while (true){
+
+					if(LocalInfo.localuser!=null){
+						UserPO userPO = LocalInfo.localuser.toUserPO();
+						String IP = LocalInfo.localIP;
+						contactor.getInfo(IP, userPO);
+					}
+					Thread.sleep(checkIdle);
+				}
+
 			} catch (RemoteException e) {
 				// TODO 自动生成的 catch 块
 				e.printStackTrace();

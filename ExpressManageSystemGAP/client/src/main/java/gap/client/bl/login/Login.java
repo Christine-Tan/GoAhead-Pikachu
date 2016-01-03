@@ -1,5 +1,8 @@
 package gap.client.bl.login;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import gap.client.blservice.loginblservice.LoginService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.LoginDataController;
@@ -36,6 +39,7 @@ public class Login implements LoginService {
 	private void setLocalInfo(UserPO user) {
 		LocalInfo.localuser = new User(user);
 		LocalInfo.ins_id = user.getIns_id();
+		
 	}
 
 }

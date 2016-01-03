@@ -1,4 +1,4 @@
-package gap.client.ui.paymentUI;
+package gap.server.ui.tools;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;

@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.paymentUI.PanelWithGrid;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 
 public class CityTableHeader extends PanelWithGrid {
 	public static final int classIdle = 150;

@@ -20,6 +20,7 @@ import gap.client.bl.receipt.payee.Payee;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPComboBox;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;
 import gap.common.util.PaymentType;

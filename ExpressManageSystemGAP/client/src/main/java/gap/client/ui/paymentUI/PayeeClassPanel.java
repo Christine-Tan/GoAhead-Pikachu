@@ -3,6 +3,7 @@ package gap.client.ui.paymentUI;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.inventoryui.observestock.TotalNumPanel;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;

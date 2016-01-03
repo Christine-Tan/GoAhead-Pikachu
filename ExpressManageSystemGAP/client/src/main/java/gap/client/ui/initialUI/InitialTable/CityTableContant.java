@@ -15,7 +15,7 @@ import com.sun.xml.internal.ws.handler.ClientLogicalHandlerTube;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.paymentUI.PanelWithGrid;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.util.City;
 import gap.common.po.InitialPeoplePO;
 

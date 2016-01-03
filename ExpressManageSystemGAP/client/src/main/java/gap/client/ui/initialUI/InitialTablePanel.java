@@ -8,12 +8,12 @@ import javax.swing.JViewport;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.initialUI.InitialTable.CityTableContant;
 import gap.client.ui.initialUI.InitialTable.CityTableHeader;
 import gap.client.ui.initialUI.initialAccount.AccountDisplayPanel;
 import gap.client.ui.initialUI.initialAccount.InitialAccountPanel;
 import gap.client.ui.initialUI.initialStock.InitialStockPanel;
-import gap.client.ui.paymentUI.PanelWithGrid;
 import gap.common.po.InitialHistoryPO;
 import gap.common.po.InitialPeoplePO;
 import gap.common.po.InitialStockPO;

@@ -8,7 +8,7 @@ import gap.client.ui.BaseComponents.MainPanelWithGird;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.paymentUI.RichLable;
+import gap.client.ui.gapcomponents.RichLable;
 import gap.client.vo.Cost_ProfitListVO;
 
 public class CostProfitPanel extends MainPanelWithGird{
