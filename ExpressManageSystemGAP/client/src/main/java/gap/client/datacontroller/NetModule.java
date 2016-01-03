@@ -70,11 +70,10 @@ public class NetModule {
 
 	public static boolean isFirstConnect = true;
 
-	//后台检查连接线程的间隔
+	// 后台检查连接线程的间隔
 	private static long checkIdle = 1000;
-	//断网后尝试连接次数
+	// 断网后尝试连接次数
 	private static int checkTimes = 20;
-
 
 	/**
 	 * 根据面板初始化对话框
@@ -300,9 +299,9 @@ public class NetModule {
 		public void run() {
 			// TODO 自动生成的方法存根
 			try {
-				while (true){
+				while (true) {
 
-					if(LocalInfo.localuser!=null){
+					if (LocalInfo.localuser != null) {
 						UserPO userPO = LocalInfo.localuser.toUserPO();
 						String IP = LocalInfo.localIP;
 						contactor.getInfo(IP, userPO);

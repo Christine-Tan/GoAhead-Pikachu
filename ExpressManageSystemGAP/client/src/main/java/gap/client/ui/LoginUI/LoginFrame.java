@@ -26,7 +26,7 @@ public class LoginFrame extends JFrame {
 				try {
 					UIManager
 							.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-					final LoginFrame frame = new LoginFrame();
+					final  LoginFrame frame = new LoginFrame();
 					NetModule.initial(frame);
 					new Thread(new Runnable() {
 
