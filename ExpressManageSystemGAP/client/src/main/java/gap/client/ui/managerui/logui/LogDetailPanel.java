@@ -1,18 +1,17 @@
 package gap.client.ui.managerui.logui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.vo.LogVO;
 
 public class LogDetailPanel extends JPanel {
@@ -24,6 +23,8 @@ public class LogDetailPanel extends JPanel {
 	public LogDetailPanel(List<LogVO> logs) {
 		// TODO Auto-generated constructor stub
 		setBackground(Color.white);
+		gbd = new GridBagLayout();
+		gcons = new GridBagConstraints();
 		detailItems = new ArrayList<>();
 		for (LogVO log : logs) {
 			detailItems.add(new DetailItem(log));
@@ -32,8 +33,6 @@ public class LogDetailPanel extends JPanel {
 	}
 
 	private void reLayout() {
-		gbd = new GridBagLayout();
-		gcons = new GridBagConstraints();
 		setLayout(gbd);
 		gcons.insets = new Insets(5, 0, 5, 0);
 		for (int i = 0; i < detailItems.size(); i++) {
@@ -42,7 +41,8 @@ public class LogDetailPanel extends JPanel {
 	}
 
 	class DetailItem extends JPanel {
-		JLabel time_jl, user_jl, operation_jl;
+		GAPTextField time_f,user_f,operation_f;
+ //		JLabel time_jl, user_jl, operation_jl;
 		String time, user, operation;
 		// 布局
 		GridBagLayout gbdi;
@@ -54,19 +54,28 @@ public class LogDetailPanel extends JPanel {
 			time = log.getDate().substring(10, log.getDate().length() - 1);
 			user = log.getUser().getUserName();
 			operation = log.getOperate();
-			time_jl = new GAPLabel(time);
-			user_jl = new GAPLabel(user);
-			operation_jl = new GAPLabel(operation);
-          
+//			time_jl = new GAPLabel(time);
+//			user_jl = new GAPLabel(user);
+//			operation_jl = new GAPLabel(operation);
+            time_f=new GAPTextField(6);
+            time_f.setText(time);
+            time_f.closeEdit();
+            user_f=new GAPTextField(7);
+            user_f.setText(user);
+            user_f.closeEdit();
+            operation_f=new GAPTextField(23);
+            operation_f.setText(operation);
+            operation_f.closeEdit();
+            
 			gbdi = new GridBagLayout();
-			gcons = new GridBagConstraints();
+//			gcons = new GridBagConstraints();
 			setLayout(gbdi);
-			gcons.insets = new Insets(5, 20, 5, 30);
-			SwingConsole.addComponent(gbdi, gcons, this, time_jl, 0, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(5, 0, 5, 30);
-			SwingConsole.addComponent(gbdi, gcons, this, user_jl, 1, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(5, 0, 5, 20);
-			SwingConsole.addComponent(gbdi, gcons, this, operation_jl, 2, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(5, 20, 5, 0);
+			SwingConsole.addComponent(gbdi, gcons, this, time_f, 0, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(5, 20, 5, 0);
+			SwingConsole.addComponent(gbdi, gcons, this, user_f, 1, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(5, 20, 5, 0);
+			SwingConsole.addComponent(gbdi, gcons, this, operation_f, 2, 0, 1, 1, 0, 0);
 		}
 
 	}

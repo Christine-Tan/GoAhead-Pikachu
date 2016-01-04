@@ -93,33 +93,36 @@ public class LogListItemPanel extends JPanel {
 			gcons = new GridBagConstraints();
 			gbl=new GridBagLayout();
 			JPanel jp=new JPanel();
-			JLabel empty=new JLabel();
+//			JLabel empty=new JLabel();
 			jp.setBackground(Color.WHITE);
 			jp.setOpaque(true);
 			jp.setLayout(gbl);
+		
+//			gcons.anchor = GridBagConstraints.WEST;
 			gcons.insets = new Insets(5, 10, 5, 10);
-			gcons.anchor = GridBagConstraints.WEST;
 			SwingConsole.addComponent(gbl, gcons, jp, detail_b, 0, 0, 1, 1, 0, 0);
-			gcons.insets = new Insets(5, 10, 5, 370);
+			gcons.insets = new Insets(5, 10, 5, 350);
 			SwingConsole.addComponent(gbl, gcons, jp, date_jl, 1, 0, 1, 1, 0, 0);
-			gcons.insets=new Insets(0, 0, 0, 0);
-			SwingConsole.addComponent(gbl,gcons, jp, empty, 2, 0, 1, 1, 1, 0);
+//			gcons.insets=new Insets(0, 0, 0, 0);
+//			SwingConsole.addComponent(gbl,gcons, jp, empty, 2, 0, 1, 1, 1, 0);
 			setLayout(gbi);	
 			gcons.insets = new Insets(5, 10, 5, 10);
-			gcons.fill = GridBagConstraints.BOTH;
+//			gcons.fill = GridBagConstraints.BOTH;
 			SwingConsole.addComponent(gbi, gcons, this, jp, 0, 0, 1, 1, 1, 0);
-			gcons.insets = new Insets(5, 10, 5, 10);
-			SwingConsole.addComponent(gbi, gcons, this, detailPanel, 0, 1, 1, 1, 1, 0);
+			gcons.insets = new Insets(5, 10, 5, 0);
+			SwingConsole.addComponent(gbi, gcons, this, detailPanel, 0, 1, 2, 1, 1, 0);
 			closeDetail();
 		}
 
 		private void closeDetail() {
 			detailed = false;
+			detail_b.setText(">");
 			detailPanel.setVisible(false);
 		}
 
 		private void openDetail() {
 			detailed = true;
+			detail_b.setText("v");
 			detailPanel.setVisible(true);
 		}
 	}
