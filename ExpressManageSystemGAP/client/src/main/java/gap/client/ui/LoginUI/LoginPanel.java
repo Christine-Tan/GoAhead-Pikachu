@@ -6,28 +6,18 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.WhiteExitButton;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.deliveryui.expressorderinput.ExpressorderInputPanel;
 import gap.client.ui.gapcomponents.GAPDialog;
-import gap.client.util.LocalInfo;
-import gap.client.util.User;
 import gap.client.vo.LoginVO;
-import gap.common.util.Gender;
-import gap.common.util.UserType;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.LinearGradientPaint;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.tools.DocumentationTool.Location;
 
 public class LoginPanel extends JPanel {
 	private int border_width = 4;

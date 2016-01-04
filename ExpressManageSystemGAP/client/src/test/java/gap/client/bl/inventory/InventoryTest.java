@@ -1,6 +1,6 @@
 package gap.client.bl.inventory;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 import gap.client.datacontroller.NetModule;
 import gap.client.vo.GoodsVO;
 import gap.common.util.SectorType;

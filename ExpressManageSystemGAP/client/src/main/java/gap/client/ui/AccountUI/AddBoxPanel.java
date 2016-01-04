@@ -2,8 +2,6 @@ package gap.client.ui.AccountUI;
 
 import javax.swing.JPanel;
 
-import gap.client.ui.UITools.RenderSetter;
-
 /**
  * 
  * 添加框被点开后的面板，他的组件在addBox里已经加好，它用来管理两个按钮的状态

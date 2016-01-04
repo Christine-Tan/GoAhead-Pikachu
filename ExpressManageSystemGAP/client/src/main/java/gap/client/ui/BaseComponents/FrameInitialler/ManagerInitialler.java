@@ -11,7 +11,6 @@ import gap.client.ui.managerui.priceui.PricePanel;
 import gap.client.ui.managerui.rentui.RentPanel;
 import gap.client.ui.managerui.salaryui.SalaryPanel;
 import gap.client.ui.tableUI.Cost_profitUI.CostProfitPanel;
-import gap.client.util.MessageType;
 
 public class ManagerInitialler extends FrameInitialler{
 	/**

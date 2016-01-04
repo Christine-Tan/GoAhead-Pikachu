@@ -1,5 +1,13 @@
 package gap.client.ui.paymentUI.paymentDetail;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.client.ui.paymentUI.PaymentTableHeader;
+import gap.client.vo.PayeeVO;
+import gap.common.po.PayeePO;
+import gap.common.po.PaymentListPO;
+import gap.common.util.PaymentType;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.util.ArrayList;
@@ -8,17 +16,6 @@ import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.border.Border;
-
-import gap.client.bl.receipt.payee.Payee;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.client.ui.paymentUI.PayeeClassPanel;
-import gap.client.ui.paymentUI.PaymentTableHeader;
-import gap.client.vo.PayeeVO;
-import gap.common.po.PayeePO;
-import gap.common.po.PaymentListPO;
-import gap.common.util.PaymentType;
 
 public class PaymentDetailPanel extends PanelWithGrid{
 

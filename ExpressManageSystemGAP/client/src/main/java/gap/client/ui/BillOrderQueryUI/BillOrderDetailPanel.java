@@ -1,5 +1,12 @@
 package gap.client.ui.BillOrderQueryUI;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.common.po.BillOrderPO;
+import gap.common.po.BillPO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,13 +18,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.common.po.BillOrderPO;
-import gap.common.po.BillPO;
 
 public class BillOrderDetailPanel extends JPanel {
 	JLabel courierid_jl, money_jl;

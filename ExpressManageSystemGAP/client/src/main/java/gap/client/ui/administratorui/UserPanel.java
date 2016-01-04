@@ -5,13 +5,6 @@ package gap.client.ui.administratorui;
  * 
  * @author seven
  */
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
-
 import gap.client.blcontroller.UserController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
@@ -19,6 +12,13 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.vo.UserVO;
 import gap.common.util.UserType;
+
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
 
 public class UserPanel extends MainPanel {
 	UserVO searchUser = null;

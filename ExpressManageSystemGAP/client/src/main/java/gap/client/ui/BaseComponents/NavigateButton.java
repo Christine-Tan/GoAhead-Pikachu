@@ -6,11 +6,8 @@ import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import org.w3c.dom.css.RGBColor;
 
 public class NavigateButton extends GAPButton {
 	MainFrame mainFrame;

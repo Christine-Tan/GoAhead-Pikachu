@@ -1,5 +1,9 @@
 package gap.client.ui.managerui.logui;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.LogVO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,11 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
-
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.LogVO;
 
 public class LogDetailPanel extends JPanel {
 	List<DetailItem> detailItems;

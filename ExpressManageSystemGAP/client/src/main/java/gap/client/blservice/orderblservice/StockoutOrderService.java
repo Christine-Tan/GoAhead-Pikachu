@@ -1,6 +1,5 @@
 package gap.client.blservice.orderblservice;
 
-import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StockoutOrderVO;
 import gap.common.util.ResultMessage;
 

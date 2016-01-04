@@ -1,6 +1,5 @@
 package gap.client.ui.inventoryui.observestock;
 
-import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
@@ -18,11 +17,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class PeriodPanel extends JPanel {
 	JLabel from, to,title;

@@ -1,24 +1,8 @@
 package gap.client.ui.BaseComponents;
 
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.UIManager;
-
 import gap.client.ui.BaseComponents.SliderPanel.Direction;
-import gap.client.ui.BaseComponents.FrameInitialler.AccountorInitialler;
-import gap.client.ui.BaseComponents.FrameInitialler.AdminInitialler;
-import gap.client.ui.BaseComponents.FrameInitialler.CenterClerkInitaller;
 import gap.client.ui.BaseComponents.FrameInitialler.FrameInitialler;
 import gap.client.ui.BaseComponents.FrameInitialler.InitiallerFactory;
-import gap.client.ui.BaseComponents.FrameInitialler.InventoryInitailler;
-import gap.client.ui.BaseComponents.FrameInitialler.ManagerInitialler;
-import gap.client.ui.BaseComponents.FrameInitialler.PanelInitial;
 import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.BaseListener.ResizeListener;
 import gap.client.ui.UITools.ColorAndFonts;
@@ -30,6 +14,16 @@ import gap.client.ui.inventoryui.checkstock.ListItem;
 import gap.client.ui.inventoryui.checkstock.Unit;
 import gap.client.util.MessageType;
 import gap.common.util.UserType;
+
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.UIManager;
 
 public class MainFrame extends JFrame {
 	TitlePanel titlePanel;

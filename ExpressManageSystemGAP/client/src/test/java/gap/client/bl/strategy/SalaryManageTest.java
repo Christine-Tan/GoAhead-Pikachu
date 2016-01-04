@@ -1,11 +1,11 @@
 package gap.client.bl.strategy;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import gap.client.datacontroller.NetModule;
 import gap.client.vo.SalaryVO;
 import gap.common.util.UserType;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class SalaryManageTest {
 	SalaryManage salary;

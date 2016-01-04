@@ -1,27 +1,21 @@
 package gap.client.bl.payment;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.fail;
+import gap.client.blcontroller.AccountorReceiptController;
+import gap.client.datacontroller.AccountorReceiptDataController;
+import gap.client.datacontroller.ApprovalDataController;
+import gap.client.datacontroller.ControllerFactory;
+import gap.client.vo.PayeeVO;
+import gap.client.vo.PaymentListVO;
+import gap.common.po.PaymentListPO;
+import gap.common.po.TransFarePO;
 
 import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import gap.client.blcontroller.AccountorReceiptController;
-import gap.client.datacontroller.AccountorReceiptDataController;
-import gap.client.datacontroller.ApprovalDataController;
-import gap.client.datacontroller.ControllerFactory;
-import gap.client.datacontroller.NetModule;
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.util.LocalInfo;
-import gap.client.util.User;
-import gap.client.vo.PayeeVO;
-import gap.client.vo.PaymentListVO;
-import gap.common.po.PaymentListPO;
-import gap.common.po.TransFarePO;
-import gap.common.util.Gender;
-import gap.common.util.UserType;
 
 public class ReceiptTest {
 	AccountorReceiptController receiptController;

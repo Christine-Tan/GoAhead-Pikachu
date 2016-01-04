@@ -1,5 +1,19 @@
 package gap.client.ui.paymentUI.RewardPanels;
 
+import gap.client.exception.MoneyEmptyException;
+import gap.client.ui.AccountUI.DefaultText_Field;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.client.ui.paymentUI.PayeeItem;
+import gap.client.ui.paymentUI.PaymentTableHeader;
+import gap.client.vo.AccountVO;
+import gap.client.vo.PayeeVO;
+import gap.common.util.PaymentType;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -8,27 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import gap.client.bl.receipt.PaymentHandler;
-import gap.client.bl.receipt.payee.Payee;
-import gap.client.exception.MoneyEmptyException;
-import gap.client.ui.AccountUI.DefaultText_Field;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.client.ui.paymentUI.PayeeItem;
-import gap.client.ui.paymentUI.PaymentTableHeader;
-import gap.client.vo.AccountVO;
-import gap.client.vo.PayeeVO;
-import gap.common.util.PaymentType;
 
 public class RewardEditItem extends PanelWithGrid{
 	

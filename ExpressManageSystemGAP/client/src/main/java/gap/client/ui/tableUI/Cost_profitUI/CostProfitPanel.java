@@ -1,7 +1,5 @@
 package gap.client.ui.tableUI.Cost_profitUI;
 
-import java.awt.GridBagConstraints;
-
 import gap.client.bl.table.TableBlController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
@@ -10,6 +8,8 @@ import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.RichLable;
 import gap.client.vo.Cost_ProfitListVO;
+
+import java.awt.GridBagConstraints;
 
 public class CostProfitPanel extends MainPanelWithGird{
 	TableBlController controller;

@@ -1,9 +1,9 @@
 package gap.client.blservice.initialblservice;
 
-import java.util.List;
-
 import gap.common.po.InitialHistoryPO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public interface InitialBlService {
 

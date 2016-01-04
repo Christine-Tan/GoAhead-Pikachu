@@ -1,9 +1,8 @@
 package gap.common.po;
 
-import java.io.Serializable;
-import java.util.Map;
-
 import gap.common.ListInterface.Order;
+
+import java.util.Map;
 
 public class ArrivedOrderPO implements Order {
 	// 到达单订单

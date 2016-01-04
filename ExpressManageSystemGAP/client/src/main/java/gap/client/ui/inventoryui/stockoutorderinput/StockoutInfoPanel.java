@@ -20,21 +20,13 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
-
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.ListCellRenderer;
-import javax.swing.SwingConstants;
-
-import com.sun.xml.internal.ws.api.Component;
 
 public class StockoutInfoPanel extends JPanel {
 	JLabel title, outDate, targetIns, id, transport;

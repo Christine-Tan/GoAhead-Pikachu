@@ -1,40 +1,21 @@
 package gap.client.ui.initialUI.initialStock;
 
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+import gap.common.po.InitialStockPO;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
-import javax.swing.GrayFilter;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import com.sun.javafx.property.adapter.PropertyDescriptor.Listener;
-
-import gap.client.ui.AccountUI.AccountDisplayPanel;
-import gap.client.ui.AccountUI.AccountManagePanel;
-import gap.client.ui.AccountUI.DeleteButton;
-import gap.client.ui.AccountUI.EditableLable;
-import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
-import gap.client.ui.BaseComponents.WhiteExitButton;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.ColorChanger;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.AccountVO;
-import gap.common.po.AccountPO;
-import gap.common.po.InitialStockPO;
-import javafx.scene.control.Tab;
 
 
 public class StockBox extends JPanel{

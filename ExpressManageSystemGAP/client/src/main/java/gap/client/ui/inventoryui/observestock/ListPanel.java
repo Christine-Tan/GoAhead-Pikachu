@@ -1,12 +1,10 @@
 package gap.client.ui.inventoryui.observestock;
 
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.vo.StockinOrderVO;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 

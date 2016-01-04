@@ -14,7 +14,6 @@ import gap.common.po.GoodsPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.SectorType;
 
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,5 +1,18 @@
 package gap.client.ui.administratorui;
 
+import gap.client.blcontroller.InstitutionController;
+import gap.client.blcontroller.UserController;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.InstitutionVO;
+import gap.client.vo.UserVO;
+import gap.common.util.Gender;
+import gap.common.util.UserType;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,19 +29,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.InstitutionController;
-import gap.client.blcontroller.UserController;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.InstitutionVO;
-import gap.client.vo.UserVO;
-import gap.common.util.Gender;
-import gap.common.util.UserType;
 
 public class AdminListItemPanel extends JPanel {
 	// 列表中所有的项

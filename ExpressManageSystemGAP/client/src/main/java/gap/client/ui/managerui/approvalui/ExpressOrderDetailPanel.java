@@ -1,5 +1,10 @@
 package gap.client.ui.managerui.approvalui;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.common.po.ExpressOrderPO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,11 +12,6 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.common.po.ExpressOrderPO;
 
 public class ExpressOrderDetailPanel extends JPanel {
 	JLabel type_jl, price_jl;

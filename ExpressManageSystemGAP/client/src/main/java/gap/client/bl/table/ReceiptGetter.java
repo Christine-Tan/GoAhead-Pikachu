@@ -1,10 +1,5 @@
 package gap.client.bl.table;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.TableDataController;
 import gap.client.util.ReceiptComparator;
@@ -12,6 +7,11 @@ import gap.client.vo.OperatingConditionListVO;
 import gap.common.ListInterface.Receipt;
 import gap.common.po.BillOrderPO;
 import gap.common.po.PaymentListPO;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 public class ReceiptGetter {
 	

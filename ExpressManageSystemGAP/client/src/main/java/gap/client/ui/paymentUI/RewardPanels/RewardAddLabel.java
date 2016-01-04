@@ -1,6 +1,7 @@
 package gap.client.ui.paymentUI.RewardPanels;
 
-import java.awt.Dimension;
+import gap.client.ui.UITools.RenderSetter;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -8,10 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import gap.client.ui.UITools.RenderSetter;
 
 public class RewardAddLabel extends JLabel{
 	static Image addImage;

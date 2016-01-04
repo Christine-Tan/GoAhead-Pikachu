@@ -1,17 +1,15 @@
 package gap.client.ui.initialUI.InitialHistory;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.util.Calendar;
-
-import javax.swing.JLabel;
-
 import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.PanelWithGrid;
+
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+
+import javax.swing.JLabel;
 
 public class HistoryTableHeader extends PanelWithGrid{
 

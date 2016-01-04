@@ -1,10 +1,8 @@
 package gap.client.ui.tableUI.Cost_profitUI;
 
 import gap.client.datacontroller.NetModule;
-import gap.client.ui.AccountUI.AccountManagePanel;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.util.LocalInfo;
-import gap.client.util.MessageType;
 import gap.client.util.User;
 import gap.common.util.Gender;
 import gap.common.util.UserType;

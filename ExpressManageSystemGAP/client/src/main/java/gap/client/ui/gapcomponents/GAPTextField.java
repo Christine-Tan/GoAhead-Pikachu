@@ -1,13 +1,10 @@
 package gap.client.ui.gapcomponents;
 
 import gap.client.ui.UITools.GapTextControll;
-import gap.client.ui.UITools.RenderSetter;
 
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;

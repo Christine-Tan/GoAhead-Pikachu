@@ -1,9 +1,9 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.approval.Approval;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class ApprovalController {
     private static Approval approvalManage=new Approval();

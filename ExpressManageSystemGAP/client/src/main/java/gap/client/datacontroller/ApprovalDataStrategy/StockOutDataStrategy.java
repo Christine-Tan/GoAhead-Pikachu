@@ -1,13 +1,13 @@
 package gap.client.datacontroller.ApprovalDataStrategy;
 
 
-import java.rmi.RemoteException;
-
 import gap.client.datacontroller.AppDataStrategyFactory;
 import gap.common.ListInterface.Order;
 import gap.common.dataservice.orderdataservice.StockoutOrderDataService;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
+
+import java.rmi.RemoteException;
 
 public class StockOutDataStrategy extends AppStrategy{
 

@@ -1,11 +1,9 @@
 package gap.client.bl.approval;
 
-import static org.junit.Assert.*;
+import gap.client.datacontroller.NetModule;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import gap.client.datacontroller.NetModule;
 
 public class ApprovalTest {
     Approval approval;

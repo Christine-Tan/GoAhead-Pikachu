@@ -1,8 +1,8 @@
 package gap.client.ui.managerui.approvalui;
 
-import javax.swing.JPanel;
-
 import gap.common.po.PaymentListPO;
+
+import javax.swing.JPanel;
 
 public class PaymentListDetailPanel extends JPanel{
 

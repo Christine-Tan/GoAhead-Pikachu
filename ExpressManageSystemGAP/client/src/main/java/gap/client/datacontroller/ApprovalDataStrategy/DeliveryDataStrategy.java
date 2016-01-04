@@ -1,12 +1,12 @@
 package gap.client.datacontroller.ApprovalDataStrategy;
 
-import java.rmi.RemoteException;
-
 import gap.client.datacontroller.AppDataStrategyFactory;
 import gap.common.ListInterface.Order;
 import gap.common.dataservice.orderdataservice.DeliveryOrderDataService;
 import gap.common.po.DeliveryOrderPO;
 import gap.common.util.ResultMessage;
+
+import java.rmi.RemoteException;
 
 public class DeliveryDataStrategy extends AppStrategy{
 

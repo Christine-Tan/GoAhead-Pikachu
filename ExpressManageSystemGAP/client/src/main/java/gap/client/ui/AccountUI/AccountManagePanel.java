@@ -1,40 +1,28 @@
 package gap.client.ui.AccountUI;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import javax.naming.spi.DirStateFactory.Result;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JViewport;
-
 import gap.client.bl.account.AccountSearchResult;
-import gap.client.bl.account.AccountSearcher;
 import gap.client.blcontroller.AccountBlController;
 import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
 import gap.client.ui.AccountUI.Listener.AccountConfirmListener;
-import gap.client.ui.BaseComponents.CancelLabel;
-import gap.client.ui.BaseComponents.ConfirmLabel;
 import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
-import gap.client.ui.BaseComponents.MessagePanel;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.bussinessui.carmanage.CarQueryPanel;
+import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.gapcomponents.GAPScrollBarUI;
 import gap.client.util.MessageType;
-import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.vo.AccountVO;
 import gap.common.util.ResultMessage;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 
 public class AccountManagePanel extends MainPanelWithGird{
 

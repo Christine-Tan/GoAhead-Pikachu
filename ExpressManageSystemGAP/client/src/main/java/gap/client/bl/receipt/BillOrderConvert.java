@@ -1,13 +1,13 @@
 package gap.client.bl.receipt;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.vo.BillOrderVO;
 import gap.client.vo.BillVO;
 import gap.common.po.BillOrderPO;
 import gap.common.po.BillPO;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillOrderConvert {
 	public static BillOrderVO orderPO_to_VO(BillOrderPO orderPO){

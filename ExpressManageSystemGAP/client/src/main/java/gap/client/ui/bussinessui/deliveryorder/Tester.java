@@ -4,7 +4,6 @@ import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
-import gap.client.vo.UserVO;
 import gap.common.util.Gender;
 import gap.common.util.UserType;
 

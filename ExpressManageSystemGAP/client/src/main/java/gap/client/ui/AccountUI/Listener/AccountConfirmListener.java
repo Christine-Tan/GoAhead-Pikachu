@@ -1,11 +1,9 @@
 package gap.client.ui.AccountUI.Listener;
 
+import gap.client.ui.AccountUI.AccountManagePanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import gap.client.blcontroller.AccountBlController;
-import gap.client.ui.AccountUI.AccountManagePanel;
-import gap.common.util.ResultMessage;
 
 /**
  * 财务人员确认所有修改，去数据库改内容

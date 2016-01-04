@@ -1,6 +1,5 @@
 package gap.client.blcontroller;
 
-import gap.client.bl.receipt.BillOrderConvert;
 import gap.client.bl.receipt.BillOrderHandler;
 import gap.client.bl.receipt.PaymentHandler;
 import gap.client.bl.receipt.PaymentList;
@@ -9,7 +8,6 @@ import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.util.LocalInfo;
 import gap.client.vo.AccountVO;
-import gap.client.vo.BillOrderVO;
 import gap.client.vo.InstitutionVO;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;

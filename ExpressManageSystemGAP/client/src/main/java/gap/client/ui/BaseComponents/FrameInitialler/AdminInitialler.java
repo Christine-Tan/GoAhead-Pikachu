@@ -4,7 +4,6 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.NavigateBar;
 import gap.client.ui.BaseComponents.NavigateButton;
 import gap.client.ui.administratorui.UserPanel;
-import gap.client.util.MessageType;
 import gap.common.util.UserType;
 
 public class AdminInitialler extends AccountorInitialler{

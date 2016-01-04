@@ -3,15 +3,10 @@ package gap.client.ui.inventoryui.stockinorderinput;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
-import gap.common.util.Address;
-import gap.common.util.ExpressType;
-import gap.common.util.PeopleInfo;
-import gap.common.util.ReceiveInfo;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,5 +1,12 @@
 package gap.client.ui.paymentUI;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.client.vo.AccountVO;
+import gap.client.vo.PayeeVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -10,20 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.xml.crypto.Data;
-
-import gap.client.bl.receipt.payee.Payee;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.client.vo.AccountVO;
-import gap.client.vo.PayeeVO;
-import gap.common.util.PaymentType;
 
 public class PayeeItem extends PanelWithGrid{
 	

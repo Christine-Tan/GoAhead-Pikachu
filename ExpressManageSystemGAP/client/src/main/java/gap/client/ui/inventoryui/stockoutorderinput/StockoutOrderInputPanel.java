@@ -10,14 +10,12 @@ import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.ui.gapcomponents.FlushButton;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.inventoryui.initialstock.ListItemPanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.MessageType;
 import gap.client.util.Transport;
 import gap.client.vo.GoodsVO;
 import gap.client.vo.StockoutOrderVO;
 import gap.common.util.ResultMessage;
-import gap.common.util.SectorType;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,9 +29,7 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class StockoutOrderInputPanel extends MainPanel {

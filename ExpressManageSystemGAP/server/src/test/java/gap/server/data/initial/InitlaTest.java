@@ -1,6 +1,12 @@
 package gap.server.data.initial;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+import gap.common.dataservice.initialdata.InitialDataService;
+import gap.common.po.AccountPO;
+import gap.common.po.InitialHistoryPO;
+import gap.common.po.InitialPeoplePO;
+import gap.common.po.InitialStockPO;
+import gap.server.initial.NetInitial;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -9,13 +15,6 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import gap.common.dataservice.initialdata.InitialDataService;
-import gap.common.po.AccountPO;
-import gap.common.po.InitialHistoryPO;
-import gap.common.po.InitialPeoplePO;
-import gap.common.po.InitialStockPO;
-import gap.server.initial.NetInitial;
 
 public class InitlaTest {
 

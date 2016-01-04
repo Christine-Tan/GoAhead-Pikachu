@@ -1,5 +1,13 @@
 package gap.client.ui.managerui.salaryui;
 
+import gap.client.blcontroller.SalaryController;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.SalaryVO;
+import gap.common.util.UserType;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,14 +21,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.SalaryController;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.SalaryVO;
-import gap.common.util.UserType;
 
 public class SalaryListItemPanel extends JPanel {
 	// 列表中所有的项

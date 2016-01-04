@@ -1,15 +1,15 @@
 package gap.server.data.transFareData;
 
+import gap.common.dataservice.transFareDataService.TransFareDataService;
+import gap.common.po.TransFarePO;
+import gap.server.data.util.ListMaker;
+import gap.server.data.util.SQLBuilder;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
-import gap.common.dataservice.transFareDataService.TransFareDataService;
-import gap.common.po.TransFarePO;
-import gap.server.data.util.ListMaker;
-import gap.server.data.util.SQLBuilder;
 
 public class TransFareDataImpl extends UnicastRemoteObject implements
 		TransFareDataService {

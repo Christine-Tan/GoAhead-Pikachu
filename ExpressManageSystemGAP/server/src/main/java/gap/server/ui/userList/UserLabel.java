@@ -1,5 +1,11 @@
 package gap.server.ui.userList;
 
+import gap.common.po.UserPO;
+import gap.common.util.UserType;
+import gap.server.ui.tools.AreaMaker;
+import gap.server.ui.tools.ColorAndFonts;
+import gap.server.ui.tools.RenderSetter;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,17 +17,8 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Area;
 import java.util.HashMap;
 
-import javax.crypto.AEADBadTagException;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import gap.common.po.UserPO;
-import gap.common.util.Gender;
-import gap.common.util.UserType;
-import gap.server.ui.tools.AreaMaker;
-import gap.server.ui.tools.ColorAndFonts;
-import gap.server.ui.tools.RenderSetter;
 
 public class UserLabel extends JLabel{
 	

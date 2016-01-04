@@ -1,13 +1,11 @@
 package gap.client.bl.user;
 
-import static org.junit.Assert.fail;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import gap.client.datacontroller.NetModule;
 import gap.client.vo.UserVO;
 import gap.common.util.UserType;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class UserManageTest {
    UserManage user;

@@ -1,12 +1,27 @@
 package gap.server.data.initial;
 
+import static gap.server.data.initial.InitialTable.accountName_col;
+import static gap.server.data.initial.InitialTable.accountTableName;
+import static gap.server.data.initial.InitialTable.balance_col;
+import static gap.server.data.initial.InitialTable.busClerk_col;
+import static gap.server.data.initial.InitialTable.busHall_col;
+import static gap.server.data.initial.InitialTable.centerClerk_col;
+import static gap.server.data.initial.InitialTable.center_col;
+import static gap.server.data.initial.InitialTable.city_col;
+import static gap.server.data.initial.InitialTable.courier_col;
+import static gap.server.data.initial.InitialTable.goodsNum_col;
+import static gap.server.data.initial.InitialTable.historyTableName;
+import static gap.server.data.initial.InitialTable.initialHistory_col;
+import static gap.server.data.initial.InitialTable.occupiedRate_col;
+import static gap.server.data.initial.InitialTable.peopleTableName;
+import static gap.server.data.initial.InitialTable.stockMan_col;
+import static gap.server.data.initial.InitialTable.stockName_col;
+import static gap.server.data.initial.InitialTable.stockTableName;
 import gap.common.po.AccountPO;
 import gap.common.po.InitialHistoryPO;
 import gap.common.po.InitialPeoplePO;
 import gap.common.po.InitialStockPO;
-import gap.common.util.ResultMessage;
 import gap.server.data.util.SQLBuilder;
-import static gap.server.data.initial.InitialTable.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

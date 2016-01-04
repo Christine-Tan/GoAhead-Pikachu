@@ -1,9 +1,9 @@
 package gap.client.util;
 
+import gap.common.ListInterface.Receipt;
+
 import java.util.Calendar;
 import java.util.Comparator;
-
-import gap.common.ListInterface.Receipt;
 
 public class ReceiptComparator implements Comparator<Receipt>{
 

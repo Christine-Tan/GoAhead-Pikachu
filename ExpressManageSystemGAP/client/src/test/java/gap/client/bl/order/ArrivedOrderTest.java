@@ -1,6 +1,5 @@
 package gap.client.bl.order;
 
-import static org.junit.Assert.*;
 import gap.client.datacontroller.NetModule;
 import gap.client.vo.ArrivedOrderVO;
 

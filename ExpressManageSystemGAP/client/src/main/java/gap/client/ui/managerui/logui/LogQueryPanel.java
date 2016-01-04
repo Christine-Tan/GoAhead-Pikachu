@@ -1,5 +1,14 @@
 package gap.client.ui.managerui.logui;
 
+import gap.client.blcontroller.LogController;
+import gap.client.ui.UITools.Default;
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.LogVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,15 +22,6 @@ import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.LogController;
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.LogVO;
 
 public class LogQueryPanel extends JPanel {
 	JLabel to_jl, total_jl, result_jl;

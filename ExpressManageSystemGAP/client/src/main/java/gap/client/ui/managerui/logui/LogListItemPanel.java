@@ -1,5 +1,11 @@
 package gap.client.ui.managerui.logui;
 
+import gap.client.blcontroller.LogController;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.vo.LogVO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,19 +13,12 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import gap.client.blcontroller.LogController;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.vo.LogVO;
 
 public class LogListItemPanel extends JPanel {
 	Map<String, List<LogVO>> logMap;

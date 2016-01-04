@@ -4,7 +4,6 @@ import gap.client.blservice.orderblservice.StockoutOrderService;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.InventoryDataController;
 import gap.client.datacontroller.StockoutOrderDataController;
-import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.StockoutOrderVO;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;

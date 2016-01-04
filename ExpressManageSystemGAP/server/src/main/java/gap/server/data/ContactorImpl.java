@@ -7,7 +7,6 @@ import gap.server.ui.ServerMainFrame;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * 用于测试客户端和服务器连接是否正常的类

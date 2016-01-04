@@ -2,20 +2,16 @@ package gap.client.ui.BaseComponents;
 
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.util.MessageType;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.HashMap;
 
 import javax.swing.JPanel;
-
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
 public class MessagePanel extends JPanel {
 	private MainFrame mainFrame;

@@ -1,20 +1,13 @@
 package gap.client.ui.BaseComponents;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import gap.client.ui.UITools.RenderSetter;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import gap.client.ui.AccountUI.AddBox;
-import gap.client.ui.UITools.RenderSetter;
 
 /**
  * 

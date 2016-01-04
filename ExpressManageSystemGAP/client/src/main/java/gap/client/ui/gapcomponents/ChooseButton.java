@@ -1,8 +1,6 @@
 package gap.client.ui.gapcomponents;
 
 import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButtonUI;
 
 import java.awt.Color;
 import java.awt.Cursor;

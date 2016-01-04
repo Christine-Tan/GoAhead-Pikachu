@@ -1,5 +1,12 @@
 package gap.client.ui.tableUI.Cost_profitUI;
 
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.util.MessageType;
+import gap.client.vo.Cost_ProfitListVO;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -17,14 +24,6 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
-
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.util.MessageType;
-import gap.client.vo.Cost_ProfitListVO;
 
 public class ArcGraphPanel extends JPanel{
 	

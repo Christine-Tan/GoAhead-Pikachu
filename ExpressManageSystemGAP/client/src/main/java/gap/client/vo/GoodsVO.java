@@ -1,11 +1,10 @@
 package gap.client.vo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import gap.client.util.WareHouseSize;
 import gap.common.po.GoodsPO;
 import gap.common.util.SectorType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GoodsVO {
 	// 快递编号(10位0~9数字)

@@ -5,7 +5,6 @@ import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPCheckBox;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
@@ -14,7 +13,6 @@ import gap.common.util.Address;
 import gap.common.util.ExpressType;
 import gap.common.util.SectorType;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

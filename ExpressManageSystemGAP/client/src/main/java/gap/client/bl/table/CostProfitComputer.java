@@ -1,9 +1,9 @@
 package gap.client.bl.table;
 
-import java.util.ArrayList;
-
 import gap.client.vo.Cost_ProfitListVO;
 import gap.common.po.Cost_profitPO;
+
+import java.util.ArrayList;
 
 public class CostProfitComputer {
 	public Cost_ProfitListVO compute(ArrayList<Cost_profitPO> list){

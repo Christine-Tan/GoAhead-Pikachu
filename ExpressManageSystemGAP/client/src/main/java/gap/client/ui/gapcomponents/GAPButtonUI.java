@@ -1,13 +1,5 @@
 package gap.client.ui.gapcomponents;
 
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.RenderSetter;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-
-import javax.swing.AbstractButton;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 public class GAPButtonUI extends BasicButtonUI {

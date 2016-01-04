@@ -1,24 +1,19 @@
 package gap.client.ui.paymentUI.paymentDetail;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.client.ui.paymentUI.PaymentTableHeader;
+import gap.client.vo.PayeeVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
-
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.client.ui.paymentUI.PaymentTableHeader;
-import gap.client.vo.AccountVO;
-import gap.client.vo.PayeeVO;
 
 public class DetailItem extends PanelWithGrid{
 	

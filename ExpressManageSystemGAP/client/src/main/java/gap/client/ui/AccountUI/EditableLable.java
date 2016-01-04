@@ -1,5 +1,10 @@
 package gap.client.ui.AccountUI;
 
+import gap.client.ui.AccountUI.ComponentBehave.ComponentBehave;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPTextField;
+
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -9,14 +14,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JTextField;
-
-import gap.client.ui.AccountUI.ComponentBehave.ComponentBehave;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPTextField;
-import javafx.scene.layout.Border;
 
 /**
  * 

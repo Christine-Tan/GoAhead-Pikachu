@@ -7,7 +7,6 @@ import gap.client.ui.bussinessui.arrivedorder.ArrivedOrderPanel;
 import gap.client.ui.bussinessui.carmanage.CarManagePanel;
 import gap.client.ui.bussinessui.drivermanage.DriverManagePanel;
 import gap.client.ui.bussinessui.loadorder.LoadOrderPanel;
-import gap.client.util.MessageType;
 
 public class CenterClerkInitaller extends FrameInitialler{
 

@@ -1,9 +1,8 @@
 package gap.common.po;
 
-import java.io.Serializable;
-import java.util.List;
-
 import gap.common.ListInterface.Order;
+
+import java.util.List;
 
 public class LoadOrderPO implements Order{
 	//

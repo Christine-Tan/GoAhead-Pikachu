@@ -1,23 +1,18 @@
 package gap.client.ui.paymentUI;
 
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.PanelWithGrid;
 
 public class PaymentTableHeader extends PanelWithGrid{
 	

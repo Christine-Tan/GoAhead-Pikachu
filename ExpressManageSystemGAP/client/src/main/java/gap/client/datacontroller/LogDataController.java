@@ -1,12 +1,10 @@
 package gap.client.datacontroller;
 
 import static gap.client.datacontroller.NetModule.logdataservice;
+import gap.common.po.LogPO;
 
 import java.rmi.RemoteException;
 import java.util.List;
-
-import gap.common.po.LogPO;
-import gap.common.util.ResultMessage;
 
 public class LogDataController {
 	protected LogDataController() {

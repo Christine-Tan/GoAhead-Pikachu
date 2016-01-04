@@ -1,5 +1,9 @@
 package gap.client.ui.initialUI.initialAccount;
 
+import gap.client.ui.initialUI.InitialMainPanel;
+import gap.client.ui.initialUI.InitialTable.CityTableHeader;
+import gap.common.po.AccountPO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -10,12 +14,6 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JViewport;
-
-import gap.client.ui.initialUI.InitialMainPanel;
-import gap.client.ui.initialUI.InitialTablePanel;
-import gap.client.ui.initialUI.InitialTable.CityTableHeader;
-import gap.common.po.AccountPO;
 
 public class AccountDisplayPanel extends JPanel{
 

@@ -1,5 +1,10 @@
 package gap.client.ui.AccountUI;
 
+import gap.client.bl.account.AccountSearchResult;
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.util.MessageType;
+import gap.client.vo.AccountVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -9,15 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JViewport;
-
-import gap.client.bl.account.AccountSearchResult;
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MessagePanel;
-import gap.client.ui.UITools.Default;
-import gap.client.util.MessageType;
-import gap.client.vo.AccountVO;
 
 public class AccountDisplayPanel extends JPanel{
 

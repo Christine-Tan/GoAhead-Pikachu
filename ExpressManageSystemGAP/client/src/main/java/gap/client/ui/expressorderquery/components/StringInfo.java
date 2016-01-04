@@ -1,7 +1,5 @@
 package gap.client.ui.expressorderquery.components;
 
-import gap.client.ui.UITools.ColorAndFonts;
-
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;

@@ -1,13 +1,13 @@
 package gap.client.datacontroller.ApprovalDataStrategy;
 
-import java.rmi.RemoteException;
-
 import gap.client.datacontroller.AppDataStrategyFactory;
 import gap.common.ListInterface.Order;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.ResultMessage;
+
+import java.rmi.RemoteException;
 
 public class ExpressDataStrategy extends AppStrategy {
 

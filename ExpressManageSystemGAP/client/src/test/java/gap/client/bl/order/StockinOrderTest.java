@@ -1,18 +1,13 @@
 package gap.client.bl.order;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
+import gap.client.datacontroller.NetModule;
+import gap.client.vo.GoodsVO;
+import gap.client.vo.StockinOrderVO;
+import gap.common.util.SectorType;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import gap.client.datacontroller.NetModule;
-import gap.client.vo.ExpressOrderVO;
-import gap.client.vo.GoodsVO;
-import gap.client.vo.StockinOrderVO;
-import gap.common.util.Address;
-import gap.common.util.ExpressType;
-import gap.common.util.PeopleInfo;
-import gap.common.util.SectorType;
 
 import org.junit.Before;
 import org.junit.Test;

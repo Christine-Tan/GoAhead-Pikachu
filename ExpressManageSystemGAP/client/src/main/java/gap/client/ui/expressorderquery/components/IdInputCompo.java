@@ -1,17 +1,17 @@
 package gap.client.ui.expressorderquery.components;
 
-import gap.client.exception.InvalidInputException;
 import gap.client.ui.expressorderquery.ResultShowPanel;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -25,8 +25,11 @@ public class IdInputCompo extends JPanel {
 	String iconPath = "images\\expressorderquery\\search.png";
 	JPanel jp;
 
-	public IdInputCompo(JPanel jp) {
+	String tip;
+
+	public IdInputCompo(JPanel jp, String tipMess) {
 		setLayout(null);
+		this.tip = tipMess;
 		this.jp = jp;
 		setBackground(Colors.blue);
 
@@ -41,6 +44,24 @@ public class IdInputCompo extends JPanel {
 		id_input.setForeground(Colors.drakblue);
 		id_input.setLocation(90, 10);
 		id_input.setSize(260, 50);
+		id_input.setText(tip);
+
+		id_input.addFocusListener(new FocusListener() {
+
+			@Override
+			public void focusLost(FocusEvent e) {
+				// TODO 自动生成的方法存根
+				if (id_input.getText().length() == 0)
+					id_input.setText(tip);
+			}
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				// TODO 自动生成的方法存根
+				if (id_input.getText().equals(tip))
+					id_input.setText("");
+			}
+		});
 
 		submit_bu = new SubmitButton();
 		submit_bu.setBounds(370, 0, 150, 70);

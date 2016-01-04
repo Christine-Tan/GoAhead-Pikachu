@@ -1,7 +1,6 @@
 package gap.client.ui.deliveryui.expressorderinput;
 
 import gap.client.blcontroller.ExpressorderController;
-import gap.client.blservice.expressorderblservice.PriceCal;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
@@ -19,7 +18,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class ExpressorderInputPanel extends MainPanel {
 	PeopleInfoUI sender, receiver;

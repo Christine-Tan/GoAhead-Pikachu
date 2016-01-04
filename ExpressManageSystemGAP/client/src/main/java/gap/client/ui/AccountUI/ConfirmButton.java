@@ -1,5 +1,9 @@
 package gap.client.ui.AccountUI;
 
+import gap.client.ui.BaseComponents.ConfirmLabel;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,11 +12,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
-
-import gap.client.ui.BaseComponents.ConfirmLabel;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.gapcomponents.GAPButton;
 
 public class ConfirmButton extends JPanel{
 	private ConfirmLabel label;

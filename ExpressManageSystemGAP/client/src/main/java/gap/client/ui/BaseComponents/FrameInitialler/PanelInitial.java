@@ -1,23 +1,5 @@
 package gap.client.ui.BaseComponents.FrameInitialler;
 
-import gap.client.bl.receipt.BillOrder;
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.NavigateBar;
-import gap.client.ui.BaseComponents.NavigateButton;
-import gap.client.ui.bussinessui.arrivedorder.ArrivedOrderPanel;
-import gap.client.ui.bussinessui.billorderui.BillOrderPanel;
-import gap.client.ui.bussinessui.carmanage.CarManagePanel;
-import gap.client.ui.bussinessui.deliveryorder.DeliveryOrderPanel;
-import gap.client.ui.bussinessui.drivermanage.DriverManagePanel;
-import gap.client.ui.bussinessui.loadorder.LoadOrderPanel;
-import gap.client.ui.deliveryui.expressorderinput.ExpressorderInputPanel;
-import gap.client.ui.deliveryui.expressorderreceive.ExpressorderReceivePanel;
-import gap.client.ui.inventoryui.checkstock.CheckStockPanel;
-import gap.client.ui.inventoryui.initialstock.InitialStockPanel;
-import gap.client.ui.inventoryui.observestock.ObserveStockPanel;
-import gap.client.ui.inventoryui.stockinorderinput.StockinOrderInputPanel;
-import gap.client.ui.inventoryui.stockoutorderinput.StockoutOrderInputPanel;
-import gap.client.util.MessageType;
 
 public class PanelInitial {
 	/**

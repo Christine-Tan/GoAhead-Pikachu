@@ -1,11 +1,6 @@
 package gap.client.blservice.inventoryblservice;
 
-import gap.client.vo.ExpressOrderVO;
 import gap.client.vo.GoodsVO;
-import gap.client.vo.StockCountVO;
-import gap.client.vo.StockObVO;
-import gap.client.vo.StockinOrderVO;
-import gap.client.vo.StockoutOrderVO;
 import gap.common.util.ResultMessage;
 
 import java.util.List;

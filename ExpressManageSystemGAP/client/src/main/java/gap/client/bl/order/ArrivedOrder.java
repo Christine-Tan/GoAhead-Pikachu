@@ -5,10 +5,7 @@ import gap.client.datacontroller.ArrivedOrderDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.util.LocalInfo;
 import gap.client.vo.ArrivedOrderVO;
-import gap.client.vo.ExpressOrderVO;
 import gap.common.util.ResultMessage;
-
-import java.util.List;
 
 public class ArrivedOrder implements ArrivedOrderService {
 

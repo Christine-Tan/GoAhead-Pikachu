@@ -1,8 +1,8 @@
 package gap.client.ui.BaseComponents.FrameInitialler;
 
-import java.util.HashMap;
-
 import gap.common.util.UserType;
+
+import java.util.HashMap;
 
 public class InitiallerFactory {
 	static HashMap<UserType, FrameInitialler> initiallerMap;

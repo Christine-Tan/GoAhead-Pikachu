@@ -1,5 +1,9 @@
 package gap.server.ui;
 
+import gap.server.ui.tools.AreaMaker;
+import gap.server.ui.tools.ColorAndFonts;
+import gap.server.ui.tools.RenderSetter;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -10,10 +14,6 @@ import java.awt.geom.Area;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
-import gap.server.ui.tools.AreaMaker;
-import gap.server.ui.tools.ColorAndFonts;
-import gap.server.ui.tools.RenderSetter;
 
 public class ServerExitButton extends JButton{
 	Font font = ColorAndFonts.getChinese(18);

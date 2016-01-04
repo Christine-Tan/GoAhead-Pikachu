@@ -1,5 +1,7 @@
 package gap.client.ui.AccountUI;
 
+import gap.client.ui.UITools.RenderSetter;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -8,8 +10,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import gap.client.ui.UITools.RenderSetter;
 
 
 public class DeleteButton extends JLabel{

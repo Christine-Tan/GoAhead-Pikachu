@@ -1,10 +1,5 @@
 package gap.client.bl.initial;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-
 import gap.client.datacontroller.InitialDataController;
 import gap.client.util.WareHouseSize;
 import gap.common.po.AccountPO;
@@ -15,6 +10,10 @@ import gap.common.po.InitialStockPO;
 import gap.common.po.InstitutionPO;
 import gap.common.util.InstitutionType;
 import gap.common.util.UserType;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * 

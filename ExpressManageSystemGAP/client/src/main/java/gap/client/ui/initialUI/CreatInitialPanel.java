@@ -1,21 +1,16 @@
 package gap.client.ui.initialUI;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.common.po.InitialHistoryPO;
+
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JScrollPane;
-
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.common.po.InitialHistoryPO;
 
 public class CreatInitialPanel extends PanelWithGrid{
 

@@ -1,5 +1,14 @@
 package gap.client.ui.managerui.approvalui;
 
+import gap.client.blcontroller.ApprovalController;
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.BaseComponents.MainPanel;
+import gap.client.ui.UITools.Default;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
+import gap.client.ui.managerui.approvalui.OrderItemListPanel.ItemPanel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -15,15 +24,6 @@ import java.util.TimerTask;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-
-import gap.client.blcontroller.ApprovalController;
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.ui.managerui.approvalui.OrderItemListPanel.ItemPanel;
 
 /**
  * @author seven

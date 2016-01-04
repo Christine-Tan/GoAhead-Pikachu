@@ -1,7 +1,5 @@
 package gap.client.bl.accountbl;
 
-import static org.junit.Assert.fail;
-
 import gap.client.blcontroller.AccountBlController;
 import gap.client.datacontroller.NetModule;
 import gap.client.vo.AccountVO;

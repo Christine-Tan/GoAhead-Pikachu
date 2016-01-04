@@ -2,7 +2,6 @@ package gap.server.data.order;
 
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.inventorydataservice.InventoryDataService;
-import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
 import gap.common.dataservice.orderdataservice.StockinOrderDataService;
 import gap.common.po.GoodsPO;
 import gap.common.po.StockinOrderPO;

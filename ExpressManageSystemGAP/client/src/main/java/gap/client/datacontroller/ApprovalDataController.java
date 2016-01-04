@@ -7,14 +7,10 @@ import static gap.client.datacontroller.NetModule.arrivedOrderdataservice;
 import static gap.client.datacontroller.NetModule.billorderdataservice;
 import static gap.client.datacontroller.NetModule.deliveryorderdataservice;
 import static gap.client.datacontroller.NetModule.expressorderdataservice;
-import static gap.client.datacontroller.NetModule.institutiondataservice;
 import static gap.client.datacontroller.NetModule.loadorderdataservice;
+import static gap.client.datacontroller.NetModule.paymentdataService;
 import static gap.client.datacontroller.NetModule.stockinorderdataservice;
 import static gap.client.datacontroller.NetModule.stockoutorderdataservice;
-import static gap.client.datacontroller.NetModule.paymentdataService;
-import java.rmi.RemoteException;
-import java.util.List;
-
 import gap.client.blcontroller.AccountorReceiptController;
 import gap.client.datacontroller.ApprovalDataStrategy.AppStrategy;
 import gap.common.ListInterface.Order;
@@ -27,6 +23,9 @@ import gap.common.po.PaymentListPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
+
+import java.rmi.RemoteException;
+import java.util.List;
 
 public class ApprovalDataController {
 

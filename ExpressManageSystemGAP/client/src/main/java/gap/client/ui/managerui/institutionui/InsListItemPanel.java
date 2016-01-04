@@ -1,5 +1,15 @@
 package gap.client.ui.managerui.institutionui;
 
+import gap.client.blcontroller.CityController;
+import gap.client.blcontroller.InstitutionController;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPButton;
+import gap.client.ui.gapcomponents.GAPComboBox;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.client.vo.CityVO;
+import gap.client.vo.InstitutionVO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,18 +24,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.CityController;
-import gap.client.blcontroller.InstitutionController;
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPButton;
-import gap.client.ui.gapcomponents.GAPComboBox;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.CityVO;
-import gap.client.vo.InstitutionVO;
 
 public class InsListItemPanel extends JPanel {
 	// 列表中所有的项

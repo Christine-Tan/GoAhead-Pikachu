@@ -1,12 +1,10 @@
 package gap.client.bl.manage;
 
-import static org.junit.Assert.fail;
+import gap.client.datacontroller.NetModule;
+import gap.client.vo.InstitutionVO;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import gap.client.datacontroller.NetModule;
-import gap.client.vo.InstitutionVO;
 
 public class InstitutionManageTest {
     InstitutionManage institution;

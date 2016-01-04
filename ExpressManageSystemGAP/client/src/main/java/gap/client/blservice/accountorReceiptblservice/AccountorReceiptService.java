@@ -1,6 +1,5 @@
 package gap.client.blservice.accountorReceiptblservice;
 
-import gap.client.vo.BillOrderVO;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;
 import gap.common.po.BillOrderPO;

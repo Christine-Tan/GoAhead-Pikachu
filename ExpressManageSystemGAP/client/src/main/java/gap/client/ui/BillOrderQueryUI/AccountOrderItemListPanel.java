@@ -1,45 +1,31 @@
 package gap.client.ui.BillOrderQueryUI;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import gap.client.blcontroller.ApprovalController;
-import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPButton;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.GAPTextField;
 import gap.client.ui.paymentUI.paymentDetail.PaymentDetailPanel;
-import gap.common.po.ArrivedOrderPO;
 import gap.common.po.BillOrderPO;
-import gap.common.po.DeliveryOrderPO;
-import gap.common.po.ExpressOrderPO;
-import gap.common.po.LoadOrderPO;
 import gap.common.po.PaymentListPO;
-import gap.common.po.StockinOrderPO;
-import gap.common.po.StockoutOrderPO;
 import gap.common.util.ReceiptType;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class AccountOrderItemListPanel extends JPanel {
 	// 列表中所有的项

@@ -1,12 +1,10 @@
 package gap.client.ui.AccountUI;
 
-import java.awt.Color;
-
-import org.omg.PortableInterceptor.ServerRequestInfo;
-
 import gap.client.ui.LoginUI.LoginTextListener;
 import gap.client.ui.LoginUI.TextInterface;
 import gap.client.ui.gapcomponents.GAPTextField;
+
+import java.awt.Color;
 
 /**
  * 

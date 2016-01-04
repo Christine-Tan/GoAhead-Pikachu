@@ -7,13 +7,9 @@ import static gap.client.datacontroller.NetModule.deliveryorderdataservice;
 import static gap.client.datacontroller.NetModule.expressorderdataservice;
 import static gap.client.datacontroller.NetModule.institutiondataservice;
 import static gap.client.datacontroller.NetModule.loadorderdataservice;
+import static gap.client.datacontroller.NetModule.paymentdataService;
 import static gap.client.datacontroller.NetModule.stockinorderdataservice;
 import static gap.client.datacontroller.NetModule.stockoutorderdataservice;
-import static gap.client.datacontroller.NetModule.paymentdataService;
-
-import java.util.HashMap;
-
-import gap.client.bl.order.ArrivedOrder;
 import gap.client.datacontroller.ApprovalDataStrategy.AppStrategy;
 import gap.client.datacontroller.ApprovalDataStrategy.ArriveDataStrategy;
 import gap.client.datacontroller.ApprovalDataStrategy.BillDataStrategy;
@@ -23,7 +19,6 @@ import gap.client.datacontroller.ApprovalDataStrategy.LoadDataStrategy;
 import gap.client.datacontroller.ApprovalDataStrategy.PaymentDataStrategy;
 import gap.client.datacontroller.ApprovalDataStrategy.StockInDataStrategy;
 import gap.client.datacontroller.ApprovalDataStrategy.StockOutDataStrategy;
-import gap.common.ListInterface.Order;
 import gap.common.dataservice.expressorderdataservice.ExpressOrderDataService;
 import gap.common.dataservice.managedataservice.InstitutionDataService;
 import gap.common.dataservice.orderdataservice.ArrivedOrderDataService;
@@ -41,7 +36,8 @@ import gap.common.po.LoadOrderPO;
 import gap.common.po.PaymentListPO;
 import gap.common.po.StockinOrderPO;
 import gap.common.po.StockoutOrderPO;
-import gap.common.util.ResultMessage;
+
+import java.util.HashMap;
 
 public class AppDataStrategyFactory {
 

@@ -1,23 +1,16 @@
 package gap.client.ui.tableUI.OperationUI;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Panel;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
-
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.paymentUI.PaymentTableHeader;
-import gap.client.vo.PayeeVO;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class TableTotalMoneyPanel extends PanelWithGrid{
 

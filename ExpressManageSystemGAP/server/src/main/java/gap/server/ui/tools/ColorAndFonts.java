@@ -2,9 +2,6 @@ package gap.server.ui.tools;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.io.File;
-import java.io.IOException;
 
 public class ColorAndFonts {
 

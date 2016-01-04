@@ -1,25 +1,21 @@
 package gap.client.ui.paymentUI.RewardPanels;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.util.ArrayList;
-
-import org.omg.CORBA.CODESET_INCOMPATIBLE;
-
 import gap.client.exception.MoneyEmptyException;
-import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.paymentUI.PayeeClassPanel;
 import gap.client.ui.paymentUI.PaymentDisplayPanel;
 import gap.client.ui.paymentUI.PaymentMainPanel;
 import gap.client.ui.paymentUI.PaymentTableHeader;
-import gap.client.util.MessageType;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.util.ArrayList;
 
 public class PaymentRewardPanel extends PayeeClassPanel{
 

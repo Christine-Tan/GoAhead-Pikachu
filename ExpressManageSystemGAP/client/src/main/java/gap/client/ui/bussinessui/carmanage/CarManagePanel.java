@@ -5,7 +5,6 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.util.MessageType;
 import gap.common.util.ResultMessage;
 
@@ -14,10 +13,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class CarManagePanel extends MainPanel {
 	CarQueryPanel queryPanel;

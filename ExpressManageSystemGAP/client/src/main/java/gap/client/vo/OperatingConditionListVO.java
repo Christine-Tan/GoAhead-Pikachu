@@ -1,9 +1,9 @@
 package gap.client.vo;
 
+import gap.common.ListInterface.Receipt;
+
 import java.util.Calendar;
 import java.util.List;
-
-import gap.common.ListInterface.Receipt;
 
 public class OperatingConditionListVO {
 	private List<Receipt> receipts;

@@ -1,14 +1,11 @@
 package gap.client.ui.inventoryui.stockoutorderinput;
 
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.util.LocalInfo;
 import gap.client.vo.GoodsVO;
-import gap.common.util.SectorType;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 

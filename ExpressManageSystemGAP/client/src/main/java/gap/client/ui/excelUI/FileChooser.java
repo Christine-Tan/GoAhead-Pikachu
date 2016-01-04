@@ -1,10 +1,8 @@
 package gap.client.ui.excelUI;
 
-import java.awt.FileDialog;
-
-import javax.swing.JFileChooser;
-
 import gap.client.ui.BaseComponents.MainFrame;
+
+import java.awt.FileDialog;
 
 public class FileChooser {
 

@@ -4,7 +4,6 @@ import gap.common.dataservice.logdataservice.LogDataService;
 import gap.common.dataservice.userdataservice.UserDataService;
 import gap.common.po.LogPO;
 import gap.common.po.UserPO;
-import gap.common.util.ResultMessage;
 import gap.server.data.userdata.UserDataServiceImpl;
 import gap.server.data.util.InsertSQL;
 import gap.server.initial.NetModule;

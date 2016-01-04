@@ -1,5 +1,12 @@
 package gap.client.ui.managerui.approvalui;
 
+import gap.client.blcontroller.InstitutionController;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.GAPTextField;
+import gap.common.po.LoadOrderPO;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -9,13 +16,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import gap.client.blcontroller.InstitutionController;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.common.po.LoadOrderPO;
 
 public class LoadOrderDetailPanel extends JPanel {
 	JLabel from_jl, to_jl, car_jl, driver_jl, looker_jl;

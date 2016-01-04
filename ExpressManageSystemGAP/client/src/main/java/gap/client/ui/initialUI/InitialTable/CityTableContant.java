@@ -1,5 +1,11 @@
 package gap.client.ui.initialUI.InitialTable;
 
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.common.po.InitialPeoplePO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -9,15 +15,6 @@ import java.awt.Insets;
 import java.util.List;
 
 import javax.swing.JLabel;
-
-import com.sun.xml.internal.ws.handler.ClientLogicalHandlerTube;
-
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.client.util.City;
-import gap.common.po.InitialPeoplePO;
 
 public class CityTableContant extends PanelWithGrid{
 

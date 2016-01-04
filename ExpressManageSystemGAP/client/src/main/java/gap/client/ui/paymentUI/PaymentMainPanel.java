@@ -1,10 +1,5 @@
 package gap.client.ui.paymentUI;
 
-import java.awt.GridBagConstraints;
-import java.util.ArrayList;
-
-import javax.naming.InitialContext;
-
 import gap.client.blcontroller.AccountorReceiptController;
 import gap.client.exception.MoneyEmptyException;
 import gap.client.ui.BaseComponents.MainFrame;
@@ -16,6 +11,9 @@ import gap.client.util.MessageType;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;
 import gap.client.vo.PaymentListVO;
+
+import java.awt.GridBagConstraints;
+import java.util.ArrayList;
 
 public class PaymentMainPanel extends MainPanelWithGird{
 

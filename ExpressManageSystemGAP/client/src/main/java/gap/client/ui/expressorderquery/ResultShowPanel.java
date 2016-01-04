@@ -54,6 +54,7 @@ public class ResultShowPanel extends JPanel {
 	public ResultShowPanel() {
 		setLayout(null);
 //		setOpaque(false);
+		setFocusable(true);
 		setBorder(new GAPBorder());
 
 		try {
@@ -63,7 +64,7 @@ public class ResultShowPanel extends JPanel {
 			e.printStackTrace();
 		}
 
-		id_Input = new IdInputCompo(this);
+		id_Input = new IdInputCompo(this,"请输入订单号");
 
 		close = new CloseIcon();
 		close.addMouseListener(new MouseListener() {

@@ -1,17 +1,17 @@
 package gap.server.ui.userList;
 
+import gap.common.po.UserPO;
+import gap.server.ui.ServiceLeftPanel;
+import gap.server.ui.tools.ColorAndFonts;
+import gap.server.ui.tools.PanelWithGrid;
+import gap.server.ui.tools.SwingConsole;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Insets;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
-
-import gap.common.po.UserPO;
-import gap.server.ui.ServiceLeftPanel;
-import gap.server.ui.tools.ColorAndFonts;
-import gap.server.ui.tools.PanelWithGrid;
-import gap.server.ui.tools.SwingConsole;
 
 public class UserPanel extends PanelWithGrid{
 	private ArrayList<UserLabel> userPOList = new ArrayList<>();

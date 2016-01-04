@@ -1,10 +1,9 @@
 package gap.common.po;
 
-import java.io.Serializable;
+import gap.common.ListInterface.Order;
+
 import java.util.List;
 import java.util.Map;
-
-import gap.common.ListInterface.Order;
 
 public class DeliveryOrderPO implements Order {
 	// 派件信息，记录派件快递员和对应派件快递

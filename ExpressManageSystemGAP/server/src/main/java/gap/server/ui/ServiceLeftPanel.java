@@ -1,5 +1,11 @@
 package gap.server.ui;
 
+import gap.common.po.UserPO;
+import gap.server.ui.tools.ColorAndFonts;
+import gap.server.ui.tools.PanelWithGrid;
+import gap.server.ui.tools.SwingConsole;
+import gap.server.ui.userList.UserPanel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -8,12 +14,6 @@ import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-
-import gap.common.po.UserPO;
-import gap.server.ui.tools.ColorAndFonts;
-import gap.server.ui.tools.PanelWithGrid;
-import gap.server.ui.tools.SwingConsole;
-import gap.server.ui.userList.UserPanel;
 
 public class ServiceLeftPanel extends PanelWithGrid{
 	JLabel titleLabel;

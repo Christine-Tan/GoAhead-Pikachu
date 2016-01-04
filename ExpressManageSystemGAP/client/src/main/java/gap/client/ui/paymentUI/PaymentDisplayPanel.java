@@ -1,12 +1,5 @@
 package gap.client.ui.paymentUI;
 
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.swing.JPanel;
-
 import gap.client.exception.MoneyEmptyException;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.PanelWithGrid;
@@ -14,6 +7,11 @@ import gap.client.ui.paymentUI.RewardPanels.PaymentRewardPanel;
 import gap.client.vo.AccountVO;
 import gap.client.vo.PayeeVO;
 import gap.common.util.PaymentType;
+
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PaymentDisplayPanel extends PanelWithGrid{
 

@@ -1,16 +1,15 @@
 package gap.client.ui.gapcomponents;
 
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.RenderSetter;
 
 /**
  * 

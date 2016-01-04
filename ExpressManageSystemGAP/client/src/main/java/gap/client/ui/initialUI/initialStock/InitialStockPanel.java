@@ -1,5 +1,13 @@
 package gap.client.ui.initialUI.initialStock;
 
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.GAPLabel;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.client.ui.initialUI.InitialMainPanel;
+import gap.client.ui.initialUI.InitialTable.CityTableContant;
+import gap.client.ui.initialUI.InitialTable.CityTableHeader;
+import gap.common.po.InitialStockPO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,16 +17,6 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JViewport;
-
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.GAPLabel;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.client.ui.initialUI.InitialMainPanel;
-import gap.client.ui.initialUI.InitialTablePanel;
-import gap.client.ui.initialUI.InitialTable.CityTableContant;
-import gap.client.ui.initialUI.InitialTable.CityTableHeader;
-import gap.common.po.AccountPO;
-import gap.common.po.InitialStockPO;
 
 public class InitialStockPanel extends PanelWithGrid{
 

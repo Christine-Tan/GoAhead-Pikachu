@@ -5,17 +5,14 @@ import gap.client.blcontroller.StockinOrderController;
 import gap.client.blcontroller.StockoutOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.util.LocalInfo;
 import gap.client.util.MessageType;
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
-import gap.common.po.StockinOrderPO;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -26,8 +23,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class ObserveStockPanel extends MainPanel {

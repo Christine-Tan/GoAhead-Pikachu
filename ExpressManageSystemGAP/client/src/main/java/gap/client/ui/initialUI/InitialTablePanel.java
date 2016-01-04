@@ -1,22 +1,18 @@
 package gap.client.ui.initialUI;
 
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.util.List;
-
-import javax.swing.JViewport;
-
-import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.initialUI.InitialTable.CityTableContant;
 import gap.client.ui.initialUI.InitialTable.CityTableHeader;
-import gap.client.ui.initialUI.initialAccount.AccountDisplayPanel;
 import gap.client.ui.initialUI.initialAccount.InitialAccountPanel;
 import gap.client.ui.initialUI.initialStock.InitialStockPanel;
 import gap.common.po.InitialHistoryPO;
 import gap.common.po.InitialPeoplePO;
-import gap.common.po.InitialStockPO;
+
+import java.awt.GridBagConstraints;
+import java.util.List;
+
+import javax.swing.JViewport;
 
 public class InitialTablePanel extends PanelWithGrid{
 	

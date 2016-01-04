@@ -1,21 +1,18 @@
 package gap.client.ui.paymentUI;
 
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.RichLable;
+
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.spi.CalendarDataProvider;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.RichLable;
 
 public class HeadPanel extends JPanel{
 	GridBagLayout gridBagLayout = new GridBagLayout();

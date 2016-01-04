@@ -1,10 +1,10 @@
 package gap.client.blcontroller;
 
-import java.util.List;
-
 import gap.client.bl.inventory.Inventory;
 import gap.client.vo.GoodsVO;
 import gap.common.util.ResultMessage;
+
+import java.util.List;
 
 public class InventoryController {
 	private static Inventory inventory = new Inventory();

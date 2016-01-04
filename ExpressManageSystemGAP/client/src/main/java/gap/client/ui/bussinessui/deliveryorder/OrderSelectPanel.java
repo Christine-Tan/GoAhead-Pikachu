@@ -3,7 +3,6 @@ package gap.client.ui.bussinessui.deliveryorder;
 import gap.client.blcontroller.ExpressorderController;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.bussinessui.deliveryorder.DeliverySelectPanel.ItemPanel;
 import gap.client.ui.gapcomponents.ComponentStyle;
 import gap.client.ui.gapcomponents.GAPJScrollPane;
 import gap.client.ui.gapcomponents.GAPTextField;
@@ -23,12 +22,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
 
 public class OrderSelectPanel extends JPanel {
 	static List<ExpressOrderVO> total_orders = new ArrayList<>();

@@ -3,7 +3,6 @@ package gap.client.ui.deliveryui.expressorderinput;
 import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.util.LocalInfo;
-import gap.client.util.MessageType;
 import gap.client.util.User;
 import gap.common.util.Gender;
 import gap.common.util.UserType;

@@ -1,14 +1,5 @@
 package gap.client.ui.initialUI.InitialHistory;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.JLabel;
-
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.ConvertString;
 import gap.client.ui.UITools.SwingConsole;
@@ -17,6 +8,15 @@ import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.initialUI.InitialMainPanel;
 import gap.client.ui.initialUI.InitialTablePanel;
 import gap.common.po.InitialHistoryPO;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JLabel;
 
 public class HistoryItem extends PanelWithGrid{
 	InitialMainPanel mainPanel;

@@ -1,5 +1,11 @@
 package gap.client.ui.BillOrderQueryUI;
 
+import gap.client.ui.UITools.Default;
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ComponentStyle;
+import gap.client.ui.gapcomponents.GAPLabel;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,15 +14,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import gap.client.ui.UITools.Default;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ComponentStyle;
-import gap.client.ui.gapcomponents.GAPLabel;
 
 public class BillOrderTableHeader extends JPanel {
 	// 单据编号，类型，日期,金额

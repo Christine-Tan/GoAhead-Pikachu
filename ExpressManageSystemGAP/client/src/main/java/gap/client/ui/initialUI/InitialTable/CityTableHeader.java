@@ -1,16 +1,15 @@
 package gap.client.ui.initialUI.InitialTable;
 
-import java.awt.Color;
-
-import java.awt.Dimension;
-import java.awt.Font;
-
-import javax.swing.JLabel;
-
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.PanelWithGrid;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+
+import javax.swing.JLabel;
 
 public class CityTableHeader extends PanelWithGrid {
 	public static final int classIdle = 150;

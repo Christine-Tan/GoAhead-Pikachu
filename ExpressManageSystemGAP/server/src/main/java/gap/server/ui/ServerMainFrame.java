@@ -1,18 +1,14 @@
 package gap.server.ui;
 
 
+import gap.common.po.UserPO;
+import gap.server.ui.listener.MoveListener;
+
 import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
-import gap.common.po.UserPO;
-import gap.common.util.Gender;
-import gap.common.util.UserType;
-import gap.server.ui.listener.MoveListener;
-import gap.server.ui.userList.UserLabel;
-import gap.server.ui.userList.UserPanel;
 
 public class ServerMainFrame extends JFrame{
 	ServerRightPanel rightPanel;

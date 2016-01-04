@@ -33,9 +33,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 public class StockinOrderInputPanel extends MainPanel {
 	StockinInfoUI stockinInfo;

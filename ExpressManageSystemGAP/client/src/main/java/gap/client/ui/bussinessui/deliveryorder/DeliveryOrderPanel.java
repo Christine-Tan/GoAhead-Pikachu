@@ -1,12 +1,5 @@
 package gap.client.ui.bussinessui.deliveryorder;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import gap.client.blcontroller.DeliveryOrderController;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
@@ -15,6 +8,12 @@ import gap.client.ui.gapcomponents.ButtonArea;
 import gap.client.util.MessageType;
 import gap.client.vo.DeliveryOrderVO;
 import gap.common.util.ResultMessage;
+
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * 快递员选择列表

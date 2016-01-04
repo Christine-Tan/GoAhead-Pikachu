@@ -1,5 +1,16 @@
 package gap.client.ui.BillOrderQueryUI;
 
+import gap.client.blcontroller.AccountorReceiptController;
+import gap.client.ui.BaseComponents.MainFrame;
+import gap.client.ui.BaseComponents.MainPanelWithGird;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.GAPJScrollPane;
+import gap.client.util.MessageType;
+import gap.client.vo.InstitutionVO;
+import gap.common.po.BillOrderPO;
+import gap.common.util.InstitutionType;
+
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -9,20 +20,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import com.sun.xml.internal.ws.api.addressing.AddressingPropertySet;
-
-import gap.client.blcontroller.AccountorReceiptController;
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanelWithGird;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ButtonArea;
-import gap.client.ui.gapcomponents.GAPJScrollPane;
-import gap.client.util.MessageType;
-import gap.client.vo.BillOrderVO;
-import gap.client.vo.InstitutionVO;
-import gap.common.po.BillOrderPO;
-import gap.common.util.InstitutionType;
 
 public class AccountorBillQueryMainPanel extends MainPanelWithGird{
 

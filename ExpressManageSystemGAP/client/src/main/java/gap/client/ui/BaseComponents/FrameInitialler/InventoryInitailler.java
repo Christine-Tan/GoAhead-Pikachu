@@ -9,7 +9,6 @@ import gap.client.ui.inventoryui.initialstock.InitialStockPanel;
 import gap.client.ui.inventoryui.observestock.ObserveStockPanel;
 import gap.client.ui.inventoryui.stockinorderinput.StockinOrderInputPanel;
 import gap.client.ui.inventoryui.stockoutorderinput.StockoutOrderInputPanel;
-import gap.client.util.MessageType;
 
 public class InventoryInitailler extends FrameInitialler{
 	/**

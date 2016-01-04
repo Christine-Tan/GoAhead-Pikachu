@@ -1,7 +1,6 @@
 package gap.client.ui.inventoryui.initialstock;
 
 import gap.client.blcontroller.InventoryController;
-import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.UITools.SwingConsole;

@@ -1,12 +1,12 @@
 package gap.client.ui.AccountUI.Listener;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import gap.client.ui.AccountUI.AccountManagePanel;
 import gap.client.ui.AccountUI.AccountQueryPanel;
 import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MessagePanel;
 import gap.client.util.MessageType;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 
 

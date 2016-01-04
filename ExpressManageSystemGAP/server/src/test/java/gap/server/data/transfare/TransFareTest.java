@@ -1,6 +1,9 @@
 package gap.server.data.transfare;
 
-import static org.junit.Assert.*;
+import gap.common.dataservice.transFareDataService.TransFareDataService;
+import gap.common.po.TransFarePO;
+import gap.server.data.transFareData.TransFareDataImpl;
+import gap.server.initial.NetInitial;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +11,6 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import gap.common.dataservice.transFareDataService.TransFareDataService;
-import gap.common.po.TransFarePO;
-import gap.server.data.transFareData.TransFareDataImpl;
-import gap.server.initial.NetInitial;
 
 public class TransFareTest {
 

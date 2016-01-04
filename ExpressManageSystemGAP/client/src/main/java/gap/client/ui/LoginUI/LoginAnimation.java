@@ -1,6 +1,5 @@
 package gap.client.ui.LoginUI;
 
-import gap.client.bl.login.Login;
 import gap.client.ui.BaseListener.MoveListener;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;

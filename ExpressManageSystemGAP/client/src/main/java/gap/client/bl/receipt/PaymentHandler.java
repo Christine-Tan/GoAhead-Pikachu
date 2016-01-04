@@ -1,12 +1,5 @@
 package gap.client.bl.receipt;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
-
-import javax.naming.spi.DirStateFactory.Result;
-
-import gap.client.bl.receipt.payee.Payee;
 import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.common.po.PayeePO;
@@ -17,6 +10,10 @@ import gap.common.po.UserPO;
 import gap.common.util.OrderState;
 import gap.common.util.PaymentType;
 import gap.common.util.ResultMessage;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PaymentHandler {
 	AccountorReceiptDataController dataController;

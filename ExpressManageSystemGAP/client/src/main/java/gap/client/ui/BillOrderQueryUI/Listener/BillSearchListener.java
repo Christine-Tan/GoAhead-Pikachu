@@ -1,10 +1,10 @@
 package gap.client.ui.BillOrderQueryUI.Listener;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
 import gap.client.ui.BillOrderQueryUI.AccountorBillQueryBar;
 import gap.client.ui.BillOrderQueryUI.AccountorBillQueryMainPanel;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class BillSearchListener implements MouseListener{
 	AccountorBillQueryBar queryBar;

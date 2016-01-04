@@ -2,9 +2,6 @@ package gap.client.ui.AccountUI.ComponentBehave;
 
 import gap.client.ui.AccountUI.AccountManagePanel;
 import gap.client.ui.AccountUI.EditableLable;
-import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.BaseComponents.MainPanel;
-import gap.client.util.MessageType;
 import gap.client.vo.AccountVO;
 
 public class NameChangeBehave implements ComponentBehave{

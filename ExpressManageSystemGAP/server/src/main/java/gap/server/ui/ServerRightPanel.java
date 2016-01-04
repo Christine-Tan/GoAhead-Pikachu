@@ -1,19 +1,16 @@
 package gap.server.ui;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-
 import gap.server.ui.tools.ColorAndFonts;
 import gap.server.ui.tools.IPGetter;
 import gap.server.ui.tools.LoginAnimation;
 import gap.server.ui.tools.PanelWithGrid;
-import gap.server.ui.tools.RichLable;
 import gap.server.ui.tools.SwingConsole;
+
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 
 public class ServerRightPanel extends PanelWithGrid{
 	JLayeredPane layer;

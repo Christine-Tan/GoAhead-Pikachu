@@ -1,10 +1,10 @@
 package gap.client.ui.inventoryui.observestock;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.vo.StockinOrderVO;
 import gap.client.vo.StockoutOrderVO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InventoryOrder {
 	String id;

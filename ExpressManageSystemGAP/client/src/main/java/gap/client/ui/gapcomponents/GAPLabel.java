@@ -1,7 +1,6 @@
 package gap.client.ui.gapcomponents;
 
 import java.awt.Color;
-import java.awt.Font;
 
 import javax.swing.JLabel;
 

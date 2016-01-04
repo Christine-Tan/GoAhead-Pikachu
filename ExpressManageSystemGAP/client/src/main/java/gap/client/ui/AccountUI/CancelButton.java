@@ -1,5 +1,12 @@
 package gap.client.ui.AccountUI;
 
+import gap.client.ui.AccountUI.ComponentBehave.BoxCancelBehave;
+import gap.client.ui.AccountUI.ComponentBehave.ComponentBehave;
+import gap.client.ui.BaseComponents.CancelLabel;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.gapcomponents.GAPButton;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,18 +14,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.sql.StatementEventListener;
 import javax.swing.JPanel;
-import javax.xml.soap.Text;
-
-import gap.client.ui.AccountUI.ComponentBehave.BoxCancelBehave;
-import gap.client.ui.AccountUI.ComponentBehave.ComponentBehave;
-import gap.client.ui.AccountUI.ConfirmButton.ConfirmListener;
-import gap.client.ui.BaseComponents.CancelLabel;
-import gap.client.ui.BaseComponents.ConfirmLabel;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.gapcomponents.GAPButton;
 
 public class CancelButton extends JPanel{
 

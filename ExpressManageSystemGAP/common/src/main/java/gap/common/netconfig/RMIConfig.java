@@ -1,12 +1,9 @@
 package gap.common.netconfig;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream.GetField;
 
 public class RMIConfig {
 	public static int RMI_port;

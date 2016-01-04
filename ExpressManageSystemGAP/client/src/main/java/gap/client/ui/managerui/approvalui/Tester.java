@@ -3,7 +3,6 @@ package gap.client.ui.managerui.approvalui;
 
 import gap.client.datacontroller.NetModule;
 import gap.client.ui.BaseComponents.MainFrame;
-import gap.client.ui.managerui.institutionui.InstitutionPanel;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.common.util.Gender;

@@ -1,27 +1,19 @@
 package gap.client.ui.initialUI;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.util.List;
-
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
-
 import gap.client.blcontroller.InitialController;
 import gap.client.blservice.initialblservice.InitialBlService;
 import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanelWithGird;
-import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.util.MessageType;
-import gap.common.po.AccountPO;
 import gap.common.po.InitialHistoryPO;
-import gap.common.po.InitialPeoplePO;
 import gap.common.util.ResultMessage;
+
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.util.List;
+
+import javax.swing.JPanel;
 
 public class InitialMainPanel extends MainPanelWithGird{
 

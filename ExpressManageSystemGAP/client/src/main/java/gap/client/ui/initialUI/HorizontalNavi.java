@@ -1,16 +1,14 @@
 package gap.client.ui.initialUI;
 
-import java.awt.Color;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.ChooseButton;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+
 import java.awt.GridBagConstraints;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
-
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.ChooseButton;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.common.po.InitialPeoplePO;
 
 public class HorizontalNavi extends PanelWithGrid{
 	

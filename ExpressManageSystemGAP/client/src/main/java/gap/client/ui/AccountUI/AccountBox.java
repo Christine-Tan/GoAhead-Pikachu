@@ -1,5 +1,11 @@
 package gap.client.ui.AccountUI;
 
+import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.ConvertString;
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.vo.AccountVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -9,24 +15,10 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 
-import javax.swing.GrayFilter;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import com.sun.javafx.property.adapter.PropertyDescriptor.Listener;
-
-import gap.client.ui.AccountUI.ComponentBehave.NameChangeBehave;
-import gap.client.ui.BaseComponents.WhiteExitButton;
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.ConvertString;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.gapcomponents.GAPTextField;
-import gap.client.vo.AccountVO;
 
 
 public class AccountBox extends JPanel{

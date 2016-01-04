@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import javafx.scene.chart.PieChart.Data;
-
 public class ConvertString {
 	public static String getString(Calendar calendar){
 		Date date = calendar.getTime();

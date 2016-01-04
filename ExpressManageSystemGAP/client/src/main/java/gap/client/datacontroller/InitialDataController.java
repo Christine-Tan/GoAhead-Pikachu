@@ -1,8 +1,11 @@
 package gap.client.datacontroller;
 
-import java.rmi.RemoteException;
-import java.util.List;
-
+import static gap.client.datacontroller.NetModule.accountDataService;
+import static gap.client.datacontroller.NetModule.citydataservice;
+import static gap.client.datacontroller.NetModule.initialDataService;
+import static gap.client.datacontroller.NetModule.institutiondataservice;
+import static gap.client.datacontroller.NetModule.inventorydataservice;
+import static gap.client.datacontroller.NetModule.userdataservice;
 import gap.common.po.AccountPO;
 import gap.common.po.CityPO;
 import gap.common.po.InitialHistoryPO;
@@ -11,12 +14,8 @@ import gap.common.po.UserPO;
 import gap.common.util.ResultMessage;
 import gap.common.util.UserType;
 
-import static gap.client.datacontroller.NetModule.initialDataService;
-import static gap.client.datacontroller.NetModule.institutiondataservice;
-import static gap.client.datacontroller.NetModule.citydataservice;
-import static gap.client.datacontroller.NetModule.userdataservice;
-import static gap.client.datacontroller.NetModule.accountDataService;
-import static gap.client.datacontroller.NetModule.inventorydataservice;
+import java.rmi.RemoteException;
+import java.util.List;
 
 public class InitialDataController {
 	

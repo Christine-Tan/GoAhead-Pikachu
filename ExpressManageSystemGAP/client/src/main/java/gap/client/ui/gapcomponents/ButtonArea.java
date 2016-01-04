@@ -2,7 +2,6 @@ package gap.client.ui.gapcomponents;
 
 import gap.client.ui.UITools.Default;
 import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
 
 import java.awt.Color;
 import java.awt.Component;

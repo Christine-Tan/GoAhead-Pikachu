@@ -5,13 +5,9 @@ import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.DeliveryOrderDataController;
 import gap.client.util.LocalInfo;
 import gap.client.vo.DeliveryOrderVO;
-import gap.client.vo.ExpressOrderVO;
-import gap.common.po.BillOrderPO;
-import gap.common.po.DeliveryOrderPO;
 import gap.common.util.ResultMessage;
 
 import java.sql.Date;
-import java.util.List;
 
 public class DeliveryOrder implements DeliveryOrderService {
 	DeliveryOrderDataController deliveryOrderData;

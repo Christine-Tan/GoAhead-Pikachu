@@ -3,7 +3,6 @@ package gap.client.vo;
 import gap.common.po.PayeePO;
 import gap.common.util.PaymentType;
 
-import java.nio.channels.ScatteringByteChannel;
 import java.util.Calendar;
 
 public class PayeeVO {

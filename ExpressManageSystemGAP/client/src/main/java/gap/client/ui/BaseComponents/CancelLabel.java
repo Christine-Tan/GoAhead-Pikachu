@@ -1,5 +1,7 @@
 package gap.client.ui.BaseComponents;
 
+import gap.client.ui.UITools.RenderSetter;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,8 +14,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import gap.client.ui.UITools.RenderSetter;
 
 public class CancelLabel extends JLabel{
 	/**

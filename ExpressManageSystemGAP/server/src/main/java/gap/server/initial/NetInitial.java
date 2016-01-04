@@ -1,6 +1,27 @@
 package gap.server.initial;
 
-import static gap.server.initial.NetModule.*;
+import static gap.server.initial.NetModule.accountDataService;
+import static gap.server.initial.NetModule.arrivedOrderdataservice;
+import static gap.server.initial.NetModule.billorderdataservice;
+import static gap.server.initial.NetModule.cardataservice;
+import static gap.server.initial.NetModule.citydataservice;
+import static gap.server.initial.NetModule.contactor;
+import static gap.server.initial.NetModule.deliveryorderdataservice;
+import static gap.server.initial.NetModule.driverdataservice;
+import static gap.server.initial.NetModule.expressorderdataservice;
+import static gap.server.initial.NetModule.initialDataService;
+import static gap.server.initial.NetModule.institutiondataservice;
+import static gap.server.initial.NetModule.inventorydataservice;
+import static gap.server.initial.NetModule.loadorderdataservice;
+import static gap.server.initial.NetModule.logdataservice;
+import static gap.server.initial.NetModule.paymentdataService;
+import static gap.server.initial.NetModule.pricedataservice;
+import static gap.server.initial.NetModule.rentdataservice;
+import static gap.server.initial.NetModule.salarydataservice;
+import static gap.server.initial.NetModule.stockinorderdataservice;
+import static gap.server.initial.NetModule.stockoutorderdataservice;
+import static gap.server.initial.NetModule.transFareDataService;
+import static gap.server.initial.NetModule.userdataservice;
 import gap.common.dataservice.ServiceName;
 import gap.common.netconfig.RMIConfig;
 import gap.server.data.ContactorImpl;
@@ -36,8 +57,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.swing.JFrame;
 
 public class NetInitial {
 	private static HashMap<String, Object> serviceMap;

@@ -1,5 +1,12 @@
 package gap.client.ui.paymentUI.paymentDetail;
 
+import gap.client.ui.UITools.ColorAndFonts;
+import gap.client.ui.UITools.RenderSetter;
+import gap.client.ui.UITools.SwingConsole;
+import gap.client.ui.gapcomponents.PanelWithGrid;
+import gap.client.ui.paymentUI.PaymentTableHeader;
+import gap.client.vo.PayeeVO;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,14 +16,6 @@ import java.awt.Insets;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
-
-import gap.client.ui.UITools.ColorAndFonts;
-import gap.client.ui.UITools.RenderSetter;
-import gap.client.ui.UITools.SwingConsole;
-import gap.client.ui.gapcomponents.PanelWithGrid;
-import gap.client.ui.paymentUI.PaymentTableHeader;
-
-import gap.client.vo.PayeeVO;
 
 public class DetailClassPanel extends PanelWithGrid{
 	protected JLabel nameLabel;

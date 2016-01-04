@@ -1,9 +1,9 @@
 package gap.client.ui.paymentUI.Listener;
 
+import gap.client.ui.paymentUI.PaymentMainPanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import gap.client.ui.paymentUI.PaymentMainPanel;
 
 public class PaymentSubmitListener implements ActionListener{
 

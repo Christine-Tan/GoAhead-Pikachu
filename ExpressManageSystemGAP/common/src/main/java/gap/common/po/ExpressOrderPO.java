@@ -5,8 +5,6 @@ import gap.common.util.CargoInfo;
 import gap.common.util.ExpressType;
 import gap.common.util.PeopleInfo;
 
-import java.io.Serializable;
-
 public class ExpressOrderPO implements Order {
 	// 寄件人姓名、地址、单位、电话
 	private PeopleInfo senderInfo;

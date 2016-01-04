@@ -1,20 +1,17 @@
 package gap.client.bl.receipt;
 
-import static org.junit.Assert.*;
-
-import java.util.Calendar;
-import java.util.List;
-
+import static org.junit.Assert.fail;
 import gap.client.blcontroller.AccountorReceiptController;
 import gap.client.datacontroller.ApprovalDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.client.datacontroller.NetModule;
 import gap.client.vo.PayeeVO;
 import gap.common.po.BillOrderPO;
-import gap.common.po.PaymentListPO;
 import gap.common.util.PaymentType;
 
-import org.junit.After;
+import java.util.Calendar;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 

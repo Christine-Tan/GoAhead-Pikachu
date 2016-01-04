@@ -1,12 +1,10 @@
 package gap.client.bl.strategy;
 
-import static org.junit.Assert.fail;
+import gap.client.datacontroller.NetModule;
+import gap.client.util.City;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import gap.client.datacontroller.NetModule;
-import gap.client.util.City;
 
 public class CityManageTest {
    CityManage city;

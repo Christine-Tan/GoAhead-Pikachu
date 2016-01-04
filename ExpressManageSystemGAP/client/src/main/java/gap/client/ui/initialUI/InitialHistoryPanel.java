@@ -1,17 +1,15 @@
 package gap.client.ui.initialUI;
 
-import java.awt.GridBagConstraints;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JPanel;
-
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.GAPLabel;
 import gap.client.ui.gapcomponents.PanelWithGrid;
 import gap.client.ui.initialUI.InitialHistory.HistoryItem;
 import gap.client.ui.initialUI.InitialHistory.HistoryTableHeader;
 import gap.common.po.InitialHistoryPO;
+
+import java.awt.GridBagConstraints;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InitialHistoryPanel extends PanelWithGrid{
 

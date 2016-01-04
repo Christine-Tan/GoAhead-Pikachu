@@ -1,9 +1,9 @@
 package gap.client.UI;
 
-import javax.swing.JFrame;
-
 import gap.client.ui.tableUI.Cost_profitUI.ArcGraphPanel;
 import gap.client.vo.Cost_ProfitListVO;
+
+import javax.swing.JFrame;
 
 public class TableUITest {
 

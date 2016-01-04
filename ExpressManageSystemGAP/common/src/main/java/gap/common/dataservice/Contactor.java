@@ -1,9 +1,9 @@
 package gap.common.dataservice;
 
+import gap.common.po.UserPO;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
-import gap.common.po.UserPO;
 
 /**
  * 用于测试客户端和网络端连接是否正常的接口

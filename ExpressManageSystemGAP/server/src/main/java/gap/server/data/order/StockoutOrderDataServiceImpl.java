@@ -7,7 +7,6 @@ import gap.common.po.StockoutOrderPO;
 import gap.common.util.ResultMessage;
 import gap.server.data.expressorder.ExpressOrderDataServiceImpl;
 import gap.server.data.inventorydata.InventoryDataServiceImpl;
-import gap.server.data.inventorydata.InventoryDataServiceImplTest;
 import gap.server.data.util.InsertSQL;
 import gap.server.data.util.SQLBuilder;
 import gap.server.data.util.UpdateSQL;

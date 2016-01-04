@@ -1,7 +1,6 @@
 package gap.common.dataservice.logdataservice;
 
 import gap.common.po.LogPO;
-import gap.common.util.ResultMessage;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

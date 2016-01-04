@@ -1,6 +1,5 @@
 package gap.client.ui.gapcomponents;
 
-import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.UITools.RenderSetter;
 
 import java.awt.BorderLayout;
@@ -9,10 +8,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;

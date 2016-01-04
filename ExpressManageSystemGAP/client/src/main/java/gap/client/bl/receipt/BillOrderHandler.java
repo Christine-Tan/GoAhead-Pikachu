@@ -1,8 +1,5 @@
 package gap.client.bl.receipt;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import gap.client.datacontroller.AccountorReceiptDataController;
 import gap.client.datacontroller.ControllerFactory;
 import gap.common.po.AccountPO;
@@ -11,6 +8,9 @@ import gap.common.po.BillPO;
 import gap.common.po.TradePO;
 import gap.common.util.OrderState;
 import gap.common.util.ResultMessage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BillOrderHandler {
 	AccountorReceiptDataController controller;
