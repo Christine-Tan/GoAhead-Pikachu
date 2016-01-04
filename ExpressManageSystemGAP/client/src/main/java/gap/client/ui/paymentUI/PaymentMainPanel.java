@@ -69,6 +69,7 @@ public class PaymentMainPanel extends MainPanelWithGird{
 		ArrayList<PayeeVO> payeeVOs = paymentListVO.getPayeeList();
 		try{
 			payeeVOs.addAll(displayPanel.getRewardPayees());
+			
 		}catch(MoneyEmptyException e){
 			MainFrame.setMessage("付款金额不能为空", MessageType.alram, 2000);
 			return;
@@ -77,6 +78,7 @@ public class PaymentMainPanel extends MainPanelWithGird{
 		double sum = calculateTotal(payeeVOs);
 		paymentListVO.setTotal(sum);
 		receiptController.submitPaymentList(paymentListVO);
+		MainFrame.setMessage("提交成功", MessageType.succeed, 2000);
 	}
 	
 	private double calculateTotal(ArrayList<PayeeVO> payeeVOs){

@@ -105,33 +105,10 @@ public class MainFrame extends JFrame {
 	public void initial(UserType user) {
 		UserBox userBox = new UserBox();
 		navigateBar.add(userBox);
+		
+		
 		FrameInitialler initialler = InitiallerFactory.getInitialler(user);
 		initialler.initialFrame(this);
-//		switch (user) {
-//		case DELIVERY:
-//			PanelInitial.initialDelivery(this);
-//			break;
-//		case BUSSINESSCLERK:
-//			PanelInitial.initialBussinessclerk(this);
-//			break;
-//		case CENTERCLERK:
-//			CenterClerkInitaller.initialCenterClerk(this);
-//			break;
-//		case MANAGER:
-//			ManagerInitialler.initialManager(this);
-//			break;
-//		case INVENTORY:
-//			InventoryInitailler.initialInventory(this);
-//			break;
-//		case ACCOUNTER:
-//			AccountorInitialler.initialAccountor(this);
-//			break;
-//		case ADMINISTRATOR:
-//			AdminInitialler.initialAdmin(this);
-//			break;
-//		default:
-//			break;
-//		}
 
 	}
 
