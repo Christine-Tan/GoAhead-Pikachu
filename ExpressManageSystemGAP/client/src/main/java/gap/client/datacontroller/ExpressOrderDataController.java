@@ -8,6 +8,7 @@ import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.po.PricePO;
 import gap.common.util.CurrentOrderType;
+import gap.common.util.ExpressType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -136,10 +137,11 @@ public class ExpressOrderDataController {
 		return null;
 	}
 
-	public double getDeliveryTime(String departure_city, String target_city) {
+	public double getDeliveryTime(String departure_city, String target_city,
+			ExpressType type) {
 		try {
 			return expressorderdataservice.getDeliveryTime(departure_city,
-					target_city);
+					target_city, type);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();

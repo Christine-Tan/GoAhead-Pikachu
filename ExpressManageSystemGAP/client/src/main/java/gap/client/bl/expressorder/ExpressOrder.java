@@ -11,6 +11,7 @@ import gap.client.vo.ExpressOrderVO;
 import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
+import gap.common.util.ExpressType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -84,16 +85,16 @@ public class ExpressOrder implements ExpressOrderService {
 		// TODO 自动生成的方法存根
 		order_info.currentins_id = LocalInfo.ins_id;
 		order_info.price = priceCal.getPrice(order_info);
+		String id = expressorderData.nextID() + "";
+		while (id.length() < 10)
+			id = "0" + id;
+		order_info.order_id = id;
 		return order_info;
 	}
 
 	@Override
 	public ResultMessage save(ExpressOrderVO order) {
 		// TODO 自动生成的方法存根
-		String id = expressorderData.nextID() + "";
-		while (id.length() < 10)
-			id = "0" + id;
-		order.order_id = id;
 		return expressorderData.add(order.toPO());
 	}
 
@@ -118,9 +119,11 @@ public class ExpressOrder implements ExpressOrderService {
 	}
 
 	@Override
-	public double getDeliveryTime(String departure_city, String target_city) {
+	public double getDeliveryTime(String departure_city, String target_city,
+			ExpressType type) {
 		// TODO 自动生成的方法存根
-		return expressorderData.getDeliveryTime(departure_city, target_city);
+		return expressorderData.getDeliveryTime(departure_city, target_city,
+				type);
 	}
 
 }

@@ -6,6 +6,7 @@ import gap.client.ui.BaseComponents.MainFrame;
 import gap.client.ui.BaseComponents.MainPanel;
 import gap.client.ui.UITools.SwingConsole;
 import gap.client.ui.gapcomponents.ButtonArea;
+import gap.client.ui.gapcomponents.GAPDialog;
 import gap.client.util.MessageType;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.util.ResultMessage;
@@ -47,7 +48,8 @@ public class ExpressorderInputPanel extends MainPanel {
 					express.setPrice(vo.price);
 					express.setTime(ExpressorderController.getDeliveryTime(
 							vo.sender_info.getAddress().getCity_name(),
-							vo.receiver_info.getAddress().getCity_name()));
+							vo.receiver_info.getAddress().getCity_name(),
+							vo.expressType));
 				}
 			}
 		});
@@ -69,6 +71,17 @@ public class ExpressorderInputPanel extends MainPanel {
 							if (re.equals(ResultMessage.SUCCEED)) {
 								MainFrame.setMessage("订单添加成功",
 										MessageType.succeed, 2000);
+								GAPDialog gapDia = new GAPDialog("添加成功",
+										mainFrame);
+								gapDia.setBounds(
+										mainFrame.getLocation().x
+												+ (mainFrame.getWidth() - 400)
+												/ 2,
+										mainFrame.getLocation().y
+												+ (mainFrame.getHeight() - 250)
+												/ 2, 400, 250);
+								gapDia.showMessage("订单添加成功", "您的订单号是:",
+										vo.order_id);
 								refresh();
 							} else {
 								MainFrame.setMessage("订单提交失败",

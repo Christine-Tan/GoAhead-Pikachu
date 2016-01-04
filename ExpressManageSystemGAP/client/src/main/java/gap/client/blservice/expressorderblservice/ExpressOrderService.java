@@ -4,6 +4,7 @@ import gap.client.exception.InvalidInputException;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.po.AllAddressPO;
 import gap.common.util.CurrentOrderType;
+import gap.common.util.ExpressType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -36,6 +37,7 @@ public interface ExpressOrderService {
 
 	public boolean isExisted(String order_id);
 
-	public double getDeliveryTime(String departure_city, String target_city);
+	public double getDeliveryTime(String departure_city, String target_city,
+			ExpressType type);
 
 }

@@ -6,6 +6,7 @@ import gap.common.netconfig.RMIConfig;
 import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
+import gap.common.util.ExpressType;
 import gap.common.util.ReceiveInfo;
 
 import java.net.MalformedURLException;
@@ -81,8 +82,8 @@ public class ExpressOrderDataServiceImplTest {
 	@Test
 	public void testSetReceived() {
 		try {
-			ReceiveInfo info = new ReceiveInfo("0000000002", "yyf",
-					"2016-01-02", "000000003", "");
+			ReceiveInfo info = new ReceiveInfo("0000000006", "yyf",
+					"2016-01-05", "000000003", "");
 			expressorderdataservice.setRecieved(info);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块
@@ -93,7 +94,8 @@ public class ExpressOrderDataServiceImplTest {
 	@Test
 	public void testGetDeliveryTime() {
 		try {
-			double time = expressorderdataservice.getDeliveryTime("南京市", "北京市");
+			double time = expressorderdataservice.getDeliveryTime("南京市", "北京市",
+					ExpressType.ECONOMIC);
 			System.out.println(time);
 		} catch (RemoteException e) {
 			// TODO 自动生成的 catch 块

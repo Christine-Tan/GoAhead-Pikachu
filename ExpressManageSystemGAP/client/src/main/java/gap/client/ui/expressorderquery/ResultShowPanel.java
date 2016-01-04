@@ -6,6 +6,7 @@ import gap.client.ui.expressorderquery.components.ArcAndString;
 import gap.client.ui.expressorderquery.components.Colors;
 import gap.client.ui.expressorderquery.components.IdInputCompo;
 import gap.client.ui.expressorderquery.components.SmallCircle;
+import gap.client.ui.gapcomponents.CloseIcon;
 import gap.client.ui.gapcomponents.GAPBorder;
 
 import java.awt.BasicStroke;
@@ -22,8 +23,6 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -67,6 +66,38 @@ public class ResultShowPanel extends JPanel {
 		id_Input = new IdInputCompo(this);
 
 		close = new CloseIcon();
+		close.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO 自动生成的方法存根
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO 自动生成的方法存根
+				System.exit(0);
+			}
+		});
 
 		add(close);
 		add(id_Input);
@@ -210,48 +241,4 @@ public class ResultShowPanel extends JPanel {
 
 	}
 
-	class CloseIcon extends JLabel {
-		String normalPath = "images\\expressorderquery\\close.png",
-				focusPath = "images\\expressorderquery\\close1.png";
-		ImageIcon normal, focus;
-
-		public CloseIcon() {
-			normal = new ImageIcon(normalPath);
-			focus = new ImageIcon(focusPath);
-			setIcon(normal);
-			setSize(25, 25);
-			addMouseListener(new MouseListener() {
-
-				@Override
-				public void mouseReleased(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					setIcon(focus);
-				}
-
-				@Override
-				public void mousePressed(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					setIcon(normal);
-				}
-
-				@Override
-				public void mouseExited(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					setIcon(normal);
-				}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					setIcon(focus);
-				}
-
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					// TODO 自动生成的方法存根
-					System.exit(0);
-				}
-			});
-		}
-	}
 }

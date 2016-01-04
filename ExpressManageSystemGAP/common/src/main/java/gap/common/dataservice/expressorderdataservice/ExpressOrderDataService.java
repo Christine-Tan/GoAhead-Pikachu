@@ -4,6 +4,7 @@ import gap.common.po.AllAddressPO;
 import gap.common.po.ExpressOrderModifyPO;
 import gap.common.po.ExpressOrderPO;
 import gap.common.util.CurrentOrderType;
+import gap.common.util.ExpressType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -192,7 +193,8 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public ResultMessage setSubmit(String order_id) throws RemoteException;
 
-	public double getDeliveryTime(String departure_city, String target_city)
+	public double getDeliveryTime(String departure_city, String target_city,ExpressType type)
 			throws RemoteException;
+
 
 }

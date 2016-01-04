@@ -7,6 +7,7 @@ import gap.client.ui.BaseComponents.WhiteExitButton;
 import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.deliveryui.expressorderinput.ExpressorderInputPanel;
+import gap.client.ui.gapcomponents.GAPDialog;
 import gap.client.util.LocalInfo;
 import gap.client.util.User;
 import gap.client.vo.LoginVO;
@@ -77,7 +78,7 @@ public class LoginPanel extends JPanel {
 		Graphics2D g2d = RenderSetter.OpenRender(g);
 
 		g2d.clearRect(0, 0, getWidth(), getHeight());
-		Color backColor=new Color(248, 248, 248);
+		Color backColor = new Color(248, 248, 248);
 		g2d.setColor(backColor);
 		g2d.fillRoundRect(4, 4, getWidth() - 8, getHeight() - 8, 4, 4);
 
@@ -118,6 +119,15 @@ public class LoginPanel extends JPanel {
 			mainFrame.initial(log.getUserType());
 			LoginFrame.setVi(false);
 			NetModule.initial(mainFrame);
+		} else {
+			GAPDialog gapDia = new GAPDialog(frame);
+			gapDia.setBounds(frame.getLocation().x + (frame.getWidth() - 400)
+					/ 2, frame.getLocation().y + (frame.getHeight() - 250) / 2,
+					400, 250);
+			gapDia.showMessage("登录失败", "用户名或密码错误");
+			userName.setText("");
+			passwordField.setText("");
+			userName.grabFocus();
 		}
 
 	}

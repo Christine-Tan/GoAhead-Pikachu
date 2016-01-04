@@ -69,7 +69,7 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	// deliverytime 表字段名
 	private String departure_city_id_f = "departure_city_id",
 			target_city_id_f = "target_city_id", cost_time_f = "cost_time",
-			order_num_f = "order_num";
+			order_num_f = "order_num", time_order_type_f = "order_type";
 
 	private static ExpressOrderDataService instance;
 
@@ -433,10 +433,13 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 					.getAddress().getCity_name();
 			String targ = getPeopleInfo(re.getInt(receiver_info_f),
 					receiverTable).getAddress().getCity_name();
+			String type = re.getString(order_type_f);
+			System.out.println(type);
 
 			String sql1 = "SELECT * FROM " + deliveryTimeTable + " WHERE "
 					+ departure_city_id_f + " = '" + depar + "' AND "
-					+ target_city_id_f + " = '" + targ + "';";
+					+ target_city_id_f + " = '" + targ + "' AND "
+					+ time_order_type_f + " = '" + type + "';";
 			ResultSet re1 = NetModule.excutor.excuteQuery(sql1);
 			if (re1.next()) {
 				String id = re1.getString("id");
@@ -456,9 +459,11 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 
 				NetModule.excutor.excute(sql2);
 			} else {
+				deliveryTimeInsert.clear();
 				deliveryTimeInsert.add(departure_city_id_f, depar);
 				deliveryTimeInsert.add(target_city_id_f, targ);
 				deliveryTimeInsert.add(cost_time_f, costTime);
+				deliveryTimeInsert.add(time_order_type_f, type);
 				deliveryTimeInsert.add(order_num_f, 1);
 				NetModule.excutor.excute(deliveryTimeInsert.createSQL());
 			}
@@ -591,12 +596,13 @@ public class ExpressOrderDataServiceImpl extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public double getDeliveryTime(String departure_city, String target_city)
-			throws RemoteException {
+	public double getDeliveryTime(String departure_city, String target_city,
+			ExpressType type) throws RemoteException {
 		// TODO 自动生成的方法存根
 		String sql = "SELECT * FROM " + deliveryTimeTable + " WHERE "
 				+ departure_city_id_f + " = '" + departure_city + "' AND "
-				+ target_city_id_f + " = '" + target_city + "';";
+				+ target_city_id_f + " = '" + target_city + "' AND "
+				+ time_order_type_f + " = '" + type + "';";
 		try {
 			ResultSet re = NetModule.excutor.excuteQuery(sql);
 			if (re.next()) {

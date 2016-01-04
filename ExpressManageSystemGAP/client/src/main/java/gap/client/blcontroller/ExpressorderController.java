@@ -6,6 +6,7 @@ import gap.client.util.LocalInfo;
 import gap.client.vo.ExpressOrderVO;
 import gap.common.po.AllAddressPO;
 import gap.common.util.CurrentOrderType;
+import gap.common.util.ExpressType;
 import gap.common.util.ReceiveInfo;
 import gap.common.util.ResultMessage;
 
@@ -66,8 +67,8 @@ public class ExpressorderController {
 	}
 
 	public static double getDeliveryTime(String departure_city,
-			String target_city) {
-		return expressorder.getDeliveryTime(departure_city, target_city);
+			String target_city, ExpressType type) {
+		return expressorder.getDeliveryTime(departure_city, target_city, type);
 	}
 
 }
