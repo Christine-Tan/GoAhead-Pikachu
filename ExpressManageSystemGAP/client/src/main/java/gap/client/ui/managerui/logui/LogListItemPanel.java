@@ -44,8 +44,7 @@ public class LogListItemPanel extends JPanel {
 		logMap = LogController.getLogByDate();
 		Iterator<?> it = logMap.entrySet().iterator();
 		while (it.hasNext()) {
-			Map.Entry<String, List<LogVO>> entry = (Map.Entry<String, List<LogVO>>) it
-					.next();
+			Map.Entry<String, List<LogVO>> entry = (Map.Entry<String, List<LogVO>>) it.next();
 			String date = entry.getKey();
 			List<LogVO> logs = entry.getValue();
 			items.add(new ItemPanel(date, logs));
@@ -57,8 +56,7 @@ public class LogListItemPanel extends JPanel {
 		setLayout(gb);
 		gcons.insets = new Insets(10, 50, 5, 300);
 		for (int i = 0; i < items.size(); i++) {
-			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1,
-					1, 1, 0);
+			SwingConsole.addComponent(gb, gcons, this, items.get(i), 0, i, 1, 1, 1, 0);
 		}
 	}
 
@@ -68,13 +66,14 @@ public class LogListItemPanel extends JPanel {
 		JPanel detailPanel;
 		boolean detailed;
 		// 布局
-		GridBagLayout gbi;
+		GridBagLayout gbi,gbl;
 		GridBagConstraints gcons;
 
 		public ItemPanel(String date, List<LogVO> logs) {
 			setBackground(Color.WHITE);
 			date_jl = new GAPLabel(date);
 			detail_b = new GAPButton(">");
+			
 			// 对detail按钮添加监听
 			detail_b.addActionListener(new ActionListener() {
 
@@ -92,17 +91,25 @@ public class LogListItemPanel extends JPanel {
 			// 布局
 			gbi = new GridBagLayout();
 			gcons = new GridBagConstraints();
-			setLayout(gbi);
+			gbl=new GridBagLayout();
+			JPanel jp=new JPanel();
+			JLabel empty=new JLabel();
+			jp.setBackground(Color.WHITE);
+			jp.setOpaque(true);
+			jp.setLayout(gbl);
 			gcons.insets = new Insets(5, 10, 5, 10);
-			SwingConsole.addComponent(gbi, gcons, this, detail_b, 0, 0, 1, 1,
-					0, 0);
-			gcons.insets = new Insets(5, 10, 5, 400);
-			SwingConsole.addComponent(gbi, gcons, this, date_jl, 1, 0, 1, 1, 0,
-					0);
+			gcons.anchor = GridBagConstraints.WEST;
+			SwingConsole.addComponent(gbl, gcons, jp, detail_b, 0, 0, 1, 1, 0, 0);
+			gcons.insets = new Insets(5, 10, 5, 370);
+			SwingConsole.addComponent(gbl, gcons, jp, date_jl, 1, 0, 1, 1, 0, 0);
+			gcons.insets=new Insets(0, 0, 0, 0);
+			SwingConsole.addComponent(gbl,gcons, jp, empty, 2, 0, 1, 1, 1, 0);
+			setLayout(gbi);	
 			gcons.insets = new Insets(5, 10, 5, 10);
-			SwingConsole.addComponent(gbi, gcons, this, detailPanel, 0, 1, 2,
-					1, 0, 0);
-
+			gcons.fill = GridBagConstraints.BOTH;
+			SwingConsole.addComponent(gbi, gcons, this, jp, 0, 0, 1, 1, 1, 0);
+			gcons.insets = new Insets(5, 10, 5, 10);
+			SwingConsole.addComponent(gbi, gcons, this, detailPanel, 0, 1, 1, 1, 1, 0);
 			closeDetail();
 		}
 
