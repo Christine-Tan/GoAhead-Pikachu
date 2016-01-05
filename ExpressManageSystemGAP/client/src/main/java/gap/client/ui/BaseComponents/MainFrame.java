@@ -18,7 +18,11 @@ import gap.common.util.UserType;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,9 +34,9 @@ public class MainFrame extends JFrame {
 	NavigateBar navigateBar;
 	MainPanel mainPanel;
 	LoadPanel loadPanel;
-	
+
 	SliderPanel sliderPanel;
-	
+
 	public static MessagePanel messagePanel;
 
 	MoveListener moveListener;
@@ -40,6 +44,9 @@ public class MainFrame extends JFrame {
 
 	private GridBagLayout grid;
 	private GridBagConstraints gcons;
+
+	Image icon;
+	String iconPath="images/pikachu.png";
 
 	public MainFrame() {
 		try {
@@ -49,9 +56,16 @@ public class MainFrame extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		try {
+            icon=ImageIO.read(new File(iconPath));
+            setIconImage(icon);
+        } catch (IOException e) {
+            // TODO 自动生成的 catch 块
+            e.printStackTrace();
+        }
 
 		loadPanel = new LoadPanel(this);
-		
+
 		setSize(Default.WIDTH, Default.HEIGHT);
 		setUndecorated(true);
 
@@ -62,7 +76,7 @@ public class MainFrame extends JFrame {
 
 		contentPanel.setLayout(null);
 		setLocationRelativeTo(null);
-		
+
 		sliderPanel = new SliderPanel(contentPanel);
 
 		grid = new GridBagLayout();
@@ -88,7 +102,7 @@ public class MainFrame extends JFrame {
 				2, 1, 1, 0);
 		SwingConsole.addComponent(grid, gcons, contentPanel, navigateBar, 0, 1,
 				1, 2, 0, 1);
-	
+
 		 SwingConsole.addComponent(grid, gcons, contentPanel,
 				 sliderPanel, 1, 1, 1, 1, 1, 1);
 		SwingConsole.addComponent(grid, gcons, contentPanel, messagePanel, 1,
@@ -105,8 +119,8 @@ public class MainFrame extends JFrame {
 	public void initial(UserType user) {
 		UserBox userBox = new UserBox();
 		navigateBar.add(userBox);
-		
-		
+
+
 		FrameInitialler initialler = InitiallerFactory.getInitialler(user);
 		initialler.initialFrame(this);
 
@@ -132,7 +146,7 @@ public class MainFrame extends JFrame {
 //		SwingConsole.addComponent(grid, gcons, (JPanel) getContentPane(),
 //				mainPanel.getJsPanel(), 1, 1, 1, 1, 1, 1);
 //		validate();
-		
+
 		if(mainPanel == null){
 			mainPanel = panel;
 			sliderPanel.setBeginPanel(panel.getJsPanel());
@@ -142,26 +156,26 @@ public class MainFrame extends JFrame {
 			return;
 		}
 		else{
-			
-			
+
+
 			Direction direction = null;
 			if(navigateBar.isUpper(mainPanel, panel)){
 				direction = Direction.UP;
 			}else{
 				direction = Direction.DOWN;
 			}
-			
+
 			this.mainPanel = panel;
-			
+
 			sliderPanel.slide(panel.getJsPanel(), direction);
-			
+
 		}
 	}
 
 	public JScrollPane getMainJsPanel(){
 		return mainPanel.getJsPanel();
 	}
-	
+
 	public static void setMessage(String message, MessageType type, long time) {
 		messagePanel.setMessage(message, type, time);
 	}

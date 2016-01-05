@@ -5,69 +5,85 @@ import gap.client.ui.BaseListener.MoveListener;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 public class LoginFrame extends JFrame {
-	static LoginFrame loginFrame;
-	LoginPanel loginPanel;
+    static LoginFrame loginFrame;
+    LoginPanel loginPanel;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager
-							.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-					final  LoginFrame frame = new LoginFrame();
-					NetModule.initial(frame);
-					new Thread(new Runnable() {
+    Image icon;
+    String iconPath = "images/pikachu.png";
 
-						@Override
-						public void run() {
-							// TODO 自动生成的方法存根
-							NetModule.connect();
-							loginFrame = frame;
-							setVi(true);
-						}
-					}).start();
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
 
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    UIManager
+                            .setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    final LoginFrame frame = new LoginFrame();
+                    NetModule.initial(frame);
+                    new Thread(new Runnable() {
 
-			}
-		});
-	}
+                        @Override
+                        public void run() {
+                            // TODO 自动生成的方法存根
+                            NetModule.connect();
+                            loginFrame = frame;
+                            setVi(true);
+                        }
+                    }).start();
 
-	public static void setVi(boolean bool) {
-		loginFrame.setVisible(bool);
-	}
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-	/**
-	 * Create the frame.
-	 */
-	public LoginFrame() {
-		setResizable(false);
-//		JFrame.setDefaultLookAndFeelDecorated(true);
-		setUndecorated(true);
-		setBackground(new Color(0, 0, 0, 0));
+            }
+        });
+    }
 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(430, 330);
+    public static void setVi(boolean bool) {
+        loginFrame.setVisible(bool);
+    }
 
-		setLocationRelativeTo(null);
-//		setVisible(true);
+    /**
+     * Create the frame.
+     */
+    public LoginFrame() {
+        setResizable(false);
+        // JFrame.setDefaultLookAndFeelDecorated(true);
+        setUndecorated(true);
+        setBackground(new Color(0, 0, 0, 0));
 
-		loginPanel = new LoginPanel(this);
-		setContentPane(loginPanel);
-		// getContentPane().setLayout(null);
-		// getContentPane().add(loginPanel);
-		MoveListener movelistener = new MoveListener(this);
-		addMouseListener(movelistener);
-		addMouseMotionListener(movelistener);
-	}
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(430, 330);
+
+        try {
+            icon = ImageIO.read(new File(iconPath));
+            setIconImage(icon);
+        } catch (IOException e) {
+            // TODO 自动生成的 catch 块
+            e.printStackTrace();
+        }
+
+        setLocationRelativeTo(null);
+        // setVisible(true);
+
+        loginPanel = new LoginPanel(this);
+        setContentPane(loginPanel);
+        // getContentPane().setLayout(null);
+        // getContentPane().add(loginPanel);
+        MoveListener movelistener = new MoveListener(this);
+        addMouseListener(movelistener);
+        addMouseMotionListener(movelistener);
+    }
 }
