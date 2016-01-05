@@ -65,10 +65,9 @@ public class AdminListItemPanel extends JPanel {
 			for (UserVO user : UserController.getAll(userType)) {
 				addItem(user);
 			}
-		}
-		else{
+		} else {
 			addItem(searchUser);
-		    reLayout();
+			reLayout();
 		}
 	}
 
@@ -136,7 +135,9 @@ public class AdminListItemPanel extends JPanel {
 			// 初始化下拉框列表项
 			usertypes = UserType.values();
 			for (int i = 0; i < usertypes.length; i++) {
-				usertype_list.addItem(usertypes[i].toString());
+				if (!usertypes[i].toString().equals("ADMINISTRATOR")) {
+					usertype_list.addItem(usertypes[i].toString());
+				}
 			}
 			usertype_list.setSelectedIndex(0);
 
