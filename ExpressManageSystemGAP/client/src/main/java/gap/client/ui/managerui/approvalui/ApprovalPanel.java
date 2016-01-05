@@ -47,7 +47,7 @@ public class ApprovalPanel extends MainPanel {
 		this.frame = frame;
 		MyTask task = new MyTask();
 		timer = new Timer(true);
-		timer.schedule(task, 1000, 10000);
+		timer.schedule(task, 1000, 20000);
 
 	}
 
