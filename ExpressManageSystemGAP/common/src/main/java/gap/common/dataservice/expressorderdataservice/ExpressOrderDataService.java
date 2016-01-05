@@ -156,8 +156,21 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public ResultMessage setRecieved(ReceiveInfo info) throws RemoteException;
 
+	/**
+	 * 设置入库
+	 * @param order_id
+	 * @return
+	 * @throws RemoteException
+	 */
 	public ResultMessage setStockin(String order_id) throws RemoteException;
 
+	/**
+	 * 设置出库
+	 * @param order_id
+	 * @param ins_id
+	 * @return
+	 * @throws RemoteException
+	 */
 	public ResultMessage setStockout(String order_id, String ins_id)
 			throws RemoteException;
 
@@ -193,6 +206,14 @@ public interface ExpressOrderDataService extends Remote {
 	 */
 	public ResultMessage setSubmit(String order_id) throws RemoteException;
 
+	/**
+	 * 获得送达时间
+	 * @param departure_city
+	 * @param target_city
+	 * @param type
+	 * @return
+	 * @throws RemoteException
+	 */
 	public double getDeliveryTime(String departure_city, String target_city,ExpressType type)
 			throws RemoteException;
 
