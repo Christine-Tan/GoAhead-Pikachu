@@ -9,11 +9,12 @@ import gap.common.po.LogPO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 public class Log implements LogService {
 	LogDataController controller;
 	List<LogVO> logs;
-	HashMap<String, List<LogVO>> logByDate;
+	TreeMap<String, List<LogVO>> logByDate;
 
 	public Log() {
 		// TODO Auto-generated constructor stub
@@ -30,8 +31,8 @@ public class Log implements LogService {
 		return logs;
 	}
 
-	public HashMap<String, List<LogVO>> getLogByDate() {
-		logByDate = new HashMap<String, List<LogVO>>();
+	public TreeMap<String, List<LogVO>> getLogByDate() {
+		logByDate = new TreeMap<String, List<LogVO>>();
 		logs = this.getLogList();
 		for (int i = logs.size() - 1; i >= 0; i--) {
 			String date = logs.get(i).getDate().substring(0, 11);
