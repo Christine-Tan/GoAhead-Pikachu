@@ -17,6 +17,9 @@ public class GAPCellRender<E> extends JLabel implements ListCellRenderer<E> {
 	public Component getListCellRendererComponent(JList<? extends E> arg0,
 			E arg1, int arg2, boolean arg3, boolean arg4) {
 		// TODO 自动生成的方法存根
+	    if(arg1 == null){
+	        return this;
+	    }
 		setText(arg1.toString());
 
 		Color background, foreground;
