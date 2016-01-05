@@ -131,6 +131,9 @@ public class ObserveStockPanel extends MainPanel {
 
 		String outTotal = StockoutOrderController.getTotalNum(outList) + "";
 		stockoutTotal = new TotalNumPanel("出库", outTotal);
+		
+//		String totoal = InventoryController.getTotalNum(LocalInfo.getIns_ID())+"";
+//		totalNum = ne
 		reLayout();
 	}
 
