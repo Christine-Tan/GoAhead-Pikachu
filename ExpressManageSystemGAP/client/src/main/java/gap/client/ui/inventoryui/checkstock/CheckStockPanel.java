@@ -145,7 +145,7 @@ public class CheckStockPanel extends MainPanel {
 						}
 					});
 					
-					MainFrame.setMessage("报表导出成功", MessageType.succeed, 3000);
+					MainFrame.setMessage("报表导出成功", MessageType.succeed, 2000);
 				}
 				
 				

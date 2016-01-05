@@ -178,7 +178,7 @@ public class StockinOrderInputPanel extends MainPanel {
 						.getByOrderIdList(new ArrayList<>(ids));
 			}
 		} else {
-			MainFrame.setMessage("所有到达单已安排入库", MessageType.succeed, 3000);
+			MainFrame.setMessage("所有到达单已安排入库", MessageType.succeed, 2000);
 		}
 
 		list = new ListPanel(orders);

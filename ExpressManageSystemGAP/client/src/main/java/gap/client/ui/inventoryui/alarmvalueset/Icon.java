@@ -1,5 +1,6 @@
 package gap.client.ui.inventoryui.alarmvalueset;
 
+import gap.client.ui.UITools.ColorAndFonts;
 import gap.client.ui.UITools.RenderSetter;
 import gap.client.ui.gapcomponents.ComponentStyle;
 
@@ -60,7 +61,7 @@ public class Icon extends JPanel {
 		g2d.setColor(Color.white);
 		g2d.fillRect(2,2,width,height);
 		
-		g2d.setColor(ComponentStyle.blue);
+		g2d.setColor(ColorAndFonts.blue);
 
 //			g2d.fillRect(2, y + 2, width, height - y);
 

@@ -67,7 +67,7 @@ public class InitialStockPanel extends MainPanel {
 						refresh();
 					}
 				});
-				MainFrame.setMessage("刷新成功", MessageType.succeed, 3000);
+				MainFrame.setMessage("刷新成功", MessageType.succeed, 2000);
 			}
 
 		});
@@ -116,10 +116,10 @@ public class InitialStockPanel extends MainPanel {
 				// TODO Auto-generated method stub
 				ResultMessage re = InventoryController.InitialFlush();
 				if (re.equals(ResultMessage.SUCCEED)) {
-					MainFrame.setMessage("初始化成功", MessageType.succeed, 3000);
+					MainFrame.setMessage("初始化成功", MessageType.succeed, 2000);
 				} else {
 					MainFrame.setMessage("初始化失败，原因嘛··············你猜！",
-							MessageType.alram, 3000);
+							MessageType.alram, 2000);
 				}
 			}
 		});

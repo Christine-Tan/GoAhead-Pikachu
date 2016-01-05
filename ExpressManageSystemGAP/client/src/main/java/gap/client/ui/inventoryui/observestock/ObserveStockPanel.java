@@ -87,7 +87,7 @@ public class ObserveStockPanel extends MainPanel {
 					
 				});
 				
-				MainFrame.setMessage("出入库数量统计结束", MessageType.succeed, 3000);
+				MainFrame.setMessage("出入库数量统计结束", MessageType.succeed, 2000);
 			}
 		});
 		
@@ -96,7 +96,7 @@ public class ObserveStockPanel extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				MainFrame.setMessage("不要走啊，亲，再看一遍呀~~~~", MessageType.succeed, 3000);
+				MainFrame.setMessage("不要走啊，亲，再看一遍呀~~~~", MessageType.succeed, 2000);
 			}
 		});
 
